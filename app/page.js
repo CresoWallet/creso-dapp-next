@@ -1,7 +1,7 @@
-import Dashboard from "@/pages/Dashboard";
-import Image from "next/image";
+import Dashboard from "@/components/page/Dashboard";
 
 export default function Home() {
+  
   return (
     <main className="" id="modal-root">
       <Dashboard />

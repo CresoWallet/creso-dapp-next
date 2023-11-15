@@ -9,18 +9,19 @@ import Header from "@/components/Header";
 import CapCard from "@/components/CapCard";
 import CustomButton2 from "@/components/CustomButton2";
 import User from "@/components/User";
-import Sure from "../assets/Dashboard/gainers/sure.png";
+import Sure from "../../assets/Dashboard/gainers/sure.png";
 import CresoCard from "@/components/CresoCard";
 import SideNav from "@/components/SideNav";
-import Search from "../assets/Dashboard/Search.png";
-import Ham from "../assets/Dashboard/ham.png";
+import Search from "../../assets/Dashboard/Search.png";
+import Ham from "../../assets/Dashboard/ham.png";
 import CreateWallet from "@/components/CreateWallet";
 import CoinWallet from "@/components/CoinWallet";
-import CFX from "../assets/gainers/cfx.png";
-import MINA from "../assets/AboutUs/gainers/mina.png";
+import CFX from "../../assets/gainers/cfx.png";
+import MINA from "../../assets/AboutUs/gainers/mina.png";
 import SecureWallet from "@/components/SecureWallet";
 import { useMediaQuery } from "react-responsive";
 import Modal from "@/components/modal/Modal";
+import { useUser } from "@/providers/UserProvider";
 
 const Dashboard = () => {
   const [showWallet, setShowWallet] = useState(false);
@@ -28,6 +29,11 @@ const Dashboard = () => {
   const [secure, setSecure] = useState(false);
   const [navbarTrigger, setNavbarTrigger] = useState(false);
   const [showModal, setShowModal] = useState(false);
+
+
+  const { user, isAuthenticated, authenticate } = useUser();
+
+  console.log(user);
 
   const isMobile = useMediaQuery({ query: `(max-width: 760px)` });
   const handleWallet = () => {

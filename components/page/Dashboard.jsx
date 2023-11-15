@@ -22,6 +22,7 @@ import SecureWallet from "@/components/SecureWallet";
 import { useMediaQuery } from "react-responsive";
 import Modal from "@/components/modal/Modal";
 import { useUser } from "@/providers/UserProvider";
+import { getUserWallets } from "@/clientApi/wallet";
 
 const Dashboard = () => {
   const [showWallet, setShowWallet] = useState(false);
@@ -29,7 +30,7 @@ const Dashboard = () => {
   const [secure, setSecure] = useState(false);
   const [navbarTrigger, setNavbarTrigger] = useState(false);
   const [showModal, setShowModal] = useState(false);
-
+  const [wallets, setWallets] = useState([]);
 
   const { user, isAuthenticated, authenticate } = useUser();
 
@@ -68,6 +69,43 @@ const Dashboard = () => {
     }
   }, [navbarTrigger]);
 
+  useEffect(() => {
+    const computeWallet = (data) => {
+      let walletsEOA = data.wllets.map((wallet, index) => {
+        return {
+          walletName: wallet.walletName,
+          address: wallet.address,
+          type: "EOA",
+        };
+      });
+
+      let smartWallet = data.smartWallets.map((sWallet, index) => {
+        return {
+          walletName: sWallet.walletName,
+          address: sWallet.address,
+          type: "AA",
+        };
+      });
+
+      let wallets = [...walletsEOA, ...smartWallet];
+
+      return wallets;
+    };
+    async function fetchWallet() {
+      try {
+        if (isAuthenticated) {
+          const res = await getUserWallets();
+          console.log(res.data);
+          const walletsArr = computeWallet(res.data);
+          setWallets(walletsArr);
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    }
+    fetchWallet();
+  }, [user]);
+
   return (
     <div>
       {navbarTrigger && (
@@ -98,12 +136,18 @@ const Dashboard = () => {
               </div>
               <div className="flex xl:hidden md:hidden">
                 {showCoinWallet && (
-                  <CoinWallet handleClose={handleCloseCoinWallet} />
+                  <CoinWallet
+                    handleClose={handleCloseCoinWallet}
+                    wallets={wallets}
+                  />
                 )}
               </div>
               <div className="flex xl:hidden md:hidden">
                 {secure && (
-                  <SecureWallet handleClose={handleCloseSecureWallet} />
+                  <SecureWallet
+                    handleClose={handleCloseSecureWallet}
+                    wallets={wallets}
+                  />
                 )}
               </div>
               <div className="block xl:hidden md:hidden">
@@ -154,7 +198,7 @@ const Dashboard = () => {
           <div className="hidden xl:flex md:flex">
             {secure && <SecureWallet handleClose={handleCloseSecureWallet} />}
           </div>
-          {showModal && <Modal onClose={() => setShowModal(false)}/>}
+          {showModal && <Modal onClose={() => setShowModal(false)} />}
 
           <div className="flex flex-col xl:pt-8 md:pt-8 space-y-4">
             <div className="hidden xl:block md:block">

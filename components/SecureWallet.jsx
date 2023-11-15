@@ -1,6 +1,6 @@
-"use client"
+"use client";
 
-import React, {useState} from "react";
+import React, { useState } from "react";
 import { IoIosClose } from "react-icons/io";
 import Image from "next/image";
 import Menu from "../assets/Dashboard/list2.png";
@@ -15,7 +15,7 @@ import USDT from "../assets/Dashboard/usdt3.png";
 import SendETH from "./SendETH";
 import WalletAddress from "./WalletAddress";
 
-const SecureWallet = ({ handleClose }) => {
+const SecureWallet = ({ handleClose, wallets }) => {
   const [send, setSend] = useState(false);
   const [walletAddress, setWalletAddress] = useState(false);
 

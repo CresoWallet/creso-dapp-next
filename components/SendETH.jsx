@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import { minifyEthereumAddress } from "@/utils";
 import CustomButton3 from "./CustomButton3";
@@ -7,11 +7,12 @@ import Ethereum from "../assets/Dashboard/etherum.png";
 import Creso from "../assets/Dashboard/creso2.png";
 import Send from "../assets/Dashboard/send.png";
 import CustomButton from "./CustomButton";
-import WalletAddress from "./WalletAddress";
+import { getUserWallets } from "@/clientApi/wallet";
 
-const SendETH = ({ handleBackButton }) => {
+const SendETH = ({ handleBackButton, walletArr }) => {
   const [openCoinList, setOpenCoinList] = useState(false);
   const [selectedCoin, setSelectedCoin] = useState({});
+
   const coinHandleClick = () => {
     setOpenCoinList(true);
   };
@@ -33,7 +34,7 @@ const SendETH = ({ handleBackButton }) => {
       type: "AA",
     },
   ];
-
+  console.log(walletArr);
   return (
     <div className="absolute bg-white flex flex-col xl:mx-8 md:mx-4 mx-0 px-2 xl:px-0 md:px-2 mt-10 w-full xl:pr-10 pr-2 space-y-4 h-screen z-20">
       <div className="flex flex-row items-center justify-between">
@@ -62,19 +63,19 @@ const SendETH = ({ handleBackButton }) => {
             onClick={coinHandleClick}
           >
             <div className="flex items-center gap-2">
-            <>
-              {selectedCoin ? (
-                <Image alt="" src={selectedCoin.coinImage || Creso} />
-              ) : (
-                <p className="text-sm md:text-xs cursor-pointer hover:font-bold">
-                  Select Wallet
-                </p>
-              )}
-            </>
+              <>
+                {selectedCoin ? (
+                  <Image alt="" src={selectedCoin.coinImage || Creso} />
+                ) : (
+                  <p className="text-sm md:text-xs cursor-pointer hover:font-bold">
+                    Select Wallet
+                  </p>
+                )}
+              </>
 
-            <p className="font-semibold text-sm md:text-xs">
-              {selectedCoin ? selectedCoin.address : "Select Coin"}
-            </p>
+              <p className="font-semibold text-sm md:text-xs">
+                {selectedCoin ? selectedCoin.address : "Select Coin"}
+              </p>
             </div>
             <div className="flex w-full max-w-[150px]">
               <div className="flex flex-row gap-1">
@@ -111,7 +112,7 @@ const SendETH = ({ handleBackButton }) => {
           </button>
           {openCoinList && (
             <div className="bg-white shadow-xl absolute mt-[240px] px-4 py-4 flex flex-col space-y-4 gap-4 min-w-[300px] rounded-md">
-              {coins.map((coin, key) => (
+              {walletArr.map((coin, key) => (
                 <div
                   key={key}
                   className="flex flex-col cursor-pointer gap-4"
@@ -126,7 +127,7 @@ const SendETH = ({ handleBackButton }) => {
                         <p className="text-base md:text-sm font-semibold">
                           {coin ? coin.walletName : ""}
                         </p>
-                        <p className="text-xs">{coin ?  (coin.address) : ""}</p>
+                        <p className="text-xs">{coin ? coin.address : ""}</p>
                       </div>
                     </div>
                     <div>

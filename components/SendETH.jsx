@@ -1,6 +1,7 @@
 "use client";
 import React, { useState } from "react";
 import Image from "next/image";
+import { minifyEthereumAddress } from "@/utils";
 import CustomButton3 from "./CustomButton3";
 import Ethereum from "../assets/Dashboard/etherum.png";
 import Creso from "../assets/Dashboard/creso2.png";
@@ -22,22 +23,14 @@ const SendETH = ({ handleBackButton }) => {
 
   const coins = [
     {
-      coinsName: "ETH-1",
-      coinImage: "",
+      walletName: "WalletName-1",
       address: "0x53A...e4af",
-      type: "EAQ",
+      type: "EOA",
     },
     {
-      coinsName: "ETH-2",
-      coinImage: { Creso },
+      walletName: "WalletName-2",
       address: "0x54A...e4ac",
-      type: "AWD",
-    },
-    {
-      coinsName: "ETH-3",
-      coinImage: { Creso },
-      address: "0x61A...e4af",
-      type: "ABC",
+      type: "AA",
     },
   ];
 
@@ -63,65 +56,101 @@ const SendETH = ({ handleBackButton }) => {
       </div>
       <div className="flex flex-col space-y-1">
         <p className="text-sm mx-4">From</p>
-        <div className="flex flex-row justify-between items-center gap-2 border border-solid rounded-full px-4 py-2">
+        <div className="flex flex-row justify-between items-center gap-2 border border-solid rounded-full px-4 py-2 relative">
           <button
-            className="flex flex-row items-center gap-2"
+            className="flex flex-row items-center gap-2 w-full justify-between"
             onClick={coinHandleClick}
           >
-            {selectedCoin ? (
-              <>
+            <div className="flex items-center gap-2">
+            <>
+              {selectedCoin ? (
                 <Image alt="" src={selectedCoin.coinImage || Creso} />
-                <p className="text-sm md:text-xs font-semibold">
-                  {selectedCoin.coinsName || (
-                    <p className="hover:font-bold">Select Coin</p>
-                  )}
+              ) : (
+                <p className="text-sm md:text-xs cursor-pointer hover:font-bold">
+                  Select Wallet
                 </p>
-              </>
-            ) : (
-              <p className="text-sm md:text-xs cursor-pointer hover:font-bold">
-                Select Coin
-              </p>
-            )}
+              )}
+            </>
+
+            <p className="font-semibold text-sm md:text-xs">
+              {selectedCoin ? selectedCoin.address : "Select Coin"}
+            </p>
+            </div>
+            <div className="flex w-full max-w-[150px]">
+              <div className="flex flex-row gap-1">
+                {/* <CustomButton3
+              title="EQA"
+              buttonColor="[#EEEEF1]"
+              titleColor="black"
+            /> */}
+                <div>
+                  {selectedCoin && (
+                    <button className="bg-[#EEEEF1] py-2 px-2 rounded-full border border-solid">
+                      <p className="text-xs font-medium">
+                        {selectedCoin.type || "Type"}
+                      </p>
+                    </button>
+                  )}
+                </div>
+              </div>
+              {selectedCoin ? (
+                <>
+                  {/* <Image alt="" src={selectedCoin.coinImage || Creso} /> */}
+                  <p className="text-sm md:text-xs font-semibold whitespace-nowrap align-middle w-full flex items-center justify-center">
+                    {selectedCoin.walletName || (
+                      <p className="hover:font-bold">Select Wallet</p>
+                    )}
+                  </p>
+                </>
+              ) : (
+                <p className="text-sm md:text-xs cursor-pointer hover:font-bold">
+                  Select Wallet
+                </p>
+              )}
+            </div>
           </button>
           {openCoinList && (
-            <div className="bg-white shadow-xl absolute mt-40 px-4 py-2 flex flex-col space-y-4">
+            <div className="bg-white shadow-xl absolute mt-[240px] px-4 py-4 flex flex-col space-y-4 gap-4 min-w-[300px] rounded-md">
               {coins.map((coin, key) => (
                 <div
                   key={key}
                   className="flex flex-col cursor-pointer gap-4"
                   onClick={() => handleSelectCoin(coin)}
                 >
-                  <div className="flex flex-row items-center gap-2">
-                  <Image alt="" src={Creso} />
-                  <p className="text-sm md:text-xs font-semibold">
-                    {coin ? coin.coinsName : "Select Coin"}
-                  </p>
+                  <div className="flex flex-row items-center justify-between  h-10">
+                    <div className="flex flex-row gap-4">
+                      <div>
+                        <Image alt="" src={Creso} className="w-8 h-8" />
+                      </div>
+                      <div className="flex flex-col items-start gap-2">
+                        <p className="text-base md:text-sm font-semibold">
+                          {coin ? coin.walletName : ""}
+                        </p>
+                        <p className="text-xs">{coin ?  (coin.address) : ""}</p>
+                      </div>
+                    </div>
+                    <div>
+                      {selectedCoin && (
+                        <button className="bg-[#EEEEF1] py-2 px-2 rounded-full border border-solid">
+                          <p className="text-xs font-medium">
+                            {selectedCoin.type || "Type"}
+                          </p>
+                        </button>
+                      )}
+                    </div>
                   </div>
-                 
                 </div>
               ))}
             </div>
           )}
-          <div className="flex flex-row gap-1 items-center">
-            {/* <CustomButton3
-              title="EQA"
-              buttonColor="[#EEEEF1]"
-              titleColor="black"
-            /> */}
-            <div>
-              {selectedCoin && (
-                <button className="bg-[#EEEEF1] py-2 px-2 rounded-full border border-solid">
-                  <p className="text-xs">
-                    {selectedCoin.type || "Select Coin"}
-                  </p>
-                </button>
-              )}
-            </div>
-            <p className="font-semibold text-sm md:text-xs">
-              {selectedCoin ? selectedCoin.address : "Select Coin"}
-            </p>
-          </div>
         </div>
+        {/* <div className="flex flex-row justify-between items-center gap-2 border border-solid rounded-full px-4 py-2 min-h-[66px] text-[13px] text-[#a09faa]">
+          <input
+            className="text-sm placeholder:text-[#A09FAA] placeholder:text-xs focus:outline-none"
+            placeholder="Enter wallet address or ENS,NNS"
+          ></input>
+          0x7Cb6cAfa1fB1eAf283C1857897296866b3b6829B
+        </div> */}
       </div>
       <div className="flex flex-col space-y-1">
         <p className="text-sm mx-4">To</p>

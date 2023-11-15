@@ -15,7 +15,7 @@ import USDT from "../assets/Dashboard/usdt3.png";
 import SendETH from "./SendETH";
 import WalletAddress from "./WalletAddress";
 
-const SecureWallet = ({ handleClose, wallets }) => {
+const SecureWallet = ({ handleClose, wallets, show }) => {
   const [send, setSend] = useState(false);
   const [walletAddress, setWalletAddress] = useState(false);
 
@@ -28,7 +28,11 @@ const SecureWallet = ({ handleClose, wallets }) => {
   };
 
   return (
-    <div className="absolute bg-white border-l-2 shadow-xl w-full h-full z-10">
+    <div
+      className={`absolute bg-white border-l-2 shadow-xl w-full h-full z-10 ${
+        !show && "hidden"
+      }`}
+    >
       <div className="flex rounded-full bg-black h-8 w-8 items-center justify-center xl:-ml-4 md:-ml-4 ml-2 mt-10 absolute">
         <IoIosClose className="text-white h-4 w-4" onClick={handleClose} />
       </div>

@@ -23,8 +23,10 @@ import { useMediaQuery } from "react-responsive";
 import Modal from "@/components/modal/Modal";
 import { useUser } from "@/providers/UserProvider";
 import { getUserWallets } from "@/clientApi/wallet";
+import { useRouter } from "next/navigation";
 
 const Dashboard = () => {
+  const router = useRouter();
   const [showWallet, setShowWallet] = useState(false);
   const [showCoinWallet, setShowCoinWallet] = useState(false);
   const [secure, setSecure] = useState(false);
@@ -32,9 +34,13 @@ const Dashboard = () => {
   const [showModal, setShowModal] = useState(false);
   const [wallets, setWallets] = useState([]);
 
-  const { user, isAuthenticated, authenticate } = useUser();
+  const { user, isAuthenticated, status } = useUser();
 
-  console.log(user);
+  useEffect(() => {
+    if (status === "failed") {
+      router.push("/login");
+    }
+  }, [status]);
 
   const isMobile = useMediaQuery({ query: `(max-width: 760px)` });
   const handleWallet = () => {
@@ -71,7 +77,7 @@ const Dashboard = () => {
 
   useEffect(() => {
     const computeWallet = (data) => {
-      let walletsEOA = data.wllets.map((wallet, index) => {
+      let walletsEOA = data.wallets.map((wallet, index) => {
         return {
           walletName: wallet.walletName,
           address: wallet.address,
@@ -106,6 +112,10 @@ const Dashboard = () => {
     fetchWallet();
   }, [user]);
 
+  if (status !== "authenticated") {
+    return <div>{/* {<Loader/>} */}</div>;
+  }
+
   return (
     <div>
       {navbarTrigger && (
@@ -135,20 +145,22 @@ const Dashboard = () => {
                 {showWallet && <CreateWallet handleClose={handleClose} />}
               </div>
               <div className="flex xl:hidden md:hidden">
-                {showCoinWallet && (
-                  <CoinWallet
-                    handleClose={handleCloseCoinWallet}
-                    wallets={wallets}
-                  />
-                )}
+                {/* {showCoinWallet && ( */}
+                <CoinWallet
+                  handleClose={handleCloseCoinWallet}
+                  wallets={wallets}
+                  show={showCoinWallet}
+                />
+                {/* // )} */}
               </div>
               <div className="flex xl:hidden md:hidden">
-                {secure && (
-                  <SecureWallet
-                    handleClose={handleCloseSecureWallet}
-                    wallets={wallets}
-                  />
-                )}
+                {/* {secure && ( */}
+                <SecureWallet
+                  handleClose={handleCloseSecureWallet}
+                  wallets={wallets}
+                  show={secure}
+                />
+                {/* // )} */}
               </div>
               <div className="block xl:hidden md:hidden">
                 <Header />

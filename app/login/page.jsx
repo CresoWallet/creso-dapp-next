@@ -12,6 +12,7 @@ import { useForm } from "react-hook-form";
 import { AUTH_TOKEN } from "@/constants";
 import { useUser } from "@/providers/UserProvider";
 import { useRouter } from "next/navigation";
+import { axiosInstance } from "@/services/axios";
 
 const LoginPage = () => {
   const router = useRouter();
@@ -26,7 +27,7 @@ const LoginPage = () => {
   } = useForm();
 
   useEffect(() => {
-    console.log(isAuthenticated)
+    console.log(isAuthenticated);
     if (isAuthenticated) {
       router.push(`/`);
     }
@@ -44,6 +45,15 @@ const LoginPage = () => {
     } catch (err) {
       console.log(err);
     }
+  };
+
+  const handleTwitterLogin = async () => {
+    window.open('http://localhost:8080/api/twitter', '_blank', 'width=500,height=500');
+
+    // const data = await axiosInstance("/twitter");
+    // console.log(data);
+    // const data2 = await axiosInstance("/twitter/callback");
+    // console.log(data2);
   };
 
   return (
@@ -91,12 +101,14 @@ const LoginPage = () => {
               name="Continue With X"
               nameColor="black"
               img={Apple}
+              onClick={handleTwitterLogin}
             />
             <CustomButton
               bgColor="white"
               name="Continue With X"
               nameColor="black"
               img={X}
+              onClick={handleTwitterLogin}
             />
           </div>
           <div className="flex justify-center">

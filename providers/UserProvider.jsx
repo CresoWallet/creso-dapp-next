@@ -31,32 +31,37 @@ export const useUser = () => {
   return context;
 };
 
-export const UserProvider= ({ children }) => {
+export const UserProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [authenticate, { data, error }] = useAuthenticateUserMutation();
+  const [status, setStatus] = useState("idle");
   useEffect(() => {
     const token = localStorage.getItem(AUTH_TOKEN);
-    setToken(token)
+    setToken(token);
     if (token) {
       authenticate();
+    } else {
+      setStatus("failed");
     }
   }, []);
 
   useEffect(() => {
     if (data) {
       setUser(data.user);
+      setStatus("authenticated");
     }
   }, [data]);
 
   useEffect(() => {
     if (error) {
       localStorage.removeItem(AUTH_TOKEN);
+      setStatus("failed");
     }
   }, [error]);
 
   return (
     <UserContext.Provider
-      value={{ user, isAuthenticated: !!user, authenticate }}
+      value={{ user, isAuthenticated: !!user, authenticate, status }}
     >
       {children}
     </UserContext.Provider>

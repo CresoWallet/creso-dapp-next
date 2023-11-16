@@ -22,18 +22,26 @@ import SecureWallet from "@/components/SecureWallet";
 import { useMediaQuery } from "react-responsive";
 import Modal from "@/components/modal/Modal";
 import { useUser } from "@/providers/UserProvider";
+import { getUserWallets } from "@/clientApi/wallet";
+import { useRouter } from "next/navigation";
+import { ethers } from "ethers";
 
 const Dashboard = () => {
+  const router = useRouter();
   const [showWallet, setShowWallet] = useState(false);
   const [showCoinWallet, setShowCoinWallet] = useState(false);
   const [secure, setSecure] = useState(false);
   const [navbarTrigger, setNavbarTrigger] = useState(false);
   const [showModal, setShowModal] = useState(false);
+  const [wallets, setWallets] = useState([]);
 
+  const { user, isAuthenticated, status } = useUser();
 
-  const { user, isAuthenticated, authenticate } = useUser();
-
-  console.log(user);
+  useEffect(() => {
+    if (status === "failed") {
+      router.push("/login");
+    }
+  }, [status]);
 
   const isMobile = useMediaQuery({ query: `(max-width: 760px)` });
   const handleWallet = () => {
@@ -68,6 +76,65 @@ const Dashboard = () => {
     }
   }, [navbarTrigger]);
 
+  useEffect(() => {
+    const computeWallet = async (data) => {
+      let walletsEOA = await Promise.all(
+        data.wallets.map(async (wallet, index) => {
+          const provider = new ethers.JsonRpcProvider(
+            "https://ethereum-goerli.publicnode.com"
+          );
+
+          const balanceInWei = await provider.getBalance(wallet.address);
+          const balance = ethers.formatEther(balanceInWei);
+          return {
+            walletName: wallet.walletName,
+            address: wallet.address,
+            type: "EOA",
+            balance: balance,
+          };
+        })
+      );
+
+      let smartWallet = await Promise.all(
+        data.smartWallets.map(async (sWallet, index) => {
+          const provider = new ethers.JsonRpcProvider(
+            "https://ethereum-goerli.publicnode.com"
+          );
+
+          const balanceInWei = await provider.getBalance(sWallet.address);
+          const balance = ethers.formatEther(balanceInWei);
+          return {
+            walletName: sWallet.walletName,
+            address: sWallet.address,
+            type: "AA",
+            balance: balance,
+          };
+        })
+      );
+
+      let wallets = [...walletsEOA, ...smartWallet];
+
+      return wallets;
+    };
+    async function fetchWallet() {
+      try {
+        if (isAuthenticated) {
+          const res = await getUserWallets();
+          console.log(res.data);
+          const walletsArr = await computeWallet(res.data);
+          setWallets(walletsArr);
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    }
+    fetchWallet();
+  }, [user]);
+
+  if (status !== "authenticated") {
+    return <div>{/* {<Loader/>} */}</div>;
+  }
+
   return (
     <div>
       {navbarTrigger && (
@@ -97,14 +164,21 @@ const Dashboard = () => {
                 {showWallet && <CreateWallet handleClose={handleClose} />}
               </div>
               <div className="flex xl:hidden md:hidden">
-                {showCoinWallet && (
-                  <CoinWallet handleClose={handleCloseCoinWallet} />
-                )}
+                {/* {showCoinWallet && ( */}
+                <CoinWallet
+                  handleClose={handleCloseCoinWallet}
+                  wallets={wallets}
+                />
+                {/* // )} */}
               </div>
               <div className="flex xl:hidden md:hidden">
-                {secure && (
-                  <SecureWallet handleClose={handleCloseSecureWallet} />
-                )}
+                {/* {secure && ( */}
+                <SecureWallet
+                  handleClose={handleCloseSecureWallet}
+                  wallets={wallets}
+                  show={secure}
+                />
+                {/* // )} */}
               </div>
               <div className="block xl:hidden md:hidden">
                 <Header />
@@ -147,14 +221,22 @@ const Dashboard = () => {
           </div>
           <div className="hidden xl:flex md:flex">
             {showCoinWallet && (
-              <CoinWallet handleClose={handleCloseCoinWallet} />
+              <CoinWallet
+                handleClose={handleCloseCoinWallet}
+                wallets={wallets}
+              />
             )}
           </div>
 
           <div className="hidden xl:flex md:flex">
-            {secure && <SecureWallet handleClose={handleCloseSecureWallet} />}
+            {secure && (
+              <SecureWallet
+                handleClose={handleCloseSecureWallet}
+                wallets={wallets}
+              />
+            )}
           </div>
-          {showModal && <Modal onClose={() => setShowModal(false)}/>}
+          {showModal && <Modal onClose={() => setShowModal(false)} />}
 
           <div className="flex flex-col xl:pt-8 md:pt-8 space-y-4">
             <div className="hidden xl:block md:block">

@@ -45,7 +45,7 @@ const SendETH = ({ handleBackButton, walletArr }) => {
     }
     // console.log(selectedWallet);
     // console.log(data);
-    console.log(transferPayload)
+    console.log(transferPayload);
   };
 
   // console.log(walletArr);
@@ -89,13 +89,14 @@ const SendETH = ({ handleBackButton, walletArr }) => {
                   </p>
                 )}
               </>
-              {selectedWallet && (
-                <p className="font-semibold text-sm md:text-xs">
-                  {minifyEthereumAddress(selectedWallet.address) || (
-                    <p className="opacity-50">wallet address</p>
-                  )}
-                </p>
-              )}
+              {selectedWallet &&
+                (minifyEthereumAddress(selectedWallet.address) ? (
+                  <p className="font-semibold text-sm md:text-xs">
+                    {minifyEthereumAddress(selectedWallet.address)}
+                  </p>
+                ) : (
+                  <p className="opacity-50">wallet address</p>
+                ))}
             </div>
             <div className="flex w-full max-w-[150px]">
               <div className="flex flex-row gap-1">

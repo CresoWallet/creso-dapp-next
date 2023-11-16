@@ -24,6 +24,7 @@ import Modal from "@/components/modal/Modal";
 import { useUser } from "@/providers/UserProvider";
 import { getUserWallets } from "@/clientApi/wallet";
 import { useRouter } from "next/navigation";
+import { ethers } from "ethers";
 
 const Dashboard = () => {
   const router = useRouter();
@@ -76,22 +77,40 @@ const Dashboard = () => {
   }, [navbarTrigger]);
 
   useEffect(() => {
-    const computeWallet = (data) => {
-      let walletsEOA = data.wallets.map((wallet, index) => {
-        return {
-          walletName: wallet.walletName,
-          address: wallet.address,
-          type: "EOA",
-        };
-      });
+    const computeWallet = async (data) => {
+      let walletsEOA = await Promise.all(
+        data.wallets.map(async (wallet, index) => {
+          const provider = new ethers.JsonRpcProvider(
+            "https://ethereum-goerli.publicnode.com"
+          );
 
-      let smartWallet = data.smartWallets.map((sWallet, index) => {
-        return {
-          walletName: sWallet.walletName,
-          address: sWallet.address,
-          type: "AA",
-        };
-      });
+          const balanceInWei = await provider.getBalance(wallet.address);
+          const balance = ethers.formatEther(balanceInWei);
+          return {
+            walletName: wallet.walletName,
+            address: wallet.address,
+            type: "EOA",
+            balance: balance,
+          };
+        })
+      );
+
+      let smartWallet = await Promise.all(
+        data.smartWallets.map(async (sWallet, index) => {
+          const provider = new ethers.JsonRpcProvider(
+            "https://ethereum-goerli.publicnode.com"
+          );
+
+          const balanceInWei = await provider.getBalance(sWallet.address);
+          const balance = ethers.formatEther(balanceInWei);
+          return {
+            walletName: sWallet.walletName,
+            address: sWallet.address,
+            type: "AA",
+            balance: balance,
+          };
+        })
+      );
 
       let wallets = [...walletsEOA, ...smartWallet];
 
@@ -102,7 +121,7 @@ const Dashboard = () => {
         if (isAuthenticated) {
           const res = await getUserWallets();
           console.log(res.data);
-          const walletsArr = computeWallet(res.data);
+          const walletsArr = await computeWallet(res.data);
           setWallets(walletsArr);
         }
       } catch (error) {

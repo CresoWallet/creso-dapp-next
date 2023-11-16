@@ -62,19 +62,22 @@ const SendETH = ({ handleBackButton }) => {
             onClick={coinHandleClick}
           >
             <div className="flex items-center gap-2">
-            <>
-              {selectedCoin ? (
-                <Image alt="" src={selectedCoin.coinImage || Creso} />
-              ) : (
-                <p className="text-sm md:text-xs cursor-pointer hover:font-bold">
-                  Select Wallet
+              <>
+                {selectedCoin ? (
+                  <Image alt="" src={selectedCoin.coinImage || Creso} />
+                ) : (
+                  <p className="text-sm md:text-xs cursor-pointer hover:font-bold">
+                    Select Wallet
+                  </p>
+                )}
+              </>
+              {selectedCoin && (
+                <p className="font-semibold text-sm md:text-xs">
+                  {selectedCoin.address || (
+                    <p className="opacity-50">wallet address</p>
+                  )}
                 </p>
               )}
-            </>
-
-            <p className="font-semibold text-sm md:text-xs">
-              {selectedCoin ? selectedCoin.address : "Select Coin"}
-            </p>
             </div>
             <div className="flex w-full max-w-[150px]">
               <div className="flex flex-row gap-1">
@@ -126,17 +129,15 @@ const SendETH = ({ handleBackButton }) => {
                         <p className="text-base md:text-sm font-semibold">
                           {coin ? coin.walletName : ""}
                         </p>
-                        <p className="text-xs">{coin ?  (coin.address) : ""}</p>
+                        <p className="text-xs">{coin ? coin.address : ""}</p>
                       </div>
                     </div>
                     <div>
-                      {selectedCoin && (
-                        <button className="bg-[#EEEEF1] py-2 px-2 rounded-full border border-solid">
-                          <p className="text-xs font-medium">
-                            {selectedCoin.type || "Type"}
-                          </p>
-                        </button>
-                      )}
+                      <button className="bg-[#EEEEF1] py-2 px-2 rounded-full border border-solid">
+                        <p className="text-xs font-medium">
+                          {coin ? coin.type : "Type"}
+                        </p>
+                      </button>
                     </div>
                   </div>
                 </div>

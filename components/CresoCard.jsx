@@ -4,7 +4,7 @@ import Coin from "../assets/Dashboard/Coin.png";
 import Creso from "../assets/Dashboard/creso2.png";
 import TotalAsserts from "../assets/Dashboard/totalAsserts.png";
 import View from "../assets/Dashboard/eye.png";
-import PurpleRectangle from "../assets/Dashboard/purpleRectangle.png";
+// import PurpleRectangle from "../assets/Dashboard/purpleRectangle.png";
 import SimIcon from "../assets/Dashboard/SimIcon.png";
 
 const CresoCard = () => {

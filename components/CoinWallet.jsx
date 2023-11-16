@@ -10,25 +10,35 @@ import Receive from "../assets/Dashboard/receive.png";
 import SendETH from "./SendETH";
 import WalletAddress from "./WalletAddress";
 
-const CoinWallet = ({ handleClose }) => {
+const CoinWallet = ({ handleClose, wallets }) => {
   const [send, setSend] = useState(false);
-  const [walletAddress, setWalletAddress] = useState(false)
+  const [walletAddress, setWalletAddress] = useState(false);
 
   const handleWalletClick = () => {
-    setWalletAddress(true)
-  }
+    setWalletAddress(true);
+  };
 
   const handleClick = () => {
     setSend(true);
   };
+  //console.log(wallets);
 
   return (
-    <div className="absolute bg-white md:border-l-2 xl:border-l-2 md:shadow-xl xl:shadow-xl w-full h-full z-10">
+    <div
+      className={`absolute bg-white md:border-l-2 xl:border-l-2 md:shadow-xl xl:shadow-xl w-full h-full z-10 `}
+    >
       <div className="flex rounded-full bg-black h-8 w-8 items-center justify-center xl:-ml-4 md:-ml-4 ml-2 mt-10 absolute">
-        <IoIosClose className="text-white h-4 w-4 cursor-pointer" onClick={handleClose} />
+        <IoIosClose
+          className="text-white h-4 w-4 cursor-pointer"
+          onClick={handleClose}
+        />
       </div>
-      {send && <SendETH handleBackButton={()=>setSend(false)}/>}
-      {walletAddress && <WalletAddress handleBackButton={()=>setWalletAddress(false)}/>}
+      {send && (
+        <SendETH handleBackButton={() => setSend(false)} walletArr={wallets} />
+      )}
+      {walletAddress && (
+        <WalletAddress handleBackButton={() => setWalletAddress(false)} />
+      )}
       <div className="flex flex-col md:mx-8 mx-6 xl:mx-8 mt-10 xl:space-y-10 md:space-y-10 space-y-4">
         <p className="text-black font-bold text-xl ml-6 xl:ml-0 md:ml-0">ETH</p>
         <div className="flex flex-row items-center gap-2">
@@ -56,8 +66,18 @@ const CoinWallet = ({ handleClose }) => {
           <Image alt="" src={Transaction} />
         </div>
         <div className="flex flex-row items-center xl:gap-2 md:gap-0 gap-2 md:flex-col md:space-y-2 xl:space-y-0 space-y-0">
-          <CustomButton name="Send" img={Send} onClick={handleClick} bgColor="black" />
-          <CustomButton name="Receive" img={Receive} onClick={handleWalletClick}  bgColor="black"/>
+          <CustomButton
+            name="Send"
+            img={Send}
+            onClick={handleClick}
+            bgColor="black"
+          />
+          <CustomButton
+            name="Receive"
+            img={Receive}
+            onClick={handleWalletClick}
+            bgColor="black"
+          />
         </div>
       </div>
     </div>

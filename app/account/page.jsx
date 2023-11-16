@@ -14,8 +14,11 @@ import Disconnect from "../../assets/network/disconnect.png";
 import Info from "../../assets/informations.png";
 import { useMediaQuery } from "react-responsive";
 import Ham from "../../assets/Dashboard/ham.png";
+import { useRouter } from "next/navigation";
+import { AUTH_TOKEN } from "@/constants";
 
 const AccountPage = () => {
+  const router = useRouter();
   const [navbarTrigger, setNavbarTrigger] = useState(false);
 
   const isMobile = useMediaQuery({ query: `(max-width: 760px)` });
@@ -27,6 +30,10 @@ const AccountPage = () => {
     }
   }, [navbarTrigger]);
 
+  const handleLogout = async () => {
+    localStorage.removeItem(AUTH_TOKEN);
+    router.push("/");
+  };
   return (
     <>
       {navbarTrigger && (
@@ -157,7 +164,11 @@ const AccountPage = () => {
             </div>
             <div className="flex justify-end">
               <div className="mt-10">
-                <CustomButton name="Add Another Trusted FaceMap" img={Plus} bgColor="black" />
+                <CustomButton
+                  name="Add Another Trusted FaceMap"
+                  img={Plus}
+                  bgColor="black"
+                />
               </div>
             </div>
             <div className="flex flex-row items-center rounded-full border border-solid border-[#E5E5F0] justify-between xl:py-4 xl:px-4 py-2 px-2">
@@ -166,9 +177,14 @@ const AccountPage = () => {
             </div>
             <div>
               <div className="flex justify-center">
-                <button className="flex flex-row gap-2 items-center justify-center py-4 border cursor-pointer rounded-full hover:scale-105 w-full border-solid border-[#FF4085] bg-[#FFF5F9]">
+                <button
+                  className="flex flex-row gap-2 items-center justify-center py-4 border cursor-pointer rounded-full hover:scale-105 w-full border-solid border-[#FF4085] bg-[#FFF5F9]"
+                  onClick={handleLogout}
+                >
                   <Image alt="" src={Disconnect} />
-                  <p className="text-[#FF4085] text-sm hover:font-bold">Disconnect</p>
+                  <p className="text-[#FF4085] text-sm hover:font-bold">
+                    Disconnect
+                  </p>
                 </button>
               </div>
             </div>

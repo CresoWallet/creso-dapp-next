@@ -35,7 +35,9 @@ const SecureWallet = ({ handleClose, wallets }) => {
         <IoIosClose className="text-white h-4 w-4" onClick={handleClose} />
       </div>
 
-      {send && <SendETH handleBackButton={() => setSend(false)} />}
+      {send && (
+        <SendETH handleBackButton={() => setSend(false)} walletArr={wallets} />
+      )}
       {walletAddress && (
         <WalletAddress handleBackButton={() => setWalletAddress(false)} />
       )}

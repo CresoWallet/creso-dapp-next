@@ -22,6 +22,22 @@ const SendETH = ({ handleBackButton, walletArr }) => {
     setSelectedCoin(coin);
   };
 
+  const onSubmit = async (data) => {
+    const transferPayload = {
+      type: data.type,
+      sendTo: data.to,
+      amount: data.amount,
+      from: data.address,
+      networks: "GOERLI",
+    };
+    try {
+      const res = await transferEthAPI(transferPayload);
+      console.log(res);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   const coins = [
     {
       walletName: "WalletName-1",
@@ -72,10 +88,13 @@ const SendETH = ({ handleBackButton, walletArr }) => {
                   </p>
                 )}
               </>
-
-              <p className="font-semibold text-sm md:text-xs">
-                {selectedCoin ? selectedCoin.address : "Select Coin"}
-              </p>
+              {selectedCoin && (
+                <p className="font-semibold text-sm md:text-xs">
+                  {minifyEthereumAddress(selectedCoin.address) || (
+                    <p className="opacity-50">wallet address</p>
+                  )}
+                </p>
+              )}
             </div>
             <div className="flex w-full max-w-[150px]">
               <div className="flex flex-row gap-1">
@@ -127,17 +146,17 @@ const SendETH = ({ handleBackButton, walletArr }) => {
                         <p className="text-base md:text-sm font-semibold">
                           {coin ? coin.walletName : ""}
                         </p>
-                        <p className="text-xs">{coin ? coin.address : ""}</p>
+                        <p className="text-xs">
+                          {coin ? minifyEthereumAddress(coin.address) : ""}
+                        </p>
                       </div>
                     </div>
                     <div>
-                      {selectedCoin && (
-                        <button className="bg-[#EEEEF1] py-2 px-2 rounded-full border border-solid">
-                          <p className="text-xs font-medium">
-                            {selectedCoin.type || "Type"}
-                          </p>
-                        </button>
-                      )}
+                      <button className="bg-[#EEEEF1] py-2 px-2 rounded-full border border-solid">
+                        <p className="text-xs font-medium">
+                          {coin ? coin.type : "Type"}
+                        </p>
+                      </button>
                     </div>
                   </div>
                 </div>
@@ -180,7 +199,7 @@ const SendETH = ({ handleBackButton, walletArr }) => {
           ></input>
         </div>
       </div>
-      <CustomButton img={Send} name="Send" bgColor="black" />
+      <CustomButton img={Send} name="Send" bgColor="black" type={"submit"} />
     </div>
   );
 };

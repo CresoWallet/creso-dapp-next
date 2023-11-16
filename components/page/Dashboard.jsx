@@ -202,12 +202,20 @@ const Dashboard = () => {
           </div>
           <div className="hidden xl:flex md:flex">
             {showCoinWallet && (
-              <CoinWallet handleClose={handleCloseCoinWallet} />
+              <CoinWallet
+                handleClose={handleCloseCoinWallet}
+                wallets={wallets}
+              />
             )}
           </div>
 
           <div className="hidden xl:flex md:flex">
-            {secure && <SecureWallet handleClose={handleCloseSecureWallet} />}
+            {secure && (
+              <SecureWallet
+                handleClose={handleCloseSecureWallet}
+                wallets={wallets}
+              />
+            )}
           </div>
           {showModal && <Modal onClose={() => setShowModal(false)} />}
 

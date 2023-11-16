@@ -149,7 +149,6 @@ const Dashboard = () => {
                 <CoinWallet
                   handleClose={handleCloseCoinWallet}
                   wallets={wallets}
-                  show={showCoinWallet}
                 />
                 {/* // )} */}
               </div>

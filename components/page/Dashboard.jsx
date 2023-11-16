@@ -79,7 +79,7 @@ const Dashboard = () => {
   useEffect(() => {
     const computeWallet = async (data) => {
       let walletsEOA = await Promise.all(
-        data.wllets.map(async (wallet, index) => {
+        data.wallets.map(async (wallet, index) => {
           const provider = new ethers.JsonRpcProvider(
             "https://ethereum-goerli.publicnode.com"
           );

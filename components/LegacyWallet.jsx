@@ -6,9 +6,36 @@ import CustomButton3 from "./CustomButton3";
 import Ethereum from "../assets/Dashboard/etherum.png";
 import CustomButton2 from "./CustomButton2";
 import CreateWallet from "./CreateWallet";
+import { createEOAWalletAPI } from "@/clientApi/wallet";
 
 const LegacyWallet = ({ handleBackButton }) => {
   const [wallet, setWallet] = useState(false);
+  const [inputText, setInputText] = useState("");
+  const [error, setError] = useState(false);
+
+  const handleChange = (e) => {
+    const newText = e.target.value;
+
+    // Check if the input text exceeds the limit (20 characters)
+    if (newText.length <= 20) {
+      setInputText(newText);
+      setError(false); // Reset error state if within the limit
+    } else {
+      setError(true); // Set error state if exceeding the limit
+    }
+  };
+
+  const handleCreateEOAWallet = async () => {
+    try {
+      const payload = {
+        walletName: inputText,
+      };
+      const res = await createEOAWalletAPI(payload);
+      console.log(res);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   return (
     <div className="absolute bg-white flex flex-col xl:mx-8 md:mx-4 mx-0 mt-10 xl:px-0 px-2 md:px-2 space-y-8 h-full">
@@ -37,20 +64,32 @@ const LegacyWallet = ({ handleBackButton }) => {
       <div className="flex flex-col">
         <div className="flex flex-row items-center justify-between">
           <p className="px-4">Name Wallet</p>
-          <p className="px-4">0/20</p>
+          <p className="px-4">{inputText.length}/20</p>
         </div>
         <div className="border border-solid border-[#E5E5F0] rounded-full px-4 py-4">
           <div className="flex flex-row items-center justify-between">
-            <input type="text" placeholder="E.g. My Wallet" className="placeholder:text-sm focus:outline-none" />
+            <input
+              required={true}
+              type="text"
+              placeholder="E.g. My Wallet"
+              className="placeholder:text-sm focus:outline-none"
+              value={inputText}
+              onChange={handleChange}
+            />
             <div>
               <CustomButton3
-                title="EQA"
+                title="EOA"
                 buttonColor="[#EEEEF1]"
                 titleColor="black"
               />
             </div>
           </div>
         </div>
+        {error && (
+          <p className="text-red-500 font-semibold text-xs pt-1 pl-5">
+            Max length is 20 characters
+          </p>
+        )}
       </div>
       <div className="flex flex-row justify-center gap-2">
         <p className="text-sm">
@@ -59,8 +98,29 @@ const LegacyWallet = ({ handleBackButton }) => {
         </p>
       </div>
       <div className="flex flex-row gap-2">
-        <CustomButton2 name="Cancle" borderColor="black" bgColor="white" />
-        <CustomButton2 name="Confirm" bgColor="black" textColor="white" />
+        <CustomButton2
+          name="Cancle"
+          borderColor="black"
+          bgColor="white"
+          handleClick={handleBackButton}
+          isDisabled={false}
+        />
+        {error ? (
+          <CustomButton2
+            name="Confirm"
+            bgColor="black"
+            textColor="white"
+            isDisabled={true}
+          />
+        ) : (
+          <CustomButton2
+            name="Confirm"
+            bgColor="black"
+            textColor="white"
+            handleClick={handleCreateEOAWallet}
+            isDisabled={false}
+          />
+        )}
       </div>
     </div>
   );

@@ -10,8 +10,11 @@ import UserDetails from "./UserDetails";
 import { AiOutlineUser } from "react-icons/ai";
 import { MdKeyboardArrowRight } from "react-icons/md";
 import Disconnect from "../assets/network/disconnect.png";
+import { useUser } from "@/providers/UserProvider";
+import { AUTH_TOKEN } from "@/constants";
 
 const Header = () => {
+  const { user, isAuthenticated, status } = useUser();
   const [openPopup, setOpenPopup] = useState(false);
   const popupRef = useRef();
 
@@ -27,6 +30,11 @@ const Header = () => {
     if (popupRef.current === e.target) {
       setOpenPopup(false);
     }
+  };
+
+  const handleDisconnect = () => {
+    localStorage.removeItem(AUTH_TOKEN);
+    window.location.reload();
   };
 
   return (
@@ -61,8 +69,8 @@ const Header = () => {
           <div className="bg-white rounded-3xl px-12 py-12 xl:mr-10 mr-0 md:mr-5 md:mt-32 xl:mt-32 mt-0">
             <div className="flex flex-col space-y-1 justify-center items-center pb-8">
               <Image alt="" src={User} />
-              <p className="font-bold text-lg">Samuel Hawking</p>
-              <p className="text-xs text-[#A09FAA]">Samhawking@gmail.com</p>
+              <p className="font-bold text-lg">{user.username}</p>
+              <p className="text-xs text-[#A09FAA]">{user.email}</p>
               <p className="text-xs text-[#A09FAA]">
                 Last Backup:
                 <span className="text-xm text-black">28 OCT 2023</span>{" "}
@@ -79,7 +87,10 @@ const Header = () => {
               </div>
             </Link>
             <hr />
-            <div className="flex flex-row gap-2 items-center py-4">
+            <div
+              onClick={handleDisconnect}
+              className="flex flex-row gap-2 items-center py-4 disconnect"
+            >
               <Image alt="" src={Disconnect} />
               <p className="text-[#FF4085]">Disconnect</p>
             </div>

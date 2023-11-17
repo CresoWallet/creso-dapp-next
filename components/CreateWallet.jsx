@@ -8,12 +8,18 @@ import CustomButton3 from "./CustomButton3";
 import { BiChevronRight } from "react-icons/bi";
 import { IoIosClose } from "react-icons/io";
 import LegacyWallet from "./LegacyWallet";
+import SecureWallet from "./SecureWallet";
 
 const CreateWallet = ({ handleClose }) => {
   const [legacyWallet, setLegacyWallet] = useState(false);
+  const [smartWallet, setSmartWallet] = useState(false);
 
   const handleClick = () => {
     setLegacyWallet(true);
+  };
+
+  const handleAAClick = () => {
+    setSmartWallet(true);
   };
 
   return (
@@ -47,7 +53,7 @@ const CreateWallet = ({ handleClose }) => {
                 <div className="flex flex-row items-center justify-between">
                   <div className="flex flex-col">
                     <p className="font-semibold md:text-xs">Legacy Wallet</p>
-                    <p className="text-[#A09FAA] text-sm md:text-xs">EQA</p>
+                    <p className="text-[#A09FAA] text-sm md:text-xs">EOA</p>
                   </div>
                   <CustomButton3
                     title="Popular"
@@ -88,7 +94,10 @@ const CreateWallet = ({ handleClose }) => {
                     titleColor="black"
                   />
                   <div className="flex rounded-full bg-black xl:h-8 xl:w-8 h-6 w-6 items-center justify-center group">
-                    <BiChevronRight className="text-white h-4 w-4 hover:translate-x-1 duration-500" />
+                    <BiChevronRight
+                      className="text-white h-4 w-4 hover:translate-x-1 duration-500"
+                      onClick={handleAAClick}
+                    />
                   </div>
                 </div>
                 <p className="text-xs text-[#A09FAA]">

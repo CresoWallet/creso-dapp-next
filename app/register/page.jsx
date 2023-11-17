@@ -17,7 +17,7 @@ const RegisterPage = () => {
     register,
     handleSubmit,
     watch,
-    formState: { errors ,isLoading},
+    formState: { errors, isLoading },
   } = useForm();
 
   const password = watch("password");
@@ -119,12 +119,19 @@ const RegisterPage = () => {
                 className="placeholder:text-[#A09FAA] text-xs xl:px-4 xl:py-4 md:px-4 md:py-4 py-3 px-3 rounded-full border border-solid"
               />
               {errors.confirmPassword && (
-                <p className="text-red-500">{errors.confirmPassword.message}</p>
+                <p className="text-red-500 font-semibold text-xs pt-1 pl-5">
+                  {errors.confirmPassword.message}
+                </p>
               )}
             </div>
           </div>
           <div className="flex flex-col space-y-2">
-            <CustomButton isLoading={isLoading} name="Sign up" bgColor="black" type={"submit"} />
+            <CustomButton
+              isLoading={isLoading}
+              name="Sign up"
+              bgColor="black"
+              type={"submit"}
+            />
             <CustomButton
               bgColor="white"
               name="Continue With X"

@@ -20,7 +20,7 @@ const copyToClipBoard = async (val) => {
     }
 };
 
-const Mainnet = ({ handleCreateSecureWallet }) => {
+const Mainnet = ({ handleCreateSecureWallet, handleWallet }) => {
     return (
         <div className="flex flex-col xl:space-y-8 md:space-y-8 space-y-2">
             <div>
@@ -28,9 +28,7 @@ const Mainnet = ({ handleCreateSecureWallet }) => {
                     <p className="font-semibold text-xl">Ethereum Mainnet</p>
                     <div className="flex flex-row gap-2 items-center cursor-pointer group">
                         <Image src={PinkPlus} alt="" />
-                        <p className="text-[#FF4085] group-hover:font-bold duration-500">
-                            Create
-                        </p>
+                        <p onClick={handleWallet} className="text-[#FF4085] group-hover:font-bold duration-500">Create</p>
                     </div>
                 </div>
             </div>

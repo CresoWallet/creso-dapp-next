@@ -44,7 +44,7 @@ const RegisterPage = () => {
       setLoading(false)
     } catch (error) {
       console.log(error);
-    }finally{
+    } finally {
       setLoading(false)
     }
   };

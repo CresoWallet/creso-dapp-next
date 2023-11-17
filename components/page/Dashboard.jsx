@@ -378,7 +378,17 @@ const Dashboard = () => {
                     </div>
                 </div>
             </div>
+            <Backup onClick={() => setShowModal(true)} />
+            <CoinList
+                handleCreateWallet={handleWallet}
+                handleCoinWallet={handleCoinWallet}
+            />
+            <Mainnet
+                handleWallet={handleWallet}
+                handleCreateSecureWallet={handleCreateSecureWallet}
+            />
         </div>
+
     );
 };
 

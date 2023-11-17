@@ -1,15 +1,13 @@
 "use client";
 import React, { useEffect } from "react";
 
-import { useRouter } from "next/navigation";
 import { AUTH_TOKEN } from "@/constants";
 
 const LoginPage = () => {
-  const router = useRouter();
-
-  useEffect(() => {
+  -useEffect(() => {
     localStorage.removeItem(AUTH_TOKEN);
-    router.push("/login");
+    window.location.href = "/login";
+    // router.push("/login");
   }, []);
 
   return <div></div>;

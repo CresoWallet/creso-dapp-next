@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
 import Image from "next/image";
 import BgImage from "../../assets/auth/bgImage.png";
 import CustomButton from "@/components/CustomButton";
@@ -10,6 +10,7 @@ import MobileImage from "../../assets/auth/Group.png";
 import { useForm } from "react-hook-form";
 import { useRouter } from "next/navigation";
 import { signUpAPI } from "@/clientApi/auth";
+import { CustomTextField } from "@/components/fields/customTextField";
 
 const RegisterPage = () => {
   const router = useRouter();
@@ -17,8 +18,9 @@ const RegisterPage = () => {
     register,
     handleSubmit,
     watch,
-    formState: { errors ,isLoading},
+    formState: { errors, isLoading },
   } = useForm();
+  const [loading, setLoading] = useState(false);
 
   const password = watch("password");
   const confirmPassword = watch("confirmPassword");
@@ -28,7 +30,7 @@ const RegisterPage = () => {
   };
 
   const onSubmit = async (data) => {
-    //console.log(data);
+    setLoading(true);
     const username = generateUsername(data.firstName, data.lastName);
     const signUpData = {
       email: data.email,
@@ -39,8 +41,11 @@ const RegisterPage = () => {
       const res = await signUpAPI(signUpData);
       console.log(res);
       router.push("/login");
+      setLoading(false)
     } catch (error) {
       console.log(error);
+    }finally{
+      setLoading(false)
     }
   };
 
@@ -69,62 +74,49 @@ const RegisterPage = () => {
           className="flex flex-col space-y-4"
         >
           <div className="flex flex-row gap-2 justify-between">
-            <div className="flex flex-col space-y-1 w-full">
-              <p className="text-sm">First Name</p>
-              <input
-                {...register("firstName", { required: true })}
-                type="text"
-                placeholder="E.g Shahel"
-                className="placeholder:text-[#A09FAA] text-xs xl:px-4 xl:py-4 md:px-4 md:py-4 py-3 px-3 rounded-full border border-solid"
-              />
-            </div>
-            <div className="flex flex-col space-y-1 w-full">
-              <p className="text-sm">Last Name</p>
-              <input
-                {...register("lastName", { required: true })}
-                type="text"
-                placeholder="E.g. Krishuska"
-                className="placeholder:text-[#A09FAA] text-xs xl:px-4 xl:py-4 md:px-4 md:py-4 py-3 px-3 rounded-full border border-solid"
-              />
-            </div>
-          </div>
-          <div className="flex flex-col space-y-1 w-full">
-            <p className="text-sm">Email</p>
-            <input
-              {...register("email", { required: true })}
-              type="text"
-              placeholder="E.g. name@example.com"
-              className="placeholder:text-[#A09FAA] text-xs xl:px-4 xl:py-4 md:px-4 md:py-4 py-3 px-3 rounded-full border border-solid"
+            <CustomTextField
+              label={"First Name"}
+              placeholder={"first name"}
+              validation={{ ...register("firstName", { required: true }) }}
+            />
+            <CustomTextField
+              label={"Last Name"}
+              placeholder={"last name"}
+              validation={{ ...register("lastName", { required: true }) }}
             />
           </div>
+          <CustomTextField
+            label={"Email"}
+            placeholder={"email"}
+            validation={{ ...register("email", { required: true }) }}
+          />
           <div className="flex flex-row gap-2 justify-between">
-            <div className="flex flex-col space-y-1 w-full">
-              <p className="text-sm">Password</p>
-              <input
-                {...register("password", { required: true })}
-                type="password"
-                placeholder="E.g Shahel"
-                className="placeholder:text-[#A09FAA] text-xs xl:px-4 xl:py-4 md:px-4 md:py-4 py-3 px-3 rounded-full border border-solid"
-              />
-            </div>
-            <div className="flex flex-col space-y-1 w-full">
-              <p className="text-sm">Confirm Password</p>
-              <input
-                {...register("confirmPassword", {
+            <CustomTextField
+              label={"Password"}
+              placeholder={"password"}
+              type={"password"}
+              validation={{ ...register("password", { required: true }) }}
+            />
+            <CustomTextField
+              label={"Confirm Password"}
+              placeholder={"confirmPassword"}
+              validation={{
+                ...register("confirmPassword", {
                   required: true,
                   validate: validatePassword,
-                })}
-                type="password"
-                placeholder="E.g Shahel"
-                className="placeholder:text-[#A09FAA] text-xs xl:px-4 xl:py-4 md:px-4 md:py-4 py-3 px-3 rounded-full border border-solid"
-              />
-              {errors.confirmPassword && (
-                <p className="text-red-500">{errors.confirmPassword.message}</p>
-              )}
-            </div>
+                }),
+              }}
+              type="password"
+              error={errors.confirmPassword && errors.confirmPassword.message}
+            />
           </div>
           <div className="flex flex-col space-y-2">
-            <CustomButton isLoading={isLoading} name="Sign up" bgColor="black" type={"submit"} />
+            <CustomButton
+              isLoading={loading}
+              name="Sign up"
+              bgColor="black"
+              type={"submit"}
+            />
             <CustomButton
               bgColor="white"
               name="Continue With X"

@@ -1,5 +1,7 @@
 import React from "react";
 import Image from "next/image";
+import QRCode from "react-qr-code";
+
 import CustomButton3 from "./CustomButton3";
 import Ethereum from "../assets/Dashboard/etherum.png";
 import QR from "../assets/Dashboard/qr.png";
@@ -25,7 +27,13 @@ const WalletAddress = ({ handleBackButton }) => {
         </div>
         <div className="border-8 -ml-4 -mr-4 py-10 rounded-3xl border-[#D4DADA] bg-white mt-4 relative z-10">
           <div className="flex justify-center">
-            <Image alt="" src={QR} />
+            {/* <Image alt="" src={QR} /> */}
+            <QRCode
+              size={256}
+              style={{ height: "auto", maxWidth: "90%", width: "90%" }}
+              value={"0x5B38Da6a701c568545dCfcB03FcB875f56beddC4"}
+              viewBox={`0 0 256 256`}
+            />
           </div>
           <div className="flex justify-center py-8">
             {/* <Image alt="" src={Breaker} /> */}

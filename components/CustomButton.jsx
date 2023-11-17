@@ -1,6 +1,7 @@
 "use client";
 import React from "react";
 import Image from "next/image";
+import { AiOutlineLoading3Quarters } from "react-icons/ai";
 
 const CustomButton = ({
   img,
@@ -21,8 +22,18 @@ const CustomButton = ({
       onClick={onClick}
     >
       <div className="flex flex-row gap-2 items-center">
-        {img && <Image alt="" src={img} />}
-        <p className={`text-sm xl:text-base text-${nameColor}`}>{name}</p>
+        {isLoading ? (
+          <>
+            {" "}
+            <AiOutlineLoading3Quarters className="w-5 h-5 animate-spin text-sky-500" />
+          </>
+        ) : (
+          <>
+            {" "}
+            {img && <Image alt="" src={img} />}
+            <p className={`text-sm xl:text-base text-${nameColor}`}>{name}</p>
+          </>
+        )}
       </div>
     </button>
   );

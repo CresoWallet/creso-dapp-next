@@ -1,30 +1,29 @@
 "use client";
-import React, { useEffect } from "react";
+
+import React, { useEffect, useState } from "react";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
+import Link from "next/link";
+import { useForm } from "react-hook-form";
+
 import BgImage from "../../assets/auth/bgImage.png";
 import CustomButton from "@/components/CustomButton";
 import Apple from "../../assets/auth/Apple.png";
 import X from "../../assets/auth/x.png";
-import Link from "next/link";
 import MobileImage from "../../assets/auth/Group.png";
 import { loginApi } from "@/clientApi/auth";
-import { useForm } from "react-hook-form";
 import { AUTH_TOKEN } from "@/constants";
 import { useUser } from "@/providers/UserProvider";
-import { useRouter } from "next/navigation";
 import { axiosInstance } from "@/services/axios";
+import { CustomTextField } from "@/components/fields/customTextField";
 
 const LoginPage = () => {
   const router = useRouter();
 
   const { user, isAuthenticated, authenticate } = useUser();
+  const [loading, setLoading] = useState(false);
 
-  const {
-    register,
-    handleSubmit,
-    watch,
-    formState: { errors ,isLoading},
-  } = useForm();
+  const { register, handleSubmit, watch, formState } = useForm();
 
   useEffect(() => {
     console.log(isAuthenticated);
@@ -34,6 +33,7 @@ const LoginPage = () => {
   }, [user]);
 
   const onSubmit = async (data) => {
+    setLoading(true);
     try {
       const res = await loginApi(data);
       console.log(res);
@@ -41,14 +41,23 @@ const LoginPage = () => {
       if (tk) {
         localStorage.setItem(AUTH_TOKEN, tk);
         authenticate();
+        // setLoading(false);
       }
     } catch (err) {
       console.log(err);
+    } finally {
+      // setLoading(false);
     }
+
+    setLoading(false);
   };
 
   const handleTwitterLogin = async () => {
-    window.open('http://localhost:8080/api/twitter', '_blank', 'width=500,height=500');
+    window.open(
+      "http://localhost:8080/api/twitter",
+      "_blank",
+      "width=500,height=500"
+    );
 
     // const data = await axiosInstance("/twitter");
     // console.log(data);
@@ -76,26 +85,23 @@ const LoginPage = () => {
           onSubmit={handleSubmit(onSubmit)}
           className="flex flex-col space-y-4"
         >
-          <div className="flex flex-col space-y-1 w-full">
-            <p className="text-sm">Email</p>
-            <input
-              {...register("email", { required: true })}
-              type="text"
-              placeholder="E.g. name@example.com"
-              className="placeholder:text-[#A09FAA] text-xs xl:px-4 xl:py-4 md:px-4 md:py-4 py-3 px-3 rounded-full border border-solid"
-            />
-          </div>
-          <div className="flex flex-col space-y-1 w-full">
-            <p className="text-sm">Password</p>
-            <input
-              {...register("password", { required: true })}
-              type="password"
-              placeholder="E.g Shahel"
-              className="placeholder:text-[#A09FAA] text-xs xl:px-4 xl:py-4 md:px-4 md:py-4 py-3 px-3 rounded-full border border-solid"
-            />
-          </div>
+          <CustomTextField
+            label={"Email"}
+            placeholder={"email"}
+            validation={{ ...register("email", { required: true }) }}
+          />
+          <CustomTextField
+            label={"Password"}
+            placeholder={"password"}
+            validation={{ ...register("password", { required: true }) }}
+          />
           <div className="flex flex-col space-y-2">
-            <CustomButton isLoading={isLoading} name="Login" bgColor="black" type={"submit"} />
+            <CustomButton
+              isLoading={loading}
+              name="Login"
+              bgColor="black"
+              type={"submit"}
+            />
             <CustomButton
               bgColor="white"
               name="Continue With X"

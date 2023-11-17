@@ -134,7 +134,7 @@ const DiscoverPage = () => {
           onClick={() => setNavbarTrigger(!navbarTrigger)}
         ></div>
       )}
-      <div className="grid grid-cols-1 md:grid-cols-3 xl:grid-cols-3 my-2 divide-x">
+      <div className="grid grid-cols-1 md:grid-cols-3 xl:grid-cols-3 px-2 my-2 divide-x">
         {/* sidebar and discover content */}
         <div className="col-span-2">
           <div className="grid responsivemb-cols">

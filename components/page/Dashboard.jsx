@@ -119,7 +119,7 @@ const Dashboard = () => {
     };
     async function fetchWallet() {
       try {
-        if (isAuthenticated && localStorage.getItem(AUTH_TOKEN)) {
+        if (isAuthenticated) {
           const res = await getUserWallets();
           console.log(res.data);
           const walletsArr = await computeWallet(res.data);

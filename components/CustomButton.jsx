@@ -11,9 +11,11 @@ const CustomButton = ({
   borderColor,
   hoverColor,
   type,
+  isLoading,
 }) => {
   return (
     <button
+      disabled={isLoading}
       type={type == "submit" ? "submit" : "button"}
       className={`bg-${bgColor} xl:py-4 py-2 text-white px-12 flex justify-center rounded-full w-full hover:bg-${hoverColor} hover:font-bold cursor-pointer border border-solid border-${borderColor}`}
       onClick={onClick}

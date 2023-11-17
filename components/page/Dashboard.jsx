@@ -12,7 +12,7 @@ import User from "@/components/User";
 import Sure from "../../assets/Dashboard/gainers/sure.png";
 import CresoCard from "@/components/CresoCard";
 import SideNav from "@/components/SideNav";
-import Search from "../../assets/Dashboard/Search.png";
+import Search from "../../assets/Dashboard/search.png";
 import Ham from "../../assets/Dashboard/ham.png";
 import CreateWallet from "@/components/CreateWallet";
 import CoinWallet from "@/components/CoinWallet";

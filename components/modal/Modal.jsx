@@ -18,7 +18,7 @@ import Device from "../../assets/backup/device.png";
 import Device2 from "../../assets/backup/device2.png";
 import Cloud from "../../assets/backup/cloud.png";
 import Google from "../../assets/backup/google.png";
-import Baidu from "../../assets/backup/Baidu.png";
+import Baidu from "../../assets/backup/baidu.png";
 
 const Modal = ({ onClose, title }) => {
   const [step, setStep] = useState(1);

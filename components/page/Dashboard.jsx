@@ -211,7 +211,7 @@ const Dashboard = () => {
                 handleCreateWallet={handleWallet}
                 handleCoinWallet={handleCoinWallet}
               />
-              <Mainnet handleCreateSecureWallet={handleCreateSecureWallet} />
+              <Mainnet handleWallet={handleWallet} handleCreateSecureWallet={handleCreateSecureWallet} />
             </div>
           </div>
         </div>

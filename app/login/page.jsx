@@ -23,7 +23,7 @@ const LoginPage = () => {
     register,
     handleSubmit,
     watch,
-    formState: { errors },
+    formState: { errors ,isLoading},
   } = useForm();
 
   useEffect(() => {
@@ -95,7 +95,7 @@ const LoginPage = () => {
             />
           </div>
           <div className="flex flex-col space-y-2">
-            <CustomButton name="Login" bgColor="black" type={"submit"} />
+            <CustomButton isLoading={isLoading} name="Login" bgColor="black" type={"submit"} />
             <CustomButton
               bgColor="white"
               name="Continue With X"

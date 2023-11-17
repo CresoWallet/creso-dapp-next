@@ -15,7 +15,8 @@ const SendETH = ({ handleBackButton, walletArr }) => {
     register,
     handleSubmit,
     watch,
-    formState: { errors },
+    
+    formState: { errors,isLoading },
   } = useForm();
   const [openWalletList, setOpenWalletList] = useState(false);
   const [selectedWallet, setSelectedWallet] = useState({});
@@ -223,7 +224,7 @@ const SendETH = ({ handleBackButton, walletArr }) => {
           </p>
         )}
       </div>
-      <CustomButton img={Send} name="Send" bgColor="black" type={"submit"} />
+      <CustomButton isLoading={isLoading} img={Send} name="Send" bgColor="black" type={"submit"} />
     </form>
   );
 };

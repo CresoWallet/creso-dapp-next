@@ -17,7 +17,7 @@ const RegisterPage = () => {
     register,
     handleSubmit,
     watch,
-    formState: { errors },
+    formState: { errors ,isLoading},
   } = useForm();
 
   const password = watch("password");
@@ -124,7 +124,7 @@ const RegisterPage = () => {
             </div>
           </div>
           <div className="flex flex-col space-y-2">
-            <CustomButton name="Sign up" bgColor="black" type={"submit"} />
+            <CustomButton isLoading={isLoading} name="Sign up" bgColor="black" type={"submit"} />
             <CustomButton
               bgColor="white"
               name="Continue With X"

@@ -25,6 +25,7 @@ import { useUser } from "@/providers/UserProvider";
 import { getUserWallets } from "@/clientApi/wallet";
 import { useRouter } from "next/navigation";
 import { ethers } from "ethers";
+import { AUTH_TOKEN } from "@/constants";
 
 const Dashboard = () => {
   const router = useRouter();
@@ -118,7 +119,7 @@ const Dashboard = () => {
     };
     async function fetchWallet() {
       try {
-        if (isAuthenticated) {
+        if (isAuthenticated && localStorage.getItem(AUTH_TOKEN)) {
           const res = await getUserWallets();
           console.log(res.data);
           const walletsArr = await computeWallet(res.data);

@@ -31,7 +31,9 @@ const CresoCard = ({ balance }) => {
             <div className="flex flex-col">
               <p className="text-xs text-black">Total Assets:</p>
               <div className="flex flex-row gap-2 items-center">
-                <p className="font-semibold text-xl">{parseFloat(balance)}</p>
+                <p className="font-semibold text-xl">
+                  {`${parseFloat(balance).toFixed(6)} ETH`}
+                </p>
                 <Image alt="" src={View} />
               </div>
             </div>

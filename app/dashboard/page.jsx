@@ -198,7 +198,9 @@ const Dashboard = () => {
               />
             )}
           </div>
-          {showModal && <Modal onClose={() => setShowModal(false)} />}
+          {showModal && (
+            <Modal onClose={() => setShowModal(false)} user={user} />
+          )}
 
           {/* right side component */}
           <div className="flex flex-col xl:pt-8 md:pt-8 space-y-4">

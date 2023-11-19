@@ -57,7 +57,7 @@ const Header = () => {
           <AiOutlineDown className="w-3 h-3" />
         </div>
       </div>
-      <div onClick={handleButton}>
+      <div onClick={handleButton} className="cursor-pointer">
         <Image alt="" src={User} className="w-14 h-16" />
       </div>
       {openPopup && (

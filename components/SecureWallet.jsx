@@ -15,7 +15,14 @@ import USDT from "../assets/Dashboard/usdt3.png";
 import SendETH from "./SendETH";
 import WalletAddress from "./WalletAddress";
 
-const SecureWallet = ({ handleClose, wallets }) => {
+const SecureWallet = ({
+  handleClose,
+  wallets,
+  walletType,
+  secureWalletBalance,
+  eoaWalletBalance,
+}) => {
+  console.log("eoaWalletBalance : ", eoaWalletBalance);
   const [send, setSend] = useState(false);
   const [walletAddress, setWalletAddress] = useState(false);
 
@@ -31,7 +38,7 @@ const SecureWallet = ({ handleClose, wallets }) => {
     <div
       className={`absolute bg-white border-l-2 shadow-xl w-full h-full z-10 `}
     >
-      <div className="flex rounded-full bg-black h-8 w-8 items-center justify-center xl:-ml-4 md:-ml-4 ml-2 mt-10 absolute">
+      <div className="flex rounded-full bg-black h-8 w-8 items-center justify-center xl:-ml-4 md:-ml-4 ml-2 mt-10 absolute cursor-pointer">
         <IoIosClose className="text-white h-4 w-4" onClick={handleClose} />
       </div>
 
@@ -44,12 +51,16 @@ const SecureWallet = ({ handleClose, wallets }) => {
       <div className="flex flex-col mx-8 mt-10 gap-8">
         <div className="flex items-center justify-between">
           <p className="text-xl font-bold ml-4 xl:ml-0 md:ml-0">
-            Keyless Secure Wallet
+            {walletType === "secure" ? "Keyless Secure Wallet" : "EOA Wallet"}
           </p>
           <Image src={Menu} alt="" className="cursor-pointer" />
         </div>
 
-        <CresoCard />
+        <CresoCard
+          balance={
+            walletType === "secure" ? secureWalletBalance : eoaWalletBalance
+          }
+        />
 
         <div className="flex xl:flex-row flex-row items-center md:flex-col xl:gap-2 gap-2 md:gap-0 space-y-0 xl:space-y-0 md:space-y-2">
           <CustomButton

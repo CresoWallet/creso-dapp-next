@@ -7,7 +7,7 @@ import View from "../assets/Dashboard/eye.png";
 // import PurpleRectangle from "../assets/Dashboard/purpleRectangle.png";
 import SimIcon from "../assets/Dashboard/SimIcon.png";
 
-const CresoCard = () => {
+const CresoCard = ({ balance }) => {
   return (
     <div className="flex flex-col relative mb-8">
       <div className="flex justify-center">
@@ -31,7 +31,7 @@ const CresoCard = () => {
             <div className="flex flex-col">
               <p className="text-xs text-black">Total Assets:</p>
               <div className="flex flex-row gap-2 items-center">
-                <p className="font-semibold text-xl">3,187.99 USD</p>
+                <p className="font-semibold text-xl">{parseFloat(balance)}</p>
                 <Image alt="" src={View} />
               </div>
             </div>

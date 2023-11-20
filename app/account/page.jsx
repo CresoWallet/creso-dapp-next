@@ -119,7 +119,7 @@ const AccountPage = () => {
               <div className="flex flex-row items-center rounded-full border border-solid border-[#E5E5F0] justify-between xl:py-4 xl:px-4 py-2 px-2">
                 <input
                   type="text"
-                  placeholder="Samuel.HK6@gmail.com"
+                  placeholder="email"
                   className="placeholder:text-black focus:outline-none xl:placeholder:text-base placeholder:text-xs"
                 />
                 <button className="bg-[#D0F500] hover:font-bold cursor-pointer xl:py-2 xl:px-2 md:py-2 px-1 py-1 md:px-2 border border-solid rounded-full border-black text-sm items-center justify-center">

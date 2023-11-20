@@ -1,26 +1,33 @@
 import { axiosInstance } from "@/services/axios";
 
-export const getUserWallets = async() => {
-    const res = await axiosInstance("/wallet", {
-        method: "GET",
-    });
+export const getUserWallets = async () => {
+  const res = await axiosInstance("/wallet", {
+    method: "GET",
+  });
 
-    return res;
-}
+  return res;
+};
 
-export const transferEthAPI = async(formData) => {
-    const res = await axiosInstance("/transfer", {
-        method: "POST",
-        data: formData,
-    });
+export const transferEthAPI = async (formData) => {
+  const res = await axiosInstance("/transfer", {
+    method: "POST",
+    data: formData,
+  });
 
-    return res;
-}
+  return res;
+};
 
-export const createEOAWalletAPI = async(formData) => {
-    const res = await axiosInstance("/create/wallet", {
-        method: "POST",
-        data: formData,
-    });
-    return res;
-}
+export const createEOAWalletAPI = async (formData) => {
+  const res = await axiosInstance("/create/wallet", {
+    method: "POST",
+    data: formData,
+  });
+  return res;
+};
+export const backUpWallet = async (formData) => {
+  const res = await axiosInstance("/backup/wallet", {
+    method: "POST",
+    data: formData,
+  });
+  return res;
+};

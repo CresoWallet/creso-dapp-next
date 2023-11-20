@@ -24,12 +24,14 @@ import Google from "../../assets/backup/google.png";
 import Baidu from "../../assets/backup/baidu.png";
 import { sendOTPMail, verifyOTP } from "@/clientApi/auth";
 import { CustomTextField } from "../fields/CustomTextField";
+import { downloadFile } from "@/utils";
 // import { OtpInputCard } from "../cards/OtpInputCard";
 
 const Modal = ({ onClose, title, user }) => {
   const [step, setStep] = useState(1);
   const [loading, setLoading] = useState(false);
   const [otp, setOtp] = useState();
+  const [passkey, setPasskey] = useState("");
 
   const handleCloseClick = (e) => {
     e.preventDefault();
@@ -93,6 +95,15 @@ const Modal = ({ onClose, title, user }) => {
     } finally {
       setLoading(false);
     }
+  };
+
+  const downloadBackup = async () => {
+    const response = await backUpWallet({ passkey });
+    downloadFile(
+      JSON.stringify(response.data),
+      "creso_backup.json",
+      "application/json"
+    );
   };
 
   const handleNextClick = () => {

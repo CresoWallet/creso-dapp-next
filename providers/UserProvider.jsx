@@ -36,13 +36,21 @@ export const UserProvider = ({ children }) => {
   const [authenticate, { data, error }] = useAuthenticateUserMutation();
   const [status, setStatus] = useState("idle");
   useEffect(() => {
-    const token = localStorage.getItem(AUTH_TOKEN);
-    setToken(token);
-    if (token) {
+    // const token = localStorage.getItem(AUTH_TOKEN);
+    // setToken(token);
+    //if (token) {
+
+    ///api/authenticate if user
+    try {
       authenticate();
-    } else {
-      setStatus("failed");
+
+      //redirect dashboard
+    } catch (err) {
+      console.log(err);
     }
+    //} else {
+    //setStatus("failed");
+    // }
   }, []);
 
   useEffect(() => {
@@ -54,7 +62,7 @@ export const UserProvider = ({ children }) => {
 
   useEffect(() => {
     if (error) {
-      localStorage.removeItem(AUTH_TOKEN);
+      // localStorage.removeItem(AUTH_TOKEN);
       setStatus("failed");
     }
   }, [error]);

@@ -26,7 +26,6 @@ const LoginPage = () => {
   const { register, handleSubmit, watch, formState } = useForm();
 
   useEffect(() => {
-    console.log(isAuthenticated);
     if (isAuthenticated) {
       router.push(`/`);
     }
@@ -39,7 +38,7 @@ const LoginPage = () => {
       console.log(res);
       const tk = res.data.token;
       if (tk) {
-        localStorage.setItem(AUTH_TOKEN, tk);
+        // localStorage.setItem(AUTH_TOKEN, tk);
         authenticate();
         // setLoading(false);
       }
@@ -53,7 +52,7 @@ const LoginPage = () => {
   };
 
   const handleTwitterLogin = async () => {
-    window.open("http://localhost:8080/api/auth/twitter");
+    window.open(BASE_URL + "/api/auth/twitter");
 
     // const data = await axiosInstance("/twitter");
     // console.log(data);

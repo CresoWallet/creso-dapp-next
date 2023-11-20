@@ -69,8 +69,8 @@ const Header = () => {
           <div className="bg-white rounded-3xl px-12 py-12 xl:mr-10 mr-0 md:mr-5 md:mt-32 xl:mt-32 mt-0">
             <div className="flex flex-col space-y-1 justify-center items-center pb-8">
               <Image alt="" src={User} />
-              <p className="font-bold text-lg">{user.username}</p>
-              <p className="text-xs text-[#A09FAA]">{user.email}</p>
+              <p className="font-bold text-lg">{user?.username}</p>
+              <p className="text-xs text-[#A09FAA]">{user?.email}</p>
               <p className="text-xs text-[#A09FAA]">
                 Last Backup:
                 <span className="text-xm text-black">28 OCT 2023</span>{" "}

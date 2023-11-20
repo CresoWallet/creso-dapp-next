@@ -12,8 +12,12 @@ import { MdKeyboardArrowRight } from "react-icons/md";
 import Disconnect from "../assets/network/disconnect.png";
 import { useUser } from "@/providers/UserProvider";
 import { AUTH_TOKEN } from "@/constants";
+import { logOut } from "@/clientApi/auth";
+import { useRouter } from "next/navigation";
 
 const Header = () => {
+  const router = useRouter();
+
   const { user, isAuthenticated, status } = useUser();
   const [openPopup, setOpenPopup] = useState(false);
   const popupRef = useRef();
@@ -32,9 +36,19 @@ const Header = () => {
     }
   };
 
-  const handleDisconnect = () => {
-    localStorage.removeItem(AUTH_TOKEN);
-    window.location.reload();
+  const handleDisconnect = async () => {
+    // localStorage.removeItem(AUTH_TOKEN);
+    // window.location.reload();
+
+    try {
+      const res = await logOut();
+      if (res) {
+        window.location.href = "/";
+      }
+    } catch (err) {
+      console.log(err);
+    } finally {
+    }
   };
 
   return (

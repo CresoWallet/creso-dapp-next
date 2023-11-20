@@ -11,6 +11,7 @@ import { useForm } from "react-hook-form";
 import { useRouter } from "next/navigation";
 import { signUpAPI } from "@/clientApi/auth";
 import { CustomTextField } from "@/components/fields/CustomTextField";
+import { enqueueSnackbar } from "notistack";
 
 const RegisterPage = () => {
   const router = useRouter();
@@ -39,8 +40,14 @@ const RegisterPage = () => {
     };
     try {
       const res = await signUpAPI(signUpData);
-      console.log(res);
-      router.push("/login");
+      if (res) {
+        console.log(res);
+        router.push("/login");
+        enqueueSnackbar(`User successfully registered`, {
+          variant: "success",
+        });
+      }
+
       setLoading(false);
     } catch (error) {
       console.log(error);

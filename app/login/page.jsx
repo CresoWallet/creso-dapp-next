@@ -20,7 +20,7 @@ import { CustomTextField } from "@/components/fields/CustomTextField";
 const LoginPage = () => {
   const router = useRouter();
 
-  const { user, isAuthenticated, authenticate } = useUser();
+  const { user, isAuthenticated, handleAuthentication } = useUser();
   const [loading, setLoading] = useState(false);
 
   const { register, handleSubmit, watch, formState } = useForm();
@@ -39,8 +39,9 @@ const LoginPage = () => {
       const tk = res.data.token;
       if (tk) {
         // localStorage.setItem(AUTH_TOKEN, tk);
-        authenticate();
+        // authenticate();
         // setLoading(false);
+        handleAuthentication();
       }
     } catch (err) {
       console.log(err);
@@ -88,6 +89,7 @@ const LoginPage = () => {
           <CustomTextField
             label={"Password"}
             placeholder={"password"}
+            type={"password"}
             validation={{ ...register("password", { required: true }) }}
           />
           <div className="flex flex-col space-y-2">

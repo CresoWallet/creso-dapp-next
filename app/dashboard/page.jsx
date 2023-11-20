@@ -51,6 +51,7 @@ const Dashboard = () => {
     wallets,
     secureWalletAddress,
     eoaWalletAddress,
+    fetchWallet,
   } = useContext(WalletContext);
 
   useEffect(() => {
@@ -58,6 +59,10 @@ const Dashboard = () => {
       router.push("/login");
     }
   }, [status]);
+
+  useEffect(() => {
+    fetchWallet();
+  }, []);
 
   const isMobile = useMediaQuery({ query: `(max-width: 760px)` });
   const handleCreateWallet = () => {

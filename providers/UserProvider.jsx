@@ -1,8 +1,10 @@
 "use client";
+import { authenticateUser } from "@/clientApi/auth";
 import { AUTH_TOKEN } from "@/constants";
 import { setToken } from "@/services/axios";
 import { useAuthenticateUserMutation } from "@/store/user";
 import React, { createContext, useContext, useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
 
 // interface IUser {
 //   _id: string;
@@ -32,44 +34,51 @@ export const useUser = () => {
 };
 
 export const UserProvider = ({ children }) => {
+  const router = useRouter();
   const [user, setUser] = useState(null);
   const [authenticate, { data, error }] = useAuthenticateUserMutation();
   const [status, setStatus] = useState("idle");
+
+  const handleAuthentication = async () => {
+    try {
+      const res = await authenticateUser();
+      if (res) {
+        setUser(res.data.user);
+        setStatus("authenticated");
+      }
+    } catch (error) {
+      setStatus("failed");
+    }
+  };
   useEffect(() => {
     // const token = localStorage.getItem(AUTH_TOKEN);
     // setToken(token);
     //if (token) {
 
     ///api/authenticate if user
-    try {
-      authenticate();
-
-      //redirect dashboard
-    } catch (err) {
-      console.log(err);
-    }
+    handleAuthentication();
     //} else {
     //setStatus("failed");
     // }
   }, []);
 
-  useEffect(() => {
-    if (data) {
-      setUser(data.user);
-      setStatus("authenticated");
-    }
-  }, [data]);
+  // useEffect(() => {
+  //   if (data) {
+  //     setUser(data.user);
+  //     setStatus("authenticated");
+  //   }
+  // }, [data]);
 
-  useEffect(() => {
-    if (error) {
-      // localStorage.removeItem(AUTH_TOKEN);
-      setStatus("failed");
-    }
-  }, [error]);
+  // useEffect(() => {
+  //   if (error) {
+  //     // localStorage.removeItem(AUTH_TOKEN);
+  //     setStatus("failed");
+  //   }
+  // }, [error]);
 
   return (
     <UserContext.Provider
-      value={{ user, isAuthenticated: !!user, authenticate, status }}
+      value={{ user, isAuthenticated: !!user, handleAuthentication, status }}
     >
       {children}
     </UserContext.Provider>

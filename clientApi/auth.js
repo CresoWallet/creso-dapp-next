@@ -9,6 +9,13 @@ export const loginApi = async (formData) => {
   return res;
 };
 
+export const logOut = async (formData) => {
+  const res = await axiosInstance(`/logout`, {
+    method: "POST",
+    data: formData,
+  });
+  return res;
+};
 
 export const signUpAPI = async (formData) => {
   const res = await axiosInstance(`/register`, {
@@ -17,4 +24,30 @@ export const signUpAPI = async (formData) => {
   });
 
   return res;
-}
+};
+
+export const authenticateUser = async (formData) => {
+  const res = await axiosInstance(`/authenticate`, {
+    method: "GET",
+    data: formData,
+  });
+
+  return res;
+};
+
+export const sendOTPMail = async (formData) => {
+  const res = await axiosInstance(`/sendOTP`, {
+    method: "POST",
+    data: formData,
+  });
+  return res;
+};
+
+export const verifyOTP = async (formData) => {
+  const res = await axiosInstance(`/verifyOTP`, {
+    method: "POST",
+    data: formData,
+  });
+
+  return res;
+};

@@ -22,7 +22,7 @@ import Device2 from "../../assets/backup/device2.png";
 import Cloud from "../../assets/backup/cloud.png";
 import Google from "../../assets/backup/google.png";
 import Baidu from "../../assets/backup/baidu.png";
-import { sendOTPMail, verifyOTP } from "@/clientApi/user";
+import { sendOTPMail, verifyOTP } from "@/clientApi/auth";
 import { CustomTextField } from "../fields/CustomTextField";
 // import { OtpInputCard } from "../cards/OtpInputCard";
 
@@ -45,7 +45,7 @@ const Modal = ({ onClose, title, user }) => {
       setLoading(true);
       try {
         const res = await sendOTPMail({
-          email: "mnnasik7@gmail.com",
+          email: user.email,
         });
         if (res?.status === 200) {
           localStorage.setItem("otp_token", res?.data?.token);
@@ -75,6 +75,7 @@ const Modal = ({ onClose, title, user }) => {
       const res = await verifyOTP({
         token: localStorage.getItem("otp_token"),
         otp: otp,
+        email: user.email,
       });
       if (res?.status === 200) {
         localStorage.setItem("otp_token", res?.data?.token);
@@ -85,6 +86,7 @@ const Modal = ({ onClose, title, user }) => {
         setLoading(false);
       }
     } catch (err) {
+      console.log("err : ", err);
       enqueueSnackbar(`${err.response.data.message}`, {
         variant: "error",
       });
@@ -100,6 +102,8 @@ const Modal = ({ onClose, title, user }) => {
       handleVerifyOTP();
     } else if (step === 4) {
       onClose();
+    } else {
+      setStep((step % 7) + 1);
     }
   };
 
@@ -195,57 +199,15 @@ const Modal = ({ onClose, title, user }) => {
             </div>
 
             <div className="flex items-center justify-center w-full flex-col">
-              <p className="text-lg font-bold ml-3 mb-3">Save Recovery Key</p>
-              <p className="text-gray-600 sm:text-sm  text-xs text-center mx-3">
-                Sync the Recovery Key to your personal cloud storage
-              </p>
-            </div>
-
-            <div>
-              <p className="text-gray-600 sm:text-sm text-xs ml-3 mb-2">
-                Personal Cloud Storage
-              </p>
-              <div className="flex items-center justify-center flex-col gap-2">
-                <div className="border rounded-full sm:px-3 px-2 sm:py-4 py-2 flex items-center justify-between w-full hover:cursor-pointer hover:border-gray-700">
-                  <div className="flex justify-center items-center gap-2">
-                    <Image src={Cloud} alt="" />
-                    <span className="text-sm font-bold">iCloud Drive</span>
-                  </div>
-
-                  <div>
-                    <label className="container-checkbox">
-                      <input type="checkbox" defaultChecked={true} />
-                      <span className="checkmark"></span>
-                    </label>
-                  </div>
-                </div>
-
-                <div className="border rounded-full sm:px-3 px-2 sm:py-4 py-2 flex items-center justify-between w-full hover:cursor-pointer hover:border-gray-700">
-                  <div className="flex justify-center items-center gap-2">
-                    <Image src={Google} alt="" />
-                    <span className="text-sm font-bold">Google Drive</span>
-                  </div>
-                  <div>
-                    <label className="container-checkbox">
-                      <input type="checkbox" defaultChecked={false} />
-                      <span className="checkmark"></span>
-                    </label>
-                  </div>
-                </div>
-
-                <div className="border rounded-full sm:px-3 px-2 sm:py-4 py-2 flex items-center justify-between w-full hover:cursor-pointer hover:border-gray-700">
-                  <div className="flex justify-center items-center gap-2">
-                    <Image src={Baidu} alt="" />
-                    <span className="text-sm font-bold">Baidu Netdisk</span>
-                  </div>
-                  <div>
-                    <label className="container-checkbox">
-                      <input type="checkbox" defaultChecked={false} />
-                      <span className="checkmark"></span>
-                    </label>
-                  </div>
-                </div>
-              </div>
+              <p className="text-lg font-bold ml-3 mb-3">Backup Recovery</p>
+              <input
+                type="text"
+                placeholder="secret key"
+                className="placeholder:text-[#A09FAA] text-xs xl:px-4 xl:py-4 md:px-4 md:py-4 py-3 px-3 rounded-full border border-solid"
+                onChange={(e) => {
+                  setOtp(e.target.value);
+                }}
+              />
             </div>
           </div>
         );
@@ -313,10 +275,12 @@ const Modal = ({ onClose, title, user }) => {
               ) : (
                 <>
                   {step === 1
-                    ? "send verification email"
-                    : step === 7
-                    ? "submit"
-                    : "Next"}
+                    ? "Send verification email"
+                    : step === 2
+                    ? "Verify"
+                    : step === 3
+                    ? "Download"
+                    : "Close"}
                 </>
               )}
             </button>

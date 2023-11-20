@@ -80,7 +80,7 @@ const WalletContextProvider = ({ children }) => {
   };
 
   useEffect(() => {
-    localStorage.getItem(AUTH_TOKEN) && fetchWallet();
+    fetchWallet();
   }, []);
 
   return (
@@ -91,6 +91,7 @@ const WalletContextProvider = ({ children }) => {
         wallets,
         secureWalletAddress,
         eoaWalletAddress,
+        fetchWallet,
       }}
     >
       {children}

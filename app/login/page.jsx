@@ -15,7 +15,7 @@ import { loginApi } from "@/clientApi/auth";
 import { AUTH_TOKEN } from "@/constants";
 import { useUser } from "@/providers/UserProvider";
 import { axiosInstance } from "@/services/axios";
-import { CustomTextField } from "@/components/fields/customTextField";
+import { CustomTextField } from "@/components/fields/CustomTextField";
 
 const LoginPage = () => {
   const router = useRouter();
@@ -53,11 +53,7 @@ const LoginPage = () => {
   };
 
   const handleTwitterLogin = async () => {
-    window.open(
-      "http://localhost:8080/api/twitter",
-      "_blank",
-      "width=500,height=500"
-    );
+    window.open("http://localhost:8080/api/auth/twitter");
 
     // const data = await axiosInstance("/twitter");
     // console.log(data);

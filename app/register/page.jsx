@@ -10,7 +10,7 @@ import MobileImage from "../../assets/auth/Group.png";
 import { useForm } from "react-hook-form";
 import { useRouter } from "next/navigation";
 import { signUpAPI } from "@/clientApi/auth";
-import { CustomTextField } from "@/components/fields/customTextField";
+import { CustomTextField } from "@/components/fields/CustomTextField";
 
 const RegisterPage = () => {
   const router = useRouter();
@@ -41,11 +41,11 @@ const RegisterPage = () => {
       const res = await signUpAPI(signUpData);
       console.log(res);
       router.push("/login");
-      setLoading(false)
+      setLoading(false);
     } catch (error) {
       console.log(error);
     } finally {
-      setLoading(false)
+      setLoading(false);
     }
   };
 

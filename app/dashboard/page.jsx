@@ -30,7 +30,7 @@ import CFX from "../../assets/gainers/cfx.png";
 import MINA from "../../assets/AboutUs/gainers/mina.png";
 import Add from "../../assets/Dashboard/add.png";
 import AddCoinButton from "@/components/AddCoinButton";
-import CoinCard from "@/components/cards/coin";
+import CoinCard from "@/components/cards/Coin";
 import { WalletContext } from "@/providers/WalletProvider";
 import { ethToDollar } from "@/utils";
 

@@ -84,6 +84,14 @@ const Dashboard = () => {
     setShowWallet(false);
   };
 
+  const handleShowModel = () => {
+    setShowModal(true);
+    // close other models
+    setShowCoinWallet(false);
+    setShowWallet(false);
+    setShowCreateWallet(false);
+  };
+
   const handleCloseCoinWallet = () => {
     setShowCoinWallet(false);
   };
@@ -160,7 +168,9 @@ const Dashboard = () => {
                   )}
                 </div>
               </div>
-              <Backup onClick={() => setShowModal(true)} />
+              {!user.isEmailVerified && (
+                <Backup onClick={() => handleShowModel()} />
+              )}
 
               <div className="flex flex-row justify-start gap-9">
                 <AddCoinButton />

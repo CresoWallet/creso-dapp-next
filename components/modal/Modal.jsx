@@ -23,15 +23,18 @@ import Cloud from "../../assets/backup/cloud.png";
 import Google from "../../assets/backup/google.png";
 import Baidu from "../../assets/backup/baidu.png";
 import { sendOTPMail, verifyOTP } from "@/clientApi/auth";
-import { CustomTextField } from "../fields/CustomTextField";
-import { downloadFile } from "@/utils";
 // import { OtpInputCard } from "../cards/OtpInputCard";
+import FileSaver from "file-saver";
+import { backupWallet } from "@/clientApi/wallet";
+import { useUser } from "@/providers/UserProvider";
 
 const Modal = ({ onClose, title, user }) => {
   const [step, setStep] = useState(1);
   const [loading, setLoading] = useState(false);
   const [otp, setOtp] = useState();
-  const [passkey, setPasskey] = useState("");
+  const [secretKey, setSecretKey] = useState();
+  const [encryptedKey, setEncryptedKey] = useState("");
+  const { handleAuthentication } = useUser();
 
   const handleCloseClick = (e) => {
     e.preventDefault();
@@ -72,50 +75,90 @@ const Modal = ({ onClose, title, user }) => {
   };
 
   const handleVerifyOTP = async () => {
-    setLoading(true);
-    try {
-      const res = await verifyOTP({
-        token: localStorage.getItem("otp_token"),
-        otp: otp,
-        email: user.email,
-      });
-      if (res?.status === 200) {
-        localStorage.setItem("otp_token", res?.data?.token);
-        enqueueSnackbar(`Email verified`, {
-          variant: "success",
-        });
-        setStep((step % 7) + 1);
-        setLoading(false);
-      }
-    } catch (err) {
-      console.log("err : ", err);
-      enqueueSnackbar(`${err.response.data.message}`, {
+    if (!user.email) {
+      enqueueSnackbar(`Please enter OTP`, {
         variant: "error",
       });
-    } finally {
-      setLoading(false);
+    } else {
+      setLoading(true);
+      try {
+        const res = await verifyOTP({
+          token: localStorage.getItem("otp_token"),
+          otp: otp,
+          email: user.email,
+        });
+        if (res?.status === 200) {
+          localStorage.setItem("otp_token", res?.data?.token);
+          enqueueSnackbar(`Email verified`, {
+            variant: "success",
+          });
+          setStep((step % 7) + 1);
+          setLoading(false);
+        }
+      } catch (err) {
+        console.log("err : ", err);
+        enqueueSnackbar(`${err.response.data.message}`, {
+          variant: "error",
+        });
+      } finally {
+        setLoading(false);
+      }
     }
   };
 
-  const downloadBackup = async () => {
-    const response = await backUpWallet({ passkey });
-    downloadFile(
-      JSON.stringify(response.data),
-      "creso_backup.json",
-      "application/json"
-    );
+  const handleBackupWallet = async () => {
+    //     const downloadBackup = async () => {
+    //   const response = await backUpWallet({ passkey });
+    //   downloadFile(
+    //     JSON.stringify(response.data),
+    //     "creso_backup.json",
+    //     "application/json"
+    //   );
+    // };
+    if (!user.email) {
+      enqueueSnackbar(`Please enter secret key`, {
+        variant: "error",
+      });
+    } else {
+      try {
+        setLoading(true);
+        const res = await backupWallet({
+          passkey: secretKey,
+        });
+        if (res) {
+          console.log(res);
+          var blob = new Blob([btoa(JSON.stringify(res?.data))], {
+            type: "text/plain;charset=utf-8",
+          });
+          FileSaver.saveAs(blob, `${user?.email}_credential.creso`);
+          setEncryptedKey(res?.data?.data);
+          setStep((step % 7) + 1);
+        }
+        setLoading(false);
+      } catch (error) {}
+    }
   };
 
-  const handleNextClick = () => {
+  const handleNextClick = async () => {
     if (step === 1) {
       handleSendOTPMail();
     } else if (step === 2) {
       handleVerifyOTP();
+    } else if (step === 3) {
+      handleBackupWallet();
     } else if (step === 4) {
+      setLoading(true);
+      await handleAuthentication();
       onClose();
+      setLoading(false);
     } else {
       setStep((step % 7) + 1);
     }
+    // if (step === 3) {
+    //   handleBackupWallet();
+    // } else {
+    //   setStep((step % 7) + 1);
+    // }
   };
 
   const getContent = () => {
@@ -158,11 +201,11 @@ const Modal = ({ onClose, title, user }) => {
                 alt=""
                 className="cursor-pointer hidden sm:block"
               />
-              <Image
+              {/* <Image
                 src={Set1M}
                 alt=""
                 className="cursor-pointer block sm:hidden"
-              />
+              /> */}
               <hr className="w-full mt-3" />
             </div>
 
@@ -185,7 +228,14 @@ const Modal = ({ onClose, title, user }) => {
               <div className="flex justify-start text-sm text-black mt-2 ">
                 <p>Not received?</p>
                 &nbsp;
-                <p className="text-[#FF4085] cursor-pointer">Resend</p>
+                <p
+                  className="text-[#FF4085] cursor-pointer"
+                  onClick={() => {
+                    handleSendOTPMail();
+                  }}
+                >
+                  Resend
+                </p>
               </div>
             </div>
           </div>
@@ -197,15 +247,15 @@ const Modal = ({ onClose, title, user }) => {
             {/* Content for step 1 */}
             <div className="flex items-center justify-center w-full flex-col ">
               <Image
-                src={Set4}
+                src={Set2}
                 alt=""
                 className="cursor-pointer hidden sm:block"
               />
-              <Image
+              {/* <Image
                 src={Set4M}
                 alt=""
                 className="cursor-pointer block sm:hidden"
-              />
+              /> */}
               <hr className="w-full mt-3" />
             </div>
 
@@ -216,7 +266,7 @@ const Modal = ({ onClose, title, user }) => {
                 placeholder="secret key"
                 className="placeholder:text-[#A09FAA] text-xs xl:px-4 xl:py-4 md:px-4 md:py-4 py-3 px-3 rounded-full border border-solid"
                 onChange={(e) => {
-                  setOtp(e.target.value);
+                  setSecretKey(e.target.value);
                 }}
               />
             </div>
@@ -228,7 +278,7 @@ const Modal = ({ onClose, title, user }) => {
             {/* Content for step 1 */}
             <div className="flex items-center justify-center w-full flex-col ">
               <Image
-                src={Set4}
+                src={Set3}
                 alt=""
                 className="cursor-pointer hidden sm:block"
               />
@@ -244,10 +294,12 @@ const Modal = ({ onClose, title, user }) => {
               <p className="text-lg font-bold ml-3 mb-3">
                 Back Up Personal Key Share
               </p>
-              <p className="text-gray-600 sm:text-sm text-xs text-center mx-3">
-                Encrypted your key share with Recovery Key and store the
-                encrypted data in Creso Server.
-              </p>
+
+              <div className="border border-solid rounded-3xl border-[#E5E5F0] xl:py-4 md:py-2 xl:px-6 md:px-1 px-4 py-2 w-4/5">
+                <p className="text-gray-600 sm:text-sm text-xs text-left mx-3 break-words">
+                  {encryptedKey}
+                </p>
+              </div>
             </div>
 
             <div className="flex justify-center items-center">

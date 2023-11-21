@@ -14,10 +14,9 @@ const WalletContextProvider = ({ children }) => {
   const [eoaWalletBalance, setEoaWalletBalance] = useState(0);
   const [wallets, setWallets] = useState([]);
 
-  let sWalletBalance = 0;
-  let eWalletBalance = 0;
-
   const fetchWallet = async () => {
+    let sWalletBalance = 0;
+    let eWalletBalance = 0;
     try {
       const res = await getUserWallets();
 

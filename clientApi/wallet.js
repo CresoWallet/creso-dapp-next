@@ -24,10 +24,12 @@ export const createEOAWalletAPI = async (formData) => {
   });
   return res;
 };
-export const backUpWallet = async (formData) => {
-  const res = await axiosInstance("/backup/wallet", {
+
+export const backupWallet = async (formData) => {
+  const res = await axiosInstance(`/backup/wallet`, {
     method: "POST",
     data: formData,
   });
+
   return res;
 };

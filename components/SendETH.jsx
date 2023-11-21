@@ -1,7 +1,8 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import Image from "next/image";
 import { minifyEthereumAddress } from "@/utils";
+import { AiOutlineLoading3Quarters } from "react-icons/ai";
 import CustomButton3 from "./CustomButton3";
 import Ethereum from "../assets/Dashboard/etherum.png";
 import Creso from "../assets/Dashboard/creso2.png";
@@ -9,17 +10,21 @@ import Send from "../assets/Dashboard/send.png";
 import CustomButton from "./CustomButton";
 import { getUserWallets, transferEthAPI } from "@/clientApi/wallet";
 import { useForm } from "react-hook-form";
+import { enqueueSnackbar } from "notistack";
+import { WalletContext } from "@/providers/WalletProvider";
 
 const SendETH = ({ handleBackButton, walletArr }) => {
   const {
     register,
     handleSubmit,
     watch,
-    
-    formState: { errors,isLoading },
+
+    formState: { errors, isLoading },
   } = useForm();
   const [openWalletList, setOpenWalletList] = useState(false);
   const [selectedWallet, setSelectedWallet] = useState({});
+  const [loading, setLoading] = useState(false);
+  const { fetchWallet } = useContext(WalletContext);
 
   const walletHandleClick = () => {
     setOpenWalletList(true);
@@ -39,10 +44,22 @@ const SendETH = ({ handleBackButton, walletArr }) => {
       networks: "GOERLI",
     };
     try {
+      setLoading(true);
       const res = await transferEthAPI(transferPayload);
       console.log(res);
+      if (res) {
+        await fetchWallet();
+        enqueueSnackbar(`Transaction successful`, {
+          variant: "success",
+        });
+        setLoading(false);
+      }
     } catch (error) {
-      console.log(error);
+      enqueueSnackbar(`Transaction failed`, {
+        variant: "error",
+      });
+    } finally {
+      setLoading(false);
     }
     // console.log(selectedWallet);
     // console.log(data);
@@ -224,7 +241,14 @@ const SendETH = ({ handleBackButton, walletArr }) => {
           </p>
         )}
       </div>
-      <CustomButton isLoading={isLoading} img={Send} name="Send" bgColor="black" type={"submit"} />
+
+      <CustomButton
+        isLoading={loading}
+        img={Send}
+        name="Send"
+        bgColor="black"
+        type={"submit"}
+      />
     </form>
   );
 };

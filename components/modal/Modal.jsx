@@ -154,11 +154,6 @@ const Modal = ({ onClose, title, user }) => {
     } else {
       setStep((step % 7) + 1);
     }
-    // if (step === 3) {
-    //   handleBackupWallet();
-    // } else {
-    //   setStep((step % 7) + 1);
-    // }
   };
 
   const getContent = () => {

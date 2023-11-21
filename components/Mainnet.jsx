@@ -82,7 +82,7 @@ const Mainnet = ({
                   src={Next2}
                   className="md:w-10 md:h-10 xl:w-8 xl:h-8 group-hover:translate-x-1 duration-500"
                   onClick={() => {
-                    handleOpenWallet({ walletName: "secure" });
+                    handleOpenWallet({ walletName: "AA" });
                   }}
                 />
               </div>
@@ -121,7 +121,7 @@ const Mainnet = ({
                   src={Next2}
                   className="md:w-10 md:h-10 xl:w-8 xl:h-8 group-hover:translate-x-1 duration-500"
                   onClick={() => {
-                    handleOpenWallet({ walletName: "eoa" });
+                    handleOpenWallet({ walletName: "EOA" });
                   }}
                 />
               </div>

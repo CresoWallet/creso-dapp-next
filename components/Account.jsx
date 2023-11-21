@@ -12,15 +12,19 @@ import { BiWifi2 } from "react-icons/bi";
 import { GiAerialSignal } from "react-icons/gi";
 import { LuSettings2 } from "react-icons/lu";
 
-const Account = () => {
+const Account = ({ user, setShowModal }) => {
   return (
     <div className="flex flex-col space-y-4">
       <UserDetails />
-      <CustomButton3
-        title="Backup"
-        titleColor="[#FF4085]"
-        buttonColor="[#FFC8DC]"
-      />
+      {user && !user?.isEmailVerified && (
+        <CustomButton3
+          title="Backup"
+          titleColor="[#FF4085]"
+          buttonColor="[#FFC8DC]"
+          onClick={() => setShowModal(true)}
+        />
+      )}
+
       <div className="flex flex-col xl:space-y-10 space-y-6 xl:pt-10 md:pt-6 pt-4">
         <Link href="/account">
           <div className="flex flex-row justify-between items-center  cursor-pointer">

@@ -1,17 +1,21 @@
 "use clinet";
 
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import Image from "next/image";
 import CustomButton3 from "./CustomButton3";
 import Ethereum from "../assets/Dashboard/etherum.png";
 import CustomButton2 from "./CustomButton2";
 import CreateWallet from "./CreateWallet";
 import { createEOAWalletAPI } from "@/clientApi/wallet";
+import { enqueueSnackbar } from "notistack";
+import { WalletContext } from "@/providers/WalletProvider";
 
 const LegacyWallet = ({ handleBackButton }) => {
   const [wallet, setWallet] = useState(false);
   const [inputText, setInputText] = useState("");
   const [error, setError] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const { fetchWallet } = useContext(WalletContext);
 
   const handleChange = (e) => {
     const newText = e.target.value;
@@ -26,14 +30,26 @@ const LegacyWallet = ({ handleBackButton }) => {
   };
 
   const handleCreateEOAWallet = async () => {
+    setLoading(true);
     try {
       const payload = {
         walletName: inputText,
       };
       const res = await createEOAWalletAPI(payload);
+      if (res) {
+        await fetchWallet();
+        enqueueSnackbar(`Successful wallet creation`, {
+          variant: "success",
+        });
+        setLoading(false);
+      }
+
       console.log(res);
     } catch (error) {
       console.log(error);
+      enqueueSnackbar(`Something went wrong`, {
+        variant: "error",
+      });
     }
   };
 
@@ -99,7 +115,7 @@ const LegacyWallet = ({ handleBackButton }) => {
       </div>
       <div className="flex flex-row gap-2">
         <CustomButton2
-          name="Cancle"
+          name="Cancel"
           borderColor="black"
           bgColor="white"
           handleClick={handleBackButton}
@@ -114,6 +130,7 @@ const LegacyWallet = ({ handleBackButton }) => {
           />
         ) : (
           <CustomButton2
+            isLoading={loading}
             name="Confirm"
             bgColor="black"
             textColor="white"

@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { IoIosClose } from "react-icons/io";
 import Image from "next/image";
 import Menu from "../assets/Dashboard/list2.png";
@@ -22,7 +22,6 @@ const SecureWallet = ({
   secureWalletBalance,
   eoaWalletBalance,
 }) => {
-  console.log("eoaWalletBalance : ", eoaWalletBalance);
   const [send, setSend] = useState(false);
   const [walletAddress, setWalletAddress] = useState(false);
 
@@ -43,7 +42,10 @@ const SecureWallet = ({
       </div>
 
       {send && (
-        <SendETH handleBackButton={() => setSend(false)} walletArr={wallets} />
+        <SendETH
+          handleBackButton={() => setSend(false)}
+          walletArr={wallets.filter((e) => e.type === walletType)}
+        />
       )}
       {walletAddress && (
         <WalletAddress handleBackButton={() => setWalletAddress(false)} />
@@ -57,9 +59,7 @@ const SecureWallet = ({
         </div>
 
         <CresoCard
-          balance={
-            walletType === "secure" ? secureWalletBalance : eoaWalletBalance
-          }
+          balance={walletType === "AA" ? secureWalletBalance : eoaWalletBalance}
         />
 
         <div className="flex xl:flex-row flex-row items-center md:flex-col xl:gap-2 gap-2 md:gap-0 space-y-0 xl:space-y-0 md:space-y-2">

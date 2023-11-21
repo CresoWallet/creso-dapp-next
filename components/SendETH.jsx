@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useState, useContext } from "react";
+import React, { useEffect, useState, useContext, useRef } from "react";
 import Image from "next/image";
 import { minifyEthereumAddress } from "@/utils";
 import { AiOutlineLoading3Quarters } from "react-icons/ai";
@@ -14,6 +14,7 @@ import { enqueueSnackbar } from "notistack";
 import { WalletContext } from "@/providers/WalletProvider";
 
 const SendETH = ({ handleBackButton, walletArr }) => {
+  const popupRef = useRef();
   const {
     register,
     handleSubmit,
@@ -25,6 +26,12 @@ const SendETH = ({ handleBackButton, walletArr }) => {
   const [selectedWallet, setSelectedWallet] = useState({});
   const [loading, setLoading] = useState(false);
   const { fetchWallet } = useContext(WalletContext);
+
+  const handleBackgroundClick = (e) => {
+    if (popupRef.current === e.target) {
+      setOpenWalletList(false);
+    }
+  };
 
   const walletHandleClick = () => {
     setOpenWalletList(true);
@@ -66,8 +73,6 @@ const SendETH = ({ handleBackButton, walletArr }) => {
     console.log(transferPayload);
   };
 
-  // console.log(walletArr);
-  //console.log(selectedWallet)
   return (
     <form
       onSubmit={handleSubmit(onSubmit)}
@@ -149,37 +154,50 @@ const SendETH = ({ handleBackButton, walletArr }) => {
             </div>
           </button>
           {openWalletList && (
-            <div className="bg-white shadow-xl absolute mt-[240px] px-4 py-4 flex flex-col space-y-4 gap-4 min-w-[300px] rounded-md">
-              {walletArr.map((wallet, key) => (
-                <div
-                  key={key}
-                  className="flex flex-col cursor-pointer gap-4"
-                  onClick={() => handleSelectWallet(wallet)}
-                >
-                  <div className="flex flex-row items-center justify-between  h-10">
-                    <div className="flex flex-row gap-4">
+            <div
+              ref={popupRef}
+              onClick={handleBackgroundClick}
+              className="fixed top-0 right-0 w-full h-full flex xl:justify-end md:justify-end cursor-pointer"
+            >
+              <div className="bg-white shadow-xl absolute mt-[300px]  mr-[120px] px-4 py-4 flex flex-col space-y-4 gap-4 min-w-[350px] rounded-md">
+                {walletArr.map((wallet, key) => (
+                  <div
+                    key={key}
+                    className="flex flex-col cursor-pointer gap-4"
+                    onClick={() => handleSelectWallet(wallet)}
+                  >
+                    <div className="flex flex-row items-center justify-between  h-10">
+                      <div className="flex flex-row gap-4">
+                        <div>
+                          <Image alt="" src={Creso} className="w-8 h-8" />
+                        </div>
+                        <div className="flex flex-col items-start gap-2">
+                          <p className="text-base md:text-sm font-semibold">
+                            {wallet ? wallet.walletName : ""}
+                          </p>
+                          <div className="flex gap-x-5">
+                            <p className="text-xs">
+                              {wallet
+                                ? minifyEthereumAddress(wallet.address)
+                                : ""}
+                            </p>
+                            <p className="text-xs opacity-50">
+                              {`(${wallet.balance})`}
+                            </p>
+                          </div>
+                        </div>
+                      </div>
                       <div>
-                        <Image alt="" src={Creso} className="w-8 h-8" />
+                        <button className="bg-[#EEEEF1] py-2 px-2 rounded-full border border-solid">
+                          <p className="text-xs font-medium">
+                            {wallet ? wallet.type : "Type"}
+                          </p>
+                        </button>
                       </div>
-                      <div className="flex flex-col items-start gap-2">
-                        <p className="text-base md:text-sm font-semibold">
-                          {wallet ? wallet.walletName : ""}
-                        </p>
-                        <p className="text-xs">
-                          {wallet ? minifyEthereumAddress(wallet.address) : ""}
-                        </p>
-                      </div>
-                    </div>
-                    <div>
-                      <button className="bg-[#EEEEF1] py-2 px-2 rounded-full border border-solid">
-                        <p className="text-xs font-medium">
-                          {wallet ? wallet.type : "Type"}
-                        </p>
-                      </button>
                     </div>
                   </div>
-                </div>
-              ))}
+                ))}
+              </div>
             </div>
           )}
         </div>

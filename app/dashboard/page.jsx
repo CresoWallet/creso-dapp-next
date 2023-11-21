@@ -168,7 +168,7 @@ const Dashboard = () => {
                   )}
                 </div>
               </div>
-              {!user.isEmailVerified && (
+              {!user?.isEmailVerified && (
                 <Backup onClick={() => handleShowModel()} />
               )}
 

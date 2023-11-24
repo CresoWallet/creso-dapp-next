@@ -2,7 +2,7 @@
 import { createContext, useEffect, useState } from "react";
 import { ethers } from "ethers";
 
-import { getUserWallets } from "@/clientApi/wallet";
+import { getHistory, getUserWallets } from "@/clientApi/wallet";
 import { AUTH_TOKEN } from "@/constants";
 
 export const WalletContext = createContext();
@@ -13,6 +13,7 @@ const WalletContextProvider = ({ children }) => {
   const [secureWalletBalance, setSecureWalletBalance] = useState(0);
   const [eoaWalletBalance, setEoaWalletBalance] = useState(0);
   const [wallets, setWallets] = useState([]);
+  const [history, setHistory] = useState([]);
 
   const fetchWallet = async () => {
     let sWalletBalance = 0;
@@ -78,9 +79,43 @@ const WalletContextProvider = ({ children }) => {
     }
   };
 
+  const fetchHistory = async () => {
+    try {
+      const res = await Promise.all([
+        await getHistory({
+          address: secureWalletAddress,
+          network: "goerli",
+        }),
+        await getHistory({
+          address: eoaWalletAddress,
+          network: "goerli",
+        }),
+      ]);
+
+      if (res) {
+        const historyArray = [];
+        console.log("res : ", res);
+        res.map((item) => {
+          console.log("item : ", item);
+          item?.data?.map((e) => {
+            historyArray.push(e);
+          });
+        });
+
+        setHistory(historyArray);
+      }
+    } catch (error) {
+      console.log("error : ", error);
+    }
+  };
+
   useEffect(() => {
     fetchWallet();
   }, []);
+
+  useEffect(() => {
+    secureWalletAddress && eoaWalletAddress && fetchHistory();
+  }, [secureWalletAddress, eoaWalletAddress]);
 
   return (
     <WalletContext.Provider
@@ -91,6 +126,7 @@ const WalletContextProvider = ({ children }) => {
         secureWalletAddress,
         eoaWalletAddress,
         fetchWallet,
+        history,
       }}
     >
       {children}

@@ -50,7 +50,9 @@ const RegisterPage = () => {
 
       setLoading(false);
     } catch (error) {
-      console.log(error);
+      enqueueSnackbar(`${error?.response?.data?.message}`, {
+        variant: "error",
+      });
     } finally {
       setLoading(false);
     }

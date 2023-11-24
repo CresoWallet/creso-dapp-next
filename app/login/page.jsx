@@ -16,6 +16,7 @@ import { AUTH_TOKEN } from "@/constants";
 import { useUser } from "@/providers/UserProvider";
 import { axiosInstance } from "@/services/axios";
 import { CustomTextField } from "@/components/fields/CustomTextField";
+import { enqueueSnackbar } from "notistack";
 
 const LoginPage = () => {
   const router = useRouter();
@@ -44,7 +45,9 @@ const LoginPage = () => {
         handleAuthentication();
       }
     } catch (err) {
-      console.log(err);
+      enqueueSnackbar(`${err?.response?.data?.message}`, {
+        variant: "error",
+      });
     } finally {
       // setLoading(false);
     }

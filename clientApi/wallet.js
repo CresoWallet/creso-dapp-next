@@ -17,6 +17,15 @@ export const transferEthAPI = async (formData) => {
   return res;
 };
 
+export const getHistory = async (formData) => {
+  const res = await axiosInstance(`/history`, {
+    method: "POST",
+    data: formData,
+  });
+
+  return res;
+};
+
 export const createEOAWalletAPI = async (formData) => {
   const res = await axiosInstance("/create/wallet", {
     method: "POST",

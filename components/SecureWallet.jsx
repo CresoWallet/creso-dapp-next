@@ -15,6 +15,12 @@ import USDT from "../assets/Dashboard/usdt3.png";
 import SendETH from "./SendETH";
 import WalletAddress from "./WalletAddress";
 
+const network = [
+  { key: "Ethereum Mainnet", value: "ethereum" },
+  { key: "BNB Smart Chain", value: "ethereum" },
+  { key: "Polygon", value: "polygon" },
+];
+
 const SecureWallet = ({
   handleClose,
   wallets,
@@ -45,6 +51,7 @@ const SecureWallet = ({
         <SendETH
           handleBackButton={() => setSend(false)}
           walletArr={wallets.filter((e) => e.type === walletType)}
+          network={network}
         />
       )}
       {walletAddress && (
@@ -53,7 +60,7 @@ const SecureWallet = ({
       <div className="flex flex-col mx-8 mt-10 gap-8">
         <div className="flex items-center justify-between">
           <p className="text-xl font-bold ml-4 xl:ml-0 md:ml-0">
-            {walletType === "secure" ? "Keyless Secure Wallet" : "EOA Wallet"}
+            {walletType === "AA" ? "Keyless Secure Wallet" : "EOA Wallet"}
           </p>
           <Image src={Menu} alt="" className="cursor-pointer" />
         </div>

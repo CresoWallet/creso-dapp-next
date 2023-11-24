@@ -10,7 +10,6 @@ import { AUTH_TOKEN } from "@/constants";
 import SecureWallet from "@/components/SecureWallet";
 import Modal from "@/components/modal/Modal";
 import { useUser } from "@/providers/UserProvider";
-import { getUserWallets } from "@/clientApi/wallet";
 import Backup from "@/components/Backup";
 import CoinList from "@/components/CoinList";
 import Mainnet from "@/components/Mainnet";
@@ -33,6 +32,7 @@ import AddCoinButton from "@/components/AddCoinButton";
 import CoinCard from "@/components/cards/Coin";
 import { WalletContext } from "@/providers/WalletProvider";
 import { ethToDollar } from "@/utils";
+import HistoryCard from "@/components/cards/HistoryCard";
 
 const Dashboard = () => {
   const router = useRouter();
@@ -52,6 +52,7 @@ const Dashboard = () => {
     secureWalletAddress,
     eoaWalletAddress,
     fetchWallet,
+    history,
   } = useContext(WalletContext);
 
   useEffect(() => {
@@ -182,6 +183,20 @@ const Dashboard = () => {
                 secureWalletAddress={secureWalletAddress}
                 eoaWalletAddress={eoaWalletAddress}
               />
+              <div className="flex flex-col mt-4 space-y-4">
+                {history &&
+                  history.map((item) => {
+                    console.log("item : ", item);
+                    return (
+                      <HistoryCard
+                        secureWalletAddress={secureWalletAddress}
+                        eoaWalletAddress={eoaWalletAddress}
+                        to={item?.to}
+                        hash={item?.hash}
+                      />
+                    );
+                  })}
+              </div>
             </div>
           </div>
         </div>

@@ -53,8 +53,7 @@ const Modal = ({ onClose, title, user }) => {
           email: user.email,
         });
         if (res?.status === 200) {
-          localStorage.setItem("otp_token", res?.data?.token);
-          enqueueSnackbar(`Email sent successfully`, {
+          enqueueSnackbar(`Successful email transmission`, {
             variant: "success",
           });
           setStep((step % 7) + 1);
@@ -83,12 +82,10 @@ const Modal = ({ onClose, title, user }) => {
       setLoading(true);
       try {
         const res = await verifyOTP({
-          token: localStorage.getItem("otp_token"),
           otp: otp,
-          email: user.email,
+          // email: user.email,
         });
         if (res?.status === 200) {
-          localStorage.setItem("otp_token", res?.data?.token);
           enqueueSnackbar(`Email verified`, {
             variant: "success",
           });

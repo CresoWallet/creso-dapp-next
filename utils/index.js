@@ -1,3 +1,5 @@
+import { ethers } from "ethers";
+
 export const minifyEthereumAddress = (
   address,
   prefixLength = 4,
@@ -28,3 +30,13 @@ export function downloadFile(data, filename, mimeType) {
   window.URL.revokeObjectURL(url);
   a.remove();
 }
+
+export const getBalance = async (address) => {
+  const provider = new ethers.JsonRpcProvider(
+    "https://ethereum-goerli.publicnode.com"
+  );
+
+  const balanceInWei = await provider.getBalance(address);
+  const balance = ethers.formatEther(balanceInWei);
+  return balance;
+};

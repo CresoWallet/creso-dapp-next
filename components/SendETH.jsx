@@ -1,7 +1,7 @@
 "use client";
 import React, { useEffect, useState, useContext, useRef } from "react";
 import Image from "next/image";
-import { minifyEthereumAddress } from "@/utils";
+import { getBalance, minifyEthereumAddress } from "@/utils";
 import { AiOutlineLoading3Quarters } from "react-icons/ai";
 import CustomButton3 from "./CustomButton3";
 import Ethereum from "../assets/Dashboard/etherum.png";
@@ -12,8 +12,9 @@ import { getUserWallets, transferEthAPI } from "@/clientApi/wallet";
 import { useForm } from "react-hook-form";
 import { enqueueSnackbar } from "notistack";
 import { WalletContext } from "@/providers/WalletProvider";
+import { coinList } from "@/utils/data/coinlist";
 
-const SendETH = ({ handleBackButton, walletArr }) => {
+const SendETH = ({ handleBackButton, walletArr, network }) => {
   const popupRef = useRef();
   const {
     register,
@@ -26,6 +27,9 @@ const SendETH = ({ handleBackButton, walletArr }) => {
   const [selectedWallet, setSelectedWallet] = useState({});
   const [loading, setLoading] = useState(false);
   const { fetchWallet } = useContext(WalletContext);
+  const [selectedNetwork, setSelectedNetwork] = useState("");
+  const [selectedToken, setSelectedToken] = useState("native");
+  const [tokenBalance, setTokenBalance] = useState(0);
 
   const handleBackgroundClick = (e) => {
     if (popupRef.current === e.target) {
@@ -48,8 +52,12 @@ const SendETH = ({ handleBackButton, walletArr }) => {
       sendTo: data.to,
       amount: data.amount,
       from: selectedWallet.address,
-      networks: "GOERLI",
+      // network: "goerli",
+      network: network,
+      standard: selectedToken === "native" ? "native" : "standard",
+      tokenAddress: selectedToken,
     };
+
     try {
       setLoading(true);
       const res = await transferEthAPI(transferPayload);
@@ -88,13 +96,62 @@ const SendETH = ({ handleBackButton, walletArr }) => {
           onClick={handleBackButton}
         />
       </div>
-      <div className="flex flex-col space-y-1">
+      {/* <div className="flex flex-col space-y-1">
         <p className="text-sm mx-4">Network</p>
         <div className="flex flex-row items-center gap-2 border border-solid rounded-full px-4 py-2">
           <Image alt="" src={Ethereum} />
           <p className="text-sm">Ethereum Mainnet</p>
         </div>
+      </div> */}
+      <div className="flex flex-col space-y-1">
+        <p className="text-sm mx-4">Network</p>
+        <select
+          onChange={(e) => {
+            setSelectedNetwork(e.target.value);
+          }}
+          className="border border-gray-300 rounded-full  h-10 pl-5 pr-10 bg-white hover:border-gray-400 focus:outline-none appearance-none text-sm"
+        >
+          {network.map((item, index) => {
+            return (
+              <option key={item.key} value={item.value}>
+                {item.key}
+              </option>
+            );
+          })}
+        </select>
       </div>
+
+      <div className="flex flex-col space-y-1">
+        <div className="flex flex-row justify-between items-center">
+          <p className="text-sm mx-4">Coin</p>
+          {tokenBalance && selectedToken !== "native" && (
+            <p className="text-sm">Balance : {tokenBalance} ETH</p>
+          )}
+        </div>
+
+        <select
+          onChange={async (e) => {
+            setSelectedToken(e.target.value);
+            if (e.target.value !== "native") {
+              const blnce = await getBalance(e.target.value);
+              setTokenBalance(blnce);
+            }
+          }}
+          className="border border-gray-300 rounded-full  h-10 pl-5 pr-10 bg-white hover:border-gray-400 focus:outline-none appearance-none text-sm"
+        >
+          <option value="native">Native</option>
+          {coinList
+            .filter((e) => e.standard === "stable")
+            .map((item) => {
+              return (
+                <option key={item.tokenAddress} value={item.tokenAddress}>
+                  {item.coinName}
+                </option>
+              );
+            })}
+        </select>
+      </div>
+
       <div className="flex flex-col space-y-1">
         <p className="text-sm mx-4">From</p>
         <div className="flex flex-row justify-between items-center gap-2 border border-solid rounded-full px-4 py-2 relative">

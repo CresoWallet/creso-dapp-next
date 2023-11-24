@@ -35,13 +35,15 @@ const Account = ({ user, setShowModal }) => {
             <MdKeyboardArrowRight />
           </div>
         </Link>
-        <div className="flex flex-row justify-between items-center  cursor-pointer">
-          <div className="flex flex-row gap-2 items-center">
-            <GoKey />
-            <p className="text-sm">Recovery Key</p>
+        <Link href="/recovery">
+          <div className="flex flex-row justify-between items-center  cursor-pointer">
+            <div className="flex flex-row gap-2 items-center">
+              <GoKey />
+              <p className="text-sm">Recovery Key</p>
+            </div>
+            <MdKeyboardArrowRight />
           </div>
-          <MdKeyboardArrowRight />
-        </div>
+        </Link>
         <Link href="/security">
           <div className="flex flex-row justify-between items-center  cursor-pointer">
             <div className="flex flex-row gap-2 items-center">

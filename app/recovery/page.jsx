@@ -38,6 +38,8 @@ const RecoveryPage = () => {
     secureWalletAddress,
     eoaWalletAddress,
     fetchWallet,
+    smartWallets,
+    eoaWallets,
   } = useContext(WalletContext);
 
   const [selectedSWallet, setSelectedSWallet] = useState("");
@@ -83,8 +85,15 @@ const RecoveryPage = () => {
   };
 
   const handleAddGuardian = () => {
-    console.log("selectedSWallet : ", selectedSWallet);
-    console.log("selectedSWallet : ", selectedSWallet);
+    if (guardian !== "") {
+      const payload = {
+        walletAddress: selectedSWallet
+          ? selectedSWallet
+          : smartWallets[0].address,
+        guardian: guardian,
+        network: "goerli",
+      };
+    }
   };
 
   return (
@@ -184,16 +193,14 @@ const RecoveryPage = () => {
                     }}
                     className="border border-gray-300 rounded-full text-[#A09FAA] h-10 pl-5 pr-10 bg-white hover:border-gray-400 focus:outline-none appearance-none text-sm"
                   >
-                    {wallets
-                      .filter((e) => e.type === "AA")
-                      .map((item) => {
-                        return (
-                          <option
-                            key={item.address}
-                            value={item.address}
-                          >{`${item.walletName} (${item.address})`}</option>
-                        );
-                      })}
+                    {smartWallets.map((item) => {
+                      return (
+                        <option
+                          key={item.address}
+                          value={item.address}
+                        >{`${item.walletName} (${item.address})`}</option>
+                      );
+                    })}
                   </select>
                 </div>
               </div>

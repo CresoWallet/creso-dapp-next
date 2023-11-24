@@ -13,6 +13,8 @@ const WalletContextProvider = ({ children }) => {
   const [secureWalletBalance, setSecureWalletBalance] = useState(0);
   const [eoaWalletBalance, setEoaWalletBalance] = useState(0);
   const [wallets, setWallets] = useState([]);
+  const [smartWallets, setSmartWallets] = useState([]);
+  const [eoaWallets, setEoaWallets] = useState([]);
   const [history, setHistory] = useState([]);
 
   const fetchWallet = async () => {
@@ -72,6 +74,8 @@ const WalletContextProvider = ({ children }) => {
 
         setSecureWalletBalance(sWalletBalance);
         setEoaWalletBalance(eWalletBalance);
+        setSmartWallets(smartWallet);
+        setEoaWallets(walletsEOA);
         setWallets(wallets);
       }
     } catch (error) {
@@ -94,15 +98,21 @@ const WalletContextProvider = ({ children }) => {
 
       if (res) {
         const historyArray = [];
-        console.log("res : ", res);
         res.map((item) => {
-          console.log("item : ", item);
           item?.data?.map((e) => {
             historyArray.push(e);
           });
         });
 
-        setHistory(historyArray);
+        let result = historyArray.filter((e, i) => {
+          return (
+            historyArray.findIndex((x) => {
+              return x.hash == e.hash;
+            }) == i
+          );
+        });
+
+        setHistory(result);
       }
     } catch (error) {
       console.log("error : ", error);
@@ -127,6 +137,8 @@ const WalletContextProvider = ({ children }) => {
         eoaWalletAddress,
         fetchWallet,
         history,
+        smartWallets,
+        eoaWallets,
       }}
     >
       {children}

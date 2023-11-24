@@ -108,12 +108,16 @@ const CoinWallet = ({ handleClose, wallets, coinData }) => {
         <div>
           <div className="flex flex-row items-center justify-between">
             <p className="text-[#A09FAA] text-sm">Network</p>
-            <p className="font-semibold text-sm">{coinData?.network}</p>
+            <p className="font-semibold text-sm">
+              {coinData?.network === "ethereum" ? "Ethereum Mainnet" : ""}
+            </p>
           </div>
           <hr className="text-[#A09FAA] my-4" />
           <div className="flex flex-row items-center justify-between">
             <p className="text-[#A09FAA] text-sm">Standard</p>
-            <p className="font-semibold text-sm">{coinData?.standard}</p>
+            <p className="font-semibold text-sm">
+              {coinData?.standard === "native" ? "Native Token" : "ERC-20"}
+            </p>
           </div>
         </div>
         <div className="flex justify-center">

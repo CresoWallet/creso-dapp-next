@@ -51,7 +51,7 @@ const SecureWallet = ({
         <SendETH
           handleBackButton={() => setSend(false)}
           walletArr={wallets.filter((e) => e.type === walletType)}
-          network={network}
+          networks={network}
         />
       )}
       {walletAddress && (

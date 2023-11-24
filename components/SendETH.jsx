@@ -14,7 +14,7 @@ import { enqueueSnackbar } from "notistack";
 import { WalletContext } from "@/providers/WalletProvider";
 import { coinList } from "@/utils/data/coinlist";
 
-const SendETH = ({ handleBackButton, walletArr, network }) => {
+const SendETH = ({ handleBackButton, walletArr, networks }) => {
   const popupRef = useRef();
   const {
     register,
@@ -53,7 +53,7 @@ const SendETH = ({ handleBackButton, walletArr, network }) => {
       amount: data.amount,
       from: selectedWallet.address,
       // network: "goerli",
-      network: network,
+      network: selectedNetwork ? selectedNetwork : "goerli",
       standard: selectedToken === "native" ? "native" : "standard",
       tokenAddress: selectedToken,
     };
@@ -70,6 +70,7 @@ const SendETH = ({ handleBackButton, walletArr, network }) => {
         setLoading(false);
       }
     } catch (error) {
+      console.log("error : ", error);
       enqueueSnackbar(`Transaction failed`, {
         variant: "error",
       });
@@ -111,7 +112,7 @@ const SendETH = ({ handleBackButton, walletArr, network }) => {
           }}
           className="border border-gray-300 rounded-full  h-10 pl-5 pr-10 bg-white hover:border-gray-400 focus:outline-none appearance-none text-sm"
         >
-          {network.map((item, index) => {
+          {networks.map((item, index) => {
             return (
               <option key={item.key} value={item.value}>
                 {item.key}

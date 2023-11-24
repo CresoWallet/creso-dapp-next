@@ -57,15 +57,17 @@ const CoinWallet = ({ handleClose, wallets, coinData }) => {
         <SendETH
           handleBackButton={() => setSend(false)}
           walletArr={wallets}
-          network={
-            coinData.coinName === "ETH"
-              ? ethNetwork
-              : coinData.coinName === "BNB"
-              ? bNetwork
-              : coinData.coinName === "USDT"
-              ? pNetwork
-              : ETH
-          }
+          // networks={
+          //   coinData.coinName === "ETH"
+          //     ? ethNetwork
+          //     : coinData.coinName === "BNB"
+          //     ? bNetwork
+          //     : coinData.coinName === "USDT"
+          //     ? pNetwork
+          //     : ETH
+          // }
+
+          networks={ethNetwork}
         />
       )}
       {walletAddress && (

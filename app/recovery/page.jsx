@@ -68,11 +68,17 @@ const RecoveryPage = () => {
           passkey: secretKey,
         });
         if (res) {
-          var blob = new Blob([btoa(JSON.stringify(res?.data))], {
-            type: "text/plain;charset=utf-8",
+          console.log(res.data);
+          // var blob = new Blob([btoa(JSON.stringify(res?.data))], {
+          //   type: "text/plain;charset=utf-8",
+          // }); //application/json
+          const blob = new Blob([JSON.stringify(res.data)], {
+            type: "application/json",
           });
-          FileSaver.saveAs(blob, `${user?.email}_credential.creso`);
-          setEncryptedKey(res?.data?.data);
+          FileSaver.saveAs(blob, `${user?.email}_credential.creso.json`, {
+            type: "application/json",
+          });
+          // setEncryptedKey(res?.data?.data);
           setStep((step % 7) + 1);
           setLoading(false);
         } else {

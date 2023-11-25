@@ -68,7 +68,6 @@ const RecoveryPage = () => {
           passkey: secretKey,
         });
         if (res) {
-          console.log(res.data);
           // var blob = new Blob([btoa(JSON.stringify(res?.data))], {
           //   type: "text/plain;charset=utf-8",
           // }); //application/json

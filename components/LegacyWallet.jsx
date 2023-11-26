@@ -6,11 +6,12 @@ import CustomButton3 from "./CustomButton3";
 import Ethereum from "../assets/Dashboard/etherum.png";
 import CustomButton2 from "./CustomButton2";
 import CreateWallet from "./CreateWallet";
-import { createEOAWalletAPI } from "@/clientApi/wallet";
+import { createEOAWalletAPI, createSmartWalletAPI } from "@/clientApi/wallet";
 import { enqueueSnackbar } from "notistack";
 import { WalletContext } from "@/providers/WalletProvider";
 
-const LegacyWallet = ({ handleBackButton }) => {
+const LegacyWallet = ({ handleBackButton, type }) => {
+  console.log("type : ", type);
   const [wallet, setWallet] = useState(false);
   const [inputText, setInputText] = useState("");
   const [error, setError] = useState(false);
@@ -31,25 +32,50 @@ const LegacyWallet = ({ handleBackButton }) => {
 
   const handleCreateEOAWallet = async () => {
     setLoading(true);
-    try {
-      const payload = {
-        walletName: inputText,
-      };
-      const res = await createEOAWalletAPI(payload);
-      if (res) {
-        await fetchWallet();
-        enqueueSnackbar(`Successful wallet creation`, {
-          variant: "success",
-        });
-        setLoading(false);
-      }
 
-      console.log(res);
-    } catch (error) {
-      console.log(error);
-      enqueueSnackbar(`Something went wrong`, {
-        variant: "error",
-      });
+    if (type === "EOA") {
+      try {
+        const payload = {
+          walletName: inputText,
+        };
+        const res = await createEOAWalletAPI(payload);
+        if (res) {
+          await fetchWallet();
+          enqueueSnackbar(`Successful wallet creation`, {
+            variant: "success",
+          });
+          setLoading(false);
+        }
+
+        console.log(res);
+      } catch (error) {
+        console.log(error);
+        enqueueSnackbar(`Something went wrong`, {
+          variant: "error",
+        });
+      }
+    } else if ((type = "AA")) {
+      try {
+        const payload = {
+          walletName: inputText,
+          network: "goerli",
+        };
+        const res = await createSmartWalletAPI(payload);
+        if (res) {
+          await fetchWallet();
+          enqueueSnackbar(`Successful wallet creation`, {
+            variant: "success",
+          });
+          setLoading(false);
+        }
+
+        console.log(res);
+      } catch (error) {
+        console.log(error);
+        enqueueSnackbar(`Something went wrong`, {
+          variant: "error",
+        });
+      }
     }
   };
 

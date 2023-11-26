@@ -34,6 +34,14 @@ export const createEOAWalletAPI = async (formData) => {
   return res;
 };
 
+export const createSmartWalletAPI = async (formData) => {
+  const res = await axiosInstance("/create/smartwallet", {
+    method: "POST",
+    data: formData,
+  });
+  return res;
+};
+
 export const backupWallet = async (formData) => {
   const res = await axiosInstance(`/backup/wallet`, {
     method: "POST",

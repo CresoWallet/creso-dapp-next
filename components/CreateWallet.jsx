@@ -13,13 +13,17 @@ import SecureWallet from "./SecureWallet";
 const CreateWallet = ({ handleClose }) => {
   const [legacyWallet, setLegacyWallet] = useState(false);
   const [smartWallet, setSmartWallet] = useState(false);
+  const [type, setType] = useState("");
 
   const handleClick = () => {
+    setType("EOA");
     setLegacyWallet(true);
   };
 
   const handleAAClick = () => {
-    setSmartWallet(true);
+    setType("AA");
+    // setSmartWallet(true);
+    setLegacyWallet(true);
   };
 
   return (
@@ -31,7 +35,10 @@ const CreateWallet = ({ handleClose }) => {
         />
       </div>
       {legacyWallet && (
-        <LegacyWallet handleBackButton={() => setLegacyWallet(false)} />
+        <LegacyWallet
+          handleBackButton={() => setLegacyWallet(false)}
+          type={type}
+        />
       )}
       <div className="flex flex-col xl:mx-8 md:mx-4 mt-10 space-y-8">
         <p className="text-black font-bold text-xl ml-12 xl:ml-0 md:ml-2">

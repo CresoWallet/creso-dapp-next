@@ -12,7 +12,7 @@ import Apple from "../../assets/auth/Apple.png";
 import X from "../../assets/auth/x.png";
 import MobileImage from "../../assets/auth/Group.png";
 import { loginApi } from "@/clientApi/auth";
-import { AUTH_TOKEN } from "@/constants";
+import { AUTH_TOKEN, BASE_URL } from "@/constants";
 import { useUser } from "@/providers/UserProvider";
 import { axiosInstance } from "@/services/axios";
 import { CustomTextField } from "@/components/fields/CustomTextField";

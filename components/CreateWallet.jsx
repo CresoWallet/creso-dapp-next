@@ -21,7 +21,7 @@ const CreateWallet = ({ handleClose }) => {
   };
 
   const handleAAClick = () => {
-    setType("AA");
+    setType("AAA");
     // setSmartWallet(true);
     setLegacyWallet(true);
   };
@@ -36,6 +36,7 @@ const CreateWallet = ({ handleClose }) => {
       </div>
       {legacyWallet && (
         <LegacyWallet
+          handleClose={handleClose}
           handleBackButton={() => setLegacyWallet(false)}
           type={type}
         />
@@ -67,7 +68,7 @@ const CreateWallet = ({ handleClose }) => {
                     buttonColor="[#EEEEF1]"
                     titleColor="black"
                   />
-                  <div className="flex rounded-full bg-black xl:h-8 xl:w-8 h-6 w-6 items-center justify-center">
+                  <div className="flex rounded-full bg-black xl:h-8 xl:w-8 h-6 w-6 items-center justify-center cursor-pointer">
                     <BiChevronRight
                       className="text-white h-4 w-4 hover:translate-x-1 duration-500"
                       onClick={handleClick}
@@ -100,7 +101,7 @@ const CreateWallet = ({ handleClose }) => {
                     buttonColor="[#EEEEF1]"
                     titleColor="black"
                   />
-                  <div className="flex rounded-full bg-black xl:h-8 xl:w-8 h-6 w-6 items-center justify-center group">
+                  <div className="flex rounded-full bg-black xl:h-8 xl:w-8 h-6 w-6 items-center justify-center group cursor-pointer">
                     <BiChevronRight
                       className="text-white h-4 w-4 hover:translate-x-1 duration-500"
                       onClick={handleAAClick}

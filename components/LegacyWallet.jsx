@@ -10,8 +10,7 @@ import { createEOAWalletAPI, createSmartWalletAPI } from "@/clientApi/wallet";
 import { enqueueSnackbar } from "notistack";
 import { WalletContext } from "@/providers/WalletProvider";
 
-const LegacyWallet = ({ handleBackButton, type }) => {
-  console.log("type : ", type);
+const LegacyWallet = ({ handleBackButton, type, handleClose }) => {
   const [wallet, setWallet] = useState(false);
   const [inputText, setInputText] = useState("");
   const [error, setError] = useState(false);
@@ -45,6 +44,7 @@ const LegacyWallet = ({ handleBackButton, type }) => {
             variant: "success",
           });
           setLoading(false);
+          handleClose();
         }
 
         console.log(res);
@@ -54,7 +54,7 @@ const LegacyWallet = ({ handleBackButton, type }) => {
           variant: "error",
         });
       }
-    } else if ((type = "AA")) {
+    } else if ((type = "AAA")) {
       try {
         const payload = {
           walletName: inputText,
@@ -67,6 +67,7 @@ const LegacyWallet = ({ handleBackButton, type }) => {
             variant: "success",
           });
           setLoading(false);
+          handleClose();
         }
 
         console.log(res);
@@ -83,7 +84,9 @@ const LegacyWallet = ({ handleBackButton, type }) => {
     <div className="absolute bg-white flex flex-col xl:mx-8 md:mx-4 mx-0 mt-10 xl:px-0 px-2 md:px-2 space-y-8 h-full">
       {wallet && <CreateWallet handleBackButton={() => setWallet(false)} />}
       <div className="flex flex-row items-center justify-between">
-        <p className="text-black font-bold text-xl">Legacy Wallet</p>
+        <p className="text-black font-bold text-xl">
+          {type === "EOA" ? "Legacy Wallet" : "Smart Wallet"}
+        </p>
         <div>
           <CustomButton3
             title="Back"
@@ -120,7 +123,7 @@ const LegacyWallet = ({ handleBackButton, type }) => {
             />
             <div>
               <CustomButton3
-                title="EOA"
+                title={type}
                 buttonColor="[#EEEEF1]"
                 titleColor="black"
               />

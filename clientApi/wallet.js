@@ -50,3 +50,11 @@ export const backupWallet = async (formData) => {
 
   return res;
 };
+
+export const addGuardian = async (formData) => {
+  const res = await axiosInstance("/add/guardian", {
+    method: "POST",
+    data: formData,
+  });
+  return res;
+};

@@ -18,6 +18,7 @@ import { useRouter } from "next/navigation";
 import { AUTH_TOKEN } from "@/constants";
 import { useUser } from "@/providers/UserProvider";
 import Modal from "@/components/modal/Modal";
+import { logOut } from "@/clientApi/auth";
 
 const AccountPage = () => {
   const router = useRouter();
@@ -35,8 +36,18 @@ const AccountPage = () => {
   }, [navbarTrigger]);
 
   const handleLogout = async () => {
-    localStorage.removeItem(AUTH_TOKEN);
-    router.push("/");
+    // localStorage.removeItem(AUTH_TOKEN);
+    // router.push("/");
+
+    try {
+      const res = await logOut();
+      if (res) {
+        window.location.href = "/";
+      }
+    } catch (err) {
+      console.log(err);
+    } finally {
+    }
   };
   return (
     <div id="modal-root">

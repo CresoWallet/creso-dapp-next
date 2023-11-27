@@ -21,9 +21,10 @@ import Modal from "@/components/modal/Modal";
 import Creso from "../../assets/Dashboard/creso2.png";
 import { minifyEthereumAddress } from "@/utils";
 import { WalletContext } from "@/providers/WalletProvider";
-import { backupWallet } from "@/clientApi/wallet";
+import { addGuardian, backupWallet } from "@/clientApi/wallet";
 import { enqueueSnackbar } from "notistack";
 import FileSaver from "file-saver";
+import { AiOutlineLoading3Quarters } from "react-icons/ai";
 
 const RecoveryPage = () => {
   const router = useRouter();
@@ -63,7 +64,6 @@ const RecoveryPage = () => {
       });
     } else {
       try {
-        setLoading(true);
         const res = await backupWallet({
           passkey: secretKey,
         });
@@ -79,7 +79,6 @@ const RecoveryPage = () => {
           });
           // setEncryptedKey(res?.data?.data);
           setStep((step % 7) + 1);
-          setLoading(false);
         } else {
           enqueueSnackbar(`Couldn't backup`, {
             variant: "error",
@@ -89,7 +88,7 @@ const RecoveryPage = () => {
     }
   };
 
-  const handleAddGuardian = () => {
+  const handleAddGuardian = async () => {
     if (guardian !== "") {
       const payload = {
         walletAddress: selectedSWallet
@@ -98,7 +97,24 @@ const RecoveryPage = () => {
         guardian: guardian,
         network: "goerli",
       };
+
+      setLoading(true);
+      try {
+        const res = await addGuardian(payload);
+        if (res) {
+          enqueueSnackbar(`Guardian added successful`, {
+            variant: "success",
+          });
+        }
+      } catch (error) {
+        console.log("error : ", error);
+        enqueueSnackbar(`Couldn't add guardian`, {
+          variant: "error",
+        });
+      }
     }
+
+    setLoading(false);
   };
 
   return (
@@ -229,7 +245,11 @@ const RecoveryPage = () => {
                   onClick={handleAddGuardian}
                   className="bg-[#D0F500] xl:py-2  hover:font-bold cursor-pointer xl:px-2 md:py-2 px-1 py-1 md:px-2 border border-solid rounded-full border-black text-sm items-center justify-center"
                 >
-                  Add Guardian
+                  {loading ? (
+                    <AiOutlineLoading3Quarters className="w-5 h-5 animate-spin text-sky-500" />
+                  ) : (
+                    "Add Guardian"
+                  )}
                 </button>
               </div>
             </div>

@@ -182,11 +182,11 @@ const Dashboard = () => {
                 handleCreateWallet={handleCreateWallet}
                 secureWalletAddress={secureWalletAddress}
                 eoaWalletAddress={eoaWalletAddress}
+                showWallet={showWallet}
               />
               <div className="flex flex-col mt-4 space-y-4">
                 {history &&
                   history.map((item, i) => {
-                    console.log("item : ", item);
                     return (
                       <HistoryCard
                         key={`history_${i}`}

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import { useSnackbar } from "notistack";
 
@@ -28,8 +28,16 @@ const Mainnet = ({
   handleCreateWallet,
   eoaWalletAddress,
   secureWalletAddress,
+  showWallet,
 }) => {
   const { enqueueSnackbar } = useSnackbar();
+  const [activeButton, setActiveButton] = useState("");
+
+  useEffect(() => {
+    if (!showWallet) {
+      setActiveButton("");
+    }
+  });
 
   return (
     <div className="flex flex-col xl:space-y-8 md:space-y-8 space-y-2">
@@ -49,7 +57,13 @@ const Mainnet = ({
       </div>
       <div>
         <div className="flex xl:flex-row flex-col items-center xl:gap-4 md:gap-4 gap-2">
-          <div className="bg-black rounded-full px-4 py-4 w-full hover:bg-gray-800 duration-500 cursor-pointer">
+          <div
+            className={`${
+              activeButton === "AA"
+                ? "bg-black"
+                : "bg-white hover:bg-gray-200 duration-500 "
+            } rounded-full px-4 py-4 w-full border-2 border-black cursor-pointer group`}
+          >
             <div className="flex flex-row justify-between items-center gap-3 group">
               <Image
                 src={Wallet}
@@ -57,7 +71,11 @@ const Mainnet = ({
                 className="md:w-14 md:h-14 xl:w-12 xl:h-12"
               />
               <div className="flex flex-col space-y-1">
-                <p className="text-white font-semibold text-sm md:text-lg xl:text-sm">
+                <p
+                  className={`${
+                    activeButton === "AA" ? "text-white" : "text-black"
+                  }  font-semibold text-sm md:text-lg xl:text-sm`}
+                >
                   Keyless Secure Wallet
                 </p>
                 <div className="flex flex-row items-center gap-4">
@@ -65,7 +83,7 @@ const Mainnet = ({
                     {minifyEthereumAddress(secureWalletAddress)}
                   </p>
                   <Image
-                    src={Copy}
+                    src={activeButton ? Copy : Copy2}
                     alt=""
                     onClick={() => {
                       copyToClipBoard(secureWalletAddress);
@@ -82,13 +100,20 @@ const Mainnet = ({
                   src={Next2}
                   className="md:w-10 md:h-10 xl:w-8 xl:h-8 group-hover:translate-x-1 duration-500"
                   onClick={() => {
+                    setActiveButton("AA");
                     handleOpenWallet({ walletName: "AA" });
                   }}
                 />
               </div>
             </div>
           </div>
-          <div className="bg-white rounded-full px-4 py-4 w-full border-2 border-black hover:bg-gray-200 duration-500 cursor-pointer group">
+          <div
+            className={`${
+              activeButton === "EOA"
+                ? "bg-black"
+                : "bg-white  hover:bg-gray-200 duration-500 "
+            } rounded-full px-4 py-4 w-full border-2 border-black cursor-pointer group`}
+          >
             <div className="flex flex-row justify-between items-center gap-3">
               <Image
                 src={Wallet2}
@@ -96,7 +121,11 @@ const Mainnet = ({
                 className="md:w-14 md:h-14 xl:w-12 xl:h-12"
               />
               <div className="flex flex-col space-y-1">
-                <p className="text-black font-semibold text-sm md:text-lg xl:text-sm">
+                <p
+                  className={`${
+                    activeButton === "EOA" ? "text-white" : "text-black"
+                  }  font-semibold text-sm md:text-lg xl:text-sm`}
+                >
                   EOA Wallet
                 </p>
                 <div className="flex flex-row items-center gap-4">
@@ -104,7 +133,7 @@ const Mainnet = ({
                     {minifyEthereumAddress(eoaWalletAddress)}
                   </p>
                   <Image
-                    src={Copy2}
+                    src={activeButton ? Copy : Copy2}
                     alt=""
                     onClick={() => {
                       copyToClipBoard(eoaWalletAddress);
@@ -121,6 +150,7 @@ const Mainnet = ({
                   src={Next2}
                   className="md:w-10 md:h-10 xl:w-8 xl:h-8 group-hover:translate-x-1 duration-500"
                   onClick={() => {
+                    setActiveButton("EOA");
                     handleOpenWallet({ walletName: "EOA" });
                   }}
                 />

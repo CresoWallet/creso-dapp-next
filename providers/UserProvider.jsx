@@ -42,7 +42,6 @@ export const UserProvider = ({ children }) => {
   const handleAuthentication = async () => {
     try {
       const res = await authenticateUser();
-      console.log("authentUser : ", res);
       if (res) {
         setUser(res.data.user);
         setStatus("authenticated");

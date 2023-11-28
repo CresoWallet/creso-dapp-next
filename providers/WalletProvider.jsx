@@ -87,11 +87,11 @@ const WalletContextProvider = ({ children }) => {
     try {
       const res = await Promise.all([
         await getHistory({
-          address: secureWalletAddress,
+          address: eoaWalletAddress,
           network: "goerli",
         }),
         await getHistory({
-          address: eoaWalletAddress,
+          address: secureWalletAddress,
           network: "goerli",
         }),
       ]);

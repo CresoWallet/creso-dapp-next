@@ -3,8 +3,10 @@ import Image from "next/image";
 import Account from "../../assets/Dashboard/account.png";
 import Add from "../../assets/Dashboard/add.png";
 import ETH from "../../assets/Dashboard/ethSelect.png";
-import BnB from "../../assets/Dashboard/bnb.png";
 import USDT from "../../assets/Dashboard/usdt.png";
+import DAI from "../../assets/Dashboard/dai.png";
+import BnB from "../../assets/Dashboard/bnb.png";
+import WETH from "../../assets/Dashboard/weth.png";
 import { coinList } from "@/utils/data/coinlist";
 
 const CoinCard = ({ handleCoinWallet }) => {
@@ -28,6 +30,10 @@ const CoinCard = ({ handleCoinWallet }) => {
                   ? BnB
                   : item.coinName === "USDT"
                   ? USDT
+                  : item.coinName === "DAI"
+                  ? DAI
+                  : item.coinName === "WETH"
+                  ? WETH
                   : ETH
               }
               className="xl:h-14 xl:w-14 md:h-12 md:w-12 w-12 h-12"

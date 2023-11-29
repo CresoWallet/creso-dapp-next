@@ -22,7 +22,7 @@ export const coinList = [
     standard: "stable",
   },
   {
-    coinName: "USDC",
+    coinName: "USDT",
     tokenAddress: "0x78731D3Ca6b7E34aC0F824c42a7cC18A495cabaB",
     value: "$5,123.79",
     network: "ethereum",

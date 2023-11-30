@@ -65,7 +65,7 @@ const LoginPage = () => {
   };
 
   return (
-    <div className="grid xl:grid-cols-2 md:grid-cols-2 grid-cols-1 h-screen mx-2 my-2 gap-2 xl:gap-0 md:gap-0">
+    <div className="grid xl:grid-cols-2 md:grid-cols-2 grid-cols-1 h-screen px-2 py-2 gap-2 xl:gap-0 md:gap-0">
       <div className="col-span-1 flex justify-center xl:items-center md:items-start bg-[#2100EC] xl:py-8 md:py-8 rounded-2xl">
         <Image alt="" src={BgImage} className="hidden xl:flex md:flex" />
         <div className="flex xl:hidden md:hidden flex-col space-y-4 items-center justify-center px-4 py-4">
@@ -100,11 +100,13 @@ const LoginPage = () => {
               isLoading={loading}
               name="Login"
               bgColor="black"
+              hoverColor={"zinc-800"}
               type={"submit"}
             />
             <CustomButton
+              isDisabled={true}
               bgColor="white"
-              name="Continue With X"
+              name="Continue With Apple"
               nameColor="black"
               img={Apple}
               onClick={handleTwitterLogin}

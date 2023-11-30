@@ -12,7 +12,7 @@ export function CustomTextField({
         {...validation}
         type={type ? type : "text"}
         placeholder={placeholder}
-        className="placeholder:text-[#A09FAA] text-xs xl:px-4 xl:py-4 md:px-4 md:py-4 py-3 px-3 rounded-full border border-solid"
+        className="placeholder:text-[#A09FAA] text-sm/[17px]  xl:px-4 xl:py-4 md:px-4 md:py-4 py-3 px-3 rounded-full border border-solid"
       />
       {error && <p className="text-red-500">{error}</p>}
     </div>

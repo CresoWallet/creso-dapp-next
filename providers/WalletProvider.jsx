@@ -4,6 +4,7 @@ import { ethers } from "ethers";
 
 import { getHistory, getUserWallets } from "@/clientApi/wallet";
 import { AUTH_TOKEN } from "@/constants";
+import { useUser } from "./UserProvider";
 
 export const WalletContext = createContext();
 
@@ -16,6 +17,7 @@ const WalletContextProvider = ({ children }) => {
   const [smartWallets, setSmartWallets] = useState([]);
   const [eoaWallets, setEoaWallets] = useState([]);
   const [history, setHistory] = useState([]);
+  const { user, isAuthenticated, status } = useUser();
 
   const fetchWallet = async () => {
     let sWalletBalance = 0;
@@ -120,7 +122,7 @@ const WalletContextProvider = ({ children }) => {
   };
 
   useEffect(() => {
-    fetchWallet();
+    isAuthenticated && fetchWallet();
   }, []);
 
   useEffect(() => {

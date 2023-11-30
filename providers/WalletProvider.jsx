@@ -122,7 +122,7 @@ const WalletContextProvider = ({ children }) => {
   };
 
   useEffect(() => {
-    isAuthenticated && fetchWallet();
+    fetchWallet();
   }, []);
 
   useEffect(() => {

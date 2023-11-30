@@ -17,7 +17,7 @@ import WalletAddress from "./WalletAddress";
 
 const network = [
   { key: "Ethereum Mainnet", value: "ethereum" },
-  { key: "BNB Smart Chain", value: "ethereum" },
+  { key: "BNB Smart Chain", value: "bnb" },
   { key: "Polygon", value: "polygon" },
 ];
 

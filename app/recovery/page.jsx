@@ -43,10 +43,10 @@ const RecoveryPage = () => {
     eoaWallets,
   } = useContext(WalletContext);
 
-  const [selectedSWallet, setSelectedSWallet] = useState("");
   const [secretKey, setSecretKey] = useState("");
   const [guardian, setGuardian] = useState("");
   const [loading, setLoading] = useState(false);
+  const [selectedWallet, setSelectedWallet] = useState({});
 
   const isMobile = useMediaQuery({ query: `(max-width: 760px)` });
   useEffect(() => {
@@ -89,15 +89,16 @@ const RecoveryPage = () => {
   };
 
   const handleAddGuardian = async () => {
-    if (guardian !== "") {
+    if (!selectedWallet || guardian === "") {
+      enqueueSnackbar(`Missed Fields`, {
+        variant: "error",
+      });
+    } else {
       const payload = {
-        walletAddress: selectedSWallet
-          ? selectedSWallet
-          : smartWallets[0].address,
+        walletAddress: selectedWallet.address,
         guardian: guardian,
         network: "goerli",
       };
-
       setLoading(true);
       try {
         const res = await addGuardian(payload);
@@ -112,9 +113,9 @@ const RecoveryPage = () => {
           variant: "error",
         });
       }
-    }
 
-    setLoading(false);
+      setLoading(false);
+    }
   };
 
   return (
@@ -205,24 +206,69 @@ const RecoveryPage = () => {
                 <p className="text-sm font-semibold">Social Recovery</p>
               </div>
 
-              <div className="flex flex-col xl:mt-5 md:mt-7 mt-5 xl:space-y-4 space-y-2">
-                <div className="flex flex-col space-y-2">
-                  <p className="text-sm">Select a smart wallet</p>
-                  <select
-                    onChange={(e) => {
-                      setSelectedSWallet(e.target.value);
-                    }}
-                    className="border border-gray-300 rounded-full text-[#A09FAA] h-10 pl-5 pr-10 bg-white hover:border-gray-400 focus:outline-none appearance-none text-sm"
+              <div className="flex flex-col space-y-1">
+                <div className="dropdown ">
+                  <div
+                    tabIndex={0}
+                    role="button"
+                    className="text-sm m-1 w-full xl:px-4 xl:py-4 md:px-4 md:py-4 py-3 px-3 rounded-full border border-solid"
                   >
+                    <div className="flex items-center gap-2">
+                      <>
+                        {selectedWallet ? (
+                          <Image alt="" src={Creso} />
+                        ) : (
+                          <p className="text-sm md:text-xs cursor-pointer hover:font-bold">
+                            Select Wallet
+                          </p>
+                        )}
+                      </>
+                      {selectedWallet?.walletName ? (
+                        selectedWallet.walletName
+                      ) : (
+                        <p className="opacity-50">wallet address</p>
+                      )}
+                    </div>
+                  </div>
+                  <ul className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box">
                     {smartWallets.map((item) => {
                       return (
-                        <option
-                          key={item.address}
-                          value={item.address}
-                        >{`${item.walletName} (${item.address})`}</option>
+                        <li
+                          key={item.walletAddress}
+                          onMouseDown={() => setSelectedWallet(item)}
+                        >
+                          <div>
+                            <div className="flex flex-row items-center justify-between h-10">
+                              <div className="flex flex-row gap-4">
+                                <div>
+                                  <Image
+                                    alt=""
+                                    src={Creso}
+                                    className="w-8 h-8"
+                                  />
+                                </div>
+                                <div className="flex flex-col items-start gap-2">
+                                  <p className="text-base md:text-sm font-semibold">
+                                    {item?.walletName}
+                                  </p>
+                                  <div className="flex gap-x-5">
+                                    <p className="text-xs">
+                                      {item
+                                        ? minifyEthereumAddress(item.address)
+                                        : ""}
+                                    </p>
+                                    <p className="text-xs opacity-50">
+                                      {`(${item.balance})`}
+                                    </p>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </li>
                       );
                     })}
-                  </select>
+                  </ul>
                 </div>
               </div>
 
@@ -246,7 +292,10 @@ const RecoveryPage = () => {
                   className="bg-[#D0F500] xl:py-2  hover:font-bold cursor-pointer xl:px-2 md:py-2 px-1 py-1 md:px-2 border border-solid rounded-full border-black text-sm items-center justify-center"
                 >
                   {loading ? (
-                    <AiOutlineLoading3Quarters className="w-5 h-5 animate-spin text-sky-500" />
+                    <div className="flex flex-col items-center">
+                      {" "}
+                      <AiOutlineLoading3Quarters className="w-5 h-5 animate-spin text-sky-500" />
+                    </div>
                   ) : (
                     "Add Guardian"
                   )}

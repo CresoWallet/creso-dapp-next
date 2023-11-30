@@ -5,8 +5,12 @@ import { getBalance, minifyEthereumAddress } from "@/utils";
 import { AiOutlineLoading3Quarters } from "react-icons/ai";
 import CustomButton3 from "./CustomButton3";
 import Ethereum from "../assets/Dashboard/etherum.png";
-import Creso from "../assets/Dashboard/creso2.png";
+import BNB from "../assets/Dashboard/bnb2.png";
+import Weth from "../assets/Dashboard/weth.png";
+import Usdc from "../assets/Dashboard/usdc.png";
+import Dai from "../assets/Dashboard/dai4.png";
 import Send from "../assets/Dashboard/send.png";
+import Creso from "../assets/Dashboard/creso2.png";
 import CustomButton from "./CustomButton";
 import { getUserWallets, transferEthAPI } from "@/clientApi/wallet";
 import { useForm } from "react-hook-form";
@@ -53,30 +57,30 @@ const SendETH = ({ handleBackButton, walletArr, networks }) => {
       amount: data.amount,
       from: selectedWallet.address,
       // network: "goerli",
-      network: selectedNetwork ? selectedNetwork : "goerli",
-      standard: selectedToken === "native" ? "native" : "standard",
-      tokenAddress: selectedToken,
+      network: selectedNetwork.value ? selectedNetwork.value : "goerli",
+      standard: selectedToken.standard === "native" ? "native" : "standard",
+      tokenAddress: selectedToken.tokenAddress,
     };
 
-    try {
-      setLoading(true);
-      const res = await transferEthAPI(transferPayload);
-      console.log(res);
-      if (res) {
-        await fetchWallet();
-        enqueueSnackbar(`Transaction successful`, {
-          variant: "success",
-        });
-        setLoading(false);
-      }
-    } catch (error) {
-      console.log("error : ", error);
-      enqueueSnackbar(`Transaction failed`, {
-        variant: "error",
-      });
-    } finally {
-      setLoading(false);
-    }
+    // try {
+    //   setLoading(true);
+    //   const res = await transferEthAPI(transferPayload);
+    //   console.log(res);
+    //   if (res) {
+    //     await fetchWallet();
+    //     enqueueSnackbar(`Transaction successful`, {
+    //       variant: "success",
+    //     });
+    //     setLoading(false);
+    //   }
+    // } catch (error) {
+    //   console.log("error : ", error);
+    //   enqueueSnackbar(`Transaction failed`, {
+    //     variant: "error",
+    //   });
+    // } finally {
+    //   setLoading(false);
+    // }
     // console.log(selectedWallet);
     // console.log(data);
     console.log(transferPayload);
@@ -104,22 +108,75 @@ const SendETH = ({ handleBackButton, walletArr, networks }) => {
           <p className="text-sm">Ethereum Mainnet</p>
         </div>
       </div> */}
+
       <div className="flex flex-col space-y-1">
         <p className="text-sm mx-4">Network</p>
-        <select
-          onChange={(e) => {
-            setSelectedNetwork(e.target.value);
-          }}
-          className="border border-gray-300 rounded-full  h-10 pl-5 pr-10 bg-white hover:border-gray-400 focus:outline-none appearance-none text-sm"
-        >
-          {networks.map((item, index) => {
-            return (
-              <option key={item.key} value={item.value}>
-                {item.key}
-              </option>
-            );
-          })}
-        </select>
+
+        <div className="dropdown ">
+          <div
+            tabIndex={0}
+            role="button"
+            className="text-sm m-1 w-full xl:px-3 xl:py-3 md:px-3 md:py-3 py-3 px-3 rounded-full border border-solid"
+          >
+            <div className="flex items-center gap-2">
+              <>
+                {selectedNetwork && (
+                  <Image
+                    className="w-6 h-6"
+                    alt=""
+                    src={
+                      selectedWallet.value === "ethereum"
+                        ? Ethereum
+                        : selectedWallet.value === "bnb"
+                        ? BNB
+                        : selectedWallet.value === "polygon"
+                        ? Creso
+                        : Creso
+                    }
+                  />
+                )}
+              </>
+              {selectedNetwork?.key ? (
+                selectedNetwork.key
+              ) : (
+                <p className="opacity-50">Select Network</p>
+              )}
+            </div>
+          </div>
+          <ul className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box">
+            {networks.map((item) => {
+              return (
+                <li
+                  key={item.walletAddress}
+                  onMouseDown={() => setSelectedNetwork(item)}
+                >
+                  <div>
+                    <div className="flex flex-row items-center justify-between h-10">
+                      <div className="flex flex-row gap-4 items-center">
+                        <div>
+                          <Image
+                            alt=""
+                            src={
+                              item.value === "ethereum"
+                                ? Ethereum
+                                : item.value === "bnb"
+                                ? BNB
+                                : item.value === "polygon"
+                                ? Creso
+                                : Ethereum
+                            }
+                            className="w-8 h-8"
+                          />
+                        </div>
+                        <p className="text-sm">{item.key}</p>
+                      </div>
+                    </div>
+                  </div>
+                </li>
+              );
+            })}
+          </ul>
+        </div>
       </div>
 
       <div className="flex flex-col space-y-1">
@@ -129,28 +186,87 @@ const SendETH = ({ handleBackButton, walletArr, networks }) => {
             <p className="text-sm">Balance : {tokenBalance} ETH</p>
           )}
         </div>
-
-        <select
-          onChange={async (e) => {
-            setSelectedToken(e.target.value);
-            if (e.target.value !== "native") {
-              const blnce = await getBalance(e.target.value);
-              setTokenBalance(blnce);
-            }
-          }}
-          className="border border-gray-300 rounded-full  h-10 pl-5 pr-10 bg-white hover:border-gray-400 focus:outline-none appearance-none text-sm"
-        >
-          <option value="native">Native</option>
-          {coinList
-            .filter((e) => e.standard === "stable")
-            .map((item) => {
-              return (
-                <option key={item.tokenAddress} value={item.tokenAddress}>
-                  {item.coinName}
-                </option>
-              );
-            })}
-        </select>
+        <div className="dropdown ">
+          <div
+            tabIndex={0}
+            role="button"
+            className="text-sm m-1 w-full xl:px-3 xl:py-3 md:px-3 md:py-3 py-3 px-3 rounded-full border border-solid"
+          >
+            <div className="flex items-center gap-2">
+              <>
+                {selectedToken && (
+                  <Image
+                    className="w-6 h-6"
+                    alt=""
+                    src={
+                      selectedToken.coinName === "ETH"
+                        ? Ethereum
+                        : selectedToken.coinName === "BNB"
+                        ? BNB
+                        : selectedToken.coinName === "WETH"
+                        ? Weth
+                        : selectedToken.coinName === "USDT"
+                        ? Usdc
+                        : selectedToken.coinName === "DAI"
+                        ? Dai
+                        : Creso
+                    }
+                  />
+                )}
+              </>
+              {selectedToken?.coinName ? (
+                selectedToken.coinName
+              ) : (
+                <p className="opacity-50">Select Network</p>
+              )}
+            </div>
+          </div>
+          <ul className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box">
+            {coinList
+              .filter((e) => e.standard === "stable")
+              .map((item) => {
+                return (
+                  <li
+                    key={item.tokenAddress}
+                    onMouseDown={async (e) => {
+                      setSelectedToken(item);
+                      if (item.standard !== "native") {
+                        const blnce = await getBalance(item.tokenAddress);
+                        setTokenBalance(blnce);
+                      }
+                    }}
+                  >
+                    <div>
+                      <div className="flex flex-row items-center justify-between h-10">
+                        <div className="flex flex-row gap-4 items-center">
+                          <div>
+                            <Image
+                              alt=""
+                              src={
+                                item.coinName === "ETH"
+                                  ? Ethereum
+                                  : item.coinName === "WETH"
+                                  ? Weth
+                                  : item.coinName === "BNB"
+                                  ? BNB
+                                  : item.coinName === "USDT"
+                                  ? Usdc
+                                  : item.coinName === "DAI"
+                                  ? Dai
+                                  : Ethereum
+                              }
+                              className="w-8 h-8"
+                            />
+                          </div>
+                          <p className="text-sm">{item.coinName}</p>
+                        </div>
+                      </div>
+                    </div>
+                  </li>
+                );
+              })}
+          </ul>
+        </div>
       </div>
 
       <div className="flex flex-col space-y-1">

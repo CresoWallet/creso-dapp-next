@@ -89,7 +89,7 @@ const SendETH = ({ handleBackButton, walletArr, networks }) => {
   return (
     <form
       onSubmit={handleSubmit(onSubmit)}
-      className="absolute bg-white flex flex-col xl:mx-8 md:mx-4 mx-0 px-2 xl:px-0 md:px-2 mt-10 w-full xl:pr-10 pr-2 space-y-4 h-screen z-20"
+      className="absolute bg-white flex flex-col xl:ml-8 md:ml-4 mx-0 px-2 xl:px-0 md:px-2 mt-10 w-full xl:pr-10 pr-2 space-y-4 h-screen z-20"
     >
       <div className="flex flex-row items-center justify-between">
         <p className="text-black font-bold text-xl">Send ETH</p>
@@ -292,7 +292,7 @@ const SendETH = ({ handleBackButton, walletArr, networks }) => {
                     {minifyEthereumAddress(selectedWallet.address)}
                   </p>
                 ) : (
-                  <p className="opacity-50">wallet address</p>
+                  <p className="opacity-50 text-sm">wallet address</p>
                 ))}
             </div>
             <div className="flex w-full max-w-[150px]">
@@ -328,19 +328,15 @@ const SendETH = ({ handleBackButton, walletArr, networks }) => {
             </div>
           </button>
           {openWalletList && (
-            <div
-              ref={popupRef}
-              onClick={handleBackgroundClick}
-              className="fixed top-0 right-0 w-full h-full flex xl:justify-end md:justify-end cursor-pointer"
-            >
-              <div className="bg-white shadow-xl absolute mt-[300px]  mr-[120px] px-4 py-4 flex flex-col space-y-4 gap-4 min-w-[350px] rounded-md">
+            <>
+              <div className="bg-white shadow-xl absolute px-4 py-6 top-[55px] w-full left-0 flex flex-col  gap-4 min-w-[350px] rounded-[20px] z-[1]">
                 {walletArr.map((wallet, key) => (
                   <div
                     key={key}
                     className="flex flex-col cursor-pointer gap-4"
                     onClick={() => handleSelectWallet(wallet)}
                   >
-                    <div className="flex flex-row items-center justify-between  h-10">
+                    <div className="flex flex-row items-center justify-between  min-h-[60px]">
                       <div className="flex flex-row gap-4">
                         <div>
                           <Image alt="" src={Creso} className="w-8 h-8" />
@@ -349,7 +345,7 @@ const SendETH = ({ handleBackButton, walletArr, networks }) => {
                           <p className="text-base md:text-sm font-semibold">
                             {wallet ? wallet.walletName : ""}
                           </p>
-                          <div className="flex gap-x-5">
+                          <div className="flex gap-x-5 flex-wrap gap-y-1.5">
                             <p className="text-xs">
                               {wallet
                                 ? minifyEthereumAddress(wallet.address)
@@ -372,7 +368,12 @@ const SendETH = ({ handleBackButton, walletArr, networks }) => {
                   </div>
                 ))}
               </div>
-            </div>
+              <div
+                ref={popupRef}
+                onClick={handleBackgroundClick}
+                className="fixed top-0 right-0 w-full h-full bg-black/20 cursor-pointer"
+              ></div>
+            </>
           )}
         </div>
         {/* <div className="flex flex-row justify-between items-center gap-2 border border-solid rounded-full px-4 py-2 min-h-[66px] text-[13px] text-[#a09faa]">

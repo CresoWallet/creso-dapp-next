@@ -13,7 +13,6 @@ import { useMediaQuery } from "react-responsive";
 
 const SideNav = () => {
   const pathName = usePathname();
-  console.log("pathName : ", pathName);
 
   const isMobile = useMediaQuery({ query: `(max-width: 760px)` });
 

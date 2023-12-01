@@ -3,7 +3,6 @@ import { createContext, useEffect, useState } from "react";
 import { ethers } from "ethers";
 
 import { getHistory, getUserWallets } from "@/clientApi/wallet";
-import { AUTH_TOKEN } from "@/constants";
 import { useUser } from "./UserProvider";
 
 export const WalletContext = createContext();
@@ -122,8 +121,10 @@ const WalletContextProvider = ({ children }) => {
   };
 
   useEffect(() => {
-    fetchWallet();
-  }, []);
+    if (status === "authenticated") {
+      fetchWallet();
+    }
+  }, [user]);
 
   useEffect(() => {
     secureWalletAddress && eoaWalletAddress && fetchHistory();

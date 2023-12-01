@@ -7,3 +7,6 @@ export const BASE_URL = isDev
   : "https://creso-b02eab9f8c40.herokuapp.com";
 
 // export const BASE_URL = "https://creso-b02eab9f8c40.herokuapp.com";
+
+export const RPC_URL =
+  "https://goerli.infura.io/v3/a0b74d65173042fabe9639289bd336b5";

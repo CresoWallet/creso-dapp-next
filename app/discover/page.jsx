@@ -137,7 +137,7 @@ const DiscoverPage = () => {
       <div className="grid grid-cols-1 md:grid-cols-3 xl:grid-cols-3 px-2 my-2 divide-x">
         {/* sidebar and discover content */}
         <div className="col-span-2">
-          <div className="grid responsivemb-cols">
+          <div className="grid responsivemb-cols h-full">
             {/* side bar */}
             {isMobile && navbarTrigger && (
               <div className={`col-span-1 h-full responsivemb-nav `}>
@@ -333,7 +333,6 @@ const DiscoverPage = () => {
           </div>
         </div>
         <div className="col-span-1 xl:px-6 md:px-2 px-2">
-          {/* right side of page */}
           <div className="flex flex-col pt-4 space-y-4">
             <div className="hidden xl:block md:block">
               <Header />

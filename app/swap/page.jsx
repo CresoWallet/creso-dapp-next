@@ -64,7 +64,7 @@ const SwapPage = () => {
       <div>
         <div className="grid grid-cols-1 md:grid-cols-3 xl:grid-cols-3 px-2 mt-2 mb-2">
           <div className="col-span-2">
-            <div className="grid responsivemb-cols">
+            <div className="grid responsivemb-cols h-full">
               {isMobile && navbarTrigger && (
                 <div className={`col-span-1 h-full responsivemb-nav `}>
                   <SideNav />
@@ -77,9 +77,9 @@ const SwapPage = () => {
                 </div>
               )}
               <div className="col-span-3 space-y-6 xl:mx-4 md:mx-4 mx-2 md:py-10 xl:py-10">
-              <div className="flex xl:hidden md:hidden">
-              {showSwapForm && <SwapFrom handleClose={handleClose} />}
-              </div>
+                <div className="flex xl:hidden md:hidden">
+                  {showSwapForm && <SwapFrom handleClose={handleClose} />}
+                </div>
                 <div className="block xl:hidden md:hidden">
                   <Header />
                 </div>

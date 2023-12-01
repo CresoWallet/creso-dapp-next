@@ -23,7 +23,7 @@ const SideNav = () => {
         <Image alt="" src={Creso3} className="w-8 h-8" />
         <p className="uppercase text-white text-lg hidden lg:block">creso</p>
       </div>
-      <div className={`flex flex-col mt-14 ${isMobile ? "mr-5" : "mr-10"}`}>
+      <div className={`flex flex-col mt-6 ${isMobile ? "mr-5" : "mr-10"}`}>
         <p className="text-xs text-[#B1A6F8] px-8 invisible">Menu</p>
         <Link href="/" className="group relative">
           <div
@@ -43,7 +43,7 @@ const SideNav = () => {
           >
             <Image alt="" src={Wallet} className="w-6 h-6 text-[#B1A6F8]" />
             <p
-              className={`text-[#B1A6F8] text-sm group-hover:text-black hidden lg:block ${
+              className={`text-[#B1A6F8] text-sm group-hover:text-black font-medium hidden lg:block ${
                 pathName === "/dashboard" ? "text-black" : ""
               }`}
             >
@@ -80,7 +80,7 @@ const SideNav = () => {
           >
             <Image alt="" src={Discover} className="w-6 h-6 text-[#B1A6F8]" />
             <p
-              className={`text-[#B1A6F8] text-sm group-hover:text-black hidden lg:block ${
+              className={`text-[#B1A6F8] text-sm group-hover:text-black hidden font-medium lg:block ${
                 pathName === "/discover" ? "text-black" : ""
               }`}
             >
@@ -117,7 +117,7 @@ const SideNav = () => {
           >
             <Image alt="" src={Swap} className="w-6 h-6 text-[#B1A6F8]" />
             <p
-              className={`text-[#B1A6F8] text-sm group-hover:text-black hidden lg:block ${
+              className={`text-[#B1A6F8] text-sm group-hover:text-black hidden font-medium lg:block ${
                 pathName === "/swap" ? "text-black" : ""
               }`}
             >
@@ -158,7 +158,7 @@ const SideNav = () => {
           >
             <Image alt="" src={Info} className="w-6 h-6 text-[#B1A6F8]" />
             <p
-              className={`text-[#B1A6F8] text-sm group-hover:text-black hidden lg:block ${
+              className={`text-[#B1A6F8] text-sm group-hover:text-black font-medium hidden lg:block ${
                 pathName === "/about" ? "text-black" : ""
               }`}
             >
@@ -195,7 +195,7 @@ const SideNav = () => {
           >
             <Image alt="" src={Support} className="w-6 h-6 text-[#B1A6F8]" />
             <p
-              className={`text-[#B1A6F8] text-sm group-hover:text-black hidden lg:block`}
+              className={`text-[#B1A6F8] text-sm font-medium group-hover:text-black hidden lg:block`}
             >
               Support
             </p>

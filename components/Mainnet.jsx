@@ -62,7 +62,7 @@ const Mainnet = ({
               activeButton === "AA"
                 ? "bg-black"
                 : "bg-white hover:bg-gray-200 duration-500 "
-            } rounded-full px-4 py-4 w-full border-2 border-black cursor-pointer group`}
+            } rounded-full px-4 py-4 w-full border-2 border-black cursor-pointer group relative`}
           >
             <div className="flex flex-row justify-between items-center gap-3 group">
               <Image
@@ -78,7 +78,7 @@ const Mainnet = ({
                 >
                   Keyless Secure Wallet
                 </p>
-                <div className="flex flex-row items-center gap-4">
+                <div className="flex flex-row items-center gap-4 z-[1]">
                   <p className="text-[#A09FAA] xl:text-xs text-xs md:text-sm">
                     {minifyEthereumAddress(secureWalletAddress)}
                   </p>
@@ -99,12 +99,15 @@ const Mainnet = ({
                   alt=""
                   src={Next2}
                   className="md:w-10 md:h-10 xl:w-8 xl:h-8 group-hover:translate-x-1 duration-500"
-                  onClick={() => {
-                    setActiveButton("AA");
-                    handleOpenWallet({ walletName: "AA" });
-                  }}
                 />
               </div>
+              <div
+                className="absolute inset-0"
+                onClick={() => {
+                  setActiveButton("AA");
+                  handleOpenWallet({ walletName: "AA" });
+                }}
+              ></div>
             </div>
           </div>
           <div
@@ -112,7 +115,7 @@ const Mainnet = ({
               activeButton === "EOA"
                 ? "bg-black"
                 : "bg-white  hover:bg-gray-200 duration-500 "
-            } rounded-full px-4 py-4 w-full border-2 border-black cursor-pointer group`}
+            } rounded-full px-4 py-4 w-full border-2 border-black cursor-pointer group relative`}
           >
             <div className="flex flex-row justify-between items-center gap-3">
               <Image
@@ -128,7 +131,7 @@ const Mainnet = ({
                 >
                   EOA Wallet
                 </p>
-                <div className="flex flex-row items-center gap-4">
+                <div className="flex flex-row items-center gap-4 z-[1]">
                   <p className="text-[#A09FAA] xl:text-xs text-xs md:text-sm">
                     {minifyEthereumAddress(eoaWalletAddress)}
                   </p>
@@ -149,12 +152,15 @@ const Mainnet = ({
                   alt=""
                   src={Next2}
                   className="md:w-10 md:h-10 xl:w-8 xl:h-8 group-hover:translate-x-1 duration-500"
-                  onClick={() => {
-                    setActiveButton("EOA");
-                    handleOpenWallet({ walletName: "EOA" });
-                  }}
                 />
               </div>
+              <div
+                className="absolute inset-0"
+                onClick={() => {
+                  setActiveButton("EOA");
+                  handleOpenWallet({ walletName: "EOA" });
+                }}
+              ></div>
             </div>
           </div>
         </div>

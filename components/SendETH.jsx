@@ -103,7 +103,7 @@ const SendETH = ({ handleBackButton, walletArr, networks }) => {
   return (
     <form
       onSubmit={handleSubmit(onSubmit)}
-      className="absolute bg-white flex flex-col xl:ml-8 md:ml-4 mx-0 px-2 xl:px-0 md:px-2 mt-10 w-full xl:pr-10 pr-2 space-y-4 h-screen z-20"
+      className="absolute bg-white flex flex-col xl:pl-8 md:pl-4 mx-0 px-2 xl:px-0 md:px-2 pt-10 w-full xl:pr-10 pr-2 space-y-4 min-h-screen h-full z-20"
     >
       <div className="flex flex-row items-center justify-between">
         <p className="text-black font-bold text-xl">Send ETH</p>
@@ -374,7 +374,7 @@ const SendETH = ({ handleBackButton, walletArr, networks }) => {
           </button>
           {openWalletList && (
             <>
-              <div className="bg-white shadow-xl absolute px-4 py-6 top-[55px] w-full left-0 flex flex-col  gap-4 min-w-[350px] rounded-[20px] z-[1]">
+              <div className="bg-white shadow-xl absolute px-4 py-6 top-[55px] w-full left-0 flex flex-col  gap-4 min-w-[350px] rounded-[20px] z-[2]">
                 {walletArr.map((wallet, key) => (
                   <div
                     key={key}
@@ -416,7 +416,7 @@ const SendETH = ({ handleBackButton, walletArr, networks }) => {
               <div
                 ref={popupRef}
                 onClick={handleBackgroundClick}
-                className="fixed top-0 right-0 w-full h-full bg-black/20 cursor-pointer"
+                className="fixed top-0 right-0 w-full h-full bg-black/30 cursor-pointer z-[1]"
               ></div>
             </>
           )}
@@ -451,42 +451,44 @@ const SendETH = ({ handleBackButton, walletArr, networks }) => {
           </p>
         )}
       </div>
-      <div className="flex flex-col space-y-1">
-        <div className="flex flex-row justify-between items-center">
-          <p className="text-sm mx-4">Amount</p>
-          {/* {selectedWallet && (<span></span>) || (
+      <div className="flex flex-col gap-y-10">
+        <div className="flex flex-col space-y-1">
+          <div className="flex flex-row justify-between items-center">
+            <p className="text-sm mx-4">Amount</p>
+            {/* {selectedWallet && (<span></span>) || (
             <p className="text-sm">Balance : 0 ETH</p>
           )} */}
-          {Object.keys(selectedWallet).length === 0 ? (
-            <span></span>
-          ) : (
-            <p className="text-sm">Balance : {selectedWallet.balance} ETH</p>
+            {Object.keys(selectedWallet).length === 0 ? (
+              <span></span>
+            ) : (
+              <p className="text-sm">Balance : {selectedWallet.balance} ETH</p>
+            )}
+          </div>
+
+          <div className="flex flex-row items-center gap-2 border border-solid rounded-full px-4 py-4">
+            <input
+              {...register("amount", {
+                required: "Required",
+              })}
+              className="text-sm placeholder:text-[#A09FAA] placeholder:text-xs focus:outline-none w-full"
+              placeholder="Input amount"
+            ></input>
+          </div>
+          {errors.amount && (
+            <p className="text-red-500 font-semibold text-xs pt-1 pl-5">
+              {errors.amount.message}
+            </p>
           )}
         </div>
 
-        <div className="flex flex-row items-center gap-2 border border-solid rounded-full px-4 py-4">
-          <input
-            {...register("amount", {
-              required: "Required",
-            })}
-            className="text-sm placeholder:text-[#A09FAA] placeholder:text-xs focus:outline-none w-full"
-            placeholder="Input amount"
-          ></input>
-        </div>
-        {errors.amount && (
-          <p className="text-red-500 font-semibold text-xs pt-1 pl-5">
-            {errors.amount.message}
-          </p>
-        )}
+        <CustomButton
+          isLoading={loading}
+          img={Send}
+          name="Send"
+          bgColor="black"
+          type={"submit"}
+        />
       </div>
-
-      <CustomButton
-        isLoading={loading}
-        img={Send}
-        name="Send"
-        bgColor="black"
-        type={"submit"}
-      />
     </form>
   );
 };

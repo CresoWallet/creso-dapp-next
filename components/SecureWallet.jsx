@@ -41,21 +41,33 @@ const SecureWallet = ({
 
   return (
     <div
-      className={`absolute bg-white border-l-2 shadow-xl w-full h-full z-10 `}
+      className={`absolute bg-white border-l-2 shadow-xl w-full h-full z-10`}
     >
-      <div className="flex rounded-full bg-black h-8 w-8 items-center justify-center xl:-ml-4 md:-ml-4 ml-2 mt-10 absolute cursor-pointer">
+      <div className="flex rounded-full bg-black h-8 w-8 items-center justify-center xl:-ml-4 md:-ml-4 ml-2 mt-10 absolute cursor-pointer z-[99]">
         <IoIosClose className="text-white h-4 w-4" onClick={handleClose} />
       </div>
 
       {send && (
-        <SendETH
-          handleBackButton={() => setSend(false)}
-          walletArr={wallets.filter((e) => e.type === walletType)}
-          networks={network}
-        />
+        <>
+          <SendETH
+            handleBackButton={() => setSend(false)}
+            walletArr={wallets.filter((e) => e.type === walletType)}
+            networks={network}
+          />
+          <div
+            onClick={handleClose}
+            className="fixed top-0 right-0 w-full h-full bg-black/40 cursor-pointer z-[1]"
+          ></div>
+        </>
       )}
       {walletAddress && (
-        <WalletAddress handleBackButton={() => setWalletAddress(false)} />
+        <>
+          <WalletAddress handleBackButton={() => setWalletAddress(false)} />
+          <div
+            onClick={handleClose}
+            className="fixed top-0 right-0 w-full h-full bg-black/30 cursor-pointer z-[1]"
+          ></div>
+        </>
       )}
       <div className="flex flex-col mx-8 mt-10 gap-8">
         <div className="flex items-center justify-between">

@@ -157,7 +157,7 @@ const Dashboard = () => {
                   </p>
                 </div>
 
-                <div className="navhams">
+                {/* <div className="navhams">
                   <Image alt="" src={Search} className="navico" />
                   {isMobile && (
                     <Image
@@ -167,7 +167,7 @@ const Dashboard = () => {
                       onClick={() => setNavbarTrigger(!navbarTrigger)}
                     />
                   )}
-                </div>
+                </div> */}
               </div>
               {!user?.isEmailVerified && (
                 <Backup onClick={() => handleShowModel()} />
@@ -203,7 +203,7 @@ const Dashboard = () => {
         </div>
 
         {/* right side */}
-        <div className="cols-span-1 relative">
+        <div className="cols-span-1 relative -m-2">
           {/* models */}
           <div className="hidden xl:flex md:flex ">
             {showCreateWallet && <CreateWallet handleClose={handleClose} />}

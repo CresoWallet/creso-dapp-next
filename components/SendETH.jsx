@@ -28,16 +28,20 @@ const SendETH = ({ handleBackButton, walletArr, networks }) => {
     formState: { errors, isLoading },
   } = useForm();
   const [openWalletList, setOpenWalletList] = useState(false);
+  const [openNetowrkList, setOpenNetworkList] = useState(false);
+  const [openCoinList, setOpenCoinList] = useState(false);
   const [selectedWallet, setSelectedWallet] = useState({});
   const [loading, setLoading] = useState(false);
   const { fetchWallet } = useContext(WalletContext);
-  const [selectedNetwork, setSelectedNetwork] = useState("");
+  const [selectedNetwork, setSelectedNetwork] = useState({});
   const [selectedToken, setSelectedToken] = useState("native");
   const [tokenBalance, setTokenBalance] = useState(0);
 
   const handleBackgroundClick = (e) => {
     if (popupRef.current === e.target) {
       setOpenWalletList(false);
+      setOpenNetworkList(false);
+      setOpenCoinList(false);
     }
   };
 
@@ -48,6 +52,16 @@ const SendETH = ({ handleBackButton, walletArr, networks }) => {
   const handleSelectWallet = (wallet) => {
     setOpenWalletList(false);
     setSelectedWallet(wallet);
+  };
+
+  const handleSelectNetwork = (item) => {
+    setSelectedNetwork(item);
+    setOpenNetworkList(false);
+  };
+
+  const handleSelectCoin = (item) => {
+    setSelectedToken(item);
+    setOpenCoinList(false);
   };
 
   const onSubmit = async (data) => {
@@ -62,27 +76,27 @@ const SendETH = ({ handleBackButton, walletArr, networks }) => {
       tokenAddress: selectedToken.tokenAddress,
     };
 
-    // try {
-    //   setLoading(true);
-    //   const res = await transferEthAPI(transferPayload);
-    //   console.log(res);
-    //   if (res) {
-    //     await fetchWallet();
-    //     enqueueSnackbar(`Transaction successful`, {
-    //       variant: "success",
-    //     });
-    //     setLoading(false);
-    //   }
-    // } catch (error) {
-    //   console.log("error : ", error);
-    //   enqueueSnackbar(`Transaction failed`, {
-    //     variant: "error",
-    //   });
-    // } finally {
-    //   setLoading(false);
-    // }
-    // console.log(selectedWallet);
-    // console.log(data);
+    try {
+      setLoading(true);
+      const res = await transferEthAPI(transferPayload);
+      console.log(res);
+      if (res) {
+        await fetchWallet();
+        enqueueSnackbar(`Transaction successful`, {
+          variant: "success",
+        });
+        setLoading(false);
+      }
+    } catch (error) {
+      console.log("error : ", error);
+      enqueueSnackbar(`Transaction failed`, {
+        variant: "error",
+      });
+    } finally {
+      setLoading(false);
+    }
+    console.log(selectedWallet);
+    console.log(data);
     console.log(transferPayload);
   };
 
@@ -108,32 +122,33 @@ const SendETH = ({ handleBackButton, walletArr, networks }) => {
           <p className="text-sm">Ethereum Mainnet</p>
         </div>
       </div> */}
-
       <div className="flex flex-col space-y-1">
         <p className="text-sm mx-4">Network</p>
-
-        <div className="dropdown ">
-          <div
-            tabIndex={0}
-            role="button"
-            className="text-sm m-1 w-full xl:px-3 xl:py-3 md:px-3 md:py-3 py-3 px-3 rounded-full border border-solid"
+        <div className="flex flex-row justify-between items-center gap-2 border border-solid rounded-full px-4 py-2 relative">
+          <button
+            className="flex flex-row items-center gap-2 w-full justify-between"
+            onClick={() => setOpenNetworkList(true)}
           >
             <div className="flex items-center gap-2">
               <>
-                {selectedNetwork && (
+                {selectedNetwork ? (
                   <Image
                     className="w-6 h-6"
                     alt=""
                     src={
-                      selectedWallet.value === "ethereum"
+                      selectedNetwork.value === "ethereum"
                         ? Ethereum
-                        : selectedWallet.value === "bnb"
+                        : selectedNetwork.value === "bnb"
                         ? BNB
-                        : selectedWallet.value === "polygon"
+                        : selectedNetwork.value === "polygon"
                         ? Creso
                         : Creso
                     }
                   />
+                ) : (
+                  <p className="text-sm md:text-xs cursor-pointer hover:font-bold">
+                    Select Network
+                  </p>
                 )}
               </>
               {selectedNetwork?.key ? (
@@ -142,16 +157,17 @@ const SendETH = ({ handleBackButton, walletArr, networks }) => {
                 <p className="opacity-50">Select Network</p>
               )}
             </div>
-          </div>
-          <ul className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box">
-            {networks.map((item) => {
-              return (
-                <li
-                  key={item.walletAddress}
-                  onMouseDown={() => setSelectedNetwork(item)}
-                >
-                  <div>
-                    <div className="flex flex-row items-center justify-between h-10">
+          </button>
+          {openNetowrkList && (
+            <>
+              <div className="bg-white shadow-xl absolute px-4 py-6 top-[55px] w-full left-0 flex flex-col  gap-4 min-w-[350px] rounded-[20px] z-[1]">
+                {networks.map((item, key) => (
+                  <div
+                    key={key}
+                    className="flex flex-col cursor-pointer gap-4"
+                    onClick={() => handleSelectNetwork(item)}
+                  >
+                    <div className="flex flex-row items-center justify-between  min-h-[50px]">
                       <div className="flex flex-row gap-4 items-center">
                         <div>
                           <Image
@@ -168,17 +184,30 @@ const SendETH = ({ handleBackButton, walletArr, networks }) => {
                             className="w-8 h-8"
                           />
                         </div>
-                        <p className="text-sm">{item.key}</p>
+                        <div className="flex flex-col items-start gap-2">
+                          <p className="text-sm">{item.key}</p>
+                        </div>
                       </div>
                     </div>
                   </div>
-                </li>
-              );
-            })}
-          </ul>
+                ))}
+              </div>
+              <div
+                ref={popupRef}
+                onClick={handleBackgroundClick}
+                className="fixed top-0 right-0 w-full h-full bg-black/20 cursor-pointer"
+              ></div>
+            </>
+          )}
         </div>
+        {/* <div className="flex flex-row justify-between items-center gap-2 border border-solid rounded-full px-4 py-2 min-h-[66px] text-[13px] text-[#a09faa]">
+          <input
+            className="text-sm placeholder:text-[#A09FAA] placeholder:text-xs focus:outline-none"
+            placeholder="Enter wallet address or ENS,NNS"
+          ></input>
+          0x7Cb6cAfa1fB1eAf283C1857897296866b3b6829B
+        </div> */}
       </div>
-
       <div className="flex flex-col space-y-1">
         <div className="flex flex-row justify-between items-center">
           <p className="text-sm mx-4">Coin</p>
@@ -186,15 +215,14 @@ const SendETH = ({ handleBackButton, walletArr, networks }) => {
             <p className="text-sm">Balance : {tokenBalance} ETH</p>
           )}
         </div>
-        <div className="dropdown ">
-          <div
-            tabIndex={0}
-            role="button"
-            className="text-sm m-1 w-full xl:px-3 xl:py-3 md:px-3 md:py-3 py-3 px-3 rounded-full border border-solid"
+        <div className="flex flex-row justify-between items-center gap-2 border border-solid rounded-full px-4 py-2 relative">
+          <button
+            className="flex flex-row items-center gap-2 w-full justify-between"
+            onClick={() => setOpenCoinList(true)}
           >
             <div className="flex items-center gap-2">
               <>
-                {selectedToken && (
+                {selectedToken ? (
                   <Image
                     className="w-6 h-6"
                     alt=""
@@ -212,61 +240,78 @@ const SendETH = ({ handleBackButton, walletArr, networks }) => {
                         : Creso
                     }
                   />
+                ) : (
+                  <p className="text-sm md:text-xs cursor-pointer hover:font-bold">
+                    Select Coin
+                  </p>
                 )}
               </>
               {selectedToken?.coinName ? (
                 selectedToken.coinName
               ) : (
-                <p className="opacity-50">Select Network</p>
+                <p className="opacity-50">Select Coin</p>
               )}
             </div>
-          </div>
-          <ul className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box">
-            {coinList
-              .filter((e) => e.standard === "stable")
-              .map((item) => {
-                return (
-                  <li
-                    key={item.tokenAddress}
-                    onMouseDown={async (e) => {
-                      setSelectedToken(item);
+          </button>
+          {openCoinList && (
+            <>
+              <div className="bg-white shadow-xl absolute px-4 py-6 top-[55px] w-full left-0 flex flex-col  gap-4 min-w-[350px] rounded-[20px] z-[1]">
+                {coinList.map((item, key) => (
+                  <div
+                    key={key}
+                    className="flex flex-col cursor-pointer gap-4"
+                    onClick={async () => {
+                      handleSelectCoin(item);
                       if (item.standard !== "native") {
                         const blnce = await getBalance(item.tokenAddress);
                         setTokenBalance(blnce);
                       }
                     }}
                   >
-                    <div>
-                      <div className="flex flex-row items-center justify-between h-10">
-                        <div className="flex flex-row gap-4 items-center">
-                          <div>
-                            <Image
-                              alt=""
-                              src={
-                                item.coinName === "ETH"
-                                  ? Ethereum
-                                  : item.coinName === "WETH"
-                                  ? Weth
-                                  : item.coinName === "BNB"
-                                  ? BNB
-                                  : item.coinName === "USDT"
-                                  ? Usdc
-                                  : item.coinName === "DAI"
-                                  ? Dai
-                                  : Ethereum
-                              }
-                              className="w-8 h-8"
-                            />
-                          </div>
+                    <div className="flex flex-row items-center justify-between  min-h-[50px]">
+                      <div className="flex flex-row gap-4 items-center">
+                        <div>
+                          <Image
+                            alt=""
+                            src={
+                              item.coinName === "ETH"
+                                ? Ethereum
+                                : item.coinName === "WETH"
+                                ? Weth
+                                : item.coinName === "BNB"
+                                ? BNB
+                                : item.coinName === "USDT"
+                                ? Usdc
+                                : item.coinName === "DAI"
+                                ? Dai
+                                : Ethereum
+                            }
+                            className="w-8 h-8"
+                          />
+                        </div>
+                        <div className="flex flex-col items-start gap-2">
                           <p className="text-sm">{item.coinName}</p>
                         </div>
                       </div>
                     </div>
-                  </li>
-                );
-              })}
-          </ul>
+                  </div>
+                ))}
+              </div>
+              <div
+                ref={popupRef}
+                onClick={handleBackgroundClick}
+                className="fixed top-0 right-0 w-full h-full bg-black/20 cursor-pointer"
+              ></div>
+            </>
+          )}
         </div>
+        {/* <div className="flex flex-row justify-between items-center gap-2 border border-solid rounded-full px-4 py-2 min-h-[66px] text-[13px] text-[#a09faa]">
+          <input
+            className="text-sm placeholder:text-[#A09FAA] placeholder:text-xs focus:outline-none"
+            placeholder="Enter wallet address or ENS,NNS"
+          ></input>
+          0x7Cb6cAfa1fB1eAf283C1857897296866b3b6829B
+        </div> */}
       </div>
 
       <div className="flex flex-col space-y-1">

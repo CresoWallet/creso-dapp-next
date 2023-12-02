@@ -10,3 +10,5 @@ export const BASE_URL = isDev
 
 export const RPC_URL =
   "https://goerli.infura.io/v3/a0b74d65173042fabe9639289bd336b5";
+
+export const ETHERSCAN = "https://goerli.etherscan.io";

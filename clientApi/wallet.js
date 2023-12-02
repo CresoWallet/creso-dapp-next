@@ -58,3 +58,11 @@ export const addGuardian = async (formData) => {
   });
   return res;
 };
+
+export const getUserTokens = async (formData) => {
+  const res = await axiosInstance("/get/user/tokens", {
+    method: "POST",
+    data: formData,
+  });
+  return res;
+};

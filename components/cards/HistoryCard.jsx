@@ -7,6 +7,7 @@ import Usdt2 from "../../assets/Dashboard/usdt2.png";
 import Dai2 from "../../assets/Dashboard/Dai2.png";
 
 import { ethers } from "ethers";
+import { ETHERSCAN } from "@/constants";
 
 const HistoryCard = ({
   secureWalletAddress,
@@ -28,11 +29,7 @@ const HistoryCard = ({
           <p className="font-semibold">
             {value?.hex && ethers.formatEther(value.hex)}
           </p>
-          <a
-            rel="noreferrer"
-            target="_blank"
-            href={`https://etherscan.com/tx/${hash}`}
-          >
+          <a rel="noreferrer" target="_blank" href={`${ETHERSCAN}/tx/${hash}`}>
             view
           </a>
         </div>

@@ -2,7 +2,7 @@
 import { createContext, useEffect, useState } from "react";
 import { ethers } from "ethers";
 
-import { getHistory, getUserWallets } from "@/clientApi/wallet";
+import { getHistory, getUserTokens, getUserWallets } from "@/clientApi/wallet";
 import { useUser } from "./UserProvider";
 
 export const WalletContext = createContext();
@@ -17,6 +17,18 @@ const WalletContextProvider = ({ children }) => {
   const [eoaWallets, setEoaWallets] = useState([]);
   const [history, setHistory] = useState([]);
   const { user, isAuthenticated, status } = useUser();
+
+  // useEffect(() => {
+  //   (async () => {
+  //     if (isAuthenticated) {
+  //       console.log("tokesss");
+  //       const tokens = await getUserTokens({
+  //         network: "goerlii", //goerli tokens not getting.
+  //       });
+  //       console.log(tokens);
+  //     }
+  //   })();
+  // }, [user]);
 
   const fetchWallet = async () => {
     let sWalletBalance = 0;

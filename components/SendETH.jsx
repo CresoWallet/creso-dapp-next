@@ -257,7 +257,7 @@ const SendETH = ({ handleBackButton, walletArr, networks }) => {
           <input
             type="checkbox"
             value=""
-            class="sr-only peer"
+            className="sr-only peer"
             checked={standard === "stable" ? "checked" : ""}
             onChange={handleToggle}
           />

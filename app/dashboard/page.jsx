@@ -156,18 +156,6 @@ const Dashboard = () => {
                     </span>
                   </p>
                 </div>
-
-                {/* <div className="navhams">
-                  <Image alt="" src={Search} className="navico" />
-                  {isMobile && (
-                    <Image
-                      alt=""
-                      className="navico"
-                      src={Ham}
-                      onClick={() => setNavbarTrigger(!navbarTrigger)}
-                    />
-                  )}
-                </div> */}
               </div>
               {!user?.isEmailVerified && (
                 <Backup onClick={() => handleShowModel()} />
@@ -186,17 +174,21 @@ const Dashboard = () => {
               />
               <div className="flex flex-col mt-4 space-y-4">
                 {history &&
-                  history.map((item, i) => {
-                    return (
-                      <HistoryCard
-                        key={`history_${i}`}
-                        secureWalletAddress={secureWalletAddress}
-                        eoaWalletAddress={eoaWalletAddress}
-                        to={item?.to}
-                        hash={item?.hash}
-                      />
-                    );
-                  })}
+                  history
+                    .toReversed()
+                    .slice(0, 5)
+                    .map((item, i) => {
+                      return (
+                        <HistoryCard
+                          key={`history_${i}`}
+                          secureWalletAddress={secureWalletAddress}
+                          eoaWalletAddress={eoaWalletAddress}
+                          to={item?.to}
+                          hash={item?.hash}
+                          value={item.value}
+                        />
+                      );
+                    })}
               </div>
             </div>
           </div>

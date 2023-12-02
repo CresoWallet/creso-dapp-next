@@ -40,3 +40,11 @@ export const getBalance = async (address) => {
   const balance = ethers.formatEther(balanceInWei);
   return balance;
 };
+
+export const copyToClipBoard = async (val) => {
+  try {
+    await navigator.clipboard.writeText(val);
+  } catch (err) {
+    console.log(err);
+  }
+};

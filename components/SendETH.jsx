@@ -17,6 +17,7 @@ import { useForm } from "react-hook-form";
 import { enqueueSnackbar } from "notistack";
 import { WalletContext } from "@/providers/WalletProvider";
 import { coinList } from "@/utils/data/coinlist";
+import { getTokenBalance } from "@/services/ethers/wallet";
 
 const SendETH = ({ handleBackButton, walletArr, networks }) => {
   const popupRef = useRef();
@@ -118,6 +119,17 @@ const SendETH = ({ handleBackButton, walletArr, networks }) => {
 
     // console.log(transferPayload);
   };
+
+  useEffect(() => {
+    if (Object.keys(selectedWallet).length !== 0 && selectedCoin) {
+      const blnce = getTokenBalance(
+        selectedCoin?.tokenAddress,
+        selectedWallet?.address
+      );
+
+      setTokenBalance(blnce);
+    }
+  }, [selectedWallet, selectedCoin]);
 
   return (
     <form
@@ -322,10 +334,10 @@ const SendETH = ({ handleBackButton, walletArr, networks }) => {
                       className="flex flex-col cursor-pointer gap-4"
                       onClick={async () => {
                         handleSelectCoin(item);
-                        if (item.standard !== "native") {
-                          const blnce = await getBalance(item.tokenAddress);
-                          setTokenBalance(blnce);
-                        }
+                        // if (item.standard !== "native") {
+                        //   // const blnce = await getBalance(item.tokenAddress);
+                        //   setTokenBalance(blnce);
+                        // }
                       }}
                     >
                       <div className="flex flex-row items-center justify-between  min-h-[50px]">

@@ -1,14 +1,20 @@
 import React from "react";
 import Image from "next/image";
-import ETH from "../../assets/Dashboard/ethSelect.png";
+import ETH from "../../assets/Dashboard/eth.png";
 import RedArrow from "../../assets/Dashboard/redArrow.png";
 import GreenArrow from "../../assets/Dashboard/greenArrow.png";
 import Usdt2 from "../../assets/Dashboard/usdt2.png";
 import Dai2 from "../../assets/Dashboard/Dai2.png";
 
-const HistoryCard = ({ secureWalletAddress, eoaWalletAddress, to, hash }) => {
-  // console.log("secureWalletAddress : ", secureWalletAddress);
-  // console.log("eoaWalletAddress : ", eoaWalletAddress);
+import { ethers } from "ethers";
+
+const HistoryCard = ({
+  secureWalletAddress,
+  eoaWalletAddress,
+  to,
+  hash,
+  value,
+}) => {
   return (
     <div className="flex flex-row items-center justify-between">
       <div className="flex flex-row items-center justify-start gap-2">
@@ -19,7 +25,9 @@ const HistoryCard = ({ secureWalletAddress, eoaWalletAddress, to, hash }) => {
       <div className="flex flex-row items-center justify-start">
         <div className="flex flex-row gap-4 items-center">
           <p className="text-[#A09FAA] text-xs">$1,794.28</p>
-          <p className="font-semibold">0.54</p>
+          <p className="font-semibold">
+            {value?.hex && ethers.formatEther(value.hex)}
+          </p>
           <a
             rel="noreferrer"
             target="_blank"

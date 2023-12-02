@@ -13,15 +13,7 @@ import RedArrow from "../assets/Dashboard/redArrow.png";
 import GreenArrow from "../assets/Dashboard/greenArrow.png";
 import Usdt2 from "../assets/Dashboard/usdt2.png";
 import Dai2 from "../assets/Dashboard/Dai2.png";
-import { minifyEthereumAddress } from "@/utils";
-
-const copyToClipBoard = async (val) => {
-  try {
-    await navigator.clipboard.writeText(val);
-  } catch (err) {
-    console.log(err);
-  }
-};
+import { copyToClipBoard, minifyEthereumAddress } from "@/utils";
 
 const Mainnet = ({
   handleOpenWallet,

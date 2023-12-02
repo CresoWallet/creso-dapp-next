@@ -42,6 +42,7 @@ const SecureWallet = ({
   return (
     <div
       className={`absolute bg-white border-l-2 shadow-xl w-full h-full z-10`}
+      // className="absolute bg-white flex flex-col xl:pl-8 md:pl-4 mx-0 px-2 xl:px-0 md:px-2 pt-10 w-full xl:pr-10 pr-2 space-y-4 min-h-screen h-full z-20"
     >
       <div className="flex rounded-full bg-black h-8 w-8 items-center justify-center xl:-ml-4 md:-ml-4 ml-2 mt-10 absolute cursor-pointer z-[99]">
         <IoIosClose className="text-white h-4 w-4" onClick={handleClose} />
@@ -62,7 +63,12 @@ const SecureWallet = ({
       )}
       {walletAddress && (
         <>
-          <WalletAddress handleBackButton={() => setWalletAddress(false)} />
+          <WalletAddress
+            wallet={wallets.filter(
+              (e, index) => e.type === walletType && index === 0
+            )}
+            handleBackButton={() => setWalletAddress(false)}
+          />
           <div
             onClick={handleClose}
             className="fixed top-0 right-0 w-full h-full bg-black/30 cursor-pointer z-[1]"

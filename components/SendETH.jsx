@@ -5,6 +5,7 @@ import { minifyEthereumAddress } from "@/utils";
 import CustomButton3 from "./CustomButton3";
 import Ethereum from "../assets/Dashboard/etherum.png";
 import BNB from "../assets/Dashboard/bnb2.png";
+import Polygon from "../assets/Dashboard/polygon.png";
 import Weth from "../assets/Dashboard/weth.png";
 import Usdc from "../assets/Dashboard/usdc.png";
 import Dai from "../assets/Dashboard/dai4.png";
@@ -58,6 +59,8 @@ const SendETH = ({ handleBackButton, walletArr, networks }) => {
   };
 
   const handleSelectNetwork = (item) => {
+    setSelectedCoin();
+    setInitialToken();
     setSelectedNetwork(item);
     setOpenNetworkList(false);
   };
@@ -88,10 +91,12 @@ const SendETH = ({ handleBackButton, walletArr, networks }) => {
       tokenAddress:
         standard === "stable"
           ? selectedCoin
-            ? selectedCoin?.tokenAddress
-            : initialToken?.tokenAddress
+            ? selectedCoin?.tokenContractAddress
+            : initialToken?.tokenContractAddress
           : "",
     };
+
+    // console.log(transferPayload);
 
     try {
       setLoading(true);
@@ -111,26 +116,36 @@ const SendETH = ({ handleBackButton, walletArr, networks }) => {
       });
     } finally {
       setLoading(false);
-      // enqueueSnackbar(`Something went wrong`, {
-      //   variant: "error",
-      // });
     }
-
-    // console.log(transferPayload);
   };
 
   const fetchTokenBalance = async () => {
     if (
       Object.keys(selectedWallet).length !== 0 &&
-      selectedCoin &&
-      selectedCoin?.standard !== "native"
+      (selectedCoin || initialToken)
     ) {
-      const blnce = await getTokenBalance(
-        selectedCoin?.tokenAddress,
-        selectedWallet?.address
-      );
+      try {
+        const tokenAddress = selectedCoin?.tokenContractAddress
+          ? selectedCoin?.tokenContractAddress
+          : initialToken?.tokenContractAddress;
 
-      setTokenBalance(blnce);
+        const network = selectedNetwork
+          ? selectedNetwork.value
+          : networkFirstValue.value;
+
+        const blnce = await getTokenBalance(
+          tokenAddress,
+          selectedWallet?.address,
+          network
+        );
+
+        setTokenBalance(blnce);
+      } catch (error) {
+        console.log("error : ", error);
+        enqueueSnackbar(`Something went wrong`, {
+          variant: "error",
+        });
+      }
     }
   };
 
@@ -142,13 +157,12 @@ const SendETH = ({ handleBackButton, walletArr, networks }) => {
       [coinFirstValue] = tokenList[networkFirstValue?.value].values();
     }
 
-    console.log("coinFirstValue : ", coinFirstValue);
     setInitialToken(coinFirstValue);
-  }, [selectedNetwork]);
+  }, [selectedNetwork, selectedCoin]);
 
   useEffect(() => {
     fetchTokenBalance();
-  }, [selectedWallet, selectedCoin]);
+  }, [selectedWallet, selectedCoin, initialToken]);
 
   return (
     <form
@@ -180,12 +194,13 @@ const SendETH = ({ handleBackButton, walletArr, networks }) => {
                     className="w-6 h-6"
                     alt=""
                     src={
-                      selectedNetwork.value === "ethereum"
+                      selectedNetwork.value === "ethereum" ||
+                      selectedNetwork.value === "goerli"
                         ? Ethereum
                         : selectedNetwork.value === "bnb"
                         ? BNB
                         : selectedNetwork.value === "polygon"
-                        ? Creso
+                        ? Polygon
                         : Creso
                     }
                   />
@@ -194,12 +209,13 @@ const SendETH = ({ handleBackButton, walletArr, networks }) => {
                     className="w-6 h-6"
                     alt=""
                     src={
-                      networkFirstValue.value === "ethereum"
+                      networkFirstValue.value === "ethereum" ||
+                      selectedNetwork.value === "goerli"
                         ? Ethereum
                         : networkFirstValue.value === "bnb"
                         ? BNB
                         : networkFirstValue.value === "polygon"
-                        ? Creso
+                        ? Polygon
                         : Creso
                     }
                   />
@@ -237,7 +253,7 @@ const SendETH = ({ handleBackButton, walletArr, networks }) => {
                                 : item.value === "bnb"
                                 ? BNB
                                 : item.value === "polygon"
-                                ? Creso
+                                ? Polygon
                                 : Ethereum
                             }
                             className="w-8 h-8"
@@ -288,9 +304,16 @@ const SendETH = ({ handleBackButton, walletArr, networks }) => {
         <div className="flex flex-col space-y-1">
           <div className="flex flex-row justify-between items-center">
             <p className="text-sm mx-4">Coin</p>
-            {tokenBalance && selectedCoin !== "native" && (
-              <p className="text-sm">{`Balance : ${tokenBalance} ${selectedCoin?.coinName}`}</p>
-            )}
+            <div className="flex items-center gap-1">
+              {tokenBalance && selectedCoin !== "native" && (
+                <p className="text-sm">{`Balance : ${tokenBalance} `}</p>
+              )}
+              <p className="text-sm">{` ${
+                selectedCoin?.tokenSymbol
+                  ? selectedCoin?.tokenSymbol
+                  : initialToken?.tokenSymbol
+              }`}</p>
+            </div>
           </div>
           <div className="flex flex-row justify-between items-center gap-2 border border-solid rounded-full px-4 py-2 relative">
             <div

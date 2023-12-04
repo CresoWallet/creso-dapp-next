@@ -1,4 +1,6 @@
+import { CRYPTO_TO_USD } from "@/constants";
 import { axiosInstance } from "@/services/axios";
+import axios from "axios";
 
 export const getUserWallets = async () => {
   const res = await axiosInstance("/wallet", {
@@ -64,5 +66,11 @@ export const getUserTokens = async (formData) => {
     method: "POST",
     data: formData,
   });
-  return res;
+};
+
+export const getUSDValue = async () => {
+  try {
+    const res = await axios.get(CRYPTO_TO_USD);
+    return res;
+  } catch (error) {}
 };

@@ -11,24 +11,7 @@ import Send from "../assets/Dashboard/send.png";
 import Receive from "../assets/Dashboard/receive.png";
 import SendETH from "./SendETH";
 import WalletAddress from "./WalletAddress";
-
-const ethNetwork = [
-  { key: "Ethereum Mainnet", value: "ethereum" },
-  { key: "BNB Smart Chain", value: "ethereum" },
-  { key: "Polygon", value: "polygon" },
-];
-
-const bNetwork = [
-  { key: "BNB Smart Chain", value: "ethereum" },
-  { key: "Ethereum Mainnet", value: "ethereum" },
-  { key: "Polygon", value: "polygon" },
-];
-
-const pNetwork = [
-  { key: "Polygon", value: "polygon" },
-  { key: "Ethereum Mainnet", value: "ethereum" },
-  { key: "BNB Smart Chain", value: "ethereum" },
-];
+import { network } from "@/utils/data/coinlist";
 
 const CoinWallet = ({ handleClose, wallets, coinData }) => {
   const [send, setSend] = useState(false);
@@ -57,17 +40,7 @@ const CoinWallet = ({ handleClose, wallets, coinData }) => {
         <SendETH
           handleBackButton={() => setSend(false)}
           walletArr={wallets}
-          // networks={
-          //   coinData.coinName === "ETH"
-          //     ? ethNetwork
-          //     : coinData.coinName === "BNB"
-          //     ? bNetwork
-          //     : coinData.coinName === "USDT"
-          //     ? pNetwork
-          //     : ETH
-          // }
-
-          networks={ethNetwork}
+          networks={network}
         />
       )}
       {walletAddress && (

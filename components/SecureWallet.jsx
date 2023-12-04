@@ -14,13 +14,7 @@ import DAI from "../assets/Dashboard/dai.png";
 import USDT from "../assets/Dashboard/usdt3.png";
 import SendETH from "./SendETH";
 import WalletAddress from "./WalletAddress";
-
-const network = [
-  { key: "Ethereum Mainnet", value: "ethereum" },
-  { key: "Goerli Testnet", value: "goerli" },
-  { key: "BNB Smart Chain", value: "bnb" },
-  { key: "Polygon", value: "polygon" },
-];
+import { network } from "@/utils/data/coinlist";
 
 const SecureWallet = ({
   handleClose,

@@ -33,6 +33,7 @@ import CoinCard from "@/components/cards/Coin";
 import { WalletContext } from "@/providers/WalletProvider";
 import { ethToDollar } from "@/utils";
 import HistoryCard from "@/components/cards/HistoryCard";
+import { getUSDValue } from "@/clientApi/wallet";
 
 const Dashboard = () => {
   const router = useRouter();
@@ -41,6 +42,7 @@ const Dashboard = () => {
   const [showWallet, setShowWallet] = useState(false);
   const [navbarTrigger, setNavbarTrigger] = useState(false);
   const [showModal, setShowModal] = useState(false);
+  const [usd, setUsd] = useState(0);
   // const [wallets, setWallets] = useState([]);
   const [walletType, setWalletType] = useState("");
   const [coinData, setCoinData] = useState("");
@@ -61,8 +63,16 @@ const Dashboard = () => {
     }
   }, [status]);
 
+  const fetchUsdValue = async () => {
+    const res = await getUSDValue();
+    if (res) {
+      setUsd(res?.data?.ethereum?.usd);
+    }
+  };
+
   useEffect(() => {
     fetchWallet();
+    fetchUsdValue();
   }, []);
 
   const isMobile = useMediaQuery({ query: `(max-width: 760px)` });
@@ -174,21 +184,19 @@ const Dashboard = () => {
               />
               <div className="flex flex-col mt-4 space-y-4">
                 {history &&
-                  history
-                    .toReversed()
-                    .slice(0, 5)
-                    .map((item, i) => {
-                      return (
-                        <HistoryCard
-                          key={`history_${i}`}
-                          secureWalletAddress={secureWalletAddress}
-                          eoaWalletAddress={eoaWalletAddress}
-                          to={item?.to}
-                          hash={item?.hash}
-                          value={item.value}
-                        />
-                      );
-                    })}
+                  history.slice(0, 5).map((item, i) => {
+                    return (
+                      <HistoryCard
+                        key={`history_${i}`}
+                        secureWalletAddress={secureWalletAddress}
+                        eoaWalletAddress={eoaWalletAddress}
+                        to={item?.to}
+                        hash={item?.hash}
+                        value={item.value}
+                        usd={usd}
+                      />
+                    );
+                  })}
               </div>
             </div>
           </div>

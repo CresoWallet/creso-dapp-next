@@ -110,16 +110,15 @@ const WalletContextProvider = ({ children }) => {
       ]);
 
       if (res) {
-        const historyArray = [];
-        res.map((item) => {
-          item?.data?.map((e) => {
-            historyArray.push(e);
-          });
+        const history = [...res[0].data, ...res[1].data];
+
+        let sortedArray = history.sort((a, b) => {
+          return new Date(b.timestamp) - new Date(a.timestamp);
         });
 
-        let result = historyArray.filter((e, i) => {
+        let result = sortedArray.filter((e, i) => {
           return (
-            historyArray.findIndex((x) => {
+            sortedArray.findIndex((x) => {
               return x.hash == e.hash;
             }) == i
           );

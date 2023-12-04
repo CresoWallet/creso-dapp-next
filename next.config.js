@@ -1,7 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
-    domains: ["static.okx.com", "themoviedb.org"],
+    domains: ["static.okx.com", "www.okx.com"],
     remotePatterns: [
       {
         protocol: "https",

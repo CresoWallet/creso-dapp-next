@@ -17,6 +17,7 @@ import WalletAddress from "./WalletAddress";
 
 const network = [
   { key: "Ethereum Mainnet", value: "ethereum" },
+  { key: "Goerli Testnet", value: "goerli" },
   { key: "BNB Smart Chain", value: "bnb" },
   { key: "Polygon", value: "polygon" },
 ];
@@ -42,7 +43,6 @@ const SecureWallet = ({
   return (
     <div
       className={`absolute bg-white border-l-2 shadow-xl w-full h-full z-10`}
-      // className="absolute bg-white flex flex-col xl:pl-8 md:pl-4 mx-0 px-2 xl:px-0 md:px-2 pt-10 w-full xl:pr-10 pr-2 space-y-4 min-h-screen h-full z-20"
     >
       <div className="flex rounded-full bg-black h-8 w-8 items-center justify-center xl:-ml-4 md:-ml-4 ml-2 mt-10 absolute cursor-pointer z-[99]">
         <IoIosClose className="text-white h-4 w-4" onClick={handleClose} />

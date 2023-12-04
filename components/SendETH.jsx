@@ -1,8 +1,7 @@
 "use client";
 import React, { useEffect, useState, useContext, useRef } from "react";
 import Image from "next/image";
-import { getBalance, minifyEthereumAddress } from "@/utils";
-import { AiOutlineLoading3Quarters } from "react-icons/ai";
+import { minifyEthereumAddress } from "@/utils";
 import CustomButton3 from "./CustomButton3";
 import Ethereum from "../assets/Dashboard/etherum.png";
 import BNB from "../assets/Dashboard/bnb2.png";
@@ -12,11 +11,11 @@ import Dai from "../assets/Dashboard/dai4.png";
 import Send from "../assets/Dashboard/send.png";
 import Creso from "../assets/Dashboard/creso2.png";
 import CustomButton from "./CustomButton";
-import { getUserWallets, transferEthAPI } from "@/clientApi/wallet";
+import { transferEthAPI } from "@/clientApi/wallet";
 import { useForm } from "react-hook-form";
 import { enqueueSnackbar } from "notistack";
 import { WalletContext } from "@/providers/WalletProvider";
-import { coinList } from "@/utils/data/coinlist";
+import { tokenList } from "@/utils/data/coinlist";
 import { getTokenBalance } from "@/services/ethers/wallet";
 
 const SendETH = ({ handleBackButton, walletArr, networks }) => {
@@ -39,7 +38,7 @@ const SendETH = ({ handleBackButton, walletArr, networks }) => {
   const [standard, setStandard] = useState("native");
   const [tokenBalance, setTokenBalance] = useState(0);
   const [networkFirstValue] = networks.values();
-  const [coinFirstValue] = coinList.values();
+  const [initialToken, setInitialToken] = useState({});
 
   const handleBackgroundClick = (e) => {
     if (popupRef.current === e.target) {
@@ -90,7 +89,7 @@ const SendETH = ({ handleBackButton, walletArr, networks }) => {
         standard === "stable"
           ? selectedCoin
             ? selectedCoin?.tokenAddress
-            : coinFirstValue?.tokenAddress
+            : initialToken?.tokenAddress
           : "",
     };
 
@@ -120,15 +119,35 @@ const SendETH = ({ handleBackButton, walletArr, networks }) => {
     // console.log(transferPayload);
   };
 
-  useEffect(() => {
-    if (Object.keys(selectedWallet).length !== 0 && selectedCoin) {
-      const blnce = getTokenBalance(
+  const fetchTokenBalance = async () => {
+    if (
+      Object.keys(selectedWallet).length !== 0 &&
+      selectedCoin &&
+      selectedCoin?.standard !== "native"
+    ) {
+      const blnce = await getTokenBalance(
         selectedCoin?.tokenAddress,
         selectedWallet?.address
       );
 
       setTokenBalance(blnce);
     }
+  };
+
+  useEffect(() => {
+    let coinFirstValue = "";
+    if (selectedNetwork) {
+      [coinFirstValue] = tokenList[selectedNetwork?.value].values();
+    } else {
+      [coinFirstValue] = tokenList[networkFirstValue?.value].values();
+    }
+
+    console.log("coinFirstValue : ", coinFirstValue);
+    setInitialToken(coinFirstValue);
+  }, [selectedNetwork]);
+
+  useEffect(() => {
+    fetchTokenBalance();
   }, [selectedWallet, selectedCoin]);
 
   return (
@@ -150,8 +169,8 @@ const SendETH = ({ handleBackButton, walletArr, networks }) => {
       <div className="flex flex-col space-y-1">
         <p className="text-sm mx-4">Network</p>
         <div className="flex flex-row justify-between items-center gap-2 border border-solid rounded-full px-4 py-2 relative">
-          <button
-            className="flex flex-row items-center gap-2 w-full justify-between"
+          <div
+            className="flex flex-row items-center gap-2 w-full justify-between cursor-pointer"
             onClick={() => setOpenNetworkList(true)}
           >
             <div className="flex items-center gap-2">
@@ -197,7 +216,7 @@ const SendETH = ({ handleBackButton, walletArr, networks }) => {
                 <p className="opacity-50"> {networkFirstValue.key}</p>
               )}
             </div>
-          </button>
+          </div>
           {openNetowrkList && (
             <>
               <div className="bg-white shadow-xl absolute px-4 py-6 top-[55px] w-full left-0 flex flex-col  gap-4 min-w-[350px] rounded-[20px] z-[1]">
@@ -270,74 +289,54 @@ const SendETH = ({ handleBackButton, walletArr, networks }) => {
           <div className="flex flex-row justify-between items-center">
             <p className="text-sm mx-4">Coin</p>
             {tokenBalance && selectedCoin !== "native" && (
-              <p className="text-sm">Balance : {tokenBalance} ETH</p>
+              <p className="text-sm">{`Balance : ${tokenBalance} ${selectedCoin?.coinName}`}</p>
             )}
           </div>
           <div className="flex flex-row justify-between items-center gap-2 border border-solid rounded-full px-4 py-2 relative">
-            <button
-              className="flex flex-row items-center gap-2 w-full justify-between"
+            <div
+              className="flex flex-row items-center gap-2 w-full justify-between cursor-pointer"
               onClick={() => setOpenCoinList(true)}
             >
               <div className="flex items-center gap-2">
                 <>
                   {selectedCoin ? (
                     <Image
-                      className="w-6 h-6"
+                      // className="w-6 h-6"
                       alt=""
-                      src={
-                        selectedCoin.coinName === "ETH"
-                          ? Ethereum
-                          : selectedCoin.coinName === "BNB"
-                          ? BNB
-                          : selectedCoin.coinName === "WETH"
-                          ? Weth
-                          : selectedCoin.coinName === "USDT"
-                          ? Usdc
-                          : selectedCoin.coinName === "DAI"
-                          ? Dai
-                          : Creso
-                      }
+                      src={selectedCoin?.tokenLogoUrl}
+                      width={20}
+                      height={20}
                     />
                   ) : (
                     <Image
-                      className="w-6 h-6"
+                      // className="w-6 h-6"
                       alt=""
-                      src={
-                        coinFirstValue.coinName === "ETH"
-                          ? Ethereum
-                          : coinFirstValue.coinName === "BNB"
-                          ? BNB
-                          : coinFirstValue.coinName === "WETH"
-                          ? Weth
-                          : coinFirstValue.coinName === "USDT"
-                          ? Usdc
-                          : coinFirstValue.coinName === "DAI"
-                          ? Dai
-                          : Creso
-                      }
+                      src={initialToken?.tokenLogoUrl || Creso}
+                      width={20}
+                      height={20}
                     />
                   )}
                 </>
-                {selectedCoin?.coinName ? (
-                  selectedCoin.coinName
+                {selectedCoin?.tokenName ? (
+                  selectedCoin.tokenName
                 ) : (
-                  <p className="opacity-50">{coinFirstValue.coinName}</p>
+                  <p className="opacity-50">{initialToken?.tokenName}</p>
                 )}
               </div>
-            </button>
+            </div>
             {openCoinList && (
               <>
                 <div className="bg-white shadow-xl absolute px-4 py-6 top-[55px] w-full left-0 flex flex-col  gap-4 min-w-[350px] rounded-[20px] z-[1]">
-                  {coinList.map((item, key) => (
+                  {tokenList[
+                    selectedNetwork
+                      ? selectedNetwork.value
+                      : networkFirstValue.value
+                  ].map((item, key) => (
                     <div
                       key={key}
                       className="flex flex-col cursor-pointer gap-4"
                       onClick={async () => {
                         handleSelectCoin(item);
-                        // if (item.standard !== "native") {
-                        //   // const blnce = await getBalance(item.tokenAddress);
-                        //   setTokenBalance(blnce);
-                        // }
                       }}
                     >
                       <div className="flex flex-row items-center justify-between  min-h-[50px]">
@@ -345,24 +344,14 @@ const SendETH = ({ handleBackButton, walletArr, networks }) => {
                           <div>
                             <Image
                               alt=""
-                              src={
-                                item.coinName === "ETH"
-                                  ? Ethereum
-                                  : item.coinName === "WETH"
-                                  ? Weth
-                                  : item.coinName === "BNB"
-                                  ? BNB
-                                  : item.coinName === "USDT"
-                                  ? Usdc
-                                  : item.coinName === "DAI"
-                                  ? Dai
-                                  : Ethereum
-                              }
-                              className="w-8 h-8"
+                              src={item.tokenLogoUrl}
+                              // className="w-8 h-8"
+                              width={20}
+                              height={20}
                             />
                           </div>
                           <div className="flex flex-col items-start gap-2">
-                            <p className="text-sm">{item.coinName}</p>
+                            <p className="text-sm">{item.tokenName}</p>
                           </div>
                         </div>
                       </div>
@@ -390,8 +379,8 @@ const SendETH = ({ handleBackButton, walletArr, networks }) => {
       <div className="flex flex-col space-y-1">
         <p className="text-sm mx-4">From</p>
         <div className="flex flex-row justify-between items-center gap-2 border border-solid rounded-full px-4 py-2 relative">
-          <button
-            className="flex flex-row items-center gap-2 w-full justify-between"
+          <div
+            className="flex flex-row items-center gap-2 w-full justify-between cursor-pointer"
             onClick={walletHandleClick}
           >
             <div className="flex items-center gap-2">
@@ -432,11 +421,11 @@ const SendETH = ({ handleBackButton, walletArr, networks }) => {
               </div>
               {selectedWallet ? (
                 <>
-                  <p className="text-sm md:text-xs font-semibold whitespace-nowrap align-middle w-full flex items-center justify-center">
+                  <span className="text-sm md:text-xs font-semibold whitespace-nowrap align-middle w-full flex items-center justify-center">
                     {selectedWallet.walletName || (
                       <p className="hover:font-bold">Select Wallet</p>
                     )}
-                  </p>
+                  </span>
                 </>
               ) : (
                 <p className="text-sm md:text-xs cursor-pointer hover:font-bold">
@@ -444,7 +433,7 @@ const SendETH = ({ handleBackButton, walletArr, networks }) => {
                 </p>
               )}
             </div>
-          </button>
+          </div>
           {openWalletList && (
             <>
               <div className="bg-white shadow-xl absolute px-4 py-6 top-[55px] w-full left-0 flex flex-col  gap-4 min-w-[350px] rounded-[20px] z-[2]">
@@ -502,9 +491,10 @@ const SendETH = ({ handleBackButton, walletArr, networks }) => {
           0x7Cb6cAfa1fB1eAf283C1857897296866b3b6829B
         </div> */}
       </div>
+
       <div className="flex flex-col space-y-1">
         <p className="text-sm mx-4">To</p>
-        <div className="flex flex-row justify-between items-center gap-2 border border-solid rounded-full px-4 py-2">
+        <div className="flex flex-row justify-between items-center gap-2 border border-solid rounded-full px-4 py-2 cursor-pointer">
           <input
             {...register("to", {
               required: "Required",
@@ -524,13 +514,11 @@ const SendETH = ({ handleBackButton, walletArr, networks }) => {
           </p>
         )}
       </div>
+
       <div className="flex flex-col gap-y-10">
         <div className="flex flex-col space-y-1">
           <div className="flex flex-row justify-between items-center">
             <p className="text-sm mx-4">Amount</p>
-            {/* {selectedWallet && (<span></span>) || (
-            <p className="text-sm">Balance : 0 ETH</p>
-          )} */}
             {Object.keys(selectedWallet).length === 0 ? (
               <span></span>
             ) : (

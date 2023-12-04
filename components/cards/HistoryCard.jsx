@@ -17,23 +17,29 @@ const HistoryCard = ({
   value,
 }) => {
   return (
-    <div className="flex flex-row items-center justify-between">
-      <div className="flex flex-row items-center justify-start gap-2">
+    <div
+      className="flex flex-row items-center justify-between cursor-pointer transition duration-300 hover:bg-slate-200 rounded-lg"
+      onClick={() =>
+        window.open(`${ETHERSCAN}/tx/${hash}`, "_blank", "noopener,noreferrer")
+      }
+    >
+      <div className="flex flex-row items-center justify-start gap-2 p-2">
         <Image alt="" src={ETH} />
 
         <p className="uppercase">ETH</p>
       </div>
-      <div className="flex flex-row items-center justify-start">
+      <p className="text-[#A09FAA] text-xs">$1,794.28</p>
+      <p className="font-semibold">
+        {value?.hex && ethers.formatEther(value.hex)}
+      </p>
+      {/* <div className="flex flex-row items-center justify-start border-2 border-indigo-600">
         <div className="flex flex-row gap-4 items-center">
           <p className="text-[#A09FAA] text-xs">$1,794.28</p>
           <p className="font-semibold">
             {value?.hex && ethers.formatEther(value.hex)}
           </p>
-          <a rel="noreferrer" target="_blank" href={`${ETHERSCAN}/tx/${hash}`}>
-            view
-          </a>
         </div>
-      </div>
+      </div> */}
       <div className="flex flex-row items-center justify-be space-x-4 gap-4">
         <div className="flex flex-row">
           <div className="flex flex-row">

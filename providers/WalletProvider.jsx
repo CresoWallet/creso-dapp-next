@@ -2,8 +2,16 @@
 import { createContext, useEffect, useState } from "react";
 import { ethers } from "ethers";
 
-import { getHistory, getUserTokens, getUserWallets } from "@/clientApi/wallet";
+import {
+  getHistory,
+  getUSDValue,
+  getUserTokens,
+  getUserWallets,
+} from "@/clientApi/wallet";
 import { useUser } from "./UserProvider";
+import { network } from "@/utils/data/coinlist";
+import { getBalance } from "@/utils";
+import { getTokenBalance, getWalletBalance } from "@/services/ethers/wallet";
 
 export const WalletContext = createContext();
 
@@ -15,8 +23,10 @@ const WalletContextProvider = ({ children }) => {
   const [wallets, setWallets] = useState([]);
   const [smartWallets, setSmartWallets] = useState([]);
   const [eoaWallets, setEoaWallets] = useState([]);
-  const [history, setHistory] = useState([]);
+  const [history, setHistory] = useState();
   const { user, isAuthenticated, status } = useUser();
+  const [usdRate, setUsdRate] = useState();
+  const [isLoaded, setIsLoaded] = useState(false);
 
   // useEffect(() => {
   //   (async () => {
@@ -30,26 +40,38 @@ const WalletContextProvider = ({ children }) => {
   //   })();
   // }, [user]);
 
+  const getBlnce = async (address) => {
+    let balance = {};
+    let totalUsd = 0;
+
+    for (let i = 0; i < network.length; i++) {
+      const walletBlnce = await getWalletBalance(address, network[i]?.value);
+      const usdValue = usdRate
+        ? parseFloat(walletBlnce * usdRate[network[i]?.symbol])
+        : null;
+      balance[network[i].value] = walletBlnce;
+      totalUsd += parseFloat(usdValue);
+    }
+
+    balance["totalUsd"] = totalUsd;
+
+    return balance;
+  };
+
   const fetchWallet = async () => {
     let sWalletBalance = 0;
     let eWalletBalance = 0;
+
     try {
       const res = await getUserWallets();
 
       if (res?.data) {
+        setEoaWalletAddress(res?.data?.wallets[0].address);
+        setSecureWalletAddress(res?.data?.smartWallets[0].address);
         let walletsEOA = await Promise.all(
           res.data.wallets.map(async (wallet, index) => {
-            const provider = new ethers.JsonRpcProvider(
-              "https://ethereum-goerli.publicnode.com"
-            );
-
-            const balanceInWei = await provider.getBalance(wallet.address);
-            const balance = ethers.formatEther(balanceInWei);
-            eWalletBalance += parseFloat(balance);
-
-            if (index === 0) {
-              setEoaWalletAddress(wallet.address);
-            }
+            const balance = await getBlnce(wallet.address);
+            eWalletBalance += parseFloat(balance?.totalUsd);
 
             return {
               walletName: wallet.walletName,
@@ -62,17 +84,8 @@ const WalletContextProvider = ({ children }) => {
 
         let smartWallet = await Promise.all(
           res.data.smartWallets.map(async (sWallet, index) => {
-            const provider = new ethers.JsonRpcProvider(
-              "https://ethereum-goerli.publicnode.com"
-            );
-
-            const balanceInWei = await provider.getBalance(sWallet.address);
-            const balance = ethers.formatEther(balanceInWei);
-            sWalletBalance += parseFloat(balance);
-
-            if (index === 0) {
-              setSecureWalletAddress(sWallet.address);
-            }
+            const balance = await getBlnce(sWallet.address);
+            sWalletBalance += parseFloat(balance?.totalUsd);
 
             return {
               walletName: sWallet.walletName,
@@ -84,6 +97,8 @@ const WalletContextProvider = ({ children }) => {
         );
 
         let wallets = [...walletsEOA, ...smartWallet];
+
+        console.log("wallets : ", wallets);
 
         setSecureWalletBalance(sWalletBalance);
         setEoaWalletBalance(eWalletBalance);
@@ -128,11 +143,29 @@ const WalletContextProvider = ({ children }) => {
       }
     } catch (error) {
       console.log("error : ", error);
+    } finally {
+      setIsLoaded(true);
+    }
+  };
+
+  const fetchUsdValue = async () => {
+    try {
+      const res = await getUSDValue();
+      if (res) {
+        setUsdRate({
+          ETH: res?.data?.ethereum.usd,
+          BNB: res?.data?.binancecoin.usd,
+          MATIC: res?.data["matic-network"].usd,
+        });
+      }
+    } catch (error) {
+      console.log("error : ", error);
     }
   };
 
   useEffect(() => {
     if (status === "authenticated") {
+      fetchUsdValue();
       fetchWallet();
     }
   }, [user]);
@@ -153,6 +186,7 @@ const WalletContextProvider = ({ children }) => {
         history,
         smartWallets,
         eoaWallets,
+        isLoaded,
       }}
     >
       {children}

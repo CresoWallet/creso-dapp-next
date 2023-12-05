@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useContext, useEffect, useState } from "react";
+import React, { Suspense, useContext, useEffect, useState } from "react";
 import Image from "next/image";
 import { useMediaQuery } from "react-responsive";
 import { useRouter } from "next/navigation";
@@ -33,7 +33,8 @@ import CoinCard from "@/components/cards/Coin";
 import { WalletContext } from "@/providers/WalletProvider";
 import { ethToDollar } from "@/utils";
 import HistoryCard from "@/components/cards/HistoryCard";
-import { getUSDValue } from "@/clientApi/wallet";
+import { getHistory, getUSDValue } from "@/clientApi/wallet";
+import History from "@/components/dashboard/History";
 
 const Dashboard = () => {
   const router = useRouter();
@@ -47,6 +48,7 @@ const Dashboard = () => {
   const [walletType, setWalletType] = useState("");
   const [coinData, setCoinData] = useState("");
   const { user, isAuthenticated, status } = useUser();
+
   const {
     secureWalletBalance,
     eoaWalletBalance,
@@ -54,7 +56,6 @@ const Dashboard = () => {
     secureWalletAddress,
     eoaWalletAddress,
     fetchWallet,
-    history,
   } = useContext(WalletContext);
 
   useEffect(() => {
@@ -63,16 +64,8 @@ const Dashboard = () => {
     }
   }, [status]);
 
-  const fetchUsdValue = async () => {
-    const res = await getUSDValue();
-    if (res) {
-      setUsd(res?.data?.ethereum?.usd);
-    }
-  };
-
   useEffect(() => {
     fetchWallet();
-    fetchUsdValue();
   }, []);
 
   const isMobile = useMediaQuery({ query: `(max-width: 760px)` });
@@ -170,7 +163,6 @@ const Dashboard = () => {
               {!user?.isEmailVerified && (
                 <Backup onClick={() => handleShowModel()} />
               )}
-
               <div className="flex flex-row justify-start gap-9">
                 <AddCoinButton />
                 <CoinCard handleCoinWallet={handleCoinWallet} />
@@ -181,23 +173,8 @@ const Dashboard = () => {
                 secureWalletAddress={secureWalletAddress}
                 eoaWalletAddress={eoaWalletAddress}
                 showWallet={showWallet}
-              />
-              <div className="flex flex-col mt-4 space-y-4">
-                {history &&
-                  history.slice(0, 5).map((item, i) => {
-                    return (
-                      <HistoryCard
-                        key={`history_${i}`}
-                        secureWalletAddress={secureWalletAddress}
-                        eoaWalletAddress={eoaWalletAddress}
-                        to={item?.to}
-                        hash={item?.hash}
-                        value={item.value}
-                        usd={usd}
-                      />
-                    );
-                  })}
-              </div>
+              />{" "}
+              <History />
             </div>
           </div>
         </div>

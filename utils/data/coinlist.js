@@ -1,3 +1,7 @@
+import Ethereum from "../../assets/Dashboard/etherum.png";
+import BNB from "../../assets/Dashboard/bnb2.png";
+import Polygon from "../../assets/Dashboard/polygon.png";
+
 export const coinList = [
   {
     coinName: "USDC",
@@ -133,13 +137,6 @@ export const tokenList = {
     },
     {
       decimals: "18",
-      tokenContractAddress: "0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE",
-      tokenLogoUrl: "https://static.okx.com/cdn/wallet/logo/ETH-20220328.png",
-      tokenName: "Ethereum",
-      tokenSymbol: "ETH",
-    },
-    {
-      decimals: "18",
       tokenContractAddress: "0x163f8c2467924be0ae7b5347228cabf260318753",
       tokenLogoUrl: "https://static.okx.com/cdn/wallet/logo/WLD-20230726.png",
       tokenName: "Worldcoin",
@@ -185,11 +182,10 @@ export const tokenList = {
   polygon: [
     {
       decimals: "18",
-      tokenContractAddress: "0xF3969e07692E23962B5eB6c37E678E9bd3826D8E",
-      tokenLogoUrl:
-        "https://www.okx.com/cdn/wallet/logo/MATIC-20220415.png?x-oss-process=image/format,webp",
-      tokenName: "MATIC",
-      tokenSymbol: "MATIC",
+      tokenContractAddress: "0x3BA4c387f786bFEE076A58914F5Bd38d668B42c3",
+      tokenLogoUrl: "https://static.okx.com/cdn/wallet/logo/BNB-20220308.png",
+      tokenName: "BNB",
+      tokenSymbol: "BNB",
     },
     {
       decimals: "18",
@@ -210,8 +206,28 @@ export const tokenList = {
 };
 
 export const network = [
-  { key: "Ethereum Mainnet", value: "ethereum" },
-  { key: "Goerli Testnet", value: "goerli" },
-  { key: "BNB Smart Chain", value: "bnb" },
-  { key: "Polygon", value: "polygon" },
+  {
+    key: "Ethereum Mainnet",
+    value: "ethereum",
+    symbol: "ETH",
+    logoUrl: Ethereum,
+  },
+  {
+    key: "Goerli Testnet",
+    value: "goerli",
+    symbol: "ETH",
+    logoUrl: Ethereum,
+  },
+  {
+    key: "BNB Smart Chain",
+    value: "bnb",
+    symbol: "BNB",
+    logoUrl: BNB,
+  },
+  {
+    key: "Polygon",
+    value: "polygon",
+    symbol: "MATIC",
+    logoUrl: Polygon,
+  },
 ];

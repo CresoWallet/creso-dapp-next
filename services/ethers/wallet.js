@@ -10,8 +10,6 @@ import tokenAbi from "../../data/contract/ERC20.json";
 // export const provider = new ethers.JsonRpcProvider(RPC_URL_GOERLI);
 
 export const getTokenBalance = async (tokenAddress, address, network) => {
-  console.log("tokenAddress : ", tokenAddress);
-  console.log("network : ", network);
   const tokenContract = getTokenContract(tokenAddress, network);
   const balance = await tokenContract.balanceOf(address);
 
@@ -21,6 +19,14 @@ export const getTokenBalance = async (tokenAddress, address, network) => {
 export const getTokenContract = (tokenAddress, network) => {
   const provider = getProvider(network);
   return new ethers.Contract(tokenAddress, tokenAbi, provider);
+};
+
+export const getWalletBalance = async (walletAddress, network) => {
+  const provider = getProvider(network);
+  const balanceInWei = await provider.getBalance(walletAddress);
+  const balance = ethers.formatEther(balanceInWei);
+
+  return balance;
 };
 
 const getProvider = (network) => {

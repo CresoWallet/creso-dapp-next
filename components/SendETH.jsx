@@ -19,7 +19,7 @@ import { WalletContext } from "@/providers/WalletProvider";
 import { tokenList } from "@/utils/data/coinlist";
 import { getTokenBalance } from "@/services/ethers/wallet";
 
-const SendETH = ({ handleBackButton, walletArr, networks }) => {
+const SendETH = ({ handleBackButton, walletArr, networks, handleClose }) => {
   const popupRef = useRef();
   const {
     register,
@@ -101,13 +101,13 @@ const SendETH = ({ handleBackButton, walletArr, networks }) => {
     try {
       setLoading(true);
       const res = await transferEthAPI(transferPayload);
-      console.log(res);
       if (res) {
         await fetchWallet();
         enqueueSnackbar(`Transaction successful`, {
           variant: "success",
         });
         setLoading(false);
+        handleClose();
       }
     } catch (error) {
       console.log("error : ", error);
@@ -303,7 +303,7 @@ const SendETH = ({ handleBackButton, walletArr, networks }) => {
       {standard === "stable" && (
         <div className="flex flex-col space-y-1">
           <div className="flex flex-row justify-between items-center">
-            <p className="text-sm mx-4">Coin</p>
+            <p className="text-sm mx-4">Token</p>
             <div className="flex items-center gap-1">
               {tokenBalance && selectedCoin !== "native" && (
                 <p className="text-sm">{`Balance : ${tokenBalance} `}</p>
@@ -427,11 +427,6 @@ const SendETH = ({ handleBackButton, walletArr, networks }) => {
             </div>
             <div className="flex w-full max-w-[150px]">
               <div className="flex flex-row gap-1">
-                {/* <CustomButton3
-              title="EQA"
-              buttonColor="[#EEEEF1]"
-              titleColor="black"
-            /> */}
                 <div>
                   {selectedWallet && (
                     <button className="bg-[#EEEEF1] py-2 px-2 rounded-full border border-solid">
@@ -482,7 +477,7 @@ const SendETH = ({ handleBackButton, walletArr, networks }) => {
                                 : ""}
                             </p>
                             <p className="text-xs opacity-50">
-                              {`(${wallet.balance})`}
+                              {`(${wallet.balance.goerli})`}
                             </p>
                           </div>
                         </div>
@@ -545,7 +540,14 @@ const SendETH = ({ handleBackButton, walletArr, networks }) => {
             {Object.keys(selectedWallet).length === 0 ? (
               <span></span>
             ) : (
-              <p className="text-sm">Balance : {selectedWallet.balance} ETH</p>
+              // <p className="text-sm">Balance : {selectedWallet.balance} ETH</p>
+              <p className="text-sm">{`Balance : ${
+                selectedWallet.balance[
+                  selectedNetwork
+                    ? selectedNetwork?.value
+                    : networkFirstValue?.value
+                ]
+              } ${selectedNetwork ? selectedNetwork?.symbol : "ETH"}`}</p>
             )}
           </div>
 

@@ -21,10 +21,17 @@ import Modal from "@/components/modal/Modal";
 import Creso from "../../assets/Dashboard/creso2.png";
 import { minifyEthereumAddress } from "@/utils";
 import { WalletContext } from "@/providers/WalletProvider";
-import { addGuardian, backupWallet } from "@/clientApi/wallet";
+import {
+  addGuardian,
+  backupWallet,
+  confirmRecovery,
+  removeGuardian,
+  startRecovery,
+} from "@/clientApi/wallet";
 import { enqueueSnackbar } from "notistack";
 import FileSaver from "file-saver";
-import { AiOutlineLoading3Quarters } from "react-icons/ai";
+import CustomButton3 from "@/components/CustomButton3";
+import { network } from "@/utils/data/coinlist";
 
 const RecoveryPage = () => {
   const router = useRouter();
@@ -43,11 +50,23 @@ const RecoveryPage = () => {
     eoaWallets,
   } = useContext(WalletContext);
 
-  const [openWalletList, setOpenWalletList] = useState(false);
   const [secretKey, setSecretKey] = useState("");
   const [guardian, setGuardian] = useState("");
-  const [loading, setLoading] = useState(false);
+  const [newOwner, setNewOwner] = useState("");
+  const [aGuardianLoader, setAGuardianLoader] = useState(false);
+  const [rGuardianLoader, setRGuardianLoader] = useState(false);
+  const [cGuardianLoader, setCGuardianLoader] = useState(false);
+  const [recoveryLoader, setRecoveryLoader] = useState(false);
+
   const [selectedWallet, setSelectedWallet] = useState({});
+  const [selectedNetwork, setSelectedNetwork] = useState();
+  const [openWalletList, setOpenWalletList] = useState(false);
+  const [openNetowrkList, setOpenNetworkList] = useState(false);
+
+  const [openWalletListRcvry, setOpenWalletListRcvry] = useState(false);
+  const [openNetowrkListRcvry, setOpenNetworkListRcvry] = useState(false);
+
+  const [networkFirstValue] = network.values();
 
   const isMobile = useMediaQuery({ query: `(max-width: 760px)` });
   useEffect(() => {
@@ -57,6 +76,27 @@ const RecoveryPage = () => {
       document.body.classList.remove("no-scroll");
     }
   }, [navbarTrigger]);
+
+  const handleSelectNetwork = (item) => {
+    setSelectedNetwork(item);
+    setOpenNetworkListRcvry(false);
+    setOpenNetworkList(false);
+  };
+
+  const handleBackgroundClick = (e) => {
+    if (popupRef.current === e.target) {
+      setOpenWalletList(false);
+      setOpenWalletListRcvry(false);
+      setOpenNetworkList(false);
+      setOpenNetworkListRcvry(false);
+    }
+  };
+
+  const handleSelectWallet = (wallet) => {
+    setOpenWalletList(false);
+    setOpenWalletListRcvry(false);
+    setSelectedWallet(wallet);
+  };
 
   const handleBackupWallet = async () => {
     if (!secretKey) {
@@ -98,9 +138,12 @@ const RecoveryPage = () => {
       const payload = {
         walletAddress: selectedWallet.address,
         guardian: guardian,
-        network: "goerli",
+        network: selectedNetwork
+          ? selectedNetwork?.value
+          : networkFirstValue?.value,
       };
-      setLoading(true);
+
+      setAGuardianLoader(true);
       try {
         const res = await addGuardian(payload);
         if (res) {
@@ -115,18 +158,111 @@ const RecoveryPage = () => {
         });
       }
 
-      setLoading(false);
+      setAGuardianLoader(false);
     }
   };
 
-  const handleBackgroundClick = (e) => {
-    if (popupRef.current === e.target) {
-      setOpenWalletList(false);
+  const handleConfirmGuardian = async () => {
+    if (!selectedWallet || guardian === "") {
+      enqueueSnackbar(`Missed Fields`, {
+        variant: "error",
+      });
+    } else {
+      const payload = {
+        walletAddress: selectedWallet.address,
+        guardian: guardian,
+        network: selectedNetwork
+          ? selectedNetwork?.value
+          : networkFirstValue?.value,
+      };
+      setCGuardianLoader(true);
+      try {
+        const res = await confirmRecovery(payload);
+        if (res) {
+          enqueueSnackbar(`Recovery confirmed`, {
+            variant: "success",
+          });
+        }
+      } catch (error) {
+        console.log("error : ", error);
+        if (error?.response?.data?.message === "no wallet") {
+          enqueueSnackbar(`${error?.response?.data?.message}`, {
+            variant: "error",
+          });
+        } else {
+          enqueueSnackbar(`Couldn't confirm recovery`, {
+            variant: "error",
+          });
+        }
+      }
+
+      setCGuardianLoader(false);
     }
   };
-  const handleSelectWallet = (wallet) => {
-    setOpenWalletList(false);
-    setSelectedWallet(wallet);
+
+  const handleRemoveGuardian = async () => {
+    if (!selectedWallet || guardian === "") {
+      enqueueSnackbar(`Missed Fields`, {
+        variant: "error",
+      });
+    } else {
+      const payload = {
+        walletAddress: selectedWallet.address,
+        guardian: guardian,
+        network: selectedNetwork
+          ? selectedNetwork?.value
+          : networkFirstValue?.value,
+      };
+      setRGuardianLoader(true);
+      try {
+        const res = await removeGuardian(payload);
+        if (res) {
+          enqueueSnackbar(`Successfully removed guardian`, {
+            variant: "success",
+          });
+        }
+      } catch (error) {
+        console.log("error : ", error);
+        enqueueSnackbar(`Couldn't remove guardian`, {
+          variant: "error",
+        });
+      }
+
+      setRGuardianLoader(false);
+    }
+  };
+
+  const handleStartRecovery = async () => {
+    if (!selectedWallet || guardian === "") {
+      enqueueSnackbar(`Missed Fields`, {
+        variant: "error",
+      });
+    } else {
+      const payload = {
+        walletAddress: selectedWallet.address,
+        guardian: guardian,
+        newOwner: newOwner,
+        network: selectedNetwork
+          ? selectedNetwork?.value
+          : networkFirstValue?.value,
+      };
+      setRecoveryLoader(true);
+      try {
+        const res = await startRecovery(payload);
+        if (res) {
+          enqueueSnackbar(`Successfully recovered`, {
+            variant: "success",
+          });
+        }
+      } catch (error) {
+        console.log("error : ", error);
+        enqueueSnackbar(`Couldn't recover`, {
+          variant: "error",
+        });
+      }
+
+      setRecoveryLoader(false);
+    }
   };
 
   return (
@@ -204,12 +340,20 @@ const RecoveryPage = () => {
                   </div>
                 </div>
 
-                <button
+                <div className="pt-3">
+                  <CustomButton3
+                    title=" BackUp"
+                    titleColor="black"
+                    buttonColor="[#D0F500]"
+                    onClick={handleBackupWallet}
+                  />
+                </div>
+                {/* <button
                   onClick={handleBackupWallet}
                   className="bg-[#D0F500] xl:py-2  hover:font-bold cursor-pointer xl:px-2 md:py-2 px-1 py-1 md:px-2 border border-solid rounded-full border-black text-sm items-center justify-center"
                 >
                   BackUp
-                </button>
+                </button> */}
               </div>
             </div>
             <div className="mt-10">
@@ -289,13 +433,6 @@ const RecoveryPage = () => {
                     </>
                   )}
                 </div>
-                {/* <div className="flex flex-row justify-between items-center gap-2 border border-solid rounded-full px-4 py-2 min-h-[66px] text-[13px] text-[#a09faa]">
-          <input
-            className="text-sm placeholder:text-[#A09FAA] placeholder:text-xs focus:outline-none"
-            placeholder="Enter wallet address or ENS,NNS"
-          ></input>
-          0x7Cb6cAfa1fB1eAf283C1857897296866b3b6829B
-        </div> */}
               </div>
 
               <div className="flex flex-col xl:mt-8 md:mt-10 mt-8 xl:space-y-4 space-y-2">
@@ -307,25 +444,293 @@ const RecoveryPage = () => {
                       onChange={(e) => {
                         setGuardian(e.target.value);
                       }}
-                      placeholder="guardian"
+                      placeholder="0x802dE034E98be28c87216c30e65a005788EAd50c"
                       className="placeholder:text-[#A09FAA] text-sm xl:px-4 xl:py-4 md:px-4 md:py-4 py-3 px-3 rounded-full border border-solid"
                     />
                   </div>
                 </div>
 
-                <button
-                  onClick={handleAddGuardian}
-                  className="bg-[#D0F500] xl:py-2  hover:font-bold cursor-pointer xl:px-2 md:py-2 px-1 py-1 md:px-2 border border-solid rounded-full border-black text-sm items-center justify-center"
-                >
-                  {loading ? (
-                    <div className="flex flex-col items-center">
-                      {" "}
-                      <AiOutlineLoading3Quarters className="w-5 h-5 animate-spin text-sky-500" />
+                <div className="flex flex-col space-y-1 mt-5">
+                  <p className="text-sm">Network</p>
+                  <div className="flex flex-row justify-between items-center gap-2 border border-solid rounded-full px-4 py-2 relative">
+                    <div
+                      className="flex flex-row items-center gap-2 w-full justify-between cursor-pointer"
+                      onClick={() => setOpenNetworkList(true)}
+                    >
+                      <div className="flex items-center gap-2">
+                        <>
+                          <Image
+                            // className="w-6 h-6"
+                            alt=""
+                            src={
+                              selectedNetwork
+                                ? selectedNetwork?.logoUrl
+                                : networkFirstValue?.logoUrl
+                            }
+                            width={20}
+                            height={20}
+                          />
+                        </>
+                        {selectedNetwork?.key ? (
+                          selectedNetwork.key
+                        ) : (
+                          <p className="opacity-50"> {networkFirstValue.key}</p>
+                        )}
+                      </div>
                     </div>
-                  ) : (
-                    "Add Guardian"
+                    {openNetowrkList && (
+                      <>
+                        <div className="bg-white shadow-xl absolute px-4 py-6 top-[55px] w-full left-0 flex flex-col  gap-4 min-w-[350px] rounded-[20px] z-[1]">
+                          {network.map((item, key) => (
+                            <div
+                              key={key}
+                              className="flex flex-col cursor-pointer gap-4"
+                              onClick={() => handleSelectNetwork(item)}
+                            >
+                              <div className="flex flex-row items-center justify-between  min-h-[50px]">
+                                <div className="flex flex-row gap-4 items-center">
+                                  <div>
+                                    <Image
+                                      alt=""
+                                      src={item.logoUrl}
+                                      // className="w-8 h-8"
+                                      width={20}
+                                      height={20}
+                                    />
+                                  </div>
+                                  <div className="flex flex-col items-start gap-2">
+                                    <p className="text-sm">{item.key}</p>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          ))}
+                        </div>
+                        <div
+                          ref={popupRef}
+                          onClick={handleBackgroundClick}
+                          className="fixed top-0 right-0 w-full h-full bg-black/20 cursor-pointer"
+                        ></div>
+                      </>
+                    )}
+                  </div>
+                </div>
+
+                <div className="flex flex-row justify-between pt-4">
+                  <div className="flex basis-1/2">
+                    {" "}
+                    <CustomButton3
+                      isLoading={rGuardianLoader}
+                      title="Remove Guardian"
+                      titleColor="zinc-100"
+                      buttonColor="slate-950"
+                      onClick={handleRemoveGuardian}
+                    />
+                  </div>
+
+                  <CustomButton3
+                    isLoading={cGuardianLoader}
+                    title="Confirm Guardian"
+                    titleColor="black"
+                    buttonColor="[#D0F500]"
+                    onClick={handleConfirmGuardian}
+                  />
+
+                  <CustomButton3
+                    isLoading={aGuardianLoader}
+                    title="Add Guardian"
+                    titleColor="black"
+                    buttonColor="[#D0F500]"
+                    onClick={handleAddGuardian}
+                  />
+                </div>
+              </div>
+            </div>
+
+            <div className="mt-10">
+              <div className="flex flex-row justify-between items-center xl:mt-8 md:mt-10 mt-8">
+                <p className="text-sm font-semibold">Start Recovery</p>
+              </div>
+
+              <div className="flex flex-col space-y-1 mt-5">
+                <div className="flex flex-row justify-between items-center gap-2 border border-solid rounded-full px-4 py-2 relative">
+                  <button
+                    className="flex flex-row items-center gap-2 w-full justify-between"
+                    onClick={() => setOpenWalletListRcvry(true)}
+                  >
+                    <div className="flex items-center gap-2">
+                      <>
+                        {selectedWallet ? (
+                          <Image alt="" src={Creso} />
+                        ) : (
+                          <p className="text-sm md:text-xs cursor-pointer hover:font-bold">
+                            Select Wallet
+                          </p>
+                        )}
+                      </>
+                      {selectedWallet &&
+                        (minifyEthereumAddress(selectedWallet.address) ? (
+                          <p className="font-semibold text-sm md:text-xs">
+                            {minifyEthereumAddress(selectedWallet.address)}
+                          </p>
+                        ) : (
+                          <p className="opacity-50 text-sm">wallet address</p>
+                        ))}
+                    </div>
+                  </button>
+                  {openWalletListRcvry && (
+                    <>
+                      <div className="bg-white shadow-xl absolute px-4 py-6 top-[55px] w-full left-0 flex flex-col  gap-4 min-w-[350px] rounded-[20px] z-[1]">
+                        {smartWallets.map((wallet, key) => (
+                          <div
+                            key={key}
+                            className="flex flex-col cursor-pointer gap-4"
+                            onClick={() => handleSelectWallet(wallet)}
+                          >
+                            <div className="flex flex-row items-center justify-between  min-h-[60px]">
+                              <div className="flex flex-row gap-4">
+                                <div>
+                                  <Image
+                                    alt=""
+                                    src={Creso}
+                                    className="w-8 h-8"
+                                  />
+                                </div>
+                                <div className="flex flex-col items-start gap-2">
+                                  <p className="text-base md:text-sm font-semibold">
+                                    {wallet ? wallet.walletName : ""}
+                                  </p>
+                                  <div className="flex gap-x-5 flex-wrap gap-y-1.5">
+                                    <p className="text-xs">
+                                      {wallet
+                                        ? minifyEthereumAddress(wallet.address)
+                                        : ""}
+                                    </p>
+                                    <p className="text-xs opacity-50">
+                                      {`(${wallet.balance})`}
+                                    </p>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                      <div
+                        ref={popupRef}
+                        onClick={handleBackgroundClick}
+                        className="fixed top-0 right-0 w-full h-full bg-black/20 cursor-pointer"
+                      ></div>
+                    </>
                   )}
-                </button>
+                </div>
+              </div>
+
+              <div className="flex flex-col xl:mt-8 md:mt-10 mt-8 xl:space-y-4 space-y-2">
+                <div className="flex flex-col space-y-2">
+                  <div className="flex flex-col space-y-1 w-full">
+                    <p className="text-sm">Enter Guardian</p>
+                    <input
+                      type={"text"}
+                      onChange={(e) => {
+                        setGuardian(e.target.value);
+                      }}
+                      placeholder="0x802dE034E98be28c87216c30e65a005788EAd50c"
+                      className="placeholder:text-[#A09FAA] text-sm xl:px-4 xl:py-4 md:px-4 md:py-4 py-3 px-3 rounded-full border border-solid"
+                    />
+                  </div>
+                </div>
+
+                <div className="flex flex-col space-y-2">
+                  <div className="flex flex-col space-y-1 w-full">
+                    <p className="text-sm">New Owner</p>
+                    <input
+                      type={"text"}
+                      onChange={(e) => {
+                        setNewOwner(e.target.value);
+                      }}
+                      placeholder="0x93C2260EE41b285C9Bbf98c6B9FFfbd3D62fcA36"
+                      className="placeholder:text-[#A09FAA] text-sm xl:px-4 xl:py-4 md:px-4 md:py-4 py-3 px-3 rounded-full border border-solid"
+                    />
+                  </div>
+                </div>
+
+                <div className="flex flex-col space-y-1 mt-5">
+                  <p className="text-sm">Network</p>
+                  <div className="flex flex-row justify-between items-center gap-2 border border-solid rounded-full px-4 py-2 relative">
+                    <div
+                      className="flex flex-row items-center gap-2 w-full justify-between cursor-pointer"
+                      onClick={() => setOpenNetworkListRcvry(true)}
+                    >
+                      <div className="flex items-center gap-2">
+                        <>
+                          <Image
+                            // className="w-6 h-6"
+                            alt=""
+                            src={
+                              selectedNetwork
+                                ? selectedNetwork?.logoUrl
+                                : networkFirstValue?.logoUrl
+                            }
+                            width={20}
+                            height={20}
+                          />
+                        </>
+                        {selectedNetwork?.key ? (
+                          selectedNetwork.key
+                        ) : (
+                          <p className="opacity-50"> {networkFirstValue.key}</p>
+                        )}
+                      </div>
+                    </div>
+                    {openNetowrkListRcvry && (
+                      <>
+                        <div className="bg-white shadow-xl absolute px-4 py-6 top-[55px] w-full left-0 flex flex-col  gap-4 min-w-[350px] rounded-[20px] z-[1]">
+                          {network.map((item, key) => (
+                            <div
+                              key={key}
+                              className="flex flex-col cursor-pointer gap-4"
+                              onClick={() => handleSelectNetwork(item)}
+                            >
+                              <div className="flex flex-row items-center justify-between  min-h-[50px]">
+                                <div className="flex flex-row gap-4 items-center">
+                                  <div>
+                                    <Image
+                                      alt=""
+                                      src={item.logoUrl}
+                                      // className="w-8 h-8"
+                                      width={20}
+                                      height={20}
+                                    />
+                                  </div>
+                                  <div className="flex flex-col items-start gap-2">
+                                    <p className="text-sm">{item.key}</p>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          ))}
+                        </div>
+                        <div
+                          ref={popupRef}
+                          onClick={handleBackgroundClick}
+                          className="fixed top-0 right-0 w-full h-full bg-black/20 cursor-pointer"
+                        ></div>
+                      </>
+                    )}
+                  </div>
+                </div>
+
+                <div className="pt-5">
+                  {" "}
+                  <CustomButton3
+                    isLoading={recoveryLoader}
+                    title="Start Recovery"
+                    titleColor="black"
+                    buttonColor="[#D0F500]"
+                    onClick={handleStartRecovery}
+                  />
+                </div>
               </div>
             </div>
           </div>

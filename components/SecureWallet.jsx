@@ -48,6 +48,7 @@ const SecureWallet = ({
             handleBackButton={() => setSend(false)}
             walletArr={wallets.filter((e) => e.type === walletType)}
             networks={network}
+            handleClose={handleClose}
           />
           <div
             onClick={handleClose}

@@ -306,7 +306,7 @@ const Modal = ({ onClose, title, user }) => {
   };
 
   const modalContent = (
-    <div className="modal-overlay">
+    <div className="modal-overlay z-[1]">
       <div className="modal-wrapper">
         <div className="modal">
           <div className="flex px-5 items-center justify-between w-full bg-blue-700 h-[75px] modal-header ">

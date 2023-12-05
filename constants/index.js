@@ -17,9 +17,9 @@ export const RPC_URL_ETHEREUM =
 export const RPC_URL_POLYGON =
   "https://polygon-mainnet.infura.io/v3/eea527fad1a6443fad081d744695f3b1";
 
-export const RPC_URL_BNB = "https://binance.llamarpc.com";
+export const RPC_URL_BNB = "https://bsc-dataseed1.binance.org";
 
 export const CRYPTO_TO_USD =
-  "https://api.coingecko.com/api/v3/simple/price?ids=ethereum&vs_currencies=usd";
+  "https://api.coingecko.com/api/v3/simple/price?ids=ethereum%2Cbinancecoin%2Cmatic-network&vs_currencies=usd";
 
 export const ETHERSCAN = "https://goerli.etherscan.io";

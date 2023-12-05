@@ -61,6 +61,30 @@ export const addGuardian = async (formData) => {
   return res;
 };
 
+export const confirmRecovery = async (formData) => {
+  const res = await axiosInstance("/confirm/guardian", {
+    method: "POST",
+    data: formData,
+  });
+  return res;
+};
+
+export const removeGuardian = async (formData) => {
+  const res = await axiosInstance("/remove/guardian", {
+    method: "POST",
+    data: formData,
+  });
+  return res;
+};
+
+export const startRecovery = async (formData) => {
+  const res = await axiosInstance("/start/guardian", {
+    method: "POST",
+    data: formData,
+  });
+  return res;
+};
+
 export const getUserTokens = async (formData) => {
   const res = await axiosInstance("/get/user/tokens", {
     method: "POST",

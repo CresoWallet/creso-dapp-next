@@ -415,9 +415,6 @@ const RecoveryPage = () => {
                                         ? minifyEthereumAddress(wallet.address)
                                         : ""}
                                     </p>
-                                    <p className="text-xs opacity-50">
-                                      {`(${wallet.balance})`}
-                                    </p>
                                   </div>
                                 </div>
                               </div>
@@ -605,9 +602,6 @@ const RecoveryPage = () => {
                                       {wallet
                                         ? minifyEthereumAddress(wallet.address)
                                         : ""}
-                                    </p>
-                                    <p className="text-xs opacity-50">
-                                      {`(${wallet.balance})`}
                                     </p>
                                   </div>
                                 </div>

@@ -209,8 +209,8 @@ const SendETH = ({ handleBackButton, walletArr, networks, handleClose }) => {
                     className="w-6 h-6"
                     alt=""
                     src={
-                      networkFirstValue.value === "ethereum" ||
-                      selectedNetwork.value === "goerli"
+                      networkFirstValue?.value === "ethereum" ||
+                      networkFirstValue?.value === "goerli"
                         ? Ethereum
                         : networkFirstValue.value === "bnb"
                         ? BNB
@@ -476,9 +476,16 @@ const SendETH = ({ handleBackButton, walletArr, networks, handleClose }) => {
                                 ? minifyEthereumAddress(wallet.address)
                                 : ""}
                             </p>
-                            <p className="text-xs opacity-50">
-                              {`(${wallet.balance.goerli})`}
-                            </p>
+
+                            <p className="text-xs opacity-50">{`(${
+                              wallet.balance[
+                                selectedNetwork
+                                  ? selectedNetwork?.value
+                                  : networkFirstValue?.value
+                              ]
+                            } ${
+                              selectedNetwork ? selectedNetwork?.symbol : "ETH"
+                            })`}</p>
                           </div>
                         </div>
                       </div>
@@ -517,7 +524,7 @@ const SendETH = ({ handleBackButton, walletArr, networks, handleClose }) => {
             {...register("to", {
               required: "Required",
             })}
-            className="text-sm placeholder:text-[#A09FAA] placeholder:text-xs focus:outline-none"
+            className="text-sm placeholder:text-[#A09FAA] placeholder:text-xs focus:outline-none w-3/4"
             placeholder="Enter wallet address or ENS,NNS"
           ></input>
           <CustomButton3

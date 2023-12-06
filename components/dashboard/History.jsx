@@ -8,7 +8,7 @@ import HistoryCardSkelton from "../skeleton/HistoryCardSkelton";
 function History() {
   const { secureWalletAddress, eoaWalletAddress } = useContext(WalletContext);
 
-  // console.log("his : ", history);
+  const arr = ["1", "2", "3", "4"];
 
   const [usd, setUsd] = useState(0);
   const [history, setHistory] = useState([]);
@@ -75,7 +75,11 @@ function History() {
   return (
     <div className="flex flex-col mt-4 space-y-4">
       {isLoading ? (
-        <HistoryCardSkelton />
+        <>
+          {arr.map((e) => {
+            return <HistoryCardSkelton />;
+          })}
+        </>
       ) : (
         <>
           {history?.slice(0, 5)?.map((item, i) => {

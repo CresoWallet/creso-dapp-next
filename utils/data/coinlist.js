@@ -207,14 +207,14 @@ export const tokenList = {
 
 export const network = [
   {
-    key: "Ethereum Mainnet",
-    value: "ethereum",
+    key: "Goerli Testnet",
+    value: "goerli",
     symbol: "ETH",
     logoUrl: Ethereum,
   },
   {
-    key: "Goerli Testnet",
-    value: "goerli",
+    key: "Ethereum Mainnet",
+    value: "ethereum",
     symbol: "ETH",
     logoUrl: Ethereum,
   },

@@ -216,7 +216,7 @@ const Dashboard = () => {
               <Header />
             </div>
 
-            <CresoCard balance={secureWalletBalance + eoaWalletAddress} />
+            <CresoCard balance={secureWalletBalance + eoaWalletBalance} />
             <div className="grid grid-cols-2 gap-2">
               <CapCard
                 name="Market Cap"

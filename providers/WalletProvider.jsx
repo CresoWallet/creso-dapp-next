@@ -48,7 +48,7 @@ const WalletContextProvider = ({ children }) => {
       const walletBlnce = await getWalletBalance(address, network[i]?.value);
       const usdValue = usdRate
         ? parseFloat(walletBlnce * usdRate[network[i]?.symbol])
-        : null;
+        : 0;
       balance[network[i].value] = walletBlnce;
       totalUsd += parseFloat(usdValue);
     }

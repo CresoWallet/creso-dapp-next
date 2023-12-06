@@ -211,7 +211,7 @@ const Dashboard = () => {
           )}
 
           {/* right side component */}
-          <div className="col-span-1 xl:px-6 md:px-2 px-2">
+          <div className="col-span-1 xl:px-7 md:px-2 px-2 xl:pt-8 md:pt-8">
             <div className="hidden xl:block md:block">
               <Header />
             </div>

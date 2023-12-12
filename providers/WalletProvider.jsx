@@ -90,6 +90,7 @@ const WalletContextProvider = ({ children }) => {
             return {
               walletName: sWallet.walletName,
               address: sWallet.address,
+              network: sWallet.network,
               type: "AA",
               balance: balance,
             };
@@ -98,7 +99,7 @@ const WalletContextProvider = ({ children }) => {
 
         let wallets = [...walletsEOA, ...smartWallet];
 
-        console.log("wallets : ", wallets);
+        // console.log("wallets : ", wallets);
 
         setSecureWalletBalance(sWalletBalance);
         setEoaWalletBalance(eWalletBalance);

@@ -25,7 +25,5 @@ export const CRYPTO_TO_USD =
 export const ETHERSCAN = "https://goerli.etherscan.io";
 
 
-// it is for testing
-//------------------//
 // email: crouprotrepressoi-4048@yopmail.com
 // pass: 1 to 9

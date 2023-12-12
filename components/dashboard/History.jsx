@@ -76,8 +76,8 @@ function History() {
     <div className="flex flex-col mt-4 space-y-4">
       {isLoading ? (
         <>
-          {arr.map((e) => {
-            return <HistoryCardSkelton />;
+          {arr.map((e, index) => {
+            return <HistoryCardSkelton key={index} />;
           })}
         </>
       ) : (

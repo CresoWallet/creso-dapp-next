@@ -3,8 +3,8 @@ const isDev = process.env.NODE_ENV === "development";
 export const AUTH_TOKEN = "auth_token";
 
 export const BASE_URL = isDev
-  ? "http://localhost:8080"
-  : "https://creso-b02eab9f8c40.herokuapp.com";
+  ? "https://creso-b02eab9f8c40.herokuapp.com"
+  : "http://localhost:8080"
 
 // export const BASE_URL = "https://creso-b02eab9f8c40.herokuapp.com";
 
@@ -23,3 +23,8 @@ export const CRYPTO_TO_USD =
   "https://api.coingecko.com/api/v3/simple/price?ids=ethereum%2Cbinancecoin%2Cmatic-network&vs_currencies=usd";
 
 export const ETHERSCAN = "https://goerli.etherscan.io";
+
+
+
+// email: crouprotrepressoi-4048@yopmail.com
+// pass: 1 to 9

@@ -211,7 +211,7 @@ const DiscoverPage = () => {
                 );
               })}
             </div> */}
-              <div className="flex flex-row gap-2 xl:gap-4">
+              <div className="flex flex-row gap-2 xl:gap-4 overflow-x-auto">
                 <div className="flex flex-col space-y-1 items-center">
                   <Image
                     alt=""

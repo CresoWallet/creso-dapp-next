@@ -77,7 +77,7 @@ function History() {
       {isLoading ? (
         <>
           {arr.map((e) => {
-            return <HistoryCardSkelton />;
+            return (<div key={e.id}><HistoryCardSkelton /></div>);
           })}
         </>
       ) : (

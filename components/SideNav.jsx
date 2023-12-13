@@ -22,8 +22,8 @@ const SideNav = () => {
         <Image alt="" src={Creso3} className="w-11 h-w-11" />
         <p className="text-white text-4xl hidden lg:block">creso</p>
       </div>
-      <div className={`flex flex-col mt-6 ${isMobile ? "mr-5" : "mr-10"}`}>
-        <p className="text-xs text-[#B1A6F8] px-8 invisible">Menu</p>
+      <div className={`flex flex-col mt-14 ${isMobile ? "mr-5" : "mr-10"}`}>
+        <p className="text-xs text-[#B1A6F8] px-8">Menu</p>
         <Link href="/" className="group relative">
           <div
             className={`w-8 h-10 group-hover:bg-white absolute top-5 ${pathName === "/dashboard" ? "bg-white" : ""

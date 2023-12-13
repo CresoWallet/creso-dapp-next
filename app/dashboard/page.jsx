@@ -133,7 +133,8 @@ const Dashboard = () => {
         ></div>
       )}
 
-      <div className="grid grid-cols-1 md:grid-cols-3 xl:grid-cols-3 px-2 xl:pt-2 md:pt-2 mb-2">
+      <div className="grid grid-cols-1 md:grid-cols-3 xl:grid-cols-3 px-2 xl:pt-2 md:pt-2 mb-2 divide-x">
+        {/* left side */}
         <div className="col-span-2">
           <div className="grid h-full responsivemb-cols">
             {isMobile && navbarTrigger && (

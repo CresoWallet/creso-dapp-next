@@ -61,8 +61,32 @@ export const addGuardian = async (formData) => {
   return res;
 };
 
+export const getGuardians = async (formData) => {
+  const res = await axiosInstance("/get/guardian", {
+    method: "POST",
+    data: formData,
+  });
+  return res;
+};
+
+export const getGuardedWallets = async () => {
+  const res = await axiosInstance("/guardedWallets", {
+    method: "GET",
+  });
+
+  return res;
+};
+
 export const confirmRecovery = async (formData) => {
   const res = await axiosInstance("/confirm/guardian", {
+    method: "POST",
+    data: formData,
+  });
+  return res;
+};
+
+export const getRecoveryStatus = async (formData) => {
+  const res = await axiosInstance("/recoveryStatus", {
     method: "POST",
     data: formData,
   });

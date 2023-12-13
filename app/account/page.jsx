@@ -66,7 +66,7 @@ const AccountPage = () => {
             }`}
           >
             <div className="flex xl:hidden md:hidden justify-center gap-4">
-              <div className="flex flex-row items-center gap-2">
+              <div className="flex flex-row items-center gap-2 space-y-6>
                 <Image alt="" src={Language} className="w-6 h-6" />
                 <div className="flex flex-row gap-1">
                   <p className="text-sm text-black hover:font-bold">ENG</p>

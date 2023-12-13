@@ -156,8 +156,8 @@ const DiscoverPage = () => {
                 <Header />
               </div>
               {/* title with trailing icons */}
-              <div className="flex flex-row items-center justify-between">
-                <p className="xl:text-4xl md:text-md text-black font-bold text-xl">
+              <div className="flex flex-row items-center justify-between ">
+                <p className="xl:text-4xl md:text-md text-black font-bold text-xl space-y-1">
                   Discover
                 </p>
                 {/* icon list */}
@@ -332,13 +332,15 @@ const DiscoverPage = () => {
             </div>
           </div>
         </div>
-        <div className="col-span-1 xl:px-6 md:px-2 px-2">
+
+        <div className="col-span-1 xl:px-6 md:px-2 px-2 space-y-6 ">
           <div className="flex flex-col pt-4 space-y-4">
             <div className="hidden xl:block md:block">
               <Header />
             </div>
-            {/* cap crd grid */}
-            <div className="grid grid-cols-2 gap-2 my-4">
+
+            {/* cap card grid */}
+            <div className="grid grid-cols-2 gap-2 ">
               <CapCard
                 name="Market Cap"
                 amount="$1,312.6B"

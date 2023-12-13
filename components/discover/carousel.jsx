@@ -4,32 +4,32 @@ import { Carousel } from "react-responsive-carousel";
 
 function carousel({ slides }) {
   return (
-    <Carousel showArrows={true} axis="horizontal" className="rounded-2xl ">
-      <div className="h-64 w-full rounded-2xl">
+    <Carousel showArrows={true} axis="horizontal" className="rounded-3xl ">
+      <div className="h-64 w-full rounded-3xl">
         <Image
           width={580}
           height={270}
           src={slides[0]}
           alt="label"
-          className="w-full object-contain rounded-2xl"
+          className="w-full object-contain rounded-3xl"
         />
       </div>
-      <div className="h-64 w-full rounded-2xl">
+      <div className="h-64 w-full rounded-3xl">
         <Image
-          width={500}
-          height={500}
+          width={580}
+          height={270}
           src={slides[1]}
           alt="label"
-          className="w-full object-cover"
+          className="w-full object-contain rounded-3xl"
         />
       </div>
-      <div className="h-64 w-full rounded-2xl">
+      <div className="h-64 w-full rounded-3xl">
         <Image
-          width={500}
-          height={500}
+          width={580}
+          height={270}
           src={slides[2]}
           alt="label"
-          className="w-full object-cover"
+          className="w-full object-contain rounded-3xl"
         />
       </div>
     </Carousel>

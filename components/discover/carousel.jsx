@@ -17,7 +17,7 @@ function CarouselComponent({ slides }) {
               height={270}
               src={slide}
               alt={`label-${index}`}
-              className="w-full h-full object-fill rounded-3xl "
+              className="w-full h-full object-fill rounded-3xl"
             />
           </div>
         ))}

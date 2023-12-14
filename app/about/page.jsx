@@ -4,7 +4,7 @@ import CresoCard from "@/components/CresoCard";
 import CustomButton from "@/components/CustomButton";
 import CustomButton2 from "@/components/CustomButton2";
 import Header from "@/components/Header";
-import SideNav from "@/components/SideNav";
+import SideNav from "@/components/navbar/SideNav";
 import User from "@/components/User";
 import React, { useEffect, useState } from "react";
 import Sure from "../../assets/Dashboard/gainers/sure.png";

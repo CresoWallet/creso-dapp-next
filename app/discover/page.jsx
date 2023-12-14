@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState } from "react";
 
-import SideNav from "@/components/SideNav";
+import SideNav from "@/components/navbar/SideNav";
 
 import { AiOutlineClockCircle, AiOutlineStar } from "react-icons/ai";
 import { RiPlayListAddFill } from "react-icons/ri";

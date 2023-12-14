@@ -19,7 +19,7 @@ import CustomButton2 from "@/components/CustomButton2";
 import User from "@/components/User";
 import Sure from "../../assets/Dashboard/gainers/sure.png";
 import CresoCard from "@/components/CresoCard";
-import SideNav from "@/components/SideNav";
+import SideNav from "@/components/navbar/SideNav";
 import Search from "../../assets/Dashboard/search.png";
 import PinkPlus from "../../assets/Dashboard/PinkPlus.png";
 import Ham from "../../assets/Dashboard/ham.png";

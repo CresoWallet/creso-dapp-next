@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
-import SideNav from "@/components/SideNav";
+import SideNav from "@/components/navbar/SideNav";
 import Settings from "../../assets/Swap/settings.png";
 import Note from "../../assets/Swap/note.png";
 import BNB from "../../assets/Swap/bnb.png";

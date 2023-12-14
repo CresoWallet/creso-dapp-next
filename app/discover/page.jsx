@@ -390,7 +390,7 @@ const DiscoverPage = () => {
               />
             </div>
             {/* user List */}
-            <div className="flex flex-col space-y-4">
+            <div className="flex flex-col space-y-4 overflow-y-auto h-[460px]">
               <User
                 name="SURE"
                 description="240 inSure DeFi"

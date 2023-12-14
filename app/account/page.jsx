@@ -61,9 +61,8 @@ const AccountPage = () => {
       <div className="grid xl:grid-cols-2 md:grid-cols-2 grid-cols-1 px-2 xl:pt-2 md:pt-2 mb-2">
         <div className="col-span-1">
           <div
-            className={`grid h-full ${
-              isMobile ? "grid-cols-1" : "grid-cols-3"
-            }`}
+            className={`grid h-full ${isMobile ? "grid-cols-1" : "grid-cols-3"
+              }`}
           >
             <div className="flex xl:hidden md:hidden justify-center gap-4">
               <div className="flex flex-row items-center gap-2">
@@ -105,9 +104,8 @@ const AccountPage = () => {
             )}
 
             <div
-              className={`col-span-2 ${
-                isMobile ? "mt-2" : "mt-16"
-              } xl:mx-8 md:mx-4 mx-2`}
+              className={`col-span-2 ${isMobile ? "mt-2" : "mt-16"
+                } xl:mx-8 md:mx-4 mx-2`}
             >
               <Account user={user} setShowModal={setShowModal} />
             </div>

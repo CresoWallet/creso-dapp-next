@@ -35,6 +35,7 @@ import { ethToDollar } from "@/utils";
 import HistoryCard from "@/components/cards/HistoryCard";
 import { getHistory, getUSDValue } from "@/clientApi/wallet";
 import History from "@/components/dashboard/History";
+import { enqueueSnackbar } from "notistack";
 
 const Dashboard = () => {
   const router = useRouter();
@@ -89,11 +90,20 @@ const Dashboard = () => {
   };
 
   const handleShowModel = () => {
-    setShowModal(true);
-    // close other models
-    setShowCoinWallet(false);
-    setShowWallet(false);
-    setShowCreateWallet(false);
+    if (user?.registrationMethod !== "email" && !user?.isEmailVerified) {
+      enqueueSnackbar(
+        `Before taking a backup, make sure to verify your email.`,
+        {
+          variant: "warning",
+        }
+      );
+    } else {
+      setShowModal(true);
+      // close other models
+      setShowCoinWallet(false);
+      setShowWallet(false);
+      setShowCreateWallet(false);
+    }
   };
 
   const handleCloseCoinWallet = () => {

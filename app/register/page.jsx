@@ -127,7 +127,7 @@ const RegisterPage = () => {
               bgColor="black"
               type={"submit"}
             />
-            <CustomButton
+            {/* <CustomButton
               isDisabled={true}
               bgColor="white"
               name="Continue With Apple"
@@ -139,7 +139,7 @@ const RegisterPage = () => {
               name="Continue With X"
               nameColor="black"
               img={X}
-            />
+            /> */}
           </div>
           <div className="flex justify-center">
             <p className="text-sm text-[#A09FAA]">

@@ -19,6 +19,7 @@ import { AUTH_TOKEN } from "@/constants";
 import { useUser } from "@/providers/UserProvider";
 import Modal from "@/components/modal/Modal";
 import { logOut } from "@/clientApi/auth";
+import { enqueueSnackbar } from "notistack";
 
 const AccountPage = () => {
   const router = useRouter();
@@ -34,6 +35,19 @@ const AccountPage = () => {
       document.body.classList.remove("no-scroll");
     }
   }, [navbarTrigger]);
+
+  const handleShowBackup = () => {
+    if (user?.registrationMethod !== "email" && !user?.isEmailVerified) {
+      enqueueSnackbar(
+        `Before taking a backup, make sure to verify your email.`,
+        {
+          variant: "warning",
+        }
+      );
+    } else {
+      setShowModal(true);
+    }
+  };
 
   const handleLogout = async () => {
     // localStorage.removeItem(AUTH_TOKEN);
@@ -109,7 +123,7 @@ const AccountPage = () => {
                 isMobile ? "mt-2" : "mt-16"
               } xl:mx-8 md:mx-4 mx-2`}
             >
-              <Account user={user} setShowModal={setShowModal} />
+              <Account user={user} setShowModal={handleShowBackup} />
             </div>
           </div>
         </div>

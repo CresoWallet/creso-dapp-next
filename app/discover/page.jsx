@@ -333,7 +333,7 @@ const DiscoverPage = () => {
           </div>
         </div>
 
-        <div className="col-span-1 xl:px-6 md:px-2 px-2 space-y-6 ">
+        <div className="col-span-1 xl:px-6 md:px-2 px-2">
           <div className="flex flex-col pt-4 space-y-4">
             <div className="hidden xl:block md:block">
               <Header />

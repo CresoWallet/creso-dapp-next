@@ -57,7 +57,7 @@ function CarouselComponent({ slides }) {
 
       {/* Slider Dots Container */}
       <div className="absolute bottom-4 left-0 right-0 flex justify-center  ">
-        <div className=" w-3/5 h-10 bg-white rounded-3xl  rounded-b-none  "></div>
+        <div className=" w-3/5 h-10 bg-white rounded-3xl  rounded-b-none   "></div>
       </div>
     </div>
   );

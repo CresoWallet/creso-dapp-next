@@ -34,7 +34,7 @@ const SideNav = () => {
               }`}
           ></div>
           <div
-            className={`flex flex-row gap-4 items-center group-hover:bg-white rounded-r-full py-4 px-8 ${pathName === "/dashboard" ? "bg-white" : ""
+            className={`flex flex-row gap-4 items-center group-hover:bg-white rounded-r-full py-4 pl-14 pr-28 ${pathName === "/dashboard" ? "bg-white" : ""
               }`}
           >
             <Image alt="" src={Wallet} className="w-6 h-6 text-[#B1A6F8]" />
@@ -65,7 +65,7 @@ const SideNav = () => {
               }`}
           ></div>
           <div
-            className={`flex flex-row gap-4 items-center group-hover:bg-white rounded-r-full py-4 px-8 ${pathName === "/discover" ? "bg-white" : ""
+            className={`flex flex-row gap-4 items-center group-hover:bg-white rounded-r-full py-4 pl-14 pr-28 ${pathName === "/discover" ? "bg-white" : ""
               }`}
           >
             <Image alt="" src={Discover} className="w-6 h-6 text-[#B1A6F8]" />
@@ -96,7 +96,7 @@ const SideNav = () => {
               }`}
           ></div>
           <div
-            className={`flex flex-row gap-4 items-center group-hover:bg-white rounded-r-full py-4 px-8 ${pathName === "/swap" ? "bg-white" : ""
+            className={`flex flex-row gap-4 items-center group-hover:bg-white rounded-r-full py-4 pl-14 pr-28 ${pathName === "/swap" ? "bg-white" : ""
               }`}
           >
             <Image alt="" src={Swap} className="w-6 h-6 text-[#B1A6F8]" />
@@ -131,7 +131,7 @@ const SideNav = () => {
               }`}
           ></div>
           <div
-            className={`flex flex-row gap-4 items-center group-hover:bg-white rounded-r-full py-4 px-8 ${pathName === "/about" ? "bg-white" : ""
+            className={`flex flex-row gap-4 items-center group-hover:bg-white rounded-r-full py-4 pl-14 pr-28 ${pathName === "/about" ? "bg-white" : ""
               }`}
           >
             <Image alt="" src={Info} className="w-6 h-6 text-[#B1A6F8]" />
@@ -162,7 +162,7 @@ const SideNav = () => {
               }`}
           ></div>
           <div
-            className={`flex flex-row gap-4 items-center group-hover:bg-white rounded-r-full py-4 px-8 ${pathName === "/support" ? "bg-white" : ""
+            className={`flex flex-row gap-4 items-center group-hover:bg-white rounded-r-full py-4 pl-14 pr-28 ${pathName === "/support" ? "bg-white" : ""
               }`}
           >
             <Image alt="" src={Support} className="w-6 h-6 text-[#B1A6F8]" />

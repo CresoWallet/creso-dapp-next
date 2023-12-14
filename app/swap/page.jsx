@@ -62,7 +62,10 @@ const SwapPage = () => {
         ></div>
       )}
       <div>
-        <div className="grid grid-cols-1 md:grid-cols-3 xl:grid-cols-3 px-2 mt-2 mb-2">
+        <div className="grid grid-cols-1 md:grid-cols-3 xl:grid-cols-3 px-2 my-2 divide-x">
+          <div className="block xl:hidden md:hidden">
+            <Header />
+          </div>
           <div className="col-span-2">
             <div className="grid responsivemb-cols h-full">
               {isMobile && navbarTrigger && (
@@ -80,6 +83,7 @@ const SwapPage = () => {
                 <div className="flex xl:hidden md:hidden">
                   {showSwapForm && <SwapFrom handleClose={handleClose} />}
                 </div>
+                {/* right side component */}
                 <div className="block xl:hidden md:hidden">
                   <Header />
                 </div>
@@ -244,7 +248,7 @@ const SwapPage = () => {
               {showSwapForm && <SwapFrom handleClose={handleClose} />}
             </div>
 
-            <div className="flex flex-col space-y-4 pt-5">
+            <div className="col-span-1 xl:px-7 md:px-2 px-2 xl:pt-8 md:pt-8">
               <div className="hidden xl:block md:block">
                 <Header />
               </div>

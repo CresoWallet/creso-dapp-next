@@ -51,7 +51,7 @@ const AboutPage = () => {
         ></div>
       )}
       <div>
-        <div className="grid grid-cols-1 md:grid-cols-3 xl:grid-cols-3 px-2 mt-2 mb-2">
+        <div className="grid grid-cols-1 md:grid-cols-3 xl:grid-cols-3 px-2 my-2 divide-x">
           <div className="block xl:hidden md:hidden">
             <Header />
           </div>
@@ -116,8 +116,9 @@ const AboutPage = () => {
                   </div>
                   <div
                     id="accordion-collapse-body-1"
-                    className={`p-5   bg-stale-200 rounded-3xl mb-2 shadow-2xl ${isAccordionActive(1) ? "" : "hidden"
-                      }`}
+                    className={`p-5   bg-stale-200 rounded-3xl mb-2 shadow-2xl ${
+                      isAccordionActive(1) ? "" : "hidden"
+                    }`}
                     aria-labelledby="accordion-collapse-heading-1"
                   >
                     <p className="mb-2 text-black">
@@ -150,8 +151,9 @@ const AboutPage = () => {
 
                   <div
                     id="accordion-collapse-body-1"
-                    className={`p-5   bg-stale-200 rounded-3xl mb-2 shadow-2xl ${isAccordionActive(2) ? "" : "hidden"
-                      }`}
+                    className={`p-5   bg-stale-200 rounded-3xl mb-2 shadow-2xl ${
+                      isAccordionActive(2) ? "" : "hidden"
+                    }`}
                     aria-labelledby="accordion-collapse-heading-1"
                   >
                     <p className="mb-2 text-black ">
@@ -182,8 +184,9 @@ const AboutPage = () => {
                   </div>
                   <div
                     id="accordion-collapse-body-1"
-                    className={`p-5   bg-stale-200 rounded-3xl mb-2 shadow-2xl ${isAccordionActive(3) ? "" : "hidden"
-                      }`}
+                    className={`p-5   bg-stale-200 rounded-3xl mb-2 shadow-2xl ${
+                      isAccordionActive(3) ? "" : "hidden"
+                    }`}
                     aria-labelledby="accordion-collapse-heading-1"
                   >
                     <p className="mb-2 text-black ">
@@ -205,8 +208,10 @@ const AboutPage = () => {
               </div>
             </div>
           </div>
-          <div className="cols-span-1 relative ">
-            <div className="flex flex-col space-y-4 pt-5">
+
+          {/* right side */}
+          <div className="col-span-1 xl:px-7 md:px-2 px-2 xl:pt-8 md:pt-8">
+            <div className="">
               <div className="hidden xl:block md:block">
                 <Header />
               </div>
@@ -245,8 +250,8 @@ const AboutPage = () => {
                   percentage="386.58 ETH"
                 />
               </div>
-              <p className="text-2xl font-bold">Top Gainers</p>
-              <div className="flex flex-col gap-4">
+              <p className="text-2xl font-bold mt-8">Top Gainers</p>
+              <div className="flex flex-col gap-4 mt-6">
                 <div className="flex flex-col gap-1">
                   <User
                     name="SURE"

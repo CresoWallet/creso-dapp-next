@@ -156,8 +156,8 @@ const DiscoverPage = () => {
                 <Header />
               </div>
               {/* title with trailing icons */}
-              <div className="flex flex-row items-center justify-between ">
-                <p className="xl:text-4xl md:text-md text-black font-bold text-xl space-y-1">
+              <div className="flex flex-row items-center justify-between">
+                <p className="xl:text-4xl md:text-md text-black font-bold text-3xl">
                   Discover
                 </p>
                 {/* icon list */}
@@ -332,15 +332,14 @@ const DiscoverPage = () => {
             </div>
           </div>
         </div>
-
+        {/* right side component */}
         <div className="col-span-1 xl:px-6 md:px-2 px-2">
           <div className="flex flex-col pt-4 space-y-4">
             <div className="hidden xl:block md:block">
               <Header />
             </div>
-
-            {/* cap card grid */}
-            <div className="grid grid-cols-2 gap-2 ">
+            {/* cap crd grid */}
+            <div className="grid grid-cols-2 gap-2 my-4">
               <CapCard
                 name="Market Cap"
                 amount="$1,312.6B"
@@ -390,7 +389,7 @@ const DiscoverPage = () => {
               />
             </div>
             {/* user List */}
-            <div className="flex flex-col space-y-4 overflow-y-auto h-[460px]">
+            <div className="flex flex-col space-y-4">
               <User
                 name="SURE"
                 description="240 inSure DeFi"

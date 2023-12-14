@@ -116,9 +116,8 @@ const AboutPage = () => {
                   </div>
                   <div
                     id="accordion-collapse-body-1"
-                    className={`p-5   bg-stale-200 rounded-3xl mb-2 shadow-2xl ${
-                      isAccordionActive(1) ? "" : "hidden"
-                    }`}
+                    className={`p-5   bg-stale-200 rounded-3xl mb-2 shadow-2xl ${isAccordionActive(1) ? "" : "hidden"
+                      }`}
                     aria-labelledby="accordion-collapse-heading-1"
                   >
                     <p className="mb-2 text-black">
@@ -151,9 +150,8 @@ const AboutPage = () => {
 
                   <div
                     id="accordion-collapse-body-1"
-                    className={`p-5   bg-stale-200 rounded-3xl mb-2 shadow-2xl ${
-                      isAccordionActive(2) ? "" : "hidden"
-                    }`}
+                    className={`p-5   bg-stale-200 rounded-3xl mb-2 shadow-2xl ${isAccordionActive(2) ? "" : "hidden"
+                      }`}
                     aria-labelledby="accordion-collapse-heading-1"
                   >
                     <p className="mb-2 text-black ">
@@ -184,9 +182,8 @@ const AboutPage = () => {
                   </div>
                   <div
                     id="accordion-collapse-body-1"
-                    className={`p-5   bg-stale-200 rounded-3xl mb-2 shadow-2xl ${
-                      isAccordionActive(3) ? "" : "hidden"
-                    }`}
+                    className={`p-5   bg-stale-200 rounded-3xl mb-2 shadow-2xl ${isAccordionActive(3) ? "" : "hidden"
+                      }`}
                     aria-labelledby="accordion-collapse-heading-1"
                   >
                     <p className="mb-2 text-black ">

@@ -20,6 +20,6 @@ export const RPC_URL_POLYGON =
 export const RPC_URL_BNB = "https://bsc-dataseed1.binance.org";
 
 export const CRYPTO_TO_USD =
-  "https://api.coingecko.com/api/v3/simple/price?ids=ethereum%2Cbinancecoin%2Cmatic-network&vs_currencies=usd";
+  "https://api.coingecko.com/api/v3/simple/price?ids=ethereum%2Cbinancecoin%2Cmatic-network%2Ctether%2Cusd-coin%2CWorldcoin%2COKB&vs_currencies=usd";
 
 export const ETHERSCAN = "https://goerli.etherscan.io";

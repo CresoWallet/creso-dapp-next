@@ -35,6 +35,7 @@ import Card2 from "../../assets/discover/poster-card/card2.png";
 import Image from "next/image";
 import { useMediaQuery } from "react-responsive";
 import Ham from "../../assets/Dashboard/ham.png";
+import RightMain from "../MainLayout/RightMain";
 
 const DiscoverPage = () => {
   const [isFavourite, setIsFavourite] = useState(false);
@@ -128,18 +129,18 @@ const DiscoverPage = () => {
 
   return (
     <>
-      {navbarTrigger && (
+      {/* {navbarTrigger && (
         <div
           className="navbackdrop"
           onClick={() => setNavbarTrigger(!navbarTrigger)}
         ></div>
-      )}
-      <div className="grid grid-cols-1 md:grid-cols-3 xl:grid-cols-3 px-2 my-2 divide-x">
+      )} */}
+      <div className="grid grid-cols-10 px-2 my-2 divide-x">
         {/* sidebar and discover content */}
         <div className="col-span-2">
           <div className="grid responsivemb-cols h-full">
             {/* side bar */}
-            {isMobile && navbarTrigger && (
+            {/* {isMobile && navbarTrigger && (
               <div className={`col-span-1 h-full responsivemb-nav `}>
                 <SideNav />
               </div>
@@ -149,10 +150,10 @@ const DiscoverPage = () => {
               <div className={`col-span-1 h-full`}>
                 <SideNav />
               </div>
-            )}
+            )} */}
             {/* discover content */}
             <div className="col-span-3 xl:mt-8 md:mt-8 mt-2 space-y-6 xl:mx-4 md:px-2 px-2">
-              <div className="block xl:hidden md:hidden">
+              <div className="block md:hidden">
                 <Header />
               </div>
               {/* title with trailing icons */}
@@ -332,149 +333,11 @@ const DiscoverPage = () => {
             </div>
           </div>
         </div>
-        {/* right side component */}
-        <div className="col-span-1 xl:px-6 md:px-2 px-2">
-          <div className="flex flex-col pt-4 space-y-4">
-            <div className="hidden xl:block md:block">
-              <Header />
-            </div>
-            {/* cap crd grid */}
-            <div className="grid grid-cols-2 gap-2 my-4">
-              <CapCard
-                name="Market Cap"
-                amount="$1,312.6B"
-                icon="up"
-                iconColor="[#FF4085]"
-                percentageColor="[#FF4085]"
-                percentage="9.39%"
-              />
-              <CapCard
-                name="NFT Cap"
-                amount="$2.16B"
-                icon="down"
-                iconColor="[#14B195]"
-                percentageColor="[#14B195]"
-                percentage="2.91%"
-              />
-              <CapCard
-                name="24H Volume"
-                amount="$125.6B"
-                icon="up"
-                iconColor="[#FF4085]"
-                percentageColor="[#FF4085]"
-                percentage="9.39%"
-              />
-              <CapCard
-                name="Gas Burn Leaderboard"
-                amount="$2.16B"
-                icon="up"
-                // iconColor="[#FF4085]"
-                // percentageColor="[#FF4085]"
-                percentage="386.58 ETH"
-              />
-            </div>
-            {/* top gain and top looser buttons */}
-            <div className="flex flex-row items-center gap-2 justify-between">
-              <CustomButton2
-                name="Top Gainers"
-                bgColor="[#D0F500]"
-                borderColor="black"
-                textColor="black"
-              />
-              <CustomButton2
-                name="Top Losers"
-                bgColor="white"
-                borderColor="[#E5E5F0]"
-                textColor="black"
-              />
-            </div>
-            {/* user List */}
-            <div className="flex flex-col space-y-4">
-              <User
-                name="SURE"
-                description="240 inSure DeFi"
-                image={Sure}
-                amount="$0,0041.66"
-                icon="down"
-                iconColor="[#FF4085]"
-                percentageColor="[#FF4085]"
-                percentage="0.23%"
-              />
 
-              <hr className="ml-12" />
-              <User
-                name="CFX"
-                description="76 Conflux"
-                image={CFX}
-                amount="$0.159046"
-                icon="up"
-                iconColor="[#14B195]"
-                percentageColor="[#14B195]"
-                percentage="44.91%"
-              />
-              <hr className="ml-12" />
-
-              <User
-                name="MINA"
-                description="51 Mina Protocol"
-                image={MINA}
-                amount="$0,8366.21"
-                icon="up"
-                iconColor="[#14B195]"
-                percentageColor="[#14B195]"
-                percentage="101.91%"
-              />
-              <hr className="ml-12" />
-
-              <User
-                name="PEPE"
-                description="51 PEPE"
-                image={PEPE}
-                amount="$1,794.28"
-                icon="down"
-                iconColor="[#FF4085]"
-                percentageColor="[#FF4085]"
-                percentage="0.23%"
-              />
-              <hr className="ml-12" />
-
-              <User
-                name="MINA"
-                description="51 Mina Protocol"
-                image={MINA}
-                amount="$0,8366.21"
-                icon="up"
-                iconColor="[#14B195]"
-                percentageColor="[#14B195]"
-                percentage="101.91%"
-              />
-              <hr className="ml-12" />
-
-              <User
-                name="CFX"
-                description="76 Conflux"
-                image={CFX}
-                amount="$0,1590.46"
-                icon="up"
-                iconColor="[#14B195]"
-                percentageColor="[#14B195]"
-                percentage="44.91%"
-              />
-              <hr className="ml-12" />
-
-              <User
-                name="PEPE"
-                description="51 PEPE"
-                image={PEPE}
-                amount="$1,794.28"
-                icon="down"
-                iconColor="[#FF4085]"
-                percentageColor="[#FF4085]"
-                percentage="0.23%"
-              />
-              <hr className="ml-12" />
-            </div>
-          </div>
+        {/* Right Side */}
+        <div className="hidden xl:block md:block pt-16 col-span-4">
+          <Header />
+          <RightMain />
         </div>
       </div>
     </>

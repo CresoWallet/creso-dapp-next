@@ -1,0 +1,188 @@
+"use client";
+
+import React, { useContext, useState } from "react";
+import SecureWallet from "@/components/SecureWallet";
+import Modal from "@/components/modal/Modal";
+import CapCard from "@/components/CapCard";
+import CustomButton2 from "@/components/CustomButton2";
+import User from "@/components/User";
+import Sure from "../../assets/Dashboard/gainers/sure.png";
+import CresoCard from "@/components/CresoCard";
+import CreateWallet from "@/components/CreateWallet";
+import CoinWallet from "@/components/CoinWallet";
+import CFX from "../../assets/gainers/cfx.png";
+import MINA from "../../assets/AboutUs/gainers/mina.png";
+import { WalletContext } from "@/providers/WalletProvider";
+import { usePathname } from "next/navigation";
+
+
+const RightSide = (props) => {
+    const {
+        showCoinWallet,
+        // setShowCoinWallet,
+        showModal,
+        setShowModal,
+        // usd,
+        // setUsd,
+        walletType,
+        // setWalletType,
+        coinData,
+        // setCoinData,
+        // isAuthenticated,
+        secureWalletBalance,
+        eoaWalletBalance,
+        wallets,
+        // WalletContext,
+        // router,
+        handleCloseShowWallet,
+        handleCloseCoinWallet,
+        handleClose,
+        user
+    } = props
+    const [showCreateWallet, setShowCreateWallet] = useState(false);
+    // const [showCoinWallet, setShowCoinWallet] = useState(false);
+    const [showWallet, setShowWallet] = useState(false);
+    // const [showModal, setShowModal] = useState(false);
+    // const {
+    //     secureWalletBalance,
+    //     eoaWalletBalance,
+    //     wallets,
+    // } = useContext(WalletContext);
+
+    // const handleCloseShowWallet = () => {
+    //     setShowWallet(false);
+    // };
+    const path = usePathname()
+    const matchPath = path === "/dashboard" || path === "/swap" || path === "/about"
+    return (
+        <>
+            {/* right side */}
+            <div className="cols-span-1 relative -m-2">
+                {/* models */}
+                <div className="hidden xl:flex md:flex ">
+                    {showCreateWallet && <CreateWallet handleClose={handleClose} />}
+                </div>
+                <div className="hidden xl:flex md:flex">
+                    {showCoinWallet && (
+                        <CoinWallet
+                            handleClose={handleCloseCoinWallet}
+                            wallets={wallets}
+                            coinData={coinData}
+                        />
+                    )}
+                </div>
+
+                <div className="hidden xl:flex md:flex">
+                    {showWallet && (
+                        <SecureWallet
+                            handleClose={handleCloseShowWallet}
+                            wallets={wallets}
+                            walletType={walletType}
+                            secureWalletBalance={secureWalletBalance}
+                            eoaWalletBalance={eoaWalletBalance}
+                        />
+                    )}
+                </div>
+                {showModal && (
+                    <Modal onClose={() => setShowModal(false)} user={user} />
+                )}
+
+                {/* right side component */}
+                <div className="col-span-1 xl:px-7 md:px-2 px-2 xl:pt-8 md:pt-8">
+                    {matchPath && <CresoCard balance={secureWalletBalance + eoaWalletBalance} />}
+                    <div className="grid grid-cols-2 gap-2">
+                        <CapCard
+                            name="Market Cap"
+                            amount="$1,312.6B"
+                            icon="up"
+                            iconColor="[#FF4085]"
+                            percentageColor="[#FF4085]"
+                            percentage="9.39%"
+                        />
+                        <CapCard
+                            name="NFT Cap"
+                            amount="$2.16B"
+                            icon="down"
+                            iconColor="[#14B195]"
+                            percentageColor="[#14B195]"
+                            percentage="2.91%"
+                        />
+                        <CapCard
+                            name="24H Volume"
+                            amount="$125.6B"
+                            icon="up"
+                            iconColor="[#FF4085]"
+                            percentageColor="[#FF4085]"
+                            percentage="9.39%"
+                        />
+                        <CapCard
+                            name="Gas Burn Leaderboard"
+                            amount="$2.16B"
+                            icon="up"
+                            // iconColor="[#FF4085]"
+                            // percentageColor="[#FF4085]"
+                            percentage="386.58 ETH"
+                        />
+                    </div>
+                    <div className="flex flex-row items-center gap-2 mt-8">
+                        <CustomButton2
+                            name="Top Gainers"
+                            bgColor="[#D0F500]"
+                            borderColor="black"
+                            textColor="black"
+                        />
+                        <CustomButton2
+                            name="Top Losers"
+                            bgColor="white"
+                            borderColor="[#E5E5F0]"
+                            textColor="black"
+                        />
+                    </div>
+                    <div className="flex flex-col gap-4 mt-6">
+                        <div className="flex flex-col gap-1">
+                            <User
+                                name="SURE"
+                                description="240 inSure DeFi"
+                                image={Sure}
+                                amount="$0,0041.66"
+                                icon="down"
+                                iconColor="[#FF4085]"
+                                percentageColor="[#FF4085]"
+                                percentage="0.23%"
+                            />
+                            <hr />
+                        </div>
+                        <div className="flex flex-col gap-1">
+                            <User
+                                name="CFX"
+                                description="76 Conflux"
+                                image={CFX}
+                                amount="$0.159046"
+                                icon="up"
+                                iconColor="[#14B195]"
+                                percentageColor="[#14B195]"
+                                percentage="44.91%"
+                            />
+                            <hr />
+                        </div>
+                        <div className="flex flex-col gap-1">
+                            <User
+                                name="MINA"
+                                description="51 Mina Protocol"
+                                image={MINA}
+                                amount="$0,8366.21"
+                                icon="up"
+                                iconColor="[#14B195]"
+                                percentageColor="[#14B195]"
+                                percentage="101.91%"
+                            />
+                            <hr />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </>
+    )
+}
+
+export default RightSide

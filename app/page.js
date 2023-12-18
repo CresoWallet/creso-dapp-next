@@ -1,9 +1,10 @@
-import Dashboard from "./dashboard/page";
+import MainLayout from "./MainLayout/page";
 
 export default function Home() {
   return (
     <main className="" id="modal-root">
-      <Dashboard />
+      {/* <Dashboard /> */}
+      <MainLayout />
     </main>
   );
 }

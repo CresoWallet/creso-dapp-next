@@ -12,6 +12,8 @@ import { useUser } from "./UserProvider";
 import { network } from "@/utils/data/coinlist";
 import { getBalance } from "@/utils";
 import { getTokenBalance, getWalletBalance } from "@/services/ethers/wallet";
+import SideNav from "@/components/SideNav";
+import { useMediaQuery } from "react-responsive";
 
 export const WalletContext = createContext();
 
@@ -27,7 +29,8 @@ const WalletContextProvider = ({ children }) => {
   const { user, isAuthenticated, status } = useUser();
   const [usdRate, setUsdRate] = useState();
   const [isLoaded, setIsLoaded] = useState(false);
-
+  const [navbarTrigger, setNavbarTrigger] = useState(false);
+  const isMobile = useMediaQuery({ query: `(max-width: 760px)` });
   // useEffect(() => {
   //   (async () => {
   //     if (isAuthenticated) {
@@ -188,9 +191,39 @@ const WalletContextProvider = ({ children }) => {
         smartWallets,
         eoaWallets,
         isLoaded,
+        navbarTrigger,
+        setNavbarTrigger,
+        isMobile
       }}
     >
-      {children}
+      {navbarTrigger && (
+        <div
+          className="navbackdrop"
+          onClick={() => setNavbarTrigger(!navbarTrigger)}
+        ></div>
+      )}
+      <div className='grid lg:grid-cols-12 my-2 mx-2 divide-x'>
+        {/* ------------Sidebar---------- */}
+
+        <div className='col-span-2'>
+          {isMobile && navbarTrigger && (
+            <div className={`col-span-2 responsivemb-nav`}>
+              <SideNav />
+            </div>
+          )}
+
+          {/* {!isMobile && ( */}
+          <div className={`col-span-2`}>
+            <SideNav />
+          </div>
+          {/* )} */}
+        </div>
+        <div className="col-span-10">
+          {children}
+        </div>
+      </div>
+
+
     </WalletContext.Provider>
   );
 };

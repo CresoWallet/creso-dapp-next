@@ -17,7 +17,7 @@ const SideNav = () => {
   const isMobile = useMediaQuery({ query: `(max-width: 760px)` });
 
   return (
-    <div className="bg-[#2100EC] rounded-3xl flex flex-col pt-12 min-h-screen lg:h-full items-center lg:items-start relative">
+    <div className="bg-[#2100EC] rounded-3xl flex flex-col pt-12 min-h-screen items-center lg:items-start">
       <div className="flex flex-row items-center gap-1 px-8">
         <Image alt="" src={Creso3} className="w-11 h-w-11" />
         <p className="text-white text-4xl hidden lg:block">creso</p>

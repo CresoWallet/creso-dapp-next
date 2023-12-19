@@ -58,175 +58,167 @@ const SwapPage = () => {
 
   return (
     <>
-      {navbarTrigger && (
-        <div
-          className="navbackdrop"
-          onClick={() => setNavbarTrigger(!navbarTrigger)}
-        ></div>
-      )}
-      <div>
-        <div className="grid grid-cols-12 px-2 divide-x">
-          {/* <div className="grid responsivemb-cols h-full"> */}
-          <div className="col-span-6 space-y-6 xl:mx-4 md:px-2 px-2 pt-[72px]">
-            {/* <div className="flex md:hidden">
+      <div className="grid grid-cols-12 px-2 divide-x">
+        {/* <div className="grid responsivemb-cols h-full"> */}
+        <div className="col-span-6 space-y-6 xl:mx-4 md:px-2 px-2 pt-[72px]">
+          {/* <div className="flex md:hidden">
               {showSwapForm && <SwapFrom handleClose={handleClose} />}
             </div> */}
-            {/* <div className="block xl:hidden md:hidden">
+          {/* <div className="block xl:hidden md:hidden">
               <Header />
             </div> */}
-            <div>
-              <LeftHeader
-                title={"Swap & Bridge"}
-                mobileImg={Ham}
-                navbarTrigger={navbarTrigger}
-                setNavbarTrigger={setNavbarTrigger}
-                isMobile={isMobile}
-                iconImg1={Settings}
-                iconImg2={Note}
+          <div className="">
+            <LeftHeader
+              title={"Swap & Bridge"}
+              mobileImg={Ham}
+              navbarTrigger={navbarTrigger}
+              setNavbarTrigger={setNavbarTrigger}
+              isMobile={isMobile}
+              iconImg1={Settings}
+              iconImg2={Note}
+            />
+          </div>
+          <div className="flex flex-col py-7">
+            <div className="flex flex-col space-y-1">
+              <p className="px-4 text-xs xl:text-sm md:text-sm">From</p>
+              <div className="rounded-full xl:pl-4 pl-2 xl:pr-8 pr-2 xl:py-2 py-1 flex flex-row justify-between border border-solid">
+                <div className="flex flex-row gap-2 items-center">
+                  <Image alt="" src={BNB} />
+                  <div className="flex flex-col">
+                    <div className="flex flex-row gap-1 items-center">
+                      <p className="font-semibold xl:text-lg text-sm">
+                        BNB
+                      </p>
+                      <MdOutlineKeyboardArrowDown size={20} />
+                    </div>
+                    <p className="text-xs text-[#6F6E7A]">Binance Coin</p>
+                  </div>
+                </div>
+                <div className="flex flex-row gap-2 items-center">
+                  <p className="font-semibold text-sm">0x53A...e4af</p>
+                  <MdOutlineKeyboardArrowDown size={20} />
+                </div>
+              </div>
+            </div>
+            <div className="flex justify-center xl:-mt-6 xl:-mb-12 -mt-2 -mb-8">
+              <Image
+                alt=""
+                src={SwapButton}
+                className="w-12 h-12 xl:w-24 xl:h-24"
               />
             </div>
-            <div className="flex flex-col py-7">
-              <div className="flex flex-col space-y-1">
-                <p className="px-4 text-xs xl:text-sm md:text-sm">From</p>
-                <div className="rounded-full xl:pl-4 pl-2 xl:pr-8 pr-2 xl:py-2 py-1 flex flex-row justify-between border border-solid">
-                  <div className="flex flex-row gap-2 items-center">
-                    <Image alt="" src={BNB} />
-                    <div className="flex flex-col">
-                      <div className="flex flex-row gap-1 items-center">
-                        <p className="font-semibold xl:text-lg text-sm">
-                          BNB
-                        </p>
-                        <MdOutlineKeyboardArrowDown size={20} />
-                      </div>
-                      <p className="text-xs text-[#6F6E7A]">Binance Coin</p>
+            <div className="flex flex-col">
+              <p className="px-4 text-xs xl:text-sm md:text-sm">To</p>
+              <div className="rounded-full xl:pl-4 pl-2 xl:pr-8 pr-2 xl:py-2 py-1 flex flex-row justify-between border border-solid">
+                <div className="flex flex-row gap-2 items-center">
+                  <Image alt="" src={Etherum} />
+                  <div className="flex flex-col">
+                    <div className="flex flex-row gap-1 items-center">
+                      <p className="font-semibold xl:text-lg text-sm">
+                        ETH
+                      </p>
+                      <MdOutlineKeyboardArrowDown size={20} />
                     </div>
-                  </div>
-                  <div className="flex flex-row gap-2 items-center">
-                    <p className="font-semibold text-sm">0x53A...e4af</p>
-                    <MdOutlineKeyboardArrowDown size={20} />
+                    <p className="text-xs text-[#6F6E7A]">Ethereum</p>
                   </div>
                 </div>
-              </div>
-              <div className="flex justify-center xl:-mt-6 xl:-mb-12 -mt-2 -mb-8">
-                <Image
-                  alt=""
-                  src={SwapButton}
-                  className="w-12 h-12 xl:w-24 xl:h-24"
-                />
-              </div>
-              <div className="flex flex-col">
-                <p className="px-4 text-xs xl:text-sm md:text-sm">To</p>
-                <div className="rounded-full xl:pl-4 pl-2 xl:pr-8 pr-2 xl:py-2 py-1 flex flex-row justify-between border border-solid">
-                  <div className="flex flex-row gap-2 items-center">
-                    <Image alt="" src={Etherum} />
-                    <div className="flex flex-col">
-                      <div className="flex flex-row gap-1 items-center">
-                        <p className="font-semibold xl:text-lg text-sm">
-                          ETH
-                        </p>
-                        <MdOutlineKeyboardArrowDown size={20} />
-                      </div>
-                      <p className="text-xs text-[#6F6E7A]">Ethereum</p>
-                    </div>
-                  </div>
-                  <div className="flex flex-row gap-2 items-center">
-                    <p className="font-semibold text-sm">0x53A...e4af</p>
-                    <MdOutlineKeyboardArrowDown size={20} />
-                  </div>
+                <div className="flex flex-row gap-2 items-center">
+                  <p className="font-semibold text-sm">0x53A...e4af</p>
+                  <MdOutlineKeyboardArrowDown size={20} />
                 </div>
               </div>
-              <div className="flex flex-col space-y-1 mt-2">
-                <div className="flex flex-row justify-between items-center">
-                  <p className="px-4 text-xs xl:text-sm md:text-sm">
-                    You Pay
-                  </p>
-                  <p className="text-xs text-[#6F6E7A]">
-                    Balance: 7,432 USD
-                  </p>
+            </div>
+            <div className="flex flex-col space-y-1 mt-2">
+              <div className="flex flex-row justify-between items-center">
+                <p className="px-4 text-xs xl:text-sm md:text-sm">
+                  You Pay
+                </p>
+                <p className="text-xs text-[#6F6E7A]">
+                  Balance: 7,432 USD
+                </p>
+              </div>
+              <div className="rounded-full xl:pl-4 pl-2 xl:pr-8 pr-2 xl:py-2 py-1 flex flex-row justify-between border border-solid">
+                <div className="flex flex-row gap-2 items-center">
+                  <Image alt="" src={ETHBNB} />
+                  <div className="flex flex-col">
+                    <p className="font-semibold xl:text-lg text-sm">
+                      800.23
+                    </p>
+                    <p className="text-xs text-[#6F6E7A]">$23.02</p>
+                  </div>
                 </div>
-                <div className="rounded-full xl:pl-4 pl-2 xl:pr-8 pr-2 xl:py-2 py-1 flex flex-row justify-between border border-solid">
-                  <div className="flex flex-row gap-2 items-center">
-                    <Image alt="" src={ETHBNB} />
+                <CustomButton3 title="Max" buttonColor="[#EEEEF1]" />
+              </div>
+            </div>
+            <div className="flex flex-col space-y-1 mt-2 mb-8">
+              <div className="flex flex-row justify-between items-center">
+                <p className="px-4 text-xs xl:text-sm md:text-sm">
+                  You Get
+                </p>
+                <p className="text-[#FF4085] text-xs xl:text-sm md:text-sm">
+                  Show all
+                </p>
+              </div>
+              <div className="rounded-3xl xl:pl-4 pl-2 xl:pr-8 pr-2 xl:py-2 py-1 flex flex-col  border border-solid ">
+                <div className="flex flex-row justify-between">
+                  <div className="flex flex-row xl:gap-2 gap-1 items-center">
+                    <Image alt="" src={BNBUSDT} />
                     <div className="flex flex-col">
                       <p className="font-semibold xl:text-lg text-sm">
-                        800.23
+                        270.6598
                       </p>
-                      <p className="text-xs text-[#6F6E7A]">$23.02</p>
-                    </div>
-                  </div>
-                  <CustomButton3 title="Max" buttonColor="[#EEEEF1]" />
-                </div>
-              </div>
-              <div className="flex flex-col space-y-1 mt-2 mb-8">
-                <div className="flex flex-row justify-between items-center">
-                  <p className="px-4 text-xs xl:text-sm md:text-sm">
-                    You Get
-                  </p>
-                  <p className="text-[#FF4085] text-xs xl:text-sm md:text-sm">
-                    Show all
-                  </p>
-                </div>
-                <div className="rounded-3xl xl:pl-4 pl-2 xl:pr-8 pr-2 xl:py-2 py-1 flex flex-col  border border-solid ">
-                  <div className="flex flex-row justify-between">
-                    <div className="flex flex-row xl:gap-2 gap-1 items-center">
-                      <Image alt="" src={BNBUSDT} />
-                      <div className="flex flex-col">
-                        <p className="font-semibold xl:text-lg text-sm">
-                          270.6598
-                        </p>
-                        <div className="flex flex-row justify-center gap-2">
-                          <p className="text-xs text-[#6F6E7A]">$23.02</p>
-                          <p className="text-xs text-[#6F6E7A]">Across</p>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="flex flex-row gap-2 items-center">
-                      <CustomButton3
-                        title="Recommended"
-                        buttonColor="[#EEEEF1]"
-                      />
-                      <div className="flex rounded-full bg-[#EEEEF1] h-10 w-10 items-center justify-center">
-                        <MdOutlineKeyboardArrowUp className="text-black h-5 w-5" />
+                      <div className="flex flex-row justify-center gap-2">
+                        <p className="text-xs text-[#6F6E7A]">$23.02</p>
+                        <p className="text-xs text-[#6F6E7A]">Across</p>
                       </div>
                     </div>
                   </div>
-                  <hr className="my-4" />
-                  <div className="flex flex-row justify-between">
-                    <div className="flex flex-col space-y-1 items-center">
-                      <Image alt="" src={Gas} />
-                      <p className="font-semibold text-sm xl:text-base">
-                        $0.37
-                      </p>
-                    </div>
-                    <div className="flex flex-col space-y-1 items-center">
-                      <Image alt="" src={Dollar} />
-                      <p className="font-semibold xl:text-base">$0.00</p>
-                    </div>
-                    <div className="flex flex-col space-y-1 items-center">
-                      <Image alt="" src={Clock} />
-                      <p className="font-semibold xl:text-base">3 min</p>
-                    </div>
-                    <div className="flex flex-col space-y-1 items-center">
-                      <Image alt="" src={Layers} />
-                      <p className="font-semibold xl:text-base">1</p>
+                  <div className="flex flex-row gap-2 items-center">
+                    <CustomButton3
+                      title="Recommended"
+                      buttonColor="[#EEEEF1]"
+                    />
+                    <div className="flex rounded-full bg-[#EEEEF1] h-10 w-10 items-center justify-center">
+                      <MdOutlineKeyboardArrowUp className="text-black h-5 w-5" />
                     </div>
                   </div>
                 </div>
+                <hr className="my-4" />
+                <div className="flex flex-row justify-between">
+                  <div className="flex flex-col space-y-1 items-center">
+                    <Image alt="" src={Gas} />
+                    <p className="font-semibold text-sm xl:text-base">
+                      $0.37
+                    </p>
+                  </div>
+                  <div className="flex flex-col space-y-1 items-center">
+                    <Image alt="" src={Dollar} />
+                    <p className="font-semibold xl:text-base">$0.00</p>
+                  </div>
+                  <div className="flex flex-col space-y-1 items-center">
+                    <Image alt="" src={Clock} />
+                    <p className="font-semibold xl:text-base">3 min</p>
+                  </div>
+                  <div className="flex flex-col space-y-1 items-center">
+                    <Image alt="" src={Layers} />
+                    <p className="font-semibold xl:text-base">1</p>
+                  </div>
+                </div>
               </div>
-              <CustomButton
-                name="Swap"
-                img={Swap2}
-                onClick={handleShowSwap}
-                bgColor="black"
-                nameColor="white"
-              />
             </div>
+            <CustomButton
+              name="Swap"
+              img={Swap2}
+              onClick={handleShowSwap}
+              bgColor="black"
+              nameColor="white"
+            />
           </div>
-          {/* </div> */}
-          <div className="hidden xl:block md:block pt-16 col-span-4" >
-            <Header />
-            <RightMain />
-          </div>
+        </div>
+        {/* </div> */}
+        <div className="hidden xl:block md:block pt-16 col-span-4" >
+          <Header />
+          <RightMain />
         </div>
       </div>
     </>

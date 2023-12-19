@@ -202,10 +202,10 @@ const WalletContextProvider = ({ children }) => {
           onClick={() => setNavbarTrigger(!navbarTrigger)}
         ></div>
       )}
-      <div className='grid lg:grid-cols-12 my-2 mx-2 divide-x'>
+      <div className='flex my-2 mx-2 divide-x'>
         {/* ------------Sidebar---------- */}
 
-        <div className='col-span-2'>
+        <div className='w-[15%]'>
           {isMobile && navbarTrigger && (
             <div className={`col-span-1 h-full responsivemb-nav `}>
               <SideNav />
@@ -218,7 +218,7 @@ const WalletContextProvider = ({ children }) => {
           </div>
           {/* )} */}
         </div>
-        <div className="col-span-10">
+        <div className="w-[85%]">
           {children}
         </div>
       </div>

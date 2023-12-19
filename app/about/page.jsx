@@ -46,7 +46,7 @@ const AboutPage = () => {
 
   return (
     <>
-      <div className="grid grid-cols-12 px-2 divide-x">
+      <div className="grid grid-cols-10 px-2 divide-x">
         <div className="col-span-6 space-y-6 xl:mx-10 mx-2 md:mx-8 pt-[72px]">
           <div className="">
             <LeftHeader

@@ -53,7 +53,7 @@ const RightSide = (props) => {
     //     setShowWallet(false);
     // };
     const path = usePathname()
-    const matchPath = path !== "/swap"
+    const matchPath = path !== "/discover"
     return (
         <>
             {/* right side */}

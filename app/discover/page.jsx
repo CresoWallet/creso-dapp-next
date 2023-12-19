@@ -133,7 +133,7 @@ const DiscoverPage = () => {
 
   return (
     <>
-      <div className="grid grid-cols-12 px-2 divide-x">
+      <div className="grid  grid-cols-10 px-2 divide-x">
         {/* sidebar and discover content */}
         {/* <div className="col-span-6 "> */}
         {/* <div className="grid responsivemb-cols h-full"> */}
@@ -153,27 +153,29 @@ const DiscoverPage = () => {
               isMobile={isMobile}
             />
           </div>
-          {/* carousel component */}
-          <div className="w-full py-4">
-            <Carousel slides={slides} />
-          </div>
-          {/* top nft section */}
-          <div className="flex flex-row items-center justify-between ">
-            <div className="flex items-center flex-row gap-1">
-              <p className="font-semibold xl:text-2xl md:text-2xl text-xl text-black">
-                Top NFTs
-              </p>
-              <p className="text-xs text-[#A09FAA]">(24h)</p>
+          <div className="col-span-6 space-y-6">
+
+            {/* carousel component */}
+            <div className="w-full py-4">
+              <Carousel slides={slides} />
             </div>
-            <div
-              className="text-[#FF4085] cursor-pointer rounded-xl"
-              onClick={handleShow}
-            >
-              <p className="">{show ? "See less" : "See more"}</p>
+            {/* top nft section */}
+            <div className="flex flex-row items-center justify-between ">
+              <div className="flex items-center flex-row gap-1">
+                <p className="font-semibold xl:text-2xl md:text-2xl text-xl text-black">
+                  Top NFTs
+                </p>
+                <p className="text-xs text-[#A09FAA]">(24h)</p>
+              </div>
+              <div
+                className="text-[#FF4085] cursor-pointer rounded-xl"
+                onClick={handleShow}
+              >
+                <p className="">{show ? "See less" : "See more"}</p>
+              </div>
             </div>
-          </div>
-          {/* nft details list */}
-          {/* <div className="flex flex-row  my-1 items-center justify-between">
+            {/* nft details list */}
+            {/* <div className="flex flex-row  my-1 items-center justify-between">
               {coins.map((coin, index) => {
                 return (
                   <div key={index}>
@@ -186,127 +188,128 @@ const DiscoverPage = () => {
                 );
               })}
             </div> */}
-          <div className="flex flex-row gap-2 xl:gap-4 overflow-x-auto">
-            <div className="flex flex-col space-y-1 items-center">
-              <Image
-                alt=""
-                src={Degods}
-                className="xl:h-14 xl:w-14 md:h-12 md:w-12"
-              />
-              <div className="flex flex-col">
-                <p className="text-center xl:text-sm md:text-xs text-xs">
-                  Degods
-                </p>
-                <p className="text-[#A09FAA] text-xs xl:text-sm md:text-xs">
-                  3,141 ETH
-                </p>
+            <div className="flex flex-row gap-2 xl:gap-4 overflow-x-auto">
+              <div className="flex flex-col space-y-1 items-center">
+                <Image
+                  alt=""
+                  src={Degods}
+                  className="xl:h-14 xl:w-14 md:h-12 md:w-12"
+                />
+                <div className="flex flex-col">
+                  <p className="text-center xl:text-sm md:text-xs text-xs">
+                    Degods
+                  </p>
+                  <p className="text-[#A09FAA] text-xs xl:text-sm md:text-xs">
+                    3,141 ETH
+                  </p>
+                </div>
+              </div>
+              <div className="flex flex-col space-y-1 items-center">
+                <Image
+                  alt=""
+                  src={AzukiRed}
+                  className="xl:h-14 xl:w-14 md:h-12 md:w-12"
+                />
+                <div className="flex flex-col">
+                  <p className="text-center xl:text-sm text-xs md:text-xs">
+                    Azuki
+                  </p>
+                  <p className="text-[#A09FAA] text-xs xl:text-sm md:text-xs">
+                    3,141 ETH
+                  </p>
+                </div>
+              </div>
+              <div className="flex flex-col space-y-1 items-center">
+                <Image
+                  alt=""
+                  src={Potatoz}
+                  className="xl:h-14 xl:w-14 md:h-12 md:w-12"
+                />
+                <div className="flex flex-col">
+                  <p className="text-center xl:text-sm text-xs md:text-xs">
+                    The Potatoz
+                  </p>
+                  <p className="text-[#A09FAA] text-xs xl:text-sm md:text-xs">
+                    3,141 ETH
+                  </p>
+                </div>
+              </div>
+              <div className="flex flex-col space-y-1 items-center">
+                <Image
+                  alt=""
+                  src={Hvmtl}
+                  className="xl:h-14 xl:w-14 md:h-12 md:w-12"
+                />
+                <div className="flex flex-col">
+                  <p className="text-center xl:text-sm  text-xs md:text-xs">
+                    HV-MTL
+                  </p>
+                  <p className="text-[#A09FAA] text-xs xl:text-sm md:text-xs">
+                    3,141 ETH
+                  </p>
+                </div>
+              </div>
+              <div className="xl:flex flex-col space-y-1 items-center hidden">
+                <Image
+                  alt=""
+                  src={AzukiGray}
+                  className="xl:h-14 xl:w-14 md:h-12 md:w-12"
+                />
+                <div className="flex flex-col">
+                  <p className="text-center xl:text-sm  text-xs md:text-xs">
+                    Azuki
+                  </p>
+                  <p className="text-[#A09FAA] text-xs xl:text-sm md:text-xs">
+                    3,141 ETH
+                  </p>
+                </div>
+              </div>
+              <div className="xl:flex hidden flex-col space-y-1 items-center">
+                <Image
+                  alt=""
+                  src={Degods}
+                  className="xl:h-14 xl:w-14 md:h-12 md:w-12"
+                />
+                <div className="flex flex-col">
+                  <p className="text-center xl:text-sm  text-xs md:text-xs">
+                    Degods
+                  </p>
+                  <p className="text-[#A09FAA] text-xs xl:text-sm md:text-xs">
+                    3,141 ETH
+                  </p>
+                </div>
               </div>
             </div>
-            <div className="flex flex-col space-y-1 items-center">
-              <Image
-                alt=""
-                src={AzukiRed}
-                className="xl:h-14 xl:w-14 md:h-12 md:w-12"
-              />
-              <div className="flex flex-col">
-                <p className="text-center xl:text-sm text-xs md:text-xs">
-                  Azuki
-                </p>
-                <p className="text-[#A09FAA] text-xs xl:text-sm md:text-xs">
-                  3,141 ETH
-                </p>
-              </div>
-            </div>
-            <div className="flex flex-col space-y-1 items-center">
-              <Image
-                alt=""
-                src={Potatoz}
-                className="xl:h-14 xl:w-14 md:h-12 md:w-12"
-              />
-              <div className="flex flex-col">
-                <p className="text-center xl:text-sm text-xs md:text-xs">
-                  The Potatoz
-                </p>
-                <p className="text-[#A09FAA] text-xs xl:text-sm md:text-xs">
-                  3,141 ETH
-                </p>
-              </div>
-            </div>
-            <div className="flex flex-col space-y-1 items-center">
-              <Image
-                alt=""
-                src={Hvmtl}
-                className="xl:h-14 xl:w-14 md:h-12 md:w-12"
-              />
-              <div className="flex flex-col">
-                <p className="text-center xl:text-sm  text-xs md:text-xs">
-                  HV-MTL
-                </p>
-                <p className="text-[#A09FAA] text-xs xl:text-sm md:text-xs">
-                  3,141 ETH
-                </p>
-              </div>
-            </div>
-            <div className="xl:flex flex-col space-y-1 items-center hidden">
-              <Image
-                alt=""
-                src={AzukiGray}
-                className="xl:h-14 xl:w-14 md:h-12 md:w-12"
-              />
-              <div className="flex flex-col">
-                <p className="text-center xl:text-sm  text-xs md:text-xs">
-                  Azuki
-                </p>
-                <p className="text-[#A09FAA] text-xs xl:text-sm md:text-xs">
-                  3,141 ETH
-                </p>
-              </div>
-            </div>
-            <div className="xl:flex hidden flex-col space-y-1 items-center">
-              <Image
-                alt=""
-                src={Degods}
-                className="xl:h-14 xl:w-14 md:h-12 md:w-12"
-              />
-              <div className="flex flex-col">
-                <p className="text-center xl:text-sm  text-xs md:text-xs">
-                  Degods
-                </p>
-                <p className="text-[#A09FAA] text-xs xl:text-sm md:text-xs">
-                  3,141 ETH
-                </p>
-              </div>
-            </div>
-          </div>
 
-          <div className="flex flex-col xl:flex-row xl:gap-2 space-y-2 xl:space-y-0 md:space-y-0">
-            <Image src={Card1} alt="" className="w-full" />
-            <Image src={Card2} alt="" className="w-full" />
-          </div>
+            <div className="flex flex-col xl:flex-row xl:gap-2 space-y-2 xl:space-y-0 md:space-y-0">
+              <Image src={Card1} alt="" className="w-full" />
+              <Image src={Card2} alt="" className="w-full" />
+            </div>
 
-          <div className="flex flex-col xl:flex-row justify-between items-center gap-2">
-            <div className="flex justify-center items-center w-full py-8 rounded-3xl border border-solid border-[#E5E5F0] cursor-pointer hover:scale-105 hover:bg-slate-100">
-              <div className="flex flex-col space-y-2 items-center">
-                <Image alt="" src={GameButtonImage} />
-                <p>Games</p>
+            <div className="flex flex-col xl:flex-row justify-between items-center gap-2">
+              <div className="flex justify-center items-center w-full py-8 rounded-3xl border border-solid border-[#E5E5F0] cursor-pointer hover:scale-105 hover:bg-slate-100">
+                <div className="flex flex-col space-y-2 items-center">
+                  <Image alt="" src={GameButtonImage} />
+                  <p>Games</p>
+                </div>
               </div>
-            </div>
-            <div className="flex justify-center items-center w-full py-8 rounded-3xl border border-solid border-[#E5E5F0] cursor-pointer hover:scale-105 hover:bg-slate-100">
-              <div className="flex flex-col space-y-2 items-center">
-                <Image alt="" src={MarketPlaceImage} />
-                <p>MarketPlace</p>
+              <div className="flex justify-center items-center w-full py-8 rounded-3xl border border-solid border-[#E5E5F0] cursor-pointer hover:scale-105 hover:bg-slate-100">
+                <div className="flex flex-col space-y-2 items-center">
+                  <Image alt="" src={MarketPlaceImage} />
+                  <p>MarketPlace</p>
+                </div>
               </div>
-            </div>
-            <div className="flex justify-center items-center w-full py-8 rounded-3xl border border-solid border-[#E5E5F0] cursor-pointer hover:scale-105 hover:bg-slate-100">
-              <div className="flex flex-col space-y-2 items-center">
-                <Image alt="" src={Defi} />
-                <p>DEFI</p>
+              <div className="flex justify-center items-center w-full py-8 rounded-3xl border border-solid border-[#E5E5F0] cursor-pointer hover:scale-105 hover:bg-slate-100">
+                <div className="flex flex-col space-y-2 items-center">
+                  <Image alt="" src={Defi} />
+                  <p>DEFI</p>
+                </div>
               </div>
             </div>
           </div>
+          {/* </div> */}
+          {/* </div> */}
         </div>
-        {/* </div> */}
-        {/* </div> */}
 
         {/* Right Side */}
         <div className="hidden xl:block md:block pt-16 col-span-4" >

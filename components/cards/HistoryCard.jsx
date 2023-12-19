@@ -17,8 +17,11 @@ const HistoryCard = ({
   value,
   usd,
 }) => {
-  const cryptoValue = value?.hex && ethers.formatEther(value.hex);
+  const cryptoValue =
+    value &&
+    (value?.hex ? ethers.formatEther(value.hex) : ethers.formatEther(value));
   const usdValue = Math.round(parseFloat(cryptoValue * usd));
+
   return (
     <div
       className="flex justify-between cursor-pointer transition duration-300 hover:bg-slate-200 rounded-lg"

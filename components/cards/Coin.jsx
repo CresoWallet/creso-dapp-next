@@ -36,7 +36,6 @@ const CoinCard = ({ handleCoinWallet }) => {
   return (
     <div className="flex flex-row gap-2 xl:gap-7 md:gap-1 justify-between items-center ">
       {tokenList.ethereum.map((item, index) => {
-        console.log("item : ", item);
         return (
           <div
             className="xl:flex hidden flex-col gap-2 space-y-1 items-center cursor-pointer hover:animate-bounce"

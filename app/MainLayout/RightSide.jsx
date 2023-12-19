@@ -53,7 +53,7 @@ const RightSide = (props) => {
     //     setShowWallet(false);
     // };
     const path = usePathname()
-    const matchPath = path === "/dashboard" || path === "/swap" || path === "/about"
+    const matchPath = path !== "/swap"
     return (
         <>
             {/* right side */}

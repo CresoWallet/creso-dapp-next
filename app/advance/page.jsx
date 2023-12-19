@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
-import SideNav from "@/components/SideNav";
+import SideNav from "@/components/navbar/SideNav";
 import Account from "@/components/Account";
 import Currency from "../../assets/security/dollor2.png";
 import Language from "../../assets/security/language.png";

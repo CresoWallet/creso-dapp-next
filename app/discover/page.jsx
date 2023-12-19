@@ -2,7 +2,7 @@
 
 import React, { useContext, useEffect, useState } from "react";
 
-import SideNav from "@/components/SideNav";
+import SideNav from "@/components/navbar/SideNav";
 
 import { AiOutlineClockCircle, AiOutlineStar } from "react-icons/ai";
 import { RiPlayListAddFill } from "react-icons/ri";
@@ -43,11 +43,8 @@ import { WalletContext } from "@/providers/WalletProvider";
 const DiscoverPage = () => {
   const [isFavourite, setIsFavourite] = useState(false);
   const [show, setShow] = useState(false);
-  const {
-    navbarTrigger,
-    setNavbarTrigger,
-    isMobile
-  } = useContext(WalletContext);
+  const { navbarTrigger, setNavbarTrigger, isMobile } =
+    useContext(WalletContext);
   const handleFavourite = () => {
     setIsFavourite(!isFavourite);
   };
@@ -312,7 +309,7 @@ const DiscoverPage = () => {
         </div>
 
         {/* Right Side */}
-        <div className="hidden xl:block md:block pt-16 col-span-4" >
+        <div className="hidden xl:block md:block pt-16 col-span-4">
           <Header />
           <RightMain />
         </div>

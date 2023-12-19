@@ -1,6 +1,6 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import SideNav from "@/components/SideNav";
+import SideNav from "@/components/navbar/SideNav";
 import Account from "@/components/Account";
 import { BsArrowLeft } from "react-icons/bs";
 import { MdKeyboardArrowDown } from "react-icons/md";

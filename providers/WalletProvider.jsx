@@ -14,6 +14,7 @@ import { getBalance } from "@/utils";
 import { getTokenBalance, getWalletBalance } from "@/services/ethers/wallet";
 import SideNav from "@/components/SideNav";
 import { useMediaQuery } from "react-responsive";
+import { usePathname } from "next/navigation";
 
 export const WalletContext = createContext();
 
@@ -42,7 +43,6 @@ const WalletContextProvider = ({ children }) => {
   //     }
   //   })();
   // }, [user]);
-
   const getBlnce = async (address) => {
     let balance = {};
     let totalUsd = 0;
@@ -60,6 +60,21 @@ const WalletContextProvider = ({ children }) => {
 
     return balance;
   };
+  {
+    /* For remove SideNav fetch path */
+  }
+  const pathName = usePathname();
+  const isLoginOrRegister =
+    pathName.includes("/login") || pathName.includes("/register");
+  // console.log(pathName);
+
+  useEffect(() => {
+    if (isLoginOrRegister) {
+      setNavbarTrigger(false); // Hide the navbar for login & register pages
+    } else {
+      setNavbarTrigger(true); // Show the navbar for other pages
+    }
+  }, [isLoginOrRegister]);
 
   const fetchWallet = async () => {
     let sWalletBalance = 0;
@@ -193,7 +208,7 @@ const WalletContextProvider = ({ children }) => {
         isLoaded,
         navbarTrigger,
         setNavbarTrigger,
-        isMobile
+        isMobile,
       }}
     >
       {navbarTrigger && (
@@ -208,13 +223,14 @@ const WalletContextProvider = ({ children }) => {
         <div className='w-[15%]'>
           {isMobile && navbarTrigger && (
             <div className={`col-span-1 h-full responsivemb-nav `}>
-              <SideNav />
+              {/* Conditionally render SideNav based on the path name */}
+              {!isLoginOrRegister && <SideNav />}
             </div>
           )}
-
           {/* {!isMobile && ( */}
           <div className={`col-span-1 h-full`}>
-            <SideNav />
+            {/* Conditionally render SideNav based on the path name */}
+            {!isLoginOrRegister && <SideNav />}
           </div>
           {/* )} */}
         </div>
@@ -222,8 +238,6 @@ const WalletContextProvider = ({ children }) => {
           {children}
         </div>
       </div>
-
-
     </WalletContext.Provider>
   );
 };

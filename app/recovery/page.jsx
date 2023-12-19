@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState, useRef, useContext } from "react";
 import Image from "next/image";
-import SideNav from "@/components/SideNav";
+import SideNav from "@/components/navbar/SideNav";
 import Account from "@/components/Account";
 import { useMediaQuery } from "react-responsive";
 import Ham from "../../assets/Dashboard/ham.png";

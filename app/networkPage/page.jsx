@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import SideNav from "@/components/SideNav";
+import SideNav from "@/components/navbar/SideNav";
 import Account from "@/components/Account";
 import { MdKeyboardArrowDown } from "react-icons/md";
 import Language from "../../assets/security/language.png";

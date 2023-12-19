@@ -139,27 +139,16 @@ const DiscoverPage = () => {
                 <Header />
               </div>
               {/* title with trailing icons */}
-              <div className="flex flex-row items-center justify-between ">
-                <p className="xl:text-4xl md:text-md text-black font-bold text-xl space-y-1">
-                  Discover
-                </p>
-                {/* icon list */}
-                <div className="flex flex-row items-center justify-between text-3xl gap-4">
-                  <div className="icon-set-1">
-                    <AiOutlineStar />
-                  </div>
-                  <div className="icon-set-2">
-                    <AiOutlineClockCircle />
-                  </div>
-                  {isMobile && (
-                    <Image
-                      alt=""
-                      className="navico"
-                      src={Ham}
-                      onClick={() => setNavbarTrigger(!navbarTrigger)}
-                    />
-                  )}
-                </div>
+              <div>
+                <LeftHeader
+                  title={"Discover"}
+                  icon1={<AiOutlineStar />}
+                  icon2={<AiOutlineClockCircle />}
+                  mobileImg={Ham}
+                  navbarTrigger={navbarTrigger}
+                  setNavbarTrigger={setNavbarTrigger}
+                  isMobile={isMobile}
+                />
               </div>
               {/* carousel component */}
               <div className="w-full my-5">

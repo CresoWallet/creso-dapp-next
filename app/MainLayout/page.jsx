@@ -15,8 +15,6 @@ import { WalletContext } from '@/providers/WalletProvider';
 
 const MainLayout = () => {
 	const router = useRouter();
-	const [navbarTrigger, setNavbarTrigger] = useState(false);
-	const isMobile = useMediaQuery({ query: `(max-width: 760px)` });
 	const [showCreateWallet, setShowCreateWallet] = useState(false);
 	const [showCoinWallet, setShowCoinWallet] = useState(false);
 	const [showWallet, setShowWallet] = useState(false);
@@ -33,6 +31,9 @@ const MainLayout = () => {
 		secureWalletAddress,
 		eoaWalletAddress,
 		fetchWallet,
+		navbarTrigger,
+		setNavbarTrigger,
+		isMobile
 	} = useContext(WalletContext);
 
 	useEffect(() => {
@@ -98,11 +99,9 @@ const MainLayout = () => {
 
 	return (
 		<>
-			<div className='grid lg:grid-cols-12  px-2 my-2 divide-x'>
-				{/* ------------Sidebar---------- */}
-
+			<div className='grid grid-cols-12'>
 				{/* ------------ Leftside Main ---------- */}
-				<div className='col-span-8 pt-16 px-12'>
+				<div className='col-span-7 pt-16 px-12'>
 					<div className="">
 						<LeftHeader
 							title={"Dashboard"}
@@ -137,7 +136,7 @@ const MainLayout = () => {
 				</div>
 
 				{/* ------------ Rightside Main ---------- */}
-				<div className="hidden xl:block md:block pt-16 col-span-4" >
+				<div className="col-span-5 hidden xl:block md:block pt-16" >
 					<Header />
 					<RightSide
 						showCoinWallet={showCoinWallet}

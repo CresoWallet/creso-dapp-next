@@ -207,13 +207,13 @@ const WalletContextProvider = ({ children }) => {
 
         <div className='col-span-2'>
           {isMobile && navbarTrigger && (
-            <div className={`col-span-2 responsivemb-nav`}>
+            <div className={`col-span-1 h-full responsivemb-nav `}>
               <SideNav />
             </div>
           )}
 
           {/* {!isMobile && ( */}
-          <div className={`col-span-2`}>
+          <div className={`col-span-1 h-full`}>
             <SideNav />
           </div>
           {/* )} */}

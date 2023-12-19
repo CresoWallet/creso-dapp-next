@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 
 import SideNav from "@/components/SideNav";
 
@@ -36,11 +36,18 @@ import Image from "next/image";
 import { useMediaQuery } from "react-responsive";
 import Ham from "../../assets/Dashboard/ham.png";
 import RightMain from "../MainLayout/RightMain";
+import LeftHeader from "@/components/LeftHeader";
+import { CiSearch } from "react-icons/ci";
+import { WalletContext } from "@/providers/WalletProvider";
 
 const DiscoverPage = () => {
   const [isFavourite, setIsFavourite] = useState(false);
   const [show, setShow] = useState(false);
-
+  const {
+    navbarTrigger,
+    setNavbarTrigger,
+    isMobile
+  } = useContext(WalletContext);
   const handleFavourite = () => {
     setIsFavourite(!isFavourite);
   };
@@ -48,9 +55,6 @@ const DiscoverPage = () => {
     setShow(!setShow);
   };
 
-  const [navbarTrigger, setNavbarTrigger] = useState(false);
-
-  const isMobile = useMediaQuery({ query: `(max-width: 760px)` });
   useEffect(() => {
     if (navbarTrigger) {
       document.body.classList.add("no-scroll");
@@ -129,55 +133,25 @@ const DiscoverPage = () => {
 
   return (
     <>
-      {/* {navbarTrigger && (
-        <div
-          className="navbackdrop"
-          onClick={() => setNavbarTrigger(!navbarTrigger)}
-        ></div>
-      )} */}
-      <div className="grid grid-cols-10 px-2 my-2 divide-x">
+      <div className="grid grid-cols-12 px-2 divide-x">
         {/* sidebar and discover content */}
-        <div className="col-span-2">
+        <div className="col-span-6 pt-16">
           <div className="grid responsivemb-cols h-full">
-            {/* side bar */}
-            {/* {isMobile && navbarTrigger && (
-              <div className={`col-span-1 h-full responsivemb-nav `}>
-                <SideNav />
-              </div>
-            )}
-
-            {!isMobile && (
-              <div className={`col-span-1 h-full`}>
-                <SideNav />
-              </div>
-            )} */}
-            {/* discover content */}
-            <div className="col-span-3 xl:mt-8 md:mt-8 mt-2 space-y-6 xl:mx-4 md:px-2 px-2">
+            <div className="col-span-6 space-y-6 xl:mx-4 md:px-2 px-2">
               <div className="block md:hidden">
                 <Header />
               </div>
               {/* title with trailing icons */}
-              <div className="flex flex-row items-center justify-between ">
-                <p className="xl:text-4xl md:text-md text-black font-bold text-xl space-y-1">
-                  Discover
-                </p>
-                {/* icon list */}
-                <div className="flex flex-row items-center justify-between text-3xl gap-4">
-                  <div className="icon-set-1">
-                    <AiOutlineStar />
-                  </div>
-                  <div className="icon-set-2">
-                    <AiOutlineClockCircle />
-                  </div>
-                  {isMobile && (
-                    <Image
-                      alt=""
-                      className="navico"
-                      src={Ham}
-                      onClick={() => setNavbarTrigger(!navbarTrigger)}
-                    />
-                  )}
-                </div>
+              <div>
+                <LeftHeader
+                  title={"Discover"}
+                  icon1={<AiOutlineStar />}
+                  icon2={<AiOutlineClockCircle />}
+                  mobileImg={Ham}
+                  navbarTrigger={navbarTrigger}
+                  setNavbarTrigger={setNavbarTrigger}
+                  isMobile={isMobile}
+                />
               </div>
               {/* carousel component */}
               <div className="w-full my-5">

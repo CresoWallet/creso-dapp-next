@@ -30,10 +30,15 @@ import Sure from "../../assets/gainers/sure.png";
 import Pepe from "../../assets/gainers/pepe.png";
 import { useMediaQuery } from "react-responsive";
 import Ham from "../../assets/Dashboard/ham.png";
+import LeftHeader from "@/components/LeftHeader";
 
 const SwapPage = () => {
   const [showSwapForm, setShowSwapForm] = useState(false);
-
+  const {
+    navbarTrigger,
+    setNavbarTrigger,
+    isMobile
+  } = useContext(WalletContext);
   const handleShowSwap = () => {
     setShowSwapForm(!showSwapForm);
   };
@@ -41,10 +46,6 @@ const SwapPage = () => {
   const handleClose = () => {
     setShowSwapForm(false);
   };
-
-  const [navbarTrigger, setNavbarTrigger] = useState(false);
-
-  const isMobile = useMediaQuery({ query: `(max-width: 760px)` });
   useEffect(() => {
     if (navbarTrigger) {
       document.body.classList.add("no-scroll");
@@ -65,40 +66,23 @@ const SwapPage = () => {
         <div className="grid grid-cols-1 md:grid-cols-3 xl:grid-cols-3 px-2 mt-2 mb-2">
           <div className="col-span-2">
             <div className="grid responsivemb-cols h-full">
-              {isMobile && navbarTrigger && (
-                <div className={`col-span-1 h-full responsivemb-nav `}>
-                  <SideNav />
-                </div>
-              )}
-
-              {!isMobile && (
-                <div className={`col-span-1 h-full`}>
-                  <SideNav />
-                </div>
-              )}
               <div className="col-span-3 space-y-6 xl:mx-4 md:mx-4 mx-2 md:py-10 xl:py-10">
-                <div className="flex xl:hidden md:hidden">
+                <div className="flex md:hidden">
                   {showSwapForm && <SwapFrom handleClose={handleClose} />}
                 </div>
                 <div className="block xl:hidden md:hidden">
                   <Header />
                 </div>
-                <div className="flex flex-row justify-between items-center">
-                  <p className="text-black xl:text-3xl md:text-2xl text-xl font-bold">
-                    Swap & Bridge
-                  </p>
-                  <div className="flex flex-row gap-2 items-center">
-                    <Image alt="" src={Settings} />
-                    <Image alt="" src={Note} />
-                    {isMobile && (
-                      <Image
-                        alt=""
-                        className="navico"
-                        src={Ham}
-                        onClick={() => setNavbarTrigger(!navbarTrigger)}
-                      />
-                    )}
-                  </div>
+                <div>
+                  <LeftHeader
+                    title={"Swap & Bridge"}
+                    mobileImg={Ham}
+                    navbarTrigger={navbarTrigger}
+                    setNavbarTrigger={setNavbarTrigger}
+                    isMobile={isMobile}
+                    iconImg1={Settings}
+                    iconImg2={Note}
+                  />
                 </div>
                 <div className="flex flex-col">
                   <div className="flex flex-col space-y-1">

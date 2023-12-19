@@ -211,12 +211,12 @@ const WalletContextProvider = ({ children }) => {
         isMobile,
       }}
     >
-      {navbarTrigger && (
+      {/* {navbarTrigger && (
         <div
           className="navbackdrop"
           onClick={() => setNavbarTrigger(!navbarTrigger)}
         ></div>
-      )}
+      )} */}
       <div className='flex my-2 mx-2 divide-x'>
         {/* ------------Sidebar---------- */}
 

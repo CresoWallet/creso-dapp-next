@@ -4,7 +4,7 @@ import CresoCard from "@/components/CresoCard";
 import CustomButton from "@/components/CustomButton";
 import CustomButton2 from "@/components/CustomButton2";
 import Header from "@/components/Header";
-import SideNav from "@/components/navbar/SideNav";
+import SideNav from "@/components/SideNav";
 import User from "@/components/User";
 import React, { useEffect, useState } from "react";
 import Sure from "../../assets/Dashboard/gainers/sure.png";
@@ -46,7 +46,7 @@ const AboutPage = () => {
 
   return (
     <>
-      <div className="grid grid-cols-10 px-2 divide-x">
+      <div className="grid grid-cols-12 px-2 divide-x">
         <div className="col-span-6 space-y-6 xl:mx-10 mx-2 md:mx-8 pt-[72px]">
           <div className="">
             <LeftHeader

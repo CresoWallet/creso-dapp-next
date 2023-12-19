@@ -39,12 +39,12 @@ const LeftSide = (props) => {
 
     return (
         <div id="modal-root">
-            {navbarTrigger && (
+            {/* {navbarTrigger && (
                 <div
                     className="navbackdrop"
                     onClick={() => setNavbarTrigger(!navbarTrigger)}
                 ></div>
-            )}
+            )} */}
 
             <div className="divide-x">
                 {/* left side */}

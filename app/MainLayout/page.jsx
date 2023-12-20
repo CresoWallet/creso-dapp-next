@@ -1,17 +1,17 @@
 "use client";
 
-import Header from '@/components/Header';
-import LeftHeader from '@/components/LeftHeader';
-import SideNav from '@/components/SideNav'
-import React, { useState, useEffect, useContext } from 'react'
-import { useMediaQuery } from 'react-responsive';
+import Header from "@/components/Header";
+import LeftHeader from "@/components/LeftHeader";
+import SideNav from "@/components/navbar/SideNav";
+import React, { useState, useEffect, useContext } from "react";
+import { useMediaQuery } from "react-responsive";
 import { CiSearch } from "react-icons/ci";
 import Ham from "../../assets/Dashboard/ham.png";
-import LeftSide from './LeftSide';
-import { useUser } from '@/providers/UserProvider';
-import RightSide from './RightSide';
-import { useRouter } from 'next/navigation';
-import { WalletContext } from '@/providers/WalletProvider';
+import LeftSide from "./LeftSide";
+import { useUser } from "@/providers/UserProvider";
+import RightSide from "./RightSide";
+import { useRouter } from "next/navigation";
+import { WalletContext } from "@/providers/WalletProvider";
 
 const MainLayout = () => {
   const router = useRouter();
@@ -33,7 +33,7 @@ const MainLayout = () => {
     fetchWallet,
     navbarTrigger,
     setNavbarTrigger,
-    isMobile
+    isMobile,
   } = useContext(WalletContext);
 
   useEffect(() => {
@@ -99,9 +99,9 @@ const MainLayout = () => {
 
   return (
     <>
-      <div className='grid grid-cols-10'>
+      <div className="grid grid-cols-10 divide-x">
         {/* ------------ Leftside Main ---------- */}
-        <div className='col-span-6 pt-16 px-12'>
+        <div className="col-span-6 pt-16 px-6">
           <div className="">
             <LeftHeader
               title={"Dashboard"}
@@ -136,7 +136,7 @@ const MainLayout = () => {
         </div>
 
         {/* ------------ Rightside Main ---------- */}
-        <div className="col-span-4 hidden xl:block md:block pt-16" >
+        <div className="col-span-4 hidden xl:block md:block pt-14 px-4">
           <Header />
           <RightSide
             showCoinWallet={showCoinWallet}
@@ -162,7 +162,7 @@ const MainLayout = () => {
         </div>
       </div>
     </>
-  )
-}
+  );
+};
 
-export default MainLayout
+export default MainLayout;

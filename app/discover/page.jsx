@@ -150,8 +150,7 @@ const DiscoverPage = () => {
               isMobile={isMobile}
             />
           </div>
-          <div className="col-span-6 space-y-6">
-
+          <div className="col-span-6 space-y-6 px-4 ">
             {/* carousel component */}
             <div className="w-full py-4">
               <Carousel slides={slides} />
@@ -309,7 +308,7 @@ const DiscoverPage = () => {
         </div>
 
         {/* Right Side */}
-        <div className="hidden xl:block md:block pt-16 col-span-4">
+        <div className="hidden xl:block md:block pt-14 col-span-4 px-4">
           <Header />
           <RightMain />
         </div>

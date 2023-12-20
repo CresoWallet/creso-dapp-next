@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
-import SideNav from "@/components/navbar/SideNav";
+
 import Account from "@/components/Account";
 import { MdKeyboardArrowDown } from "react-icons/md";
 import Currency from "../../assets/security/dollor2.png";
@@ -81,28 +81,6 @@ const AccountPage = () => {
                 </div>
               </div>
             </div>
-            {isMobile && navbarTrigger && (
-              <div className={`col-span-1 h-full responsivemb-nav `}>
-                <SideNav />
-              </div>
-            )}
-
-            {!isMobile && (
-              <div className={`col-span-1 h-full`}>
-                <SideNav />
-              </div>
-            )}
-
-            {isMobile && (
-              <div className="account-navs">
-                <Image
-                  alt=""
-                  className="navico"
-                  src={Ham}
-                  onClick={() => setNavbarTrigger(!navbarTrigger)}
-                />{" "}
-              </div>
-            )}
 
             <div
               className={`col-span-2 ${

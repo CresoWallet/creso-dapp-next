@@ -12,7 +12,7 @@ import { useUser } from "./UserProvider";
 import { network } from "@/utils/data/coinlist";
 import { getBalance } from "@/utils";
 import { getTokenBalance, getWalletBalance } from "@/services/ethers/wallet";
-import SideNav from "@/components/SideNav";
+import SideNav from "@/components/navbar/SideNav";
 import { useMediaQuery } from "react-responsive";
 import { usePathname } from "next/navigation";
 
@@ -217,10 +217,10 @@ const WalletContextProvider = ({ children }) => {
           onClick={() => setNavbarTrigger(!navbarTrigger)}
         ></div>
       )} */}
-      <div className='flex my-2 mx-2 divide-x'>
+      <div className="flex my-2 mx-2 divide-x">
         {/* ------------Sidebar---------- */}
 
-        <div className='w-[15%]'>
+        <div className="w-[15%]">
           {isMobile && navbarTrigger && (
             <div className={`col-span-1 h-full responsivemb-nav `}>
               {/* Conditionally render SideNav based on the path name */}
@@ -234,9 +234,7 @@ const WalletContextProvider = ({ children }) => {
           </div>
           {/* )} */}
         </div>
-        <div className="w-[85%]">
-          {children}
-        </div>
+        <div className="w-[85%]">{children}</div>
       </div>
     </WalletContext.Provider>
   );

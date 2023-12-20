@@ -4,7 +4,7 @@ import CresoCard from "@/components/CresoCard";
 import CustomButton from "@/components/CustomButton";
 import CustomButton2 from "@/components/CustomButton2";
 import Header from "@/components/Header";
-import SideNav from "@/components/SideNav";
+import SideNav from "@/components/navbar/SideNav";
 import User from "@/components/User";
 import React, { useEffect, useState } from "react";
 import Sure from "../../assets/Dashboard/gainers/sure.png";
@@ -46,8 +46,8 @@ const AboutPage = () => {
 
   return (
     <>
-      <div className="grid grid-cols-12 px-2 divide-x">
-        <div className="col-span-6 space-y-6 xl:mx-10 mx-2 md:mx-8 pt-[72px]">
+      <div className="grid grid-cols-10 divide-x">
+        <div className="col-span-6 pt-16 px-6">
           <div className="">
             <LeftHeader
               title={"About us"}
@@ -62,9 +62,7 @@ const AboutPage = () => {
               <div className="flex items-center justify-start gap-5">
                 <Image src={Vector} alt="" className="cursor-pointer" />
                 <div>
-                  <p className="text-black text-3xl font-semibold ">
-                    creso
-                  </p>
+                  <p className="text-black text-3xl font-semibold ">creso</p>
                   <p className="text-gray-600 text-sm">Version 1.1.0</p>
                 </div>
               </div>
@@ -92,23 +90,23 @@ const AboutPage = () => {
               </div>
               <div
                 id="accordion-collapse-body-1"
-                className={`p-5   bg-stale-200 rounded-3xl mb-2 shadow-2xl ${isAccordionActive(1) ? "" : "hidden"
-                  }`}
+                className={`p-5   bg-stale-200 rounded-3xl mb-2 shadow-2xl ${
+                  isAccordionActive(1) ? "" : "hidden"
+                }`}
                 aria-labelledby="accordion-collapse-heading-1"
               >
                 <p className="mb-2 text-black">
-                  The Biggest, and Best Rewards Club in Australia is LMCT.
-                  To offer our clients special discounts and great prizes,
-                  we have partnered with hundreds of (and rising) Australian
-                  companies. Since we began in 2022, we ve given away over $
-                  20 million in prizes, had more than two hundred winners,
-                  and are still in the early stages. Prizes have included
-                  cars, bikes, boats, and houses. The Biggest, and Best
-                  Rewards Club in Australia is LMCT. To offer our clients
-                  special discounts and great prizes, we have partnered with
-                  hundreds of(and rising) Australian companies. Since we
-                  began in 2022, we ve given away over $ 20 million in
-                  prizes,
+                  The Biggest, and Best Rewards Club in Australia is LMCT. To
+                  offer our clients special discounts and great prizes, we have
+                  partnered with hundreds of (and rising) Australian companies.
+                  Since we began in 2022, we ve given away over $ 20 million in
+                  prizes, had more than two hundred winners, and are still in
+                  the early stages. Prizes have included cars, bikes, boats, and
+                  houses. The Biggest, and Best Rewards Club in Australia is
+                  LMCT. To offer our clients special discounts and great prizes,
+                  we have partnered with hundreds of(and rising) Australian
+                  companies. Since we began in 2022, we ve given away over $ 20
+                  million in prizes,
                 </p>
               </div>
 
@@ -126,23 +124,23 @@ const AboutPage = () => {
 
               <div
                 id="accordion-collapse-body-1"
-                className={`p-5   bg-stale-200 rounded-3xl mb-2 shadow-2xl ${isAccordionActive(2) ? "" : "hidden"
-                  }`}
+                className={`p-5   bg-stale-200 rounded-3xl mb-2 shadow-2xl ${
+                  isAccordionActive(2) ? "" : "hidden"
+                }`}
                 aria-labelledby="accordion-collapse-heading-1"
               >
                 <p className="mb-2 text-black ">
-                  The Biggest, and Best Rewards Club in Australia is LMCT.
-                  To offer our clients special discounts and great prizes,
-                  we have partnered with hundreds of (and rising) Australian
-                  companies. Since we began in 2022, we ve given away over $
-                  20 million in prizes, had more than two hundred winners,
-                  and are still in the early stages. Prizes have included
-                  cars, bikes, boats, and houses. The Biggest, and Best
-                  Rewards Club in Australia is LMCT. To offer our clients
-                  special discounts and great prizes, we have partnered with
-                  hundreds of(and rising) Australian companies. Since we
-                  began in 2022, we ve given away over $ 20 million in
-                  prizes,
+                  The Biggest, and Best Rewards Club in Australia is LMCT. To
+                  offer our clients special discounts and great prizes, we have
+                  partnered with hundreds of (and rising) Australian companies.
+                  Since we began in 2022, we ve given away over $ 20 million in
+                  prizes, had more than two hundred winners, and are still in
+                  the early stages. Prizes have included cars, bikes, boats, and
+                  houses. The Biggest, and Best Rewards Club in Australia is
+                  LMCT. To offer our clients special discounts and great prizes,
+                  we have partnered with hundreds of(and rising) Australian
+                  companies. Since we began in 2022, we ve given away over $ 20
+                  million in prizes,
                 </p>
               </div>
               <div className="hover:translate-y-1">
@@ -158,35 +156,34 @@ const AboutPage = () => {
               </div>
               <div
                 id="accordion-collapse-body-1"
-                className={`p-5   bg-stale-200 rounded-3xl mb-2 shadow-2xl ${isAccordionActive(3) ? "" : "hidden"
-                  }`}
+                className={`p-5   bg-stale-200 rounded-3xl mb-2 shadow-2xl ${
+                  isAccordionActive(3) ? "" : "hidden"
+                }`}
                 aria-labelledby="accordion-collapse-heading-1"
               >
                 <p className="mb-2 text-black ">
-                  The Biggest, and Best Rewards Club in Australia is LMCT.
-                  To offer our clients special discounts and great prizes,
-                  we have partnered with hundreds of (and rising) Australian
-                  companies. Since we began in 2022, we ve given away over $
-                  20 million in prizes, had more than two hundred winners,
-                  and are still in the early stages. Prizes have included
-                  cars, bikes, boats, and houses. The Biggest, and Best
-                  Rewards Club in Australia is LMCT. To offer our clients
-                  special discounts and great prizes, we have partnered with
-                  hundreds of(and rising) Australian companies. Since we
-                  began in 2022, we ve given away over $ 20 million in
-                  prizes,
+                  The Biggest, and Best Rewards Club in Australia is LMCT. To
+                  offer our clients special discounts and great prizes, we have
+                  partnered with hundreds of (and rising) Australian companies.
+                  Since we began in 2022, we ve given away over $ 20 million in
+                  prizes, had more than two hundred winners, and are still in
+                  the early stages. Prizes have included cars, bikes, boats, and
+                  houses. The Biggest, and Best Rewards Club in Australia is
+                  LMCT. To offer our clients special discounts and great prizes,
+                  we have partnered with hundreds of(and rising) Australian
+                  companies. Since we began in 2022, we ve given away over $ 20
+                  million in prizes,
                 </p>
               </div>
             </div>
           </div>
         </div>
         {/* Right Side */}
-        <div className="hidden xl:block md:block pt-16 col-span-4" >
+        <div className="hidden xl:block md:block pt-14 col-span-4 px-4">
           <Header />
           <RightMain />
         </div>
       </div>
-
     </>
   );
 };

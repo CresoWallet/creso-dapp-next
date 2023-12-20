@@ -36,11 +36,8 @@ import RightMain from "../MainLayout/RightMain";
 
 const SwapPage = () => {
   const [showSwapForm, setShowSwapForm] = useState(false);
-  const {
-    navbarTrigger,
-    setNavbarTrigger,
-    isMobile
-  } = useContext(WalletContext);
+  const { navbarTrigger, setNavbarTrigger, isMobile } =
+    useContext(WalletContext);
   const handleShowSwap = () => {
     setShowSwapForm(!showSwapForm);
   };
@@ -58,9 +55,9 @@ const SwapPage = () => {
 
   return (
     <>
-      <div className="grid grid-cols-12 px-2 divide-x">
+      <div className="grid grid-cols-10 divide-x">
         {/* <div className="grid responsivemb-cols h-full"> */}
-        <div className="col-span-6 space-y-6 xl:mx-4 md:px-2 px-2 pt-[72px]">
+        <div className="col-span-6 pt-16 px-6">
           {/* <div className="flex md:hidden">
               {showSwapForm && <SwapFrom handleClose={handleClose} />}
             </div> */}
@@ -78,7 +75,7 @@ const SwapPage = () => {
               iconImg2={Note}
             />
           </div>
-          <div className="flex flex-col py-7">
+          <div className="flex flex-col py-7 px-4">
             <div className="flex flex-col space-y-1">
               <p className="px-4 text-xs xl:text-sm md:text-sm">From</p>
               <div className="rounded-full xl:pl-4 pl-2 xl:pr-8 pr-2 xl:py-2 py-1 flex flex-row justify-between border border-solid">
@@ -86,9 +83,7 @@ const SwapPage = () => {
                   <Image alt="" src={BNB} />
                   <div className="flex flex-col">
                     <div className="flex flex-row gap-1 items-center">
-                      <p className="font-semibold xl:text-lg text-sm">
-                        BNB
-                      </p>
+                      <p className="font-semibold xl:text-lg text-sm">BNB</p>
                       <MdOutlineKeyboardArrowDown size={20} />
                     </div>
                     <p className="text-xs text-[#6F6E7A]">Binance Coin</p>
@@ -114,9 +109,7 @@ const SwapPage = () => {
                   <Image alt="" src={Etherum} />
                   <div className="flex flex-col">
                     <div className="flex flex-row gap-1 items-center">
-                      <p className="font-semibold xl:text-lg text-sm">
-                        ETH
-                      </p>
+                      <p className="font-semibold xl:text-lg text-sm">ETH</p>
                       <MdOutlineKeyboardArrowDown size={20} />
                     </div>
                     <p className="text-xs text-[#6F6E7A]">Ethereum</p>
@@ -130,20 +123,14 @@ const SwapPage = () => {
             </div>
             <div className="flex flex-col space-y-1 mt-2">
               <div className="flex flex-row justify-between items-center">
-                <p className="px-4 text-xs xl:text-sm md:text-sm">
-                  You Pay
-                </p>
-                <p className="text-xs text-[#6F6E7A]">
-                  Balance: 7,432 USD
-                </p>
+                <p className="px-4 text-xs xl:text-sm md:text-sm">You Pay</p>
+                <p className="text-xs text-[#6F6E7A]">Balance: 7,432 USD</p>
               </div>
               <div className="rounded-full xl:pl-4 pl-2 xl:pr-8 pr-2 xl:py-2 py-1 flex flex-row justify-between border border-solid">
                 <div className="flex flex-row gap-2 items-center">
                   <Image alt="" src={ETHBNB} />
                   <div className="flex flex-col">
-                    <p className="font-semibold xl:text-lg text-sm">
-                      800.23
-                    </p>
+                    <p className="font-semibold xl:text-lg text-sm">800.23</p>
                     <p className="text-xs text-[#6F6E7A]">$23.02</p>
                   </div>
                 </div>
@@ -152,9 +139,7 @@ const SwapPage = () => {
             </div>
             <div className="flex flex-col space-y-1 mt-2 mb-8">
               <div className="flex flex-row justify-between items-center">
-                <p className="px-4 text-xs xl:text-sm md:text-sm">
-                  You Get
-                </p>
+                <p className="px-4 text-xs xl:text-sm md:text-sm">You Get</p>
                 <p className="text-[#FF4085] text-xs xl:text-sm md:text-sm">
                   Show all
                 </p>
@@ -187,9 +172,7 @@ const SwapPage = () => {
                 <div className="flex flex-row justify-between">
                   <div className="flex flex-col space-y-1 items-center">
                     <Image alt="" src={Gas} />
-                    <p className="font-semibold text-sm xl:text-base">
-                      $0.37
-                    </p>
+                    <p className="font-semibold text-sm xl:text-base">$0.37</p>
                   </div>
                   <div className="flex flex-col space-y-1 items-center">
                     <Image alt="" src={Dollar} />
@@ -216,7 +199,7 @@ const SwapPage = () => {
           </div>
         </div>
         {/* </div> */}
-        <div className="hidden xl:block md:block pt-16 col-span-4" >
+        <div className="hidden xl:block md:block pt-14 col-span-4 px-4">
           <Header />
           <RightMain />
         </div>

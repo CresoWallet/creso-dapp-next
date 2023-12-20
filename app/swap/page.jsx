@@ -171,19 +171,26 @@ const SwapPage = () => {
                   </div>
                 </div>
                 <hr className="my-4" />
-                <div className="flex flex-row justify-between">
-                  <div className="flex flex-col space-y-1 items-center">
+
+                <div className="flex flex-row justify-between ">
+                  <div className="flex flex-col space-y-1 items-center   ">
                     <Image alt="" src={Gas} />
                     <p className="font-semibold text-sm xl:text-base">$0.37</p>
                   </div>
-                  <div className="flex flex-col space-y-1 items-center">
+                  <div className="border"></div>
+
+                  <div className="flex flex-col space-y-1 items-center ">
                     <Image alt="" src={Dollar} />
                     <p className="font-semibold xl:text-base">$0.00</p>
                   </div>
+                  <div className="border"></div>
+
                   <div className="flex flex-col space-y-1 items-center">
                     <Image alt="" src={Clock} />
                     <p className="font-semibold xl:text-base">3 min</p>
                   </div>
+                  <div className="border"></div>
+
                   <div className="flex flex-col space-y-1 items-center">
                     <Image alt="" src={Layers} />
                     <p className="font-semibold xl:text-base">1</p>

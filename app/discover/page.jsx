@@ -1,12 +1,9 @@
 "use client";
 
 import React, { useContext, useEffect, useState } from "react";
-
 import SideNav from "@/components/navbar/SideNav";
-
 import { AiOutlineClockCircle, AiOutlineStar } from "react-icons/ai";
 import { RiPlayListAddFill } from "react-icons/ri";
-
 import Carousel from "@/components/discover/carousel";
 import RoundedNftAvatar from "@/components/discover/RoundedNftAvatar";
 import IconButton from "@/components/discover/IconButton";
@@ -15,7 +12,6 @@ import CapCard from "@/components/CapCard";
 import CustomButton2 from "@/components/CustomButton2";
 import User from "@/components/User";
 import CardWithTitle from "@/components/discover/CardWithTitle";
-
 import Degods from "../../assets/discover/degods.png";
 import AzukiRed from "../../assets/discover/azuki-red.png";
 import Potatoz from "../../assets/discover/potatoz.png";

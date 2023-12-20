@@ -45,6 +45,7 @@ const DiscoverPage = () => {
   const [show, setShow] = useState(false);
   const { navbarTrigger, setNavbarTrigger, isMobile } =
     useContext(WalletContext);
+
   const handleFavourite = () => {
     setIsFavourite(!isFavourite);
   };
@@ -150,7 +151,7 @@ const DiscoverPage = () => {
               isMobile={isMobile}
             />
           </div>
-          <div className="col-span-6 space-y-6 px-4 ">
+          <div className="col-span-6 space-y-6 px-2 ">
             {/* carousel component */}
             <div className="w-full py-4">
               <Carousel slides={slides} />

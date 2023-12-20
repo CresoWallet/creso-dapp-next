@@ -75,7 +75,7 @@ const SwapPage = () => {
               iconImg2={Note}
             />
           </div>
-          <div className="flex flex-col py-7 px-4">
+          <div className="flex flex-col py-7 px-2">
             <div className="flex flex-col space-y-1">
               <p className="px-4 text-xs xl:text-sm md:text-sm">From</p>
               <div className="rounded-full xl:pl-4 pl-2 xl:pr-8 pr-2 xl:py-2 py-1 flex flex-row justify-between border border-solid">
@@ -103,7 +103,7 @@ const SwapPage = () => {
               />
             </div>
             <div className="flex flex-col">
-              <p className="px-4 text-xs xl:text-sm md:text-sm">To</p>
+              <p className="px-6 text-xs xl:text-sm md:text-sm">To</p>
               <div className="rounded-full xl:pl-4 pl-2 xl:pr-8 pr-2 xl:py-2 py-1 flex flex-row justify-between border border-solid">
                 <div className="flex flex-row gap-2 items-center">
                   <Image alt="" src={Etherum} />
@@ -139,7 +139,9 @@ const SwapPage = () => {
             </div>
             <div className="flex flex-col space-y-1 mt-2 mb-8">
               <div className="flex flex-row justify-between items-center">
-                <p className="px-4 text-xs xl:text-sm md:text-sm">You Get</p>
+                <p className="px-4 mt-2 text-xs xl:text-sm md:text-sm">
+                  You Get
+                </p>
                 <p className="text-[#FF4085] text-xs xl:text-sm md:text-sm">
                   Show all
                 </p>
@@ -189,13 +191,15 @@ const SwapPage = () => {
                 </div>
               </div>
             </div>
-            <CustomButton
-              name="Swap"
-              img={Swap2}
-              onClick={handleShowSwap}
-              bgColor="black"
-              nameColor="white"
-            />
+            <div className="my-4">
+              <CustomButton
+                name="Swap"
+                img={Swap2}
+                onClick={handleShowSwap}
+                bgColor="black"
+                nameColor="white"
+              />
+            </div>
           </div>
         </div>
         {/* </div> */}

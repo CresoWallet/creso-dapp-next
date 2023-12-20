@@ -17,13 +17,13 @@ const CapCard = ({
     } else if (icon === "up") {
       return <AiOutlineUp className={`text-${iconColor} h-3 w-4`} />;
     } else {
-      return <p>Invalid icon</p>;
+      // return <p>Invalid icon</p>;
     }
   };
 
   return (
     <div className="flex flex-col">
-      <div className="h-2/5 bg-black text-white xl:py-3 md:py-1.5 p-2 rounded-t-3xl text-sm">
+      <div className="h-2/5 bg-black text-white xl:py-3 md:py-1.5 py-2 rounded-t-3xl text-sm">
         <div className="flex flex-row justify-between">
           <p className="text-xs xl:pt-4 md:pt-2 xl:px-4 md:px-2 mb-4 ">
             {name}

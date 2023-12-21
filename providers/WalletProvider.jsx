@@ -32,7 +32,7 @@ const WalletContextProvider = ({ children }) => {
   const [usdRate, setUsdRate] = useState();
   const [isLoaded, setIsLoaded] = useState(false);
   const [navbarTrigger, setNavbarTrigger] = useState(false);
-  const isMobile = useMediaQuery({ query: `(max-width: 760px)` });
+  const isMobile = useMediaQuery({ query: `(max-width: 768px)` });
   // useEffect(() => {
   //   (async () => {
   //     if (isAuthenticated) {
@@ -219,7 +219,7 @@ const WalletContextProvider = ({ children }) => {
         ></div>
       )} */}
 
-      <div className="flex my-2 mx-2 lg:divide-x ">
+      <div className="lg:flex my-2 mx-2 lg:divide-x ">
         {/* ------------Sidebar---------- */}
         <div className="sidebar">
           {/* {!isMobile && ( */}

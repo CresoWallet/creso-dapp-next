@@ -19,21 +19,21 @@ import { usePathname } from "next/navigation";
 const RightSide = (props) => {
     const {
         showCoinWallet,
-        // setShowCoinWallet,
+        setShowCoinWallet,
         showModal,
         setShowModal,
-        // usd,
-        // setUsd,
+        usd,
+        setUsd,
         walletType,
-        // setWalletType,
+        setWalletType,
         coinData,
-        // setCoinData,
-        // isAuthenticated,
+        setCoinData,
+        isAuthenticated,
         secureWalletBalance,
         eoaWalletBalance,
         wallets,
-        // WalletContext,
-        // router,
+        WalletContext,
+        router,
         handleCloseShowWallet,
         handleCloseCoinWallet,
         handleClose,
@@ -138,7 +138,7 @@ const RightSide = (props) => {
                             textColor="black"
                         />
                     </div>
-                    <div className="flex flex-col gap-4 mt-6">
+                    <div className="flex flex-col gap-4 mt-6 overflow-y-auto">
                         <div className="flex flex-col gap-1">
                             <User
                                 name="SURE"

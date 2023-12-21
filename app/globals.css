@@ -75,7 +75,7 @@ button:disabled {
 .sidebar {
   width: 15%;
 }
-.children {
+.childrens {
   width: 85%;
 }
 /* .responsivemb-cols {
@@ -89,7 +89,7 @@ button:disabled {
   .sidebar {
     width: 30%;
   }
-  .children {
+  .childrens {
     width: 70%;
   }
 }
@@ -97,7 +97,7 @@ button:disabled {
   .sidebar .sidebarDesktop {
     display: none;
   }
-  .children {
+  .childrens {
     width: 100%;
   }
 }

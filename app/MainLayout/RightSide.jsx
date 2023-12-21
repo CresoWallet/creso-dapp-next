@@ -117,7 +117,7 @@ const   RightSide = (props) => {
             <CapCard
               name="Gas Burn Leaderboard"
               amount="$2.16B"
-              icon=""
+              // icon=""
               // iconColor="[#FF4085]"
               // percentageColor="[#FF4085]"
               percentage="386.58 ETH"

@@ -82,7 +82,7 @@ const SwapPage = () => {
                 <div className="flex flex-row gap-2 items-center">
                   <Image alt="" src={BNB} />
                   <div className="flex flex-col">
-                    <div className="flex flex-row gap-1 items-center">
+                    <div className="flex flex-row gap-1 items-center ">
                       <p className="font-semibold xl:text-lg text-sm">BNB</p>
                       <MdOutlineKeyboardArrowDown size={20} />
                     </div>
@@ -95,7 +95,7 @@ const SwapPage = () => {
                 </div>
               </div>
             </div>
-            <div className="flex justify-center xl:-mt-6 xl:-mb-12 -mt-2 -mb-8">
+            <div className="flex justify-center xl:-mt-6 xl:-mb-12 -mt-2 -mb-7">
               <Image
                 alt=""
                 src={SwapButton}

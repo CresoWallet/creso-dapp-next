@@ -15,7 +15,7 @@ import MINA from "../../assets/AboutUs/gainers/mina.png";
 import { WalletContext } from "@/providers/WalletProvider";
 import { usePathname } from "next/navigation";
 
-const RightSide = (props) => {
+const   RightSide = (props) => {
   const {
     showCoinWallet,
     // setShowCoinWallet,
@@ -125,7 +125,7 @@ const RightSide = (props) => {
           </div>
           <div className="flex flex-row items-center gap-2 mt-8">
             <CustomButton2
-              name="Top Gainers"
+              name="Top Gainers "
               bgColor="[#D0F500]"
               borderColor="black"
               textColor="black"

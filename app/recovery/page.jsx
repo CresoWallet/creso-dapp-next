@@ -2,7 +2,6 @@
 
 import React, { useEffect, useState, useRef, useContext } from "react";
 import Image from "next/image";
-import SideNav from "@/components/navbar/SideNav";
 import Account from "@/components/Account";
 import { useMediaQuery } from "react-responsive";
 import Ham from "../../assets/Dashboard/ham.png";
@@ -90,36 +89,13 @@ const RecoveryPage = () => {
         ></div>
       )}
       {showModal && <Modal onClose={() => setShowModal(false)} user={user} />}
-      <div className="grid xl:grid-cols-2 md:grid-cols-2 grid-cols-1 px-2 xl:pt-2 md:pt-2 mb-2">
+      <div className="grid xl:grid-cols-2 md:grid-cols-2 grid-cols-1 px-2 xl:pt-2 md:pt-2 mb-2 ">
         <div className="col-span-1">
           <div
             className={`grid h-full ${
               isMobile ? "grid-cols-1" : "grid-cols-3"
             }`}
           >
-            {isMobile && navbarTrigger && (
-              <div className={`col-span-1 h-full responsivemb-nav `}>
-                <SideNav />
-              </div>
-            )}
-
-            {!isMobile && (
-              <div className={`col-span-1 h-full`}>
-                <SideNav />
-              </div>
-            )}
-
-            {isMobile && (
-              <div className="account-navs">
-                <Image
-                  alt=""
-                  className="navico"
-                  src={Ham}
-                  onClick={() => setNavbarTrigger(!navbarTrigger)}
-                />{" "}
-              </div>
-            )}
-
             <div
               className={`col-span-2 ${
                 isMobile ? "mt-2" : "mt-16"
@@ -131,7 +107,7 @@ const RecoveryPage = () => {
         </div>
 
         <div className="col-span-1 xl:mx-8 md:mx-4 mx-2 xl:mt-10 mt-4">
-          <div className="flex flex-row justify-between items-center">
+          <div className="flex flex-row justify-between items-center ">
             <p className="text-xl font-semibold">Recovery</p>
           </div>
 

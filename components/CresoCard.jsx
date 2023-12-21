@@ -38,11 +38,12 @@ const CresoCard = ({ balance }) => {
               </div>
             </div>
           </div>
+
           <div className="w-2/5 bg-black absolute right-0 bottom-0 top-0 rounded-br-3xl border-l-2 border-black"></div>
           <Image
             src={SimIcon}
             alt="sim"
-            className="absolute bottom-16 lg:bottom-10 right-[31%] lg:right-[36%]"
+            className="absolute bottom-16 lg:bottom-10 right-[31%] lg:right-[20%]"
             objectFit="cover"
           />
         </div>

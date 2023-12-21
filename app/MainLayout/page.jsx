@@ -89,17 +89,17 @@ const MainLayout = () => {
     setShowWallet(false);
   };
 
-  useEffect(() => {
-    if (navbarTrigger) {
-      document.body.classList.add("no-scroll");
-    } else {
-      document.body.classList.remove("no-scroll");
-    }
-  }, [navbarTrigger]);
+  // useEffect(() => {
+  //   if (navbarTrigger) {
+  //     document.body.classList.add("no-scroll");
+  //   } else {
+  //     document.body.classList.remove("no-scroll");
+  //   }
+  // }, [navbarTrigger]);
 
   return (
     <>
-      <div className="grid grid-cols-10 divide-x">
+      <div className="grid lg:grid-cols-10 lg:divide-x">
         {/* ------------ Leftside Main ---------- */}
         <div className="col-span-6 pt-16 px-6">
           <div className="">

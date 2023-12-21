@@ -15,6 +15,7 @@ import { getTokenBalance, getWalletBalance } from "@/services/ethers/wallet";
 import SideNav from "@/components/navbar/SideNav";
 import { useMediaQuery } from "react-responsive";
 import { usePathname } from "next/navigation";
+import MobileMenubar from "@/components/navbar/mobileMenubar";
 
 export const WalletContext = createContext();
 
@@ -217,24 +218,28 @@ const WalletContextProvider = ({ children }) => {
           onClick={() => setNavbarTrigger(!navbarTrigger)}
         ></div>
       )} */}
-      <div className="flex my-2 mx-2 divide-x">
-        {/* ------------Sidebar---------- */}
 
-        <div className="w-[15%]">
-          {isMobile && navbarTrigger && (
-            <div className={`col-span-1 h-full responsivemb-nav `}>
-              {/* Conditionally render SideNav based on the path name */}
-              {!isLoginOrRegister && <SideNav />}
-            </div>
-          )}
+      <div className="flex my-2 mx-2 lg:divide-x ">
+        {/* ------------Sidebar---------- */}
+        <div className="sidebar">
           {/* {!isMobile && ( */}
-          <div className={`col-span-1 h-full`}>
+          <div className={`sidebarDesktop h-full`}>
             {/* Conditionally render SideNav based on the path name */}
             {!isLoginOrRegister && <SideNav />}
           </div>
           {/* )} */}
         </div>
-        <div className="w-[85%]">{children}</div>
+        <div className="childrens">{children}</div>
+      </div>
+      {/* ------------Mobile Menubar---------- */}
+      <div className="fixed bottom-0 w-full z-10">
+        {isMobile && navbarTrigger && (
+          <>
+            {/* Conditionally render SideNav based on the path name */}
+            {!isLoginOrRegister && <MobileMenubar />}
+            {/* {!isLoginOrRegister && <SideNav />} */}
+          </>
+        )}
       </div>
     </WalletContext.Provider>
   );

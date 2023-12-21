@@ -46,7 +46,7 @@ const Mainnet = ({
           </div>
         </div>
       </div>
-      <div>
+      <div className="-z-10">
         <div className="flex xl:flex-row flex-col items-center xl:gap-4 md:gap-4 gap-2">
           <div
             className={`${

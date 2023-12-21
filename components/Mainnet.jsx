@@ -9,10 +9,9 @@ import Copy2 from "../assets/Dashboard/Copy2.png";
 import Next2 from "../assets/Dashboard/next2.png";
 import Wallet2 from "../assets/Dashboard/WalletIcon2.png";
 import ETH from "../assets/Dashboard/eth.png";
-import RedArrow from "../assets/Dashboard/redArrow.png";
-import GreenArrow from "../assets/Dashboard/greenArrow.png";
-import Usdt2 from "../assets/Dashboard/usdt2.png";
-import Dai2 from "../assets/Dashboard/Dai2.png";
+import TransactionItem from "./TransactionInfo";
+import DAI from "../assets/Dashboard/dai.png";
+import USDT from "../assets/Dashboard/usdt.png";
 import { copyToClipBoard, minifyEthereumAddress } from "@/utils";
 
 const Mainnet = ({
@@ -34,9 +33,9 @@ const Mainnet = ({
   return (
     <div className="flex flex-col xl:space-y-8 md:space-y-8 space-y-2">
       <div>
-        <div className="flex flex-row items-center justify-between">
+        <div className="flex items-center justify-between">
           <p className="font-bold text-xl">Ethereum Mainnet</p>
-          <div className="flex flex-row gap-2 items-center cursor-pointer group">
+          <div className="flex  gap-2 items-center cursor-pointer group">
             <Image src={PinkPlus} alt="" />
             <p
               onClick={handleCreateWallet}
@@ -50,10 +49,11 @@ const Mainnet = ({
       <div>
         <div className="flex xl:flex-row flex-col items-center xl:gap-4 md:gap-4 gap-2">
           <div
-            className={`${activeButton === "AA"
-              ? "bg-black"
-              : "bg-white hover:bg-gray-200 duration-500 "
-              } rounded-full px-4 py-4 w-full border-2 border-black cursor-pointer group relative`}
+            className={`${
+              activeButton === "AA"
+                ? "bg-black"
+                : "bg-white hover:bg-gray-200 duration-500 "
+            } rounded-full px-4 py-4 w-full border-2 border-black cursor-pointer group relative`}
           >
             <div className="flex flex-row justify-between items-center gap-3 group">
               <Image
@@ -63,8 +63,9 @@ const Mainnet = ({
               />
               <div className="flex flex-col space-y-1">
                 <p
-                  className={`${activeButton === "AA" ? "text-white" : "text-black"
-                    }  font-semibold text-sm md:text-lg xl:text-sm`}
+                  className={`${
+                    activeButton === "AA" ? "text-white" : "text-black"
+                  }  font-semibold text-sm md:text-lg xl:text-sm`}
                 >
                   Keyless Secure Wallet
                 </p>
@@ -101,10 +102,11 @@ const Mainnet = ({
             </div>
           </div>
           <div
-            className={`${activeButton === "EOA"
-              ? "bg-black"
-              : "bg-white  hover:bg-gray-200 duration-500 "
-              } rounded-full px-4 py-4 w-full border-2 border-black cursor-pointer group relative`}
+            className={`${
+              activeButton === "EOA"
+                ? "bg-black"
+                : "bg-white  hover:bg-gray-200 duration-500 "
+            } rounded-full px-4 py-4 w-full border-2 border-black cursor-pointer group relative`}
           >
             <div className="flex flex-row justify-between items-center gap-3">
               <Image
@@ -114,8 +116,9 @@ const Mainnet = ({
               />
               <div className="flex flex-col space-y-1">
                 <p
-                  className={`${activeButton === "EOA" ? "text-white" : "text-black"
-                    }  font-semibold text-sm md:text-lg xl:text-sm`}
+                  className={`${
+                    activeButton === "EOA" ? "text-white" : "text-black"
+                  }  font-semibold text-sm md:text-lg xl:text-sm`}
                 >
                   EOA Wallet
                 </p>
@@ -152,6 +155,36 @@ const Mainnet = ({
             </div>
           </div>
         </div>
+      </div>
+
+      <div className="flex flex-col justify-between">
+        <TransactionItem
+          icon={ETH}
+          label="ETH"
+          amount="$1,794.28"
+          value="0.54"
+          send="Send"
+          receive="Receive"
+        />
+        <hr />
+        <TransactionItem
+          icon={DAI}
+          label="DAI"
+          amount="$1,794.28"
+          value="0.54"
+          send="Send"
+          receive="Receive"
+        />
+        <hr />
+        <TransactionItem
+          icon={USDT}
+          label="USDT"
+          amount="$1,794.28"
+          value="0.54"
+          send="Send"
+          receive="Receive"
+        />
+        <hr />
       </div>
     </div>
   );

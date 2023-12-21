@@ -1,7 +1,6 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
-import SideNav from "@/components/navbar/SideNav";
 import Account from "@/components/Account";
 import { MdKeyboardArrowDown } from "react-icons/md";
 import Currency from "../../assets/security/dollor2.png";
@@ -50,27 +49,6 @@ const SessionPage = () => {
                 </div>
               </div>
             </div>
-            {isMobile && navbarTrigger && (
-              <div className={`col-span-1 h-full responsivemb-nav `}>
-                <SideNav />
-              </div>
-            )}
-
-            {!isMobile && (
-              <div className={`col-span-1 h-full`}>
-                <SideNav />
-              </div>
-            )}
-            {isMobile && (
-              <div className="account-navs">
-                <Image
-                  alt=""
-                  className="navico"
-                  src={Ham}
-                  onClick={() => setNavbarTrigger(!navbarTrigger)}
-                />{" "}
-              </div>
-            )}
 
             <div
               className={`col-span-2 ${
@@ -82,11 +60,11 @@ const SessionPage = () => {
           </div>
         </div>
         <div className="col-span-1 xl:mx-8 md:mx-4 mx-2 xl:mt-10 mt-4">
-          <div className="flex flex-row justify-between items-center mx-8 mt-8">
+          <div className="flex flex-row justify-between items-center mx-8 mt-8 ">
             <p className="xl:text-xl md:text-xl text-lg  font-semibold">
               V1 Sessions
             </p>
-            <div className="xl:flex xl:flex-row md:flex md:flex-row hidden items-center xl:gap-0 md:gap-0 gap-4">
+            <div className="xl:flex xl:flex-row md:flex md:flex-row hidden items-center xl:gap-0 md:gap-0 gap-2">
               <div className="flex flex-row items-center gap-2">
                 <Image alt="" src={Language} className="w-6 h-6" />
                 <div className="flex flex-row gap-1">

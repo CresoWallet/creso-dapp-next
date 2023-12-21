@@ -1,6 +1,5 @@
 "use client";
 import Image from "next/image";
-import SideNav from "@/components/navbar/SideNav";
 import React, { useEffect, useState } from "react";
 import Currency from "../../assets/security/dollor2.png";
 import Language from "../../assets/security/language.png";
@@ -8,6 +7,7 @@ import { MdKeyboardArrowDown } from "react-icons/md";
 import SecurityImage from "../../assets/security/securityImage.png";
 import Account from "@/components/Account";
 import Lock from "../../assets/security/Lock.png";
+import BackUp from "../recovery/backUp";
 
 import { useMediaQuery } from "react-responsive";
 import Ham from "../../assets/Dashboard/ham.png";
@@ -33,9 +33,13 @@ const SecurityPage = () => {
         ></div>
       )}
 
-      <div className="grid xl:grid-cols-2 md:grid-cols-2 grid-cols-1 min-h-screen">
+      <div className="grid xl:grid-cols-2 md:grid-cols-2 grid-cols-1 px-2 xl:pt-2 md:pt-2 mb-2 ">
         <div className="col-span-1">
-          <div className={`grid ${isMobile ? "grid-cols-1" : "grid-cols-3"}`}>
+          <div
+            className={`grid h-full ${
+              isMobile ? "grid-cols-1" : "grid-cols-3"
+            }`}
+          >
             <div className="flex xl:hidden md:hidden justify-center gap-4">
               <div className="flex flex-row items-center gap-2">
                 <Image alt="" src={Language} className="w-6 h-6" />
@@ -52,27 +56,6 @@ const SecurityPage = () => {
                 </div>
               </div>
             </div>
-            {isMobile && navbarTrigger && (
-              <div className={`col-span-1 h-full responsivemb-nav `}>
-                <SideNav />
-              </div>
-            )}
-
-            {!isMobile && (
-              <div className={`col-span-1 h-full`}>
-                <SideNav />
-              </div>
-            )}
-            {isMobile && (
-              <div className="account-navs">
-                <Image
-                  alt=""
-                  className="navico"
-                  src={Ham}
-                  onClick={() => setNavbarTrigger(!navbarTrigger)}
-                />{" "}
-              </div>
-            )}
 
             <div
               className={`col-span-2 ${
@@ -80,13 +63,14 @@ const SecurityPage = () => {
               } xl:mx-8 md:mx-4 mx-2`}
             >
               <Account />
+              <BackUp />
             </div>
           </div>
         </div>
         <div className="col-span-1 xl:mx-8 md:mx-4 mx-2 xl:mt-10 mt-4">
           <div className="flex flex-row justify-between items-center">
             <p className="text-xl font-semibold">Security</p>
-            <div className="xl:flex xl:flex-row md:flex md:flex-row hidden items-center xl:gap-0 md:gap-0 gap-4">
+            <div className="xl:flex xl:flex-row md:flex md:flex-row hidden items-center xl:gap-0 md:gap-0 gap-2">
               <div className="flex flex-row items-center gap-2">
                 <Image alt="" src={Language} className="w-6 h-6" />
                 <div className="flex flex-row gap-1">

@@ -1,12 +1,9 @@
 "use client";
 
 import React, { useContext, useEffect, useState } from "react";
-
 import SideNav from "@/components/navbar/SideNav";
-
 import { AiOutlineClockCircle, AiOutlineStar } from "react-icons/ai";
 import { RiPlayListAddFill } from "react-icons/ri";
-
 import Carousel from "@/components/discover/carousel";
 import RoundedNftAvatar from "@/components/discover/RoundedNftAvatar";
 import IconButton from "@/components/discover/IconButton";
@@ -15,7 +12,6 @@ import CapCard from "@/components/CapCard";
 import CustomButton2 from "@/components/CustomButton2";
 import User from "@/components/User";
 import CardWithTitle from "@/components/discover/CardWithTitle";
-
 import Degods from "../../assets/discover/degods.png";
 import AzukiRed from "../../assets/discover/azuki-red.png";
 import Potatoz from "../../assets/discover/potatoz.png";
@@ -45,6 +41,7 @@ const DiscoverPage = () => {
   const [show, setShow] = useState(false);
   const { navbarTrigger, setNavbarTrigger, isMobile } =
     useContext(WalletContext);
+
   const handleFavourite = () => {
     setIsFavourite(!isFavourite);
   };
@@ -130,7 +127,7 @@ const DiscoverPage = () => {
 
   return (
     <>
-      <div className="grid  grid-cols-10 px-2 divide-x">
+      <div className="grid  lg:grid-cols-10 px-2 divide-x">
         {/* sidebar and discover content */}
         {/* <div className="col-span-6 "> */}
         {/* <div className="grid responsivemb-cols h-full"> */}
@@ -150,7 +147,7 @@ const DiscoverPage = () => {
               isMobile={isMobile}
             />
           </div>
-          <div className="col-span-6 space-y-6 px-4 ">
+          <div className="col-span-6 space-y-6 px-2 ">
             {/* carousel component */}
             <div className="w-full py-4">
               <Carousel slides={slides} />

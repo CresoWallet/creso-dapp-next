@@ -2,7 +2,6 @@
 
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
-
 import Account from "@/components/Account";
 import { MdKeyboardArrowDown } from "react-icons/md";
 import Currency from "../../assets/security/dollor2.png";
@@ -58,7 +57,7 @@ const AccountPage = () => {
         ></div>
       )}
       {showModal && <Modal onClose={() => setShowModal(false)} user={user} />}
-      <div className="grid xl:grid-cols-2 md:grid-cols-2 grid-cols-1 px-2 xl:pt-2 md:pt-2 mb-2">
+      <div className="grid xl:grid-cols-2 md:grid-cols-2 grid-cols-1 px-2 xl:pt-2 md:pt-2 mb-2 ">
         <div className="col-span-1">
           <div
             className={`grid h-full ${

@@ -6,7 +6,7 @@ import CustomButton2 from "@/components/CustomButton2";
 import Header from "@/components/Header";
 import SideNav from "@/components/navbar/SideNav";
 import User from "@/components/User";
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import Sure from "../../assets/Dashboard/gainers/sure.png";
 import Vector from "../../assets/AboutUs/Vector.png";
 import Image from "next/image";
@@ -18,6 +18,7 @@ import { useMediaQuery } from "react-responsive";
 import Ham from "../../assets/Dashboard/ham.png";
 import LeftHeader from "@/components/LeftHeader";
 import RightMain from "../MainLayout/RightMain";
+import { WalletContext } from "@/providers/WalletProvider";
 
 const AboutPage = () => {
   const [activeAccordion, setActiveAccordion] = useState(1);
@@ -33,9 +34,9 @@ const AboutPage = () => {
     );
   };
 
-  const [navbarTrigger, setNavbarTrigger] = useState(false);
+  const { navbarTrigger, setNavbarTrigger, isMobile } =
+    useContext(WalletContext);
 
-  const isMobile = useMediaQuery({ query: `(max-width: 760px)` });
   useEffect(() => {
     if (navbarTrigger) {
       document.body.classList.add("no-scroll");
@@ -46,7 +47,7 @@ const AboutPage = () => {
 
   return (
     <>
-      <div className="grid grid-cols-10 divide-x">
+      <div className="grid lg:grid-cols-10 divide-x">
         <div className="col-span-6 pt-16 px-6">
           <div className="">
             <LeftHeader

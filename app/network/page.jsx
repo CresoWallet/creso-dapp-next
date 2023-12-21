@@ -2,7 +2,6 @@
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import SideNav from "@/components/navbar/SideNav";
 import Account from "@/components/Account";
 import { MdKeyboardArrowDown } from "react-icons/md";
 import Language from "../../assets/security/language.png";
@@ -58,27 +57,6 @@ const NetworkPage = () => {
                 </div>
               </div>
             </div>
-            {isMobile && navbarTrigger && (
-              <div className={`col-span-1 h-full responsivemb-nav `}>
-                <SideNav />
-              </div>
-            )}
-
-            {!isMobile && (
-              <div className={`col-span-1 h-full`}>
-                <SideNav />
-              </div>
-            )}
-            {isMobile && (
-              <div className="account-navs">
-                <Image
-                  alt=""
-                  className="navico"
-                  src={Ham}
-                  onClick={() => setNavbarTrigger(!navbarTrigger)}
-                />{" "}
-              </div>
-            )}
 
             <div
               className={`col-span-2 ${

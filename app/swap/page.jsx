@@ -55,7 +55,7 @@ const SwapPage = () => {
 
   return (
     <>
-      <div className="grid grid-cols-10 divide-x">
+      <div className="grid lg:grid-cols-10 divide-x">
         {/* <div className="grid responsivemb-cols h-full"> */}
         <div className="col-span-6 pt-16 px-6">
           {/* <div className="flex md:hidden">
@@ -75,14 +75,14 @@ const SwapPage = () => {
               iconImg2={Note}
             />
           </div>
-          <div className="flex flex-col py-7 px-4">
+          <div className="flex flex-col py-7 px-2">
             <div className="flex flex-col space-y-1">
               <p className="px-4 text-xs xl:text-sm md:text-sm">From</p>
               <div className="rounded-full xl:pl-4 pl-2 xl:pr-8 pr-2 xl:py-2 py-1 flex flex-row justify-between border border-solid">
                 <div className="flex flex-row gap-2 items-center">
                   <Image alt="" src={BNB} />
                   <div className="flex flex-col">
-                    <div className="flex flex-row gap-1 items-center">
+                    <div className="flex flex-row gap-1 items-center ">
                       <p className="font-semibold xl:text-lg text-sm">BNB</p>
                       <MdOutlineKeyboardArrowDown size={20} />
                     </div>
@@ -95,7 +95,7 @@ const SwapPage = () => {
                 </div>
               </div>
             </div>
-            <div className="flex justify-center xl:-mt-6 xl:-mb-12 -mt-2 -mb-8">
+            <div className="flex justify-center xl:-mt-6 xl:-mb-12 -mt-2 -mb-7">
               <Image
                 alt=""
                 src={SwapButton}
@@ -103,7 +103,7 @@ const SwapPage = () => {
               />
             </div>
             <div className="flex flex-col">
-              <p className="px-4 text-xs xl:text-sm md:text-sm">To</p>
+              <p className="px-6 text-xs xl:text-sm md:text-sm">To</p>
               <div className="rounded-full xl:pl-4 pl-2 xl:pr-8 pr-2 xl:py-2 py-1 flex flex-row justify-between border border-solid">
                 <div className="flex flex-row gap-2 items-center">
                   <Image alt="" src={Etherum} />
@@ -139,7 +139,9 @@ const SwapPage = () => {
             </div>
             <div className="flex flex-col space-y-1 mt-2 mb-8">
               <div className="flex flex-row justify-between items-center">
-                <p className="px-4 text-xs xl:text-sm md:text-sm">You Get</p>
+                <p className="px-4 mt-2 text-xs xl:text-sm md:text-sm">
+                  You Get
+                </p>
                 <p className="text-[#FF4085] text-xs xl:text-sm md:text-sm">
                   Show all
                 </p>
@@ -169,19 +171,26 @@ const SwapPage = () => {
                   </div>
                 </div>
                 <hr className="my-4" />
-                <div className="flex flex-row justify-between">
-                  <div className="flex flex-col space-y-1 items-center">
+
+                <div className="flex flex-row justify-between ">
+                  <div className="flex flex-col space-y-1 items-center   ">
                     <Image alt="" src={Gas} />
                     <p className="font-semibold text-sm xl:text-base">$0.37</p>
                   </div>
-                  <div className="flex flex-col space-y-1 items-center">
+                  <div className="border"></div>
+
+                  <div className="flex flex-col space-y-1 items-center ">
                     <Image alt="" src={Dollar} />
                     <p className="font-semibold xl:text-base">$0.00</p>
                   </div>
+                  <div className="border"></div>
+
                   <div className="flex flex-col space-y-1 items-center">
                     <Image alt="" src={Clock} />
                     <p className="font-semibold xl:text-base">3 min</p>
                   </div>
+                  <div className="border"></div>
+
                   <div className="flex flex-col space-y-1 items-center">
                     <Image alt="" src={Layers} />
                     <p className="font-semibold xl:text-base">1</p>
@@ -189,13 +198,15 @@ const SwapPage = () => {
                 </div>
               </div>
             </div>
-            <CustomButton
-              name="Swap"
-              img={Swap2}
-              onClick={handleShowSwap}
-              bgColor="black"
-              nameColor="white"
-            />
+            <div className="my-4">
+              <CustomButton
+                name="Swap"
+                img={Swap2}
+                onClick={handleShowSwap}
+                bgColor="black"
+                nameColor="white"
+              />
+            </div>
           </div>
         </div>
         {/* </div> */}

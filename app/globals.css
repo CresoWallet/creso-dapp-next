@@ -85,12 +85,12 @@ button:disabled {
   padding: 22px !important;
   margin: 20px 16px;
 }
-@media screen and (max-width: 1440px) {
+@media screen and (max-width: 1439px) {
   .sidebar {
-    width: 30%;
+    width: 25%;
   }
   .childrens {
-    width: 70%;
+    width: 85%;
   }
 }
 @media screen and (max-width: 768px) {

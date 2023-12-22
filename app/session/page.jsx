@@ -51,9 +51,9 @@ const SessionPage = () => {
             </div>
 
             <div
-              className={`col-span-2 ${
+              className={`col-span-2 md:col-span-3 ${
                 isMobile ? "mt-2" : "mt-16"
-              } xl:mx-8 md:mx-4 mx-2`}
+              } xl:mx-8 md:mx-4 mx-2 md:border-r border-black`}
             >
               <Account />
             </div>

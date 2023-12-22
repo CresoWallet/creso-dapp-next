@@ -41,7 +41,7 @@ const Account = ({ user, setShowModal }) => {
                 <p className="text-sm">Account</p>
               </div>
 
-              <MdKeyboardArrowRight/>
+              <MdKeyboardArrowRight />
             </div>
             <hr className="my-4" />
           </Link>

@@ -15,6 +15,9 @@ import BackUp from "./backUp";
 import SocialRecovery from "./socialRecovery";
 import StartRecovery from "./startRecovery";
 import WalletStatus from "./walletStatus";
+import { MdKeyboardArrowDown } from "react-icons/md";
+import Language from "../../assets/security/language.png";
+import Currency from "../../assets/security/dollor2.png";
 
 const RecoveryPage = () => {
   const [navbarTrigger, setNavbarTrigger] = useState(false);
@@ -96,10 +99,27 @@ const RecoveryPage = () => {
               isMobile ? "grid-cols-1" : "grid-cols-3"
             }`}
           >
+            <div className="flex xl:hidden md:hidden justify-center gap-4">
+              <div className="flex flex-row items-center gap-2">
+                <Image alt="" src={Language} className="w-6 h-6" />
+                <div className="flex flex-row gap-1">
+                  <p className="text-sm text-black hover:font-bold">ENG</p>
+                  <MdKeyboardArrowDown />
+                </div>
+              </div>
+              <div className="flex flex-row items-center gap-2">
+                <Image alt="" src={Currency} className="w-6 h-6" />
+                <div className="flex flex-row gap-1">
+                  <p className="text-sm text-black hover:font-bold">USD</p>
+                  <MdKeyboardArrowDown />
+                </div>
+              </div>
+            </div>
+
             <div
-              className={`col-span-2 ${
+              className={`col-span-2 md:col-span-3 ${
                 isMobile ? "mt-2" : "mt-16"
-              } xl:mx-8 md:mx-4 mx-2`}
+              } xl:mx-8 md:mx-4 mx-2 md:border-r border-black`}
             >
               <Account user={user} setShowModal={setShowModal} />
             </div>
@@ -109,6 +129,22 @@ const RecoveryPage = () => {
         <div className="col-span-1 xl:mx-8 md:mx-4 mx-2 xl:mt-10 mt-4">
           <div className="flex flex-row justify-between items-center ">
             <p className="text-xl font-semibold">Recovery</p>
+            <div className="xl:flex xl:flex-row md:flex md:flex-row hidden items-center xl:gap-0 md:gap-0 gap-4">
+              <div className="flex flex-row items-center gap-2">
+                <Image alt="" src={Language} className="w-6 h-6" />
+                <div className="flex flex-row gap-1">
+                  <p className="text-sm text-black">ENG</p>
+                  <MdKeyboardArrowDown />
+                </div>
+              </div>
+              <div className="flex flex-row items-center gap-2">
+                <Image alt="" src={Currency} className="w-6 h-6" />
+                <div className="flex flex-row gap-1">
+                  <p className="text-sm text-black">USD</p>
+                  <MdKeyboardArrowDown />
+                </div>
+              </div>
+            </div>
           </div>
 
           <div className="divide-y">

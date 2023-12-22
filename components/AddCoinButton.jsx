@@ -9,7 +9,7 @@ const AddCoinButton = () => {
       <Image
         src={Add}
         alt=""
-        className="xl:h-14 xl:w-14 lg:h-12 lg:w-12 md:h-12 md:w-[60px] w-12 h-12"
+        className="xl:h-14 xl:w-14 lg:h-12 lg:w-12 md:h-12 md:w-12 w-12 h-12"
       />
       <p className="text-center xl:text-sm text-xs md:text-xs">Add</p>
     </div>

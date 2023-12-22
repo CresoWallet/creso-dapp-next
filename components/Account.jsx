@@ -26,13 +26,14 @@ const Account = ({ user, setShowModal }) => {
           />
         )} */}
 
-        <CustomButton3
-          title="Backup"
-          titleColor="[#FF4085]"
-          buttonColor="[#FFC8DC]"
-          onClick={() => setShowModal(true)}
-        />
-
+        {
+          <CustomButton3
+            title="Backup"
+            titleColor="[#FF4085]"
+            buttonColor="[#FFC8DC]"
+            onClick={() => setShowModal(true)}
+          />
+        }
         <div className="flex flex-col xl:space-y-10 space-y-6 xl:pt-10 md:pt-6 pt-4">
           <Link href="/account">
             <div className="flex flex-row justify-between items-center  cursor-pointer">

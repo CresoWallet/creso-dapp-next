@@ -15,7 +15,7 @@ const CoinCard = ({ handleCoinWallet }) => {
       {coinList.map((item, index) => {
         return (
           <div
-            className=" md:flex hidden flex-col space-y-1 items-center cursor-pointer hover:animate-bounce"
+            className="md:flex  flex-col space-y-1 items-center cursor-pointer hover:animate-bounce"
             onClick={(e) => {
               handleCoinWallet({ item: item });
             }}

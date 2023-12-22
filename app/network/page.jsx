@@ -17,9 +17,13 @@ import Optimism from "../../assets/network/optimism.png";
 import { MdKeyboardArrowRight } from "react-icons/md";
 import { useMediaQuery } from "react-responsive";
 import Ham from "../../assets/Dashboard/ham.png";
+import Modal from "@/components/modal/Modal";
+import { useUser } from "@/providers/UserProvider";
 
 const NetworkPage = () => {
   const [navbarTrigger, setNavbarTrigger] = useState(false);
+  const { user, isAuthenticated, status } = useUser();
+  const [showModal, setShowModal] = useState(false);
 
   const isMobile = useMediaQuery({ query: `(max-width: 760px)` });
   useEffect(() => {
@@ -31,13 +35,14 @@ const NetworkPage = () => {
   }, [navbarTrigger]);
 
   return (
-    <>
+    <div id="modal-root">
       {navbarTrigger && (
         <div
           className="navbackdrop"
           onClick={() => setNavbarTrigger(!navbarTrigger)}
         ></div>
       )}
+      {showModal && <Modal onClose={() => setShowModal(false)} user={user} />}
       <div className="grid xl:grid-cols-2 md:grid-cols-2 grid-cols-1">
         <div className="col-span-1">
           <div className={`grid ${isMobile ? "grid-cols-1" : "grid-cols-3"}`}>
@@ -59,11 +64,11 @@ const NetworkPage = () => {
             </div>
 
             <div
-              className={`col-span-2 ${
+              className={`col-span-2 md:col-span-3 ${
                 isMobile ? "mt-2" : "mt-16"
-              } xl:mx-8 md:mx-4 mx-2`}
+              } xl:mx-8 md:mx-4 mx-2 md:border-r border-black`}
             >
-              <Account />
+              <Account user={user} setShowModal={setShowModal} />
             </div>
           </div>
         </div>
@@ -194,7 +199,7 @@ const NetworkPage = () => {
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 

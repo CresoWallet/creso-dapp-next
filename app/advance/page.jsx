@@ -9,9 +9,13 @@ import { MdKeyboardArrowDown } from "react-icons/md";
 import { CgTrash } from "react-icons/cg";
 import { useMediaQuery } from "react-responsive";
 import Ham from "../../assets/Dashboard/ham.png";
+import Modal from "@/components/modal/Modal";
+import { useUser } from "@/providers/UserProvider";
 
 const AdvancePage = () => {
   const [navbarTrigger, setNavbarTrigger] = useState(false);
+  const { user, isAuthenticated, status } = useUser();
+  const [showModal, setShowModal] = useState(false);
 
   const isMobile = useMediaQuery({ query: `(max-width: 760px)` });
   useEffect(() => {
@@ -23,13 +27,14 @@ const AdvancePage = () => {
   }, [navbarTrigger]);
 
   return (
-    <>
+    <div id="modal-root">
       {navbarTrigger && (
         <div
           className="navbackdrop"
           onClick={() => setNavbarTrigger(!navbarTrigger)}
         ></div>
       )}
+      {showModal && <Modal onClose={() => setShowModal(false)} user={user} />}
       <div className="grid xl:grid-cols-2 md:grid-cols-2 grid-cols-1 min-h-screen">
         <div className="col-span-1">
           <div className={`grid ${isMobile ? "grid-cols-1" : "grid-cols-3"}`}>
@@ -55,7 +60,7 @@ const AdvancePage = () => {
                 isMobile ? "mt-2" : "mt-16"
               } xl:mx-8 md:mx-4 mx-2 md:border-r border-black`}
             >
-              <Account />
+              <Account user={user} setShowModal={setShowModal} />
             </div>
           </div>
         </div>
@@ -124,7 +129,7 @@ const AdvancePage = () => {
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 

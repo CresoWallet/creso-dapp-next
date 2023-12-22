@@ -229,9 +229,9 @@ const WalletContextProvider = ({ children }) => {
           </div>
           {/* )} */}
         </div>
-        <div className="lg:childrens hidden lg:block">{children}</div>
+        <div className="childrens hidden lg:block">{children}</div>
       </div>
-      <div className="lg:hidden">{children}</div>
+      {isMobile && <div className="">{children}</div>}
 
       {/* ------------Mobile Menubar---------- */}
       <div className="fixed bottom-0 w-full z-10 lg:block">

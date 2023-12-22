@@ -305,7 +305,7 @@ const DiscoverPage = () => {
           {/* </div> */}
         </div>
 
-        <hr className="lg:block mt-10 lg:mt-0" />
+        <hr className="lg:hidden mt-10 lg:mt-0" />
 
         {/* ------------ Rightside Main ---------- */}
         <div className="pt-14 col-span-4 px-4">

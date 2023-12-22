@@ -135,7 +135,7 @@ const MainLayout = () => {
           </div>
         </div>
 
-        <hr className="lg:block mt-10 lg:mt-0" />
+        <hr className="lg:hidden mt-10 lg:mt-0" />
 
         {/* ------------ Rightside Main ---------- */}
         <div className="lg:col-span-4 pt-14 px-4">

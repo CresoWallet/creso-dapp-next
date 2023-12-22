@@ -229,7 +229,7 @@ const WalletContextProvider = ({ children }) => {
           </div>
           {/* )} */}
         </div>
-        <div className="childrens hidden lg:block">{children}</div>
+        {!isMobile && <div className="childrens">{children}</div>}
       </div>
       {isMobile && <div className="">{children}</div>}
 

@@ -55,7 +55,7 @@ const SwapPage = () => {
 
   return (
     <>
-      <div className="grid grid-cols-10 divide-x">
+      <div className="grid lg:grid-cols-10 divide-x">
         {/* <div className="grid responsivemb-cols h-full"> */}
         <div className="col-span-6 pt-16 px-6">
           {/* <div className="flex md:hidden">

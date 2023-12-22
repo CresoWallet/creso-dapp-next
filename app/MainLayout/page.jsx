@@ -1,5 +1,5 @@
 "use client";
-
+import Image from "next/image";
 import Header from "@/components/Header";
 import LeftHeader from "@/components/LeftHeader";
 import SideNav from "@/components/navbar/SideNav";
@@ -49,8 +49,8 @@ const MainLayout = () => {
   const handleCreateWallet = () => {
     setShowCreateWallet(!showCreateWallet);
     // close other models
-    setShowCoinWallet(false);
-    setShowWallet(false);
+    setShowCoinWallet(true);
+    setShowWallet(true);
   };
 
   const handleClose = () => {
@@ -61,16 +61,16 @@ const MainLayout = () => {
     setCoinData(data?.item);
     setShowCoinWallet(true);
     // close other models
-    setShowCreateWallet(false);
-    setShowWallet(false);
+    setShowCreateWallet(true);
+    setShowWallet(true);
   };
 
   const handleShowModel = () => {
     setShowModal(true);
     // close other models
-    setShowCoinWallet(false);
-    setShowWallet(false);
-    setShowCreateWallet(false);
+    setShowCoinWallet(true);
+    setShowWallet(true);
+    setShowCreateWallet(true);
   };
 
   const handleCloseCoinWallet = () => {
@@ -81,25 +81,25 @@ const MainLayout = () => {
     setWalletType(data?.walletName);
     setShowWallet(true);
     // close other models
-    setShowCoinWallet(false);
-    setShowCreateWallet(false);
+    setShowCoinWallet(true);
+    setShowCreateWallet(true);
   };
 
   const handleCloseShowWallet = () => {
     setShowWallet(false);
   };
 
-  useEffect(() => {
-    if (navbarTrigger) {
-      document.body.classList.add("no-scroll");
-    } else {
-      document.body.classList.remove("no-scroll");
-    }
-  }, [navbarTrigger]);
+  // useEffect(() => {
+  //   if (navbarTrigger) {
+  //     document.body.classList.add("no-scroll");
+  //   } else {
+  //     document.body.classList.remove("no-scroll");
+  //   }
+  // }, [navbarTrigger]);
 
   return (
     <>
-      <div className="grid grid-cols-10 divide-x">
+      <div className="grid lg:grid-cols-10 lg:divide-x">
         {/* ------------ Leftside Main ---------- */}
         <div className="col-span-6 pt-16 px-6">
           <div className="">

@@ -127,7 +127,7 @@ const DiscoverPage = () => {
 
   return (
     <>
-      <div className="grid  grid-cols-10 px-2 divide-x">
+      <div className="grid  lg:grid-cols-10 px-2 divide-x">
         {/* sidebar and discover content */}
         {/* <div className="col-span-6 "> */}
         {/* <div className="grid responsivemb-cols h-full"> */}

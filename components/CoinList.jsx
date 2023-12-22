@@ -10,7 +10,7 @@ const CoinList = ({ handleCreateWallet, handleCoinWallet }) => {
   return (
     <div className="flex flex-row justify-start gap-9 ">
       <div
-        className="flex flex-col space-y-1 cursor-pointer hover:scale-105 cursor-pointer"
+        className="flex flex-col space-y-1 hover:scale-105 cursor-pointer"
         onClick={handleCreateWallet}
       >
         <Image

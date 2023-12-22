@@ -95,12 +95,14 @@ const NetworkPage = () => {
 
           <div className="flex flex-col xl:space-y-4 space-y-2 mt-10">
             <Link href="/networkPage">
-              <div className="flex flex-row items-center justify-between hover:animate-bounce cursor-pointer">
-                <div className="flex flex-row items-center gap-2">
+
+
+              <div className="md:flex items-center justify-between hover:animate-bounce cursor-pointer">
+                <div className="flex flex-row items-center gap-2 mb-2 md:mb-0">
                   <Image alt="" src={Bitcoin} />
                   <p>Bitcoin</p>
                 </div>
-                <div className="flex flex-row items-center gap-2">
+                <div className="flex flex-row justify-between md:justify-start items-center gap-2">
                   <p className="text-xs text-[#A09FAA]">Bitcoin Mainnet</p>
                   <MdKeyboardArrowRight />
                 </div>
@@ -108,83 +110,100 @@ const NetworkPage = () => {
             </Link>
 
             <hr className="text-[#A09FAA] py-2 ml-12" />
-            <div className="flex flex-row items-center justify-between">
-              <div className="flex flex-row items-center gap-2">
+
+            <div className="md:flex items-center justify-between hover:animate-bounce cursor-pointer">
+              <div className="flex flex-row items-center gap-2 mb-2 md:mb-0">
                 <Image alt="" src={Eth} />
                 <p>Etherum</p>
               </div>
-              <div className="flex flex-row items-center gap-2">
-                <p className="text-xs text-[#A09FAA]">Etherum Mainnet</p>
+
+              <div className="flex flex-row justify-between md:justify-start items-center gap-2">
+                <p className="text-xs text-[#A09FAA]">Etherum Mainnet </p>
                 <MdKeyboardArrowRight />
               </div>
             </div>
+
             <hr className="text-[#A09FAA] py-2 ml-12" />
-            <div className="flex flex-row items-center justify-between">
-              <div className="flex flex-row items-center gap-2">
+
+            <div className="md:flex items-center justify-between hover:animate-bounce cursor-pointer">
+              <div className="flex flex-row items-center gap-2 mb-2 md:mb-0">
                 <Image alt="" src={BSC} />
                 <p>BSC</p>
               </div>
-              <div className="flex flex-row items-center gap-2">
-                <p className="text-xs text-[#A09FAA]">
+              <div className="flex flex-row justify-between md:justify-start items-center gap-2">
+                <p className="text-xs text-[#A09FAA] md:ml-20">
                   BNB Smart Chain Mainnet
                 </p>
                 <MdKeyboardArrowRight />
               </div>
             </div>
+
+
             <hr className="text-[#A09FAA] py-2 ml-12" />
-            <div className="flex flex-row items-center justify-between">
-              <div className="flex flex-row items-center gap-2">
-                <Image alt="" src={Polygon} />
+
+            <div className="md:flex items-center justify-between hover:animate-bounce cursor-pointer">
+              <div className="flex flex-row items-center gap-2 mb-2 md:mb-0">
+              <Image alt="" src={Polygon} className="w-12 h-12" />
+
                 <p>Polygon</p>
-                <div className="border border-solid px-4 py-1 text-xs border-black rounded-full bg-[#D0F500]">
+                <div className="border border-solid px-4 py-1 text-[10px] border-black rounded-full bg-[#D0F500]">
                   <p>TEST</p>
                 </div>
               </div>
-              <div className="flex flex-row items-center gap-2">
-                <p className="text-xs text-[#A09FAA]">Polygon Mainnet</p>
+              <div className="flex flex-row justify-between md:justify-start items-center gap-2">
+                <p className="text-xs  text-[#A09FAA] md:ml-16 ">Polygon Mainnet</p>
                 <MdKeyboardArrowRight />
               </div>
             </div>
+
+
             <hr className="text-[#A09FAA] py-2 ml-12" />
-            <div className="flex flex-row items-center justify-between">
-              <div className="flex flex-row items-center gap-2">
+
+
+            <div className="md:flex items-center justify-between hover:animate-bounce cursor-pointer">
+              <div className="flex flex-row items-center gap-2 mb-2 md:mb-0">
                 <Image alt="" src={Avalanche} />
                 <p>Avalanche C</p>
               </div>
-              <div className="flex flex-row items-center gap-2">
-                <p className="text-xs text-[#A09FAA]">Avalanche C0Chain</p>
-                <MdKeyboardArrowRight />
+              <div className="flex flex-row justify-between md:justify-start items-center gap-2">
+                <p className="text-xs text-[#A09FAA] md:ml-20">Avalanche C0Chain</p>
+                <MdKeyboardArrowRight className=""/>
               </div>
             </div>
+
+
             <hr className="text-[#A09FAA] py-2 ml-12" />
-            <div className="flex flex-row items-center justify-between">
-              <div className="flex flex-row items-center gap-2">
+
+            <div className="md:flex items-center justify-between hover:animate-bounce cursor-pointer">
+              <div className="flex flex-row items-center gap-2 mb-2 md:mb-0">
                 <Image alt="" src={Optimism} />
                 <p>Optimism</p>
               </div>
-              <div className="flex flex-row items-center gap-2">
+              <div className="flex flex-row justify-between md:justify-start items-center gap-2">
                 <p className="text-xs text-[#A09FAA]">OP Mainnet</p>
                 <MdKeyboardArrowRight />
               </div>
             </div>
             <hr className="text-[#A09FAA] py-2 ml-12" />
-            <div className="flex flex-row items-center justify-between">
-              <div className="flex flex-row items-center gap-2">
+
+            <div className="md:flex items-center justify-between hover:animate-bounce cursor-pointer">
+              <div className="flex flex-row items-center gap-2 mb-2 md:mb-0">
                 <Image alt="" src={Eth} />
                 <p>Etherum</p>
               </div>
-              <div className="flex flex-row items-center gap-2">
+              <div className="flex flex-row justify-between md:justify-start items-center gap-2">
                 <p className="text-xs text-[#A09FAA]">Etherum Mainnet</p>
                 <MdKeyboardArrowRight />
               </div>
             </div>
             <hr className="text-[#A09FAA] py-2 ml-12" />
-            <div className="flex flex-row items-center justify-between">
-              <div className="flex flex-row items-center gap-2">
+
+            <div className="md:flex items-center justify-between hover:animate-bounce cursor-pointer">
+              <div className="flex flex-row items-center gap-2 mb-2 md:mb-0">
                 <Image alt="" src={BSC} />
                 <p>BSC</p>
               </div>
-              <div className="flex flex-row items-center gap-2">
+              <div className="flex flex-row justify-between md:justify-start items-center gap-2">
                 <p className="text-xs text-[#A09FAA]">
                   BNB Smart Chain Mainnet
                 </p>

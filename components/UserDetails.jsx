@@ -11,8 +11,8 @@ const UserDetails = () => {
       <div className="flex flex-col space-y-1">
         <p className="font-bold text-xl">{user?.username}</p>
         <p className="text-sm text-[#A09FAA]">{user?.email}</p>
-        <p className="text-xs text-[#A09FAA]">
-          Last Backup :<span className="text-sm text-black">28 OCT 2023</span>{" "}
+        <p className="text-xs text-[#A09FAA] mr-xside">
+          Last Backup : <span className="text-sm text-black">28 OCT 2023</span>{" "}
         </p>
       </div>
     </div>

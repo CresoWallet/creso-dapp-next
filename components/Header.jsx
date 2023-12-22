@@ -85,10 +85,9 @@ const Header = () => {
               <Image alt="" src={User} />
               <p className="font-bold text-lg">{user?.username}</p>
               <p className="text-xs text-[#A09FAA]">{user?.email}</p>
-              <p className="text-xs text-[#A09FAA]">
+              <p className="text-xs text-[#A09FAA]"></p>
                 Last Backup: 
-                <span className="text-xm text-black">28 OCT 2023</span>{" "}
-              </p>
+                <p className="text-xm text-black ml-10">28 OCT 2023</p>{" "}
             </div>
             <hr />
             <Link href="/account">

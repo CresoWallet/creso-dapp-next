@@ -101,7 +101,7 @@ const MainLayout = () => {
     <>
       <div className="grid lg:grid-cols-10 lg:divide-x">
         {/* ------------ Leftside Main ---------- */}
-        <div className="col-span-6 pt-16 px-6">
+        <div className="lg:col-span-6 pt-16 px-6">
           <div className="">
             <LeftHeader
               title={"Dashboard"}
@@ -135,8 +135,10 @@ const MainLayout = () => {
           </div>
         </div>
 
+        <hr className="lg:block mt-10 lg:mt-0" />
+
         {/* ------------ Rightside Main ---------- */}
-        <div className="col-span-4 hidden xl:block md:block pt-14 px-4">
+        <div className="lg:col-span-4 pt-14 px-4">
           <Header />
           <RightSide
             showCoinWallet={showCoinWallet}

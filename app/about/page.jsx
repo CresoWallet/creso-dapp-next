@@ -47,8 +47,9 @@ const AboutPage = () => {
 
   return (
     <>
-      <div className="grid lg:grid-cols-10 divide-x">
-        <div className="col-span-6 pt-16 px-6">
+      <div className="lg:grid lg:grid-cols-10 divide-x">
+        {/* ------------ Leftside Main ---------- */}
+        <div className="lg:col-span-6 pt-16 px-6">
           <div className="">
             <LeftHeader
               title={"About us"}
@@ -91,9 +92,8 @@ const AboutPage = () => {
               </div>
               <div
                 id="accordion-collapse-body-1"
-                className={`p-5   bg-stale-200 rounded-3xl mb-2 shadow-2xl ${
-                  isAccordionActive(1) ? "" : "hidden"
-                }`}
+                className={`p-5   bg-stale-200 rounded-3xl mb-2 shadow-2xl ${isAccordionActive(1) ? "" : "hidden"
+                  }`}
                 aria-labelledby="accordion-collapse-heading-1"
               >
                 <p className="mb-2 text-black">
@@ -125,9 +125,8 @@ const AboutPage = () => {
 
               <div
                 id="accordion-collapse-body-1"
-                className={`p-5   bg-stale-200 rounded-3xl mb-2 shadow-2xl ${
-                  isAccordionActive(2) ? "" : "hidden"
-                }`}
+                className={`p-5   bg-stale-200 rounded-3xl mb-2 shadow-2xl ${isAccordionActive(2) ? "" : "hidden"
+                  }`}
                 aria-labelledby="accordion-collapse-heading-1"
               >
                 <p className="mb-2 text-black ">
@@ -157,9 +156,8 @@ const AboutPage = () => {
               </div>
               <div
                 id="accordion-collapse-body-1"
-                className={`p-5   bg-stale-200 rounded-3xl mb-2 shadow-2xl ${
-                  isAccordionActive(3) ? "" : "hidden"
-                }`}
+                className={`p-5   bg-stale-200 rounded-3xl mb-2 shadow-2xl ${isAccordionActive(3) ? "" : "hidden"
+                  }`}
                 aria-labelledby="accordion-collapse-heading-1"
               >
                 <p className="mb-2 text-black ">
@@ -179,8 +177,11 @@ const AboutPage = () => {
             </div>
           </div>
         </div>
-        {/* Right Side */}
-        <div className="hidden xl:block md:block pt-14 col-span-4 px-4">
+
+        <hr className="lg:block mt-10 lg:mt-0" />
+
+        {/* ------------ Rightside Main ---------- */}
+        <div className="pt-14 col-span-4 px-4">
           <Header />
           <RightMain />
         </div>

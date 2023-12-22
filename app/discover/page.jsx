@@ -127,7 +127,8 @@ const DiscoverPage = () => {
 
   return (
     <>
-      <div className="grid  lg:grid-cols-10 px-2 divide-x">
+      <div className="lg:grid lg:grid-cols-10 px-2 lg:divide-x">
+        {/* ------------ Leftside Main ---------- */}
         {/* sidebar and discover content */}
         {/* <div className="col-span-6 "> */}
         {/* <div className="grid responsivemb-cols h-full"> */}
@@ -304,8 +305,10 @@ const DiscoverPage = () => {
           {/* </div> */}
         </div>
 
-        {/* Right Side */}
-        <div className="hidden xl:block md:block pt-14 col-span-4 px-4">
+        <hr className="lg:block mt-10 lg:mt-0" />
+
+        {/* ------------ Rightside Main ---------- */}
+        <div className="pt-14 col-span-4 px-4">
           <Header />
           <RightMain />
         </div>

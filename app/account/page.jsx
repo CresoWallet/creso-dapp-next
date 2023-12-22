@@ -160,7 +160,7 @@ const AccountPage = () => {
                   placeholder="My Own FaceMap"
                   className="placeholder:text-black focus:outline-none xl:placeholder:text-base placeholder:text-xs"
                 />
-                <button className="bg-[#D0F500] xl:py-2  hover:font-bold cursor-pointer xl:px-2 md:py-2 px-1 py-1 md:px-2 border border-solid rounded-full border-black text-sm items-center justify-center sm:-ml-20" >
+                <button className="bg-[#D0F500] xl:py-2  hover:font-bold cursor-pointer xl:px-2 md:py-2 px-1 py-1 md:px-2 border border-solid rounded-full border-black text-sm items-center justify-center sm:-ml-20">
                   Connected
                 </button>
               </div>
@@ -178,7 +178,6 @@ const AccountPage = () => {
                 <CustomButton
                   name="Add Another Trusted FaceMap"
                   img={Plus}
-
                   bgColor="black"
                 />
               </div>

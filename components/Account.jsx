@@ -1,5 +1,4 @@
 "use client";
-
 import React, { useState } from "react";
 import Link from "next/link";
 import UserDetails from "./UserDetails";
@@ -17,6 +16,7 @@ const Account = ({ user, setShowModal }) => {
     <>
       <div className="flex flex-col space-y-4">
         <UserDetails />
+
         {/* {user && !user?.isEmailVerified && (
           <CustomButton3
             title="Backup"
@@ -114,7 +114,8 @@ const Account = ({ user, setShowModal }) => {
           </Link>
         </div>
       </div>
-      {/* <div class="h-20 border-l border-solid border-black"></div> */}
+
+      {/* <div className="h-96 ml-96 border-l border-solid border-black"></div> */}
     </>
   );
 };

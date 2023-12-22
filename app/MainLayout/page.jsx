@@ -68,9 +68,9 @@ const MainLayout = () => {
   const handleShowModel = () => {
     setShowModal(true);
     // close other models
-    setShowCoinWallet(true);
-    setShowWallet(true);
-    setShowCreateWallet(true);
+    setShowCoinWallet(false);
+    setShowWallet(false);
+    setShowCreateWallet(false);
   };
 
   const handleCloseCoinWallet = () => {
@@ -81,8 +81,8 @@ const MainLayout = () => {
     setWalletType(data?.walletName);
     setShowWallet(true);
     // close other models
-    setShowCoinWallet(true);
-    setShowCreateWallet(true);
+    setShowCoinWallet(false);
+    setShowCreateWallet(false);
   };
 
   const handleCloseShowWallet = () => {

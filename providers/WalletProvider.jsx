@@ -229,10 +229,12 @@ const WalletContextProvider = ({ children }) => {
           </div>
           {/* )} */}
         </div>
-        <div className="childrens mb-20">{children}</div>
+        <div className="lg:childrens hidden lg:block">{children}</div>
       </div>
+      <div className="lg:hidden">{children}</div>
+
       {/* ------------Mobile Menubar---------- */}
-      <div className="fixed bottom-0 w-full z-10">
+      <div className="fixed bottom-0 w-full z-10 lg:block">
         {isMobile && navbarTrigger && (
           <>
             {/* Conditionally render SideNav based on the path name */}

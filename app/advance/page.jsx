@@ -51,9 +51,9 @@ const AdvancePage = () => {
             </div>
 
             <div
-              className={`col-span-2 ${
+              className={`col-span-2 md:col-span-3 ${
                 isMobile ? "mt-2" : "mt-16"
-              } xl:mx-8 md:mx-4 mx-2`}
+              } xl:mx-8 md:mx-4 mx-2 md:border-r border-black`}
             >
               <Account />
             </div>
@@ -117,7 +117,7 @@ const AdvancePage = () => {
           <div className="flex justify-center items-end mt-96 bottom-0">
             <button className="flex flex-row gap-2 items-center cursor-pointer hover:scale-105 justify-center py-4 border rounded-full w-full border-solid border-[#FF4085] bg-[#FFF5F9]">
               <CgTrash className="text-[#FF4085] w-6 h-6" />
-              <p className="text-[#FF4085] text-sm hover:font-bold">
+              <p className="text-[#FF4085] text-sm hover:font-bold ">
                 Clear Cache
               </p>
             </button>

@@ -47,7 +47,7 @@ const CreateWallet = ({ handleClose }) => {
         </p>
         <div className="flex flex-row items-center gap-2">
           <Image alt="" src={Ethereum} className="w-10 h-10" />
-          <p className="font-semibold">Ethereum Mainnet</p>
+          <p className="font-semibold">Ethereum Mainnet </p>
         </div>
         <div className="flex flex-col space-y-2">
           <div className="border border-solid rounded-3xl border-[#E5E5F0] xl:py-4 md:py-2 xl:px-6 md:px-1 px-4 py-2">

@@ -105,7 +105,7 @@ const MainLayout = () => {
           <div className="">
             <LeftHeader
               title={"Dashboard"}
-              descriptionColor={"28 OCT 2023"}
+              descriptionColor={""}
               icon1={<CiSearch />}
               mobileImg={Ham}
               navbarTrigger={navbarTrigger}

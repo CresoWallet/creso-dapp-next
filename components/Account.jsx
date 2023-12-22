@@ -14,84 +14,107 @@ import { LuSettings2 } from "react-icons/lu";
 
 const Account = ({ user, setShowModal }) => {
   return (
-    <div className="flex flex-col space-y-4">
-      <UserDetails />
-      {user && !user?.isEmailVerified && (
+    <>
+      <div className="flex flex-col space-y-4">
+        <UserDetails />
+        {/* {user && !user?.isEmailVerified && (
+          <CustomButton3
+            title="Backup"
+            titleColor="[#FF4085]"
+            buttonColor="[#FFC8DC]"
+            onClick={() => setShowModal(true)}
+          />
+        )} */}
+
         <CustomButton3
           title="Backup"
           titleColor="[#FF4085]"
           buttonColor="[#FFC8DC]"
           onClick={() => setShowModal(true)}
         />
-      )}
 
-      <div className="flex flex-col xl:space-y-10 space-y-6 xl:pt-10 md:pt-6 pt-4">
-        <Link href="/account">
-          <div className="flex flex-row justify-between items-center  cursor-pointer">
-            <div className="flex flex-row gap-2 items-center">
-              <FiUser />
-              <p className="text-sm">Account</p>
-            </div>
-            <MdKeyboardArrowRight />
-          </div>
-        </Link>
-        <Link href="/recovery">
-          <div className="flex flex-row justify-between items-center  cursor-pointer">
-            <div className="flex flex-row gap-2 items-center">
-              <GoKey />
-              <p className="text-sm">Recovery Key</p>
-            </div>
-            <MdKeyboardArrowRight />
-          </div>
-        </Link>
-        <Link href="/security">
-          <div className="flex flex-row justify-between items-center  cursor-pointer">
-            <div className="flex flex-row gap-2 items-center">
-              <RiComputerLine />
-              <p className="text-sm">Security</p>
-            </div>
-            <MdKeyboardArrowRight />
-          </div>
-        </Link>
+        <div className="flex flex-col xl:space-y-10 space-y-6 xl:pt-10 md:pt-6 pt-4">
+          <Link href="/account">
+            <div className="flex flex-row justify-between items-center  cursor-pointer">
+              <div className="flex flex-row gap-2 items-center">
+                <FiUser />
+                <p className="text-sm">Account</p>
+              </div>
 
-        <Link href="/session">
+              <MdKeyboardArrowRight/>
+            </div>
+            <hr className="my-4" />
+          </Link>
+
+          <Link href="/recovery">
+            <div className="flex flex-row justify-between items-center  cursor-pointer">
+              <div className="flex flex-row gap-2 items-center">
+                <GoKey />
+                <p className="text-sm">Recovery Key</p>
+              </div>
+              <MdKeyboardArrowRight />
+            </div>
+            <hr className="my-4" />
+          </Link>
+
+          <Link href="/security">
+            <div className="flex flex-row justify-between items-center  cursor-pointer">
+              <div className="flex flex-row gap-2 items-center">
+                <RiComputerLine />
+                <p className="text-sm">Security</p>
+              </div>
+              <MdKeyboardArrowRight />
+            </div>
+            <hr className="my-4" />
+          </Link>
+
+          <Link href="/session">
+            <div className="flex flex-row justify-between items-center  cursor-pointer">
+              <div className="flex flex-row gap-2 items-center">
+                <BiWifi2 />
+                <p className="text-sm">V1 Sessions</p>
+              </div>
+              <MdKeyboardArrowRight />
+            </div>
+            <hr className="my-4" />
+          </Link>
+
           <div className="flex flex-row justify-between items-center  cursor-pointer">
             <div className="flex flex-row gap-2 items-center">
               <BiWifi2 />
-              <p className="text-sm">V1 Sessions</p>
+              <p className="text-sm">V2 Sessions</p>
             </div>
-            <MdKeyboardArrowRight />
+            <div>
+              <MdKeyboardArrowRight />
+            </div>
           </div>
-        </Link>
+          <hr className="my-4" />
 
-        <div className="flex flex-row justify-between items-center  cursor-pointer">
-          <div className="flex flex-row gap-2 items-center">
-            <BiWifi2 />
-            <p className="text-sm">V2 Sessions</p>
-          </div>
-          <MdKeyboardArrowRight />
+          <Link href="/network">
+            <div className="flex flex-row justify-between items-center  cursor-pointer">
+              <div className="flex flex-row gap-2 items-center">
+                <GiAerialSignal />
+                <p className="text-sm">Network Settings</p>
+              </div>
+              <MdKeyboardArrowRight />
+            </div>
+            <hr className="my-4" />
+          </Link>
+
+          <Link href="/advance">
+            <div className="flex flex-row justify-between items-center  cursor-pointer">
+              <div className="flex flex-row gap-2 items-center">
+                <LuSettings2 />
+                <p className="text-sm">Advanced</p>
+              </div>
+              <MdKeyboardArrowRight />
+            </div>
+            <hr className="my-4" />
+          </Link>
         </div>
-        <Link href="/network">
-          <div className="flex flex-row justify-between items-center  cursor-pointer">
-            <div className="flex flex-row gap-2 items-center">
-              <GiAerialSignal />
-              <p className="text-sm">Network Settings</p>
-            </div>
-            <MdKeyboardArrowRight />
-          </div>
-        </Link>
-
-        <Link href="/advance">
-          <div className="flex flex-row justify-between items-center  cursor-pointer">
-            <div className="flex flex-row gap-2 items-center">
-              <LuSettings2 />
-              <p className="text-sm">Advanced</p>
-            </div>
-            <MdKeyboardArrowRight />
-          </div>
-        </Link>
       </div>
-    </div>
+      {/* <div class="h-20 border-l border-solid border-black"></div> */}
+    </>
   );
 };
 

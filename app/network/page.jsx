@@ -42,7 +42,6 @@ const NetworkPage = () => {
           onClick={() => setNavbarTrigger(!navbarTrigger)}
         ></div>
       )}
-      {showModal && <Modal onClose={() => setShowModal(false)} user={user} />}
       <div className="grid xl:grid-cols-2 md:grid-cols-2 grid-cols-1">
         <div className="col-span-1">
           <div className={`grid ${isMobile ? "grid-cols-1" : "grid-cols-3"}`}>

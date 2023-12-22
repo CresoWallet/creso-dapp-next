@@ -57,7 +57,7 @@ const AccountPage = () => {
         ></div>
       )}
       {showModal && <Modal onClose={() => setShowModal(false)} user={user} />}
-      <div className="grid xl:grid-cols-2 md:grid-cols-2 grid-cols-1 px-2 xl:pt-2 md:pt-2 mb-2 ">
+      <div className="grid xl:grid-cols-2 md:grid-cols-2 grid-cols-1 px-2 xl:pt-2 md:pt-2 mb-2 pb-32 lg:pb-0">
         <div className="col-span-1">
           <div
             className={`grid h-full ${
@@ -90,7 +90,7 @@ const AccountPage = () => {
             </div>
           </div>
         </div>
-        <div className="col-span-1 xl:mx-8 md:mx-4 mx-2 xl:mt-10 mt-4">
+        <div className="col-span-1 xl:mx-8 md:mx-4 mx-2 xl:mt-10 mt-4 ">
           <div className="flex flex-row justify-between items-center">
             <p className="text-xl font-semibold">Account</p>
             <div className="xl:flex xl:flex-row md:flex md:flex-row hidden items-center xl:gap-0 md:gap-0 gap-4">

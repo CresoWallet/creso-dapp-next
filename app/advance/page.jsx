@@ -31,7 +31,7 @@ const AdvancePage = () => {
         ></div>
       )}
       <div className="grid xl:grid-cols-2 md:grid-cols-2 grid-cols-1 min-h-screen">
-        <div className="col-span-1">
+        <div className="col-span-1 pb-32 lg:pb-0">
           <div className={`grid ${isMobile ? "grid-cols-1" : "grid-cols-3"}`}>
             <div className="flex xl:hidden md:hidden justify-center gap-4">
               <div className="flex flex-row items-center gap-2">
@@ -51,9 +51,8 @@ const AdvancePage = () => {
             </div>
 
             <div
-              className={`col-span-2 md:col-span-3 ${
-                isMobile ? "mt-2" : "mt-16"
-              } xl:mx-8 md:mx-4 mx-2 md:border-r border-black`}
+              className={`col-span-2 md:col-span-3 ${isMobile ? "mt-2" : "mt-16"
+                } xl:mx-8 md:mx-4 mx-2 md:border-r border-black`}
             >
               <Account />
             </div>

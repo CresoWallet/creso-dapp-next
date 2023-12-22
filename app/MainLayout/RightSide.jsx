@@ -15,7 +15,7 @@ import MINA from "../../assets/AboutUs/gainers/mina.png";
 import { WalletContext } from "@/providers/WalletProvider";
 import { usePathname } from "next/navigation";
 
-const   RightSide = (props) => {
+const RightSide = (props) => {
   const {
     showCoinWallet,
     // setShowCoinWallet,
@@ -56,7 +56,7 @@ const   RightSide = (props) => {
   return (
     <>
       {/* right side */}
-      <div className="cols-span-1 relative -m-2">
+      <div className="cols-span-1 relative -m-2 pb-32 lg:pb-0">
         {/* models */}
         <div className="hidden xl:flex md:flex ">
           {showCreateWallet && <CreateWallet handleClose={handleClose} />}

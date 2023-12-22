@@ -55,9 +55,10 @@ const SwapPage = () => {
 
   return (
     <>
-      <div className="grid lg:grid-cols-10 divide-x">
+      <div className="lg:grid lg:grid-cols-10 divide-x">
+        {/* ------------ Leftside Main ---------- */}
         {/* <div className="grid responsivemb-cols h-full"> */}
-        <div className="col-span-6 pt-16 px-6">
+        <div className="lg:col-span-6 pt-16 px-6">
           {/* <div className="flex md:hidden">
               {showSwapForm && <SwapFrom handleClose={handleClose} />}
             </div> */}
@@ -210,7 +211,12 @@ const SwapPage = () => {
           </div>
         </div>
         {/* </div> */}
-        <div className="hidden xl:block md:block pt-14 col-span-4 px-4">
+
+        <hr className="lg:hidden mt-10 lg:mt-0" />
+
+
+        {/* ------------ Rightside Main ---------- */}
+        <div className="lg:col-span-4 pt-14 px-4">
           <Header />
           <RightMain />
         </div>

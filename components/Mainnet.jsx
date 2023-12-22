@@ -157,7 +157,7 @@ const Mainnet = ({
         </div>
       </div>
 
-      <div className="flex flex-col justify-between">
+      <div className="">
         <TransactionItem
           icon={ETH}
           label="ETH"
@@ -184,7 +184,6 @@ const Mainnet = ({
           send="Send"
           receive="Receive"
         />
-        <hr />
       </div>
     </div>
   );

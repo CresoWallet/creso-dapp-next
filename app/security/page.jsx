@@ -35,13 +35,8 @@ const SecurityPage = () => {
           onClick={() => setNavbarTrigger(!navbarTrigger)}
         ></div>
       )}
-<<<<<<< HEAD
-      {showModal && <Modal onClose={() => setShowModal(false)} user={user} />}
-      <div className="grid xl:grid-cols-2 md:grid-cols-2 grid-cols-1 px-2 xl:pt-2 md:pt-2 mb-2 ">
-=======
 
       <div className="grid xl:grid-cols-2 md:grid-cols-2 grid-cols-1 px-2 xl:pt-2 md:pt-2 mb-2 pb-32 lg:pb-0 ">
->>>>>>> 331ba61bf2622756e81afe6785bbdfa0d23af0b9
         <div className="col-span-1">
           <div
             className={`grid h-full ${

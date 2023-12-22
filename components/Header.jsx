@@ -86,7 +86,7 @@ const Header = () => {
               <p className="font-bold text-lg">{user?.username}</p>
               <p className="text-xs text-[#A09FAA]">{user?.email}</p>
               <p className="text-xs text-[#A09FAA]">
-                Last Backup:
+                Last Backup: 
                 <span className="text-xm text-black">28 OCT 2023</span>{" "}
               </p>
             </div>

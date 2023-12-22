@@ -5,7 +5,6 @@ import Image from "next/image";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { useForm } from "react-hook-form";
-
 import BgImage from "../../assets/auth/bgImage.png";
 import CustomButton from "@/components/CustomButton";
 import Apple from "../../assets/auth/Apple.png";

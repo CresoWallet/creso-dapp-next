@@ -30,7 +30,7 @@ const SideNav = () => {
         />
         <NavItem pathName={pathName} href="/swap" icon={Swap} label="Swap" />
 
-        <div className="py-4">
+        <div className="py-4 ">
           <hr className="text-[#B1A6F8]" />
         </div>
 

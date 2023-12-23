@@ -11,13 +11,9 @@ import { RiCheckboxCircleLine } from "react-icons/ri";
 import { RiArrowRightSLine } from "react-icons/ri";
 import { useMediaQuery } from "react-responsive";
 import Ham from "../../assets/Dashboard/ham.png";
-import Modal from "@/components/modal/Modal";
-import { useUser } from "@/providers/UserProvider";
 
 const NetworkRPCPage = () => {
   const [navbarTrigger, setNavbarTrigger] = useState(false);
-  const { user, isAuthenticated, status } = useUser();
-  const [showModal, setShowModal] = useState(false);
 
   const isMobile = useMediaQuery({ query: `(max-width: 760px)` });
   useEffect(() => {
@@ -29,7 +25,7 @@ const NetworkRPCPage = () => {
   }, [navbarTrigger]);
 
   return (
-    <div id="modal-root">
+    <div>
       {navbarTrigger && (
         <div
           className="navbackdrop"
@@ -82,7 +78,7 @@ const NetworkRPCPage = () => {
                 isMobile ? "mt-2" : "mt-16"
               } xl:mx-8 md:mx-4 mx-2`}
             >
-              <Account user={user} setShowModal={setShowModal} />
+              <Account />
             </div>
           </div>
         </div>

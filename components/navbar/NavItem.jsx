@@ -6,17 +6,17 @@ const NavItem = ({ pathName, href, icon, label }) => {
   return (
     <Link href={href} className="group relative">
       <div
-        className={`w-8 h-10 group-hover:bg-white absolute top-5 ${
+        className={`w-10 h-10 group-hover:bg-white absolute top-5 ${
           pathName === href ? "bg-white" : ""
         } `}
       ></div>
       <div
-        className={`w-10 h-9 bg-[#2100EC] relative rounded-l-full left-[3px] lg:left-0 ${
+        className={`w-10 h-10 bg-[#2100EC] relative rounded-l-full left-[3px] lg:left-0 ${
           pathName === href ? "bg-[#2100EC]" : ""
         }`}
       ></div>
       <div
-        className={`flex flex-row gap-4 items-center group-hover:bg-white rounded-r-full py-4 px-8 ${
+        className={`flex flex-row gap-4 items-center group-hover:bg-white rounded-r-full py-4 px-12 ${
           pathName === href ? "bg-white" : ""
         }`}
       >

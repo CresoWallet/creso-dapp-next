@@ -119,7 +119,7 @@ const RecoveryPage = () => {
             <div
               className={`col-span-2 md:col-span-3 ${
                 isMobile ? "mt-2" : "mt-16"
-              } xl:mx-8 md:mx-4 mx-2 md:border-r border-black`}
+              } xl:mx-4 md:mx-2 mx-2 `}
             >
               <Account user={user} setShowModal={setShowModal} />
             </div>

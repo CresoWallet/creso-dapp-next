@@ -34,6 +34,7 @@ const SessionPage = () => {
           onClick={() => setNavbarTrigger(!navbarTrigger)}
         ></div>
       )}
+      {showModal && <Modal onClose={() => setShowModal(false)} user={user} />}
       <div className="grid xl:grid-cols-2 md:grid-cols-2 grid-cols-1 pb-32 lg:pb-0">
         <div className="col-span-1">
           <div className={`grid ${isMobile ? "grid-cols-1" : "grid-cols-3"}`}>
@@ -55,9 +56,9 @@ const SessionPage = () => {
             </div>
 
             <div
-              className={`col-span-2 md:col-span-3 ${
+              className={`col-span-2 ${
                 isMobile ? "mt-2" : "mt-16"
-              } xl:mx-8 md:mx-4 mx-2 md:border-r border-black`}
+              } xl:mx-8 md:mx-4 mx-2`}
             >
               <Account user={user} setShowModal={setShowModal} />
             </div>

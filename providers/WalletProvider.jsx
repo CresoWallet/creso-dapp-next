@@ -219,7 +219,7 @@ const WalletContextProvider = ({ children }) => {
         ></div>
       )} */}
 
-      <div className="flex my-2 mx-2 lg:divide-x ">
+      <div className="flex my-2 mx-2">
         {/* ------------Sidebar---------- */}
         <div className="sidebar">
           {/* {!isMobile && ( */}

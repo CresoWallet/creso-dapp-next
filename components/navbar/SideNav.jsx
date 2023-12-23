@@ -21,7 +21,7 @@ const SideNav = () => {
         <p className="text-white text-4xl hidden lg:block">creso</p>
       </div>
       <div className={`flex flex-col mt-14 ${isMobile ? "mr-5" : "mr-10"}`}>
-        <NavItem pathName={pathName} href="/" icon={Wallet} label="Dashboard" />
+        <NavItem pathName={pathName} href="/dashboard" icon={Wallet} label="Dashboard" />
         <NavItem
           pathName={pathName}
           href="/discover"

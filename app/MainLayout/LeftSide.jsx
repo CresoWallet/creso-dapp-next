@@ -14,8 +14,8 @@ const LeftSide = (props) => {
     showWallet,
     navbarTrigger,
     setNavbarTrigger,
-    secureWalletAddress,
-    eoaWalletAddress,
+    // secureWalletAddress,
+    // eoaWalletAddress,
     handleCreateWallet,
     handleCoinWallet,
     handleShowModel,
@@ -62,8 +62,8 @@ const LeftSide = (props) => {
               <Mainnet
                 handleOpenWallet={handleShowWallet}
                 handleCreateWallet={handleCreateWallet}
-                secureWalletAddress={secureWalletAddress}
-                eoaWalletAddress={eoaWalletAddress}
+                // secureWalletAddress={secureWalletAddress}
+                // eoaWalletAddress={eoaWalletAddress}
                 showWallet={showWallet}
               />{" "}
               <History />

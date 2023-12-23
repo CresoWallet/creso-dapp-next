@@ -14,7 +14,7 @@ import { LuSettings2 } from "react-icons/lu";
 const Account = ({ user, setShowModal }) => {
   return (
     <>
-      <div className="flex flex-col space-y-4">
+      <div className="flex flex-col space-y-3">
         <UserDetails />
 
         {/* {user && !user?.isEmailVerified && (
@@ -34,9 +34,9 @@ const Account = ({ user, setShowModal }) => {
             onClick={() => setShowModal(true)}
           />
         }
-        <div className="flex flex-col xl:space-y-6  space-y-4 xl:pt-8 md:pt-4 pt-2 ">
+        <div className="flex flex-col xl:space-y-4  space-y-4 xl:pt-6 md:pt-3  pt-2 ">
           <Link href="/account">
-            <div className="flex flex-row justify-between items-center  cursor-pointer mx-4">
+            <div className="flex flex-row justify-between items-center  cursor-pointer mx-4 pt-8">
               <div className="flex flex-row gap-2 items-center ">
                 <FiUser />
                 <p className="text-sm">Account</p>
@@ -70,7 +70,7 @@ const Account = ({ user, setShowModal }) => {
           </Link>
 
           <Link href="/session">
-            <div className="flex flex-row justify-between items-center  cursor-pointer mx-4">
+            <div className="flex flex-row justify-between items-center  cursor-pointer mx-4 ">
               <div className="flex flex-row gap-2 items-center">
                 <BiWifi2 />
                 <p className="text-sm">V1 Sessions</p>
@@ -80,7 +80,7 @@ const Account = ({ user, setShowModal }) => {
             <hr className="my-4" />
           </Link>
 
-          <div className="flex flex-row justify-between items-center  cursor-pointer mx-4">
+          <div className="flex flex-row justify-between items-center  cursor-pointer mx-4 pt-0">
             <div className="flex flex-row gap-2 items-center">
               <BiWifi2 />
               <p className="text-sm">V2 Sessions</p>
@@ -92,7 +92,7 @@ const Account = ({ user, setShowModal }) => {
           <hr className="my-4" />
 
           <Link href="/network">
-            <div className="flex flex-row justify-between items-center  cursor-pointer mx-4">
+            <div className="flex flex-row justify-between items-center  cursor-pointer mx-4 pt-3">
               <div className="flex flex-row gap-2 items-center">
                 <GiAerialSignal />
                 <p className="text-sm">Network Settings</p>

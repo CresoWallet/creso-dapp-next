@@ -35,8 +35,8 @@ const SessionPage = () => {
         ></div>
       )}
       {showModal && <Modal onClose={() => setShowModal(false)} user={user} />}
-      <div className="grid xl:grid-cols-2 md:grid-cols-2 grid-cols-1 pb-32 lg:pb-0">
-        <div className="col-span-1">
+      <div className="grid lg:grid-cols-10 md:grid-cols-2 grid-cols-1 pb-32 lg:pb-0">
+        <div className="col-span-4">
           <div className={`grid ${isMobile ? "grid-cols-1" : "grid-cols-3"}`}>
             <div className="flex xl:hidden md:hidden justify-center gap-4">
               <div className="flex flex-row items-center gap-2">
@@ -56,7 +56,7 @@ const SessionPage = () => {
             </div>
 
             <div
-              className={`col-span-2 ${
+              className={`col-span-4 ${
                 isMobile ? "mt-2" : "mt-16"
               } xl:mx-8 md:mx-4 mx-2`}
             >
@@ -64,7 +64,7 @@ const SessionPage = () => {
             </div>
           </div>
         </div>
-        <div className="col-span-1 xl:mx-8 md:mx-4 mx-2 xl:mt-10 mt-4">
+        <div className="col-span-6 xl:mx-8 md:mx-4 mx-2 xl:mt-10 mt-4">
           <div className="flex flex-row justify-between items-center mx-8 mt-8 ">
             <p className="xl:text-xl md:text-xl text-lg  font-semibold">
               V1 Sessions

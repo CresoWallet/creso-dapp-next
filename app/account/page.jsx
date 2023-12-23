@@ -57,11 +57,11 @@ const AccountPage = () => {
         ></div>
       )}
       {showModal && <Modal onClose={() => setShowModal(false)} user={user} />}
-      <div className="grid xl:grid-cols-2 md:grid-cols-2 grid-cols-1 pb-32 lg:pb-0">
-        <div className="col-span-1">
+      <div className="grid lg:grid-cols-10 md:grid-cols-2 grid-cols-1 pb-32 lg:pb-0">
+        <div className="col-span-4">
           <div
             className={`grid h-full ${
-              isMobile ? "grid-cols-1" : "grid-cols-3"
+              isMobile ? "grid-cols-1" : "grid-cols-4"
             }`}
           >
             <div className="flex xl:hidden md:hidden justify-center gap-4">
@@ -82,7 +82,7 @@ const AccountPage = () => {
             </div>
 
             <div
-              className={`col-span-2 ${
+              className={`col-span-4 ${
                 isMobile ? "mt-2" : "mt-16"
               } xl:mx-8 md:mx-4 mx-2`}
             >
@@ -90,7 +90,7 @@ const AccountPage = () => {
             </div>
           </div>
         </div>
-        <div className="col-span-1 xl:mx-8 md:mx-4 mx-2 xl:mt-10 mt-4 ">
+        <div className="col-span-6 xl:mx-8 md:mx-4 mx-2 xl:mt-10 mt-4 ">
           <div className="flex flex-row justify-between items-center">
             <p className="text-xl font-semibold">Account</p>
             <div className="xl:flex xl:flex-row md:flex md:flex-row hidden items-center xl:gap-0 md:gap-0 gap-4">
@@ -133,7 +133,7 @@ const AccountPage = () => {
 
                 <p className="text-xs text-[#A09FAA]">
                   Either email or phone can be used to access your wallet. It is
-                  recommended to add both in case either of them is lost. asdfgh
+                  recommended to add both in case either of them is lost. 
                 </p>
               </div> */}
 

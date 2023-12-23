@@ -34,10 +34,10 @@ const Account = ({ user, setShowModal }) => {
             onClick={() => setShowModal(true)}
           />
         }
-        <div className="flex flex-col xl:space-y-10 space-y-6 xl:pt-10 md:pt-6 pt-4">
+        <div className="flex flex-col xl:space-y-6  space-y-4 xl:pt-8 md:pt-4 pt-2 ">
           <Link href="/account">
-            <div className="flex flex-row justify-between items-center  cursor-pointer">
-              <div className="flex flex-row gap-2 items-center">
+            <div className="flex flex-row justify-between items-center  cursor-pointer mx-4">
+              <div className="flex flex-row gap-2 items-center ">
                 <FiUser />
                 <p className="text-sm">Account</p>
               </div>
@@ -48,7 +48,7 @@ const Account = ({ user, setShowModal }) => {
           </Link>
 
           <Link href="/recovery">
-            <div className="flex flex-row justify-between items-center  cursor-pointer">
+            <div className="flex flex-row justify-between items-center  cursor-pointer mx-4">
               <div className="flex flex-row gap-2 items-center">
                 <GoKey />
                 <p className="text-sm">Recovery Key</p>
@@ -59,7 +59,7 @@ const Account = ({ user, setShowModal }) => {
           </Link>
 
           <Link href="/security">
-            <div className="flex flex-row justify-between items-center  cursor-pointer">
+            <div className="flex flex-row justify-between items-center  cursor-pointer mx-4">
               <div className="flex flex-row gap-2 items-center">
                 <RiComputerLine />
                 <p className="text-sm">Security</p>
@@ -70,7 +70,7 @@ const Account = ({ user, setShowModal }) => {
           </Link>
 
           <Link href="/session">
-            <div className="flex flex-row justify-between items-center  cursor-pointer">
+            <div className="flex flex-row justify-between items-center  cursor-pointer mx-4">
               <div className="flex flex-row gap-2 items-center">
                 <BiWifi2 />
                 <p className="text-sm">V1 Sessions</p>
@@ -80,7 +80,7 @@ const Account = ({ user, setShowModal }) => {
             <hr className="my-4" />
           </Link>
 
-          <div className="flex flex-row justify-between items-center  cursor-pointer">
+          <div className="flex flex-row justify-between items-center  cursor-pointer mx-4">
             <div className="flex flex-row gap-2 items-center">
               <BiWifi2 />
               <p className="text-sm">V2 Sessions</p>
@@ -92,7 +92,7 @@ const Account = ({ user, setShowModal }) => {
           <hr className="my-4" />
 
           <Link href="/network">
-            <div className="flex flex-row justify-between items-center  cursor-pointer">
+            <div className="flex flex-row justify-between items-center  cursor-pointer mx-4">
               <div className="flex flex-row gap-2 items-center">
                 <GiAerialSignal />
                 <p className="text-sm">Network Settings</p>
@@ -103,7 +103,7 @@ const Account = ({ user, setShowModal }) => {
           </Link>
 
           <Link href="/advance">
-            <div className="flex flex-row justify-between items-center  cursor-pointer">
+            <div className="flex flex-row justify-between items-center  cursor-pointer mx-4">
               <div className="flex flex-row gap-2 items-center">
                 <LuSettings2 />
                 <p className="text-sm">Advanced</p>

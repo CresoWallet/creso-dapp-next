@@ -15,7 +15,7 @@ const CoinCard = ({ handleCoinWallet }) => {
       {coinList.map((item, index) => {
         return (
           <div
-            className="md:flex  flex-col space-y-1 items-center cursor-pointer hover:animate-bounce"
+            className="md:flex flex-col space-y-1 items-center cursor-pointer"
             onClick={(e) => {
               handleCoinWallet({ item: item });
             }}
@@ -27,14 +27,14 @@ const CoinCard = ({ handleCoinWallet }) => {
                 item.coinName === "ETH"
                   ? ETH
                   : item.coinName === "BNB"
-                  ? BnB
-                  : item.coinName === "USDT"
-                  ? USDT
-                  : item.coinName === "DAI"
-                  ? DAI
-                  : item.coinName === "WETH"
-                  ? WETH
-                  : ETH
+                    ? BnB
+                    : item.coinName === "USDT"
+                      ? USDT
+                      : item.coinName === "DAI"
+                        ? DAI
+                        : item.coinName === "WETH"
+                          ? WETH
+                          : ETH
               }
               className="xl:h-14 xl:w-14 md:h-12 md:w-12 w-12 h-12"
             />

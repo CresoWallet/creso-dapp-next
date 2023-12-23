@@ -42,8 +42,9 @@ const NetworkPage = () => {
           onClick={() => setNavbarTrigger(!navbarTrigger)}
         ></div>
       )}
-      <div className="grid xl:grid-cols-2 md:grid-cols-2 grid-cols-1">
-        <div className="col-span-1">
+      {showModal && <Modal onClose={() => setShowModal(false)} user={user} />}
+      <div className="grid lg:grid-cols-10 md:grid-cols-2 grid-cols-1 pb-32 lg:pb-0">
+        <div className="col-span-4">
           <div className={`grid ${isMobile ? "grid-cols-1" : "grid-cols-3"}`}>
             <div className="flex xl:hidden md:hidden justify-center gap-4">
               <div className="flex flex-row items-center gap-2">
@@ -63,15 +64,15 @@ const NetworkPage = () => {
             </div>
 
             <div
-              className={`col-span-2 md:col-span-3 ${
+              className={`col-span-4 ${
                 isMobile ? "mt-2" : "mt-16"
-              } xl:mx-8 md:mx-4 mx-2 md:border-r border-black`}
+              } xl:mx-8 md:mx-4 mx-2`}
             >
               <Account user={user} setShowModal={setShowModal} />
             </div>
           </div>
         </div>
-        <div className="col-span-1 xl:mx-8 md:mx-4 mx-2 xl:mt-10 mt-4">
+        <div className="col-span-6 xl:mx-8 md:mx-4 mx-2 xl:mt-10 mt-4">
           <div className="flex flex-row justify-between items-center">
             <p className="text-xl font-semibold">Network Settings</p>
             <div className="xl:flex xl:flex-row md:flex md:flex-row hidden items-center xl:gap-0 md:gap-0 gap-4">
@@ -99,8 +100,6 @@ const NetworkPage = () => {
 
           <div className="flex flex-col xl:space-y-4 space-y-2 mt-10">
             <Link href="/networkPage">
-
-
               <div className="md:flex items-center justify-between hover:animate-bounce cursor-pointer">
                 <div className="flex flex-row items-center gap-2 mb-2 md:mb-0">
                   <Image alt="" src={Bitcoin} />
@@ -142,12 +141,11 @@ const NetworkPage = () => {
               </div>
             </div>
 
-
             <hr className="text-[#A09FAA] py-2 ml-12" />
 
             <div className="md:flex items-center justify-between hover:animate-bounce cursor-pointer">
               <div className="flex flex-row items-center gap-2 mb-2 md:mb-0">
-              <Image alt="" src={Polygon} className="w-12 h-12" />
+                <Image alt="" src={Polygon} className="w-12 h-12" />
 
                 <p>Polygon</p>
                 <div className="border border-solid px-4 py-1 text-[10px] border-black rounded-full bg-[#D0F500]">
@@ -155,14 +153,14 @@ const NetworkPage = () => {
                 </div>
               </div>
               <div className="flex flex-row justify-between md:justify-start items-center gap-2">
-                <p className="text-xs  text-[#A09FAA] md:ml-16 ">Polygon Mainnet</p>
+                <p className="text-xs  text-[#A09FAA] md:ml-16 ">
+                  Polygon Mainnet
+                </p>
                 <MdKeyboardArrowRight />
               </div>
             </div>
 
-
             <hr className="text-[#A09FAA] py-2 ml-12" />
-
 
             <div className="md:flex items-center justify-between hover:animate-bounce cursor-pointer">
               <div className="flex flex-row items-center gap-2 mb-2 md:mb-0">
@@ -170,11 +168,12 @@ const NetworkPage = () => {
                 <p>Avalanche C</p>
               </div>
               <div className="flex flex-row justify-between md:justify-start items-center gap-2">
-                <p className="text-xs text-[#A09FAA] md:ml-20">Avalanche C0Chain</p>
-                <MdKeyboardArrowRight className=""/>
+                <p className="text-xs text-[#A09FAA] md:ml-20">
+                  Avalanche C0Chain
+                </p>
+                <MdKeyboardArrowRight className="" />
               </div>
             </div>
-
 
             <hr className="text-[#A09FAA] py-2 ml-12" />
 

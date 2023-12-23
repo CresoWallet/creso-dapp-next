@@ -23,7 +23,7 @@ const LeftHeader = (props) => {
           <p className="xl:text-4xl md:text-md text-black font-bold text-xl space-y-1 relative">
             {title}
             <span className="absolute -bottom-5 -right-24 text-xl upcomming">
-              upcomming
+              upcoming
             </span>
           </p>
         )}

@@ -1,5 +1,4 @@
 "use client";
-
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import Account from "@/components/Account";
@@ -57,11 +56,11 @@ const AccountPage = () => {
         ></div>
       )}
       {showModal && <Modal onClose={() => setShowModal(false)} user={user} />}
-      <div className="grid xl:grid-cols-2 md:grid-cols-2 grid-cols-1 px-2 xl:pt-2 md:pt-2 mb-2 pb-32 lg:pb-0">
-        <div className="col-span-1">
+      <div className="grid lg:grid-cols-10 md:grid-cols-2 grid-cols-1 pb-32 lg:pb-0">
+        <div className="col-span-4">
           <div
             className={`grid h-full ${
-              isMobile ? "grid-cols-1" : "grid-cols-3"
+              isMobile ? "grid-cols-1" : "grid-cols-4"
             }`}
           >
             <div className="flex xl:hidden md:hidden justify-center gap-4">
@@ -82,15 +81,15 @@ const AccountPage = () => {
             </div>
 
             <div
-              className={`col-span-2 md:col-span-3 ${
+              className={`col-span-4 ${
                 isMobile ? "mt-2" : "mt-16"
-              } xl:mx-8 md:mx-4 mx-2 md:border-r border-black`}
+              } xl:mx-8 md:mx-4 mx-2`}
             >
               <Account user={user} setShowModal={setShowModal} />
             </div>
           </div>
         </div>
-        <div className="col-span-1 xl:mx-8 md:mx-4 mx-2 xl:mt-10 mt-4 ">
+        <div className="col-span-6 xl:mx-8 md:mx-4 mx-2 xl:mt-10 mt-4 ">
           <div className="flex flex-row justify-between items-center">
             <p className="text-xl font-semibold">Account</p>
             <div className="xl:flex xl:flex-row md:flex md:flex-row hidden items-center xl:gap-0 md:gap-0 gap-4">
@@ -133,17 +132,22 @@ const AccountPage = () => {
 
                 <p className="text-xs text-[#A09FAA]">
                   Either email or phone can be used to access your wallet. It is
-                  recommended to add both in case either of them is lost. asdfgh
+                  recommended to add both in case either of them is lost. 
                 </p>
               </div> */}
-
-              <div className="flex flex-row items-center mx-4">
-                <Image alt="" src={Info} className="w-12 h-6 xl:w-6 xl:h-5" />
-                <p className="text-xs text-[#A09FAA]">
+              <div className="flex flex-row items-center mx-2 xl:mx-4">
+                <Image
+                  alt=""
+                  src={Info}
+                  sizes="25"
+                  className="w-12 h-6 xl:w-6 xl:h-5"
+                />
+                <p className="text-xs text-[#A09FAA] xl:text-sm xl:ml-2">
                   Either email or phone can be used to access your wallet. It is
                   recommended to add both in case either of them is lost.
                 </p>
               </div>
+
             </div>
 
             <div className="flex justify-end">
@@ -187,19 +191,21 @@ const AccountPage = () => {
               <p>Advanced</p>
               <MdKeyboardArrowRight />
             </div>
-            <div>
+
+            <div className="">
               <div className="flex justify-center">
                 <button
                   className="flex flex-row gap-2 items-center justify-center py-4 border cursor-pointer rounded-full hover:scale-105 w-full border-solid border-[#FF4085] bg-[#FFF5F9]"
                   onClick={handleLogout}
                 >
-                  <Image alt="" src={Disconnect} />
+                  <Image alt="" src={Disconnect} className="" />
                   <p className="text-[#FF4085] text-sm hover:font-bold">
                     Disconnect
                   </p>
                 </button>
               </div>
             </div>
+
           </div>
         </div>
       </div>

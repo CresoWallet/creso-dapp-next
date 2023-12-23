@@ -128,7 +128,7 @@ const AccountPage = () => {
 
               {/* <div className="flex flex-row gap-2 mx-4">
                 <div className="flex items-start">
-                  <Image alt="" src={Info} className="w-12 h-6 xl:w-6 xl:h-5" />
+                  <Image alt="" src={Info} className="w-12 h-6 md:w-6 xl:w-6 xl:h-5" />
                 </div>
 
                 <p className="text-xs text-[#A09FAA]">
@@ -138,7 +138,11 @@ const AccountPage = () => {
               </div> */}
 
               <div className="flex flex-row items-center mx-4">
-                <Image alt="" src={Info} className="w-12 h-6 xl:w-6 xl:h-5" />
+                <Image
+                  alt=""
+                  src={Info}
+                  className="w-12 h-6 md:w-6 xl:w-6 xl:h-5"
+                />
                 <p className="text-xs text-[#A09FAA]">
                   Either email or phone can be used to access your wallet. It is
                   recommended to add both in case either of them is lost.
@@ -153,19 +157,23 @@ const AccountPage = () => {
             </div>
 
             <div className="flex flex-col space-y-2">
-              <p className="text-sm mx-4">FaceMap</p>
+              <p className="text-sm   mx-4">FaceMap</p>
               <div className="flex flex-row items-center rounded-full border border-solid border-[#E5E5F0] justify-between xl:py-4 xl:px-4 py-2 px-2">
                 <input
                   type="text"
                   placeholder="My Own FaceMap"
-                  className="placeholder:text-black focus:outline-none xl:placeholder:text-base placeholder:text-xs"
+                  className="placeholder:text-black focus:outline-none xl:placeholder:text-lg placeholder:text-base ml-2 font-medium "
                 />
                 <button className="bg-[#D0F500] xl:py-2  hover:font-bold cursor-pointer xl:px-2 md:py-2 px-1 py-1 md:px-2 border border-solid rounded-full border-black text-sm items-center justify-center sm:-ml-20">
                   Connected
                 </button>
               </div>
               <div className="flex flex-row items-center mx-4">
-                <Image alt="" src={Info} className="w-12 h-6 xl:w-6 xl:h-5" />
+                <Image
+                  alt=""
+                  src={Info}
+                  className="w-12 h-6 md:w-6 xl:w-6 xl:h-5"
+                />
                 <p className="text-xs text-[#A09FAA]">
                   Either email or phone can be used to access your wallet. It is
                   recommended to add both in case either of them is lost.
@@ -184,7 +192,7 @@ const AccountPage = () => {
             </div>
 
             <div className="flex flex-row items-center rounded-full border border-solid border-[#E5E5F0] justify-between xl:py-4 xl:px-4 py-2 px-2">
-              <p>Advanced</p>
+              <p className="text-base font-medium">Advanced</p>
               <MdKeyboardArrowRight />
             </div>
             <div>

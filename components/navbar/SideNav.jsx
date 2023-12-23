@@ -16,9 +16,11 @@ const SideNav = () => {
 
   return (
     <div className="bg-[#2100EC] rounded-3xl flex flex-col pt-12 min-h-screen lg:h-full items-center lg:items-start ">
-      <div className="flex flex-row items-center gap-1 px-8 ">
+      <div className="flex flex-row items-center gap-1 px-8 relative Mainlogo">
         <Image alt="" src={Creso3} className="w-11 h-w-11" />
-        <p className="text-white text-4xl hidden lg:block">creso</p>
+        <p className="text-white text-4xl hidden lg:block">creso
+        </p>
+        <span class="absolute -bottom-5 right-2 text-xl upcomming">beta</span>
       </div>
       <div className={`flex flex-col mt-14 ${isMobile ? "mr-5" : "mr-10"}`}>
         <NavItem pathName={pathName} href="/dashboard" icon={Wallet} label="Dashboard" />

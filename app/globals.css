@@ -96,6 +96,65 @@ button:disabled {
   }
 } */
 
+/*  Rainbow Text animation */
+
+/* .rainbowText {
+  background: red;
+  background: -webkit-linear-gradient(
+    left,
+    orange,
+    yellow,
+    green,
+    cyan,
+    rgb(255, 136, 0),
+    violet
+  );
+  background: -o-linear-gradient(
+    right,
+    orange,
+    yellow,
+    green,
+    cyan,
+    rgb(255, 136, 0),
+    violet
+  );
+  background: -moz-linear-gradient(
+    right,
+    orange,
+    yellow,
+    green,
+    cyan,
+    rgb(255, 136, 0),
+    violet
+  );
+  background: linear-gradient(
+    to right,
+    orange,
+    yellow,
+    green,
+    cyan,
+    rgb(255, 136, 0),
+    violet
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+} */
+
+.upcomming {
+  background-image: -webkit-linear-gradient(125deg, #f2291b, #f7db25, #84f527);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -webkit-animation: hue 15s infinite linear;
+}
+@-webkit-keyframes hue {
+  from {
+    -webkit-filter: hue-rotate(0deg);
+  }
+  to {
+    -webkit-filter: hue-rotate(-360deg);
+  }
+}
+
 @media screen and (max-width: 1439px) {
   .sidebar {
     width: 25%;

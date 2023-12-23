@@ -8,8 +8,9 @@ const LeftHeader = (props) => {
 		<div className="flex flex-row items-center justify-between w-full">
 			{/* Leftside Title */}
 			<div>
-				{title && <p className="xl:text-4xl md:text-md text-black font-bold text-xl space-y-1">
+				{title && <p className="xl:text-4xl md:text-md text-black font-bold text-xl space-y-1 relative">
 					{title}
+					<span className='absolute -bottom-5 -right-24 text-xl upcomming'>upcomming</span>
 				</p>}
 				{descriptionColor && <p className="text-[#6F6E7A] text-xs">
 					Last Backup:

@@ -19,12 +19,16 @@ const SideNav = () => {
     <div className="bg-[#2100EC] rounded-3xl flex flex-col pt-12 min-h-screen lg:h-full items-center lg:items-start ">
       <div className="flex flex-row items-center gap-1 px-8 relative Mainlogo text-white">
         <Image alt="creso-logo" src={Creso3} className="" />
-        <p className=" text-4xl hidden lg:block items-center">creso
-        </p>
+        <p className=" text-4xl hidden lg:block items-center">creso</p>
         <p className="font-medium text-base mt-3">Beta</p>
       </div>
       <div className={`flex flex-col mt-14 ${isMobile ? "mr-5" : "mr-10"}`}>
-        <NavItem pathName={pathName} href="/dashboard" icon={Wallet} label="Dashboard" />
+        <NavItem
+          pathName={pathName}
+          href="/dashboard"
+          icon={Wallet}
+          label="Dashboard"
+        />
         <NavItem
           pathName={pathName}
           href="/discover"

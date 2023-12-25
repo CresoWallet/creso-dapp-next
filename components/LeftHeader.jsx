@@ -15,6 +15,7 @@ const LeftHeader = (props) => {
     isMobile,
     iconImg1,
     iconImg2,
+    pageType, // assuming you have a prop for pageType
   } = props;
   const path = usePathname();
   const matchPath = path === "/dashboard";
@@ -25,7 +26,9 @@ const LeftHeader = (props) => {
         {title && (
           <p className="xl:text-4xl md:text-md text-black font-bold text-xl space-y-1 relative">
             {title}
-            {!matchPath && <span className="mx-1 text-xl upcomming">upcoming</span>}
+            {!matchPath && (
+              <span className="mx-1 text-xl upcomming">upcoming</span>
+            )}
           </p>
         )}
         {descriptionColor && (

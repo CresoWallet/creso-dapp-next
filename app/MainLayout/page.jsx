@@ -114,23 +114,13 @@ const MainLayout = () => {
             />
 
             <LeftSide
-              showCreateWallet={showCreateWallet}
-              setShowCreateWallet={setShowCreateWallet}
               showWallet={showWallet}
-              setShowWallet={setShowWallet}
               navbarTrigger={navbarTrigger}
               setNavbarTrigger={setNavbarTrigger}
-              secureWalletAddress={secureWalletAddress}
-              eoaWalletAddress={eoaWalletAddress}
-              fetchWallet={fetchWallet}
-              WalletContext={WalletContext}
               handleCreateWallet={handleCreateWallet}
               handleCoinWallet={handleCoinWallet}
               handleShowModel={handleShowModel}
               handleShowWallet={handleShowWallet}
-              user={user}
-              status={user}
-              router={router}
             />
           </div>
         </div>
@@ -142,24 +132,19 @@ const MainLayout = () => {
           <Header />
           <RightSide
             showCoinWallet={showCoinWallet}
-            setShowCoinWallet={setShowCoinWallet}
             showModal={showModal}
             setShowModal={setShowModal}
-            usd={usd}
-            setUsd={setUsd}
             walletType={walletType}
-            setWalletType={setWalletType}
             coinData={coinData}
-            setCoinData={setCoinData}
-            isAuthenticated={isAuthenticated}
             secureWalletBalance={secureWalletBalance}
             eoaWalletBalance={eoaWalletBalance}
             wallets={wallets}
-            WalletContext={WalletContext}
-            router={router}
+            showCreateWallet={showCreateWallet}
             handleCloseShowWallet={handleCloseShowWallet}
             handleCloseCoinWallet={handleCloseCoinWallet}
             handleClose={handleClose}
+            showWallet={showWallet}
+            user={user}
           />
         </div>
       </div>

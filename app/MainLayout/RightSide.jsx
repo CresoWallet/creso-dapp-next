@@ -18,29 +18,23 @@ import { usePathname } from "next/navigation";
 const RightSide = (props) => {
   const {
     showCoinWallet,
-    // setShowCoinWallet,
     showModal,
     setShowModal,
-    // usd,
-    // setUsd,
     walletType,
-    // setWalletType,
     coinData,
-    // setCoinData,
-    // isAuthenticated,
     secureWalletBalance,
     eoaWalletBalance,
     wallets,
-    // WalletContext,
-    // router,
+    showWallet,
+    showCreateWallet,
     handleCloseShowWallet,
     handleCloseCoinWallet,
     handleClose,
     user,
   } = props;
-  const [showCreateWallet, setShowCreateWallet] = useState(false);
+  // const [showCreateWallet, setShowCreateWallet] = useState(false);
   // const [showCoinWallet, setShowCoinWallet] = useState(false);
-  const [showWallet, setShowWallet] = useState(false);
+  // const [showWallet, setShowWallet] = useState(false);
   // const [showModal, setShowModal] = useState(false);
   // const {
   //     secureWalletBalance,
@@ -56,12 +50,12 @@ const RightSide = (props) => {
   return (
     <>
       {/* right side */}
-      <div className="cols-span-1 relative -m-2 pb-32 lg:pb-0">
+      <div className="grid relative -m-2 pb-32 lg:pb-0">
         {/* models */}
-        <div className="hidden xl:flex md:flex ">
+        <div className="hidden md:flex ">
           {showCreateWallet && <CreateWallet handleClose={handleClose} />}
         </div>
-        <div className="hidden xl:flex md:flex">
+        <div className="cols-span-4 hidden md:flex">
           {showCoinWallet && (
             <CoinWallet
               handleClose={handleCloseCoinWallet}
@@ -71,7 +65,7 @@ const RightSide = (props) => {
           )}
         </div>
 
-        <div className="hidden xl:flex md:flex">
+        <div className="cols-span-4 hidden md:flex">
           {showWallet && (
             <SecureWallet
               handleClose={handleCloseShowWallet}

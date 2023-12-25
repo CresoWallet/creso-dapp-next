@@ -11,11 +11,11 @@ import { coinList } from "@/utils/data/coinlist";
 
 const CoinCard = ({ handleCoinWallet }) => {
   return (
-    <div className="flex gap-2 xl:gap-4 justify-between items-center overflow-x-auto">
+    <div className="flex gap-2 xl:gap-4 justify-between items-center overflow-x-auto ">
       {coinList.map((item, index) => {
         return (
           <div
-            className="md:flex flex-col space-y-1 items-center cursor-pointer"
+            className="md:flex flex-col space-y-1 items-center cursor-pointer hover:-translate-y-1 duration-500 !overflow-hidden "
             onClick={(e) => {
               handleCoinWallet({ item: item });
             }}

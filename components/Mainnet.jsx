@@ -22,13 +22,12 @@ const Mainnet = ({
   // secureWalletAddress,
   showWallet,
 }) => {
-  const { enqueueSnackbar } = useSnackbar();
-  const [activeButton, setActiveButton] = useState("");
   const {
     secureWalletAddress,
     eoaWalletAddress,
-
   } = useContext(WalletContext);
+  const { enqueueSnackbar } = useSnackbar();
+  const [activeButton, setActiveButton] = useState("");
   useEffect(() => {
     if (!showWallet) {
       setActiveButton("");
@@ -51,7 +50,7 @@ const Mainnet = ({
           </div>
         </div>
       </div>
-      <div className="-z-10">
+      <div>
         <div className="flex xl:flex-row flex-col items-center xl:gap-4 md:gap-4 gap-2">
           <div
             className={`${activeButton === "AA"
@@ -62,7 +61,7 @@ const Mainnet = ({
             <div className="flex flex-row justify-between items-center gap-3 group">
               <Image
                 src={Wallet}
-                alt=""
+                alt="wallet"
                 className="md:w-14 md:h-14 xl:w-12 xl:h-12"
               />
               <div className="flex flex-col space-y-1">
@@ -78,7 +77,7 @@ const Mainnet = ({
                   </p>
                   <Image
                     src={activeButton ? Copy : Copy2}
-                    alt=""
+                    alt="copy"
                     onClick={() => {
                       copyToClipBoard(secureWalletAddress);
                       enqueueSnackbar("URL Copied", {

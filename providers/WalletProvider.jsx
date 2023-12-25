@@ -219,7 +219,7 @@ const WalletContextProvider = ({ children }) => {
         ></div>
       )} */}
 
-      <div className="flex my-2 mx-2 lg:divide-x ">
+      {!isLoginOrRegister && <div className="flex my-2 mx-2 lg:divide-x ">
         {/* ------------Sidebar---------- */}
         <div className="sidebar">
           {/* {!isMobile && ( */}
@@ -230,8 +230,8 @@ const WalletContextProvider = ({ children }) => {
           {/* )} */}
         </div>
         {!isMobile && <div className="childrens">{children}</div>}
-      </div>
-      {isMobile && <div className="">{children}</div>}
+      </div>}
+      {(isMobile || isLoginOrRegister) && <div className="">{children}</div>}
 
       {/* ------------Mobile Menubar---------- */}
       <div className="fixed bottom-0 w-full z-10 lg:block">

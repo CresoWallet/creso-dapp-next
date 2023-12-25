@@ -65,7 +65,7 @@ const RightSide = (props) => {
           )}
         </div>
 
-        <div className="cols-span-4 hidden md:flex">
+        <div className="hidden lg:block lg:cols-span-4">
           {showWallet && (
             <SecureWallet
               handleClose={handleCloseShowWallet}

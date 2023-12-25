@@ -1,5 +1,4 @@
 "use client";
-
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import Account from "@/components/Account";
@@ -148,6 +147,7 @@ const AccountPage = () => {
                   recommended to add both in case either of them is lost.
                 </p>
               </div>
+
             </div>
 
             <div className="flex justify-end">
@@ -162,9 +162,9 @@ const AccountPage = () => {
                 <input
                   type="text"
                   placeholder="My Own FaceMap"
-                  className="placeholder:text-black focus:outline-none xl:placeholder:text-lg placeholder:text-base ml-2 font-medium "
+                  className="placeholder:text-black focus:outline-none xl:placeholder:text-lg placeholder:text-base ml-2 font-medium text-sm "
                 />
-                <button className="bg-[#D0F500] xl:py-2  hover:font-bold cursor-pointer xl:px-2 md:py-2 px-1 py-1 md:px-2 border border-solid rounded-full border-black text-sm items-center justify-center sm:-ml-20">
+                <button className="bg-[#D0F500] xl:py-2 hover:font-bold cursor-pointer xl:px-2 md:py-2 px-1 py-1 md:px-2 border border-solid rounded-full border-black text-sm items-center justify-center sm:-ml-20 ">
                   Connected
                 </button>
               </div>
@@ -195,19 +195,21 @@ const AccountPage = () => {
               <p className="text-base font-medium">Advanced</p>
               <MdKeyboardArrowRight />
             </div>
-            <div>
+
+            <div className="">
               <div className="flex justify-center">
                 <button
                   className="flex flex-row gap-2 items-center justify-center py-4 border cursor-pointer rounded-full hover:scale-105 w-full border-solid border-[#FF4085] bg-[#FFF5F9]"
                   onClick={handleLogout}
                 >
-                  <Image alt="" src={Disconnect} />
+                  <Image alt="" src={Disconnect} className="" />
                   <p className="text-[#FF4085] text-sm hover:font-bold">
-                    Disconnect
+                    Disconnect 
                   </p>
                 </button>
               </div>
             </div>
+
           </div>
         </div>
       </div>

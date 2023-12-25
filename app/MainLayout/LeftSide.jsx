@@ -13,7 +13,7 @@ const LeftSide = (props) => {
   const {
     showWallet,
     navbarTrigger,
-    setNavbarTrigger,
+    // setNavbarTrigger,
     // secureWalletAddress,
     // eoaWalletAddress,
     handleCreateWallet,

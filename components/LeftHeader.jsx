@@ -2,6 +2,7 @@ import Image from "next/image";
 import React from "react";
 import Settings from "../assets/Swap/settings.png";
 import Note from "../assets/Swap/note.png";
+
 const LeftHeader = (props) => {
   const {
     title,
@@ -14,7 +15,11 @@ const LeftHeader = (props) => {
     isMobile,
     iconImg1,
     iconImg2,
+    pageType, // assuming you have a prop for pageType
   } = props;
+
+  const isDashboardPage = pageType === "dashboard";
+
   return (
     <div className="flex flex-row items-center justify-between w-full">
       {/* Leftside Title */}
@@ -22,7 +27,9 @@ const LeftHeader = (props) => {
         {title && (
           <p className="xl:text-4xl md:text-md text-black font-bold text-xl space-y-1 relative">
             {title}
-            <span className="mx-1 text-xl upcomming">upcoming</span>
+            {isDashboardPage ? null : (
+              <span className="mx-1 text-lg upcomming">upcoming</span>
+            )}
           </p>
         )}
         {descriptionColor && (

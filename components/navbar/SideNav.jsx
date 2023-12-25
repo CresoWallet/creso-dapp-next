@@ -22,7 +22,7 @@ const SideNav = () => {
         <p className="text-white text-4xl hidden lg:block items-center mb-2">
           creso
         </p>
-        <p className="font-bold text-lg upcomming mt-2.5">beta</p>
+        <p className="font-bold text-md text-pink-400 mt-2.5">beta</p>
       </div>
       <div className={`flex flex-col mt-14 ${isMobile ? "mr-5" : "mr-10"}`}>
         <NavItem

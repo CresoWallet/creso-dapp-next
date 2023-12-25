@@ -141,7 +141,7 @@ button:disabled {
 } */
 
 .upcomming {
-  background-image: -webkit-linear-gradient(125deg, #f2291b, #f7db25, #84f527);
+  background-image: -webkit-linear-gradient(125deg, #8354d6, #cc4391, #4655db);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   -webkit-animation: hue 15s infinite linear;

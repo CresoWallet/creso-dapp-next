@@ -20,10 +20,12 @@ const LeftHeader = (props) => {
       {/* Leftside Title */}
       <div>
         {title && (
-          <p className="xl:text-4xl md:text-md text-black font-bold text-xl space-y-1 relative">
-            {title}
-            <span className="mx-1 text-xl upcomming">upcoming</span>
-          </p>
+          <>
+            <p className="xl:text-4xl md:text-md text-black font-bold text-xl space-y-1 relative ">
+              {title}
+              <span className="mx-1 text-xl  upcomming">Upcoming</span>
+            </p>
+          </>
         )}
         {descriptionColor && (
           <p className="text-[#6F6E7A] text-xs">

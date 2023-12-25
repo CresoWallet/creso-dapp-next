@@ -204,7 +204,7 @@ const AccountPage = () => {
                 >
                   <Image alt="" src={Disconnect} className="" />
                   <p className="text-[#FF4085] text-sm hover:font-bold">
-                    Disconnect
+                    Disconnect 
                   </p>
                 </button>
               </div>

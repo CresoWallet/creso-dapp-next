@@ -107,7 +107,7 @@ const CoinCard = ({ handleCoinWallet }) => {
   // console.log("🚀 ~ CoinCard ~ top10Data:", top10Data)
 
   return (
-    <div className="flex flex-nowrap gap-2 xl:gap-4 justify-between items-center overflow-x-auto">
+    <div className="flex flex-nowrap gap-2 xl:gap-4 justify-between items-center overflow-x-auto lg:my-0 my-5">
       {top10Data.map((item, index) => {
         return (
           <div

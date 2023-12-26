@@ -54,7 +54,7 @@ const LeftSide = (props) => {
             {!user?.isEmailVerified && (
               <Backup onClick={() => handleShowModel()} />
             )}
-            <div className="flex gap-5 !col-span-6">
+            <div className="flex gap-5 !col-span-6 ">
               {/* <AddCoinButton /> */}
               <CoinCard handleCoinWallet={handleCoinWallet} />
             </div>

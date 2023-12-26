@@ -37,7 +37,9 @@ const SecureWallet = ({
   };
 
   return (
-    <div className={`bg-white shadow-xl w-auto lg:h-screen `}>
+    <div
+      className={`bg-white shadow-xl lg:w-auto lg:h-screen `}
+    >
       <div className="grid place-items-center rounded-full bg-black h-8 w-8 absolute cursor-pointer md:-ml-4 ml-2 z-[99]">
         <IoIosClose className="text-white h-7 w-7" onClick={handleClose} />
       </div>

@@ -17,16 +17,10 @@ import WalletAddress from "./WalletAddress";
 import { network } from "@/utils/data/coinlist";
 import { WalletContext } from "@/providers/WalletProvider";
 
-const SecureWallet = ({
-  handleClose,
-  wallets,
-  walletType,
-}) => {
+const SecureWallet = ({ handleClose, wallets, walletType }) => {
   const [send, setSend] = useState(false);
   const [walletAddress, setWalletAddress] = useState(false);
-  const {
-    totalBalance
-  } = useContext(WalletContext);
+  const { totalBalance } = useContext(WalletContext);
   const handleWalletClick = () => {
     setWalletAddress(true);
   };
@@ -37,7 +31,7 @@ const SecureWallet = ({
 
   return (
     <div
-      className={` bg-white border-l-2 shadow-xl w-auto z-10 top-0 h-[100%] fixed overflow-y-auto`}
+      className={` bg-white right-0 border-l-2 shadow-xl w-auto z-10 top-0 h-[100%]  overflow-y-hidden`}
     >
       <div className="grid place-items-center rounded-full bg-black h-8 w-8 right-0.5 top-0.5 absolute cursor-pointer">
         <IoIosClose className="text-white h-7 w-7" onClick={handleClose} />
@@ -67,7 +61,7 @@ const SecureWallet = ({
           />
           <div
             onClick={handleClose}
-            className="fixed top-0 right-0 w-full h-full bg-black/30 cursor-pointer z-[1]"
+            className="absolute top-0 right-0 w-full h-full bg-black/30 cursor-pointer z-[1]"
           ></div>
         </>
       )}

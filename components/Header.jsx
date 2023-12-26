@@ -76,15 +76,15 @@ const Header = () => {
         </div>
       </div>
       {/* Creso2 image  /> */}
-      <div className=" flex absolute left-5 top-3 lg:hidden  place-items-start ">
+      <div className=" flex absolute left-5 top-5 lg:hidden  place-items-start ">
         <Image alt="" src={Creso2} className="h-10 w-10" />
         <p className="m-2 text-base lg:block ">creso</p>
       </div>
       <div onClick={handleButton} className="cursor-pointer">
         {/* <Image alt="" src={User} className="w-14 h-16" /> */}
-        <div className="absolute top-3 sm:right-10 place-items-end bg-red-500 text-white rounded-full w-10 h-10 flex items-center justify-center ">
+        <div className="absolute inset-y top-5 place-items-end bg-red-500 text-white rounded-full w-10 h-10 flex items-center justify-center ">
           <p className=" font-semibold text-xs">
-            {user ? getInitials(user.username) : ""} 
+            {user ? getInitials(user.username) : ""}
           </p>
         </div>
       </div>
@@ -97,16 +97,16 @@ const Header = () => {
           <div className="bg-white rounded-3xl px-12 py-12 xl:mr-10 mr-0 md:mr-5 md:mt-32 xl:mt-32 mt-0 ">
             <div className="flex flex-col space-y-1 justify-center items-center pb-8">
               {/* <Image alt="" src={User} /> */}
-              <div className=" bg-red-500 text-white rounded-full w-10 h-10 flex items-center justify-center">
+              <div className=" bg-red-500 top-15 text-white rounded-full w-10 h-10 flex items-center justify-center">
                 <p className=" font-semibold text-xs">
-                  {user ? getInitials(user.username) : ""} 
+                  {user ? getInitials(user.username) : ""}
                 </p>
               </div>
               <p className="font-bold text-lg">{user?.username}</p>
               <p className="text-xs text-[#A09FAA]">{user?.email}</p>
               <p className="text-xs text-[#A09FAA]"></p>
               Last Backup:
-              <p className="text-xm text-black ml-10">28 OCT 2023</p>{" "}
+              <p className="text-xm text-black ml-1">28 OCT 2023</p>{" "}
             </div>
             <hr />
             <Link href="/account">
@@ -121,7 +121,7 @@ const Header = () => {
             <hr />
             <div
               onClick={handleDisconnect}
-              className="flex flex-row gap-2 items-center py-4 disconnect"
+              className="flex flex-row gap-2 mr-2 items-center py-4 disconnect"
             >
               <Image alt="" src={Disconnect} />
               <p className="text-[#FF4085]">Disconnect </p>

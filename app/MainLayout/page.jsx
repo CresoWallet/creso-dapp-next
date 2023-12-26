@@ -115,10 +115,10 @@ const MainLayout = () => {
   //   }
   // }, [navbarTrigger]);
 
-  // if (status !== "authenticated") {
-  //   return <div>{/* {<Loader/>} */} Loading...</div>;
-  // }
-  const responsivCompo = showCoinWallet || showWallet || showCreateWallet
+  if (status !== "authenticated") {
+    return 
+    // <div>{/* {<Loader/>} */} Loading...</div>;
+  }
   return (
     <>
       <div className="grid lg:grid-cols-10 lg:divide-x">

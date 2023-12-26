@@ -60,10 +60,10 @@ const CoinWallet = ({ handleClose, wallets, coinData }) => {
               coinData.coinName === "ETH"
                 ? ETH
                 : coinData.coinName === "BNB"
-                  ? BnB
-                  : coinData.coinName === "USDT"
-                    ? USDT
-                    : ETH
+                ? BnB
+                : coinData.coinName === "USDT"
+                ? USDT
+                : ETH
             }
             className="w-14 h-14"
           />
@@ -72,10 +72,10 @@ const CoinWallet = ({ handleClose, wallets, coinData }) => {
               {coinData.coinName === "ETH"
                 ? "Ethereum"
                 : coinData.coinName === "BNB"
-                  ? "Bitcoin"
-                  : coinData.coinName === "USDT"
-                    ? "Tether"
-                    : ""}
+                ? "Bitcoin"
+                : coinData.coinName === "USDT"
+                ? "Tether"
+                : ""}
             </p>
             <div className="flex flex-row xl:gap-2 gap-2 md:gap-2 items-center">
               <p className="font-bold md:text-xs text-base">{`3,187.99 ${coinData.coinName}`}</p>

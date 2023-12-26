@@ -13,6 +13,7 @@ import { signUpAPI } from "@/clientApi/auth";
 import { CustomTextField } from "@/components/fields/CustomTextField";
 import { enqueueSnackbar } from "notistack";
 
+
 const RegisterPage = () => {
   const router = useRouter();
   const {

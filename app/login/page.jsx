@@ -19,6 +19,7 @@ import { enqueueSnackbar } from "notistack";
 import { FaSquareXTwitter } from "react-icons/fa6";
 import { FaGoogle } from "react-icons/fa";
 import { FaApple } from "react-icons/fa";
+import Creso3 from "../../assets/Dashboard/creso3.png";
 
 const LoginPage = () => {
   const router = useRouter();
@@ -72,8 +73,15 @@ const LoginPage = () => {
 
   return (
     <div className="grid xl:grid-cols-2 md:grid-cols-2 grid-cols-1 h-screen px-2 py-2 gap-2 xl:gap-0 md:gap-0">
-      <div className="col-span-1  flex justify-center xl:items-center md:items-start bg-[#2100EC] xl:py-8 md:py-8 rounded-2xl">
+      <div className="col-span-1 flex flex-col justify-center items-center bg-[#2100EC] md:py-8 rounded-2xl">
+        <div className="flex flex-row items-center justify-center my-16 gap-1 relative Mainlogo text-white mt-4 ">
+          <Image alt="creso-logo" src={Creso3} className="lg:w-14 lg:h-14 h-10 w-10" />
+          <p className="lg:text-5xl text-4xl lg:block items-center">creso</p>
+          <p className="text-sm lg:mt-6 mt-4 text-[#D0F500]">Beta</p>
+        </div>
+
         <Image alt="" src={BgImage} className="hidden xl:flex md:flex" />
+
         <div className="flex xl:hidden md:hidden flex-col space-y-4 items-center justify-center px-4 py-4">
           <Image alt="" src={MobileImage} className="" />
           <p className="font-bold text-3xl text-center text-white">

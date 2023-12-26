@@ -13,6 +13,8 @@ import RightSide from "./RightSide";
 import { useRouter } from "next/navigation";
 import { WalletContext } from "@/providers/WalletProvider";
 import SecureWallet from "@/components/SecureWallet";
+import TokenComponent from "@/components/Tokens/TokensComponent";
+import TokensComponent from "@/components/Tokens/TokensComponent";
 
 const MainLayout = () => {
   const router = useRouter();
@@ -67,11 +69,20 @@ const MainLayout = () => {
   };
 
   const handleShowModel = () => {
-    setShowModal(true);
-    // close other models
-    setShowCoinWallet(false);
-    setShowWallet(false);
-    setShowCreateWallet(false);
+    if (user?.registrationMethod !== "email" && !user?.isEmailVerified) {
+      enqueueSnackbar(
+        `Before taking a backup, make sure to verify your email.`,
+        {
+          variant: "warning",
+        }
+      );
+    } else {
+      setShowModal(true);
+      // close other models
+      setShowCoinWallet(false);
+      setShowWallet(false);
+      setShowCreateWallet(false);
+    }
   };
 
   const handleCloseCoinWallet = () => {
@@ -98,9 +109,13 @@ const MainLayout = () => {
   //   }
   // }, [navbarTrigger]);
 
+  if (status !== "authenticated") {
+    return <div>{/* {<Loader/>} */} Loading...</div>;
+  }
   return (
     <>
       <div className="grid lg:grid-cols-10 lg:divide-x">
+        {/* <TokensComponent /> */}
         {/* ------------ Leftside Main ---------- */}
         <div className="lg:col-span-6 pt-16 px-6">
           <div className="">
@@ -148,7 +163,6 @@ const MainLayout = () => {
             user={user}
           />
         </div>
-
       </div>
       {/* ------------ Popup Main ---------- */}
       {isMobile && <div className="">

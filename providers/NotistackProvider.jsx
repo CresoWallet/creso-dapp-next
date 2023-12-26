@@ -14,6 +14,7 @@ export default function NotistackProvider({ children }) {
         vertical: "bottom",
         horizontal: "left",
       }}
+      autoHideDuration={3000}
     >
       {children}
     </SnackbarProvider>

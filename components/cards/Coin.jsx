@@ -7,8 +7,7 @@ import USDT from "../../assets/Dashboard/usdt.png";
 import DAI from "../../assets/Dashboard/dai.png";
 import BnB from "../../assets/Dashboard/bnb.png";
 import WETH from "../../assets/Dashboard/weth.png";
-import { coinList, tokenList } from "@/utils/data/coinlist";
-import { getUSDValue } from "@/clientApi/wallet";
+import { coinList } from "@/utils/data/coinlist";
 
 const CoinCard = ({ handleCoinWallet }) => {
   const [usdRate, setUsdRate] = useState();
@@ -61,15 +60,13 @@ const CoinCard = ({ handleCoinWallet }) => {
               }
               className="xl:h-14 xl:w-14 md:h-12 md:w-12 w-12 h-12"
             />
-            <div className="flex flex-col items-center">
+            <div className="flex flex-col">
               <p className="text-center xl:text-sm text-xs md:text-xs">
-                {item.tokenSymbol}
+                {item.coinName}
               </p>
-              {usdRate && (
-                <p className="text-[#A09FAA] xl:text-sm text-xs md:text-xs">
-                  {`${usdRate[item.tokenSymbol]} $`}
-                </p>
-              )}
+              <p className="text-[#A09FAA] xl:text-sm text-xs md:text-xs">
+                {item.value}
+              </p>
             </div>
           </div>
         );

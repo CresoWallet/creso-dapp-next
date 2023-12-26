@@ -3,17 +3,18 @@ import React, { useState, useRef } from "react";
 import Image from "next/image";
 import Language from "../assets/Dashboard/language.png";
 import Dollar from "../assets/Dashboard/dollor2.png";
-import User from "../assets/Dashboard/User.png";
 import { AiOutlineDown } from "react-icons/ai";
 import Link from "next/link";
-import UserDetails from "./UserDetails";
 import { AiOutlineUser } from "react-icons/ai";
 import { MdKeyboardArrowRight } from "react-icons/md";
 import Disconnect from "../assets/network/disconnect.png";
 import { useUser } from "@/providers/UserProvider";
-import { AUTH_TOKEN } from "@/constants";
 import { logOut } from "@/clientApi/auth";
 import { useRouter } from "next/navigation";
+import Creso2 from "../assets/Dashboard/creso2.png";
+// import UserDetails from "./UserDetails";
+// import { AUTH_TOKEN } from "@/constants";
+// import User from "../assets/Dashboard/User.png";
 
 const Header = () => {
   const router = useRouter();
@@ -74,9 +75,14 @@ const Header = () => {
           <AiOutlineDown className="w-3 h-3" />
         </div>
       </div>
-      <div onClick={handleButton} className="cursor-pointer ">
+      {/* Creso2 image  /> */}
+      <div className=" flex absolute left-5 top-3 lg:hidden  place-items-start ">
+        <Image alt="" src={Creso2} className="h-10 w-10" />
+        <p className="m-2 text-base lg:block ">creso</p>
+      </div>
+      <div onClick={handleButton} className="cursor-pointer">
         {/* <Image alt="" src={User} className="w-14 h-16" /> */}
-        <div className="absolute top-1 right-1 bg-red-500 text-white rounded-full w-10 h-10 flex items-center justify-center">
+        <div className="absolute top-3 sm:right-10 place-items-end bg-red-500 text-white rounded-full w-10 h-10 flex items-center justify-center ">
           <p className=" font-semibold text-xs">
             {user ? getInitials(user.username) : ""} 
           </p>
@@ -91,7 +97,7 @@ const Header = () => {
           <div className="bg-white rounded-3xl px-12 py-12 xl:mr-10 mr-0 md:mr-5 md:mt-32 xl:mt-32 mt-0 ">
             <div className="flex flex-col space-y-1 justify-center items-center pb-8">
               {/* <Image alt="" src={User} /> */}
-              <div className=" top-1 right-1 bg-red-500 text-white rounded-full w-10 h-10 flex items-center justify-center">
+              <div className=" bg-red-500 text-white rounded-full w-10 h-10 flex items-center justify-center">
                 <p className=" font-semibold text-xs">
                   {user ? getInitials(user.username) : ""} 
                 </p>

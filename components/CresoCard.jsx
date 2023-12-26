@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Image from "next/image";
 import Coin from "../assets/Dashboard/Coin.png";
 import Creso from "../assets/Dashboard/creso2.png";
@@ -6,8 +6,10 @@ import TotalAsserts from "../assets/Dashboard/totalAsserts.png";
 import View from "../assets/Dashboard/eye.png";
 // import PurpleRectangle from "../assets/Dashboard/purpleRectangle.png";
 import SimIcon from "../assets/Dashboard/SimIcon.png";
+import { GoEye, GoEyeClosed } from "react-icons/go";
 
 const CresoCard = ({ balance }) => {
+  const [eye, setEye] = useState(true)
   return (
     <div className="flex flex-col relative mb-8">
       <div className="flex justify-center">
@@ -31,10 +33,14 @@ const CresoCard = ({ balance }) => {
             <div className="flex flex-col">
               <p className="text-xs text-black">Total Assets:</p>
               <div className="flex flex-row gap-2 items-center">
-                <p className="font-semibold text-xl">
-                  {`${parseFloat(balance).toFixed(2)} USD`}
+                <p className="font-semibold text-xl mr-3">
+                  {`${eye ? parseFloat(balance) : "XXXX"} ETH`}
                 </p>
-                <Image alt="" src={View} />
+                <div onClick={() => setEye(!eye)}>
+                  {eye ? <GoEyeClosed size={22} /> :
+                    <GoEye size={22} />}
+                </div>
+                {/* <Image alt="" src={View} onClick={() => setEye(!eye)} /> */}
               </div>
             </div>
           </div>

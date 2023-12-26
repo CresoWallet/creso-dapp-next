@@ -48,26 +48,23 @@ const LeftSide = (props) => {
 
       <div className="divide-x">
         {/* left side */}
-        <div>
-          <div className="grid h-full responsivemb-cols">
-            <div className="col-span-6 xl:space-y-6 md:space-y-6 space-y-2 xl:py-8 md:py-8">
-              <LeftHeader />
-              {!user?.isEmailVerified && (
-                <Backup onClick={() => handleShowModel()} />
-              )}
-              <div className="flex gap-5">
-                <AddCoinButton />
-                <CoinCard handleCoinWallet={handleCoinWallet} />
-              </div>
-              <Mainnet
-                handleOpenWallet={handleShowWallet}
-                handleCreateWallet={handleCreateWallet}
-                // secureWalletAddress={secureWalletAddress}
-                // eoaWalletAddress={eoaWalletAddress}
-                showWallet={showWallet}
-              />{" "}
-              <History />
+        <div className="grid h-full responsivemb-cols">
+          <div className="col-span-6 xl:space-y-6 md:space-y-6 space-y-2 xl:py-8 md:py-8">
+            <LeftHeader />
+            {!user?.isEmailVerified && (
+              <Backup onClick={() => handleShowModel()} />
+            )}
+            <div className="flex gap-5 !col-span-6">
+              <AddCoinButton />
+              <CoinCard handleCoinWallet={handleCoinWallet} />
             </div>
+            <Mainnet
+              handleOpenWallet={handleShowWallet}
+              handleCreateWallet={handleCreateWallet}
+              // secureWalletAddress={secureWalletAddress}
+              // eoaWalletAddress={eoaWalletAddress}
+              showWallet={showWallet}
+            />{" "}
           </div>
         </div>
       </div>

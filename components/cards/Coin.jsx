@@ -54,3 +54,61 @@ const CoinCard = ({ handleCoinWallet }) => {
 };
 
 export default CoinCard;
+
+
+
+
+
+
+
+
+
+// /* eslint-disable @next/next/no-img-element */
+// import React, { useContext } from "react";
+// // import Image from "next/image";
+// // import ETH from "../../assets/Dashboard/ethSelect.png";
+// // import USDT from "../../assets/Dashboard/usdt.png";
+// // import DAI from "../../assets/Dashboard/dai.png";
+// // import BnB from "../../assets/Dashboard/bnb.png";
+// // import WETH from "../../assets/Dashboard/weth.png";
+// // import { coinList } from "@/utils/data/coinlist";
+// import { WalletContext } from "@/providers/WalletProvider";
+
+// const CoinCard = ({ handleCoinWallet }) => {
+//   const {
+//     originalData
+//   } = useContext(WalletContext);
+//   console.log("🚀 ~ CoinCard ~ originalData:", originalData)
+//   return (
+//     <div className="flex flex-wrap w-[75%] gap-2 xl:gap-4 justify-between items-center !overflow-x-auto">
+//       {originalData.map((item, index) => {
+//         return (
+//           <div
+//             className="md:flex flex-col space-y-1 items-center cursor-pointer hover:-translate-y-1 duration-500 !overflow-hidden"
+//             onClick={(e) => {
+//               handleCoinWallet({ item: item });
+//             }}
+//             key={index}
+//           >
+//             <img
+//               alt={item.symbol}
+//               src={item?.logoURI}
+//               className="xl:h-12 xl:w-12 w-8 h-8 rounded-full"
+//             />
+//             <div className="flex flex-col">
+//               <p className="text-center xl:text-sm text-xs md:text-xs">
+//                 {item.symbol}
+//               </p>
+//               <p className="text-[#A09FAA] xl:text-sm text-xs md:text-xs">
+//                 {item.value}
+//               </p>
+//             </div>
+//           </div>
+//         );
+//       })}
+//     </div>
+//   );
+// };
+
+// export default CoinCard;
+

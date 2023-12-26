@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { IoIosClose } from "react-icons/io";
 import Image from "next/image";
 import Menu from "../assets/Dashboard/list2.png";
@@ -15,17 +15,18 @@ import USDT from "../assets/Dashboard/usdt3.png";
 import SendETH from "./SendETH";
 import WalletAddress from "./WalletAddress";
 import { network } from "@/utils/data/coinlist";
+import { WalletContext } from "@/providers/WalletProvider";
 
 const SecureWallet = ({
   handleClose,
   wallets,
   walletType,
-  secureWalletBalance,
-  eoaWalletBalance,
 }) => {
   const [send, setSend] = useState(false);
   const [walletAddress, setWalletAddress] = useState(false);
-
+  const {
+    totalBalance
+  } = useContext(WalletContext);
   const handleWalletClick = () => {
     setWalletAddress(true);
   };
@@ -36,10 +37,10 @@ const SecureWallet = ({
 
   return (
     <div
-      className={` bg-white border-l-2 shadow-xl w-auto z-10 top-0 h-[100%] fixed`}
+      className={` bg-white border-l-2 shadow-xl w-auto z-10 top-0 h-[100%] fixed overflow-y-auto`}
     >
-      <div className="flex rounded-full bg-black h-8 w-8 items-center justify-center xl:-ml-4 md:-ml-4 ml-2 mt-10 absolute cursor-pointer z-[99]">
-        <IoIosClose className="text-white h-4 w-4" onClick={handleClose} />
+      <div className="grid place-items-center rounded-full bg-black h-8 w-8 right-0.5 top-0.5 absolute cursor-pointer">
+        <IoIosClose className="text-white h-7 w-7" onClick={handleClose} />
       </div>
 
       {send && (
@@ -79,7 +80,8 @@ const SecureWallet = ({
         </div>
 
         <CresoCard
-          balance={walletType === "AA" ? secureWalletBalance : eoaWalletBalance}
+          // balance={walletType === "AA" ? totalBalance  : eoaWalletBalance}
+          balance={totalBalance}
         />
 
         <div className="flex xl:flex-row flex-row items-center md:flex-col xl:gap-2 gap-2 md:gap-0 space-y-0 xl:space-y-0 md:space-y-2">

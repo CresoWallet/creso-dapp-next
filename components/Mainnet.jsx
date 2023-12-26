@@ -14,6 +14,7 @@ import DAI from "../assets/Dashboard/dai.png";
 import USDT from "../assets/Dashboard/usdt.png";
 import { copyToClipBoard, minifyEthereumAddress } from "@/utils";
 import { WalletContext } from "@/providers/WalletProvider";
+import History from "./dashboard/History";
 
 const Mainnet = ({
   handleOpenWallet,
@@ -25,14 +26,16 @@ const Mainnet = ({
   const {
     secureWalletAddress,
     eoaWalletAddress,
+    activeButton,
+    setActiveButton,
+    allToken
   } = useContext(WalletContext);
   const { enqueueSnackbar } = useSnackbar();
-  const [activeButton, setActiveButton] = useState("");
   useEffect(() => {
     if (!showWallet) {
-      setActiveButton("");
+      setActiveButton("AA");
     }
-  });
+  }, [activeButton]);
 
   return (
     <div className="flex flex-col xl:space-y-8 md:space-y-8 space-y-2">
@@ -157,34 +160,20 @@ const Mainnet = ({
         </div>
       </div>
 
-      <div className="">
-        <TransactionItem
-          icon={ETH}
-          label="ETH"
-          amount="$1,794.28"
-          value="0.54"
-          send="Send"
-          receive="Receive"
-        />
-        <hr />
-        <TransactionItem
-          icon={DAI}
-          label="DAI"
-          amount="$1,794.28"
-          value="0.54"
-          send="Send"
-          receive="Receive"
-        />
-        <hr />
-        <TransactionItem
-          icon={USDT}
-          label="USDT"
-          amount="$1,794.28"
-          value="0.54"
-          send="Send"
-          receive="Receive"
-        />
-      </div>
+      {allToken ? allToken?.map((e, ind) => (
+        <div key={ind}>
+          <TransactionItem
+            icon={e?.logo ? e?.logo : ETH}
+            label={e?.name}
+            amount="$1,794.28"
+            value={e?.balance + "ETH"}
+            send="Send"
+            receive="Receive"
+          />
+          <hr />
+        </div>
+      )) : <History />
+      }
     </div>
   );
 };

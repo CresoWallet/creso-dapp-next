@@ -6,7 +6,7 @@ import Greenarrow from "../assets/Dashboard/GreenArrow.png";
 
 const TransactionItem = ({ icon, label, amount, value, send, receive }) => {
   return (
-    <div className="flex lg:flex-nowrap flex-wrap justify-between items-center">
+    <div className="flex xl:flex-nowrap flex-wrap justify-between items-center">
       <div className="flex gap-3 items-center my-5">
         <Image alt="" src={icon} className="w-10 h-10" />
         <p className="text-sm text-black item-start">{label}</p>

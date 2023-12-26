@@ -24,15 +24,17 @@ const CapCard = ({
   return (
     <div className="flex flex-col">
       <div className="h-2/5 bg-black text-white xl:py-3 md:py-1.5 py-2 rounded-t-3xl text-sm">
-        <div className="flex flex-row justify-between">
-          <p className="text-xs xl:pt-4 md:pt-2 px-4 mb-4 ">
+        <div className="flex flex-row items-center justify-between relative">
+          <p className="text-xs md:py-2 px-4 mb-4 ">
             {name}
           </p>
-          <Image
-            alt=""
-            src={WhiteIcon}
-            className="xl:h-8 xl:w-8 h-6 w-6"
-          />
+          <div className="absolute right-1 top-0">
+            <Image
+              alt=""
+              src={WhiteIcon}
+              className="xl:h-8 xl:w-8 h-6 w-6"
+            />
+          </div>
         </div>
       </div>
       <div className="h-3/5 bg-white rounded-b-3xl border-2 pt-2  xl:px-4 md:px-2 px-2">

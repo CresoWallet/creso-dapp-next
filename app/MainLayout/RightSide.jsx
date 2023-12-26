@@ -55,27 +55,7 @@ const RightSide = (props) => {
         <div className="hidden md:flex ">
           {showCreateWallet && <CreateWallet handleClose={handleClose} />}
         </div>
-        <div className="cols-span-4 hidden md:flex">
-          {showCoinWallet && (
-            <CoinWallet
-              handleClose={handleCloseCoinWallet}
-              wallets={wallets}
-              coinData={coinData}
-            />
-          )}
-        </div>
 
-        <div className="hidden lg:block lg:cols-span-4">
-          {showWallet && (
-            <SecureWallet
-              handleClose={handleCloseShowWallet}
-              wallets={wallets}
-              walletType={walletType}
-              secureWalletBalance={secureWalletBalance}
-              eoaWalletBalance={eoaWalletBalance}
-            />
-          )}
-        </div>
         {showModal && <Modal onClose={() => setShowModal(false)} user={user} />}
 
         {/* right side component */}

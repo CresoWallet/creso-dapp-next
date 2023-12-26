@@ -16,6 +16,7 @@ import SideNav from "@/components/navbar/SideNav";
 import { useMediaQuery } from "react-responsive";
 import { usePathname } from "next/navigation";
 import MobileMenubar from "@/components/navbar/mobileMenubar";
+import TokenComponent from "@/components/Tokens/TokensComponent";
 
 export const WalletContext = createContext();
 
@@ -33,6 +34,12 @@ const WalletContextProvider = ({ children }) => {
   const [isLoaded, setIsLoaded] = useState(false);
   const [navbarTrigger, setNavbarTrigger] = useState(false);
   const isMobile = useMediaQuery({ query: `(max-width: 768px)` });
+  const [allToken, setAllToken] = useState([])
+  const [totalBalance, setTotalBalance] = useState(0)
+  const [activeButton, setActiveButton] = useState("AA");
+  const [originalData, setOriginalData] = useState([])
+  const [filteredData, setFilteredData] = useState([])
+
   // useEffect(() => {
   //   (async () => {
   //     if (isAuthenticated) {
@@ -210,6 +217,16 @@ const WalletContextProvider = ({ children }) => {
         navbarTrigger,
         setNavbarTrigger,
         isMobile,
+        allToken,
+        setAllToken,
+        totalBalance,
+        setTotalBalance,
+        activeButton,
+        setActiveButton,
+        filteredData,
+        setFilteredData,
+        originalData,
+        setOriginalData
       }}
     >
       {/* {navbarTrigger && (
@@ -219,7 +236,7 @@ const WalletContextProvider = ({ children }) => {
         ></div>
       )} */}
 
-      {!isLoginOrRegister && <div className="flex my-2 mx-2 lg:divide-x ">
+      {!isLoginOrRegister && <div className="flex my-2 mx-2">
         {/* ------------Sidebar---------- */}
         <div className="sidebar">
           {/* {!isMobile && ( */}
@@ -243,6 +260,10 @@ const WalletContextProvider = ({ children }) => {
           </>
         )}
       </div>
+
+
+      <TokenComponent />
+
     </WalletContext.Provider>
   );
 };

@@ -1,4 +1,3 @@
-import { BASE_URL } from "@/constants";
 import { axiosInstance } from "@/services/axios";
 
 export const loginApi = async (formData) => {

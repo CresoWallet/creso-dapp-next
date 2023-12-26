@@ -6,17 +6,14 @@ import Dollar from "../assets/Dashboard/dollor2.png";
 import { AiOutlineDown } from "react-icons/ai";
 import Link from "next/link";
 import { AiOutlineUser } from "react-icons/ai";
+import { IoWalletOutline } from "react-icons/io5";
 import { MdKeyboardArrowRight } from "react-icons/md";
 import Disconnect from "../assets/network/disconnect.png";
 import { useUser } from "@/providers/UserProvider";
 import { logOut } from "@/clientApi/auth";
 import { useRouter } from "next/navigation";
 import Creso2 from "../assets/Dashboard/creso2.png";
-import Twitter from "../assets/Dashboard/twitter.png";
-import Telegram from "../assets/Dashboard/telegram.png";
-import Etherscan from "../assets/Dashboard/etherscan.png";
-import Discord from "../assets/Dashboard/github.png";
-import Github from "../assets/Dashboard/discord.png";
+import Wallet from "./Wallet";
 // import UserDetails from "./UserDetails";
 // import { AUTH_TOKEN } from "@/constants";
 // import User from "../assets/Dashboard/User.png";
@@ -25,7 +22,8 @@ const Header = () => {
   const router = useRouter();
   const { user, isAuthenticated, status } = useUser();
   const [openPopup, setOpenPopup] = useState(false);
-  const [isSmallScreen, setIsSmallScreen] = useState(false);
+  const [openWallet, setOpenWallet] = useState(false);
+
   const popupRef = useRef();
 
   useEffect(() => {
@@ -43,6 +41,10 @@ const Header = () => {
     setOpenPopup(true);
   };
 
+  const handleopenwallet = () => {
+    setOpenPopup(false);
+    setOpenWallet(true);
+  };
   const handlePopupClose = () => {
     setOpenPopup(false);
   };
@@ -127,14 +129,28 @@ const Header = () => {
             </div>
             <hr />
             <Link href="/account">
-              <div className="flex flex-row items-center justify-between cursor-pointer hover:scale-105 py-4">
-                <div className="flex flex-row gap-2 pl-2 items-center">
+              <div className="flex flex-row items-center justify-between cursor-pointer hover:scale-105 py-4 hover:font-bold">
+                <div className="flex flex-row gap-2 items-center">
                   <AiOutlineUser />
                   <p className="hover:font-bold">Account</p>
                 </div>
                 <MdKeyboardArrowRight />
               </div>
             </Link>
+
+            <hr />
+
+            <div
+              className="flex flex-row items-center justify-between cursor-pointer hover:scale-105 py-4 hover:font-bold "
+              onClick={handleopenwallet}
+            >
+              <div className="flex flex-row gap-2 items-center">
+                <IoWalletOutline />
+                <p className="hover:font-bold">Wallet</p>
+              </div>
+              <MdKeyboardArrowRight />
+            </div>
+
             <hr />
             <div
               onClick={handleDisconnect}
@@ -195,6 +211,7 @@ const Header = () => {
           </div>
         </div>
       )}
+      {openWallet && <Wallet setOpenWallet={setOpenWallet} />}
     </div>
   );
 };

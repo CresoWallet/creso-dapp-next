@@ -50,10 +50,10 @@ const SecureWallet = ({
             networks={network}
             handleClose={handleClose}
           />
-          <div
+          {/* <div
             onClick={handleClose}
             className="fixed top-0 right-0 w-full h-full bg-black/40 cursor-pointer z-[1]"
-          ></div>
+          ></div> */}
         </>
       )}
       {walletAddress && (
@@ -64,10 +64,10 @@ const SecureWallet = ({
             )}
             handleBackButton={() => setWalletAddress(false)}
           />
-          <div
+          {/* <div
             onClick={handleClose}
-            className="absolute top-0 right-0 w-full h-full bg-black/30 cursor-pointer z-[1]"
-          ></div>
+            className="fixed top-0 right-0 w-full h-full bg-black/30 cursor-pointer z-[1]"
+          ></div> */}
         </>
       )}
       <div className="flex flex-col mx-8 mt-10 gap-8">

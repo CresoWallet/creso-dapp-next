@@ -67,7 +67,7 @@ const CoinCard = ({ handleCoinWallet }) => {
               </p>
               {usdRate && (
                 <p className="text-[#A09FAA] xl:text-sm text-xs md:text-xs">
-                  {`${usdRate[item.tokenSymbol].toFixed(2)} $`}
+                  {`${usdRate[item.tokenSymbol]} $`}
                 </p>
               )}
             </div>

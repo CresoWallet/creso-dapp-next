@@ -50,7 +50,7 @@ const SideNav = () => {
           icon={Info}
           label="About us"
         />
-        s
+
         <NavItem
           pathName={pathName}
           href="/support"

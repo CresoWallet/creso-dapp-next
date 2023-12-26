@@ -114,7 +114,7 @@ const Header = () => {
           <div className="bg-white rounded-3xl px-12 py-12 xl:mr-10 mr-0 md:mr-5 md:mt-32 xl:mt-32 mt-0 ">
             <div className="flex flex-col space-y-1 justify-center items-center pb-8">
               {/* <Image alt="" src={User} /> */}
-              <div className=" bg-red-500 top-15 text-white rounded-full w-10 h-10 flex items-center justify-center">
+              <div className=" bg-red-500 top-5 text-white rounded-full w-10 h-10 flex items-center justify-center">
                 <p className=" font-semibold text-xs">
                   {user ? getInitials(user.username) : ""}
                 </p>

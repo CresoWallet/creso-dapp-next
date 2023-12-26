@@ -16,6 +16,7 @@ import { useUser } from "@/providers/UserProvider";
 import { axiosInstance } from "@/services/axios";
 import { CustomTextField } from "@/components/fields/CustomTextField";
 import { enqueueSnackbar } from "notistack";
+import { AiOutlineGoogle } from "react-icons/ai";
 
 const LoginPage = () => {
   const router = useRouter();
@@ -68,7 +69,7 @@ const LoginPage = () => {
       <div className="col-span-1  flex justify-center xl:items-center md:items-start bg-[#2100EC] xl:py-8 md:py-8 rounded-2xl">
         <Image alt="" src={BgImage} className="hidden xl:flex md:flex" />
         <div className="flex xl:hidden md:hidden flex-col space-y-4 items-center justify-center px-4 py-4">
-          <Image alt="" src={MobileImage} className="" /> 
+          <Image alt="" src={MobileImage} className="" />
           <p className="font-bold text-3xl text-center text-white">
             Keyless No risk of leakage
           </p>
@@ -76,7 +77,7 @@ const LoginPage = () => {
       </div>
 
       <div className="col-span-1 space-y-8 xl:px-24 md:px-8 px-4 flex flex-col xl:py-16 md:py-8">
-        <p className="font-bold md:text-2xl xl:text-4xl xl:mb-8 md:mb-4  text-xl">
+        <p className="font-bold md:text-2xl xl:text-4xl xl:mb-8 md:mb-4 text-xl">
           Login
         </p>
         <form
@@ -116,6 +117,13 @@ const LoginPage = () => {
               nameColor="black"
               img={X}
               onClick={handleTwitterLogin}
+            />
+            <CustomButton
+              bgColor="white"
+              name="Continue With Google"
+              // img={X}
+              nameColor="black"
+              // onClick={handleTwitterLogin}
             />
           </div>
           <div className="flex justify-center">

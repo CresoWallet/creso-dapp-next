@@ -17,7 +17,6 @@ import { useRouter } from "next/navigation";
 
 const Header = () => {
   const router = useRouter();
-
   const { user, isAuthenticated, status } = useUser();
   const [openPopup, setOpenPopup] = useState(false);
   const popupRef = useRef();
@@ -75,26 +74,26 @@ const Header = () => {
           <AiOutlineDown className="w-3 h-3" />
         </div>
       </div>
-      <div onClick={handleButton} className="cursor-pointer">
+      <div onClick={handleButton} className="cursor-pointer ">
         {/* <Image alt="" src={User} className="w-14 h-16" /> */}
         <div className="absolute top-1 right-1 bg-red-500 text-white rounded-full w-10 h-10 flex items-center justify-center">
           <p className=" font-semibold text-xs">
-            {user ? getInitials(user.username) : ""}
+            {user ? getInitials(user.username) : ""} 
           </p>
         </div>
       </div>
       {openPopup && (
         <div
-          className="fixed top-0 right-0 w-full h-full flex xl:items-start items-center md:items-start z-10 xl:justify-end md:justify-end justify-center bg-gray-800 bg-opacity-75"
+          className=" fixed top-0 right-0 w-full h-full flex xl:items-start items-start md:items-start z-10 xl:justify-end md:justify-end  bg-gray-800 bg-opacity-75 justify-end"
           ref={popupRef}
           onClick={handleBackgroundClick}
         >
-          <div className="bg-white rounded-3xl px-12 py-12 xl:mr-10 mr-0 md:mr-5 md:mt-32 xl:mt-32 mt-0">
+          <div className="bg-white rounded-3xl px-12 py-12 xl:mr-10 mr-0 md:mr-5 md:mt-32 xl:mt-32 mt-0 ">
             <div className="flex flex-col space-y-1 justify-center items-center pb-8">
               {/* <Image alt="" src={User} /> */}
               <div className=" top-1 right-1 bg-red-500 text-white rounded-full w-10 h-10 flex items-center justify-center">
                 <p className=" font-semibold text-xs">
-                  {user ? getInitials(user?.username) : ""}
+                  {user ? getInitials(user.username) : ""} 
                 </p>
               </div>
               <p className="font-bold text-lg">{user?.username}</p>
@@ -119,9 +118,8 @@ const Header = () => {
               className="flex flex-row gap-2 items-center py-4 disconnect"
             >
               <Image alt="" src={Disconnect} />
-              <p className="text-[#FF4085]">Disconnect</p>
+              <p className="text-[#FF4085]">Disconnect </p>
             </div>
-
           </div>
         </div>
       )}

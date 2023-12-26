@@ -81,7 +81,7 @@ const Header = () => {
   }
 
   return (
-    <div className="flex flex-row justify-between items-center xl:mx-10 md:mx-2 mb-10 lg:mb-0 mt-3">
+    <div className="flex flex-row justify-between items-center xl:mx-10 md:mx-2 mb-10 lg:mb-0 mt-4">
       <div className="flex flex-row items-center gap-4">
         <Image alt="" src={Language} className="h-7 w-7" />
         <div className="flex flex-row gap-1 items-center cursor-pointer group">

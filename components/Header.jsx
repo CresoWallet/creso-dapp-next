@@ -26,17 +26,6 @@ const Header = () => {
 
   const popupRef = useRef();
 
-  useEffect(() => {
-    const checkScreenSize = () => {
-      setIsSmallScreen(window.innerWidth < 768);
-    };
-    checkScreenSize();
-    window.addEventListener("resize", checkScreenSize);
-    return () => {
-      window.removeEventListener("resize", checkScreenSize);
-    };
-  }, []);
-
   const handleButton = () => {
     setOpenPopup(true);
   };

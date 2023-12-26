@@ -115,10 +115,10 @@ const MainLayout = () => {
   //   }
   // }, [navbarTrigger]);
 
-  if (status !== "authenticated") {
-    return 
-    // <div>{/* {<Loader/>} */} Loading...</div>;
-  }
+  // if (status !== "authenticated") {
+  //   return <div>{/* {<Loader/>} */} Loading...</div>;
+  // }
+  const responsivCompo = showCoinWallet || showWallet || showCreateWallet
   return (
     <>
       {/* ------------ Popup Main ---------- */}

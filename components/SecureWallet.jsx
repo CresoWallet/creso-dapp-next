@@ -36,7 +36,7 @@ const SecureWallet = ({
 
   return (
     <div
-      className={`absolute bg-white border-l-2 shadow-xl w-full h-full z-10`}
+      className={` bg-white border-l-2 shadow-xl w-auto z-10 top-0 h-[100%] fixed`}
     >
       <div className="flex rounded-full bg-black h-8 w-8 items-center justify-center xl:-ml-4 md:-ml-4 ml-2 mt-10 absolute cursor-pointer z-[99]">
         <IoIosClose className="text-white h-4 w-4" onClick={handleClose} />

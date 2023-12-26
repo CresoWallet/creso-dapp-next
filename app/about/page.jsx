@@ -60,9 +60,9 @@ const AboutPage = () => {
           </div>
 
           <div className="col-span-6 space-y-6 ">
-            <div className="flex flex-col gap-10 ">
-              <div className="flex items-center justify-start gap-5">
-                <Image src={Vector} alt="" className="cursor-pointer" />
+            <div className="flex flex-col gap-10  ">
+              <div className="flex items-center justify-start gap-5 space-y-10  ">
+                <Image src={Vector} alt="" className="cursor-pointer mt-10  " />
                 <div>
                   <p className="text-black text-3xl font-semibold ">creso</p>
                   <p className="text-gray-600 text-sm">Version 1.1.0</p>
@@ -92,8 +92,9 @@ const AboutPage = () => {
               </div>
               <div
                 id="accordion-collapse-body-1"
-                className={`p-5   bg-stale-200 rounded-3xl mb-2 shadow-2xl ${isAccordionActive(1) ? "" : "hidden"
-                  }`}
+                className={`p-5   bg-stale-200 rounded-3xl mb-2 shadow-2xl ${
+                  isAccordionActive(1) ? "" : "hidden"
+                }`}
                 aria-labelledby="accordion-collapse-heading-1"
               >
                 <p className="mb-2 text-black">
@@ -125,8 +126,9 @@ const AboutPage = () => {
 
               <div
                 id="accordion-collapse-body-1"
-                className={`p-5   bg-stale-200 rounded-3xl mb-2 shadow-2xl ${isAccordionActive(2) ? "" : "hidden"
-                  }`}
+                className={`p-5   bg-stale-200 rounded-3xl mb-2 shadow-2xl ${
+                  isAccordionActive(2) ? "" : "hidden"
+                }`}
                 aria-labelledby="accordion-collapse-heading-1"
               >
                 <p className="mb-2 text-black ">
@@ -156,8 +158,9 @@ const AboutPage = () => {
               </div>
               <div
                 id="accordion-collapse-body-1"
-                className={`p-5   bg-stale-200 rounded-3xl mb-2 shadow-2xl ${isAccordionActive(3) ? "" : "hidden"
-                  }`}
+                className={`p-5   bg-stale-200 rounded-3xl mb-2 shadow-2xl ${
+                  isAccordionActive(3) ? "" : "hidden"
+                }`}
                 aria-labelledby="accordion-collapse-heading-1"
               >
                 <p className="mb-2 text-black ">

@@ -12,6 +12,7 @@ import { useUser } from "@/providers/UserProvider";
 import RightSide from "./RightSide";
 import { useRouter } from "next/navigation";
 import { WalletContext } from "@/providers/WalletProvider";
+import SecureWallet from "@/components/SecureWallet";
 
 const MainLayout = () => {
   const router = useRouter();
@@ -147,7 +148,20 @@ const MainLayout = () => {
             user={user}
           />
         </div>
+
       </div>
+      {/* ------------ Popup Main ---------- */}
+      {isMobile && <div className="">
+        {showWallet && (
+          <SecureWallet
+            handleClose={handleCloseShowWallet}
+            wallets={wallets}
+            walletType={walletType}
+            secureWalletBalance={secureWalletBalance}
+            eoaWalletBalance={eoaWalletBalance}
+          />
+        )}
+      </div>}
     </>
   );
 };

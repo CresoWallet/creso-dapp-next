@@ -130,7 +130,7 @@ const RegisterPage = () => {
             <CustomButton
               isDisabled={true}
               bgColor="white"
-              name="Continue With Apple"
+              name="Continue With Apple "
               nameColor="black"
               img={Apple}
             />

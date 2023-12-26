@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect  } from "react";
 import Image from "next/image";
 import Language from "../assets/Dashboard/language.png";
 import Dollar from "../assets/Dashboard/dollor2.png";
@@ -14,6 +14,11 @@ import { logOut } from "@/clientApi/auth";
 import { useRouter } from "next/navigation";
 import Creso2 from "../assets/Dashboard/creso2.png";
 import Wallet from "./Wallet";
+import Twitter from "../assets/Dashboard/twitter.png";
+import Telegram from "../assets/Dashboard/telegram.png";
+import Etherscan from "../assets/Dashboard/etherscan.png";
+import Discord from "../assets/Dashboard/github.png";
+import Github from "../assets/Dashboard/discord.png";
 // import UserDetails from "./UserDetails";
 // import { AUTH_TOKEN } from "@/constants";
 // import User from "../assets/Dashboard/User.png";
@@ -23,8 +28,20 @@ const Header = () => {
   const { user, isAuthenticated, status } = useUser();
   const [openPopup, setOpenPopup] = useState(false);
   const [openWallet, setOpenWallet] = useState(false);
+  const [isSmallScreen, setIsSmallScreen] = useState(false);
 
   const popupRef = useRef();
+
+  useEffect(() => {
+    const checkScreenSize = () => {
+      setIsSmallScreen(window.innerWidth < 768);
+    };
+    checkScreenSize();
+    window.addEventListener("resize", checkScreenSize);
+    return () => {
+      window.removeEventListener("resize", checkScreenSize);
+    };
+  }, []);
 
   const handleButton = () => {
     setOpenPopup(true);
@@ -119,7 +136,7 @@ const Header = () => {
             <hr />
             <Link href="/account">
               <div className="flex flex-row items-center justify-between cursor-pointer hover:scale-105 py-4 hover:font-bold">
-                <div className="flex flex-row gap-2 items-center">
+                 <div className="flex flex-row gap-2 pl-2 items-center">
                   <AiOutlineUser />
                   <p className="hover:font-bold">Account</p>
                 </div>
@@ -148,6 +165,56 @@ const Header = () => {
               <Image alt="" src={Disconnect} />
               <p className="text-[#FF4085]">Disconnect </p>
             </div>
+
+               {/* Add social media icons */}
+               {isSmallScreen && (
+              <div className="flex justify-center gap-2 pt-4  ">
+                <a
+                  href="https://twitter.com/cresowallet"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <Image
+                    alt="Twitter"
+                    src={Twitter}
+                    className="  w-7 h-7  overflow-hidden"
+                  />
+                </a>
+                <a
+                  href="https://t.me/cresowallet"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <Image
+                    alt="Telegram"
+                    src={Telegram}
+                    className=" flex w-7 h-7"
+                  />
+                </a>
+                <a
+                  href="https://etherscan.io/token/0x41ea5d41eeacc2d5c4072260945118a13bb7ebce"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <Image alt="Etherscan" src={Etherscan} className="w-7 h-7" />
+                </a>
+                <a
+                  href="https://discord.com/invite/creso"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <Image alt="Discord" src={Discord} className="w-7 h-7" />
+                </a>
+                <a
+                  href="https://github.com/CresoWallet"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <Image alt="Github" src={Github} className="w-7 h-7" />
+                </a>
+              </div>
+            )}
+            
           </div>
         </div>
       )}

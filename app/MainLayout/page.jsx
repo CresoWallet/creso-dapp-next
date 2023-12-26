@@ -69,11 +69,20 @@ const MainLayout = () => {
   };
 
   const handleShowModel = () => {
-    setShowModal(true);
-    // close other models
-    setShowCoinWallet(false);
-    setShowWallet(false);
-    setShowCreateWallet(false);
+    if (user?.registrationMethod !== "email" && !user?.isEmailVerified) {
+      enqueueSnackbar(
+        `Before taking a backup, make sure to verify your email.`,
+        {
+          variant: "warning",
+        }
+      );
+    } else {
+      setShowModal(true);
+      // close other models
+      setShowCoinWallet(false);
+      setShowWallet(false);
+      setShowCreateWallet(false);
+    }
   };
 
   const handleCloseCoinWallet = () => {
@@ -100,6 +109,9 @@ const MainLayout = () => {
   //   }
   // }, [navbarTrigger]);
 
+  if (status !== "authenticated") {
+    return <div>{/* {<Loader/>} */} Loading...</div>;
+  }
   return (
     <>
       <div className="grid lg:grid-cols-10 lg:divide-x">

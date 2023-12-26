@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import Account from "../../assets/Dashboard/account.png";
 import Add from "../../assets/Dashboard/add.png";
@@ -7,9 +7,32 @@ import USDT from "../../assets/Dashboard/usdt.png";
 import DAI from "../../assets/Dashboard/dai.png";
 import BnB from "../../assets/Dashboard/bnb.png";
 import WETH from "../../assets/Dashboard/weth.png";
-import { coinList } from "@/utils/data/coinlist";
+import { coinList, tokenList } from "@/utils/data/coinlist";
+import { getUSDValue } from "@/clientApi/wallet";
 
 const CoinCard = ({ handleCoinWallet }) => {
+  const [usdRate, setUsdRate] = useState();
+
+  useEffect(() => {
+    const fetchUsdValue = async () => {
+      try {
+        const res = await getUSDValue();
+        if (res) {
+          setUsdRate({
+            USDT: res?.data?.tether.usd,
+            USDC: res?.data["usd-coin"].usd,
+            WLD: res?.data?.worldcoin.usd,
+            OKB: res?.data?.okb.usd,
+            BNB: res?.data?.binancecoin.usd,
+          });
+        }
+      } catch (error) {
+        console.log("error : ", error);
+      }
+    };
+
+    fetchUsdValue();
+  }, []);
   return (
     <div className="flex gap-2 xl:gap-4 justify-between items-center overflow-x-auto ">
       {coinList.map((item, index) => {
@@ -38,13 +61,15 @@ const CoinCard = ({ handleCoinWallet }) => {
               }
               className="xl:h-14 xl:w-14 md:h-12 md:w-12 w-12 h-12"
             />
-            <div className="flex flex-col">
+            <div className="flex flex-col items-center">
               <p className="text-center xl:text-sm text-xs md:text-xs">
-                {item.coinName}
+                {item.tokenSymbol}
               </p>
-              <p className="text-[#A09FAA] xl:text-sm text-xs md:text-xs">
-                {item.value}
-              </p>
+              {usdRate && (
+                <p className="text-[#A09FAA] xl:text-sm text-xs md:text-xs">
+                  {`${usdRate[item.tokenSymbol].toFixed(2)} $`}
+                </p>
+              )}
             </div>
           </div>
         );

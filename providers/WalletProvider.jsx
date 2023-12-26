@@ -140,33 +140,12 @@ const WalletContextProvider = ({ children }) => {
 
   const fetchHistory = async () => {
     try {
-      const res = await Promise.all([
-        await getHistory({
-          address: eoaWalletAddress,
-          network: "goerli",
-        }),
-        await getHistory({
-          address: secureWalletAddress,
-          network: "goerli",
-        }),
-      ]);
+      const res = await getHistory({
+        network: "goerli",
+      });
 
       if (res) {
-        const history = [...res[0].data, ...res[1].data];
-
-        let sortedArray = history.sort((a, b) => {
-          return new Date(b.timestamp) - new Date(a.timestamp);
-        });
-
-        let result = sortedArray.filter((e, i) => {
-          return (
-            sortedArray.findIndex((x) => {
-              return x.hash == e.hash;
-            }) == i
-          );
-        });
-
-        setHistory(result);
+        setHistory(res?.data);
       }
     } catch (error) {
       console.log("error : ", error);

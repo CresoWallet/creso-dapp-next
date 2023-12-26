@@ -41,24 +41,22 @@ const SideNav = () => {
           label="Discover"
         />
         <NavItem pathName={pathName} href="/swap" icon={Swap} label="Swap" />
-
         <div className="py-4 ">
           <hr className="text-[#B1A6F8]" />
         </div>
-
         <NavItem
           pathName={pathName}
           href="/about"
           icon={Info}
           label="About us"
         />
+        s
         <NavItem
           pathName={pathName}
           href="/support"
           icon={Support}
           label="Support"
         />
-
         {/* Add social media icons */}
         <div className="flex justify-between border-white rounded-full bg-white border border-solid  w-full p-2.5 ml-4 xl:ml-1 ">
           <a

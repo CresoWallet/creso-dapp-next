@@ -25,7 +25,7 @@ const LeftHeader = (props) => {
         {title && (
           <p className="xl:text-4xl md:text-md text-black font-bold text-xl space-y-1 relative">
             {title}
-            {!matchPath && <span className="mx-1 text-xl upcomming">upcoming</span>}
+            {!matchPath && <span className="mx-1 text-xl upcomming">Upcoming</span>}
           </p>
         )}
         {descriptionColor && (

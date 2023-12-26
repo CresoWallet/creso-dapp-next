@@ -244,10 +244,9 @@ const WalletContextProvider = ({ children }) => {
             {/* Conditionally render SideNav based on the path name */}
             {!isLoginOrRegister && <SideNav />}
           </div>
-          {/* )} */}
+          {!isMobile && <div className="childrens">{children}</div>}
         </div>
-        {!isMobile && <div className="childrens">{children}</div>}
-      </div>}
+      )}
       {(isMobile || isLoginOrRegister) && <div className="">{children}</div>}
 
       {/* ------------Mobile Menubar---------- */}

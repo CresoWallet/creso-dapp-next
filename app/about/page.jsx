@@ -184,7 +184,7 @@ const AboutPage = () => {
         <hr className="lg:hidden mt-10 lg:mt-0" />
 
         {/* ------------ Rightside Main ---------- */}
-        <div className="pt-14 col-span-4 px-4">
+        <div className="pt-14 col-span-4 px-10">
           <Header />
           <RightMain />
         </div>

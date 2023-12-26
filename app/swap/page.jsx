@@ -216,7 +216,7 @@ const SwapPage = () => {
 
 
         {/* ------------ Rightside Main ---------- */}
-        <div className="lg:col-span-4 pt-14 px-4">
+        <div className="lg:col-span-4 pt-14 px-10">
           <Header />
           <RightMain />
         </div>

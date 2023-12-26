@@ -44,7 +44,10 @@ const CoinWallet = ({ handleClose, wallets, coinData }) => {
         />
       )}
       {walletAddress && (
-        <WalletAddress handleBackButton={() => setWalletAddress(false)} />
+        <WalletAddress 
+        //  wallet= pass relevant wallet data here 
+        handleBackButton={() => setWalletAddress(false)}
+      />
       )}
       <div className="flex flex-col md:mx-8 mx-6 xl:mx-8 mt-10 xl:space-y-10 md:space-y-10 space-y-4">
         <p className="text-black font-bold text-xl ml-6 xl:ml-0 md:ml-0">

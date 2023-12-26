@@ -1,10 +1,20 @@
-// TransactionItem.js
-import React from "react";
+import React, { useState } from "react";
 import Image from "next/image";
 import Redarrow from "../assets/Dashboard/RedArrow.png";
 import Greenarrow from "../assets/Dashboard/GreenArrow.png";
 
-const TransactionItem = ({ icon, label, amount, value, send, receive }) => {
+const TransactionItem = ({ icon, label, amount, value }) => {
+  const [sendPopupVisible, setSendPopupVisible] = useState(false);
+  const [receivePopupVisible, setReceivePopupVisible] = useState(false);
+
+  const handleSendClick = () => {
+    setSendPopupVisible(true);
+  };
+
+  const handleReceiveClick = () => {
+    setReceivePopupVisible(true);
+  };
+
   return (
     <div className="flex xl:flex-nowrap flex-wrap justify-between items-center">
       <div className="flex gap-3 items-center my-5">
@@ -20,15 +30,31 @@ const TransactionItem = ({ icon, label, amount, value, send, receive }) => {
       <div className="border h-5"></div>
 
       <div className="flex gap-10 items-center">
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-3 cursor-pointer" onClick={handleSendClick}>
           <Image alt="" src={Redarrow} className="w-6 h-6" />
-          <p className="text-sm text-black">{send}</p>
+          <p className="text-sm text-black">Send</p>
         </div>
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-3 cursor-pointer" onClick={handleReceiveClick}>
           <Image alt="" src={Greenarrow} className="w-6 h-6" />
-          <p className="text-sm text-black">{receive}</p>
+          <p className="text-sm text-black">Receive</p>
         </div>
       </div>
+
+      {sendPopupVisible && (
+        // Include your SendPopup component here with necessary props
+        <div className="popup">
+          <p>Send Popup</p>
+          <button onClick={() => setSendPopupVisible(false)}>Close Popup</button>
+        </div>
+      )}
+
+      {receivePopupVisible && (
+        // Include your ReceivePopup component here with necessary props
+        <div className="popup">
+          <p>Receive Popup</p>
+          <button onClick={() => setReceivePopupVisible(false)}>Close Popup</button>
+        </div>
+      )}
     </div>
   );
 };

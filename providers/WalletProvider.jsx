@@ -27,7 +27,9 @@ const WalletContextProvider = ({ children }) => {
   const [eoaWalletBalance, setEoaWalletBalance] = useState(0);
   const [wallets, setWallets] = useState([]);
   const [smartWallets, setSmartWallets] = useState([]);
+  // console.log("🚀 ~ WalletContextProvider ~ smartWallets:", smartWallets)
   const [eoaWallets, setEoaWallets] = useState([]);
+  // console.log("🚀 ~ WalletContextProvider ~ eoaWallets:", eoaWallets)
   const [history, setHistory] = useState();
   const { user, isAuthenticated, status } = useUser();
   const [usdRate, setUsdRate] = useState();
@@ -39,6 +41,8 @@ const WalletContextProvider = ({ children }) => {
   const [activeButton, setActiveButton] = useState("AA");
   const [originalData, setOriginalData] = useState([])
   const [filteredData, setFilteredData] = useState([])
+  const [send, setSend] = useState(false);
+
 
   // useEffect(() => {
   //   (async () => {
@@ -205,7 +209,9 @@ const WalletContextProvider = ({ children }) => {
         filteredData,
         setFilteredData,
         originalData,
-        setOriginalData
+        setOriginalData,
+        send,
+        setSend
       }}
     >
       {/* {navbarTrigger && (
@@ -220,7 +226,7 @@ const WalletContextProvider = ({ children }) => {
           {/* ------------Sidebar---------- */}
           <div className="sidebar">
             {/* {!isMobile && ( */}
-            <div className={`sidebarDesktop h-full `}>
+            <div className={`sidebarDesktop h-full w-full`}>
               {/* Conditionally render SideNav based on the path name */}
               {!isLoginOrRegister && <SideNav />}
             </div>

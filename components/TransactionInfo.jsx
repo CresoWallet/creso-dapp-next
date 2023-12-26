@@ -14,7 +14,7 @@ const TransactionItem = ({ icon, label, amount, value, send, receive }) => {
 
       <div className="flex gap-3 items-center my-5">
         <p className="text-sm text-slate-400">{amount}</p>
-        <p className="text-black font-bold">{value}</p>
+        <p className="text-black font-bold">{value} ETH</p>
       </div>
 
       <div className="border h-5"></div>

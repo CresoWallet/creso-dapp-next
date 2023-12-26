@@ -27,8 +27,8 @@ const CreateWallet = ({ handleClose }) => {
   };
 
   return (
-    <div className="absolute bg-white xl:border-l-2 md:border-l-2 xl:shadow-xl md:shadow-xl w-full h-full z-10">
-      <div className="flex rounded-full bg-black h-8 w-8 items-center justify-center xl:-ml-4 md:-ml-4 ml-2  mt-10 absolute">
+    <div className=" bg-white md:border-l-2 md:shadow-xl w-full h-screen z-10">
+      <div className="flex rounded-full bg-black h-8 w-8 items-center justify-center xl:-ml-4 md:-ml-4 ml-2 mt-10 absolute z-[99]">
         <IoIosClose
           className="text-white h-4 w-4 cursor-pointer"
           onClick={handleClose}

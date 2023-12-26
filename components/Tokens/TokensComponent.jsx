@@ -86,7 +86,7 @@ const TokensComponent = () => {
                 if (metadata?.result) {
                     const balanceValue = balance / Math.pow(10, metadata.result.decimals)
                     const formattedBalance = balanceValue.toFixed(6)
-                    console.log("formattedBalance", formattedBalance)
+                    // console.log("formattedBalance", formattedBalance)
 
                     tokensData.push({
 
@@ -121,7 +121,7 @@ const TokensComponent = () => {
         // const wethBalance = +rawWethBalance
         // const totalBalance = maticBalance + wethBalance * 131.62
 
-        console.log("totalBalance--->", totalBalance);
+        // console.log("totalBalance--->", totalBalance);
     }
     const fetchAllToken = async () => {
         try {

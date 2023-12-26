@@ -58,7 +58,7 @@ const SideNav = () => {
           label="Support"
         />
         {/* Add social media icons */}
-        <div className="flex justify-between border-white rounded-full bg-white border border-solid  w-full p-2.5 ml-4 xl:ml-1 ">
+        <div className="flex justify-between border-white rounded-full bg-white border border-solid  w-full p-2.5 ml-3 xl:ml-1 mt-10 ">
           <a
             href="https://twitter.com/cresowallet"
             target="_blank"

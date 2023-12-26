@@ -4,7 +4,9 @@ import Redarrow from "../assets/Dashboard/RedArrow.png";
 import Greenarrow from "../assets/Dashboard/GreenArrow.png";
 import CoinWallet from "./CoinWallet";
 
-const TransactionItem = ({ icon, label, amount, value }) => {
+const TransactionItem = ({ icon, label, amount, value, valueName }) => {
+  // const [sendPopupVisible, setSendPopupVisible] = useState(false);
+  // const [receivePopupVisible, setReceivePopupVisible] = useState(false);
   const [popupVisible, setPopupVisible] = useState(false);
   const [popupType, setPopupType] = useState(""); // "send" or "receive"
 
@@ -16,7 +18,13 @@ const TransactionItem = ({ icon, label, amount, value }) => {
   const handleClosePopup = () => {
     setPopupVisible(false);
   };
+  const displayValueName = valueName || '';
 
+  // Split displayValueName into an array of words
+  const words = displayValueName.split(' ');
+
+  // Take the first two words
+  const firstTwoWords = words.slice(0, 2).join(' ');
   return (
     <div className="flex xl:flex-nowrap flex-wrap justify-between items-center">
       <div className="flex gap-3 items-center my-5">
@@ -26,7 +34,7 @@ const TransactionItem = ({ icon, label, amount, value }) => {
 
       <div className="flex gap-3 items-center my-5">
         <p className="text-sm text-slate-400">{amount}</p>
-        <p className="text-black font-bold">{value} ETH</p>
+        <p className="text-slate-400">{value} <span title={valueName}>{firstTwoWords}</span></p>
       </div>
 
       <div className="border h-5"></div>

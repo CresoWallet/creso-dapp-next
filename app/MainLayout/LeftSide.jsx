@@ -55,7 +55,7 @@ const LeftSide = (props) => {
               <Backup onClick={() => handleShowModel()} />
             )}
             <div className="flex gap-5 !col-span-6">
-              <AddCoinButton />
+              {/* <AddCoinButton /> */}
               <CoinCard handleCoinWallet={handleCoinWallet} />
             </div>
             <Mainnet
@@ -64,7 +64,7 @@ const LeftSide = (props) => {
               // secureWalletAddress={secureWalletAddress}
               // eoaWalletAddress={eoaWalletAddress}
               showWallet={showWallet}
-            />{" "}
+            />
           </div>
         </div>
       </div>

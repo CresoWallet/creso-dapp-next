@@ -81,12 +81,13 @@ const Header = () => {
         <p className="m-2 text-base lg:block ">creso</p>
       </div>
 
-      <div   onClick={handleButton} className="cursor-pointer ">
-        <div className="absolute top-2 md:-top-7 lg:top-3 sm:right-10 place-items-end bg-red-500 text-white rounded-full w-10 h-10 flex items-center justify-center md:my-10 ">
-          <p className=" font-semibold text-xs">
-            {user ? getInitials(user.username) : ""} 
+      <div  onClick={handleButton} className="cursor-pointer mx-6
+       ">
+        <div className="absolute top-2 md:-top-7 lg:top-3 sm:right-6 place-items-end bg-red-500 text-white rounded-full w-10 h-10 flex items-center justify-center md:my-10  lg:mr-7 md:mr-3 mr-10 ">
+          <p className=" font-semibold text-xs ">
+            {user ? getInitials(user.username) : ""}  
           </p>
-        </div>
+        </div>  
       </div>
 
       {openPopup && (

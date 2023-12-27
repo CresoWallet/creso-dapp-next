@@ -14,6 +14,7 @@ import DAI from "../assets/Dashboard/dai.png";
 import USDT from "../assets/Dashboard/usdt.png";
 import { copyToClipBoard, minifyEthereumAddress } from "@/utils";
 import { WalletContext } from "@/providers/WalletProvider";
+import History from "./dashboard/History";
 
 const Mainnet = ({
   handleOpenWallet,
@@ -22,18 +23,19 @@ const Mainnet = ({
   // secureWalletAddress,
   showWallet,
 }) => {
-  const { enqueueSnackbar } = useSnackbar();
-  const [activeButton, setActiveButton] = useState("");
   const {
     secureWalletAddress,
     eoaWalletAddress,
-
+    activeButton,
+    setActiveButton,
+    allToken
   } = useContext(WalletContext);
+  const { enqueueSnackbar } = useSnackbar();
   useEffect(() => {
     if (!showWallet) {
-      setActiveButton("");
+      setActiveButton("AA");
     }
-  });
+  }, [activeButton]);
 
   return (
     <div className="flex flex-col xl:space-y-8 md:space-y-8 space-y-2">
@@ -51,24 +53,26 @@ const Mainnet = ({
           </div>
         </div>
       </div>
-      <div className="-z-10">
+      <div>
         <div className="flex xl:flex-row flex-col items-center xl:gap-4 md:gap-4 gap-2">
           <div
-            className={`${activeButton === "AA"
-              ? "bg-black"
-              : "bg-white hover:bg-gray-200 duration-500 "
-              } rounded-full px-4 py-4 w-full border-2 border-black cursor-pointer group relative`}
+            className={`${
+              activeButton === "AA"
+                ? "bg-black"
+                : "bg-white hover:bg-gray-200 duration-500 "
+            } rounded-full px-4 py-4 w-full border-2 border-black cursor-pointer group relative`}
           >
             <div className="flex flex-row justify-between items-center gap-3 group">
               <Image
                 src={Wallet}
-                alt=""
+                alt="wallet"
                 className="md:w-14 md:h-14 xl:w-12 xl:h-12"
               />
               <div className="flex flex-col space-y-1">
                 <p
-                  className={`${activeButton === "AA" ? "text-white" : "text-black"
-                    }  font-semibold text-sm md:text-lg xl:text-sm`}
+                  className={`${
+                    activeButton === "AA" ? "text-white" : "text-black"
+                  }  font-semibold text-sm md:text-lg xl:text-sm`}
                 >
                   Keyless Secure Wallet
                 </p>
@@ -78,7 +82,7 @@ const Mainnet = ({
                   </p>
                   <Image
                     src={activeButton ? Copy : Copy2}
-                    alt=""
+                    alt="copy"
                     onClick={() => {
                       copyToClipBoard(secureWalletAddress);
                       enqueueSnackbar("URL Copied", {
@@ -105,10 +109,11 @@ const Mainnet = ({
             </div>
           </div>
           <div
-            className={`${activeButton === "EOA"
-              ? "bg-black"
-              : "bg-white  hover:bg-gray-200 duration-500 "
-              } rounded-full px-4 py-4 w-full border-2 border-black cursor-pointer group relative`}
+            className={`${
+              activeButton === "EOA"
+                ? "bg-black"
+                : "bg-white  hover:bg-gray-200 duration-500 "
+            } rounded-full px-4 py-4 w-full border-2 border-black cursor-pointer group relative`}
           >
             <div className="flex flex-row justify-between items-center gap-3">
               <Image
@@ -118,8 +123,9 @@ const Mainnet = ({
               />
               <div className="flex flex-col space-y-1">
                 <p
-                  className={`${activeButton === "EOA" ? "text-white" : "text-black"
-                    }  font-semibold text-sm md:text-lg xl:text-sm`}
+                  className={`${
+                    activeButton === "EOA" ? "text-white" : "text-black"
+                  }  font-semibold text-sm md:text-lg xl:text-sm`}
                 >
                   EOA Wallet
                 </p>
@@ -158,34 +164,20 @@ const Mainnet = ({
         </div>
       </div>
 
-      <div className="">
-        <TransactionItem
-          icon={ETH}
-          label="ETH"
-          amount="$1,794.28"
-          value="0.54"
-          send="Send"
-          receive="Receive"
-        />
-        <hr />
-        <TransactionItem
-          icon={DAI}
-          label="DAI"
-          amount="$1,794.28"
-          value="0.54"
-          send="Send"
-          receive="Receive"
-        />
-        <hr />
-        <TransactionItem
-          icon={USDT}
-          label="USDT"
-          amount="$1,794.28"
-          value="0.54"
-          send="Send"
-          receive="Receive"
-        />
-      </div>
+      {allToken ? allToken?.map((e, ind) => (
+        <div key={ind}>
+          <TransactionItem
+            icon={e?.logo ? e?.logo : ETH}
+            label={e?.name}
+            amount="$1,794.28"
+            value={e?.balance + "ETH"}
+            send="Send"
+            receive="Receive"
+          />
+          <hr />
+        </div>
+      )) : <History />
+      }
     </div>
   );
 };

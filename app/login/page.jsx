@@ -16,7 +16,9 @@ import { useUser } from "@/providers/UserProvider";
 import { axiosInstance } from "@/services/axios";
 import { CustomTextField } from "@/components/fields/CustomTextField";
 import { enqueueSnackbar } from "notistack";
-import { AiOutlineGoogle } from "react-icons/ai";
+import { FaSquareXTwitter } from "react-icons/fa6";
+import { FaGoogle } from "react-icons/fa";
+import { FaApple } from "react-icons/fa";
 
 const LoginPage = () => {
   const router = useRouter();
@@ -64,9 +66,13 @@ const LoginPage = () => {
     // console.log(data2);
   };
 
+  const handleGoogleLogin = async () => {
+    window.open(BASE_URL + "/api/auth/google");
+  };
+
   return (
-    <div className="grid xl:grid-cols-2 md:grid-cols-2 grid-cols-1 h-screen px-2 py-2 gap-2 xl:gap-0 md:gap-0 ml-100 ">
-      <div className="col-span-1 flex justify-center xl:items-center       md:items-start bg-[#2100EC] xl:py-8 md:py-8 rounded-2xl">
+    <div className="grid xl:grid-cols-2 md:grid-cols-2 grid-cols-1 h-screen px-2 py-2 gap-2 xl:gap-0 md:gap-0">
+      <div className="col-span-1  flex justify-center xl:items-center md:items-start bg-[#2100EC] xl:py-8 md:py-8 rounded-2xl">
         <Image alt="" src={BgImage} className="hidden xl:flex md:flex" />
         <div className="flex xl:hidden md:hidden flex-col space-y-4 items-center justify-center px-4 py-4">
           <Image alt="" src={MobileImage} className="" />
@@ -95,7 +101,7 @@ const LoginPage = () => {
             type={"password"}
             validation={{ ...register("password", { required: true }) }}
           />
-          <div className="flex flex-col space-y-2">
+          <div className="flex flex-col space-y-2 pt-5">
             <CustomButton
               isLoading={loading}
               name="Login"
@@ -103,7 +109,7 @@ const LoginPage = () => {
               hoverColor={"zinc-800"}
               type={"submit"}
             />
-            <CustomButton
+            {/* <CustomButton
               isDisabled={true}
               bgColor="white"
               name="Continue With Apple "
@@ -121,12 +127,45 @@ const LoginPage = () => {
             <CustomButton
               bgColor="white"
               name="Continue With Google"
-              // img={X}
               nameColor="black"
-              // onClick={handleTwitterLogin}
-            />
+              img={X}
+              onClick={handleGoogleLogin}
+            /> */}
           </div>
-          <div className="flex justify-center">
+
+          <div className="my-4 pt-4 flex items-center before:mt-0.5 before:flex-1 before:border-t before:border-neutral-300 after:mt-0.5 after:flex-1 after:border-t after:border-neutral-300">
+            <p className="mx-4 mb-0 text-center text-gray-400 dark:text-white">
+              or
+            </p>
+          </div>
+
+          <div className="flex justify-center pt-5">
+            {" "}
+            <div className="flex flex-col items-center max-w-sm w-full gap-3">
+              <div
+                onClick={handleTwitterLogin}
+                className="py-2 px-4 cursor-pointer flex gap-2 justify-center items-center bg-blue-600 hover:bg-blue-700 focus:ring-blue-500 focus:ring-offset-blue-200 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg "
+              >
+                <FaSquareXTwitter className="w-5 h-5" />
+                Sign in with Twitter
+              </div>
+
+              <div
+                onClick={handleGoogleLogin}
+                className="py-2 px-4 cursor-pointer flex gap-2 justify-center items-center  bg-red-600 hover:bg-red-700 focus:ring-red-500 focus:ring-offset-red-200 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg "
+              >
+                <FaGoogle />
+                Sign in with Google
+              </div>
+
+              <div className="py-2 px-4 cursor-pointer flex gap-2 justify-center items-center  bg-gray-600 hover:bg-gray-700 focus:ring-gray-500 focus:ring-offset-gray-200 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg ">
+                <FaApple className="w-5 h-5" />
+                Sign in with Apple
+              </div>
+            </div>
+          </div>
+
+          <div className="flex justify-center pt-5">
             <p className="text-sm text-[#A09FAA]">
               Do you have an account?{" "}
               <Link href="/register">

@@ -2,6 +2,7 @@ import Image from "next/image";
 import React from "react";
 import Settings from "../assets/Swap/settings.png";
 import Note from "../assets/Swap/note.png";
+import { usePathname } from "next/navigation";
 const LeftHeader = (props) => {
   const {
     title,
@@ -14,18 +15,19 @@ const LeftHeader = (props) => {
     isMobile,
     iconImg1,
     iconImg2,
+    pageType, // assuming you have a prop for pageType
   } = props;
+  const path = usePathname();
+  const matchPath = path === "/dashboard";
   return (
     <div className="flex flex-row items-center justify-between w-full">
       {/* Leftside Title */}
       <div>
         {title && (
-          <>
-            <p className="xl:text-4xl md:text-md text-black font-bold text-xl space-y-1 relative ">
-              {title}
-              <span className="mx-1 text-xl  upcomming">Upcoming</span>
-            </p>
-          </>
+          <p className="xl:text-4xl md:text-md text-black font-bold text-xl space-y-1 relative">
+            {title}
+            {!matchPath && <span className="mx-1 text-xl upcomming">Upcoming</span>}
+          </p>
         )}
         {descriptionColor && (
           <p className="text-[#6F6E7A] text-xs">

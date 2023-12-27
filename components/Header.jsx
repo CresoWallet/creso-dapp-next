@@ -76,9 +76,9 @@ const Header = () => {
       </div>
       <div onClick={handleButton} className="cursor-pointer ">
         {/* <Image alt="" src={User} className="w-14 h-16" /> */}
-        <div className="absolute top-1 right-1 bg-red-500 text-white rounded-full w-10 h-10 flex items-center justify-center">
+        <div className="absolute top-1 right-1 bg-red-500 text-white rounded-full w-10 h-10 flex items-center justify-center my-10">
           <p className=" font-semibold text-xs">
-            {user ? getInitials(user.username) : ""} 
+            {user ? getInitials(user.username) : ""}  
           </p>
         </div>
       </div>
@@ -100,7 +100,7 @@ const Header = () => {
               <p className="text-xs text-[#A09FAA]">{user?.email}</p>
               <p className="text-xs text-[#A09FAA]"></p>
               Last Backup:
-              <p className="text-xm text-black ">28 OCT 2023 </p>{" "}
+              <p className="text-xm text-black ">28 OCT 2023  </p>{" "}
             </div>
             <hr />
             <Link href="/account">

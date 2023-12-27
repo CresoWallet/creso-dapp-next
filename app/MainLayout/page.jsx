@@ -121,6 +121,32 @@ const MainLayout = () => {
   const responsivCompo = showCoinWallet || showWallet || showCreateWallet
   return (
     <>
+      {/* ------------ Popup Main ---------- */}
+      {
+        isMobile && <div className="lg:hidden block min-w-max">
+          {showWallet && (
+            <SecureWallet
+              handleClose={handleCloseShowWallet}
+              wallets={wallets}
+              walletType={walletType}
+              secureWalletBalance={secureWalletBalance}
+              eoaWalletBalance={eoaWalletBalance}
+            />
+          )}
+          <div className="">
+            {showCreateWallet && <CreateWallet handleClose={handleClose} />}
+          </div>
+          <div className="">
+            {showCoinWallet && (
+              <CoinWallet
+                handleClose={handleCloseCoinWallet}
+                wallets={wallets}
+                coinData={coinData}
+              />
+            )}
+          </div>
+        </div>
+      }
       <div className="grid lg:grid-cols-10 lg:divide-x">
         {/* <TokensComponent /> */}
         {/* ------------ Leftside Main ---------- */}
@@ -152,48 +178,32 @@ const MainLayout = () => {
 
         {/* ------------ Rightside Main ---------- */}
         <div className={`${responsivCompo ? "px-0  border-l-2 " : " px-10  pt-14"} lg:col-span-4`}>
-          {
-            <>
-              <div className="hidden md:flex ">
-                {showCreateWallet && <CreateWallet handleClose={handleClose} />}
-                {/* {send && (
-                  <>
-                    <SendETH
-                      handleBackButton={() => setSend(false)}
-                      walletArr={wallets.filter((e) => e.type === walletType)}
-                      networks={network}
-                      handleClose={handleClose}
-                    />
-                    <div
-                      onClick={handleClose}
-                      className="fixed top-0 right-0 w-full h-full bg-black/40 cursor-pointer z-[1]"
-                    ></div>
-                  </>
-                )} */}
-              </div>
-              <div className=" hidden md:flex">
-                {showCoinWallet && (
-                  <CoinWallet
-                    handleClose={handleCloseCoinWallet}
-                    wallets={wallets}
-                    coinData={coinData}
-                  />
-                )}
-              </div>
+          <div className="hidden lg:block">
+            <div className="hidden lg:flex">
+              {showCreateWallet && <CreateWallet handleClose={handleClose} />}
+            </div>
+            <div className=" hidden lg:flex">
+              {showCoinWallet && (
+                <CoinWallet
+                  handleClose={handleCloseCoinWallet}
+                  wallets={wallets}
+                  coinData={coinData}
+                />
+              )}
+            </div>
 
-              <div className="hidden lg:block lg:cols-span-4">
-                {showWallet && (
-                  <SecureWallet
-                    handleClose={handleCloseShowWallet}
-                    wallets={wallets}
-                    walletType={walletType}
-                    secureWalletBalance={secureWalletBalance}
-                    eoaWalletBalance={eoaWalletBalance}
-                  />
-                )}
-              </div>
-            </>
-          }
+            <div className="hidden lg:block lg:cols-span-4">
+              {showWallet && (
+                <SecureWallet
+                  handleClose={handleCloseShowWallet}
+                  wallets={wallets}
+                  walletType={walletType}
+                  secureWalletBalance={secureWalletBalance}
+                  eoaWalletBalance={eoaWalletBalance}
+                />
+              )}
+            </div>
+          </div>
           {responsivCompo ? null :
             <>
               <Header />
@@ -217,20 +227,6 @@ const MainLayout = () => {
           }
         </div>
       </div>
-      {/* ------------ Popup Main ---------- */}
-      {
-        isMobile && <div className="">
-          {showWallet && (
-            <SecureWallet
-              handleClose={handleCloseShowWallet}
-              wallets={wallets}
-              walletType={walletType}
-              secureWalletBalance={secureWalletBalance}
-              eoaWalletBalance={eoaWalletBalance}
-            />
-          )}
-        </div>
-      }
     </>
   );
 };

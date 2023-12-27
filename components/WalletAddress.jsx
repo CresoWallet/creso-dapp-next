@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import Image from "next/image";
 import QRCode from "react-qr-code";
 
@@ -7,9 +7,17 @@ import Ethereum from "../assets/Dashboard/etherum.png";
 import QR from "../assets/Dashboard/qr.png";
 import { copyToClipBoard, minifyEthereumAddress } from "@/utils";
 import { enqueueSnackbar } from "notistack";
+import { WalletContext } from "@/providers/WalletProvider";
 // import Breaker from "../assets/Dashboard/Line.png";
 
 const WalletAddress = ({ handleBackButton, wallet }) => {
+  const {
+    secureWalletAddress,
+    eoaWalletAddress,
+    activeButton,
+  } = useContext(WalletContext);
+  const walletID = activeButton === "AA" ? minifyEthereumAddress(secureWalletAddress) : minifyEthereumAddress(eoaWalletAddress)
+  const walletIDCopy = activeButton === "AA" ? copyToClipBoard(secureWalletAddress) : copyToClipBoard(eoaWalletAddress)
   return (
     <div className="bg-white flex flex-col xl:pl-8 md:pl-4 mx-0 px-2 xl:px-0 md:px-2 pt-16 w-full xl:pr-10 pr-2 space-y-4 min-h-screen h-full z-20">
       <div className="flex flex-row items-center justify-between">
@@ -42,7 +50,7 @@ const WalletAddress = ({ handleBackButton, wallet }) => {
           </div>
           <div className="flex flex-col space-y-1 items-center">
             <p className="text-[#A09FAA]">Wallet Address:</p>
-            <p>{minifyEthereumAddress(wallet[0].address)}</p>
+            <p>{walletID}</p>
           </div>
         </div>
         <div className="bg-[#D0F500] -mt-7 rounded-full border border-solid flex w-24 justify-center border-black items-center px-4 py-2 relative z-10 cursor-pointer">
@@ -73,7 +81,7 @@ const WalletAddress = ({ handleBackButton, wallet }) => {
 
             <p
               onClick={() => {
-                copyToClipBoard(wallet[0].address);
+                walletIDCopy;
                 enqueueSnackbar("URL Copied", {
                   variant: "info",
                 });

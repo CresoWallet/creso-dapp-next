@@ -49,7 +49,7 @@ const LeftSide = (props) => {
       <div className="divide-x">
         {/* left side */}
         <div className="grid h-full responsivemb-cols">
-          <div className="col-span-6 xl:space-y-6 md:space-y-6 space-y-2 xl:py-8 md:py-8">
+          <div className="col-span-6 xl:space-y-6 md:space-y-6 space-y-2 md:py-8">
             <LeftHeader />
             {!user?.isEmailVerified && (
               <Backup onClick={() => handleShowModel()} />

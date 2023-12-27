@@ -15,6 +15,7 @@ import { WalletContext } from "@/providers/WalletProvider";
 import SecureWallet from "@/components/SecureWallet";
 import TokenComponent from "@/components/Tokens/TokensComponent";
 import TokensComponent from "@/components/Tokens/TokensComponent";
+import CoinWallet from "@/components/CoinWallet";
 
 const MainLayout = () => {
   const router = useRouter();
@@ -117,7 +118,7 @@ const MainLayout = () => {
       <div className="grid lg:grid-cols-10 lg:divide-x">
         {/* <TokensComponent /> */}
         {/* ------------ Leftside Main ---------- */}
-        <div className="lg:col-span-6 pt-16 px-6">
+        <div className="lg:col-span-6 pt-16 px-10">
           <div className="">
             <LeftHeader
               title={"Dashboard"}
@@ -144,38 +145,69 @@ const MainLayout = () => {
         <hr className="lg:hidden mt-10 lg:mt-0" />
 
         {/* ------------ Rightside Main ---------- */}
-        <div className="lg:col-span-4 pt-14 px-4">
-          <Header />
-          <RightSide
-            showCoinWallet={showCoinWallet}
-            showModal={showModal}
-            setShowModal={setShowModal}
-            walletType={walletType}
-            coinData={coinData}
-            secureWalletBalance={secureWalletBalance}
-            eoaWalletBalance={eoaWalletBalance}
-            wallets={wallets}
-            showCreateWallet={showCreateWallet}
-            handleCloseShowWallet={handleCloseShowWallet}
-            handleCloseCoinWallet={handleCloseCoinWallet}
-            handleClose={handleClose}
-            showWallet={showWallet}
-            user={user}
-          />
+        <div className={`${showCoinWallet || showWallet ? "px-0  border-l-2 " : " px-10  pt-14"} lg:col-span-4`}>
+          {
+            <>
+              <div className=" hidden md:flex">
+                {showCoinWallet && (
+                  <CoinWallet
+                    handleClose={handleCloseCoinWallet}
+                    wallets={wallets}
+                    coinData={coinData}
+                  />
+                )}
+              </div>
+
+              <div className="hidden lg:block lg:cols-span-4">
+                {showWallet && (
+                  <SecureWallet
+                    handleClose={handleCloseShowWallet}
+                    wallets={wallets}
+                    walletType={walletType}
+                    secureWalletBalance={secureWalletBalance}
+                    eoaWalletBalance={eoaWalletBalance}
+                  />
+                )}
+              </div>
+            </>
+          }
+          {showCoinWallet || showWallet ? null :
+            <>
+              <Header />
+              <RightSide
+                showCoinWallet={showCoinWallet}
+                showModal={showModal}
+                setShowModal={setShowModal}
+                walletType={walletType}
+                coinData={coinData}
+                secureWalletBalance={secureWalletBalance}
+                eoaWalletBalance={eoaWalletBalance}
+                wallets={wallets}
+                showCreateWallet={showCreateWallet}
+                handleCloseShowWallet={handleCloseShowWallet}
+                handleCloseCoinWallet={handleCloseCoinWallet}
+                handleClose={handleClose}
+                showWallet={showWallet}
+                user={user}
+              />
+            </>
+          }
         </div>
-      </div>
+      </div >
       {/* ------------ Popup Main ---------- */}
-      {isMobile && <div className="">
-        {showWallet && (
-          <SecureWallet
-            handleClose={handleCloseShowWallet}
-            wallets={wallets}
-            walletType={walletType}
-            secureWalletBalance={secureWalletBalance}
-            eoaWalletBalance={eoaWalletBalance}
-          />
-        )}
-      </div>}
+      {
+        isMobile && <div className="">
+          {showWallet && (
+            <SecureWallet
+              handleClose={handleCloseShowWallet}
+              wallets={wallets}
+              walletType={walletType}
+              secureWalletBalance={secureWalletBalance}
+              eoaWalletBalance={eoaWalletBalance}
+            />
+          )}
+        </div>
+      }
     </>
   );
 };

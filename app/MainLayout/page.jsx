@@ -111,7 +111,8 @@ const MainLayout = () => {
   // }, [navbarTrigger]);
 
   if (status !== "authenticated") {
-    return <div>{/* {<Loader/>} */} Loading...</div>;
+    return 
+    // <div>{/* {<Loader/>} */} Loading...</div>;
   }
   return (
     <>

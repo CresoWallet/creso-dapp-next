@@ -226,7 +226,7 @@ const WalletContextProvider = ({ children }) => {
           {/* ------------Sidebar---------- */}
           <div className="sidebar">
             {/* {!isMobile && ( */}
-            <div className={`sidebarDesktop h-full `}>
+            <div className={`sidebarDesktop h-full w-full`}>
               {/* Conditionally render SideNav based on the path name */}
               {!isLoginOrRegister && <SideNav />}
             </div>

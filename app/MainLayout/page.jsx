@@ -156,7 +156,7 @@ const MainLayout = () => {
             <>
               <div className="hidden md:flex ">
                 {showCreateWallet && <CreateWallet handleClose={handleClose} />}
-                {send && (
+                {/* {send && (
                   <>
                     <SendETH
                       handleBackButton={() => setSend(false)}
@@ -169,7 +169,7 @@ const MainLayout = () => {
                       className="fixed top-0 right-0 w-full h-full bg-black/40 cursor-pointer z-[1]"
                     ></div>
                   </>
-                )}
+                )} */}
               </div>
               <div className=" hidden md:flex">
                 {showCoinWallet && (

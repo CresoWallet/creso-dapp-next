@@ -6,12 +6,14 @@ import Dollar from "../assets/Dashboard/dollor2.png";
 import { AiOutlineDown } from "react-icons/ai";
 import Link from "next/link";
 import { AiOutlineUser } from "react-icons/ai";
+import { IoWalletOutline } from "react-icons/io5";
 import { MdKeyboardArrowRight } from "react-icons/md";
 import Disconnect from "../assets/network/disconnect.png";
 import { useUser } from "@/providers/UserProvider";
 import { logOut } from "@/clientApi/auth";
 import { useRouter } from "next/navigation";
 import Creso2 from "../assets/Dashboard/creso2.png";
+import Wallet from "./Wallet";
 // import UserDetails from "./UserDetails";
 // import { AUTH_TOKEN } from "@/constants";
 // import User from "../assets/Dashboard/User.png";
@@ -20,12 +22,18 @@ const Header = () => {
   const router = useRouter();
   const { user, isAuthenticated, status } = useUser();
   const [openPopup, setOpenPopup] = useState(false);
+  const [openWallet, setOpenWallet] = useState(false);
+
   const popupRef = useRef();
 
   const handleButton = () => {
     setOpenPopup(true);
   };
 
+  const handleopenwallet = () => {
+    setOpenPopup(false);
+    setOpenWallet(true);
+  };
   const handlePopupClose = () => {
     setOpenPopup(false);
   };
@@ -84,7 +92,7 @@ const Header = () => {
         {/* <Image alt="" src={User} className="w-14 h-16" /> */}
         <div className="absolute top-3 sm:right-10 place-items-end bg-red-500 text-white rounded-full w-10 h-10 flex items-center justify-center ">
           <p className=" font-semibold text-xs">
-            {user ? getInitials(user.username) : ""} 
+            {user ? getInitials(user.username) : ""}
           </p>
         </div>
       </div>
@@ -99,7 +107,7 @@ const Header = () => {
               {/* <Image alt="" src={User} /> */}
               <div className=" bg-red-500 text-white rounded-full w-10 h-10 flex items-center justify-center">
                 <p className=" font-semibold text-xs">
-                  {user ? getInitials(user.username) : ""} 
+                  {user ? getInitials(user.username) : ""}
                 </p>
               </div>
               <p className="font-bold text-lg">{user?.username}</p>
@@ -110,7 +118,7 @@ const Header = () => {
             </div>
             <hr />
             <Link href="/account">
-              <div className="flex flex-row items-center justify-between cursor-pointer hover:scale-105 py-4">
+              <div className="flex flex-row items-center justify-between cursor-pointer hover:scale-105 py-4 hover:font-bold">
                 <div className="flex flex-row gap-2 items-center">
                   <AiOutlineUser />
                   <p className="hover:font-bold">Account</p>
@@ -118,6 +126,20 @@ const Header = () => {
                 <MdKeyboardArrowRight />
               </div>
             </Link>
+
+            <hr />
+
+            <div
+              className="flex flex-row items-center justify-between cursor-pointer hover:scale-105 py-4 hover:font-bold "
+              onClick={handleopenwallet}
+            >
+              <div className="flex flex-row gap-2 items-center">
+                <IoWalletOutline />
+                <p className="hover:font-bold">Wallet</p>
+              </div>
+              <MdKeyboardArrowRight />
+            </div>
+
             <hr />
             <div
               onClick={handleDisconnect}
@@ -129,6 +151,7 @@ const Header = () => {
           </div>
         </div>
       )}
+      {openWallet && <Wallet setOpenWallet={setOpenWallet} />}
     </div>
   );
 };

@@ -16,6 +16,9 @@ import SecureWallet from "@/components/SecureWallet";
 import TokenComponent from "@/components/Tokens/TokensComponent";
 import TokensComponent from "@/components/Tokens/TokensComponent";
 import CoinWallet from "@/components/CoinWallet";
+import CreateWallet from "@/components/CreateWallet";
+import SendETH from "@/components/SendETH";
+import { network } from "@/utils/data/coinlist";
 
 const MainLayout = () => {
   const router = useRouter();
@@ -27,6 +30,7 @@ const MainLayout = () => {
   // const [wallets, setWallets] = useState([]);
   const [walletType, setWalletType] = useState("");
   const [coinData, setCoinData] = useState("");
+
   const { user, isAuthenticated, status } = useUser();
   const {
     secureWalletBalance,
@@ -38,6 +42,7 @@ const MainLayout = () => {
     navbarTrigger,
     setNavbarTrigger,
     isMobile,
+    send
   } = useContext(WalletContext);
 
   useEffect(() => {
@@ -53,8 +58,8 @@ const MainLayout = () => {
   const handleCreateWallet = () => {
     setShowCreateWallet(!showCreateWallet);
     // close other models
-    setShowCoinWallet(true);
-    setShowWallet(true);
+    // setShowCoinWallet(true);
+    // setShowWallet(true);
   };
 
   const handleClose = () => {
@@ -110,9 +115,10 @@ const MainLayout = () => {
   //   }
   // }, [navbarTrigger]);
 
-  if (status !== "authenticated") {
-    return <div>{/* {<Loader/>} */} Loading...</div>;
-  }
+  // if (status !== "authenticated") {
+  //   return <div>{/* {<Loader/>} */} Loading...</div>;
+  // }
+  const responsivCompo = showCoinWallet || showWallet || showCreateWallet
   return (
     <>
       <div className="grid lg:grid-cols-10 lg:divide-x">
@@ -145,9 +151,26 @@ const MainLayout = () => {
         <hr className="lg:hidden mt-10 lg:mt-0" />
 
         {/* ------------ Rightside Main ---------- */}
-        <div className={`${showCoinWallet || showWallet ? "px-0  border-l-2 " : " px-10  pt-14"} lg:col-span-4`}>
+        <div className={`${responsivCompo ? "px-0  border-l-2 " : " px-10  pt-14"} lg:col-span-4`}>
           {
             <>
+              <div className="hidden md:flex ">
+                {showCreateWallet && <CreateWallet handleClose={handleClose} />}
+                {send && (
+                  <>
+                    <SendETH
+                      handleBackButton={() => setSend(false)}
+                      walletArr={wallets.filter((e) => e.type === walletType)}
+                      networks={network}
+                      handleClose={handleClose}
+                    />
+                    <div
+                      onClick={handleClose}
+                      className="fixed top-0 right-0 w-full h-full bg-black/40 cursor-pointer z-[1]"
+                    ></div>
+                  </>
+                )}
+              </div>
               <div className=" hidden md:flex">
                 {showCoinWallet && (
                   <CoinWallet
@@ -171,7 +194,7 @@ const MainLayout = () => {
               </div>
             </>
           }
-          {showCoinWallet || showWallet ? null :
+          {responsivCompo ? null :
             <>
               <Header />
               <RightSide
@@ -193,7 +216,7 @@ const MainLayout = () => {
             </>
           }
         </div>
-      </div >
+      </div>
       {/* ------------ Popup Main ---------- */}
       {
         isMobile && <div className="">

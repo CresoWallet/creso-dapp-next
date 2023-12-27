@@ -34,14 +34,14 @@ const RecoveryPage = () => {
   }, [navbarTrigger]);
 
   const fetchRecoveryStatus = async (data) => {
-    console.log("data : ", data);
+    // console.log("data : ", data);
     try {
       const payload = {
         walletAddress: data.wallet,
         network: "goerli",
       };
       const res = await getRecoveryStatus(payload);
-      console.log("res : ", res);
+      // console.log("res : ", res);
     } catch (error) {}
   };
 

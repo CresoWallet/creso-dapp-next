@@ -52,9 +52,9 @@ const RightSide = (props) => {
       {/* right side */}
       <div className="grid relative -m-5 pb-32 lg:pb-0">
         {/* models */}
-        <div className="hidden md:flex ">
+        {/* <div className="hidden md:flex ">
           {showCreateWallet && <CreateWallet handleClose={handleClose} />}
-        </div>
+        </div> */}
 
         {showModal && <Modal onClose={() => setShowModal(false)} user={user} />}
 

@@ -26,6 +26,11 @@ const CreateWallet = ({ handleClose }) => {
     setLegacyWallet(true);
   };
 
+  // const handleBackButtonClick = () => {
+  //   setLegacyWallet(false);
+  //   setSmartWallet(false);
+  // };
+
   return (
     <div className=" bg-white md:border-l-2 md:shadow-xl w-full h-screen z-10">
       <div className="flex rounded-full bg-black h-8 w-8 items-center justify-center xl:-ml-4 md:-ml-4 ml-2 mt-10 absolute z-[99]">
@@ -34,6 +39,7 @@ const CreateWallet = ({ handleClose }) => {
           onClick={handleClose}
         />
       </div>
+      
       {legacyWallet && (
         <LegacyWallet
           handleClose={handleClose}
@@ -41,6 +47,14 @@ const CreateWallet = ({ handleClose }) => {
           type={type}
         />
       )}
+
+{/* {legacyWallet && (
+          <LegacyWallet
+          handleClose={handleClose}
+          handleBackButton={handleBackButtonClick}
+          type={type}
+        />
+      )} */}
       <div className="flex flex-col xl:mx-8 md:mx-4 mt-10 space-y-8">
         <p className="text-black font-bold text-xl ml-12 xl:ml-0 md:ml-2">
           Create Wallet

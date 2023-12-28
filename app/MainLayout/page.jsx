@@ -42,7 +42,7 @@ const MainLayout = () => {
     navbarTrigger,
     setNavbarTrigger,
     isMobile,
-    send
+    send,
   } = useContext(WalletContext);
 
   useEffect(() => {
@@ -58,8 +58,8 @@ const MainLayout = () => {
   const handleCreateWallet = () => {
     setShowCreateWallet(!showCreateWallet);
     // close other models
-    // setShowCoinWallet(true);
-    // setShowWallet(true);
+    setShowCoinWallet(false);
+    setShowWallet(false);
   };
 
   const handleClose = () => {
@@ -70,10 +70,10 @@ const MainLayout = () => {
     setCoinData(data?.item);
     setShowCoinWallet(true);
     // close other models
-    setShowCreateWallet(true);
-    setShowWallet(true);
+    setShowCreateWallet(false);
+    setShowWallet(false);
   };
-
+ 
   const handleShowModel = () => {
     if (user?.registrationMethod !== "email" && !user?.isEmailVerified) {
       enqueueSnackbar(

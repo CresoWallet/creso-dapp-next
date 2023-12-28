@@ -57,8 +57,8 @@ const Mainnet = ({
         <div className="flex xl:flex-row flex-col items-center xl:gap-4 md:gap-4 gap-2">
           <div
             className={`${activeButton === "AA"
-                ? "bg-black"
-                : "bg-white hover:bg-gray-200 duration-500 "
+              ? "bg-black"
+              : "bg-white hover:bg-gray-200 duration-500 "
               } rounded-full px-4 py-4 w-full border-2 border-black cursor-pointer group relative`}
           >
             <div className="flex flex-row justify-between items-center gap-3 group">
@@ -108,8 +108,8 @@ const Mainnet = ({
           </div>
           <div
             className={`${activeButton === "EOA"
-                ? "bg-black"
-                : "bg-white  hover:bg-gray-200 duration-500 "
+              ? "bg-black"
+              : "bg-white  hover:bg-gray-200 duration-500 "
               } rounded-full px-4 py-4 w-full border-2 border-black cursor-pointer group relative`}
           >
             <div className="flex flex-row justify-between items-center gap-3">
@@ -167,6 +167,7 @@ const Mainnet = ({
             label={e?.name}
             amount="$1,794.28"
             value={e?.balance}
+            valueName={e?.name}
             send="Send"
             receive="Receive"
           />

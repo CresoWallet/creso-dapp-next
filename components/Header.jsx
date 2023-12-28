@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import Image from "next/image";
 import Language from "../assets/Dashboard/language.png";
 import Dollar from "../assets/Dashboard/dollor2.png";
@@ -25,6 +25,17 @@ const Header = () => {
   const [openWallet, setOpenWallet] = useState(false);
 
   const popupRef = useRef();
+
+  useEffect(() => {
+    const checkScreenSize = () => {
+      setIsSmallScreen(window.innerWidth < 768);
+    };
+    checkScreenSize();
+    window.addEventListener("resize", checkScreenSize);
+    return () => {
+      window.removeEventListener("resize", checkScreenSize);
+    };
+  }, []);
 
   const handleButton = () => {
     setOpenPopup(true);
@@ -84,7 +95,7 @@ const Header = () => {
         </div>
       </div>
       {/* Creso2 image  /> */}
-      <div className=" flex absolute left-5 top-3 lg:hidden  place-items-start ">
+      <div className=" flex absolute left-5 top-5 lg:hidden  place-items-start ">
         <Image alt="" src={Creso2} className="h-10 w-10" />
         <p className="m-2 text-base lg:block ">creso</p>
       </div>
@@ -115,7 +126,7 @@ const Header = () => {
               <p className="text-xs text-[#A09FAA]">{user?.email}</p>
               <p className="text-xs text-[#A09FAA]"></p>
               Last Backup:
-              <p className="text-xm text-black ml-10">28 OCT 2023</p>{" "}
+              <p className="text-xm text-black ml-1">28 OCT 2023</p>{" "}
             </div>
             <hr />
             <Link href="/account">
@@ -149,6 +160,55 @@ const Header = () => {
               <Image alt="" src={Disconnect} />
               <p className="text-[#FF4085]">Disconnect </p>
             </div>
+
+            {/* Add social media icons */}
+            {isSmallScreen && (
+              <div className="flex justify-center gap-2 pt-4  ">
+                <a
+                  href="https://twitter.com/cresowallet"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <Image
+                    alt="Twitter"
+                    src={Twitter}
+                    className="  w-7 h-7  overflow-hidden"
+                  />
+                </a>
+                <a
+                  href="https://t.me/cresowallet"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <Image
+                    alt="Telegram"
+                    src={Telegram}
+                    className=" flex w-7 h-7"
+                  />
+                </a>
+                <a
+                  href="https://etherscan.io/token/0x41ea5d41eeacc2d5c4072260945118a13bb7ebce"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <Image alt="Etherscan" src={Etherscan} className="w-7 h-7" />
+                </a>
+                <a
+                  href="https://discord.com/invite/creso"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <Image alt="Discord" src={Discord} className="w-7 h-7" />
+                </a>
+                <a
+                  href="https://github.com/CresoWallet"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <Image alt="Github" src={Github} className="w-7 h-7" />
+                </a>
+              </div>
+            )}
           </div>
         </div>
       )}

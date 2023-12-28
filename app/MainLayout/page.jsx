@@ -1,10 +1,10 @@
 "use client";
-import Image from "next/image";
+// import Image from "next/image";
 import Header from "@/components/Header";
 import LeftHeader from "@/components/LeftHeader";
-import SideNav from "@/components/navbar/SideNav";
+// import SideNav from "@/components/navbar/SideNav";
 import React, { useState, useEffect, useContext } from "react";
-import { useMediaQuery } from "react-responsive";
+// import { useMediaQuery } from "react-responsive";
 import { CiSearch } from "react-icons/ci";
 import Ham from "../../assets/Dashboard/ham.png";
 import LeftSide from "./LeftSide";
@@ -13,12 +13,12 @@ import RightSide from "./RightSide";
 import { useRouter } from "next/navigation";
 import { WalletContext } from "@/providers/WalletProvider";
 import SecureWallet from "@/components/SecureWallet";
-import TokenComponent from "@/components/Tokens/TokensComponent";
-import TokensComponent from "@/components/Tokens/TokensComponent";
+// import TokenComponent from "@/components/Tokens/TokensComponent";
+// import TokensComponent from "@/components/Tokens/TokensComponent";
 import CoinWallet from "@/components/CoinWallet";
 import CreateWallet from "@/components/CreateWallet";
-import SendETH from "@/components/SendETH";
-import { network } from "@/utils/data/coinlist";
+// import SendETH from "@/components/SendETH";
+// import { network } from "@/utils/data/coinlist";
 
 const MainLayout = () => {
   const router = useRouter();

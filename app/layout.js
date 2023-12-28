@@ -23,7 +23,7 @@ export default function RootLayout({ children }) {
         <ReduxProvider>
           <UserProvider>
             <WalletContextProvider>
-              <NotistackProvider>{children}</NotistackProvider>
+              <NotistackProvider className="">{children}</NotistackProvider>
             </WalletContextProvider>
           </UserProvider>
         </ReduxProvider>

@@ -213,3 +213,25 @@ button:disabled {
   background-color: lightgray; /* Chrome/Safari */
   border-radius: 8px;
 }
+
+body {
+  scrollbar-width: thin; /* Firefox */
+  scrollbar-color: rebeccapurple green; /* Firefox */
+  border-radius: 8px; /* Add rounded corners */
+  scroll-behavior: smooth; /* Add smooth scrolling behavior */
+  overflow-y: scroll;
+}
+
+body::-webkit-scrollbar {
+  width: 4px; /* Chrome/Safari */
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: rgb(28, 48, 228); /* Chrome/Safari */
+  border-radius: 8px;
+}
+
+body::-webkit-scrollbar-track {
+  background-color: lightgray; /* Chrome/Safari */
+  border-radius: 8px;
+}

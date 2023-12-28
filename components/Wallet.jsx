@@ -5,7 +5,7 @@ import { MdArrowBack, MdDownloadDone } from "react-icons/md";
 import { WalletContext } from "@/providers/WalletProvider";
 const Wallet = ({ setOpenWallet }) => {
   const [activeButton1, setActiveButton1] = useState(0);
-  const [detailstoken, setdDetailstoken] = useState([]);
+  const [detailstoken, setDetailstoken] = useState([]);
   const popupRef = useRef();
 
   const { secureWalletAddress, eoaWalletAddress, allToken, activeButton } =
@@ -14,37 +14,34 @@ const Wallet = ({ setOpenWallet }) => {
   const handleButtonClick = (buttonIndex) => {
     setActiveButton1(buttonIndex);
   };
+
   useEffect(() => {
-    const tokendetails = allToken;
-    setdDetailstoken(tokendetails);
+    setDetailstoken(allToken);
   }, [activeButton, allToken]);
+
   const handleBackgroundClick = (e) => {
     if (popupRef.current === e.target) {
       setOpenWallet(false);
     }
   };
+
   return (
     <div
-      className="absolute inset-0  right-0 z-50 flex w-full items-end justify-center md:items-center bg-gray-800 bg-opacity-75 "
+      className="fixed inset-0 flex justify-center items-center z-[9] bg-gray-800 bg-opacity-75"
       ref={popupRef}
       onClick={handleBackgroundClick}
     >
-      <div className="w-auto rounded-3xl border-2 bg-white">
-        <div className=" p-6">
-          {/*<div
-            className="flex cursor-pointer items-center gap-2 py-2 text-center"
-            onClick={() => {
-              setOpenWallet(false);
-            }}
-          >
+      <div className="w-96 rounded-3xl border-2 bg-white h-96">
+        <div className="p-6">
+          {/* Back button (if needed)
+          <div className="flex cursor-pointer items-center gap-2 py-2 text-center" onClick={() => setOpenWallet(false)}>
             <div className="flex items-center justify-center rounded-full bg-[#1D39DD] p-1 text-white ">
               <MdArrowBack />
             </div>
-
             <p> Back </p>
-          </div>*/}
-          <div className="bg-[#ffff] ">
-            {/*<hr className="" />*/}
+          </div>
+          */}
+          <div className="bg-[#ffff]">
             <div className="flex items-center justify-center gap-2 py-2 text-lg font-semibold">
               <p>Wallets</p>
             </div>
@@ -59,9 +56,9 @@ const Wallet = ({ setOpenWallet }) => {
                 <button>
                   {`${
                     secureWalletAddress
-                      ? secureWalletAddress.slice(0, 5) +
+                      ? secureWalletAddress.slice(0, 3) +
                         "...." +
-                        secureWalletAddress.slice(-5)
+                        secureWalletAddress.slice(-3)
                       : ""
                   }`}
                 </button>
@@ -76,9 +73,9 @@ const Wallet = ({ setOpenWallet }) => {
                 <button>
                   {`${
                     eoaWalletAddress
-                      ? eoaWalletAddress.slice(0, 5) +
+                      ? eoaWalletAddress.slice(0, 3) +
                         "...." +
-                        eoaWalletAddress.slice(-5)
+                        eoaWalletAddress.slice(-3)
                       : ""
                   }`}
                 </button>
@@ -87,10 +84,10 @@ const Wallet = ({ setOpenWallet }) => {
             <hr className="py-2" />
 
             {detailstoken ? (
-              <div className="custom-scrollbar overflow-y-scroll text-center">
+              <div className="custom-scrollbar overflow-y-scroll text-center h-52">
                 {detailstoken.map((token, index) => (
                   <div key={index} className="flex gap-5 ">
-                    <div className="mb-5 ">
+                    <div className="mb-5">
                       <Image
                         src={token?.logo || eth}
                         alt={`${token.name}`}
@@ -106,7 +103,7 @@ const Wallet = ({ setOpenWallet }) => {
                 ))}
               </div>
             ) : (
-              <div className="flex items-center justify-center">Loding...</div>
+              <div className="flex items-center justify-center">Loading...</div>
             )}
           </div>
         </div>

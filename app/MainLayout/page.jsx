@@ -42,7 +42,7 @@ const MainLayout = () => {
     navbarTrigger,
     setNavbarTrigger,
     isMobile,
-    send
+    send,
   } = useContext(WalletContext);
 
   useEffect(() => {

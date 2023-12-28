@@ -235,3 +235,9 @@ body::-webkit-scrollbar-track {
   background-color: lightgray; /* Chrome/Safari */
   border-radius: 8px;
 }
+
+.creso-card {
+  background-image: url("../assets//AboutUs//custom.png");
+  background-size: cover;
+  background-position: center;
+}

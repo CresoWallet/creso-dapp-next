@@ -24,16 +24,25 @@ const SecureWallet = ({
 }) => {
   // const [send, setSend] = useState(false);
   const [walletAddress, setWalletAddress] = useState(false);
+ 
   const {
     send, setSend,
     totalBalance
   } = useContext(WalletContext);
+  const [mainContentVisible, setMainContentVisible] = useState(true);
   const handleWalletClick = () => {
     setWalletAddress(true);
+    setMainContentVisible(false);
   };
 
   const handleClick = () => {
     setSend(true);
+    setMainContentVisible(false);
+  };
+  const handleBackButtonClick = () => {
+    setMainContentVisible(true);
+    setWalletAddress(false);
+    setSend(false);
   };
 
   return (
@@ -47,11 +56,11 @@ const SecureWallet = ({
       {send && (
         <>
           <SendETH
-            handleBackButton={() => setSend(false)}
-            walletArr={wallets.filter((e) => e.type === walletType)}
-            networks={network}
-            handleClose={handleClose}
-          />
+          handleBackButton={handleBackButtonClick}
+          walletArr={wallets.filter((e) => e.type === walletType)}
+          networks={network}
+          handleClose={handleClose}
+        />
           {/* <div
             onClick={handleClose}
             className="fixed top-0 right-0 w-full h-full bg-black/40 cursor-pointer z-[1]"
@@ -60,18 +69,19 @@ const SecureWallet = ({
       )}
       {walletAddress && (
         <>
-          <WalletAddress
-            wallet={wallets.filter(
-              (e, index) => e.type === walletType && index === 0
-            )}
-            handleBackButton={() => setWalletAddress(false)}
-          />
+        <WalletAddress
+          wallet={wallets.filter(
+            (e, index) => e.type === walletType && index === 0
+          )}
+          handleBackButton={handleBackButtonClick}
+        />
           {/* <div
             onClick={handleClose}
             className="fixed top-0 right-0 w-full h-full bg-black/30 cursor-pointer z-[1]"
           ></div> */}
         </>
       )}
+       {mainContentVisible && (
       <div className="flex flex-col mx-8 mt-10 gap-8">
         <div className="flex items-center justify-between">
           <p className="text-xl font-bold ml-4 xl:ml-0 md:ml-0">
@@ -160,6 +170,7 @@ const SecureWallet = ({
           </div>
         </div>
       </div>
+       )}
     </div>
   );
 };

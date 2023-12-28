@@ -1,10 +1,10 @@
 "use client";
-import Image from "next/image";
+// import Image from "next/image";
 import Header from "@/components/Header";
 import LeftHeader from "@/components/LeftHeader";
-import SideNav from "@/components/navbar/SideNav";
+// import SideNav from "@/components/navbar/SideNav";
 import React, { useState, useEffect, useContext } from "react";
-import { useMediaQuery } from "react-responsive";
+// import { useMediaQuery } from "react-responsive";
 import { CiSearch } from "react-icons/ci";
 import Ham from "../../assets/Dashboard/ham.png";
 import LeftSide from "./LeftSide";
@@ -13,9 +13,12 @@ import RightSide from "./RightSide";
 import { useRouter } from "next/navigation";
 import { WalletContext } from "@/providers/WalletProvider";
 import SecureWallet from "@/components/SecureWallet";
-import TokenComponent from "@/components/Tokens/TokensComponent";
-import TokensComponent from "@/components/Tokens/TokensComponent";
+// import TokenComponent from "@/components/Tokens/TokensComponent";
+// import TokensComponent from "@/components/Tokens/TokensComponent";
 import CoinWallet from "@/components/CoinWallet";
+import CreateWallet from "@/components/CreateWallet";
+// import SendETH from "@/components/SendETH";
+// import { network } from "@/utils/data/coinlist";
 
 const MainLayout = () => {
   const router = useRouter();
@@ -27,6 +30,7 @@ const MainLayout = () => {
   // const [wallets, setWallets] = useState([]);
   const [walletType, setWalletType] = useState("");
   const [coinData, setCoinData] = useState("");
+
   const { user, isAuthenticated, status } = useUser();
   const {
     secureWalletBalance,
@@ -38,6 +42,7 @@ const MainLayout = () => {
     navbarTrigger,
     setNavbarTrigger,
     isMobile,
+    send
   } = useContext(WalletContext);
 
   useEffect(() => {
@@ -53,8 +58,8 @@ const MainLayout = () => {
   const handleCreateWallet = () => {
     setShowCreateWallet(!showCreateWallet);
     // close other models
-    setShowCoinWallet(true);
-    setShowWallet(true);
+    // setShowCoinWallet(true);
+    // setShowWallet(true);
   };
 
   const handleClose = () => {
@@ -110,12 +115,38 @@ const MainLayout = () => {
   //   }
   // }, [navbarTrigger]);
 
-  if (status !== "authenticated") {
-    return 
-    // <div>{/* {<Loader/>} */} Loading...</div>;
-  }
+  // if (status !== "authenticated") {
+  //   return <div>{/* {<Loader/>} */} Loading...</div>;
+  // }
+  const responsivCompo = showCoinWallet || showWallet || showCreateWallet
   return (
     <>
+      {/* ------------ Popup Main ---------- */}
+      {
+        isMobile && <div className="lg:hidden block min-w-max">
+          {showWallet && (
+            <SecureWallet
+              handleClose={handleCloseShowWallet}
+              wallets={wallets}
+              walletType={walletType}
+              secureWalletBalance={secureWalletBalance}
+              eoaWalletBalance={eoaWalletBalance}
+            />
+          )}
+          <div className="">
+            {showCreateWallet && <CreateWallet handleClose={handleClose} />}
+          </div>
+          <div className="">
+            {showCoinWallet && (
+              <CoinWallet
+                handleClose={handleCloseCoinWallet}
+                wallets={wallets}
+                coinData={coinData}
+              />
+            )}
+          </div>
+        </div>
+      }
       <div className="grid lg:grid-cols-10 lg:divide-x">
         {/* <TokensComponent /> */}
         {/* ------------ Leftside Main ---------- */}
@@ -146,33 +177,34 @@ const MainLayout = () => {
         <hr className="lg:hidden mt-10 lg:mt-0" />
 
         {/* ------------ Rightside Main ---------- */}
-        <div className={`${showCoinWallet || showWallet ? "px-0  border-l-2 " : " px-10  pt-14"} lg:col-span-4`}>
-          {
-            <>
-              <div className=" hidden md:flex">
-                {showCoinWallet && (
-                  <CoinWallet
-                    handleClose={handleCloseCoinWallet}
-                    wallets={wallets}
-                    coinData={coinData}
-                  />
-                )}
-              </div>
+        <div className={`${responsivCompo ? "px-0  border-l-2 " : " px-10  pt-14"} lg:col-span-4`}>
+          <div className="hidden lg:block">
+            <div className="hidden lg:flex">
+              {showCreateWallet && <CreateWallet handleClose={handleClose} />}
+            </div>
+            <div className=" hidden lg:flex">
+              {showCoinWallet && (
+                <CoinWallet
+                  handleClose={handleCloseCoinWallet}
+                  wallets={wallets}
+                  coinData={coinData}
+                />
+              )}
+            </div>
 
-              <div className="hidden lg:block lg:cols-span-4">
-                {showWallet && (
-                  <SecureWallet
-                    handleClose={handleCloseShowWallet}
-                    wallets={wallets}
-                    walletType={walletType}
-                    secureWalletBalance={secureWalletBalance}
-                    eoaWalletBalance={eoaWalletBalance}
-                  />
-                )}
-              </div>
-            </>
-          }
-          {showCoinWallet || showWallet ? null :
+            <div className="hidden lg:block lg:cols-span-4">
+              {showWallet && (
+                <SecureWallet
+                  handleClose={handleCloseShowWallet}
+                  wallets={wallets}
+                  walletType={walletType}
+                  secureWalletBalance={secureWalletBalance}
+                  eoaWalletBalance={eoaWalletBalance}
+                />
+              )}
+            </div>
+          </div>
+          {responsivCompo ? null :
             <>
               <Header />
               <RightSide
@@ -194,21 +226,7 @@ const MainLayout = () => {
             </>
           }
         </div>
-      </div >
-      {/* ------------ Popup Main ---------- */}
-      {
-        isMobile && <div className="">
-          {showWallet && (
-            <SecureWallet
-              handleClose={handleCloseShowWallet}
-              wallets={wallets}
-              walletType={walletType}
-              secureWalletBalance={secureWalletBalance}
-              eoaWalletBalance={eoaWalletBalance}
-            />
-          )}
-        </div>
-      }
+      </div>
     </>
   );
 };

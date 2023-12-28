@@ -27,7 +27,6 @@ const SendETH = ({ handleBackButton, walletArr, networks, handleClose }) => {
     register,
     handleSubmit,
     watch,
-
     formState: { errors, isLoading },
   } = useForm();
   const [openWalletList, setOpenWalletList] = useState(false);
@@ -169,7 +168,7 @@ const SendETH = ({ handleBackButton, walletArr, networks, handleClose }) => {
   return (
     <form
       onSubmit={handleSubmit(onSubmit)}
-      className="absolute bg-white flex flex-col xl:pl-8 md:pl-4 mx-0 px-2 xl:px-0 md:px-2 pt-10 w-full xl:pr-10 pr-2 space-y-4 min-h-screen h-full z-20"
+      className="bg-white xl:pl-8 md:pl-4 mx-0 px-2 xl:px-0 md:px-2 pt-10 w-full xl:pr-10 pr-2 space-y-4 min-h-screen h-full z-20"
     >
       <div className="flex flex-row items-center justify-between">
         <p className="text-black font-bold text-xl">Send ETH</p>
@@ -197,13 +196,13 @@ const SendETH = ({ handleBackButton, walletArr, networks, handleClose }) => {
                     alt=""
                     src={
                       selectedNetwork.value === "ethereum" ||
-                      selectedNetwork.value === "goerli"
+                        selectedNetwork.value === "goerli"
                         ? Ethereum
                         : selectedNetwork.value === "bnb"
-                        ? BNB
-                        : selectedNetwork.value === "polygon"
-                        ? Polygon
-                        : Creso
+                          ? BNB
+                          : selectedNetwork.value === "polygon"
+                            ? Polygon
+                            : Creso
                     }
                   />
                 ) : (
@@ -212,13 +211,13 @@ const SendETH = ({ handleBackButton, walletArr, networks, handleClose }) => {
                     alt=""
                     src={
                       networkFirstValue?.value === "ethereum" ||
-                      networkFirstValue?.value === "goerli"
+                        networkFirstValue?.value === "goerli"
                         ? Ethereum
                         : networkFirstValue.value === "bnb"
-                        ? BNB
-                        : networkFirstValue.value === "polygon"
-                        ? Polygon
-                        : Creso
+                          ? BNB
+                          : networkFirstValue.value === "polygon"
+                            ? Polygon
+                            : Creso
                     }
                   />
                 )}
@@ -253,10 +252,10 @@ const SendETH = ({ handleBackButton, walletArr, networks, handleClose }) => {
                               item.value === "ethereum"
                                 ? Ethereum
                                 : item.value === "bnb"
-                                ? BNB
-                                : item.value === "polygon"
-                                ? Polygon
-                                : Ethereum
+                                  ? BNB
+                                  : item.value === "polygon"
+                                    ? Polygon
+                                    : Ethereum
                             }
                             className="w-8 h-8"
                           />
@@ -287,9 +286,8 @@ const SendETH = ({ handleBackButton, walletArr, networks, handleClose }) => {
       </div>
 
       <div className="flex justify-between pt-2">
-        <p className="text-sm mx-4">{`Switch To ${
-          standard === "native" ? "Stable" : "Native"
-        }`}</p>
+        <p className="text-sm mx-4">{`Switch To ${standard === "native" ? "Stable" : "Native"
+          }`}</p>
         <label className="relative inline-flex items-center cursor-pointer">
           <input
             type="checkbox"
@@ -310,11 +308,10 @@ const SendETH = ({ handleBackButton, walletArr, networks, handleClose }) => {
               {tokenBalance && selectedCoin !== "native" && (
                 <p className="text-sm">{`Balance : ${tokenBalance} `}</p>
               )}
-              <p className="text-sm">{` ${
-                selectedCoin?.tokenSymbol
-                  ? selectedCoin?.tokenSymbol
-                  : initialToken?.tokenSymbol
-              }`}</p>
+              <p className="text-sm">{` ${selectedCoin?.tokenSymbol
+                ? selectedCoin?.tokenSymbol
+                : initialToken?.tokenSymbol
+                }`}</p>
             </div>
           </div>
           <div className="flex flex-row justify-between items-center gap-2 border border-solid rounded-full px-4 py-2 relative">
@@ -479,15 +476,13 @@ const SendETH = ({ handleBackButton, walletArr, networks, handleClose }) => {
                                 : ""}
                             </p>
 
-                            <p className="text-xs opacity-50">{`(${
-                              wallet.balance[
-                                selectedNetwork
-                                  ? selectedNetwork?.value
-                                  : networkFirstValue?.value
-                              ]
-                            } ${
-                              selectedNetwork ? selectedNetwork?.symbol : "ETH"
-                            })`}</p>
+                            <p className="text-xs opacity-50">{`(${wallet.balance[
+                              selectedNetwork
+                                ? selectedNetwork?.value
+                                : networkFirstValue?.value
+                            ]
+                              } ${selectedNetwork ? selectedNetwork?.symbol : "ETH"
+                              })`}</p>
                           </div>
                         </div>
                       </div>
@@ -550,13 +545,12 @@ const SendETH = ({ handleBackButton, walletArr, networks, handleClose }) => {
               <span></span>
             ) : (
               // <p className="text-sm">Balance : {selectedWallet.balance} ETH</p>
-              <p className="text-sm">{`Balance : ${
-                selectedWallet.balance[
-                  selectedNetwork
-                    ? selectedNetwork?.value
-                    : networkFirstValue?.value
-                ]
-              } ${selectedNetwork ? selectedNetwork?.symbol : "ETH"}`}</p>
+              <p className="text-sm">{`Balance : ${selectedWallet.balance[
+                selectedNetwork
+                  ? selectedNetwork?.value
+                  : networkFirstValue?.value
+              ]
+                } ${selectedNetwork ? selectedNetwork?.symbol : "ETH"}`}</p>
             )}
           </div>
 

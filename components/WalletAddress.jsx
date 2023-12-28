@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import Image from "next/image";
 import QRCode from "react-qr-code";
 
@@ -7,11 +7,19 @@ import Ethereum from "../assets/Dashboard/etherum.png";
 import QR from "../assets/Dashboard/qr.png";
 import { copyToClipBoard, minifyEthereumAddress } from "@/utils";
 import { enqueueSnackbar } from "notistack";
+import { WalletContext } from "@/providers/WalletProvider";
 // import Breaker from "../assets/Dashboard/Line.png";
 
 const WalletAddress = ({ handleBackButton, wallet }) => {
+  const {
+    secureWalletAddress,
+    eoaWalletAddress,
+    activeButton,
+  } = useContext(WalletContext);
+  const walletID = activeButton === "AA" ? minifyEthereumAddress(secureWalletAddress) : minifyEthereumAddress(eoaWalletAddress)
+  const walletIDCopy = activeButton === "AA" ? copyToClipBoard(secureWalletAddress) : copyToClipBoard(eoaWalletAddress)
   return (
-    <div className="absolute bg-white flex flex-col xl:pl-8 md:pl-4 mx-0 px-2 xl:px-0 md:px-2 pt-10 w-full xl:pr-10 pr-2 space-y-4 min-h-screen h-full z-20">
+    <div className="bg-white flex flex-col xl:pl-8 md:pl-4 mx-0 px-2 xl:px-0 md:px-2 pt-16 w-full xl:pr-10 pr-2 space-y-4 min-h-screen h-full z-20">
       <div className="flex flex-row items-center justify-between">
         <p className="text-black font-bold text-xl">Wallet Address</p>
 
@@ -22,16 +30,16 @@ const WalletAddress = ({ handleBackButton, wallet }) => {
           onClick={handleBackButton}
         />
       </div>
-      <div className=" rounded-3xl bg-[#A66CFF] flex flex-col items-center self-center pt-2">
-        <div className="flex flex-row gap-2 items-center self-start pl-2">
+      <div className="relative rounded-[40px] bg-[#A66CFF] grid  place-items-center self-center pt-2 lg:top-[12%]">
+        <div className="flex flex-row gap-2 items-center self-start py-1.5 px-3.5">
           <Image alt="" src={Ethereum} />
           <p className="text-white font-semibold">Ethereum Mainnet</p>
         </div>
-        <div className="border-8 -ml-4 -mr-4 py-10 rounded-3xl border-[#D4DADA] bg-white mt-4 relative z-10">
+        <div className="border-8 -ml-4 -mr-4 px-14 py-10 rounded-3xl border-[#D4DADA] bg-white mt-2 relative z-10">
           <div className="flex justify-center">
             {/* <Image alt="" src={QR} /> */}
             <QRCode
-              size={256}
+              size={170}
               style={{ height: "auto", maxWidth: "90%", width: "90%" }}
               value={"0x5B38Da6a701c568545dCfcB03FcB875f56beddC4"}
               viewBox={`0 0 256 256`}
@@ -42,10 +50,10 @@ const WalletAddress = ({ handleBackButton, wallet }) => {
           </div>
           <div className="flex flex-col space-y-1 items-center">
             <p className="text-[#A09FAA]">Wallet Address:</p>
-            <p>{minifyEthereumAddress(wallet[0].address)}</p>
+            <p>{walletID}</p>
           </div>
         </div>
-        <div className="bg-[#D0F500] -mt-5 rounded-full border border-solid flex w-24 justify-center border-black items-center px-4 py-2 relative z-10 cursor-pointer">
+        <div className="bg-[#D0F500] -mt-7 rounded-full border border-solid flex w-24 justify-center border-black items-center px-4 py-2 relative z-10 cursor-pointer">
           <div className="flex flex-row gap-2 items-center justify-center">
             <svg
               width="24"
@@ -73,7 +81,7 @@ const WalletAddress = ({ handleBackButton, wallet }) => {
 
             <p
               onClick={() => {
-                copyToClipBoard(wallet[0].address);
+                walletIDCopy;
                 enqueueSnackbar("URL Copied", {
                   variant: "info",
                 });
@@ -83,7 +91,7 @@ const WalletAddress = ({ handleBackButton, wallet }) => {
             </p>
           </div>
         </div>
-        <div className="bg-black rounded-b-3xl absolute top-[540px] xl:w-[50%] text-white text-center text-xs pt-8 pb-4 xl:px-5 px-5 md:px-2">
+        <div className="bg-black rounded-b-3xl absolute -bottom-20 text-white text-center text-xs pt-10 pb-4 xl:px-5 px-5 md:px-2">
           Please do not desposit any assets that are not from Ethereum or EVM
           compatibli chain, otherwise the assets will be lost
         </div>

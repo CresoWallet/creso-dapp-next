@@ -22,9 +22,10 @@ const SecureWallet = ({
   wallets,
   walletType,
 }) => {
-  const [send, setSend] = useState(false);
+  // const [send, setSend] = useState(false);
   const [walletAddress, setWalletAddress] = useState(false);
   const {
+    send, setSend,
     totalBalance
   } = useContext(WalletContext);
   const handleWalletClick = () => {
@@ -37,7 +38,7 @@ const SecureWallet = ({
 
   return (
     <div
-      className={`bg-white shadow-xl w-auto lg:h-screen `}
+      className={`bg-white shadow-xl lg:w-auto lg:h-screen `}
     >
       <div className="grid place-items-center rounded-full bg-black h-8 w-8 absolute cursor-pointer md:-ml-4 ml-2 z-[99]">
         <IoIosClose className="text-white h-7 w-7" onClick={handleClose} />
@@ -51,10 +52,10 @@ const SecureWallet = ({
             networks={network}
             handleClose={handleClose}
           />
-          <div
+          {/* <div
             onClick={handleClose}
             className="fixed top-0 right-0 w-full h-full bg-black/40 cursor-pointer z-[1]"
-          ></div>
+          ></div> */}
         </>
       )}
       {walletAddress && (
@@ -65,10 +66,10 @@ const SecureWallet = ({
             )}
             handleBackButton={() => setWalletAddress(false)}
           />
-          <div
+          {/* <div
             onClick={handleClose}
             className="fixed top-0 right-0 w-full h-full bg-black/30 cursor-pointer z-[1]"
-          ></div>
+          ></div> */}
         </>
       )}
       <div className="flex flex-col mx-8 mt-10 gap-8">

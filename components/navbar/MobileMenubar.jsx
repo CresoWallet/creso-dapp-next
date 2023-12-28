@@ -11,7 +11,7 @@ import { WalletContext } from "@/providers/WalletProvider";
 
 const MobileMenubar = () => {
   return (
-    <div className="bg-[#2100EC] rounded-full grid grid-cols-4  place-items-center mobileMenu">
+    <div className="bg-[#2100EC] rounded-full grid grid-cols-4 my-5 place-items-center mobileMenu">
       <Link href="/dashboard">
         <Image alt="" src={Wallet} className="w-6 h-6 text-[#B1A6F8]" />
       </Link>

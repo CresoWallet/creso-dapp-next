@@ -73,7 +73,7 @@ const MainLayout = () => {
     setShowCreateWallet(false);
     setShowWallet(false);
   };
- 
+
   const handleShowModel = () => {
     if (user?.registrationMethod !== "email" && !user?.isEmailVerified) {
       enqueueSnackbar(
@@ -150,7 +150,7 @@ const MainLayout = () => {
       <div className="grid lg:grid-cols-10 lg:divide-x">
         {/* <TokensComponent /> */}
         {/* ------------ Leftside Main ---------- */}
-        <div className="lg:col-span-6 pt-16 px-10">
+        {<div className={`${isMobile && responsivCompo ? "hidden" : "lg:col-span-6 pt-16 px-10"}`}>
           <div className="">
             <LeftHeader
               title={"Dashboard"}
@@ -172,7 +172,7 @@ const MainLayout = () => {
               handleShowWallet={handleShowWallet}
             />
           </div>
-        </div>
+        </div>}
 
         <hr className="lg:hidden mt-10 lg:mt-0" />
 

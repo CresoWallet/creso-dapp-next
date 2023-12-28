@@ -41,7 +41,7 @@ const Mainnet = ({
     <div className="flex flex-col xl:space-y-8 md:space-y-8 space-y-2">
       <div>
         <div className="flex items-center justify-between">
-          <p className="font-bold text-xl">Ethereum Mainnet</p>
+          <p className="font-bold text-xl lg:my-0 my-4">Ethereum Mainnet </p>
           <div className="flex  gap-2 items-center cursor-pointer group">
             <Image src={PinkPlus} alt="" />
             <p

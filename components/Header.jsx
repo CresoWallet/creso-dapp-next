@@ -107,8 +107,8 @@ const Header = () => {
               <p className="font-bold text-lg">{user?.username}</p>
               <p className="text-xs text-[#A09FAA]">{user?.email}</p>
               <p className="text-xs text-[#A09FAA]"></p>
-              Last Backup:
-              <p className="text-xm text-black ml-10">28 OCT 2023</p>{" "}
+              Last Backup: 
+              <p className="text-xm text-black">28 OCT 2023</p>{" "}
             </div>
             <hr />
             <Link href="/account">

@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import Image from "next/image";
 import { useSnackbar } from "notistack";
-
+import axios from "axios";
 import PinkPlus from "../assets/Dashboard/PinkPlus.png";
 import Wallet from "../assets/Dashboard/walletIcon.png";
 import Copy from "../assets/Dashboard/Copy.png";
@@ -28,15 +28,45 @@ const Mainnet = ({
     eoaWalletAddress,
     activeButton,
     setActiveButton,
-    allToken
+    allToken,
   } = useContext(WalletContext);
   const { enqueueSnackbar } = useSnackbar();
+  const [tokenPrices, setTokenPrices] = useState([]);
+  console.log("tokenPrices-->", tokenPrices);
   useEffect(() => {
     if (!showWallet) {
       setActiveButton("AA");
     }
   }, [activeButton]);
 
+  useEffect(() => {
+    const fetchTokenPrices = async () => {
+      try {
+        const ethResponse = await axios.get(
+          "https://api.coingecko.com/api/v3/coins/ethereum?market_data=true"
+        );
+        const ethPrice = ethResponse.data.market_data.current_price.usd;
+        //setEthPrice(ethPrice);
+        console.log("ethPrice", ethPrice);
+
+        const tokenResponse = await axios.get(
+          `https://api.coingecko.com/api/v3/simple/token_price/ethereum?contract_addresses=0x5cb3ce6d081fb00d5f6677d196f2d70010ea3f4a%2C0x74232704659ef37c08995e386a2e26cc27a8d7b1%2C0x2b1d36f5b61addaf7da7ebbd11b35fd8cfb0de31%2C0x07e0edf8ce600fb51d44f51e3348d77d67f298ae%2C0x94025780a1ab58868d9b2dbbb775f44b32e8e6e5%2C0x465a5a630482f3abd6d3b84b39b29b07214d19e5%2C0x024b6e7dc26f4d5579bdd936f8d7bc31f2339999%2C0x6982508145454ce325ddbe47a25d4ec3d2311933%2C0xf6650117017ffd48b725b4ec5a00b414097108a7%2C0x569d0e52c3dbe95983bcc2434cb9f69d905be919&vs_currencies=usd`
+        );
+        console.log("tokenResponse", tokenResponse?.data);
+        const tokenArray = Object.keys(tokenResponse.data).map((address) => ({
+          [address]: {
+            usd: tokenResponse.data[address].usd * ethPrice,
+          },
+        }));
+
+        setTokenPrices(tokenArray);
+      } catch (error) {
+        console.error("Error fetching token prices:", error);
+      }
+    };
+
+    fetchTokenPrices();
+  }, []);
   return (
     <div className="flex flex-col xl:space-y-8 md:space-y-8 space-y-2">
       <div>
@@ -56,10 +86,11 @@ const Mainnet = ({
       <div>
         <div className="flex xl:flex-row flex-col items-center xl:gap-4 md:gap-4 gap-2">
           <div
-            className={`${activeButton === "AA"
-              ? "bg-black"
-              : "bg-white hover:bg-gray-200 duration-500 "
-              } rounded-full px-4 py-4 w-full border-2 border-black cursor-pointer group relative`}
+            className={`${
+              activeButton === "AA"
+                ? "bg-black"
+                : "bg-white hover:bg-gray-200 duration-500 "
+            } rounded-full px-4 py-4 w-full border-2 border-black cursor-pointer group relative`}
           >
             <div className="flex flex-row justify-between items-center gap-3 group">
               <Image
@@ -69,8 +100,9 @@ const Mainnet = ({
               />
               <div className="flex flex-col space-y-1">
                 <p
-                  className={`${activeButton === "AA" ? "text-white" : "text-black"
-                    }  font-semibold text-sm md:text-lg xl:text-sm`}
+                  className={`${
+                    activeButton === "AA" ? "text-white" : "text-black"
+                  }  font-semibold text-sm md:text-lg xl:text-sm`}
                 >
                   Keyless Secure Wallet
                 </p>
@@ -107,10 +139,11 @@ const Mainnet = ({
             </div>
           </div>
           <div
-            className={`${activeButton === "EOA"
-              ? "bg-black"
-              : "bg-white  hover:bg-gray-200 duration-500 "
-              } rounded-full px-4 py-4 w-full border-2 border-black cursor-pointer group relative`}
+            className={`${
+              activeButton === "EOA"
+                ? "bg-black"
+                : "bg-white  hover:bg-gray-200 duration-500 "
+            } rounded-full px-4 py-4 w-full border-2 border-black cursor-pointer group relative`}
           >
             <div className="flex flex-row justify-between items-center gap-3">
               <Image
@@ -120,8 +153,9 @@ const Mainnet = ({
               />
               <div className="flex flex-col space-y-1">
                 <p
-                  className={`${activeButton === "EOA" ? "text-white" : "text-black"
-                    }  font-semibold text-sm md:text-lg xl:text-sm`}
+                  className={`${
+                    activeButton === "EOA" ? "text-white" : "text-black"
+                  }  font-semibold text-sm md:text-lg xl:text-sm`}
                 >
                   EOA Wallet
                 </p>
@@ -160,21 +194,24 @@ const Mainnet = ({
         </div>
       </div>
 
-      {allToken ? allToken?.map((e, ind) => (
-        <div key={ind}>
-          <TransactionItem
-            icon={e?.logo ? e?.logo : ETH}
-            label={e?.name}
-            amount="$1,794.28"
-            value={e?.balance}
-            valueName={e?.name}
-            send="Send"
-            receive="Receive"
-          />
-          <hr />
-        </div>
-      )) : <History />
-      }
+      {allToken ? (
+        allToken?.map((e, ind) => (
+          <div key={ind}>
+            <TransactionItem
+              icon={e?.logo ? e?.logo : ETH}
+              label={e?.name}
+              amount="$1,794.28"
+              value={e?.balance}
+              valueName={e?.name}
+              send="Send"
+              receive="Receive"
+            />
+            <hr />
+          </div>
+        ))
+      ) : (
+        <History />
+      )}
     </div>
   );
 };

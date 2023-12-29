@@ -12,12 +12,12 @@ const TokensComponent = () => {
     activeButton,
     setFilteredData,
     setOriginalData,
+    eoaWalletAddress,
+    secureWalletAddress,
   } = useContext(WalletContext);
 
   const address =
-    activeButton === "AA"
-      ? "0x3cC69915d2CA2E7c4A7C930600A7cDCBda34EB2C"
-      : "0x0Ad5c298409688C6D8Acb5F463d0051bd98b73e1";
+    activeButton === "AA" ? secureWalletAddress : eoaWalletAddress;
 
   const baseURL = process.env.NEXT_PUBLIC_ALCHEMY_API_KEY;
   const data = {
@@ -134,11 +134,8 @@ const TokensComponent = () => {
 
       const cache = await caches.open("my-cache");
       cache.put("/api/data", new Response(JSON.stringify(data)));
-
-      setLoading(false);
     } catch (error) {
       console.error("Error fetching and caching data:", error);
-      setLoading(false);
     }
   };
 

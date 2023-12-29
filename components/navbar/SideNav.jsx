@@ -15,6 +15,8 @@ import Telegram from "../../assets/Dashboard/telegram.png";
 import Etherscan from "../../assets/Dashboard/etherscan.png";
 import Discord from "../../assets/Dashboard/github.png";
 import Github from "../../assets/Dashboard/discord.png";
+import cresow from "../../assets/Dashboard/creso logo white.svg"
+import cresob from "../../assets/Dashboard/creso logo black.svg"
 
 const SideNav = () => {
   const pathName = usePathname();
@@ -23,11 +25,15 @@ const SideNav = () => {
   return (
     <div className="bg-[#2100EC] rounded-3xl flex flex-col pt-12 min-h-screen lg:h-full items-center lg:items-start  ">
       <div className="flex flex-row items-center gap-1 px-8 relative Mainlogo text-white">
-        <Image alt="creso-logo" src={Creso3} className="h-10 w-10" />
+        <Image alt="creso-logo" src={cresow} className=" " />
+        
+{/* 
         <p className=" text-4xl hidden lg:block items-center">creso</p>
         <p className="text-sm mt-4 text-[#D0F500]">Beta</p>
+
+         */}
       </div>
-      <div className={`flex flex-col mt-14 ${isMobile ? "mr-5" : "mr-10"}`}>
+      <div className={`flex flex-col ${isMobile ? "mr-5" : "mr-10"}`}>
         <NavItem
           pathName={pathName}
           href="/dashboard"

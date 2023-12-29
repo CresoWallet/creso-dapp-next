@@ -20,6 +20,7 @@ import { FaSquareXTwitter } from "react-icons/fa6";
 import { FaGoogle } from "react-icons/fa";
 import { FaApple } from "react-icons/fa";
 import Creso3 from "../../assets/Dashboard/creso3.png";
+import cresow from "../../assets/Dashboard/creso logo white.svg"
 
 const LoginPage = () => {
   const router = useRouter();
@@ -77,11 +78,11 @@ const LoginPage = () => {
         <div className="flex flex-row items-center justify-center my-16 gap-1 relative Mainlogo text-white mt-4 ">
           <Image
             alt="creso-logo"
-            src={Creso3}
-            className="lg:w-14 lg:h-14 h-10 w-10"
+            src={cresow}
+            className="lg:w-96 lg:h-96 h-20 w-20"
           />
-          <p className="lg:text-5xl text-4xl lg:block items-center">creso</p>
-          <p className="text-sm lg:mt-6 mt-4 text-[#D0F500]">Beta</p>
+          {/* <p className="lg:text-5xl text-4xl lg:block items-center">creso</p>
+          <p className="text-sm lg:mt-6 mt-4 text-[#D0F500]">Beta</p> */}
         </div>
 
         <Image alt="" src={BgImage} className="hidden xl:flex md:flex" />

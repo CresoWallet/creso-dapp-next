@@ -9,7 +9,8 @@ import CreateWallet from "./CreateWallet";
 import { createEOAWalletAPI, createSmartWalletAPI } from "@/clientApi/wallet";
 import { enqueueSnackbar } from "notistack";
 import { WalletContext } from "@/providers/WalletProvider";
-
+import { FiInfo } from "react-icons/fi";
+import Sucess from "../assets/Dashboard/Sucess.svg";
 const LegacyWallet = ({ handleBackButton, type, handleClose }) => {
   const [wallet, setWallet] = useState(false);
   const [inputText, setInputText] = useState("");
@@ -100,28 +101,30 @@ const LegacyWallet = ({ handleBackButton, type, handleClose }) => {
         <Image alt="" src={Ethereum} className="w-10 h-10" />
         <p className="font-semibold">Ethereum Mainnet</p>
       </div>
-      <div className="flex flex-row">
-        <p className="text-xs text-[#A09FAA]">
+      <div className="flex flex-row gap-2 text-[#A09FAA]">
+        <FiInfo size={35} />
+        <p className="text-xs ">
           Compatible with all Dapps; lower Gas fees; only supports paying gas
-          with native token; does not support advanced features. Learn More
+          with native token; does not support advanced features.
+          <span className="text-[#FF4085] px-1 font-bold">Learn More</span>
         </p>
       </div>
       <div className="flex flex-col">
-        <div className="flex flex-row items-center justify-between">
+        <div className="flex flex-row items-center justify-between py-2 px-4 font-bold">
           <p className="px-4">Name Wallet</p>
           <p className="px-4">{inputText.length}/20</p>
         </div>
-        <div className="border border-solid border-[#E5E5F0] rounded-full px-4 py-4">
+        <div className="border border-solid border-[#E5E5F0] rounded-full mx-3 py-3">
           <div className="flex flex-row items-center justify-between">
             <input
               required={true}
               type="text"
               placeholder="E.g. My Wallet"
-              className="placeholder:text-sm focus:outline-none"
+              className="placeholder:text-sm placeholder:text-black placeholder:font-bold  px-5 focus:outline-none"
               value={inputText}
               onChange={handleChange}
             />
-            <div>
+            <div className="px-2">
               <CustomButton3
                 title={type}
                 buttonColor="[#EEEEF1]"
@@ -136,10 +139,12 @@ const LegacyWallet = ({ handleBackButton, type, handleClose }) => {
           </p>
         )}
       </div>
-      <div className="flex flex-row justify-center gap-2">
-        <p className="text-sm">
+      <div className="flex flex-row justify-center items-center gap-2">
+        <Image alt="" src={Sucess} className="w-8 h-8" />
+        <p className="text-sm font-bold">
           Same address on other EVM compatible chains will be created
-          automatically. Networks Supported
+          automatically.
+          <span className="text-[#FF4085] px-1">Networks Supported</span>
         </p>
       </div>
       <div className="flex flex-row gap-2">

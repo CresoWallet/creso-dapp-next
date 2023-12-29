@@ -77,22 +77,12 @@
 
 // export default CoinCard;
 
-
-
-
-
-
-
-
-
 /* eslint-disable @next/next/no-img-element */
 import React, { useContext } from "react";
 import { WalletContext } from "@/providers/WalletProvider";
 
 const CoinCard = ({ handleCoinWallet }) => {
-  const {
-    originalData
-  } = useContext(WalletContext);
+  const { originalData } = useContext(WalletContext);
   // console.log("🚀 ~ CoinCard ~ originalData:", originalData)
 
   // const sortedData = originalData.slice().sort((a, b) => b.value - a.value);
@@ -106,7 +96,7 @@ const CoinCard = ({ handleCoinWallet }) => {
           <div
             className="md:flex flex-col space-y-1 items-center cursor-pointer hover:-translate-y-1 duration-500"
             onClick={(e) => {
-              handleCoinWallet({ item: item });
+              handleCoinWallet(item);
             }}
             key={index}
           >
@@ -131,4 +121,3 @@ const CoinCard = ({ handleCoinWallet }) => {
 };
 
 export default CoinCard;
-

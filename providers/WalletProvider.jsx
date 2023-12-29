@@ -36,13 +36,12 @@ const WalletContextProvider = ({ children }) => {
   const [isLoaded, setIsLoaded] = useState(false);
   const [navbarTrigger, setNavbarTrigger] = useState(false);
   const isMobile = useMediaQuery({ query: `(max-width: 768px)` });
-  const [allToken, setAllToken] = useState([])
-  const [totalBalance, setTotalBalance] = useState(0)
+  const [allToken, setAllToken] = useState([]);
+  const [totalBalance, setTotalBalance] = useState(0);
   const [activeButton, setActiveButton] = useState("AA");
-  const [originalData, setOriginalData] = useState([])
-  const [filteredData, setFilteredData] = useState([])
+  const [originalData, setOriginalData] = useState([]);
+  const [filteredData, setFilteredData] = useState([]);
   const [send, setSend] = useState(false);
-
 
   // useEffect(() => {
   //   (async () => {
@@ -211,7 +210,7 @@ const WalletContextProvider = ({ children }) => {
         originalData,
         setOriginalData,
         send,
-        setSend
+        setSend,
       }}
     >
       {/* {navbarTrigger && (
@@ -248,9 +247,7 @@ const WalletContextProvider = ({ children }) => {
         )}
       </div>
 
-
       <TokenComponent />
-
     </WalletContext.Provider>
   );
 };

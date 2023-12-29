@@ -236,8 +236,8 @@ body::-webkit-scrollbar-track {
   border-radius: 8px;
 }
 
-.creso-card {
-  background-image: url("../assets//AboutUs//custom.png");
+/*.creso-card {
+  background-image: url("../assets/AboutUs/custom.svg");
   background-size: cover;
   background-position: center;
-}
+}*/

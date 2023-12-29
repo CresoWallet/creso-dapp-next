@@ -8,8 +8,13 @@ const Wallet = ({ setOpenWallet }) => {
   const [detailstoken, setDetailstoken] = useState([]);
   const popupRef = useRef();
 
-  const { secureWalletAddress, eoaWalletAddress, allToken, activeButton } =
-    useContext(WalletContext);
+  const {
+    secureWalletAddress,
+    eoaWalletAddress,
+    allToken,
+    activeButton,
+    setActiveButton,
+  } = useContext(WalletContext);
 
   const handleButtonClick = (buttonIndex) => {
     setActiveButton1(buttonIndex);
@@ -43,14 +48,19 @@ const Wallet = ({ setOpenWallet }) => {
           */}
           <div className="bg-[#ffff]">
             <div className="flex items-center justify-center gap-2 py-2 text-lg font-semibold">
-              <p>Wallets</p>
+              <p className="text-2xl font-bold">Wallets</p>
             </div>
             <div className="flex gap-2 py-2">
               <div
-                className={`flex gap-2 px-3 py-1 ${
-                  activeButton1 === 0 ? "border-green-500" : "border-[#3d45b9]"
-                } border-2 rounded-md shadow-2xl`}
-                onClick={() => handleButtonClick(0)}
+                className={`flex cursor-pointer gap-2 px-3 py-1 ${
+                  activeButton1 === 0
+                    ? "bg-[#D0F500] text-black border-black font-bold"
+                    : "font-medium"
+                } border-2 rounded-md shadow-2xl `}
+                onClick={() => {
+                  //setActiveButton("AA");
+                  handleButtonClick(0);
+                }}
               >
                 <p>AA: </p>
                 <button>
@@ -64,10 +74,15 @@ const Wallet = ({ setOpenWallet }) => {
                 </button>
               </div>
               <div
-                className={`flex gap-2 px-3 py-1 ${
-                  activeButton1 === 1 ? "border-green-500" : "border-[#3d45b9]"
-                } border-2 rounded-md shadow-2xl`}
-                onClick={() => handleButtonClick(1)}
+                className={`flex cursor-pointer gap-2 px-3 py-1 ${
+                  activeButton1 === 1
+                    ? "bg-[#D0F500] text-black border-black font-bold"
+                    : "font-medium"
+                } border-2 rounded-md shadow-2xl `}
+                onClick={() => {
+                  //setActiveButton("");
+                  handleButtonClick(1);
+                }}
               >
                 <p>EOA:</p>
                 <button>
@@ -103,7 +118,7 @@ const Wallet = ({ setOpenWallet }) => {
                 ))}
               </div>
             ) : (
-              <div className="flex items-center justify-center">Loading...</div>
+              <p>No Token</p>
             )}
           </div>
         </div>

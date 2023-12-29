@@ -1,12 +1,9 @@
 import Image from "next/image";
 import React from "react";
 import Settings from "../assets/Swap/settings.png";
-import Note from "../assets/Swap/note.png";0
-
-
-
-
+import Note from "../assets/Swap/note.png";
 import { usePathname } from "next/navigation";
+
 const LeftHeader = (props) => {
   const {
     title,

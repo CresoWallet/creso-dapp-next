@@ -1,31 +1,50 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import Image from "next/image";
 import Redarrow from "../assets/Dashboard/RedArrow.png";
 import Greenarrow from "../assets/Dashboard/GreenArrow.png";
-import CoinWallet from "./CoinWallet";
+import SendETH from "./SendETH"; 
+import WalletAddress from "./WalletAddress";
+import { network } from "@/utils/data/coinlist";
+import { WalletContext } from "@/providers/WalletProvider";
 
 const TransactionItem = ({ icon, label, amount, value, valueName }) => {
-  // const [sendPopupVisible, setSendPopupVisible] = useState(false);
-  // const [receivePopupVisible, setReceivePopupVisible] = useState(false);
   const [popupVisible, setPopupVisible] = useState(false);
   const [popupType, setPopupType] = useState(""); // "send" or "receive"
+
+  
+
+  // const {
+  //   send, setSend,
+  //   totalBalance
+  // } = useContext(WalletContext);
+  // const [mainContentVisible, setMainContentVisible] = useState(true);
+  // const handleWalletClick = () => {
+  //   setWalletAddress(true);
+  //   setMainContentVisible(false);
+  // };
+
+  // const handleClick = () => {
+  //   setSend(true);
+  //   setMainContentVisible(false);
+  // };
 
   const handleButtonClick = (type) => {
     setPopupType(type);
     setPopupVisible(true);
+    setMainContentVisible(false);
   };
 
   const handleClosePopup = () => {
     setPopupVisible(false);
   };
+
+  
   const displayValueName = valueName || '';
-
-  // Split displayValueName into an array of words
   const words = displayValueName.split(' ');
-
-  // Take the first two words
   const firstTwoWords = words.slice(0, 2).join(' ');
+
   return (
+    
     <div className="flex xl:flex-nowrap flex-wrap justify-between items-center">
       <div className="flex gap-3 items-center my-5">
         <Image alt="" src={icon} className="w-10 h-10" />
@@ -50,12 +69,23 @@ const TransactionItem = ({ icon, label, amount, value, valueName }) => {
         </div>
       </div>
 
-      {popupVisible && (
-        // Include your Popup component here with necessary props
-        <div className="popup">
-          <p>{popupType === "send" ? "Send" : "Receive"} Popup</p>
-          <button onClick={handleClosePopup}>Close Popup</button>
-        </div>
+      {popupVisible && popupType === "send" && (
+        <SendETH
+          handleBackButton={handleClosePopup}         
+          // walletArr={wallets.filter((e) => e.type === walletType)}
+          networks={network}
+          // handleClose={handleClose}
+        />
+      )}
+      
+
+      {popupVisible && popupType === "receive" && (
+        <WalletAddress
+        // wallet={wallets.filter(
+        //   (e, index) => e.type === walletType && index === 0
+        // )}
+          handleBackButton={handleClosePopup}
+        />
       )}
     </div>
   );

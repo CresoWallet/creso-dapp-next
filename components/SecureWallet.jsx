@@ -17,18 +17,11 @@ import WalletAddress from "./WalletAddress";
 import { network } from "@/utils/data/coinlist";
 import { WalletContext } from "@/providers/WalletProvider";
 
-const SecureWallet = ({
-  handleClose,
-  wallets,
-  walletType,
-}) => {
+const SecureWallet = ({ handleClose, wallets, walletType }) => {
   // const [send, setSend] = useState(false);
   const [walletAddress, setWalletAddress] = useState(false);
 
-  const {
-    send, setSend,
-    totalBalance
-  } = useContext(WalletContext);
+  const { send, setSend, totalBalance } = useContext(WalletContext);
   const [mainContentVisible, setMainContentVisible] = useState(true);
   const handleWalletClick = () => {
     setWalletAddress(true);

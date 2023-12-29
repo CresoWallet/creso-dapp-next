@@ -63,7 +63,7 @@ const RightSide = (props) => {
           {matchPath && (
             <CresoCard balance={secureWalletBalance + eoaWalletBalance} />
           )}
-          <div className="grid grid-cols-2 gap-2">
+          <div className="grid grid-cols-2 gap-2 my-8">
             <CapCard
               name="Market Cap"
               amount="$1,312.6B"

@@ -112,7 +112,10 @@ const Mainnet = ({
                     {minifyEthereumAddress(secureWalletAddress)}
                   </p>
                   <Image
-                    src={activeButton ? Copy : Copy2}
+                    src={activeButton === "AA" ? Copy : Copy2}
+                    className={`${
+                      activeButton === "AA" ? "text-white" : "text-black"
+                    }`}
                     alt="copy"
                     onClick={() => {
                       copyToClipBoard(secureWalletAddress);
@@ -165,7 +168,7 @@ const Mainnet = ({
                     {minifyEthereumAddress(eoaWalletAddress)}
                   </p>
                   <Image
-                    src={activeButton ? Copy : Copy2}
+                    src={activeButton === "EOA" ? Copy : Copy2}
                     alt=""
                     onClick={() => {
                       copyToClipBoard(eoaWalletAddress);

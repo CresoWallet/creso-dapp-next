@@ -44,41 +44,45 @@ const CoinWallet = ({ handleClose, wallets, coinData }) => {
         />
       )}
       {walletAddress && (
-        <WalletAddress 
-        //  wallet= pass relevant wallet data here 
-        handleBackButton={() => setWalletAddress(false)}
-      />
+        <WalletAddress
+          //  wallet= pass relevant wallet data here
+          handleBackButton={() => setWalletAddress(false)}
+        />
       )}
       <div className="flex flex-col md:mx-8 mx-6 xl:mx-8 mt-10 xl:space-y-10 md:space-y-10 space-y-4">
         <p className="text-black font-bold text-xl ml-6 xl:ml-0 md:ml-0">
-          {coinData.coinName}
+          {coinData.name}
         </p>
         <div className="flex flex-row items-center gap-2">
           <Image
             alt=""
-            src={
-              coinData.coinName === "ETH"
-                ? ETH
-                : coinData.coinName === "BNB"
-                ? BnB
-                : coinData.coinName === "USDT"
-                ? USDT
-                : ETH
-            }
-            className="w-14 h-14"
+            //src={
+            //  coinData.coinName === "ETH"
+            //    ? ETH
+            //    : coinData.coinName === "BNB"
+            //    ? BnB
+            //    : coinData.coinName === "USDT"
+            //    ? USDT
+            //    : ETH
+            //}
+            src={coinData.logoURI}
+            width={40}
+            height={40}
+            //className="w-14 h-14"
           />
           <div className="flex flex-col">
-            <p className="">
-              {coinData.coinName === "ETH"
+            <p className="font-bold">
+              {coinData.name}
+              {/*{coinData.coinName === "ETH"
                 ? "Ethereum"
                 : coinData.coinName === "BNB"
                 ? "Bitcoin"
                 : coinData.coinName === "USDT"
                 ? "Tether"
-                : ""}
+                : ""}*/}
             </p>
             <div className="flex flex-row xl:gap-2 gap-2 md:gap-2 items-center">
-              <p className="font-bold md:text-xs text-base">{`3,187.99 ${coinData.coinName}`}</p>
+              <p className="font-bold md:text-xs text-base">{`3,187.99 ${coinData.symbol}`}</p>
               <p className="text-xs text-[#A09FAA]">{coinData.value}</p>
             </div>
           </div>
@@ -87,7 +91,9 @@ const CoinWallet = ({ handleClose, wallets, coinData }) => {
           <div className="flex flex-row items-center justify-between">
             <p className="text-[#A09FAA] text-sm">Network</p>
             <p className="font-semibold text-sm">
-              {coinData?.network === "ethereum" ? "Ethereum Mainnet" : ""}
+              {coinData?.network === "ethereum"
+                ? "Ethereum Mainnet"
+                : "Ethereum Mainnet"}
             </p>
           </div>
           <hr className="text-[#A09FAA] my-4" />

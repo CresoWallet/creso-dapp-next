@@ -21,7 +21,7 @@ const CresoCard = ({ balance }) => {
           <Image alt="" src={Custom} height={500} />
         </div>
 
-        <div className="absolute flex flex-row justify-center items-center top-20 left-10 gap-1">
+        <div className="absolute flex flex-row jus items-center top-20 left-10 gap-1">
           <Image alt="" src={Creso} className="h-6 w-6" />
           <p className="font-bold text-2xl">creso</p>
         </div>

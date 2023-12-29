@@ -144,8 +144,6 @@ const Header = () => {
               </div>
             </Link>
 
-            
-
             <hr />
 
             <div

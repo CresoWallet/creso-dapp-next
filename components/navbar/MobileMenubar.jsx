@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useContext } from "react";
 import { usePathname } from "next/navigation";
 import Image from "next/image";
 import Wallet from "../../assets/Dashboard/Wallet.png";
@@ -7,6 +7,7 @@ import Discover from "../../assets/Dashboard/Discover.png";
 import Swap from "../../assets/Dashboard/Swap.png";
 import Profile from "../../assets/Profile.png";
 import Link from "next/link";
+import { WalletContext } from "@/providers/WalletProvider";
 
 const MobileMenubar = () => {
   return (

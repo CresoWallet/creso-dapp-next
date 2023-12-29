@@ -108,10 +108,10 @@ const Header = () => {
 
       <div
         onClick={handleButton}
-        className="cursor-pointer mx-6
-       "
+        className="cursor-pointer mx-6"
+       
       >
-        <div className="absolute top-2 md:-top-7 lg:top-3 sm:right-6 place-items-end bg-red-500 text-white rounded-full w-10 h-10 flex items-center justify-center md:my-10  lg:mr-7 md:mr-3 mr-10 ">
+        <div className="absolute top-2 md:-top-7 lg:top-3 sm:right-6 place-items-end bg-red-500 text-white rounded-full w-10 h-10 flex items-center justify-center md:my-10  lg:mr-8 lg:my-14 md:mr-3 mr-10 ">
           <p className=" font-semibold text-xs ">
             {user ? getInitials(user.username) : ""}
           </p>
@@ -119,7 +119,7 @@ const Header = () => {
       </div>
       {openPopup && (
         <div
-          className=" fixed top-0 right-0 w-full h-full flex xl:items-start items-center md:items-start z-10 xl:justify-end md:justify-end justify-center bg-gray-800 bg-opacity-75"
+          className="fixed top-0 right-0 w-full h-full flex xl:items-start items-center md:items-start z-10 xl:justify-end md:justify-end justify-center bg-gray-800 bg-opacity-75"
           ref={popupRef}
           onClick={handleBackgroundClick}
         >
@@ -172,7 +172,7 @@ const Header = () => {
 
                {/* Add social media icons */}
                {isSmallScreen && (
-              <div className="flex justify-center gap-2 pt-4  ">
+              <div className="flex justify-center gap-2 pt-4">
                 <a
                   href="https://twitter.com/cresowallet"
                   target="_blank"

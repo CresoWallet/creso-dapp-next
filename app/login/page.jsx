@@ -5,7 +5,8 @@ import Image from "next/image";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { useForm } from "react-hook-form";
-import BgImage from "../../assets/auth/bgImage.png";
+import BgImage from "../../public/loginImage.png";
+// import BgImage from "../../assets/auth/bgImage.png";
 import CustomButton from "@/components/CustomButton";
 import Apple from "../../assets/auth/Apple.png";
 import X from "../../assets/auth/x.png";
@@ -84,6 +85,7 @@ const LoginPage = () => {
           <p className="text-sm lg:mt-6 mt-4 text-[#D0F500]">Beta</p>
         </div>
 
+        {/* <Image alt="" src={BgImage} className="hidden xl:flex md:flex" /> */}
         <Image alt="" src={BgImage} className="hidden xl:flex md:flex" />
 
         <div className="flex xl:hidden md:hidden flex-col space-y-4 items-center justify-center px-4 py-4">

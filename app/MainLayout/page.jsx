@@ -118,12 +118,12 @@ const MainLayout = () => {
   // if (status !== "authenticated") {
   //   return <div>{/* {<Loader/>} */} Loading...</div>;
   // }
-  const responsivCompo = showCoinWallet || showWallet || showCreateWallet
+  const responsivCompo = showCoinWallet || showWallet || showCreateWallet;
   return (
     <>
       {/* ------------ Popup Main ---------- */}
-      {
-        isMobile && <div className="lg:hidden block min-w-max">
+      {isMobile && (
+        <div className="lg:hidden block min-w-max">
           {showWallet && (
             <SecureWallet
               handleClose={handleCloseShowWallet}
@@ -146,38 +146,50 @@ const MainLayout = () => {
             )}
           </div>
         </div>
-      }
+      )}
       <div className="grid lg:grid-cols-10 lg:divide-x">
         {/* <TokensComponent /> */}
         {/* ------------ Leftside Main ---------- */}
-        {<div className={`${isMobile && responsivCompo ? "hidden" : "lg:col-span-6 pt-16 px-10"}`}>
-          <div className="">
-            <LeftHeader
-              title={"Dashboard"}
-              descriptionColor={""}
-              icon1={<CiSearch />}
-              mobileImg={Ham}
-              navbarTrigger={navbarTrigger}
-              setNavbarTrigger={setNavbarTrigger}
-              isMobile={isMobile}
-            />
+        {
+          <div
+            className={`${
+              isMobile && responsivCompo
+                ? "hidden"
+                : "lg:col-span-6 pt-16 px-10"
+            }`}
+          >
+            <div className="">
+              <LeftHeader
+                title={"Dashboard"}
+                descriptionColor={""}
+                icon1={<CiSearch />}
+                mobileImg={Ham}
+                navbarTrigger={navbarTrigger}
+                setNavbarTrigger={setNavbarTrigger}
+                isMobile={isMobile}
+              />
 
-            <LeftSide
-              showWallet={showWallet}
-              navbarTrigger={navbarTrigger}
-              setNavbarTrigger={setNavbarTrigger}
-              handleCreateWallet={handleCreateWallet}
-              handleCoinWallet={handleCoinWallet}
-              handleShowModel={handleShowModel}
-              handleShowWallet={handleShowWallet}
-            />
+              <LeftSide
+                showWallet={showWallet}
+                navbarTrigger={navbarTrigger}
+                setNavbarTrigger={setNavbarTrigger}
+                handleCreateWallet={handleCreateWallet}
+                handleCoinWallet={handleCoinWallet}
+                handleShowModel={handleShowModel}
+                handleShowWallet={handleShowWallet}
+              />
+            </div>
           </div>
-        </div>}
+        }
 
         <hr className="lg:hidden mt-10 lg:mt-0" />
 
         {/* ------------ Rightside Main ---------- */}
-        <div className={`${responsivCompo ? "px-0  border-l-2 " : " px-10  pt-14"} lg:col-span-4`}>
+        <div
+          className={`${
+            responsivCompo ? "px-0  border-l-2 " : " px-10  pt-14"
+          } lg:col-span-4`}
+        >
           <div className="hidden lg:block">
             <div className="hidden lg:flex">
               {showCreateWallet && <CreateWallet handleClose={handleClose} />}
@@ -204,7 +216,7 @@ const MainLayout = () => {
               )}
             </div>
           </div>
-          {responsivCompo ? null :
+          {responsivCompo ? null : (
             <>
               <Header />
               <RightSide
@@ -224,7 +236,7 @@ const MainLayout = () => {
                 user={user}
               />
             </>
-          }
+          )}
         </div>
       </div>
     </>

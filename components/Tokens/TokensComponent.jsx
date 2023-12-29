@@ -128,7 +128,7 @@ const TokensComponent = () => {
         "https://tokens.coingecko.com/uniswap/all.json"
       );
       const data = response?.data?.tokens;
-      //  console.log(data);
+      console.log("🚀 ~ fetchAllToken ~ data:", data)
       setOriginalData(data);
       setFilteredData(data);
 

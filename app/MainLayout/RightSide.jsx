@@ -59,7 +59,7 @@ const RightSide = (props) => {
         {showModal && <Modal onClose={() => setShowModal(false)} user={user} />}
 
         {/* right side component */}
-        <div className="col-span-1 xl:px-7 md:px-2 px-2 xl:pt-8 md:pt-8">
+        <div className="col-span-1 xl:px-7 md:px-2 px-2 xl:pt-8 md:pt-8 mt-6">
           {matchPath && (
             <CresoCard balance={secureWalletBalance + eoaWalletBalance} />
           )}

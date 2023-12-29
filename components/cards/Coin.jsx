@@ -87,13 +87,6 @@
 
 /* eslint-disable @next/next/no-img-element */
 import React, { useContext } from "react";
-// import Image from "next/image";
-// import ETH from "../../assets/Dashboard/ethSelect.png";
-// import USDT from "../../assets/Dashboard/usdt.png";
-// import DAI from "../../assets/Dashboard/dai.png";
-// import BnB from "../../assets/Dashboard/bnb.png";
-// import WETH from "../../assets/Dashboard/weth.png";
-// import { coinList } from "@/utils/data/coinlist";
 import { WalletContext } from "@/providers/WalletProvider";
 
 const CoinCard = ({ handleCoinWallet }) => {

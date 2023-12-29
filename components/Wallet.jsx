@@ -47,35 +47,35 @@ const Wallet = ({ setOpenWallet }) => {
             </div>
             <div className="flex gap-2 py-2">
               <div
-                className={`flex gap-2 px-5 py-1 ${
+                className={`flex gap-2 px-3 py-1 ${
                   activeButton1 === 0 ? "border-green-500" : "border-[#3d45b9]"
-                } border rounded-md`}
+                } border-2 rounded-md shadow-2xl`}
                 onClick={() => handleButtonClick(0)}
               >
                 <p>AA: </p>
                 <button>
                   {`${
                     secureWalletAddress
-                      ? secureWalletAddress.slice(0, 3) +
+                      ? secureWalletAddress.slice(0, 4) +
                         "...." +
-                        secureWalletAddress.slice(-3)
+                        secureWalletAddress.slice(-4)
                       : ""
                   }`}
                 </button>
               </div>
               <div
-                className={`flex gap-2 px-5 py-1 ${
+                className={`flex gap-2 px-3 py-1 ${
                   activeButton1 === 1 ? "border-green-500" : "border-[#3d45b9]"
-                } border rounded-md`}
+                } border-2 rounded-md shadow-2xl`}
                 onClick={() => handleButtonClick(1)}
               >
                 <p>EOA:</p>
                 <button>
                   {`${
                     eoaWalletAddress
-                      ? eoaWalletAddress.slice(0, 3) +
+                      ? eoaWalletAddress.slice(0, 4) +
                         "...." +
-                        eoaWalletAddress.slice(-3)
+                        eoaWalletAddress.slice(-4)
                       : ""
                   }`}
                 </button>

@@ -19,8 +19,6 @@ import History from "./dashboard/History";
 const Mainnet = ({
   handleOpenWallet,
   handleCreateWallet,
-  // eoaWalletAddress,
-  // secureWalletAddress,
   showWallet,
 }) => {
   const {
@@ -33,6 +31,7 @@ const Mainnet = ({
   const { enqueueSnackbar } = useSnackbar();
   const [tokenPrices, setTokenPrices] = useState([]);
   console.log("tokenPrices-->", tokenPrices);
+  
   useEffect(() => {
     if (!showWallet) {
       setActiveButton("AA");
@@ -47,7 +46,6 @@ const Mainnet = ({
           "https://api.coingecko.com/api/v3/coins/ethereum?market_data=true"
         );
         const ethPrice = ethResponse.data.market_data.current_price.usd;
-        //setEthPrice(ethPrice);
         console.log("ethPrice", ethPrice);
 
         const tokenResponse = await axios.get(
@@ -68,6 +66,7 @@ const Mainnet = ({
 
     fetchTokenPrices();
   }, []);
+
   return (
     <div className="flex flex-col xl:space-y-8 md:space-y-8 space-y-2">
       <div>
@@ -86,6 +85,7 @@ const Mainnet = ({
       </div>
       <div>
         <div className="flex xl:flex-row flex-col items-center xl:gap-4 md:gap-4 gap-2">
+          {/* Keyless Secure Wallet */}
           <div
             className={`${
               activeButton === "AA"
@@ -112,8 +112,8 @@ const Mainnet = ({
                     {minifyEthereumAddress(secureWalletAddress)}
                   </p>
                   <Image
-                    src={activeButton ? Copy : Copy2}
-                    alt="copy"
+                    src={activeButton === "AA" ? Copy : Copy2}
+                    alt=""
                     onClick={() => {
                       copyToClipBoard(secureWalletAddress);
                       enqueueSnackbar("URL Copied", {
@@ -139,6 +139,8 @@ const Mainnet = ({
               ></div>
             </div>
           </div>
+
+          {/* EOA Wallet */}
           <div
             className={`${
               activeButton === "EOA"
@@ -152,7 +154,7 @@ const Mainnet = ({
                 alt=""
                 className="md:w-14 md:h-14 xl:w-12 xl:h-12"
               />
-              <div className="flex flex-col space-y-1">
+              <div className="flex flex-col space -y-1">
                 <p
                   className={`${
                     activeButton === "EOA" ? "text-white" : "text-black"
@@ -165,7 +167,7 @@ const Mainnet = ({
                     {minifyEthereumAddress(eoaWalletAddress)}
                   </p>
                   <Image
-                    src={activeButton ? Copy : Copy2}
+                    src={activeButton === "EOA" ? Copy : Copy2}
                     alt=""
                     onClick={() => {
                       copyToClipBoard(eoaWalletAddress);
@@ -219,3 +221,4 @@ const Mainnet = ({
 };
 
 export default Mainnet;
+

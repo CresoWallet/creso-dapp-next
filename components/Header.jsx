@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, useRef, useEffect  } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import Image from "next/image";
 import Language from "../assets/Dashboard/language.png";
 import Dollar from "../assets/Dashboard/dollor2.png";
@@ -106,11 +106,7 @@ const Header = () => {
         <p className="m-2 text-base lg:block ">creso</p>
       </div>
 
-      <div
-        onClick={handleButton}
-        className="cursor-pointer mx-6"
-       
-      >
+      <div onClick={handleButton} className="cursor-pointer mx-6">
         <div className="absolute top-2 md:-top-7 lg:top-3 sm:right-6 place-items-end bg-red-500 text-white rounded-full w-10 h-10 flex items-center justify-center md:my-10  lg:mr-8 lg:my-14 md:mr-3 mr-10 ">
           <p className=" font-semibold text-xs ">
             {user ? getInitials(user.username) : ""}
@@ -139,14 +135,16 @@ const Header = () => {
             </div>
             <hr />
             <Link href="/account">
-              <div className="flex flex-row items-center justify-between cursor-pointer hover:scale-105 py-4 hover:font-bold">
-                 <div className="flex flex-row gap-2 pl-2 items-center">
+              <div className="flex flex-row items-center -between cursor-pointer hover:scale-105 py-4 hover:font-bold">
+                <div className="flex flex-row gap-2 pl-2 items-center">
                   <AiOutlineUser />
                   <p className="hover:font-bold">Account</p>
                 </div>
                 <MdKeyboardArrowRight />
               </div>
             </Link>
+
+            
 
             <hr />
 
@@ -170,8 +168,8 @@ const Header = () => {
               <p className="text-[#FF4085]">Disconnect </p>
             </div>
 
-               {/* Add social media icons */}
-               {isSmallScreen && (
+            {/* Add social media icons */}
+            {isSmallScreen && (
               <div className="flex justify-center gap-2 pt-4">
                 <a
                   href="https://twitter.com/cresowallet"
@@ -218,7 +216,6 @@ const Header = () => {
                 </a>
               </div>
             )}
-            
           </div>
         </div>
       )}

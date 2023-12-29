@@ -15,8 +15,8 @@ import { getTokenBalance, getWalletBalance } from "@/services/ethers/wallet";
 import SideNav from "@/components/navbar/SideNav";
 import { useMediaQuery } from "react-responsive";
 import { usePathname } from "next/navigation";
-import MobileMenubar from "@/components/navbar/mobileMenubar";
 import TokenComponent from "@/components/Tokens/TokensComponent";
+import MobileMenubar from "@/components/navbar/MobileMenubar";
 
 export const WalletContext = createContext();
 

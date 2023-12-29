@@ -29,8 +29,8 @@ const MainLayout = () => {
   const [usd, setUsd] = useState(0);
   // const [wallets, setWallets] = useState([]);
   const [walletType, setWalletType] = useState("");
-  const [coinData, setCoinData] = useState("");
-
+  const [coinData, setCoinData] = useState([]);
+  console.log("coinData", coinData);
   const { user, isAuthenticated, status } = useUser();
   const {
     secureWalletBalance,
@@ -67,7 +67,7 @@ const MainLayout = () => {
   };
 
   const handleCoinWallet = (data) => {
-    setCoinData(data?.item);
+    setCoinData(data);
     setShowCoinWallet(true);
     // close other models
     setShowCreateWallet(false);

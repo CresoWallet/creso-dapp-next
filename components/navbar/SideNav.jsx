@@ -1,11 +1,15 @@
 /* eslint-disable @next/next/no-img-element */
-import React from "react";
+import React, { useState } from "react";
 import Image from "next/image";
 import Creso3 from "../../assets/Dashboard/creso3.png";
 import Wallet from "../../assets/Dashboard/Wallet.png";
+import Wallet1 from "../../assets/Dashboard/Wallet1.png";
 import Discover from "../../assets/Dashboard/Discover.png";
+import Discover1 from "../../assets/Dashboard/Discover1.png";
+import Swap1 from "../../assets/Dashboard/Swap1.png";
 import Swap from "../../assets/Dashboard/Swap.png";
 import Info from "../../assets/Dashboard/info.png";
+import Info1 from "../../assets/Dashboard/info1.png";
 import Support from "../../assets/Dashboard/Support.png";
 import { usePathname } from "next/navigation";
 import { useMediaQuery } from "react-responsive";
@@ -19,6 +23,11 @@ import Github from "../../assets/Dashboard/discord.png";
 const SideNav = () => {
   const pathName = usePathname();
   const isMobile = useMediaQuery({ query: `(max-width: 760px)` });
+  const [activeIcon, setActiveIcon] = useState(null);
+
+  const handleIconClick = (iconName) => {
+    setActiveIcon(iconName);
+  };
 
   return (
     <div className="bg-[#2100EC] rounded-3xl flex flex-col pt-12 min-h-screen lg:h-full items-center lg:items-start  ">
@@ -31,30 +40,37 @@ const SideNav = () => {
         <NavItem
           pathName={pathName}
           href="/dashboard"
-          icon={Wallet}
+          icon={pathName === "/dashboard" ? Wallet1 : Wallet}
           label="Dashboard"
+          active={activeIcon === "dashboard"}
+          onClick={() => handleIconClick("dashboard")}
         />
         <NavItem
           pathName={pathName}
           href="/discover"
-          icon={Discover}
+          icon={pathName === "/discover" ? Discover1 : Discover}
           label="Discover"
         />
-        <NavItem pathName={pathName} href="/swap" icon={Swap} label="Swap" />
+        <NavItem
+          pathName={pathName}
+          href="/swap"
+          icon={pathName === "/swap" ? Swap1 : Swap}
+          label="Swap"
+        />
         <div className="py-4 ">
           <hr className="text-[#B1A6F8]" />
         </div>
         <NavItem
           pathName={pathName}
           href="/about"
-          icon={Info}
+          icon={pathName === "/about" ? Info1 : Info}
           label="About us"
         />
 
         <NavItem
           pathName={pathName}
           href="/support"
-          icon={Support}
+          icon={pathName === "/support" ? Support : Support}
           label="Support"
         />
         {/* Add social media icons */}

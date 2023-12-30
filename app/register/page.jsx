@@ -12,7 +12,7 @@ import { useRouter } from "next/navigation";
 import { signUpAPI } from "@/clientApi/auth";
 import { CustomTextField } from "@/components/fields/CustomTextField";
 import { enqueueSnackbar } from "notistack";
-
+import cresow from "../../assets/Dashboard/creso_logo_white.svg";
 
 const RegisterPage = () => {
   const router = useRouter();
@@ -66,8 +66,16 @@ const RegisterPage = () => {
 
   return (
     <div className="grid xl:grid-cols-2 md:grid-cols-2 grid-cols-1 h-screen px-2 py-2 gap-2 xl:gap-0 md:gap-0">
-      <div className="col-span-1 flex justify-center xl:items-center md:items-start bg-[#2100EC] xl:py-8 md:py-8 rounded-2xl">
-        <Image alt="" src={BgImage} className="hidden xl:flex md:flex" />
+      <div className="col-span-1 flex flex-col  justify-center xl:items-center md:items-start bg-[#2100EC] xl:py-8 md:py-8 rounded-2xl">
+        <div className="flex flex-row items-center justify-center my-16 gap-1 relative Mainlogo text-white mt-4 ">
+          <Image alt="creso-logo" src={cresow} className="h-16" />
+        </div>
+        <Image
+          alt=""
+          src={BgImage}
+          height={650}
+          className="hidden xl:flex md:flex"
+        />
         <div className="flex xl:hidden md:hidden flex-col space-y-4 items-center justify-center px-4 py-4">
           <Image alt="" src={MobileImage} />
           <p className="font-bold text-3xl text-center text-white">

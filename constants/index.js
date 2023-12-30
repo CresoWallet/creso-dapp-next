@@ -7,6 +7,7 @@ export const AUTH_TOKEN = "auth_token";
 //   : "http://localhost:8080"
 
 export const BASE_URL = "https://creso-b02eab9f8c40.herokuapp.com";
+//export const BASE_URL = "http://192.168.29.207:8080";
 
 export const RPC_URL_GOERLI =
   "https://goerli.infura.io/v3/a0b74d65173042fabe9639289bd336b5";

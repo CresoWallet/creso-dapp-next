@@ -14,20 +14,18 @@ const TransactionItem = ({ icon, label, amount, value, valueName }) => {
   const firstTwoWords = words.slice(0, 2).join(" ");
 
   return (
-    <div className="flex xl:flex-nowrap flex-wrap justify-between items-center">
-      <div className="flex gap-3 items-center my-5">
-        <Image alt="" src={icon} className="w-10 h-10" />
-        <p className="text-sm text-black item-start">{label}</p>
+    <div className="grid grid-cols-3 gap-6 items-center my-5">
+      <div className="flex gap-3 items-center">
+        <Image alt="" src={icon} width={30} height={30} />
+        <p className="text-sm text-black">{label}</p>
       </div>
 
-      <div className="flex gap-3 items-center my-5">
+      <div className="flex gap-3 items-center">
         <p className="text-sm text-slate-400">{amount}</p>
         <p className="text-slate-400">
           {value} <span title={valueName}>{firstTwoWords}</span>
         </p>
       </div>
-
-      <div className="border h-5"></div>
 
       <div className="flex gap-10 items-center">
         <div className="flex items-center gap-3 cursor-pointer">

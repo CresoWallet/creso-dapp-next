@@ -5,14 +5,13 @@ import { WalletContext } from "@/providers/WalletProvider";
 import { getHistory, getUSDValue } from "@/clientApi/wallet";
 import HistoryCardSkelton from "../skeleton/HistoryCardSkelton";
 
-function History() {
-  const { secureWalletAddress, eoaWalletAddress } = useContext(WalletContext);
+function History({ isLoading, setIsLoading }) {
+  const { eoaWalletAddress, secureWalletAddress } = useContext(WalletContext);
 
   const arr = ["1", "2", "3", "4"];
 
   const [usd, setUsd] = useState(0);
   const [history, setHistory] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
 
   const fetchHistory = async () => {
     setIsLoading(true);
@@ -21,6 +20,7 @@ function History() {
         network: "goerli",
       });
 
+      console.log("fetchHistory-->", res);
       if (res) {
         setHistory(res?.data);
       }
@@ -36,6 +36,7 @@ function History() {
       fetchHistory();
     }
   }, [eoaWalletAddress, secureWalletAddress]);
+
   useEffect(() => {
     fetchUsdValue();
   }, []);
@@ -43,6 +44,7 @@ function History() {
   const fetchUsdValue = async () => {
     try {
       const res = await getUSDValue();
+      console.log("fetchUsdValue", res);
       if (res) {
         setUsd(res?.data?.ethereum?.usd);
       }

@@ -13,7 +13,7 @@ import SendETH from "./SendETH";
 import WalletAddress from "./WalletAddress";
 import { network } from "@/utils/data/coinlist";
 
-const CoinWallet = ({ handleClose, wallets, coinData }) => {
+const CoinWallet = ({ handleClose, wallets, coinData, coinDataprice }) => {
   const [send, setSend] = useState(false);
   const [walletAddress, setWalletAddress] = useState(false);
 
@@ -68,7 +68,7 @@ const CoinWallet = ({ handleClose, wallets, coinData }) => {
             src={coinData.logoURI}
             width={40}
             height={40}
-            //className="w-14 h-14"
+            className="rounded-full"
           />
           <div className="flex flex-col">
             <p className="font-bold">
@@ -83,7 +83,11 @@ const CoinWallet = ({ handleClose, wallets, coinData }) => {
             </p>
             <div className="flex flex-row xl:gap-2 gap-2 md:gap-2 items-center">
               <p className="font-bold md:text-xs text-base">{`3,187.99 ${coinData.symbol}`}</p>
-              <p className="text-xs text-[#A09FAA]">{coinData.value}</p>
+              {Object.entries(coinDataprice).map(([address, data]) => (
+                <div key={address}>
+                  <p className="text-xs text-[#A09FAA]">$ {data.usd}</p>
+                </div>
+              ))}
             </div>
           </div>
         </div>

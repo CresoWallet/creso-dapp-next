@@ -19,6 +19,7 @@ import CoinWallet from "@/components/CoinWallet";
 import CreateWallet from "@/components/CreateWallet";
 // import SendETH from "@/components/SendETH";
 // import { network } from "@/utils/data/coinlist";
+import axios from "axios";
 
 const MainLayout = () => {
   const router = useRouter();
@@ -30,6 +31,7 @@ const MainLayout = () => {
   // const [wallets, setWallets] = useState([]);
   const [walletType, setWalletType] = useState("");
   const [coinData, setCoinData] = useState([]);
+  const [coinDataprice, setCoinDataprice] = useState([]);
   console.log("coinData", coinData);
   const { user, isAuthenticated, status } = useUser();
   const {
@@ -69,11 +71,19 @@ const MainLayout = () => {
   const handleCoinWallet = (data) => {
     setCoinData(data);
     setShowCoinWallet(true);
+    gettokenprice(data);
     // close other models
     setShowCreateWallet(false);
     setShowWallet(false);
   };
 
+  const gettokenprice = async (data) => {
+    const Tokenprice = await axios.get(
+      `https://api.coingecko.com/api/v3/simple/token_price/ethereum?contract_addresses=${data.address}&vs_currencies=usd`
+    );
+    console.log("Tokenprice--->", Tokenprice.data);
+    setCoinDataprice(Tokenprice.data);
+  };
   const handleShowModel = () => {
     if (user?.registrationMethod !== "email" && !user?.isEmailVerified) {
       enqueueSnackbar(
@@ -198,6 +208,7 @@ const MainLayout = () => {
                   handleClose={handleCloseCoinWallet}
                   wallets={wallets}
                   coinData={coinData}
+                  coinDataprice={coinDataprice}
                 />
               )}
             </div>

@@ -32,7 +32,7 @@ const MainLayout = () => {
   const [walletType, setWalletType] = useState("");
   const [coinData, setCoinData] = useState([]);
   const [coinDataprice, setCoinDataprice] = useState([]);
-  console.log("coinData", coinData);
+  //console.log("coinData", coinData);
   const { user, isAuthenticated, status } = useUser();
   const {
     secureWalletBalance,

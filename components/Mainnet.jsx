@@ -15,23 +15,27 @@ import USDT from "../assets/Dashboard/usdt.png";
 import { copyToClipBoard, minifyEthereumAddress } from "@/utils";
 import { WalletContext } from "@/providers/WalletProvider";
 import History from "./dashboard/History";
+import { alchemy } from "@/utils/alchemy";
+import { formatEther } from "viem";
+import HistoryCardSkelton from "./skeleton/HistoryCardSkelton";
 
-const Mainnet = ({
-  handleOpenWallet,
-  handleCreateWallet,
-  showWallet,
-}) => {
+const Mainnet = ({ handleOpenWallet, handleCreateWallet, showWallet }) => {
   const {
     secureWalletAddress,
     eoaWalletAddress,
     activeButton,
     setActiveButton,
     allToken,
+    setAllToken,
+    setTotalBalance,
+    setFilteredData,
+    setOriginalData,
   } = useContext(WalletContext);
   const { enqueueSnackbar } = useSnackbar();
   const [tokenPrices, setTokenPrices] = useState([]);
-  console.log("tokenPrices-->", tokenPrices);
-  
+  const [isLoading, setIsLoading] = useState(false);
+  //console.log("tokenPrices-->", tokenPrices);
+  const arr = ["1", "2", "3", "4"];
   useEffect(() => {
     if (!showWallet) {
       setActiveButton("AA");
@@ -50,7 +54,7 @@ const Mainnet = ({
         const tokenResponse = await axios.get(
           `https://api.coingecko.com/api/v3/simple/token_price/ethereum?contract_addresses=0x5cb3ce6d081fb00d5f6677d196f2d70010ea3f4a%2C0x74232704659ef37c08995e386a2e26cc27a8d7b1%2C0x2b1d36f5b61addaf7da7ebbd11b35fd8cfb0de31%2C0x07e0edf8ce600fb51d44f51e3348d77d67f298ae%2C0x94025780a1ab58868d9b2dbbb775f44b32e8e6e5%2C0x465a5a630482f3abd6d3b84b39b29b07214d19e5%2C0x024b6e7dc26f4d5579bdd936f8d7bc31f2339999%2C0x6982508145454ce325ddbe47a25d4ec3d2311933%2C0xf6650117017ffd48b725b4ec5a00b414097108a7%2C0x569d0e52c3dbe95983bcc2434cb9f69d905be919&vs_currencies=usd`
         );
-        console.log("tokenResponse", tokenResponse?.data);
+        //console.log("tokenResponse", tokenResponse?.data);
         const tokenArray = Object.keys(tokenResponse.data).map((address) => ({
           [address]: {
             usd: tokenResponse.data[address].usd * ethPrice,
@@ -65,6 +69,159 @@ const Mainnet = ({
 
     fetchTokenPrices();
   }, []);
+
+  const baseURL = process.env.NEXT_PUBLIC_ALCHEMY_API_KEY_ETH;
+  const data = {
+    jsonrpc: "2.0",
+    method: "alchemy_getTokenBalances",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    params: [activeButton === "AA" ? secureWalletAddress : eoaWalletAddress],
+    id: 42,
+  };
+
+  const config = {
+    method: "post",
+    url: baseURL,
+    headers: {
+      "Content-Type": "application/json",
+    },
+    data: JSON.stringify(data),
+  };
+
+  const getTokens = async () => {
+    try {
+      let response = await axios(config);
+      response = response.data;
+      // console.log("response", response)
+
+      const balances = response.result;
+      //console.log("balances", balances)
+      const tokensData = [];
+      //console.log("tokensData--->", tokensData)
+
+      const contractAddresses = balances.tokenBalances
+        .filter((token) => token.tokenBalance)
+        .map((token) => token.contractAddress);
+      //console.log("contractAddresses", contractAddresses)
+
+      const metadataPromises = contractAddresses.map(
+        async (contractAddress) => {
+          const options = {
+            method: "POST",
+            url: baseURL,
+            headers: {
+              accept: "application/json",
+              "content-type": "application/json",
+            },
+            data: {
+              id: 1,
+              jsonrpc: "2.0",
+              method: "alchemy_getTokenMetadata",
+              params: [contractAddress],
+            },
+          };
+
+          return axios.request(options);
+        }
+      );
+
+      // Wait for all metadata requests to complete
+      const metadataResponses = await Promise.all(metadataPromises);
+      console.log("metadataResponses", metadataResponses);
+
+      metadataResponses.forEach((metadataResponse, index) => {
+        const balance = balances?.tokenBalances[index]?.tokenBalance;
+
+        if (typeof balance !== "undefined") {
+          const metadata = metadataResponse.data;
+          //console.log("metadata", metadata);
+
+          if (metadata?.result) {
+            const balanceValue =
+              balance / Math.pow(10, metadata.result.decimals);
+            const formattedBalance = balanceValue.toFixed(6);
+            // console.log("formattedBalance", formattedBalance)
+
+            tokensData.push({
+              name: metadata.result.name,
+              symbol: metadata.result.symbol,
+              logo: metadata.result.logo,
+              balance: `${formattedBalance}`,
+            });
+          }
+        }
+      });
+
+      return tokensData;
+    } catch (error) {
+      console.log("GetTokens function Error", error);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  const fetchAllToken = async () => {
+    try {
+      const response = await axios.get(
+        "https://tokens.coingecko.com/uniswap/all.json"
+      );
+      const data = response?.data?.tokens;
+      //console.log("🚀 ~ fetchAllToken ~ data:", data);
+      setOriginalData(data);
+      setFilteredData(data);
+
+      const cache = await caches.open("my-cache");
+      cache.put("/api/data", new Response(JSON.stringify(data)));
+    } catch (error) {
+      console.error("Error fetching and caching data:", error);
+    }
+  };
+
+  const getBalancefatch = async () => {
+    // const address1 = "0x3cC69915d2CA2E7c4A7C930600A7cDCBda34EB2C"
+    // const contract = "0x232e48C3Fcc31Cf977573F1e5D77933D63F4C4cA"
+    const address =
+      activeButton === "AA" ? secureWalletAddress : eoaWalletAddress;
+    try {
+      //if (address) {
+      const [rawMaticBalance] = await Promise.all([
+        alchemy.core.getBalance(address),
+        // alchemy.core.getTokensForOwner(address, contract),
+      ]);
+      // const rawWethBalance =
+      //     tokenBalances.tokens.find(
+      //         (token) => token.contractAddress === WETH_TOKEN_ADDRESS,
+      //     )?.balance ?? "0"
+      const totalBalance = +formatEther(rawMaticBalance.toBigInt());
+      setTotalBalance(totalBalance);
+      // const wethBalance = +rawWethBalance
+      // const totalBalance = maticBalance + wethBalance * 131.62
+
+      //console.log("totalBalance--->", totalBalance);
+      //}
+    } catch (error) {
+      console.log("getBalancefatch", error);
+    }
+  };
+
+  useEffect(() => {
+    setIsLoading(true);
+    fetchAllToken();
+    getBalancefatch();
+    const fetchData = async () => {
+      const tokenData = await getTokens();
+      setAllToken(tokenData);
+      console.log("tokenData", tokenData);
+    };
+    const delayedFetch = () => {
+      setTimeout(() => {
+        fetchData();
+      }, 5000);
+    };
+    delayedFetch();
+  }, [activeButton]);
 
   return (
     <div className="flex flex-col xl:space-y-8 md:space-y-8 space-y-2">
@@ -199,23 +356,27 @@ const Mainnet = ({
         </div>
       </div>
       <div className="overflow-y-auto custom-scrollbar h-64">
-        {allToken ? (
+        {isLoading ? (
+          <>
+            {arr.map((e, index) => {
+              return <HistoryCardSkelton key={index} />;
+            })}
+          </>
+        ) : (
           allToken?.map((e, ind) => (
             <div key={ind} className="">
               <TransactionItem
                 icon={e?.logo ? e?.logo : ETH}
                 label={e?.name}
                 amount="$1,794.28"
-                value={e?.balance}
-                valueName={e?.name}
+                value={parseFloat(e?.balance).toFixed(3)}
+                valueName={e?.symbol}
                 send="Send"
                 receive="Receive"
               />
               <hr />
             </div>
           ))
-        ) : (
-          <History />
         )}
       </div>
     </div>
@@ -223,4 +384,3 @@ const Mainnet = ({
 };
 
 export default Mainnet;
-

@@ -51,17 +51,17 @@ const Mainnet = ({ handleOpenWallet, handleCreateWallet, showWallet }) => {
         );
         const ethPrice = ethResponse.data.market_data.current_price.usd;
 
-        const tokenResponse = await axios.get(
-          `https://api.coingecko.com/api/v3/simple/token_price/ethereum?contract_addresses=0x5cb3ce6d081fb00d5f6677d196f2d70010ea3f4a%2C0x74232704659ef37c08995e386a2e26cc27a8d7b1%2C0x2b1d36f5b61addaf7da7ebbd11b35fd8cfb0de31%2C0x07e0edf8ce600fb51d44f51e3348d77d67f298ae%2C0x94025780a1ab58868d9b2dbbb775f44b32e8e6e5%2C0x465a5a630482f3abd6d3b84b39b29b07214d19e5%2C0x024b6e7dc26f4d5579bdd936f8d7bc31f2339999%2C0x6982508145454ce325ddbe47a25d4ec3d2311933%2C0xf6650117017ffd48b725b4ec5a00b414097108a7%2C0x569d0e52c3dbe95983bcc2434cb9f69d905be919&vs_currencies=usd`
-        );
-        //console.log("tokenResponse", tokenResponse?.data);
-        const tokenArray = Object.keys(tokenResponse.data).map((address) => ({
-          [address]: {
-            usd: tokenResponse.data[address].usd * ethPrice,
-          },
-        }));
+        //const tokenResponse = await axios.get(
+        //  `https://api.coingecko.com/api/v3/simple/token_price/ethereum?contract_addresses=0x5cb3ce6d081fb00d5f6677d196f2d70010ea3f4a%2C0x74232704659ef37c08995e386a2e26cc27a8d7b1%2C0x2b1d36f5b61addaf7da7ebbd11b35fd8cfb0de31%2C0x07e0edf8ce600fb51d44f51e3348d77d67f298ae%2C0x94025780a1ab58868d9b2dbbb775f44b32e8e6e5%2C0x465a5a630482f3abd6d3b84b39b29b07214d19e5%2C0x024b6e7dc26f4d5579bdd936f8d7bc31f2339999%2C0x6982508145454ce325ddbe47a25d4ec3d2311933%2C0xf6650117017ffd48b725b4ec5a00b414097108a7%2C0x569d0e52c3dbe95983bcc2434cb9f69d905be919&vs_currencies=usd`
+        //);
+        ////console.log("tokenResponse", tokenResponse?.data);
+        //const tokenArray = Object.keys(tokenResponse.data).map((address) => ({
+        //  [address]: {
+        //    usd: tokenResponse.data[address].usd * ethPrice,
+        //  },
+        //}));
 
-        setTokenPrices(tokenArray);
+        //setTokenPrices(tokenArray);
       } catch (error) {
         console.error("Error fetching token prices:", error);
       }
@@ -92,19 +92,12 @@ const Mainnet = ({ handleOpenWallet, handleCreateWallet, showWallet }) => {
 
   const getTokens = async () => {
     try {
-      let response = await axios(config);
-      response = response.data;
-      // console.log("response", response)
-
-      const balances = response.result;
-      //console.log("balances", balances)
-      const tokensData = [];
-      //console.log("tokensData--->", tokensData)
+      const response = await axios(config);
+      const balances = response.data.result;
 
       const contractAddresses = balances.tokenBalances
         .filter((token) => token.tokenBalance)
         .map((token) => token.contractAddress);
-      //console.log("contractAddresses", contractAddresses)
 
       const metadataPromises = contractAddresses.map(
         async (contractAddress) => {
@@ -127,36 +120,46 @@ const Mainnet = ({ handleOpenWallet, handleCreateWallet, showWallet }) => {
         }
       );
 
-      // Wait for all metadata requests to complete
       const metadataResponses = await Promise.all(metadataPromises);
-      //console.log("metadataResponses", metadataResponses);
-
-      metadataResponses.forEach((metadataResponse, index) => {
-        const balance = balances?.tokenBalances[index]?.tokenBalance;
-
-        if (typeof balance !== "undefined") {
-          const metadata = metadataResponse.data;
-          //console.log("metadata", metadata);
-
-          if (metadata?.result) {
-            const balanceValue =
-              balance / Math.pow(10, metadata.result.decimals);
-            const formattedBalance = balanceValue.toFixed(6);
-            // console.log("formattedBalance", formattedBalance)
-
-            tokensData.push({
-              name: metadata.result.name,
-              symbol: metadata.result.symbol,
-              logo: metadata.result.logo,
-              balance: `${formattedBalance}`,
-            });
-          }
-        }
+      console.log("metadataResponses-->", metadataResponses);
+      // Fetch token prices using CoinGecko API
+      const pricePromises = metadataResponses.map(async (metadataResponse) => {
+        const data = metadataResponse.data.result.name.toLowerCase();
+        const tokenprice = await axios.get(
+          `https://api.coingecko.com/api/v3/simple/price?ids=${data}&vs_currencies=usd`
+        );
+        return tokenprice.data[data]?.usd || 0;
       });
 
-      return tokensData;
+      const tokenPrices = await Promise.all(pricePromises);
+
+      // Combine metadata and prices
+      const tokensData = metadataResponses.map((metadataResponse, index) => {
+        const balance = balances?.tokenBalances[index]?.tokenBalance;
+        const metadata = metadataResponse.data.result;
+
+        if (typeof balance !== "undefined" && metadata) {
+          const balanceValue = balance / Math.pow(10, metadata.decimals);
+          const formattedBalance = balanceValue.toFixed(6);
+
+          return {
+            name: metadata.name,
+            symbol: metadata.symbol,
+            logo: metadata.logo,
+            balance: `${formattedBalance}`,
+            price: tokenPrices[index],
+          };
+        }
+
+        return null;
+      });
+
+      // Remove null entries
+      const filteredTokensData = tokensData.filter((token) => token !== null);
+
+      return filteredTokensData;
     } catch (error) {
-      console.log("GetTokens function Error", error);
+      console.error("GetTokens function Error", error);
     } finally {
       setIsLoading(false);
     }
@@ -213,7 +216,7 @@ const Mainnet = ({ handleOpenWallet, handleCreateWallet, showWallet }) => {
     const fetchData = async () => {
       const tokenData = await getTokens();
       setAllToken(tokenData);
-      //console.log("tokenData", tokenData);
+      console.log("tokenData", tokenData);
     };
     const delayedFetch = () => {
       setTimeout(() => {
@@ -368,7 +371,7 @@ const Mainnet = ({ handleOpenWallet, handleCreateWallet, showWallet }) => {
               <TransactionItem
                 icon={e?.logo ? e?.logo : ETH}
                 label={e?.name}
-                amount="$1,794.28"
+                amount={e?.price}
                 value={parseFloat(e?.balance).toFixed(3)}
                 valueName={e?.symbol}
                 send="Send"

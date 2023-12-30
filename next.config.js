@@ -6,6 +6,7 @@ const nextConfig = {
       "www.okx.com",
       "assets.coingecko.com",
       "static.alchemyapi.io",
+      "creso-b02eab9f8c40.herokuapp.com",
     ],
     remotePatterns: [
       {

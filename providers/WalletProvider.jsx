@@ -182,7 +182,11 @@ const WalletContextProvider = ({ children }) => {
   useEffect(() => {
     secureWalletAddress && eoaWalletAddress && fetchHistory();
   }, [secureWalletAddress, eoaWalletAddress]);
-
+  useEffect(() => {
+    if (status === "failed") {
+      router.push("/login");
+    }
+  }, [status]);
   return (
     <WalletContext.Provider
       value={{

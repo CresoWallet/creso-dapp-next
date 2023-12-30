@@ -129,7 +129,7 @@ const Mainnet = ({ handleOpenWallet, handleCreateWallet, showWallet }) => {
 
       // Wait for all metadata requests to complete
       const metadataResponses = await Promise.all(metadataPromises);
-      console.log("metadataResponses", metadataResponses);
+      //console.log("metadataResponses", metadataResponses);
 
       metadataResponses.forEach((metadataResponse, index) => {
         const balance = balances?.tokenBalances[index]?.tokenBalance;
@@ -213,7 +213,7 @@ const Mainnet = ({ handleOpenWallet, handleCreateWallet, showWallet }) => {
     const fetchData = async () => {
       const tokenData = await getTokens();
       setAllToken(tokenData);
-      console.log("tokenData", tokenData);
+      //console.log("tokenData", tokenData);
     };
     const delayedFetch = () => {
       setTimeout(() => {

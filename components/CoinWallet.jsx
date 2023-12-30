@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import Image from "next/image";
 import ETH from "../assets/Dashboard/ethSelect.png";
 import BnB from "../assets/Dashboard/bnb.png";
@@ -16,13 +16,23 @@ import { network } from "@/utils/data/coinlist";
 const CoinWallet = ({ handleClose, wallets, coinData }) => {
   const [send, setSend] = useState(false);
   const [walletAddress, setWalletAddress] = useState(false);
+  const [mainContentVisible, setMainContentVisible] = useState(true);
 
   const handleWalletClick = () => {
     setWalletAddress(true);
+    setSend(false);
+    setMainContentVisible(false);
   };
 
   const handleClick = () => {
     setSend(true);
+    setMainContentVisible(false);
+  };
+
+  const handleBackButtonClick = () => {
+    setMainContentVisible(true);
+    setWalletAddress(false);
+    setSend(false);
   };
   //console.log(wallets);
 
@@ -38,7 +48,7 @@ const CoinWallet = ({ handleClose, wallets, coinData }) => {
       </div>
       {send && (
         <SendETH
-          handleBackButton={() => setSend(false)}
+          handleBackButton={handleBackButtonClick}
           walletArr={wallets}
           networks={network}
         />
@@ -46,82 +56,84 @@ const CoinWallet = ({ handleClose, wallets, coinData }) => {
       {walletAddress && (
         <WalletAddress
           //  wallet= pass relevant wallet data here
-          handleBackButton={() => setWalletAddress(false)}
+          handleBackButton={handleBackButtonClick}
         />
       )}
-      <div className="flex flex-col md:mx-8 mx-6 xl:mx-8 mt-10 xl:space-y-10 md:space-y-10 space-y-4">
-        <p className="text-black font-bold text-xl ml-6 xl:ml-0 md:ml-0">
-          {coinData.name}
-        </p>
-        <div className="flex flex-row items-center gap-2">
-          <Image
-            alt=""
-            //src={
-            //  coinData.coinName === "ETH"
-            //    ? ETH
-            //    : coinData.coinName === "BNB"
-            //    ? BnB
-            //    : coinData.coinName === "USDT"
-            //    ? USDT
-            //    : ETH
-            //}
-            src={coinData.logoURI}
-            width={40}
-            height={40}
-            //className="w-14 h-14"
-          />
-          <div className="flex flex-col">
-            <p className="font-bold">
-              {coinData.name}
-              {/*{coinData.coinName === "ETH"
+      {mainContentVisible && (
+        <div className="flex flex-col md:mx-8 mx-6 xl:mx-8 mt-10 xl:space-y-10 md:space-y-10 space-y-4">
+          <p className="text-black font-bold text-xl ml-6 xl:ml-0 md:ml-0">
+            {coinData.name}
+          </p>
+          <div className="flex flex-row items-center gap-2">
+            <Image
+              alt=""
+              //src={
+              //  coinData.coinName === "ETH"
+              //    ? ETH
+              //    : coinData.coinName === "BNB"
+              //    ? BnB
+              //    : coinData.coinName === "USDT"
+              //    ? USDT
+              //    : ETH
+              //}
+              src={coinData.logoURI}
+              width={40}
+              height={40}
+              //className="w-14 h-14"
+            />
+            <div className="flex flex-col">
+              <p className="font-bold">
+                {coinData.name}
+                {/*{coinData.coinName === "ETH"
                 ? "Ethereum"
                 : coinData.coinName === "BNB"
                 ? "Bitcoin"
                 : coinData.coinName === "USDT"
                 ? "Tether"
                 : ""}*/}
-            </p>
-            <div className="flex flex-row xl:gap-2 gap-2 md:gap-2 items-center">
-              <p className="font-bold md:text-xs text-base">{`3,187.99 ${coinData.symbol}`}</p>
-              <p className="text-xs text-[#A09FAA]">{coinData.value}</p>
+              </p>
+              <div className="flex flex-row xl:gap-2 gap-2 md:gap-2 items-center">
+                <p className="font-bold md:text-xs text-base">{`3,187.99 ${coinData.symbol}`}</p>
+                <p className="text-xs text-[#A09FAA]">{coinData.value}</p>
+              </div>
             </div>
           </div>
-        </div>
-        <div>
-          <div className="flex flex-row items-center justify-between">
-            <p className="text-[#A09FAA] text-sm">Network</p>
-            <p className="font-semibold text-sm">
-              {coinData?.network === "ethereum"
-                ? "Ethereum Mainnet"
-                : "Ethereum Mainnet"}
-            </p>
+          <div>
+            <div className="flex flex-row items-center justify-between">
+              <p className="text-[#A09FAA] text-sm">Network</p>
+              <p className="font-semibold text-sm">
+                {coinData?.network === "ethereum"
+                  ? "Ethereum Mainnet"
+                  : "Ethereum Mainnet"}
+              </p>
+            </div>
+            <hr className="text-[#A09FAA] my-4" />
+            <div className="flex flex-row items-center justify-between">
+              <p className="text-[#A09FAA] text-sm">Standard</p>
+              <p className="font-semibold text-sm">
+                {coinData?.standard === "native" ? "Native Token" : "ERC-20"}
+              </p>
+            </div>
           </div>
-          <hr className="text-[#A09FAA] my-4" />
-          <div className="flex flex-row items-center justify-between">
-            <p className="text-[#A09FAA] text-sm">Standard</p>
-            <p className="font-semibold text-sm">
-              {coinData?.standard === "native" ? "Native Token" : "ERC-20"}
-            </p>
+          <div className="flex justify-center">
+            <Image alt="" src={Transaction} />
+          </div>
+          <div className="flex flex-row items-center xl:gap-2 md:gap-0 gap-2 md:flex-col md:space-y-2 xl:space-y-0 space-y-0">
+            <CustomButton
+              name="Send"
+              img={Send}
+              onClick={handleClick}
+              bgColor="black"
+            />
+            <CustomButton
+              name="Receive"
+              img={Receive}
+              onClick={handleWalletClick}
+              bgColor="black"
+            />
           </div>
         </div>
-        <div className="flex justify-center">
-          <Image alt="" src={Transaction} />
-        </div>
-        <div className="flex flex-row items-center xl:gap-2 md:gap-0 gap-2 md:flex-col md:space-y-2 xl:space-y-0 space-y-0">
-          <CustomButton
-            name="Send"
-            img={Send}
-            onClick={handleClick}
-            bgColor="black"
-          />
-          <CustomButton
-            name="Receive"
-            img={Receive}
-            onClick={handleWalletClick}
-            bgColor="black"
-          />
-        </div>
-      </div>
+      )}
     </div>
   );
 };

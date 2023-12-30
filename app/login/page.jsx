@@ -20,6 +20,7 @@ import { FaSquareXTwitter } from "react-icons/fa6";
 import { FaGoogle } from "react-icons/fa";
 import { FaApple } from "react-icons/fa";
 import Creso3 from "../../assets/Dashboard/creso3.png";
+import cresow from "../../assets/Dashboard/creso logo white.svg"
 
 const LoginPage = () => {
   const router = useRouter();
@@ -77,11 +78,11 @@ const LoginPage = () => {
         <div className="flex flex-row items-center justify-center my-16 gap-1 relative Mainlogo text-white mt-4 ">
           <Image
             alt="creso-logo"
-            src={Creso3}
-            className="lg:w-14 lg:h-14 h-10 w-10"
+            src={cresow}
+            className="lg:w-96 lg:h-96 h-20 w-20"
           />
-          <p className="lg:text-5xl text-4xl lg:block items-center">creso</p>
-          <p className="text-sm lg:mt-6 mt-4 text-[#D0F500]">Beta</p>
+          {/* <p className="lg:text-5xl text-4xl lg:block items-center">creso</p>
+          <p className="text-sm lg:mt-6 mt-4 text-[#D0F500]">Beta</p> */}
         </div>
 
         <Image alt="" src={BgImage} height={700} className="hidden xl:flex md:flex " />
@@ -144,19 +145,21 @@ const LoginPage = () => {
               onClick={handleGoogleLogin}
             /> */}
           </div>
-
           <div className="my-4 pt-4 flex items-center before:mt-0.5 before:flex-1 before:border-t before:border-neutral-300 after:mt-0.5 after:flex-1 after:border-t after:border-neutral-300">
             <p className="mx-4 mb-0 text-center text-gray-400 dark:text-white">
               or
             </p>
           </div>
-
           <div className="flex justify-center pt-5">
             {" "}
             <div className="flex flex-col items-center max-w-sm w-full gap-3">
               <div
                 onClick={handleTwitterLogin}
-                className="py-2 px-4 cursor-pointer flex gap-2 justify-center items-center bg-blue-600 hover:bg-blue-700 focus:ring-blue-500 focus:ring-offset-blue-200 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg "
+                className=" gap-2  items-center  hover:border-black hover:text-bold  text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2   transition duration-500 ease-in-out  disabled:opacity-40
+              xl:py-4 py-2 text-black px-12 flex justify-center rounded-full w-full
+              enabled:hover:bg-zinc-800 enabled:hover:font-semibold cursor-pointer
+              border border-solid border-undefined tracking-wider transform
+              hover:-translate-y-1"
               >
                 <FaSquareXTwitter className="w-5 h-5" />
                 Sign in with Twitter
@@ -164,13 +167,23 @@ const LoginPage = () => {
 
               <div
                 onClick={handleGoogleLogin}
-                className="py-2 px-4 cursor-pointer flex gap-2 justify-center items-center  bg-red-600 hover:bg-red-700 focus:ring-red-500 focus:ring-offset-red-200 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg "
+                className=" gap-2  items-center  hover:border-black hover:text-bold  text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2   transition duration-500 ease-in-out  disabled:opacity-40
+              xl:py-4 py-2 text-black px-12 flex justify-center rounded-full w-full
+              enabled:hover:bg-zinc-800 enabled:hover:font-semibold cursor-pointer
+              border border-solid border-undefined tracking-wider transform
+              hover:-translate-y-1"
               >
                 <FaGoogle />
                 Sign in with Google
               </div>
 
-              <div className="py-2 px-4 cursor-pointer flex gap-2 justify-center items-center  bg-gray-600 hover:bg-gray-700 focus:ring-gray-500 focus:ring-offset-gray-200 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg ">
+              <div
+                className=" gap-2  items-center  hover:border-black hover:text-bold  text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2   transition duration-500 ease-in-out bg-black disabled:opacity-40
+              xl:py-4 py-2 text-white px-12 flex justify-center rounded-full w-full
+              enabled:hover:bg-zinc-800 enabled:hover:font-semibold cursor-pointer
+              border border-solid border-undefined tracking-wider transform
+              hover:-translate-y-1"
+              >
                 <FaApple className="w-5 h-5" />
                 Sign in with Apple
               </div>

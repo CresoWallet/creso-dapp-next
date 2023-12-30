@@ -21,7 +21,7 @@ const UserDetails = () => {
         <p className="font-bold text-xl">{user?.username}</p>
         <p className="text-sm text-[#A09FAA]">{user?.email}</p>
         <p className="text-xs text-[#A09FAA] mr-xside">
-          Last Backup  test: <span className="text-sm text-black">28 OCT 2023 </span>{" "}
+          Last Backup  test: <span className="text-sm text-black">28 OCT 2023</span>{" "}
         </p>
       </div>
     </div>

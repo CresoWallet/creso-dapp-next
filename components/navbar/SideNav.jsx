@@ -1,11 +1,15 @@
 /* eslint-disable @next/next/no-img-element */
-import React from "react";
+import React, { useState } from "react";
 import Image from "next/image";
 import Creso3 from "../../assets/Dashboard/creso3.png";
 import Wallet from "../../assets/Dashboard/Wallet.png";
+import Wallet1 from "../../assets/Dashboard/Wallet1.png";
 import Discover from "../../assets/Dashboard/Discover.png";
+import Discover1 from "../../assets/Dashboard/Discover1.png";
+import Swap1 from "../../assets/Dashboard/Swap1.png";
 import Swap from "../../assets/Dashboard/Swap.png";
 import Info from "../../assets/Dashboard/info.png";
+import Info1 from "../../assets/Dashboard/info1.png";
 import Support from "../../assets/Dashboard/Support.png";
 import { usePathname } from "next/navigation";
 import { useMediaQuery } from "react-responsive";
@@ -15,46 +19,64 @@ import Telegram from "../../assets/Dashboard/telegram.png";
 import Etherscan from "../../assets/Dashboard/etherscan.png";
 import Discord from "../../assets/Dashboard/github.png";
 import Github from "../../assets/Dashboard/discord.png";
+import cresow from "../../assets/Dashboard/creso logo white.svg"
+import cresob from "../../assets/Dashboard/creso logo black.svg"
 
 const SideNav = () => {
   const pathName = usePathname();
   const isMobile = useMediaQuery({ query: `(max-width: 760px)` });
+  const [activeIcon, setActiveIcon] = useState(null);
+
+  const handleIconClick = (iconName) => {
+    setActiveIcon(iconName);
+  };
 
   return (
     <div className="bg-[#2100EC] rounded-3xl flex flex-col pt-12 min-h-screen lg:h-full items-center lg:items-start  ">
       <div className="flex flex-row items-center gap-1 px-8 relative Mainlogo text-white">
-        <Image alt="creso-logo" src={Creso3} className="h-10 w-10" />
+        <Image alt="creso-logo" src={cresow} className=" " />
+        
+{/* 
         <p className=" text-4xl hidden lg:block items-center">creso</p>
         <p className="text-sm mt-4 text-[#D0F500]">Beta</p>
+
+         */}
       </div>
-      <div className={`flex flex-col mt-14 ${isMobile ? "mr-5" : "mr-10"}`}>
+      <div className={`flex flex-col ${isMobile ? "mr-5" : "mr-10"}`}>
         <NavItem
           pathName={pathName}
           href="/dashboard"
-          icon={Wallet}
+          icon={pathName === "/dashboard" ? Wallet1 : Wallet}
           label="Dashboard"
+          active={activeIcon === "dashboard"}
+          onClick={() => handleIconClick("dashboard")}
         />
         <NavItem
           pathName={pathName}
           href="/discover"
-          icon={Discover}
+          icon={pathName === "/discover" ? Discover1 : Discover}
           label="Discover"
         />
-        <NavItem pathName={pathName} href="/swap" icon={Swap} label="Swap" />
+        <NavItem
+          pathName={pathName}
+          href="/swap"
+          icon={pathName === "/swap" ? Swap1 : Swap}
+          label="Swap"
+        />
         <div className="py-4 ">
           <hr className="text-[#B1A6F8]" />
         </div>
         <NavItem
           pathName={pathName}
           href="/about"
-          icon={Info}
+          icon={pathName === "/about" ? Info1 : Info}
           label="About us"
         />
 
         <NavItem
           pathName={pathName}
           href="/support"
-          icon={Support}
+          icon={pathName === "/support" ? Support : Support}
           label="Support"
         />
         {/* Add social media icons */}

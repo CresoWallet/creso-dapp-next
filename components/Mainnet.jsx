@@ -19,8 +19,6 @@ import History from "./dashboard/History";
 const Mainnet = ({
   handleOpenWallet,
   handleCreateWallet,
-  // eoaWalletAddress,
-  // secureWalletAddress,
   showWallet,
 }) => {
   const {
@@ -33,6 +31,7 @@ const Mainnet = ({
   const { enqueueSnackbar } = useSnackbar();
   const [tokenPrices, setTokenPrices] = useState([]);
   console.log("tokenPrices-->", tokenPrices);
+  
   useEffect(() => {
     if (!showWallet) {
       setActiveButton("AA");
@@ -66,6 +65,7 @@ const Mainnet = ({
 
     fetchTokenPrices();
   }, []);
+
   return (
     <div className="flex flex-col xl:space-y-8 md:space-y-8 space-y-2">
       <div>
@@ -84,6 +84,7 @@ const Mainnet = ({
       </div>
       <div>
         <div className="flex xl:flex-row flex-col items-center xl:gap-4 md:gap-4 gap-2">
+          {/* Keyless Secure Wallet */}
           <div
             className={`${
               activeButton === "AA"
@@ -140,6 +141,8 @@ const Mainnet = ({
               ></div>
             </div>
           </div>
+
+          {/* EOA Wallet */}
           <div
             className={`${
               activeButton === "EOA"
@@ -153,7 +156,7 @@ const Mainnet = ({
                 alt=""
                 className="md:w-14 md:h-14 xl:w-12 xl:h-12"
               />
-              <div className="flex flex-col space-y-1">
+              <div className="flex flex-col space -y-1">
                 <p
                   className={`${
                     activeButton === "EOA" ? "text-white" : "text-black"
@@ -220,3 +223,4 @@ const Mainnet = ({
 };
 
 export default Mainnet;
+

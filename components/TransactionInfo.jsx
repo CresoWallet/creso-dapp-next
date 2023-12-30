@@ -1,7 +1,8 @@
 import React, { useContext, useState } from "react";
 import Image from "next/image";
-import Redarrow from "../assets/Dashboard/RedArrow.png";
-import Greenarrow from "../assets/Dashboard/GreenArrow.png";
+import Redarrow from "../assets/Dashboard/redArrow.png";
+// import Redarrowa from "../assets/Dashboard/redArrow.png";
+import Greenarrow from "../assets/Dashboard/greenArrow.png";
 import SendETH from "./SendETH";
 import WalletAddress from "./WalletAddress";
 import { network } from "@/utils/data/coinlist";

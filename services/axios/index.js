@@ -8,6 +8,6 @@ export const axiosInstance = axios.create({
   // headers: {'X-Custom-Header': 'foobar'}
 });
 
-// export const setToken = (token) => {
-//   axiosInstance.defaults.headers.common = { Authorization: `Bearer ${token}` };
-// };
+//export const setToken = (token) => {
+//  axiosInstance.defaults.headers.common = { Authorization: `Bearer ${token}` };
+//};

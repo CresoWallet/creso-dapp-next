@@ -50,7 +50,7 @@ const Wallet = ({ setOpenWallet }) => {
             <div className="flex items-center justify-center gap-2 py-2 text-lg font-semibold">
               <p className="text-2xl font-bold">Wallets</p>
             </div>
-            <div className="flex gap-2 py-2">
+            <div className="flex justify-center items-center gap-2 py-2">
               <div
                 className={`flex cursor-pointer gap-2 px-3 py-1 ${
                   activeButton1 === 0

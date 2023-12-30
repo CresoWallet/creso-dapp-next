@@ -138,7 +138,7 @@ const Header = () => {
               <div className="flex flex-row items-center -between cursor-pointer hover:scale-105 py-4 hover:font-bold">
                 <div className="flex flex-row gap-2 pl-2 items-center">
                   <AiOutlineUser />
-                  <p className="hover:font-bold">Account</p>
+                  <p className="hover:font-bold">Account </p>
                 </div>
                 <MdKeyboardArrowRight />
               </div>
@@ -147,6 +147,18 @@ const Header = () => {
             <hr />
 
             <div
+              className="flex flex-row items-center -between cursor-pointer hover:scale-105 py-4 hover:font-bold"
+              onClick={handleopenwallet}
+            >
+              <div className="flex flex-row gap-2 pl-2 items-center">
+                <IoWalletOutline />
+
+                <p className="hover:font-bold">Wallet </p>
+              </div>
+              <MdKeyboardArrowRight />
+            </div>
+
+            {/* <div
               className="flex flex-row items-center justify-between cursor-pointer hover:scale-105 py-4 hover:font-bold "
               onClick={handleopenwallet}
             >
@@ -155,7 +167,7 @@ const Header = () => {
                 <p className="hover:font-bold">Wallet</p>
               </div>
               <MdKeyboardArrowRight />
-            </div>
+            </div> */}
 
             <hr />
             <div

@@ -21,7 +21,7 @@ const TransactionItem = ({ icon, label, amount, value, valueName }) => {
       </div>
 
       <div className="flex gap-3 items-center">
-        <p className="text-sm text-slate-400">{amount}</p>
+        <p className="text-sm text-slate-400">$ {amount}</p>
         <p className="text-slate-400">
           {value} <span title={valueName}>{firstTwoWords}</span>
         </p>

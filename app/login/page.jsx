@@ -22,7 +22,7 @@ import { FaSquareXTwitter } from "react-icons/fa6";
 import { FaGoogle } from "react-icons/fa";
 import { FaApple } from "react-icons/fa";
 import Creso3 from "../../assets/Dashboard/creso3.png";
-import cresow from "../../assets/Dashboard/creso logo white.svg"
+import cresow from "../../assets/Dashboard/creso logo white.svg";
 
 const LoginPage = () => {
   const router = useRouter();
@@ -37,6 +37,12 @@ const LoginPage = () => {
       router.push(`/`);
     }
   }, [user]);
+
+  // useEffect(() => {
+  //   if (isAuthenticated) {
+  //     router.push(`/dashboard`);
+  //   }
+  // }, [isAuthenticated, user]);
 
   const onSubmit = async (data) => {
     setLoading(true);

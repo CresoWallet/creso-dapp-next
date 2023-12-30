@@ -150,7 +150,7 @@ const Header = () => {
               className="flex flex-row items-center justify-between cursor-pointer hover:scale-105 py-4 hover:font-bold "
               onClick={handleopenwallet}
             >
-              <div className="flex flex-row gap-2 items-center">
+              <div className="flex flex-row gap-2 pl-2 items-center">
                 <IoWalletOutline />
                 <p className="hover:font-bold">Wallet</p>
               </div>
@@ -160,19 +160,20 @@ const Header = () => {
             <hr />
             <div
               onClick={handleDisconnect}
-              className="flex flex-row gap-2 items-center py-4 disconnect"
+              className="flex flex-row gap-2 pl-2 items-center py-4 disconnect"
             >
               <Image alt="" src={Disconnect} />
-              <p className="text-[#FF4085]">Disconnect </p>
+              <p className="text-[#FF4085] hover:font-bold">Disconnect </p>
             </div>
 
             {/* Add social media icons */}
             {isSmallScreen && (
-              <div className="flex justify-center gap-2 pt-4">
+              <div className="flex justify-center gap-4 pt-4">
                 <a
                   href="https://twitter.com/cresowallet"
                   target="_blank"
                   rel="noopener noreferrer"
+                  className="cursor-pointer transform hover:-translate-y-1"
                 >
                   <Image
                     alt="Twitter"
@@ -184,6 +185,7 @@ const Header = () => {
                   href="https://t.me/cresowallet"
                   target="_blank"
                   rel="noopener noreferrer"
+                  className="cursor-pointer transform hover:-translate-y-1"
                 >
                   <Image
                     alt="Telegram"
@@ -195,6 +197,7 @@ const Header = () => {
                   href="https://etherscan.io/token/0x41ea5d41eeacc2d5c4072260945118a13bb7ebce"
                   target="_blank"
                   rel="noopener noreferrer"
+                  className="cursor-pointer transform hover:-translate-y-1"
                 >
                   <Image alt="Etherscan" src={Etherscan} className="w-7 h-7" />
                 </a>
@@ -202,6 +205,7 @@ const Header = () => {
                   href="https://discord.com/invite/creso"
                   target="_blank"
                   rel="noopener noreferrer"
+                  className="cursor-pointer transform hover:-translate-y-1"
                 >
                   <Image alt="Discord" src={Discord} className="w-7 h-7" />
                 </a>
@@ -209,6 +213,7 @@ const Header = () => {
                   href="https://github.com/CresoWallet"
                   target="_blank"
                   rel="noopener noreferrer"
+                  className="cursor-pointer transform hover:-translate-y-1"
                 >
                   <Image alt="Github" src={Github} className="w-7 h-7" />
                 </a>

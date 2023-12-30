@@ -45,11 +45,11 @@ const MainLayout = () => {
     send,
   } = useContext(WalletContext);
 
-  // useEffect(() => {
-  //   if (status === "failed") {
-  //     router.push("/login");
-  //   }
-  // }, [status]);
+  useEffect(() => {
+    if (status === "failed") {
+      router.push("/login");
+    }
+  }, [status]);
 
   useEffect(() => {
     fetchWallet();

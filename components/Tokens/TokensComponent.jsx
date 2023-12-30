@@ -140,17 +140,18 @@ const TokensComponent = () => {
   };
 
   useEffect(() => {
-    async function fetchData() {
-      const tokenData = await getTokens();
-      setAllToken(tokenData);
+    if (activeButton == "AA" ) {
+      async function fetchData() {
+        const tokenData = await getTokens();
+        setAllToken(tokenData);
 
-      console.log("tokenData", tokenData);
+        console.log("tokenData", tokenData);
+      }
+      fetchData();
+      fetchAllToken();
+
+      new1();
     }
-
-    fetchData();
-    fetchAllToken();
-
-    new1();
   }, [activeButton]);
 
   return <div className="hidden">TokensComponent</div>;

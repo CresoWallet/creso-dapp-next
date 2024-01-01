@@ -76,7 +76,7 @@ const WalletContextProvider = ({ children }) => {
   }
   const pathName = usePathname();
   const isLoginOrRegister =
-    pathName.includes("/login") || pathName.includes("/register");
+    pathName === "/" || pathName.includes("/register");
   // console.log(pathName);
 
   useEffect(() => {

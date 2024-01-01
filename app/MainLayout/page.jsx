@@ -49,7 +49,7 @@ const MainLayout = () => {
 
   useEffect(() => {
     if (status === "failed") {
-      router.push("/login");
+      router.push("/");
     }
   }, [status]);
 

@@ -32,7 +32,7 @@ const LoginPage = () => {
 
   useEffect(() => {
     if (isAuthenticated) {
-      router.push(`/`);
+      router.push(`/dashboard`);
     }
   }, [user]);
 

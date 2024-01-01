@@ -43,7 +43,7 @@ const RegisterPage = () => {
       const res = await signUpAPI(signUpData);
       if (res) {
         // console.log(res);
-        router.push("/login");
+        router.push("/");
         enqueueSnackbar(`User successfully registered`, {
           variant: "success",
         });
@@ -153,7 +153,7 @@ const RegisterPage = () => {
           <div className="flex justify-center">
             <p className="text-sm text-[#A09FAA]">
               Do you have an account?{" "}
-              <Link href="/login">
+              <Link href="/">
                 <span className="text-[#FF4085] cursor-pointer hover:font-bold">
                   Login
                 </span>

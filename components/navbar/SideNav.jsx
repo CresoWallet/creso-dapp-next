@@ -80,13 +80,6 @@ const SideNav = () => {
             icon={pathName === "/support" ? Support : Support}
             label="Support"
           />
-
-          <NavItem
-            pathName={pathName}
-            href="/support"
-            icon={Support}
-            label="Support"
-          />
         </div>
       </div>
       {/* Add social media icons */}

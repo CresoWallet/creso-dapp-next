@@ -20,7 +20,7 @@ import Etherscan from "../../assets/Dashboard/etherscan.png";
 import Github from "../../assets/Dashboard/github.png";
 import Discord from "../../assets/Dashboard/discord.png";
 import cresow from "../../assets/Dashboard/creso_logo_white.svg";
-import cresob from "../../assets/Dashboard/creso logo black.svg";
+// import cresob from "../../assets/Dashboard/creso logo black.svg";
 
 const SideNav = () => {
   const pathName = usePathname();

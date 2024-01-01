@@ -192,48 +192,21 @@ button:disabled {
 }
 
 /*custom scrollbar in wallet.jsx*/
-.custom-scrollbar {
-  scrollbar-width: thin; /* Firefox */
-  scrollbar-color: rebeccapurple green; /* Firefox */
-  border-radius: 8px; /* Add rounded corners */
-  scroll-behavior: smooth; /* Add smooth scrolling behavior */
-  overflow-y: scroll;
+::-webkit-scrollbar-thumb {
+  background: #4655db;
+  /* border-radius: 10px; */
+  cursor: pointer;
 }
 
-.custom-scrollbar::-webkit-scrollbar {
-  width: 4px; /* Chrome/Safari */
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #4655db;
 }
 
-.custom-scrollbar::-webkit-scrollbar-thumb {
-  background-color: rgb(28, 48, 228); /* Chrome/Safari */
-  border-radius: 8px;
-}
-
-.custom-scrollbar::-webkit-scrollbar-track {
-  background-color: lightgray; /* Chrome/Safari */
-  border-radius: 8px;
-}
-
-body {
-  scrollbar-width: thin; /* Firefox */
-  scrollbar-color: rebeccapurple green; /* Firefox */
-  border-radius: 8px; /* Add rounded corners */
-  scroll-behavior: smooth; /* Add smooth scrolling behavior */
-  overflow-y: scroll;
-}
-
-body::-webkit-scrollbar {
-  width: 4px; /* Chrome/Safari */
-}
-
-body::-webkit-scrollbar-thumb {
-  background-color: rgb(28, 48, 228); /* Chrome/Safari */
-  border-radius: 8px;
-}
-
-body::-webkit-scrollbar-track {
-  background-color: lightgray; /* Chrome/Safari */
-  border-radius: 8px;
+/* width */
+::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
 }
 
 /*.creso-card {

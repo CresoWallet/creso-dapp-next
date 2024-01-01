@@ -25,6 +25,8 @@ import Github from "../assets/Dashboard/discord.png";
 
 const Header = () => {
   const router = useRouter();
+
+ 
   const { user, isAuthenticated, status } = useUser();
   const [openPopup, setOpenPopup] = useState(false);
   const [openWallet, setOpenWallet] = useState(false);

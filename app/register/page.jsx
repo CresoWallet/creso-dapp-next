@@ -43,7 +43,7 @@ const RegisterPage = () => {
       const res = await signUpAPI(signUpData);
       if (res) {
         // console.log(res);
-        router.push("/login");
+        router.push("/");
         enqueueSnackbar(`User successfully registered`, {
           variant: "success",
         });

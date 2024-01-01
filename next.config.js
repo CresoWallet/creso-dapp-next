@@ -6,6 +6,7 @@ const nextConfig = {
       "www.okx.com",
       "assets.coingecko.com",
       "static.alchemyapi.io",
+      "creso-b02eab9f8c40.herokuapp.com",
     ],
     remotePatterns: [
       {
@@ -16,15 +17,15 @@ const nextConfig = {
       },
     ],
   },
-  async redirects() {
-    return [
-      {
-        source: "/",
-        destination: "/dashboard",
-        permanent: true,
-      },
-    ];
-  },
+  // async redirects() {
+  //   return [
+  //     {
+  //       source: "/",
+  //       destination: "/dashboard",
+  //       permanent: true,
+  //     },
+  //   ];
+  // },
 };
 
 module.exports = nextConfig;

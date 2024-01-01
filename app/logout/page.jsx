@@ -6,7 +6,7 @@ import { AUTH_TOKEN } from "@/constants";
 const LoginPage = () => {
   -useEffect(() => {
     localStorage.removeItem(AUTH_TOKEN);
-    window.location.href = "/login";
+    window.location.href = "/";
     // router.push("/login");
   }, []);
 

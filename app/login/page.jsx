@@ -32,9 +32,15 @@ const LoginPage = () => {
 
   useEffect(() => {
     if (isAuthenticated) {
-      router.push(`/`);
+      router.push(`/dashboard`);
     }
   }, [user]);
+
+  // useEffect(() => {
+  //   if (isAuthenticated) {
+  //     router.push(`/dashboard`);
+  //   }
+  // }, [isAuthenticated, user]);
 
   const onSubmit = async (data) => {
     setLoading(true);

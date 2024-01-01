@@ -65,14 +65,13 @@ const AboutPage = () => {
                 <Image src={Vector} alt="" className="cursor-pointer mt-10  " />
                 <div>
                   <p className="text-black text-3xl font-semibold ">creso</p>
-                  <p className="text-gray-600 text-sm">Version 1.1.0</p>
+                  <p className="text-gray-600 text-sm">Beta Version 1.0.0</p>
                 </div>
               </div>
               <div className="flex justify-start items-start gap-2">
                 <Image src={Info} alt="" />
                 <p className="text-gray-600 text-sm">
-                  Automatically Switch PRC nodes when the current RPC is
-                  unavailable
+                  This version is Beta version of Creso Wallet Ecosystem. Stay updated in community to get updates in all upcoming versions.
                 </p>
               </div>
             </div>
@@ -98,17 +97,7 @@ const AboutPage = () => {
                 aria-labelledby="accordion-collapse-heading-1"
               >
                 <p className="mb-2 text-black">
-                  The Biggest, and Best Rewards Club in Australia is LMCT. To
-                  offer our clients special discounts and great prizes, we have
-                  partnered with hundreds of (and rising) Australian companies.
-                  Since we began in 2022, we ve given away over $ 20 million in
-                  prizes, had more than two hundred winners, and are still in
-                  the early stages. Prizes have included cars, bikes, boats, and
-                  houses. The Biggest, and Best Rewards Club in Australia is
-                  LMCT. To offer our clients special discounts and great prizes,
-                  we have partnered with hundreds of(and rising) Australian
-                  companies. Since we began in 2022, we ve given away over $ 20
-                  million in prizes,
+                 User Agreement will be lunched soon. Stay connected.
                 </p>
               </div>
 
@@ -132,17 +121,7 @@ const AboutPage = () => {
                 aria-labelledby="accordion-collapse-heading-1"
               >
                 <p className="mb-2 text-black ">
-                  The Biggest, and Best Rewards Club in Australia is LMCT. To
-                  offer our clients special discounts and great prizes, we have
-                  partnered with hundreds of (and rising) Australian companies.
-                  Since we began in 2022, we ve given away over $ 20 million in
-                  prizes, had more than two hundred winners, and are still in
-                  the early stages. Prizes have included cars, bikes, boats, and
-                  houses. The Biggest, and Best Rewards Club in Australia is
-                  LMCT. To offer our clients special discounts and great prizes,
-                  we have partnered with hundreds of(and rising) Australian
-                  companies. Since we began in 2022, we ve given away over $ 20
-                  million in prizes,
+                  Your tokens are secure. Detailed privacy policy will be launched by end of January, 2024.
                 </p>
               </div>
               <div className="hover:translate-y-1">
@@ -164,17 +143,7 @@ const AboutPage = () => {
                 aria-labelledby="accordion-collapse-heading-1"
               >
                 <p className="mb-2 text-black ">
-                  The Biggest, and Best Rewards Club in Australia is LMCT. To
-                  offer our clients special discounts and great prizes, we have
-                  partnered with hundreds of (and rising) Australian companies.
-                  Since we began in 2022, we ve given away over $ 20 million in
-                  prizes, had more than two hundred winners, and are still in
-                  the early stages. Prizes have included cars, bikes, boats, and
-                  houses. The Biggest, and Best Rewards Club in Australia is
-                  LMCT. To offer our clients special discounts and great prizes,
-                  we have partnered with hundreds of(and rising) Australian
-                  companies. Since we began in 2022, we ve given away over $ 20
-                  million in prizes,
+                  {`Creso ecosystem's official website is https://creso.io . All other website claiming same are total scame. Please check domain authority before onboarding funds.`}
                 </p>
               </div>
             </div>

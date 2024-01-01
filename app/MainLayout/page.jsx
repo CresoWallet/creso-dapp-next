@@ -19,6 +19,7 @@ import CoinWallet from "@/components/CoinWallet";
 import CreateWallet from "@/components/CreateWallet";
 // import SendETH from "@/components/SendETH";
 // import { network } from "@/utils/data/coinlist";
+import axios from "axios";
 
 const MainLayout = () => {
   const router = useRouter();
@@ -30,7 +31,8 @@ const MainLayout = () => {
   // const [wallets, setWallets] = useState([]);
   const [walletType, setWalletType] = useState("");
   const [coinData, setCoinData] = useState([]);
-  console.log("coinData", coinData);
+  const [coinDataprice, setCoinDataprice] = useState([]);
+  //console.log("coinData", coinData);
   const { user, isAuthenticated, status } = useUser();
   const {
     secureWalletBalance,
@@ -47,7 +49,7 @@ const MainLayout = () => {
 
   useEffect(() => {
     if (status === "failed") {
-      router.push("/login");
+      router.push("/");
     }
   }, [status]);
 
@@ -69,11 +71,19 @@ const MainLayout = () => {
   const handleCoinWallet = (data) => {
     setCoinData(data);
     setShowCoinWallet(true);
+    gettokenprice(data);
     // close other models
     setShowCreateWallet(false);
     setShowWallet(false);
   };
 
+  const gettokenprice = async (data) => {
+    const Tokenprice = await axios.get(
+      `https://api.coingecko.com/api/v3/simple/token_price/ethereum?contract_addresses=${data.address}&vs_currencies=usd`
+    );
+    console.log("Tokenprice--->", Tokenprice.data);
+    setCoinDataprice(Tokenprice.data);
+  };
   const handleShowModel = () => {
     if (user?.registrationMethod !== "email" && !user?.isEmailVerified) {
       enqueueSnackbar(
@@ -152,11 +162,10 @@ const MainLayout = () => {
         {/* ------------ Leftside Main ---------- */}
         {
           <div
-            className={`${
-              isMobile && responsivCompo
-                ? "hidden"
-                : "lg:col-span-6 pt-16 px-10"
-            }`}
+            className={`${isMobile && responsivCompo
+              ? "hidden"
+              : "lg:col-span-6 pt-16 px-10"
+              }`}
           >
             <div className="">
               <LeftHeader
@@ -186,9 +195,8 @@ const MainLayout = () => {
 
         {/* ------------ Rightside Main ---------- */}
         <div
-          className={`${
-            responsivCompo ? "px-0  border-l-2 " : " px-10  pt-14"
-          } lg:col-span-4`}
+          className={`${responsivCompo ? "px-0  border-l-2 " : " px-10  pt-14"
+            } lg:col-span-4`}
         >
           <div className="hidden lg:block">
             <div className="hidden lg:flex">
@@ -200,6 +208,7 @@ const MainLayout = () => {
                   handleClose={handleCloseCoinWallet}
                   wallets={wallets}
                   coinData={coinData}
+                  coinDataprice={coinDataprice}
                 />
               )}
             </div>

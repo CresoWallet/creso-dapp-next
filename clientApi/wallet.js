@@ -6,7 +6,7 @@ export const getUserWallets = async () => {
   const res = await axiosInstance("/wallet", {
     method: "GET",
   });
-  console.log("🚀 ~ getUserWallets ~ res:", res)
+  //console.log("🚀 ~ getUserWallets ~ res:", res);
 
   return res;
 };
@@ -16,7 +16,7 @@ export const transferEthAPI = async (formData) => {
     method: "POST",
     data: formData,
   });
-  console.log("🚀 ~ transferEthAPI ~ res:", res)
+  //console.log("🚀 ~ transferEthAPI ~ res:", res);
 
   return res;
 };
@@ -26,7 +26,7 @@ export const getHistory = async (formData) => {
     method: "POST",
     data: formData,
   });
-  console.log("🚀 ~ getHistory ~ res:", res);
+  //console.log("🚀 ~ getHistory ~ res:", res);
 
   return res;
 };
@@ -36,7 +36,7 @@ export const createEOAWalletAPI = async (formData) => {
     method: "POST",
     data: formData,
   });
-  console.log("🚀 ~ createEOAWalletAPI ~ res:", res);
+  //console.log("🚀 ~ createEOAWalletAPI ~ res:", res);
   return res;
 };
 
@@ -45,7 +45,7 @@ export const createSmartWalletAPI = async (formData) => {
     method: "POST",
     data: formData,
   });
-  console.log("🚀 ~ createSmartWalletAPI ~ res:", res);
+  //console.log("🚀 ~ createSmartWalletAPI ~ res:", res);
   return res;
 };
 
@@ -54,7 +54,7 @@ export const backupWallet = async (formData) => {
     method: "POST",
     data: formData,
   });
-  console.log("🚀 ~ backupWal ~ res:", res);
+  //console.log("🚀 ~ backupWal ~ res:", res);
 
   return res;
 };
@@ -64,7 +64,7 @@ export const addGuardian = async (formData) => {
     method: "POST",
     data: formData,
   });
-  console.log("🚀 ~ addGuardian ~ res:", res);
+  //console.log("🚀 ~ addGuardian ~ res:", res);
   return res;
 };
 
@@ -73,7 +73,7 @@ export const getGuardians = async (formData) => {
     method: "POST",
     data: formData,
   });
-  console.log("🚀 ~ getGuardians ~ res:", res);
+  //console.log("🚀 ~ getGuardians ~ res:", res);
   return res;
 };
 
@@ -81,7 +81,7 @@ export const getGuardedWallets = async () => {
   const res = await axiosInstance("/guardedWallets", {
     method: "GET",
   });
-  console.log("🚀 ~ getGuardedWallets ~ res:", res);
+  //console.log("🚀 ~ getGuardedWallets ~ res:", res);
 
   return res;
 };
@@ -91,7 +91,7 @@ export const confirmRecovery = async (formData) => {
     method: "POST",
     data: formData,
   });
-  console.log("🚀 ~ confirmRecovery ~ res:", res);
+  //console.log("🚀 ~ confirmRecovery ~ res:", res);
   return res;
 };
 
@@ -100,7 +100,7 @@ export const getRecoveryStatus = async (formData) => {
     method: "POST",
     data: formData,
   });
-  console.log("🚀 ~ getRecoveryStatus ~ res:", res);
+  //console.log("🚀 ~ getRecoveryStatus ~ res:", res);
   return res;
 };
 
@@ -109,7 +109,7 @@ export const removeGuardian = async (formData) => {
     method: "POST",
     data: formData,
   });
-  console.log("🚀 ~ removeGuardian ~ res:", res);
+  //console.log("🚀 ~ removeGuardian ~ res:", res);
   return res;
 };
 
@@ -118,7 +118,7 @@ export const startRecovery = async (formData) => {
     method: "POST",
     data: formData,
   });
-  console.log("🚀 ~ startRecovery ~ res:", res);
+  //console.log("🚀 ~ startRecovery ~ res:", res);
   return res;
 };
 
@@ -127,13 +127,13 @@ export const getUserTokens = async (formData) => {
     method: "POST",
     data: formData,
   });
-  console.log("🚀 ~ getUserTokens ~ res:", res);
+  //console.log("🚀 ~ getUserTokens ~ res:", res);
 };
 
 export const getUSDValue = async () => {
   try {
     const res = await axios.get(CRYPTO_TO_USD);
-    console.log("🚀 ~ getUSDValue ~ res:", res);
+    //console.log("🚀 ~ getUSDValue ~ res:", res);
     return res;
   } catch (error) {}
 };

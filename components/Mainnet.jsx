@@ -30,7 +30,10 @@ const Mainnet = ({ handleOpenWallet, handleCreateWallet, showWallet }) => {
     setTotalBalance,
     setFilteredData,
     setOriginalData,
+    setSend,
+    setMainContentVisible,
   } = useContext(WalletContext);
+
   const { enqueueSnackbar } = useSnackbar();
   const [tokenPrices, setTokenPrices] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
@@ -167,11 +170,14 @@ const Mainnet = ({ handleOpenWallet, handleCreateWallet, showWallet }) => {
 
   const fetchAllToken = async () => {
     try {
+      //const response = await axios.get(
+      //  "https://tokens.coingecko.com/uniswap/all.json"
+      //);
       const response = await axios.get(
-        "https://tokens.coingecko.com/uniswap/all.json"
+        "https://gateway.ipfs.io/ipns/tokens.uniswap.org"
       );
       const data = response?.data?.tokens;
-      //console.log("🚀 ~ fetchAllToken ~ data:", data);
+      console.log("🚀 ~ fetchAllToken ~ response:", response?.data?.tokens);
       setOriginalData(data);
       setFilteredData(data);
 
@@ -297,6 +303,8 @@ const Mainnet = ({ handleOpenWallet, handleCreateWallet, showWallet }) => {
                 onClick={() => {
                   setActiveButton("AA");
                   handleOpenWallet({ walletName: "AA" });
+                  setMainContentVisible(true);
+                  setSend(false);
                 }}
               ></div>
             </div>
@@ -352,13 +360,15 @@ const Mainnet = ({ handleOpenWallet, handleCreateWallet, showWallet }) => {
                 onClick={() => {
                   setActiveButton("EOA");
                   handleOpenWallet({ walletName: "EOA" });
+                  setMainContentVisible(true);
+                  setSend(false);
                 }}
               ></div>
             </div>
           </div>
         </div>
       </div>
-      <div className="overflow-y-auto custom-scrollbar h-64">
+      <div className="overflow-auto custom-scrollbar h-64">
         {isLoading ? (
           <>
             {arr.map((e, index) => {

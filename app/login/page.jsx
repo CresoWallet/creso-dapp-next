@@ -36,6 +36,12 @@ const LoginPage = () => {
     }
   }, [user]);
 
+  // useEffect(() => {
+  //   if (isAuthenticated) {
+  //     router.push(`/dashboard`);
+  //   }
+  // }, [isAuthenticated, user]);
+
   const onSubmit = async (data) => {
     setLoading(true);
     try {

@@ -361,7 +361,7 @@ const Mainnet = ({ handleOpenWallet, handleCreateWallet, showWallet }) => {
           </div>
         </div>
       </div>
-      <div className="overflow-y-auto custom-scrollbar">
+      <div className="overflow-auto custom-scrollbar h-64">
         {isLoading ? (
           <>
             {arr.map((e, index) => {

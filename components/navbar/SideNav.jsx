@@ -17,8 +17,8 @@ import NavItem from "./NavItem";
 import Twitter from "../../assets/Dashboard/twitter.png";
 import Telegram from "../../assets/Dashboard/telegram.png";
 import Etherscan from "../../assets/Dashboard/etherscan.png";
-import Discord from "../../assets/Dashboard/github.png";
-import Github from "../../assets/Dashboard/discord.png";
+import Github from "../../assets/Dashboard/github.png";
+import Discord from "../../assets/Dashboard/discord.png";
 import cresow from "../../assets/Dashboard/creso_logo_white.svg";
 import cresob from "../../assets/Dashboard/creso logo black.svg";
 
@@ -32,56 +32,65 @@ const SideNav = () => {
   };
 
   return (
-    <div className="bg-[#2100EC] rounded-3xl flex flex-col pt-12 min-h-screen lg:h-full items-center lg:items-start  ">
-      <div className="flex flex-row items-center gap-1 px-8 relative Mainlogo text-white">
-        <Image alt="creso-logo" src={cresow} className="h-10 my-8 mb-14" />
+    <div className="bg-[#2100EC] rounded-3xl  min-h-full ">
+      <div className="flex flex-col pt-12 lg:h-full items-center lg:items-start  ">
+        <div className="flex flex-row items-center gap-1 px-8 relative Mainlogo text-white">
+          <Image alt="creso-logo" src={cresow} className="h-10 my-8 mb-14" />
 
-        {/* 
+          {/* 
         <p className=" text-4xl hidden lg:block items-center">creso</p>
         <p className="text-sm mt-4 text-[#D0F500]">Beta</p>
 
          */}
-      </div>
-      <div className={`flex flex-col ${isMobile ? "mr-5" : "mr-10"}`}>
-        <NavItem
-          pathName={pathName}
-          href="/dashboard"
-          icon={pathName === "/dashboard" ? Wallet1 : Wallet}
-          label="Dashboard"
-          active={activeIcon === "dashboard"}
-          onClick={() => handleIconClick("dashboard")}
-        />
-        <NavItem
-          pathName={pathName}
-          href="/discover"
-          icon={pathName === "/discover" ? Discover1 : Discover}
-          label="Discover"
-        />
-        <NavItem
-          pathName={pathName}
-          href="/swap"
-          icon={pathName === "/swap" ? Swap1 : Swap}
-          label="Swap"
-        />
-        <div className="py-4 ">
-          <hr className="text-[#B1A6F8]" />
         </div>
-        <NavItem
-          pathName={pathName}
-          href="/about"
-          icon={pathName === "/about" ? Info1 : Info}
-          label="About us"
-        />
+        <div className={`flex flex-col ${isMobile ? "mr-5" : "mr-10"}`}>
+          <NavItem
+            pathName={pathName}
+            href="/dashboard"
+            icon={pathName === "/dashboard" ? Wallet1 : Wallet}
+            label="Dashboard"
+            active={activeIcon === "dashboard"}
+            onClick={() => handleIconClick("dashboard")}
+          />
+          <NavItem
+            pathName={pathName}
+            href="/discover"
+            icon={pathName === "/discover" ? Discover1 : Discover}
+            label="Discover"
+          />
+          <NavItem
+            pathName={pathName}
+            href="/swap"
+            icon={pathName === "/swap" ? Swap1 : Swap}
+            label="Swap"
+          />
+          <div className="py-4 ">
+            <hr className="text-[#B1A6F8]" />
+          </div>
+          <NavItem
+            pathName={pathName}
+            href="/about"
+            icon={pathName === "/about" ? Info1 : Info}
+            label="About us"
+          />
 
-        <NavItem
-          pathName={pathName}
-          href="/support"
-          icon={pathName === "/support" ? Support : Support}
-          label="Support"
-        />
+          <NavItem
+            pathName={pathName}
+            href="/support"
+            icon={pathName === "/support" ? Support : Support}
+            label="Support"
+          />
+
+          <NavItem
+            pathName={pathName}
+            href="/support"
+            icon={Support}
+            label="Support"
+          />
+        </div>
       </div>
       {/* Add social media icons */}
-      <div className="flex justify-between item-center gap-2 border-white rounded-full bg-white border border-solid  w-full p-2 mt-12 px-8  ">
+      <div className="flex justify-between item-center gap-2 border-white rounded-full bg-white border border-solid p-2 mt-12 mx-5">
         <a
           href="https://twitter.com/cresowallet"
           target="_blank"

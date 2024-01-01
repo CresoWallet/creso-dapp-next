@@ -197,11 +197,11 @@ button:disabled {
   scrollbar-color: rebeccapurple green; /* Firefox */
   border-radius: 8px; /* Add rounded corners */
   scroll-behavior: smooth; /* Add smooth scrolling behavior */
-  overflow-y: scroll;
 }
 
 .custom-scrollbar::-webkit-scrollbar {
   width: 4px; /* Chrome/Safari */
+  height: 4px;
 }
 
 .custom-scrollbar::-webkit-scrollbar-thumb {
@@ -219,11 +219,11 @@ body {
   scrollbar-color: rebeccapurple green; /* Firefox */
   border-radius: 8px; /* Add rounded corners */
   scroll-behavior: smooth; /* Add smooth scrolling behavior */
-  overflow-y: scroll;
 }
 
 body::-webkit-scrollbar {
   width: 4px; /* Chrome/Safari */
+  height: 2px;
 }
 
 body::-webkit-scrollbar-thumb {

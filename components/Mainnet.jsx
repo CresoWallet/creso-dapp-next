@@ -167,11 +167,14 @@ const Mainnet = ({ handleOpenWallet, handleCreateWallet, showWallet }) => {
 
   const fetchAllToken = async () => {
     try {
+      //const response = await axios.get(
+      //  "https://tokens.coingecko.com/uniswap/all.json"
+      //);
       const response = await axios.get(
-        "https://tokens.coingecko.com/uniswap/all.json"
+        "https://gateway.ipfs.io/ipns/tokens.uniswap.org"
       );
       const data = response?.data?.tokens;
-      //console.log("🚀 ~ fetchAllToken ~ data:", data);
+      console.log("🚀 ~ fetchAllToken ~ response:", response?.data?.tokens);
       setOriginalData(data);
       setFilteredData(data);
 
@@ -358,7 +361,7 @@ const Mainnet = ({ handleOpenWallet, handleCreateWallet, showWallet }) => {
           </div>
         </div>
       </div>
-      <div className="overflow-y-auto custom-scrollbar h-64">
+      <div className="overflow-y-auto custom-scrollbar">
         {isLoading ? (
           <>
             {arr.map((e, index) => {

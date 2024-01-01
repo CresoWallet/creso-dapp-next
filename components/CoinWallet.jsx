@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import Image from "next/image";
 import ETH from "../assets/Dashboard/ethSelect.png";
 import BnB from "../assets/Dashboard/bnb.png";
@@ -16,13 +16,23 @@ import { network } from "@/utils/data/coinlist";
 const CoinWallet = ({ handleClose, wallets, coinData, coinDataprice }) => {
   const [send, setSend] = useState(false);
   const [walletAddress, setWalletAddress] = useState(false);
+  const [mainContentVisible, setMainContentVisible] = useState(true);
 
   const handleWalletClick = () => {
     setWalletAddress(true);
+    setSend(false);
+    setMainContentVisible(false);
   };
 
   const handleClick = () => {
     setSend(true);
+    setMainContentVisible(false);
+  };
+
+  const handleBackButtonClick = () => {
+    setMainContentVisible(true);
+    setWalletAddress(false);
+    setSend(false);
   };
   //console.log(wallets);
 
@@ -38,7 +48,7 @@ const CoinWallet = ({ handleClose, wallets, coinData, coinDataprice }) => {
       </div>
       {send && (
         <SendETH
-          handleBackButton={() => setSend(false)}
+          handleBackButton={handleBackButtonClick}
           walletArr={wallets}
           networks={network}
         />
@@ -46,7 +56,7 @@ const CoinWallet = ({ handleClose, wallets, coinData, coinDataprice }) => {
       {walletAddress && (
         <WalletAddress
           //  wallet= pass relevant wallet data here
-          handleBackButton={() => setWalletAddress(false)}
+          handleBackButton={handleBackButtonClick}
         />
       )}
       <div className="flex flex-col md:mx-8 mx-6 xl:mx-8 mt-10 xl:space-y-10 md:space-y-10 space-y-4">

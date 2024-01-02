@@ -193,14 +193,14 @@ button:disabled {
 
 /*custom scrollbar in wallet.jsx*/
 ::-webkit-scrollbar-thumb {
-  background: #4655db;
+  background: #2100ec;
   /* border-radius: 10px; */
   cursor: pointer;
 }
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-  background: #4655db;
+  background: #2100ec;
 }
 
 /* width */

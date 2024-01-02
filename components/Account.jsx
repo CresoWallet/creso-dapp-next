@@ -17,6 +17,7 @@ const Account = ({ user, setShowModal }) => {
       <div className="flex flex-col space-y-3">
         <UserDetails />
 
+        {user ? getInitials(user.username) : ""}
         {/* {user && !user?.isEmailVerified && (
           <CustomButton3
             title="Backup"

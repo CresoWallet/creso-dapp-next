@@ -66,7 +66,7 @@ const RightSide = (props) => {
           <div className="grid grid-cols-2 gap-2 my-8">
             <CapCard
               name="Market Cap"
-              amount="$1,312.6B"
+              amount="$1,312.6 B"
               icon="down"
               iconColor="[#FF4085]"
               percentageColor="[#FF4085]"
@@ -74,7 +74,7 @@ const RightSide = (props) => {
             />
             <CapCard
               name="NFT Cap"
-              amount="$2.16B"
+              amount="$2.16 B"
               icon="up"
               iconColor="[#14B195]"
               percentageColor="[#14B195]"
@@ -82,7 +82,7 @@ const RightSide = (props) => {
             />
             <CapCard
               name="24H Volume"
-              amount="$125.6B"
+              amount="$125.6 B"
               icon="down"
               iconColor="[#FF4085]"
               percentageColor="[#FF4085]"
@@ -90,7 +90,7 @@ const RightSide = (props) => {
             />
             <CapCard
               name="Gas Burn Leaderboard"
-              amount="$2.16B"
+              amount="$2.16 B"
               // icon=""
               // iconColor="[#FF4085]"
               // percentageColor="[#FF4085]"

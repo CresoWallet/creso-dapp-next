@@ -21,8 +21,14 @@ const SecureWallet = ({ handleClose, wallets, walletType }) => {
   // const [send, setSend] = useState(false);
   const [walletAddress, setWalletAddress] = useState(false);
 
-  const { send, setSend, totalBalance } = useContext(WalletContext);
-  const [mainContentVisible, setMainContentVisible] = useState(true);
+  const {
+    send,
+    setSend,
+    totalBalance,
+    mainContentVisible,
+    setMainContentVisible,
+  } = useContext(WalletContext);
+  // const [mainContentVisible, setMainContentVisible] = useState(true);
   const handleWalletClick = () => {
     setWalletAddress(true);
     setMainContentVisible(false);

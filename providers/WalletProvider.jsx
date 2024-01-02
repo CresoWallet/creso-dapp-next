@@ -41,6 +41,7 @@ const WalletContextProvider = ({ children }) => {
   const [activeButton, setActiveButton] = useState("AA");
   const [originalData, setOriginalData] = useState([]);
   const [filteredData, setFilteredData] = useState([]);
+  const [mainContentVisible, setMainContentVisible] = useState(true);
   const [send, setSend] = useState(false);
 
   // useEffect(() => {
@@ -75,8 +76,7 @@ const WalletContextProvider = ({ children }) => {
     /* For remove SideNav fetch path */
   }
   const pathName = usePathname();
-  const isLoginOrRegister =
-    pathName === "/" || pathName.includes("/register");
+  const isLoginOrRegister = pathName === "/" || pathName.includes("/register");
   // console.log(pathName);
 
   useEffect(() => {
@@ -211,6 +211,8 @@ const WalletContextProvider = ({ children }) => {
         setOriginalData,
         send,
         setSend,
+        setMainContentVisible,
+        mainContentVisible,
       }}
     >
       {/* {navbarTrigger && (

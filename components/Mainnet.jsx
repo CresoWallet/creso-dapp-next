@@ -30,7 +30,10 @@ const Mainnet = ({ handleOpenWallet, handleCreateWallet, showWallet }) => {
     setTotalBalance,
     setFilteredData,
     setOriginalData,
+    setSend,
+    setMainContentVisible,
   } = useContext(WalletContext);
+
   const { enqueueSnackbar } = useSnackbar();
   const [tokenPrices, setTokenPrices] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
@@ -294,6 +297,8 @@ const Mainnet = ({ handleOpenWallet, handleCreateWallet, showWallet }) => {
                 onClick={() => {
                   setActiveButton("AA");
                   handleOpenWallet({ walletName: "AA" });
+                  setMainContentVisible(true);
+                  setSend(false);
                 }}
               ></div>
             </div>
@@ -349,6 +354,8 @@ const Mainnet = ({ handleOpenWallet, handleCreateWallet, showWallet }) => {
                 onClick={() => {
                   setActiveButton("EOA");
                   handleOpenWallet({ walletName: "EOA" });
+                  setMainContentVisible(true);
+                  setSend(false);
                 }}
               ></div>
             </div>

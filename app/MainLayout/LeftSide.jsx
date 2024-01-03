@@ -20,6 +20,7 @@ const LeftSide = (props) => {
     handleCoinWallet,
     handleShowModel,
     handleShowWallet,
+    coinDataprice
     // user,
     // status,
   } = props;
@@ -56,7 +57,7 @@ const LeftSide = (props) => {
             )}
             <div className="flex gap-5 !col-span-6 ">
               {/* <AddCoinButton /> */}
-              <CoinCard handleCoinWallet={handleCoinWallet} />
+              <CoinCard handleCoinWallet={handleCoinWallet} coinDataprice={coinDataprice} />
             </div>
             <Mainnet
               handleOpenWallet={handleShowWallet}

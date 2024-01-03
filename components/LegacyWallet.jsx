@@ -11,7 +11,9 @@ import { enqueueSnackbar } from "notistack";
 import { WalletContext } from "@/providers/WalletProvider";
 import { FiInfo } from "react-icons/fi";
 import Sucess from "../assets/Dashboard/Sucess.svg";
+
 const LegacyWallet = ({ handleBackButton, type, handleClose }) => {
+ 
   const [wallet, setWallet] = useState(false);
   const [inputText, setInputText] = useState("");
   const [error, setError] = useState(false);

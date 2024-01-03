@@ -57,6 +57,13 @@ const MainLayout = () => {
     fetchWallet();
   }, []);
 
+  const gettokenprice = async (data) => {
+    const Tokenprice = await axios.get(
+      `https://api.coingecko.com/api/v3/simple/token_price/ethereum?contract_addresses=${data.address}&vs_currencies=usd`
+    );
+    console.log("Tokenprice😁--->", Tokenprice.data);
+    setCoinDataprice(Tokenprice.data);
+  };
   const handleCreateWallet = () => {
     setShowCreateWallet(!showCreateWallet);
     // close other models
@@ -75,14 +82,6 @@ const MainLayout = () => {
     // close other models
     setShowCreateWallet(false);
     setShowWallet(false);
-  };
-
-  const gettokenprice = async (data) => {
-    const Tokenprice = await axios.get(
-      `https://api.coingecko.com/api/v3/simple/token_price/ethereum?contract_addresses=${data.address}&vs_currencies=usd`
-    );
-    console.log("Tokenprice--->", Tokenprice.data);
-    setCoinDataprice(Tokenprice.data);
   };
   const handleShowModel = () => {
     if (user?.registrationMethod !== "email" && !user?.isEmailVerified) {

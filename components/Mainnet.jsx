@@ -237,10 +237,9 @@ const Mainnet = ({ handleOpenWallet, handleCreateWallet, showWallet }) => {
       <div>
         <div className="flex items-center justify-between">
           <p className="font-bold text-xl lg:my-0 my-4">Ethereum Mainnet </p>
-          <div className="flex  gap-2 items-center cursor-pointer group">
+          <div className="flex  gap-2 items-center cursor-pointer group" onClick={handleCreateWallet}>
             <Image src={PinkPlus} alt="" />
             <p
-              onClick={handleCreateWallet}
               className="text-[#FF4085] group-hover:font-bold duration-500"
             >
               Create

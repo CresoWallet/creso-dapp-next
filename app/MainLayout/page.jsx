@@ -132,7 +132,7 @@ const MainLayout = () => {
     <>
       {/* ------------ Popup Main ---------- */}
       {isMobile && (
-        <div className="lg:hidden block min-w-max">
+        <div className="lg:hidden block">
           {showWallet && (
             <SecureWallet
               handleClose={handleCloseShowWallet}

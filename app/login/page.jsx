@@ -48,6 +48,7 @@ const LoginPage = () => {
       const res = await loginApi(data);
       console.log(res);
       const tk = res.data.token;
+      //console.log(tk);
       if (tk) {
         // localStorage.setItem(AUTH_TOKEN, tk);
         // authenticate();

@@ -16,25 +16,26 @@ const TransactionItem = ({ icon, label, amount, value, valueName }) => {
   return (
     <div className="grid grid-cols-3 gap-6 items-center my-5">
       <div className="flex gap-3 items-center">
-        <Image alt="" src={icon} width={30} height={30} />
-        <p className="text-sm text-black">{label}</p>
+        <Image alt="" src={icon} width={35} height={35} />
+        <p className="text-base text-black font-semibold">{label}</p>
       </div>
 
       <div className="flex gap-3 items-center">
-        <p className="text-sm text-slate-400">{amount}</p>
-        <p className="text-slate-400">
-          {value} <span title={valueName}>{firstTwoWords}</span>
+        <p className="text-base text-slate-400">$ {amount}</p>
+        <p className="">
+          <span className="font-bold text-lg ">{value}</span>{" "}
+          <span title={valueName}>{firstTwoWords}</span>
         </p>
       </div>
 
       <div className="flex gap-10 items-center">
         <div className="flex items-center gap-3 cursor-pointer">
           <Image alt="" src={Redarrow} className="w-6 h-6" />
-          <p className="text-sm text-black">Send</p>
+          <p className="text-base text-black">Send</p>
         </div>
         <div className="flex items-center gap-3 cursor-pointer">
           <Image alt="" src={Greenarrow} className="w-6 h-6" />
-          <p className="text-sm text-black">Receive</p>
+          <p className="text-base text-black">Receive</p>
         </div>
       </div>
     </div>

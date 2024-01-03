@@ -57,17 +57,16 @@ const NetworkPage2 = () => {
                 </div>
               </div>
             </div>
-            {/* {isMobile && navbarTrigger && (
+            {/*{isMobile && navbarTrigger && (
               <div className={`col-span-1 h-full responsivemb-nav `}>
                 <SideNav />
               </div>
-            )}
-
-            {!isMobile && (
+            )}*/}
+            {/*{!isMobile && (
               <div className={`col-span-1 h-full`}>
                 <SideNav />
               </div>
-            )}
+            )}*/}
             {isMobile && (
               <div className="account-navs">
                 <Image
@@ -77,7 +76,8 @@ const NetworkPage2 = () => {
                   onClick={() => setNavbarTrigger(!navbarTrigger)}
                 />{" "}
               </div>
-            )}*/}
+            )}
+
             <div
               className={`col-span-4 ${
                 isMobile ? "mt-2" : "mt-16"

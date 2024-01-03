@@ -281,7 +281,7 @@ const Mainnet = ({ handleOpenWallet, handleCreateWallet, showWallet }) => {
                     alt="copy"
                     onClick={() => {
                       copyToClipBoard(secureWalletAddress);
-                      enqueueSnackbar("URL Copied", {
+                      enqueueSnackbar("Address Copied", {
                         variant: "info",
                       });
                     }}
@@ -336,7 +336,7 @@ const Mainnet = ({ handleOpenWallet, handleCreateWallet, showWallet }) => {
                     alt=""
                     onClick={() => {
                       copyToClipBoard(eoaWalletAddress);
-                      enqueueSnackbar("URL Copied", {
+                      enqueueSnackbar("Address Copied", {
                         variant: "info",
                       });
                     }}

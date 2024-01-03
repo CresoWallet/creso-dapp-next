@@ -38,7 +38,7 @@ const CoinWallet = ({ handleClose, wallets, coinData, coinDataprice }) => {
 
   return (
     <div
-      className={`bg-white md:border-l-2 md:shadow-xl w-full h-screen z-10 `}
+      className={`min-w-max bg-white md:border-l-2 md:shadow-xl w-full h-screen z-10 `}
     >
       <div className="flex rounded-full bg-black h-8 w-8 items-center justify-center md:-ml-4 ml-2 mt-10 absolute z-[99]">
         <IoIosClose

@@ -21,8 +21,14 @@ const SecureWallet = ({ handleClose, wallets, walletType }) => {
   // const [send, setSend] = useState(false);
   const [walletAddress, setWalletAddress] = useState(false);
 
-  const { send, setSend, totalBalance } = useContext(WalletContext);
-  const [mainContentVisible, setMainContentVisible] = useState(true);
+  const {
+    send,
+    setSend,
+    totalBalance,
+    mainContentVisible,
+    setMainContentVisible,
+  } = useContext(WalletContext);
+  // const [mainContentVisible, setMainContentVisible] = useState(true);
   const handleWalletClick = () => {
     setWalletAddress(true);
     setMainContentVisible(false);
@@ -40,7 +46,7 @@ const SecureWallet = ({ handleClose, wallets, walletType }) => {
 
   return (
     <div
-      className={`bg-white shadow-xl lg:w-auto h-[123vh] lg:h-[100vh] lg:block`}
+      className={`bg-white shadow-xl min-w-max lg:w-auto h-[123vh] lg:h-[100vh] lg:block`}
     >
       <div className="grid place-items-center rounded-full bg-black h-8 w-8 absolute cursor-pointer md:-ml-4 ml-2 lg:mt-0 z-[99]">
         <IoIosClose className="text-white h-7 w-7" onClick={handleClose} />

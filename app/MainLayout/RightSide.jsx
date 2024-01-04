@@ -47,6 +47,8 @@ const RightSide = (props) => {
   // };
   const path = usePathname();
   const matchPath = path !== "/discover";
+  const isSwapPage = path === "/swap";
+  const isAboutPage = path === "/about";
   return (
     <>
       {/* right side */}
@@ -97,20 +99,26 @@ const RightSide = (props) => {
               percentage="386.58 ETH"
             />
           </div>
-          <div className="flex flex-row items-center gap-2 mt-8">
-            <CustomButton2
-              name="Top Gainers "
-              bgColor="[#D0F500]"
-              borderColor="black"
-              textColor="black"
-            />
-            <CustomButton2
-              name="Top Losers"
-              bgColor="white"
-              borderColor="[#E5E5F0]"
-              textColor="black"
-            />
-          </div>
+          {isSwapPage || isAboutPage ? (
+            <div className="flex flex-row items-center gap-2 mt-8">
+              <p className="text-black text-2xl font-bold">Top Gainers</p>
+            </div>
+          ) : (
+            <div className="flex flex-row items-center gap-2 mt-8">
+              <CustomButton2
+                name="Top Gainers "
+                bgColor="[#D0F500]"
+                borderColor="black"
+                textColor="black"
+              />
+              <CustomButton2
+                name="Top Losers"
+                bgColor="white"
+                borderColor="[#E5E5F0]"
+                textColor="black"
+              />
+            </div>
+          )}
           <div className="flex flex-col gap-4 mt-6">
             <div className="flex flex-col gap-1">
               <User

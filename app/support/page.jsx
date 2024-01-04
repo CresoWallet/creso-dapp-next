@@ -11,10 +11,10 @@ const SupportPage = () => {
     <>
       {/* <div>page</div> */}
 
-      <div className="lg:grid lg:grid-cols-10 divide-x">
+      <div className="lg:grid lg:grid-cols-10  ">
         {/* ------------ Leftside Main ---------- */}
         {/* <div className="grid responsivemb-cols h-full"> */}
-        <div className="lg:col-span-6 pt-16 px-6">
+        <div className="lg:col-span-6 pt-16 px-12">
           {/* <div className="flex md:hidden">
               {showSwapForm && <SwapFrom handleClose={handleClose} />}
             </div> */}
@@ -32,6 +32,12 @@ const SupportPage = () => {
               // iconImg2={Note}
             />
           </div>
+        </div>
+
+        <hr className="lg:hidden mt-10 lg:mt-0" />
+        {/* ------------ Rightside Main ---------- */}
+        <div className="pt-14 col-span-4 px-10">
+          <Header />
         </div>
       </div>
     </>

@@ -62,7 +62,6 @@ const NetworkPage2 = () => {
                 <SideNav />
               </div>
             )}*/}
-
             {/*{!isMobile && (
               <div className={`col-span-1 h-full`}>
                 <SideNav />

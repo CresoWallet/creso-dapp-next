@@ -32,7 +32,7 @@ const SideNav = () => {
   };
 
   return (
-    <div className="bg-[#2100EC] rounded-3xl  min-h-full ">
+    <div className="bg-[#2100EC] rounded-3xl  min-h-full">
       <div className="flex flex-col pt-12 lg:h-full items-center lg:items-start  ">
         <div className="flex flex-row items-center gap-1 px-8 relative Mainlogo text-white">
           <Image alt="creso-logo" src={cresow} className="h-10 my-8 mb-14" />
@@ -132,7 +132,7 @@ const SideNav = () => {
         </div>
       </div>
       {/* Add social media icons */}
-      <div className="flex justify-between item-center gap-2 border-white rounded-full bg-white border border-solid p-2 mt-12 mx-5">
+      <div className="flex justify-between item-center gap-2 border-white rounded-full bg-white border border-solid p-2 my-8 mx-5">
         <a
           href="https://twitter.com/cresowallet"
           target="_blank"

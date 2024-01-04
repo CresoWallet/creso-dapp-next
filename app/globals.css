@@ -74,9 +74,14 @@ button:disabled {
 
 .sidebar {
   width: 15%;
+  position: fixed;
+  height: 100vh;
+  z-index: 1000;
+  overflow-y: auto;
 }
 .childrens {
   width: 85%;
+  margin-left: 15%;
 }
 /* .responsivemb-cols {
   grid-template-columns: repeat(4, minmax(0, 1fr));
@@ -161,6 +166,7 @@ button:disabled {
   }
   .childrens {
     width: 85%;
+    margin-left: 25%;
   }
   .navActiveMenu {
     padding: 0 100px 0 64px;

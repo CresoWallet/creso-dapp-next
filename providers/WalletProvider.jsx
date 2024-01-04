@@ -225,7 +225,7 @@ const WalletContextProvider = ({ children }) => {
       {!isLoginOrRegister && (
         <div className="flex my-2 mx-2">
           {/* ------------Sidebar---------- */}
-          <div className="sidebar">
+          <div className="sidebar ">
             {/* {!isMobile && ( */}
             <div className={`sidebarDesktop h-full w-full`}>
               {/* Conditionally render SideNav based on the path name */}
@@ -233,6 +233,8 @@ const WalletContextProvider = ({ children }) => {
             </div>
             {/* )} */}
           </div>
+
+          {/* Children's content */}
           {!isMobile && <div className="childrens">{children}</div>}
         </div>
       )}

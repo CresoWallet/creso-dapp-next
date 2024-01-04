@@ -32,7 +32,7 @@ const SideNav = () => {
   };
 
   return (
-    <div className="bg-[#2100EC] rounded-3xl  min-h-full ">
+    <div className="bg-[#2100EC] rounded-3xl  min-h-full">
       <div className="flex flex-col pt-12 lg:h-full items-center lg:items-start  ">
         <div className="flex flex-row items-center gap-1 px-8 relative Mainlogo text-white">
           <Image alt="creso-logo" src={cresow} className="h-10 my-8 mb-14" />
@@ -44,7 +44,7 @@ const SideNav = () => {
          */}
         </div>
         <div className={`flex flex-col ${isMobile ? "mr-5" : "mr-10"}`}>
-          <NavItem
+          {/*  <NavItem
             pathName={pathName}
             href="/dashboard"
             icon={pathName === "/dashboard" ? Wallet1 : Wallet}
@@ -57,17 +57,66 @@ const SideNav = () => {
             href="/discover"
             icon={pathName === "/discover" ? Discover1 : Discover}
             label="Discover"
-          />
-          <NavItem
-            pathName={pathName}
+        /> 
+           <NavItem
+             pathName={pathName}
             href="/swap"
             icon={pathName === "/swap" ? Swap1 : Swap}
             label="Swap"
           />
+      */}
+
+          <NavItem
+            pathName={pathName}
+            href="/dashboard"
+            icon={Wallet}
+            hoverIcon={Wallet1}
+            label="Dashboard"
+            active={activeIcon === "dashboard"}
+            onClick={() => handleIconClick("dashboard")}
+          />
+          <NavItem
+            pathName={pathName}
+            href="/discover"
+            icon={Discover}
+            hoverIcon={Discover1}
+            label="Discover"
+            active={activeIcon === "discover"}
+            onClick={() => handleIconClick("discover")}
+          />
+          <NavItem
+            pathName={pathName}
+            href="/swap"
+            icon={Swap}
+            hoverIcon={Swap1}
+            label="Swap"
+            active={activeIcon === "swap"}
+            onClick={() => handleIconClick("swap")}
+          />
+
           <div className="py-4 ">
             <hr className="text-[#B1A6F8]" />
           </div>
+
           <NavItem
+            pathName={pathName}
+            href="/about"
+            icon={Info}
+            hoverIcon={Info1}
+            label="About us"
+            active={activeIcon === "about"}
+            onClick={() => handleIconClick("about")}
+          />
+          <NavItem
+            pathName={pathName}
+            href="/support"
+            icon={Support}
+            hoverIcon={Support}
+            label="Support"
+            active={activeIcon === "support"}
+            onClick={() => handleIconClick("support")}
+          />
+          {/*  <NavItem
             pathName={pathName}
             href="/about"
             icon={pathName === "/about" ? Info1 : Info}
@@ -79,11 +128,11 @@ const SideNav = () => {
             href="/support"
             icon={pathName === "/support" ? Support : Support}
             label="Support"
-          />
+          />  */}
         </div>
       </div>
       {/* Add social media icons */}
-      <div className="flex justify-between item-center gap-2 border-white rounded-full bg-white border border-solid p-2 mt-12 mx-5">
+      <div className="flex justify-between item-center gap-2 border-white rounded-full bg-white border border-solid p-2 my-8 mx-5">
         <a
           href="https://twitter.com/cresowallet"
           target="_blank"

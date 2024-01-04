@@ -113,13 +113,13 @@ const SecureWallet = ({ handleClose, wallets, walletType }) => {
             <p className="text-2xl font-bold">Balance</p>
             <div className="flex flex-row items-center gap-2">
               <CustomButton2
-                name="Top Gainers"
+                name="Tokens"
                 bgColor="[#D0F500]"
                 borderColor="black"
                 textColor="black"
               />
               <CustomButton2
-                name="Top Losers"
+                name="NFTs"
                 bgColor="white"
                 borderColor="[#E5E5F0]"
                 textColor="black"

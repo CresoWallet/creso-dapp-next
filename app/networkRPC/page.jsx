@@ -1,6 +1,5 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import SideNav from "@/components/navbar/SideNav";
 import Account from "@/components/Account";
 import { BsArrowLeft } from "react-icons/bs";
 import { MdKeyboardArrowDown } from "react-icons/md";
@@ -51,17 +50,7 @@ const NetworkRPCPage = () => {
                 </div>
               </div>
             </div>
-            {/*{isMobile && navbarTrigger && (
-              <div className={`col-span-1 h-full responsivemb-nav `}>
-                <SideNav />
-              </div>
-            )}
 
-            {!isMobile && (
-              <div className={`col-span-1 h-full`}>
-                <SideNav />
-              </div>
-            )}*/}
             {isMobile && (
               <div className="account-navs">
                 <Image
@@ -127,11 +116,66 @@ const NetworkRPCPage = () => {
             <div className="flex flex-row items-center justify-between">
               <div className="flex flex-row items-center gap-1">
                 <RiCheckboxCircleLine className="text-[#D0F500] h-6 w-6" />
+                <p className="text-sm font-semibold">Bit.Blockstream.io</p>
+              </div>
+              <div className="flex flex-row items-center gap-1">
+                <div className="flex flex-col text-end">
+                  <p className="text-sm text-[#FF4085]">Fail</p>
+                </div>
+                <RiArrowRightSLine />
+              </div>
+            </div>
+            <hr className="text-[#A09FAA]" />
+            <div className="flex flex-row items-center justify-between">
+              <div className="flex flex-row items-center gap-1">
+                <RiCheckboxCircleLine className="text-[#D0F500] h-6 w-6" />
                 <p className="text-sm font-semibold">Bit.Blockstream.info</p>
               </div>
               <div className="flex flex-row items-center gap-1">
                 <div className="flex flex-col text-end">
-                  <p className="text-sm text-[#14B195]">1020 ms</p>
+                  <p className="text-sm text-[#14B195]">654 ms</p>
+                  <p className="text-xs text-[#A09FAA]">
+                    Block Height : 18449348
+                  </p>
+                </div>
+                <RiArrowRightSLine />
+              </div>
+            </div>
+            <hr className="text-[#A09FAA]" />
+            <div className="flex flex-row items-center justify-between">
+              <div className="flex flex-row items-center gap-1">
+                <RiCheckboxCircleLine className="text-[#D0F500] h-6 w-6" />
+                <p className="text-sm font-semibold">Bit.Blockstream.io</p>
+              </div>
+              <div className="flex flex-row items-center gap-1">
+                <div className="flex flex-col text-end">
+                  <p className="text-sm text-[#FF4085]">Fail</p>
+                </div>
+                <RiArrowRightSLine />
+              </div>
+            </div>
+            <hr className="text-[#A09FAA]" />
+            <div className="flex flex-row items-center justify-between">
+              <div className="flex flex-row items-center gap-1">
+                <RiCheckboxCircleLine className="text-[#D0F500] h-6 w-6" />
+                <p className="text-sm font-semibold">Bit.Blockstream.info</p>
+              </div>
+              <div className="flex flex-row items-center gap-1">
+                <div className="flex flex-col text-end">
+                  <p className="text-sm text-[#2100EC]">...</p>
+                </div>
+                <RiArrowRightSLine />
+              </div>
+            </div>
+            <hr className="text-[#A09FAA]" />
+            <div className="flex flex-row items-center justify-between">
+              <div className="flex flex-row items-center gap-1">
+                <RiCheckboxCircleLine className="text-[#D0F500] h-6 w-6" />
+                <p className="text-sm font-semibold">Bit.Blockstream.info</p>
+              </div>
+              <div className="flex flex-row items-center gap-1">
+                <div className="flex flex-col text-end">
+                  <p className="text-sm text-[#14B195]">820 ms</p>
                   <p className="text-xs text-[#A09FAA]">
                     Block Height : 18449348
                   </p>
@@ -147,10 +191,23 @@ const NetworkRPCPage = () => {
               </div>
               <div className="flex flex-row items-center gap-1">
                 <div className="flex flex-col text-end">
-                  <p className="text-sm text-[#14B195]">1020 ms</p>
+                  <p className="text-sm text-[#14B195]">1000 ms</p>
                   <p className="text-xs text-[#A09FAA]">
                     Block Height : 18449348
                   </p>
+                </div>
+                <RiArrowRightSLine />
+              </div>
+            </div>
+            <hr className="text-[#A09FAA]" />
+            <div className="flex flex-row items-center justify-between">
+              <div className="flex flex-row items-center gap-1">
+                <RiCheckboxCircleLine className="text-[#D0F500] h-6 w-6" />
+                <p className="text-sm font-semibold">Bit.Blockstream.io</p>
+              </div>
+              <div className="flex flex-row items-center gap-1">
+                <div className="flex flex-col text-end">
+                  <p className="text-sm text-[#FF4085]">Fail</p>
                 </div>
                 <RiArrowRightSLine />
               </div>
@@ -163,90 +220,7 @@ const NetworkRPCPage = () => {
               </div>
               <div className="flex flex-row items-center gap-1">
                 <div className="flex flex-col text-end">
-                  <p className="text-sm text-[#14B195]">1020 ms</p>
-                  <p className="text-xs text-[#A09FAA]">
-                    Block Height : 18449348
-                  </p>
-                </div>
-                <RiArrowRightSLine />
-              </div>
-            </div>
-            <hr className="text-[#A09FAA]" />
-            <div className="flex flex-row items-center justify-between">
-              <div className="flex flex-row items-center gap-1">
-                <RiCheckboxCircleLine className="text-[#D0F500] h-6 w-6" />
-                <p className="text-sm font-semibold">Bit.Blockstream.info</p>
-              </div>
-              <div className="flex flex-row items-center gap-1">
-                <div className="flex flex-col text-end">
-                  <p className="text-sm text-[#14B195]">1020 ms</p>
-                  <p className="text-xs text-[#A09FAA]">
-                    Block Height : 18449348
-                  </p>
-                </div>
-                <RiArrowRightSLine />
-              </div>
-            </div>
-            <hr className="text-[#A09FAA]" />
-            <div className="flex flex-row items-center justify-between">
-              <div className="flex flex-row items-center gap-1">
-                <RiCheckboxCircleLine className="text-[#D0F500] h-6 w-6" />
-                <p className="text-sm font-semibold">Bit.Blockstream.info</p>
-              </div>
-              <div className="flex flex-row items-center gap-1">
-                <div className="flex flex-col text-end">
-                  <p className="text-sm text-[#14B195]">1020 ms</p>
-                  <p className="text-xs text-[#A09FAA]">
-                    Block Height : 18449348
-                  </p>
-                </div>
-                <RiArrowRightSLine />
-              </div>
-            </div>
-            <hr className="text-[#A09FAA]" />
-            <div className="flex flex-row items-center justify-between">
-              <div className="flex flex-row items-center gap-1">
-                <RiCheckboxCircleLine className="text-[#D0F500] h-6 w-6" />
-                <p className="text-sm font-semibold">Bit.Blockstream.info</p>
-              </div>
-              <div className="flex flex-row items-center gap-1">
-                <div className="flex flex-col text-end">
-                  <p className="text-sm text-[#14B195]">1020 ms</p>
-                  <p className="text-xs text-[#A09FAA]">
-                    Block Height : 18449348
-                  </p>
-                </div>
-                <RiArrowRightSLine />
-              </div>
-            </div>
-            <hr className="text-[#A09FAA]" />
-            <div className="flex flex-row items-center justify-between">
-              <div className="flex flex-row items-center gap-1">
-                <RiCheckboxCircleLine className="text-[#D0F500] h-6 w-6" />
-                <p className="text-sm font-semibold">Bit.Blockstream.info</p>
-              </div>
-              <div className="flex flex-row items-center gap-1">
-                <div className="flex flex-col text-end">
-                  <p className="text-sm text-[#14B195]">1020 ms</p>
-                  <p className="text-xs text-[#A09FAA]">
-                    Block Height : 18449348
-                  </p>
-                </div>
-                <RiArrowRightSLine />
-              </div>
-            </div>
-            <hr className="text-[#A09FAA]" />
-            <div className="flex flex-row items-center justify-between">
-              <div className="flex flex-row items-center gap-1">
-                <RiCheckboxCircleLine className="text-[#D0F500] h-6 w-6" />
-                <p className="text-sm font-semibold">Bit.Blockstream.info</p>
-              </div>
-              <div className="flex flex-row items-center gap-1">
-                <div className="flex flex-col text-end">
-                  <p className="text-sm text-[#14B195]">1020 ms</p>
-                  <p className="text-xs text-[#A09FAA]">
-                    Block Height : 18449348
-                  </p>
+                  <p className="text-sm text-[#2100EC]">...</p>
                 </div>
                 <RiArrowRightSLine />
               </div>

@@ -38,6 +38,7 @@ const SwapPage = () => {
   const [showSwapForm, setShowSwapForm] = useState(false);
   const { navbarTrigger, setNavbarTrigger, isMobile } =
     useContext(WalletContext);
+
   const handleShowSwap = () => {
     setShowSwapForm(!showSwapForm);
   };
@@ -45,20 +46,20 @@ const SwapPage = () => {
   const handleClose = () => {
     setShowSwapForm(false);
   };
-  useEffect(() => {
-    if (navbarTrigger) {
-      document.body.classList.add("no-scroll");
-    } else {
-      document.body.classList.remove("no-scroll");
-    }
-  }, [navbarTrigger]);
+  // useEffect(() => {
+  //   if (navbarTrigger) {
+  //     document.body.classList.add("no-scroll");
+  //   } else {
+  //     document.body.classList.remove("no-scroll");
+  //   }
+  // }, [navbarTrigger]);
 
   return (
     <>
       <div className="lg:grid lg:grid-cols-10 divide-x">
         {/* ------------ Leftside Main ---------- */}
         {/* <div className="grid responsivemb-cols h-full"> */}
-        <div className="lg:col-span-6 pt-16 px-6">
+        <div className="lg:col-span-6 pt-16  px-10 relative">
           {/* <div className="flex md:hidden">
               {showSwapForm && <SwapFrom handleClose={handleClose} />}
             </div> */}
@@ -100,7 +101,7 @@ const SwapPage = () => {
               <Image
                 alt=""
                 src={SwapButton}
-                className="w-12 h-12 xl:w-24 xl:h-24"
+                className="w-14 h-14 xl:w-24 xl:h-24"
               />
             </div>
             <div className="flex flex-col">
@@ -122,7 +123,7 @@ const SwapPage = () => {
                 </div>
               </div>
             </div>
-            <div className="flex flex-col space-y-1 mt-2">
+            <div className="flex flex-col space-y-1 mt-6">
               <div className="flex flex-row justify-between items-center">
                 <p className="px-4 text-xs xl:text-sm md:text-sm">You Pay</p>
                 <p className="text-xs text-[#6F6E7A]">Balance: 7,432 USD</p>
@@ -214,9 +215,9 @@ const SwapPage = () => {
 
         <hr className="lg:hidden mt-10 lg:mt-0" />
 
-
         {/* ------------ Rightside Main ---------- */}
         <div className="lg:col-span-4 pt-14 px-10">
+          {showSwapForm && <SwapFrom handleClose={handleClose} />}
           <Header />
           <RightMain />
         </div>

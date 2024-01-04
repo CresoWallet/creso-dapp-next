@@ -21,19 +21,20 @@ const links = [
 ];
 
 const Account = ({ setShowModal }) => {
-  const [hoveredLink, setHoveredLink] = useState(null);
-  const [clickedLink, setClickedLink] = useState(null);
+  const [hover, setHover] = useState(null);
+  const [clicked, setClicked] = useState(true);
 
   const handleMouseEnter = (link) => {
-    setHoveredLink(link);
+    setHover(link);
   };
 
   const handleMouseLeave = () => {
-    setHoveredLink(null);
+    setHover(null);
   };
 
   const handleClick = (link) => {
-    setClickedLink(link);
+    setClicked(link);
+    setHover(link);
   };
 
   return (
@@ -52,9 +53,9 @@ const Account = ({ setShowModal }) => {
           {links.map(({ id, label, icon: Icon }) => (
             <Link href={`/${id}`} key={id}>
               <div
-                className={`flex flex-row justify-between items-center cursor-pointer mx-4 pt-8 ${
-                  hoveredLink === id ? "text-purple-800 font-bold" : ""
-                } ${clickedLink === id ? "text-purple-800 font-bold" : ""}`}
+                className={`flex flex-row justify-between items-center cursor-pointer mx-4 pt-4 ${
+                  hover === id ? "text-purple-800 font-bold" : ""
+                } ${clicked === id ? "text-purple-800 font-bold" : ""}`}
                 onMouseEnter={() => handleMouseEnter(id)}
                 onMouseLeave={handleMouseLeave}
                 onClick={() => handleClick(id)}

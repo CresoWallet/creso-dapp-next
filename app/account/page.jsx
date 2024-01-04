@@ -18,6 +18,7 @@ import { useUser } from "@/providers/UserProvider";
 import Modal from "@/components/modal/Modal";
 import { logOut } from "@/clientApi/auth";
 import { enqueueSnackbar } from "notistack";
+import AccountHeader from "@/components/AccountHeader";
 
 const AccountPage = () => {
   const router = useRouter();
@@ -71,7 +72,13 @@ const AccountPage = () => {
       )}
       {showModal && <Modal onClose={() => setShowModal(false)} user={user} />}
       <div className="grid lg:grid-cols-10 md:grid-cols-2 grid-cols-1 pb-32 lg:pb-0">
-        <div className="col-span-4">
+        <AccountHeader
+          isMobile={isMobile}
+          navbarTrigger={navbarTrigger}
+          setShowModal={setShowModal}
+          user={user}
+        />
+        {/* <div className="col-span-4">
           <div
             className={`grid h-full ${
               isMobile ? "grid-cols-1" : "grid-cols-4"
@@ -102,11 +109,11 @@ const AccountPage = () => {
               <Account user={user} setShowModal={handleShowBackup} />
             </div>
           </div>
-        </div>
+        </div> */}
         <div className="col-span-6 xl:mx-8 md:mx-4 mx-2 xl:mt-10 mt-4 ">
           <div className="flex flex-row justify-between items-center">
             <p className="text-xl font-semibold">Account</p>
-            <div className="xl:flex xl:flex-row md:flex md:flex-row hidden items-center xl:gap-0 md:gap-0 gap-4">
+            <div className="xl:flex xl:flex-row md:flex md:flex-row hidden items-center xl:gap-6 md:gap-4 gap-4">
               <div className="flex flex-row items-center gap-2">
                 <Image alt="" src={Language} className="w-6 h-6" />
                 <div className="flex flex-row gap-1">

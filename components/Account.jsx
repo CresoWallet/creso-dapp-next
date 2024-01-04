@@ -16,7 +16,7 @@ const links = [
   { id: "security", label: "Security", icon: RiComputerLine },
   { id: "session", label: "V1 Sessions", icon: BiWifi2 },
   { id: "session2", label: "V2 Sessions", icon: BiWifi2 },
-  { id: "network", label: "Network Settings", icon: GiAerialSignal },
+  { id: "network", label: "Network Settings ", icon: GiAerialSignal },
   { id: "advance", label: "Advanced", icon: LuSettings2 },
 ];
 
@@ -51,10 +51,10 @@ const Account = ({ setShowModal }) => {
 
         <div className="flex flex-col xl:space-y-4  space-y-4 xl:pt-6 md:pt-3  pt-2 ">
           {links.map(({ id, label, icon: Icon }) => (
-            <Link href={`/${id}`} key={id}>
+            <Link href={`/${id}`} key={id} className="hover:bg-violet-100 py-5 border-b-2 ">
               <div
-                className={`flex flex-row justify-between items-center cursor-pointer mx-4 pt-4 ${
-                  hover === id ? "text-purple-800 font-bold" : ""
+                className={`flex  flex-row justify-between items-center cursor-pointer mx-4  ${
+                  hover === id ? "text-purple-800  font-bold" : ""
                 } ${clicked === id ? "text-purple-800 font-bold" : ""}`}
                 onMouseEnter={() => handleMouseEnter(id)}
                 onMouseLeave={handleMouseLeave}
@@ -66,7 +66,7 @@ const Account = ({ setShowModal }) => {
                 </div>
                 <MdKeyboardArrowRight />
               </div>
-              <hr className="my-4" />
+              {/* <hr className="my-4" /> */}
             </Link>
           ))}
         </div>

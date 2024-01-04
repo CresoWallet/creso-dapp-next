@@ -76,7 +76,10 @@ const WalletContextProvider = ({ children }) => {
     /* For remove SideNav fetch path */
   }
   const pathName = usePathname();
-  const isLoginOrRegister = pathName === "/" || pathName.includes("/register");
+  const isLoginOrRegister =
+    pathName === "/" ||
+    pathName.includes("/register") ||
+    pathName.includes("/login");
   // console.log(pathName);
 
   useEffect(() => {

@@ -79,8 +79,10 @@ const RegisterPage = () => {
         />
 
         {/* Centering the text at around 1024px (laptop size) */}
-        <div className="flex xl:hidden md:hidden flex-col space-y-4 items-center justify-center px-4 py-4 Account Not Backed Up.
-        ">
+        <div
+          className="flex xl:hidden md:hidden flex-col space-y-4 items-center justify-center px-4 py-4 Account Not Backed Up.
+        "
+        >
           <Image alt="" src={MobileImage} />
           <p className="font-bold text-3xl lg:text-center md:text-center text-center text-white lg:text-4xl xl:text-5xl ">
             Keyless No risk of leakage
@@ -170,15 +172,13 @@ const RegisterPage = () => {
           <div className="flex justify-center">
             <p className="text-sm text-[#A09FAA]">
               Do you have an account?{" "}
-              <Link href="/login">
+              <Link href="/">
                 <span className="text-[#FF4085] cursor-pointer hover:font-bold">
                   Login
                 </span>
               </Link>
             </p>
           </div>
-
-
         </form>
       </div>
     </div>

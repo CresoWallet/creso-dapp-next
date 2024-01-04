@@ -95,6 +95,9 @@ button:disabled {
   padding: 0 48px 0 64px;
 }
 
+.carousel-status {
+  display: none !important;
+}
 /* @media only screen and (max-width: 2560px) and (min-width: 1441px) {
   .navActiveMenu {
     padding: 0 150px 0 70px;

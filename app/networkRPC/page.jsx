@@ -10,29 +10,41 @@ import { RiCheckboxCircleLine } from "react-icons/ri";
 import { RiArrowRightSLine } from "react-icons/ri";
 import { useMediaQuery } from "react-responsive";
 import Ham from "../../assets/Dashboard/ham.png";
+import Modal from "@/components/modal/Modal";
+import { useUser } from "@/providers/UserProvider";
+import AccountHeader from "@/components/AccountHeader";
 
 const NetworkRPCPage = () => {
   const [navbarTrigger, setNavbarTrigger] = useState(false);
+  const { user, isAuthenticated, status } = useUser();
+  const [showModal, setShowModal] = useState(false);
 
   const isMobile = useMediaQuery({ query: `(max-width: 760px)` });
-  useEffect(() => {
-    if (navbarTrigger) {
-      document.body.classList.add("no-scroll");
-    } else {
-      document.body.classList.remove("no-scroll");
-    }
-  }, [navbarTrigger]);
+  // useEffect(() => {
+  //   if (navbarTrigger) {
+  //     document.body.classList.add("no-scroll");
+  //   } else {
+  //     document.body.classList.remove("no-scroll");
+  //   }
+  // }, [navbarTrigger]);
 
   return (
-    <div>
+    <div id="modal-root">
       {navbarTrigger && (
         <div
           className="navbackdrop"
           onClick={() => setNavbarTrigger(!navbarTrigger)}
         ></div>
       )}
-      <div className="grid xl:grid-cols-2 md:grid-cols-2 grid-cols-1 pb-32 lg:pb-0">
-        <div className="col-span-1">
+      {showModal && <Modal onClose={() => setShowModal(false)} user={user} />}
+      <div className="grid xl:grid-cols-10 md:grid-cols-2 grid-cols-1 pb-32 lg:pb-0">
+        <AccountHeader
+          isMobile={isMobile}
+          navbarTrigger={navbarTrigger}
+          setShowModal={setShowModal}
+          user={user}
+        />
+        {/* <div className="col-span-1">
           <div className={`grid ${isMobile ? "grid-cols-1" : "grid-cols-3"}`}>
             <div className="flex xl:hidden md:hidden justify-center gap-4">
               <div className="flex flex-row items-center gap-2">
@@ -67,11 +79,11 @@ const NetworkRPCPage = () => {
                 isMobile ? "mt-2" : "mt-16"
               } xl:mx-8 md:mx-4 mx-2`}
             >
-              <Account />
+              <Account user={user} setShowModal={setShowModal} />
             </div>
           </div>
-        </div>
-        <div className="col-span-1 xl:mx-8 md:mx-4 mx-2 xl:mt-10 mt-4">
+        </div> */}
+        <div className="col-span-6 xl:mx-8 md:mx-4 mx-2 xl:mt-10 mt-4">
           <div className="flex flex-row justify-between items-center">
             <div className="flex flex-row items-center gap-2">
               <BsArrowLeft />

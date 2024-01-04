@@ -27,7 +27,7 @@ import CFX from "../../assets/gainers/cfx.png";
 import MINA from "../../assets/AboutUs/gainers/mina.png";
 import PEPE from "../../assets/discover/pepe.png";
 import Card1 from "../../assets/discover/poster-card/card-1.png";
-import Card2 from "../../assets/discover/poster-card/card2.png";
+import Card2 from "../../assets/discover/poster-card/card-2.png";
 import Image from "next/image";
 import { useMediaQuery } from "react-responsive";
 import Ham from "../../assets/Dashboard/ham.png";
@@ -127,12 +127,12 @@ const DiscoverPage = () => {
 
   return (
     <>
-      <div className="lg:grid lg:grid-cols-10 px-2 lg:divide-x">
+      <div className="lg:grid lg:grid-cols-10 divide-x">
         {/* ------------ Leftside Main ---------- */}
         {/* sidebar and discover content */}
         {/* <div className="col-span-6 "> */}
         {/* <div className="grid responsivemb-cols h-full"> */}
-        <div className="col-span-6 space-y-6 xl:mx-4 px-5 pt-[72px]">
+        <div className="lg:col-span-6 pt-16  px-10 relative">
           {/* <div className="block md:hidden">
               <Header />
             </div> */}
@@ -150,7 +150,7 @@ const DiscoverPage = () => {
           </div>
           <div className="col-span-6 space-y-6 px-2 ">
             {/* carousel component */}
-            <div className="w-full py-4">
+            <div className="w-full pt-10">
               <Carousel slides={slides} />
             </div>
             {/* top nft section */}
@@ -308,7 +308,7 @@ const DiscoverPage = () => {
         <hr className="lg:hidden mt-10 lg:mt-0" />
 
         {/* ------------ Rightside Main ---------- */}
-        <div className="pt-14 col-span-4 px-10">
+        <div className="lg:col-span-4 pt-14 px-10">
           <Header />
           <RightMain />
         </div>

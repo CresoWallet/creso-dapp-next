@@ -160,7 +160,7 @@ const AccountPage = () => {
                 <Image
                   alt=""
                   src={Info}
-                  className="w-12 h-6 md:w-6 xl:w-6 xl:h-5"
+                  className="w-12 h-6 md:w-6 xl:w-6 xl:h-6"
                 />
                 <p className="text-xs text-[#A09FAA]">
                   Either email or phone can be used to access your wallet. It is
@@ -191,7 +191,7 @@ const AccountPage = () => {
                 <Image
                   alt=""
                   src={Info}
-                  className="w-12 h-6 md:w-6 xl:w-6 xl:h-5"
+                  className="w-12 h-6 md:w-6 xl:w-6 xl:h-6"
                 />
                 <p className="text-xs text-[#A09FAA]">
                   Either email or phone can be used to access your wallet. It is

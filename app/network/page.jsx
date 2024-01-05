@@ -184,11 +184,11 @@ const NetworkPage = () => {
             <div className="md:flex items-center justify-between hover:-translate-y-1 cursor-pointer">
               <div className="flex flex-row items-center gap-2 mb-2 md:mb-0">
                 <Image alt="" src={Eth} />
-                <p>Etherum</p>
+                <p>Ethereum</p>
               </div>
 
               <div className="flex flex-row justify-between md:justify-start items-center gap-2">
-                <p className="text-xs text-[#A09FAA]">Etherum Mainnet </p>
+                <p className="text-xs text-[#A09FAA]">Ethereum Mainnet </p>
                 <MdKeyboardArrowRight />
               </div>
             </div>
@@ -260,10 +260,10 @@ const NetworkPage = () => {
             <div className="md:flex items-center justify-between hover:-translate-y-1 cursor-pointer">
               <div className="flex flex-row items-center gap-2 mb-2 md:mb-0">
                 <Image alt="" src={Eth} />
-                <p>Etherum</p>
+                <p>Ethereum</p>
               </div>
               <div className="flex flex-row justify-between md:justify-start items-center gap-2">
-                <p className="text-xs text-[#A09FAA]">Etherum Mainnet</p>
+                <p className="text-xs text-[#A09FAA]">Ethereum Mainnet</p>
                 <MdKeyboardArrowRight />
               </div>
             </div>

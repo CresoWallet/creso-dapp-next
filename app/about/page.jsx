@@ -71,8 +71,9 @@ const AboutPage = () => {
               <div className="flex justify-start items-start gap-2">
                 <Image src={Info} alt="" />
                 <p className="text-gray-600 text-sm">
-                  This version is Beta version of Creso Wallet Ecosystem. Stay
-                  updated in community to get updates in all upcoming versions.
+                  This is the Beta Version of Creso Wallet Ecosystem. To keep up
+                  to date with all the upcoming updates of the Beta please join
+                  our community.
                 </p>
               </div>
             </div>
@@ -98,7 +99,7 @@ const AboutPage = () => {
                 aria-labelledby="accordion-collapse-heading-1"
               >
                 <p className="mb-2 text-black">
-                  User Agreement will be lunched soon. Stay connected.
+                  User Agreement will be launched soon. Stay connected.
                 </p>
               </div>
 

@@ -1,8 +1,12 @@
-import React from "react";
+"use client";
+
+import React, { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 
 const NavItem = ({ pathName, href, icon, hoverIcon, label, onClick }) => {
+  const [hover, setHover] = useState(false);
+
   return (
     <Link href={href} className="group relative">
       <div
@@ -20,12 +24,18 @@ const NavItem = ({ pathName, href, icon, hoverIcon, label, onClick }) => {
           pathName === href ? "bg-white" : ""
         }`}
         onClick={onClick}
+        onMouseEnter={() => setHover(true)}
+        onMouseLeave={() => setHover(false)}
       >
-        <Image
-          alt=""
-          src={pathName === href ? hoverIcon : icon}
-          className="w-6 h-6 text-[#B1A6F8]"
-        />
+        {!hover ? (
+          <Image
+            alt=""
+            src={pathName === href ? hoverIcon : icon}
+            className={"w-6 h-6 text-[#B1A6F8]"}
+          />
+        ) : (
+          <Image alt="" src={hoverIcon} className={"w-6 h-6 text-[#B1A6F8]"} />
+        )}
         <p
           className={`text-[#B1A6F8] text-sm group-hover:text-black font-medium hidden lg:block ${
             pathName === href ? "text-black" : ""

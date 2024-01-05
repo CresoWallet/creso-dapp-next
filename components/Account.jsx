@@ -36,7 +36,16 @@ const Account = ({ setShowModal }) => {
     setClicked(link);
     setHover(link);
   };
+  const getLinkStyle = (link) => {
+    const isHovered = hover === link;
+    const isClicked = clicked === link;
 
+    return {
+      background: isHovered ? 'linear-gradient(-270deg, rgba(33, 0, 236, 0.1056) 5.3%, rgba(33, 0, 236, 0) 98.01%)' : 'transparent',
+      // Add other styles based on your requirements
+      fontWeight: isHovered || isClicked ? 'bold' : 'normal',
+    };
+  };
   return (
     <>
       <div className="flex flex-col space-y-3">
@@ -51,15 +60,10 @@ const Account = ({ setShowModal }) => {
 
         <div className="flex flex-col xl:space-y-4  space-y-4 xl:pt-6 md:pt-3  pt-2 ">
           {links.map(({ id, label, icon: Icon }) => (
-            <Link
-              href={`/${id}`}
-              key={id}
-              className="hover:bg-violet-100  py-5 border-b-2  "
-            >
+            <Link href={`/${id}`} key={id} className="hover:bg-violet-100 py-5 border-b-2" style={getLinkStyle(id)}>
               <div
-                className={`flex  flex-row justify-between items-center cursor-pointer mx-4  ${
-                  hover === id ? "text-purple-800  font-bold" : ""
-                } ${clicked === id ? "text-purple-800 font-bold" : ""}`}
+                className={`flex flex-row justify-between items-center cursor-pointer mx-4  ${hover === id ? "text-purple-800  font-bold" : ""
+                  } ${clicked === id ? "text-purple-800 font-bold" : ""}`}
                 onMouseEnter={() => handleMouseEnter(id)}
                 onMouseLeave={handleMouseLeave}
                 onClick={() => handleClick(id)}

@@ -203,7 +203,7 @@ const Modal = ({ onClose, title, user }) => {
 
             <div className="flex items-center justify-center w-full flex-col">
               <p className="text-sm font-bold mb-3 ">
-                An email with a verication code was just sent to
+                An email with a verification code was just sent to
               </p>
               <p className="px-3 py-1 bg-blue-700 text-sm text-white rounded-full mb-5">
                 {user.email}
@@ -236,7 +236,7 @@ const Modal = ({ onClose, title, user }) => {
       case 3:
         return (
           <div className="flex flex-col gap-5">
-            {/* Content for step 1 */}
+            {/* Content for step 3 */}
             <div className="flex items-center justify-center w-full flex-col ">
               <Image
                 src={Set2}
@@ -267,7 +267,7 @@ const Modal = ({ onClose, title, user }) => {
       case 4:
         return (
           <div className="flex flex-col gap-5">
-            {/* Content for step 1 */}
+            {/* Content for step 4 */}
             <div className="flex items-center justify-center w-full flex-col ">
               <Image
                 src={Set3}
@@ -299,6 +299,24 @@ const Modal = ({ onClose, title, user }) => {
             </div>
           </div>
         );
+      // case 5:
+      //   return (
+      //     <div className="flex flex-col gap-5">
+      //       {/* Content for step 5 */}
+      //       <div className="flex items-center justify-center w-full flex-col">
+      //         {/* ... existing content ... */}
+      //         <input
+      //           type="date"
+      //           placeholder="Select Date"
+      //           className="placeholder:text-[#A09FAA] text-xs xl:px-4 xl:py-4 md:px-4 md:py-4 py-3 px-3 rounded-full border border-solid"
+      //           onChange={(e) => {
+      //             // Handle date change
+      //             // You can store the selected date in the component state
+      //           }}
+      //         />
+      //       </div>
+      //     </div>
+      //   );
 
       default:
         return null;

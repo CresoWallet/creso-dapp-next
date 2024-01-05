@@ -94,9 +94,9 @@ const SideNav = () => {
             onClick={() => handleIconClick("swap")}
           />
 
-          <div className="py-4 ">
+          {/* <div className="py-4 ">
             <hr className="text-[#B1A6F8]" />
-          </div>
+          </div> */}
 
           <NavItem
             pathName={pathName}
@@ -116,19 +116,7 @@ const SideNav = () => {
             active={activeIcon === "support"}
             onClick={() => handleIconClick("support")}
           />
-          {/*  <NavItem
-            pathName={pathName}
-            href="/about"
-            icon={pathName === "/about" ? Info1 : Info}
-            label="About us"
-          />
-
-          <NavItem
-            pathName={pathName}
-            href="/support"
-            icon={pathName === "/support" ? Support : Support}
-            label="Support"
-          />  */}
+   
         </div>
       </div>
       {/* Add social media icons */}

@@ -200,7 +200,7 @@ const LoginPage = () => {
 
           <div className="flex justify-center pt-5">
             <p className="text-sm text-[#A09FAA]">
-              Do you have an account?{" "}
+              Don&rsquo;t have an account?{" "}
               <Link href="/register">
                 <span className="text-[#FF4085] cursor-pointer hover:font-bold">
                   Register Now

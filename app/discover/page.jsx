@@ -61,18 +61,7 @@ const DiscoverPage = () => {
     }
   }, [navbarTrigger]);
 
-  let slides = [
-    NFT,
-    NFT1,
-    NFT2,
-    NFT3,
-    NFT,
-
-    // "https://i.ibb.co/bmbrTJ1/wallpaperflare-com-wallpaper-3.jpg",
-    // "https://i.ibb.co/FVLhDR7/wallpaperflare-com-wallpaper-2.jpg",
-    // "https://i.ibb.co/xmB7ty3/wallpaperflare-com-wallpaper-1.jpg",
-    // "https://i.ibb.co/jkM7SL7/wallpaperflare-com-wallpaper.jpg",
-  ];
+  let slides = [NFT, NFT1, NFT2, NFT3];
 
   let coins = [
     {

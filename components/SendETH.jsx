@@ -239,10 +239,14 @@ const SendETH = ({ handleBackButton, walletArr, networks, handleClose }) => {
                 {networks.map((item, key) => (
                   <div
                     key={key}
-                    className="flex flex-col cursor-pointer gap-4"
-                    onClick={() => handleSelectNetwork(item)}
+                    className={`${
+                      item.key === "Goerli Testnet" && "cursor-pointer"
+                    } flex flex-col gap-4`}
+                    onClick={() =>
+                      item.key === "Goerli Testnet" && handleSelectNetwork(item)
+                    }
                   >
-                    <div className="flex flex-row items-center justify-between  min-h-[50px]">
+                    <div className="flex flex-row items-center justify-between min-h-[50px]">
                       <div className="flex flex-row gap-4 items-center">
                         <div>
                           <Image
@@ -260,7 +264,15 @@ const SendETH = ({ handleBackButton, walletArr, networks, handleClose }) => {
                           />
                         </div>
                         <div className="flex flex-col items-start gap-2">
-                          <p className="text-sm">{item.key}</p>
+                          <p
+                            className={`${
+                              item.key === "Goerli Testnet"
+                                ? "text-black"
+                                : "text-sm text-gray-500"
+                            } `}
+                          >
+                            {item.key}{" "}
+                          </p>
                         </div>
                       </div>
                     </div>

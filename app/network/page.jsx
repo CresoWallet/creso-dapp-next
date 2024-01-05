@@ -270,7 +270,7 @@ const NetworkPage = () => {
             </Link>
             <hr className="text-[#A09FAA] py-2 ml-12" />
             <Link href="/networkPage">
-              <div className="md:flex items-center justify-betweenhover:-translate-y-1 cursor-pointer">
+              <div className="md:flex items-center justify-between hover:-translate-y-1 cursor-pointer">
                 <div className="flex flex-row items-center gap-2 mb-2 md:mb-0">
                   <Image alt="" src={BSC} />
                   <p>BSC</p>

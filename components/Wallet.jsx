@@ -30,8 +30,6 @@ const Wallet = ({ setOpenWallet }) => {
     }
   };
 
-
-
   return (
     <div
       className="fixed inset-0 flex justify-center items-center z-[9] bg-gray-800 bg-opacity-75"
@@ -64,7 +62,7 @@ const Wallet = ({ setOpenWallet }) => {
                   handleButtonClick(0);
                 }}
               >
-                <p>AA: </p>
+                <p>AA:</p>
                 <button>
                   {`${
                     secureWalletAddress

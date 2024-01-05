@@ -1,4 +1,3 @@
-// networks.js
 import Bitcoin from "../assets/network/bitcoin.png";
 import Eth from "../assets/network/eth.png";
 import BSC from "../assets/network/bsc.png";

@@ -162,10 +162,10 @@ const LoginPage = () => {
             {" "}
             <div className="flex flex-col items-center max-w-sm w-full gap-3">
               <div
-                // onClick={handleTwitterLogin}
+                onClick={handleTwitterLogin}
                 className=" gap-2  items-center  hover:border-black hover:text-bold  text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2   transition duration-500 ease-in-out  disabled:opacity-40
               xl:py-4 py-2 text-black px-12 flex justify-center rounded-full w-full
-              enabled:hover:bg-zinc-800 enabled:hover:font-semibold 
+              enabled:hover:bg-zinc-800 enabled:hover:font-semibold cursor-pointer
               border border-solid border-undefined tracking-wider transform
               hover:-translate-y-1"
               >
@@ -174,10 +174,10 @@ const LoginPage = () => {
               </div>
 
               <div
-                // onClick={handleGoogleLogin}
+                onClick={handleGoogleLogin}
                 className=" gap-2  items-center  hover:border-black hover:text-bold  text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2   transition duration-500 ease-in-out  disabled:opacity-40
               xl:py-4 py-2 text-black px-12 flex justify-center rounded-full w-full
-              enabled:hover:bg-zinc-800 enabled:hover:font-semibold
+              enabled:hover:bg-zinc-800 enabled:hover:font-semibold cursor-pointer
               border border-solid border-undefined tracking-wider transform
               hover:-translate-y-1"
               >

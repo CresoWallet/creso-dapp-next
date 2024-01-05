@@ -94,9 +94,9 @@ const SideNav = () => {
             onClick={() => handleIconClick("swap")}
           />
 
-          {/* <div className="py-4 ">
+          <div className=" ">
             <hr className="text-[#B1A6F8]" />
-          </div> */}
+          </div>
 
           <NavItem
             pathName={pathName}

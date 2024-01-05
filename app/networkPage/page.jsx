@@ -44,13 +44,15 @@ const NetworkPage2 = () => {
 
         <div className="col-span-6 xl:mx-8 md:mx-4 mx-2 xl:mt-10 mt-4">
           <div className="flex flex-row justify-between items-center">
-            <div className="flex flex-row items-center gap-2">
-              <BsArrowLeft />
-              <div className="flex flex-row items-center gap-1">
-                <Image alt="" src={Bitcoin} className="w-8 h-8" />
-                <p className="text-xl font-semibold">Bitcoin</p>
+            <Link href="network">
+              <div className="flex flex-row items-center gap-2">
+                <BsArrowLeft />
+                <div className="flex flex-row items-center gap-1">
+                  <Image alt="" src={Bitcoin} className="w-8 h-8" />
+                  <p className="text-xl font-semibold">Bitcoin</p>
+                </div>
               </div>
-            </div>
+            </Link>
 
             <div className="xl:flex xl:flex-row md:flex md:flex-row hidden items-center xl:gap-6 md:gap-4 gap-4">
               <div className="flex flex-row items-center gap-2">
@@ -71,7 +73,7 @@ const NetworkPage2 = () => {
           </div>
           <div className="mt-8 flex flex-col space-y-4">
             <Link href="networkRPC">
-              <div className="flex flex-row items-center justify-between hover:animate-bounce cursor-pointer">
+              <div className="flex flex-row items-center justify-between hover:-translate-y-1 cursor-pointer">
                 <div className="flex flex-col space-y-1">
                   <p className="text-sm font-semibold">RPC URL</p>
                   <p className="text-xs text-[#A09FAA]">Blockstream.info</p>

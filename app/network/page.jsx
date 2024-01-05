@@ -180,109 +180,109 @@ const NetworkPage = () => {
             </Link>
 
             <hr className="text-[#A09FAA] py-2 ml-12" />
-            <Link href="/networkPage">
-              <div className="md:flex items-center justify-between hover:-translate-y-1 cursor-pointer">
-                <div className="flex flex-row items-center gap-2 mb-2 md:mb-0">
-                  <Image alt="" src={Eth} />
-                  <p>Etherum</p>
-                </div>
+            {/* <Link href="/networkPage"> */}
+            <div className="md:flex items-center justify-between hover:-translate-y-1 cursor-pointer">
+              <div className="flex flex-row items-center gap-2 mb-2 md:mb-0">
+                <Image alt="" src={Eth} />
+                <p>Etherum</p>
+              </div>
 
-                <div className="flex flex-row justify-between md:justify-start items-center gap-2">
-                  <p className="text-xs text-[#A09FAA]">Etherum Mainnet </p>
-                  <MdKeyboardArrowRight />
-                </div>
+              <div className="flex flex-row justify-between md:justify-start items-center gap-2">
+                <p className="text-xs text-[#A09FAA]">Etherum Mainnet </p>
+                <MdKeyboardArrowRight />
               </div>
-            </Link>
+            </div>
+            {/* </Link> */}
             <hr className="text-[#A09FAA] py-2 ml-12" />
-            <Link href="/networkPage">
-              <div className="md:flex items-center justify-between hover:-translate-y-1 cursor-pointer">
-                <div className="flex flex-row items-center gap-2 mb-2 md:mb-0">
-                  <Image alt="" src={BSC} />
-                  <p>BSC</p>
-                </div>
-                <div className="flex flex-row justify-between md:justify-start items-center gap-2">
-                  <p className="text-xs text-[#A09FAA] md:ml-20">
-                    BNB Smart Chain Mainnet
-                  </p>
-                  <MdKeyboardArrowRight />
-                </div>
+            {/* <Link href="/networkPage"> */}
+            <div className="md:flex items-center justify-between hover:-translate-y-1 cursor-pointer">
+              <div className="flex flex-row items-center gap-2 mb-2 md:mb-0">
+                <Image alt="" src={BSC} />
+                <p>BSC</p>
               </div>
-            </Link>
+              <div className="flex flex-row justify-between md:justify-start items-center gap-2">
+                <p className="text-xs text-[#A09FAA] md:ml-20">
+                  BNB Smart Chain Mainnet
+                </p>
+                <MdKeyboardArrowRight />
+              </div>
+            </div>
+            {/* </Link> */}
             <hr className="text-[#A09FAA] py-2 ml-12" />
-            <Link href="/networkPage">
-              <div className="md:flex items-center justify-between hover:-translate-y-1cursor-pointer">
-                <div className="flex flex-row items-center gap-2 mb-2 md:mb-0">
-                  <Image alt="" src={Polygon} className="w-12 h-12" />
+            {/* <Link href="/networkPage"> */}
+            <div className="md:flex items-center justify-between hover:-translate-y-1cursor-pointer">
+              <div className="flex flex-row items-center gap-2 mb-2 md:mb-0">
+                <Image alt="" src={Polygon} className="w-12 h-12" />
 
-                  <p>Polygon</p>
-                  <div className="border border-solid px-4 py-1 text-[10px] border-black rounded-full bg-[#D0F500]">
-                    <p>TEST</p>
-                  </div>
-                </div>
-                <div className="flex flex-row justify-between md:justify-start items-center gap-2">
-                  <p className="text-xs  text-[#A09FAA] md:ml-16 ">
-                    Polygon Mainnet
-                  </p>
-                  <MdKeyboardArrowRight />
+                <p>Polygon</p>
+                <div className="border border-solid px-4 py-1 text-[10px] border-black rounded-full bg-[#D0F500]">
+                  <p>TEST</p>
                 </div>
               </div>
-            </Link>
+              <div className="flex flex-row justify-between md:justify-start items-center gap-2">
+                <p className="text-xs  text-[#A09FAA] md:ml-16 ">
+                  Polygon Mainnet
+                </p>
+                <MdKeyboardArrowRight />
+              </div>
+            </div>
+            {/* </Link> */}
             <hr className="text-[#A09FAA] py-2 ml-12" />
-            <Link href="/networkPage">
-              <div className="md:flex items-center justify-between hover:-translate-y-1 cursor-pointer">
-                <div className="flex flex-row items-center gap-2 mb-2 md:mb-0">
-                  <Image alt="" src={Avalanche} />
-                  <p>Avalanche C</p>
-                </div>
-                <div className="flex flex-row justify-between md:justify-start items-center gap-2">
-                  <p className="text-xs text-[#A09FAA] md:ml-20">
-                    Avalanche COChain
-                  </p>
-                  <MdKeyboardArrowRight className="" />
-                </div>
+            {/* <Link href="/networkPage"> */}
+            <div className="md:flex items-center justify-between hover:-translate-y-1 cursor-pointer">
+              <div className="flex flex-row items-center gap-2 mb-2 md:mb-0">
+                <Image alt="" src={Avalanche} />
+                <p>Avalanche C</p>
               </div>
-            </Link>
+              <div className="flex flex-row justify-between md:justify-start items-center gap-2">
+                <p className="text-xs text-[#A09FAA] md:ml-20">
+                  Avalanche COChain
+                </p>
+                <MdKeyboardArrowRight className="" />
+              </div>
+            </div>
+            {/* </Link> */}
             <hr className="text-[#A09FAA] py-2 ml-12" />
-            <Link href="/networkPage">
-              <div className="md:flex items-center justify-between hover:-translate-y-1 cursor-pointer">
-                <div className="flex flex-row items-center gap-2 mb-2 md:mb-0">
-                  <Image alt="" src={Optimism} />
-                  <p>Optimism</p>
-                </div>
-                <div className="flex flex-row justify-between md:justify-start items-center gap-2">
-                  <p className="text-xs text-[#A09FAA]">OP Mainnet</p>
-                  <MdKeyboardArrowRight />
-                </div>
+            {/* <Link href="/networkPage"> */}
+            <div className="md:flex items-center justify-between hover:-translate-y-1 cursor-pointer">
+              <div className="flex flex-row items-center gap-2 mb-2 md:mb-0">
+                <Image alt="" src={Optimism} />
+                <p>Optimism</p>
               </div>
-            </Link>
+              <div className="flex flex-row justify-between md:justify-start items-center gap-2">
+                <p className="text-xs text-[#A09FAA]">OP Mainnet</p>
+                <MdKeyboardArrowRight />
+              </div>
+            </div>
+            {/* </Link> */}
             <hr className="text-[#A09FAA] py-2 ml-12" />
-            <Link href="/networkPage">
-              <div className="md:flex items-center justify-between hover:-translate-y-1 cursor-pointer">
-                <div className="flex flex-row items-center gap-2 mb-2 md:mb-0">
-                  <Image alt="" src={Eth} />
-                  <p>Etherum</p>
-                </div>
-                <div className="flex flex-row justify-between md:justify-start items-center gap-2">
-                  <p className="text-xs text-[#A09FAA]">Etherum Mainnet</p>
-                  <MdKeyboardArrowRight />
-                </div>
+            {/* <Link href="/networkPage"> */}
+            <div className="md:flex items-center justify-between hover:-translate-y-1 cursor-pointer">
+              <div className="flex flex-row items-center gap-2 mb-2 md:mb-0">
+                <Image alt="" src={Eth} />
+                <p>Etherum</p>
               </div>
-            </Link>
+              <div className="flex flex-row justify-between md:justify-start items-center gap-2">
+                <p className="text-xs text-[#A09FAA]">Etherum Mainnet</p>
+                <MdKeyboardArrowRight />
+              </div>
+            </div>
+            {/* </Link> */}
             <hr className="text-[#A09FAA] py-2 ml-12" />
-            <Link href="/networkPage">
-              <div className="md:flex items-center justify-between hover:-translate-y-1 cursor-pointer">
-                <div className="flex flex-row items-center gap-2 mb-2 md:mb-0">
-                  <Image alt="" src={BSC} />
-                  <p>BSC</p>
-                </div>
-                <div className="flex flex-row justify-between md:justify-start items-center gap-2">
-                  <p className="text-xs text-[#A09FAA]">
-                    BNB Smart Chain Mainnet
-                  </p>
-                  <MdKeyboardArrowRight />
-                </div>
+            {/* <Link href="/networkPage"> */}
+            <div className="md:flex items-center justify-between hover:-translate-y-1 cursor-pointer">
+              <div className="flex flex-row items-center gap-2 mb-2 md:mb-0">
+                <Image alt="" src={BSC} />
+                <p>BSC</p>
               </div>
-            </Link>
+              <div className="flex flex-row justify-between md:justify-start items-center gap-2">
+                <p className="text-xs text-[#A09FAA]">
+                  BNB Smart Chain Mainnet
+                </p>
+                <MdKeyboardArrowRight />
+              </div>
+            </div>
+            {/* </Link> */}
           </div>
         </div>
       </div>

@@ -38,7 +38,7 @@ const Mainnet = ({ handleOpenWallet, handleCreateWallet, showWallet }) => {
   const [tokenPrices, setTokenPrices] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   //console.log("tokenPrices-->", tokenPrices);
-  const arr = ["1", "2", "3", "4"];
+  const arr = ["1", "2", "3"];
   useEffect(() => {
     if (!showWallet) {
       setActiveButton("AA");

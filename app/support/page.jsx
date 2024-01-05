@@ -5,6 +5,8 @@ import React from "react";
 import Ham from "../../assets/Dashboard/ham.png";
 import Settings from "../../assets/Swap/settings.png";
 import Note from "../../assets/Swap/note.png";
+import { VscFeedback } from "react-icons/vsc";
+<VscFeedback />;
 
 const SupportPage = () => {
   return (

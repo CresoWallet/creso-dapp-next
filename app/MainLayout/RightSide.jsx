@@ -14,6 +14,8 @@ import CFX from "../../assets/gainers/cfx.png";
 import MINA from "../../assets/AboutUs/gainers/mina.png";
 import { WalletContext } from "@/providers/WalletProvider";
 import { usePathname } from "next/navigation";
+import { VscFeedback } from "react-icons/vsc";
+import Link from "next/link";
 
 const RightSide = (props) => {
   const {
@@ -36,6 +38,7 @@ const RightSide = (props) => {
   // const [showCoinWallet, setShowCoinWallet] = useState(false);
   // const [showWallet, setShowWallet] = useState(false);
   // const [showModal, setShowModal] = useState(false);
+  const [hover, setHover] = useState(false);
   // const {
   //     secureWalletBalance,
   //     eoaWalletBalance,
@@ -49,6 +52,10 @@ const RightSide = (props) => {
   const matchPath = path !== "/discover";
   const isSwapPage = path === "/swap";
   const isAboutPage = path === "/about";
+
+  const style = { color: "white" };
+  const hoverStyle = { color: "black" };
+
   return (
     <>
       {/* right side */}
@@ -161,6 +168,27 @@ const RightSide = (props) => {
             </div>
           </div>
         </div>
+      </div>
+      <div className="relative">
+        <a
+          onMouseEnter={() => setHover(true)}
+          onMouseLeave={() => setHover(false)}
+          href="https://forms.gle/GBEKLjSH7hxQiuPv8"
+          target="_blank"
+          className={`${
+            hover ? "bg-white border border-[#2100EC] " : "bg-[#2100EC]"
+          } fixed bottom-12  cursor-pointer right-12  shadow-2xl z-50 h-20 w-20 grid place-items-center rounded-full `}
+        >
+          <div className="absolute grid place-items-center">
+            <VscFeedback style={hover ? hoverStyle : style} size={30} />
+          </div>
+          {hover && (
+            <p className="absolute p-2 rounded-lg font-semibold  -top-12 bg-black text-white ">
+              {" "}
+              Feedback
+            </p>
+          )}
+        </a>
       </div>
     </>
   );

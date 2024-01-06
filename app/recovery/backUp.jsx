@@ -23,7 +23,7 @@ function BackUp() {
           const blob = new Blob([JSON.stringify(res.data)], {
             type: "application/json",
           });
-          FileSaver.saveAs(blob, `${user?.email}_credential.creso.json`, {
+          FileSaver.saveAs(blob, `${user?.username}_credential.creso.json`, {
             type: "application/json",
           });
           // setEncryptedKey(res?.data?.data);

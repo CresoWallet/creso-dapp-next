@@ -12,22 +12,22 @@ import CapCard from "@/components/CapCard";
 import CustomButton2 from "@/components/CustomButton2";
 import User from "@/components/User";
 import CardWithTitle from "@/components/discover/CardWithTitle";
-import Degods from "../../assets/discover/degods.png";
-import AzukiRed from "../../assets/discover/azuki-red.png";
-import Potatoz from "../../assets/discover/potatoz.png";
-import Hvmtl from "../../assets/discover/hvmtl.png";
-import AzukiGray from "../../assets/discover/azuki-gray.png";
+import Degods from "../../assets/discover/degods.svg";
+import AzukiRed from "../../assets/discover/azuki-red.svg";
+import Potatoz from "../../assets/discover/potatoz.svg";
+import Hvmtl from "../../assets/discover/hvmtl.svg";
+import AzukiGray from "../../assets/discover/azuki-gray.svg";
 import CryptoNewsBGImage from "../../assets/discover/crypo-news-img.png";
 import DiscoverAppsBGImage from "../../assets/discover/discover-apps.png";
-import GameButtonImage from "../../assets/discover/Joystick.png";
-import MarketPlaceImage from "../../assets/discover/Shop.png";
-import Defi from "../../assets/discover/doller.png";
+import GameButtonImage from "../../assets/discover/Joystick.svg";
+import MarketPlaceImage from "../../assets/discover/Shop.svg";
+import Defi from "../../assets/discover/doller.svg";
 import Sure from "../../assets/Dashboard/gainers/sure.png";
 import CFX from "../../assets/gainers/cfx.png";
 import MINA from "../../assets/AboutUs/gainers/mina.png";
 import PEPE from "../../assets/discover/pepe.png";
-import Card1 from "../../assets/discover/poster-card/card-1.png";
-import Card2 from "../../assets/discover/poster-card/card-2.png";
+import Card1 from "../../assets/discover/poster-card/card-1.svg";
+import Card2 from "../../assets/discover/poster-card/card-2.svg";
 import Image from "next/image";
 import { useMediaQuery } from "react-responsive";
 import Ham from "../../assets/Dashboard/ham.png";
@@ -61,17 +61,7 @@ const DiscoverPage = () => {
     }
   }, [navbarTrigger]);
 
-  let slides = [
-    NFT,
-    NFT1,
-    NFT2,
-    NFT3,
-    NFT,
-    // "https://i.ibb.co/bmbrTJ1/wallpaperflare-com-wallpaper-3.jpg",
-    // "https://i.ibb.co/FVLhDR7/wallpaperflare-com-wallpaper-2.jpg",
-    // "https://i.ibb.co/xmB7ty3/wallpaperflare-com-wallpaper-1.jpg",
-    // "https://i.ibb.co/jkM7SL7/wallpaperflare-com-wallpaper.jpg",
-  ];
+  let slides = [NFT, NFT1, NFT2, NFT3];
 
   let coins = [
     {

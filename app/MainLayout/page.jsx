@@ -20,6 +20,7 @@ import CreateWallet from "@/components/CreateWallet";
 // import SendETH from "@/components/SendETH";
 // import { network } from "@/utils/data/coinlist";
 import axios from "axios";
+import { IoIosNotificationsOutline } from "react-icons/io";
 
 const MainLayout = () => {
   const router = useRouter();
@@ -161,16 +162,18 @@ const MainLayout = () => {
         {/* ------------ Leftside Main ---------- */}
         {
           <div
-            className={`${isMobile && responsivCompo
-              ? "hidden"
-              : "lg:col-span-6 pt-16 px-10"
-              }`}
+            className={`${
+              isMobile && responsivCompo
+                ? "hidden"
+                : "lg:col-span-6 pt-16 px-10"
+            }`}
           >
             <div className="">
               <LeftHeader
                 title={"Dashboard"}
                 descriptionColor={""}
                 icon1={<CiSearch />}
+                icon2={<IoIosNotificationsOutline />}
                 mobileImg={Ham}
                 navbarTrigger={navbarTrigger}
                 setNavbarTrigger={setNavbarTrigger}
@@ -194,8 +197,9 @@ const MainLayout = () => {
 
         {/* ------------ Rightside Main ---------- */}
         <div
-          className={`${responsivCompo ? "px-0  border-l-2 " : " px-10  pt-14"
-            } lg:col-span-4`}
+          className={`${
+            responsivCompo ? "px-0  border-l-2 " : " px-10  pt-14"
+          } lg:col-span-4`}
         >
           <div className="hidden lg:block">
             <div className="hidden lg:flex">

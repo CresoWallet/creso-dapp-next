@@ -3,6 +3,10 @@ import React from "react";
 import { Carousel } from "react-responsive-carousel";
 
 function CarouselComponent({ slides }) {
+  const maxSlidesToShow = slides.length;
+  console.log('Number of slides:', maxSlidesToShow);
+  console.log('Slides array:', slides);
+
   return (
     <div className="relative">
       {/* Carousel */}
@@ -10,17 +14,17 @@ function CarouselComponent({ slides }) {
         {slides.map((slide, index) => (
           <div
             key={index}
-            className="h-64 w-full rounded-3xl overflow-hidden relative "
+            className="h-64 w-full rounded-3xl overflow-hidden relative"
           >
             <Image
               width={580}
               height={270}
-              src={slide}
+              src={slide.src}  // Assuming the source is stored in 'src'
               alt={`label-${index}`}
               className="w-full h-full object-fill rounded-3xl"
             />
           </div>
-        ))}
+        )).slice(0, maxSlidesToShow)}
         <style jsx global>{`
           .carousel.carousel-slider .control-arrow:hover {
             background: none !important;

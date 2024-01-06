@@ -48,14 +48,13 @@ const MobileMenubar = () => {
   };
 
   return (
-    <div className="bg-[#2100EC] rounded-full grid grid-cols-4 my-5 place-items-center mobileMenu">
+    <div className="bg-[#2100EC] min-h-[10%] rounded-full grid grid-cols-4 my-5 place-items-center mobileMenu">
       <Link href="/dashboard">
         <div
           onMouseEnter={() => handleMouseEnter("/dashboard")}
           onMouseLeave={() => handleMouseLeave()}
-          className={`${
-            pathname === "/dashboard" ? "bg-white" : ""
-          } rounded-full p-1`}
+          className={`${pathname === "/dashboard" ? "bg-white" : ""
+            } rounded-full p-1`}
         >
           <Image
             alt=""
@@ -69,9 +68,8 @@ const MobileMenubar = () => {
         <div
           onMouseEnter={() => handleMouseEnter("/discover")}
           onMouseLeave={() => handleMouseLeave()}
-          className={`${
-            pathname === "/discover" ? "bg-white" : ""
-          } rounded-full p-1`}
+          className={`${pathname === "/discover" ? "bg-white" : ""
+            } rounded-full p-1`}
         >
           <Image
             alt=""
@@ -85,9 +83,8 @@ const MobileMenubar = () => {
         <div
           onMouseEnter={() => handleMouseEnter("/swap")}
           onMouseLeave={() => handleMouseLeave()}
-          className={`${
-            pathname === "/swap" ? "bg-white" : ""
-          } rounded-full p-1`}
+          className={`${pathname === "/swap" ? "bg-white" : ""
+            } rounded-full p-1`}
         >
           <Image
             alt=""
@@ -101,9 +98,8 @@ const MobileMenubar = () => {
         <div
           onMouseEnter={() => handleMouseEnter("/account")}
           onMouseLeave={() => handleMouseLeave()}
-          className={`${
-            pathname === "/account" ? "bg-white" : ""
-          } rounded-full p-1`}
+          className={`${pathname === "/account" ? "bg-white" : ""
+            } rounded-full p-1`}
         >
           <Image
             alt=""

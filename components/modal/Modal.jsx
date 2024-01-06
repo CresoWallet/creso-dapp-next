@@ -7,23 +7,11 @@ import { enqueueSnackbar } from "notistack";
 
 import Delete from "../../assets/Dashboard/delete.png";
 import Set1 from "../../assets/backup/set1.png";
-// import Set1M from "../../assets/backup/set1mobile.png";
 import Set2 from "../../assets/backup/set2.png";
-// import Set2M from "../../assets/backup/set2mobile.png";
 import Set3 from "../../assets/backup/set3.png";
-// import Set3M from "../../assets/backup/set3mobile.png";
-// import Set4 from "../../assets/backup/set4.png";
 import Set4M from "../../assets/backup/set4mobile.png";
-// import Bulb from "../../assets/backup/bulb.png";
-// import Trash from "../../assets/backup/trash.png";
-// import Mob from "../../assets/backup/mobile.png";
-// import Device from "../../assets/backup/device.png";
 import Device2 from "../../assets/backup/device2.png";
-// import Cloud from "../../assets/backup/cloud.png";
-// import Google from "../../assets/backup/google.png";
-// import Baidu from "../../assets/backup/baidu.png";
 import { sendOTPMail, verifyOTP } from "@/clientApi/auth";
-// import { OtpInputCard } from "../cards/OtpInputCard";
 import FileSaver from "file-saver";
 import { backupWallet } from "@/clientApi/wallet";
 import { useUser } from "@/providers/UserProvider";
@@ -31,10 +19,14 @@ import { useUser } from "@/providers/UserProvider";
 const Modal = ({ onClose, title, user }) => {
   const [step, setStep] = useState(1);
   const [loading, setLoading] = useState(false);
+  const [resendLoading, setResendLoading] = useState(false);
   const [otp, setOtp] = useState();
   const [secretKey, setSecretKey] = useState();
   const [encryptedKey, setEncryptedKey] = useState("");
   const { handleAuthentication } = useUser();
+
+  const [isResendDisable, setIsResendDisable] = useState(false);
+  const [remainingSeconds, setRemainingSeconds] = useState(0);
 
   const handleCloseClick = (e) => {
     e.preventDefault();
@@ -47,7 +39,11 @@ const Modal = ({ onClose, title, user }) => {
         variant: "error",
       });
     } else {
-      setLoading(true);
+      if (step === 1) {
+        setLoading(true);
+      } else {
+        setResendLoading(true);
+      }
       try {
         const res = await sendOTPMail({
           email: user.email,
@@ -56,8 +52,12 @@ const Modal = ({ onClose, title, user }) => {
           enqueueSnackbar(`Successful email transmission`, {
             variant: "success",
           });
-          setStep((step % 7) + 1);
+          if (step === 1) {
+            setStep((step % 7) + 1);
+          }
           setLoading(false);
+          setResendLoading(false);
+          enableResend();
         } else {
           enqueueSnackbar(`Sending email failed`, {
             variant: "error",
@@ -69,6 +69,7 @@ const Modal = ({ onClose, title, user }) => {
         });
       } finally {
         setLoading(false);
+        setResendLoading(false);
       }
     }
   };
@@ -83,7 +84,6 @@ const Modal = ({ onClose, title, user }) => {
       try {
         const res = await verifyOTP({
           otp: otp,
-          // email: user.email,
         });
         if (res?.status === 200) {
           enqueueSnackbar(`Email verified`, {
@@ -104,15 +104,7 @@ const Modal = ({ onClose, title, user }) => {
   };
 
   const handleBackupWallet = async () => {
-    //     const downloadBackup = async () => {
-    //   const response = await backUpWallet({ passkey });
-    //   downloadFile(
-    //     JSON.stringify(response.data),
-    //     "creso_backup.json",
-    //     "application/json"
-    //   );
-    // };
-    if (!user.email) {
+    if (!secretKey) {
       enqueueSnackbar(`Please enter secret key`, {
         variant: "error",
       });
@@ -127,7 +119,7 @@ const Modal = ({ onClose, title, user }) => {
           var blob = new Blob([btoa(JSON.stringify(res?.data))], {
             type: "text/plain;charset=utf-8",
           });
-          FileSaver.saveAs(blob, `${user?.email}_credential.creso`);
+          FileSaver.saveAs(blob, `${user?.username}_credential.creso`);
           setEncryptedKey(res?.data?.data);
           setStep((step % 7) + 1);
         }
@@ -151,6 +143,22 @@ const Modal = ({ onClose, title, user }) => {
     } else {
       setStep((step % 7) + 1);
     }
+  };
+
+  const enableResend = () => {
+    setIsResendDisable(true);
+
+    setRemainingSeconds(60);
+
+    setInterval(() => {
+      setRemainingSeconds((prevSeconds) =>
+        prevSeconds > 0 ? prevSeconds - 1 : 0
+      );
+    }, 1000);
+
+    setTimeout(() => {
+      setIsResendDisable(false);
+    }, 60000);
   };
 
   const getContent = () => {
@@ -221,12 +229,20 @@ const Modal = ({ onClose, title, user }) => {
                 <p>Not received?</p>
                 &nbsp;
                 <p
-                  className="text-[#FF4085] cursor-pointer"
+                  className={`${
+                    isResendDisable
+                      ? "text-slate-400"
+                      : "text-[#FF4085] cursor-pointer"
+                  }`}
                   onClick={() => {
-                    handleSendOTPMail();
+                    !isResendDisable && !resendLoading && handleSendOTPMail();
                   }}
                 >
-                  Resend
+                  {resendLoading
+                    ? "Resending..."
+                    : isResendDisable
+                    ? `Resend OTP in ${remainingSeconds}s`
+                    : "Resend OTP"}
                 </p>
               </div>
             </div>

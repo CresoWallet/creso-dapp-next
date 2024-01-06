@@ -4,8 +4,8 @@ import { Carousel } from "react-responsive-carousel";
 
 function CarouselComponent({ slides }) {
   const maxSlidesToShow = slides.length;
-  console.log('Number of slides:', maxSlidesToShow);
-  console.log('Slides array:', slides);
+  // console.log('Number of slides:', maxSlidesToShow);
+  // console.log('Slides array:', slides);
 
   return (
     <div className="relative">

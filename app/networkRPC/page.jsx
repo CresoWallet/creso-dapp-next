@@ -1,5 +1,6 @@
 "use client";
 import React, { useEffect, useState } from "react";
+import Link from "next/link";
 import Account from "@/components/Account";
 import { BsArrowLeft } from "react-icons/bs";
 import { MdKeyboardArrowDown } from "react-icons/md";
@@ -44,53 +45,17 @@ const NetworkRPCPage = () => {
           setShowModal={setShowModal}
           user={user}
         />
-        {/* <div className="col-span-1">
-          <div className={`grid ${isMobile ? "grid-cols-1" : "grid-cols-3"}`}>
-            <div className="flex xl:hidden md:hidden justify-center gap-4">
-              <div className="flex flex-row items-center gap-2">
-                <Image alt="" src={Language} className="w-6 h-6" />
-                <div className="flex flex-row gap-1">
-                  <p className="text-sm text-black hover:font-bold">ENG</p>
-                  <MdKeyboardArrowDown />
-                </div>
-              </div>
-              <div className="flex flex-row items-center gap-2">
-                <Image alt="" src={Currency} className="w-6 h-6" />
-                <div className="flex flex-row gap-1">
-                  <p className="text-sm text-black hover:font-bold">USD</p>
-                  <MdKeyboardArrowDown />
-                </div>
-              </div>
-            </div>
 
-            {isMobile && (
-              <div className="account-navs">
-                <Image
-                  alt=""
-                  className="navico"
-                  src={Ham}
-                  onClick={() => setNavbarTrigger(!navbarTrigger)}
-                />{" "}
-              </div>
-            )}
-
-            <div
-              className={`col-span-4 ${
-                isMobile ? "mt-2" : "mt-16"
-              } xl:mx-8 md:mx-4 mx-2`}
-            >
-              <Account user={user} setShowModal={setShowModal} />
-            </div>
-          </div>
-        </div> */}
         <div className="col-span-6 xl:mx-8 md:mx-4 mx-2 xl:mt-10 mt-4">
           <div className="flex flex-row justify-between items-center">
-            <div className="flex flex-row items-center gap-2">
-              <BsArrowLeft />
-              <p className="xl:text-xl md:text-lg font-semibold">
-                RPC Nodes Setting
-              </p>
-            </div>
+            <Link href="networkPage">
+              <div className="flex flex-row items-center gap-2">
+                <BsArrowLeft />
+                <p className="xl:text-xl md:text-lg font-semibold">
+                  RPC Nodes Setting
+                </p>
+              </div>
+            </Link>
             <div className="xl:flex xl:flex-row md:flex md:flex-row hidden items-center xl:gap-0 md:gap-0 gap-4">
               <div className="flex flex-row items-center gap-2">
                 <Image alt="" src={Language} className="w-6 h-6" />

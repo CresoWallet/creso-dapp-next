@@ -236,12 +236,15 @@ const Mainnet = ({ handleOpenWallet, handleCreateWallet, showWallet }) => {
     <div className="flex flex-col xl:space-y-8 md:space-y-8 space-y-2">
       <div>
         <div className="flex items-center justify-between">
-          <p className="font-bold text-xl lg:my-0 my-4">Ethereum Mainnet </p>
-          <div className="flex  gap-2 items-center cursor-pointer group" onClick={handleCreateWallet}>
+          <p className="font-bold text-xl lg:my-0 my-4">
+            Beta Version (Testnet){" "}
+          </p>
+          <div
+            className="flex  gap-2 items-center cursor-pointer group"
+            onClick={handleCreateWallet}
+          >
             <Image src={PinkPlus} alt="" />
-            <p
-              className="text-[#FF4085] group-hover:font-bold duration-500"
-            >
+            <p className="text-[#FF4085] group-hover:font-bold duration-500">
               Create
             </p>
           </div>
@@ -251,10 +254,11 @@ const Mainnet = ({ handleOpenWallet, handleCreateWallet, showWallet }) => {
         <div className="flex xl:flex-row flex-col items-center xl:gap-4 md:gap-4 gap-2">
           {/* Keyless Secure Wallet */}
           <div
-            className={`${activeButton === "AA"
-              ? "bg-black"
-              : "bg-white hover:bg-gray-200 duration-500 "
-              } rounded-full px-4 py-4 w-full border-2 border-black cursor-pointer group relative`}
+            className={`${
+              activeButton === "AA"
+                ? "bg-black"
+                : "bg-white hover:bg-gray-200 duration-500 "
+            } rounded-full px-4 py-4 w-full border-2 border-black cursor-pointer group relative`}
           >
             <div className="flex flex-row justify-between items-center gap-3 group">
               <Image
@@ -264,8 +268,9 @@ const Mainnet = ({ handleOpenWallet, handleCreateWallet, showWallet }) => {
               />
               <div className="flex flex-col space-y-1">
                 <p
-                  className={`${activeButton === "AA" ? "text-white" : "text-black"
-                    }  font-semibold text-sm md:text-lg xl:text-sm`}
+                  className={`${
+                    activeButton === "AA" ? "text-white" : "text-black"
+                  }  font-semibold text-sm md:text-lg xl:text-sm`}
                 >
                   Keyless Secure Wallet
                 </p>
@@ -275,8 +280,9 @@ const Mainnet = ({ handleOpenWallet, handleCreateWallet, showWallet }) => {
                   </p>
                   <Image
                     src={activeButton === "AA" ? Copy : Copy2}
-                    className={`${activeButton === "AA" ? "text-white" : "text-black"
-                      }`}
+                    className={`${
+                      activeButton === "AA" ? "text-white" : "text-black"
+                    }`}
                     alt="copy"
                     onClick={() => {
                       copyToClipBoard(secureWalletAddress);
@@ -308,10 +314,11 @@ const Mainnet = ({ handleOpenWallet, handleCreateWallet, showWallet }) => {
 
           {/* EOA Wallet */}
           <div
-            className={`${activeButton === "EOA"
-              ? "bg-black"
-              : "bg-white  hover:bg-gray-200 duration-500 "
-              } rounded-full px-4 py-4 w-full border-2 border-black cursor-pointer group relative`}
+            className={`${
+              activeButton === "EOA"
+                ? "bg-black"
+                : "bg-white  hover:bg-gray-200 duration-500 "
+            } rounded-full px-4 py-4 w-full border-2 border-black cursor-pointer group relative`}
           >
             <div className="flex flex-row justify-between items-center gap-3">
               <Image
@@ -321,8 +328,9 @@ const Mainnet = ({ handleOpenWallet, handleCreateWallet, showWallet }) => {
               />
               <div className="flex flex-col space -y-1">
                 <p
-                  className={`${activeButton === "EOA" ? "text-white" : "text-black"
-                    }  font-semibold text-sm md:text-lg xl:text-sm`}
+                  className={`${
+                    activeButton === "EOA" ? "text-white" : "text-black"
+                  }  font-semibold text-sm md:text-lg xl:text-sm`}
                 >
                   EOA Wallet
                 </p>

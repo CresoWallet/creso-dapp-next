@@ -35,6 +35,10 @@ import RightMain from "../MainLayout/RightMain";
 import LeftHeader from "@/components/LeftHeader";
 import { CiSearch } from "react-icons/ci";
 import { WalletContext } from "@/providers/WalletProvider";
+import NFT from "../../assets/discover/NFT.jpg";
+import NFT2 from "../../assets/discover/NFT2.png";
+import NFT3 from "../../assets/discover/NFT3.png";
+import NFT1 from "../../assets/discover/NFT1.png";
 
 const DiscoverPage = () => {
   const [isFavourite, setIsFavourite] = useState(false);
@@ -58,10 +62,16 @@ const DiscoverPage = () => {
   }, [navbarTrigger]);
 
   let slides = [
-    "https://i.ibb.co/bmbrTJ1/wallpaperflare-com-wallpaper-3.jpg",
-    "https://i.ibb.co/FVLhDR7/wallpaperflare-com-wallpaper-2.jpg",
-    "https://i.ibb.co/xmB7ty3/wallpaperflare-com-wallpaper-1.jpg",
-    "https://i.ibb.co/jkM7SL7/wallpaperflare-com-wallpaper.jpg",
+    NFT,
+    NFT1,
+    NFT2,
+    NFT3,
+    NFT,
+
+    // "https://i.ibb.co/bmbrTJ1/wallpaperflare-com-wallpaper-3.jpg",
+    // "https://i.ibb.co/FVLhDR7/wallpaperflare-com-wallpaper-2.jpg",
+    // "https://i.ibb.co/xmB7ty3/wallpaperflare-com-wallpaper-1.jpg",
+    // "https://i.ibb.co/jkM7SL7/wallpaperflare-com-wallpaper.jpg",
   ];
 
   let coins = [

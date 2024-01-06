@@ -145,6 +145,8 @@ const AccountPage = () => {
                   </button>
                 </div>
               )}
+
+              
               {/* <div className="flex flex-row gap-2 mx-4">
                 <div className="flex items-start">
                   <Image alt="" src={Info} className="w-12 h-6 md:w-6 xl:w-6 xl:h-5" />
@@ -160,13 +162,14 @@ const AccountPage = () => {
                 <Image
                   alt=""
                   src={Info}
-                  className="w-12 h-6 md:w-6 xl:w-6 xl:h-5"
+                  className="w-12 h-6 md:w-6 xl:w-6 xl:h-6"
                 />
                 <p className="text-xs text-[#A09FAA]">
                   Either email or phone can be used to access your wallet. It is
                   recommended to add both in case either of them is lost.
                 </p>
               </div>
+
             </div>
 
             <div className="flex justify-end">
@@ -191,7 +194,7 @@ const AccountPage = () => {
                 <Image
                   alt=""
                   src={Info}
-                  className="w-12 h-6 md:w-6 xl:w-6 xl:h-5"
+                  className="w-12 h-6 md:w-6 xl:w-6 xl:h-6"
                 />
                 <p className="text-xs text-[#A09FAA]">
                   Either email or phone can be used to access your wallet. It is
@@ -223,7 +226,7 @@ const AccountPage = () => {
                 >
                   <Image alt="" src={Disconnect} className="" />
                   <p className="text-[#FF4085] text-sm hover:font-bold">
-                    Disconnect
+                  Disconnect
                   </p>
                 </button>
               </div>

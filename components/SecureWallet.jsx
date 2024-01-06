@@ -127,7 +127,7 @@ const SecureWallet = ({ handleClose, wallets, walletType }) => {
             </div>
           </div>
 
-          <div className="flex flex-col gap-4">
+          {/* <div className="flex flex-col gap-4">
             <div className="cursor-pointer">
               <div className="flex items-center justify-between">
                 <div className="flex justify-center items-center gap-2">
@@ -167,7 +167,7 @@ const SecureWallet = ({ handleClose, wallets, walletType }) => {
                 </div>
               </div>
             </div>
-          </div>
+          </div> */}
         </div>
       )}
     </div>

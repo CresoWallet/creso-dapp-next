@@ -3,7 +3,7 @@
 import React, { useContext, useState } from "react";
 import SecureWallet from "@/components/SecureWallet";
 import Modal from "@/components/modal/Modal";
-import CapCard from "@/components/CapCard";
+// import CapCard from "@/components/CapCard";
 import CustomButton2 from "@/components/CustomButton2";
 import User from "@/components/User";
 import Sure from "../../assets/Dashboard/gainers/sure.png";
@@ -72,7 +72,7 @@ const RightSide = (props) => {
           {matchPath && (
             <CresoCard balance={secureWalletBalance + eoaWalletBalance} />
           )}
-          <div className="grid grid-cols-2 gap-2 my-8">
+          {/* <div className="grid grid-cols-2 gap-2 my-8">
             <CapCard
               name="Market Cap"
               amount="$1,312.6 B"
@@ -105,7 +105,7 @@ const RightSide = (props) => {
               // percentageColor="[#FF4085]"
               percentage="386.58 ETH"
             />
-          </div>
+          </div> */}
           {isSwapPage || isAboutPage ? (
             <div className="flex flex-row items-center gap-2 mt-8">
               <p className="text-black text-2xl font-bold">Top Gainers</p>

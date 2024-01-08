@@ -3,7 +3,7 @@ import Header from "@/components/Header";
 import LeftHeader from "@/components/LeftHeader";
 import React from "react";
 import Ham from "../../assets/Dashboard/ham.png";
-// import Settings from "../../assets/Swap/settings.png";
+import Settings from "../../assets/Swap/settings.png";
 import Note from "../../assets/Swap/note.png";
 import { VscFeedback } from "react-icons/vsc";
 <VscFeedback />;
@@ -25,7 +25,7 @@ const SupportPage = () => {
             </div> */}
           <div className="">
             <LeftHeader
-              title={"Support "}
+              title={"Setting "}
               mobileImg={Ham}
               // navbarTrigger={navbarTrigger}
               // setNavbarTrigger={setNavbarTrigger}

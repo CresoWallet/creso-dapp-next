@@ -1,9 +1,6 @@
 "use client";
 
 import React, { useState } from "react";
-/* The line `import Link from "next/link";` is importing the `Link` component from the `next/link`
-module. This component is used in Next.js to create client-side navigation links. It allows you to
-create links between pages in your Next.js application without having to do a full page reload. */
 import Link from "next/link";
 import Image from "next/image";
 

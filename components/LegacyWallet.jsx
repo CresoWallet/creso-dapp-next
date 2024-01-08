@@ -180,3 +180,13 @@ const LegacyWallet = ({ handleBackButton, type, handleClose }) => {
 };
 
 export default LegacyWallet;
+
+
+
+
+
+
+
+
+
+

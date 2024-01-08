@@ -18,7 +18,6 @@ import History from "./dashboard/History";
 import { alchemy } from "@/utils/alchemy";
 import { formatEther } from "viem";
 import HistoryCardSkelton from "./skeleton/HistoryCardSkelton";
-
 const Mainnet = ({ handleOpenWallet, handleCreateWallet, showWallet }) => {
   const {
     secureWalletAddress,

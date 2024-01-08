@@ -59,7 +59,7 @@ const RightSide = (props) => {
   return (
     <>
       {/* right side */}
-      <div className="grid relative -m-5 pb-32 lg:pb-0">
+      <div className="grid relative  -mx-4 pb-32 lg:pb-0">
         {/* models */}
         {/* <div className="hidden md:flex ">
           {showCreateWallet && <CreateWallet handleClose={handleClose} />}

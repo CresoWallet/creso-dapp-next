@@ -62,7 +62,7 @@ const MainLayout = () => {
     const Tokenprice = await axios.get(
       `https://api.coingecko.com/api/v3/simple/token_price/ethereum?contract_addresses=${data.address}&vs_currencies=usd`
     );
-    console.log("Tokenprice😁--->", Tokenprice.data);
+    // console.log("Tokenprice😁--->", Tokenprice.data);
     setCoinDataprice(Tokenprice.data);
   };
   const handleCreateWallet = () => {

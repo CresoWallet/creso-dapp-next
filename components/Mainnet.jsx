@@ -211,7 +211,7 @@ const Mainnet = ({ handleOpenWallet, handleCreateWallet, showWallet }) => {
       //console.log("totalBalance--->", totalBalance);
       //}
     } catch (error) {
-      console.log("getBalancefatch", error);
+      // console.log("getBalancefatch", error);
     }
   };
 
@@ -222,7 +222,7 @@ const Mainnet = ({ handleOpenWallet, handleCreateWallet, showWallet }) => {
     const fetchData = async () => {
       const tokenData = await getTokens();
       setAllToken(tokenData);
-      console.log("tokenData", tokenData);
+      // console.log("tokenData", tokenData);
     };
     const delayedFetch = () => {
       setTimeout(() => {

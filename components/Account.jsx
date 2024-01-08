@@ -62,28 +62,46 @@ const Account = ({ setShowModal }) => {
 
         <div className="flex flex-col xl:space-y-4  space-y-4 xl:pt-6 md:pt-3  pt-2 ">
           {links.map(({ id, label, icon: Icon }) => (
-            <Link
-              href={`/${id}`}
+            <div
               key={id}
               className="hover:bg-violet-100 py-5 border-b-2"
               style={getLinkStyle(id)}
             >
-              <div
-                className={`flex flex-row justify-between items-center cursor-pointer mx-4  ${
-                  hover === id ? "text-purple-800  font-bold" : ""
-                } ${clicked === id ? "text-purple-800 font-bold" : ""}`}
-                onMouseEnter={() => handleMouseEnter(id)}
-                onMouseLeave={handleMouseLeave}
-                onClick={() => handleClick(id)}
-              >
-                <div className="flex flex-row gap-2 items-center ">
-                  <Icon />
-                  <p className="text-sm">{label}</p>
+              {id === "session2" ? (
+                <div
+                  className={`flex flex-row justify-between items-center mx-4 text-black cursor-not-allowed ${
+                    hover === id ? "text-purple-800 font-bold" : ""
+                  } ${clicked === id ? "text-purple-800 font-bold" : ""}`}
+                  onMouseEnter={() => handleMouseEnter(id)}
+                  onMouseLeave={handleMouseLeave}
+                  onClick={() => handleClick(id)}
+                >
+                  <div className="flex flex-row gap-2 items-center ">
+                    <Icon />
+                    <p className="text-sm">{label}</p>
+                  </div>
+                  <MdKeyboardArrowRight />
                 </div>
-                <MdKeyboardArrowRight />
-              </div>
-              {/* <hr className="my-4" /> */}
-            </Link>
+              ) : (
+                <Link
+                  href={`/${id}`}
+                  className="flex flex-row justify-between items-center cursor-pointer mx-4"
+                >
+                  <a
+                    className={`flex flex-row gap-2 items-center ${
+                      hover === id ? "text-purple-800 font-bold" : ""
+                    } ${clicked === id ? "text-purple-800 font-bold" : ""}`}
+                    onMouseEnter={() => handleMouseEnter(id)}
+                    onMouseLeave={handleMouseLeave}
+                    onClick={() => handleClick(id)}
+                  >
+                    <Icon />
+                    <p className="text-sm">{label}</p>
+                  </a>
+                  <MdKeyboardArrowRight />
+                </Link>
+              )}
+            </div>
           ))}
         </div>
       </div>

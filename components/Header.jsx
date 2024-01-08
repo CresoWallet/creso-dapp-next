@@ -72,7 +72,7 @@ const Header = () => {
         window.location.href = "/";
       }
     } catch (err) {
-      console.log(err);
+      // console.log(err);
     } finally {
     }
   };

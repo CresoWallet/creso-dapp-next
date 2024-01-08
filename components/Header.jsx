@@ -19,6 +19,9 @@ import Telegram from "../assets/Dashboard/telegram.png";
 import Etherscan from "../assets/Dashboard/etherscan.png";
 import Github from "../assets/Dashboard/github.png";
 import Discord from "../assets/Dashboard/discord.png";
+
+
+
 // import UserDetails from "./UserDetails";
 // import { AUTH_TOKEN } from "@/constants";
 // import User from "../assets/Dashboard/User.png";
@@ -107,13 +110,14 @@ const Header = () => {
         <p className="m-2 text-base lg:block ">creso</p>
       </div>
 
-      <div onClick={handleButton} className="cursor-pointer mx-6">
+      <div className="cursor-pointer mx-6" onClick={handleButton}>
         <div className="absolute top-2 md:-top-7 lg:top-3 sm:right-6 place-items-end bg-red-500 text-white rounded-full w-10 h-10 flex items-center justify-center md:my-10  lg:mr-8 lg:my-14 md:mr-3 mr-10 ">
           <p className=" font-semibold text-xs ">
-            {user ? getInitials(user.username) : ""}
+            {user ? getInitials(user.username) : ""} 
           </p>
         </div>
       </div>
+
       {openPopup && (
         <div
           className="fixed top-0 right-0 w-full h-full flex xl:items-start items-center md:items-start z-10 xl:justify-end md:justify-end justify-center bg-gray-800 bg-opacity-75"
@@ -132,7 +136,7 @@ const Header = () => {
               <p className="text-xs text-[#A09FAA]">{user?.email}</p>
               <p className="text-xs text-[#A09FAA]"></p>
               Last Backup:
-              <p className="text-xm text-black">28 OCT 2023</p>{" "}
+              <p className="text-xm text-black">28 OCT 2023 </p>{" "}
             </div>
             <hr />
             <Link href="/account">
@@ -159,16 +163,7 @@ const Header = () => {
               <MdKeyboardArrowRight />
             </div>
 
-            {/* <div
-              className="flex flex-row items-center justify-between cursor-pointer hover:scale-105 py-4 hover:font-bold "
-              onClick={handleopenwallet}
-            >
-              <div className="flex flex-row gap-2 pl-2 items-center">
-                <IoWalletOutline />
-                <p className="hover:font-bold">Wallet</p>
-              </div>
-              <MdKeyboardArrowRight />
-            </div> */}
+           
 
             <hr />
             <div

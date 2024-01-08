@@ -127,7 +127,7 @@ const CoinCard = ({ handleCoinWallet }) => {
             />
             <div className="flex flex-col">
               <p className="text-center xl:text-sm text-xs md:text-xs">
-                {item.symbol}
+                {item.symbol}  
               </p>
               {/* {Object.entries(coinDataprice).map(([address, data]) => (
                 <div key={address}>

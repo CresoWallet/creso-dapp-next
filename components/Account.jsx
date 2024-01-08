@@ -51,7 +51,7 @@ const Account = ({ setShowModal }) => {
   return (
     <>
       <div className="flex flex-col space-y-3">
-        <UserDetails />
+        <UserDetails /> 
 
         <CustomButton3
           title="Backup"

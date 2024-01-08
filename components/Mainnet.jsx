@@ -18,7 +18,6 @@ import History from "./dashboard/History";
 import { alchemy } from "@/utils/alchemy";
 import { formatEther } from "viem";
 import HistoryCardSkelton from "./skeleton/HistoryCardSkelton";
-
 const Mainnet = ({ handleOpenWallet, handleCreateWallet, showWallet }) => {
   const {
     secureWalletAddress,
@@ -41,7 +40,7 @@ const Mainnet = ({ handleOpenWallet, handleCreateWallet, showWallet }) => {
   const arr = ["1", "2", "3"];
   useEffect(() => {
     if (!showWallet) {
-      setActiveButton("AA");
+      setActiveButton("");
     }
   }, [activeButton]);
 

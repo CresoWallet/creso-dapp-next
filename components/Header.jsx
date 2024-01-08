@@ -26,7 +26,6 @@ import Discord from "../assets/Dashboard/discord.png";
 const Header = () => {
   const router = useRouter();
 
- 
   const { user, isAuthenticated, status } = useUser();
   const [openPopup, setOpenPopup] = useState(false);
   const [openWallet, setOpenWallet] = useState(false);
@@ -108,13 +107,17 @@ const Header = () => {
         <p className="m-2 text-base lg:block ">creso</p>
       </div>
 
-      <div onClick={handleButton} className="cursor-pointer mx-6">
-        <div className="absolute top-2 md:-top-7 lg:top-3 sm:right-6 place-items-end bg-red-500 text-white rounded-full w-10 h-10 flex items-center justify-center md:my-10  lg:mr-8 lg:my-14 md:mr-3 mr-10 ">
+         
+      <div className="cursor-pointer mx-6"  onClick={handleButton}>
+        <div
+          className="absolute top-2 md:-top-7 lg:top-3 sm:right-6 place-items-end bg-red-500 text-white rounded-full w-10 h-10 flex items-center justify-center md:my-10  lg:mr-8 lg:my-14 md:mr-3 mr-10 "   
+        >
           <p className=" font-semibold text-xs ">
             {user ? getInitials(user.username) : ""}
           </p>
         </div>
       </div>
+
       {openPopup && (
         <div
           className="fixed top-0 right-0 w-full h-full flex xl:items-start items-center md:items-start z-10 xl:justify-end md:justify-end justify-center bg-gray-800 bg-opacity-75"
@@ -133,7 +136,7 @@ const Header = () => {
               <p className="text-xs text-[#A09FAA]">{user?.email}</p>
               <p className="text-xs text-[#A09FAA]"></p>
               Last Backup:
-              <p className="text-xm text-black">28 OCT 2023</p>{" "}
+              <p className="text-xm text-black">28 OCT 2023 </p>{" "}
             </div>
             <hr />
             <Link href="/account">

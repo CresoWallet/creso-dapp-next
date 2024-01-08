@@ -94,7 +94,7 @@ const SideNav = () => {
             onClick={() => handleIconClick("swap")}
           />
 
-          <div className=" ">
+          <div className="">
             <hr className="text-[#B1A6F8]" />
           </div>
 
@@ -103,7 +103,7 @@ const SideNav = () => {
             href="/about"
             icon={Info}
             hoverIcon={Info1}
-            label="About us"
+            label="About us "
             active={activeIcon === "about"}
             onClick={() => handleIconClick("about")}
           />

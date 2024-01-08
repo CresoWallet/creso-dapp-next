@@ -375,7 +375,7 @@ const Mainnet = ({ handleOpenWallet, handleCreateWallet, showWallet }) => {
               return <HistoryCardSkelton key={index} />;
             })}
           </>
-        ) : (
+        ) : allToken ? (
           allToken?.map((e, ind) => (
             <div key={ind} className="">
               <TransactionItem
@@ -390,6 +390,8 @@ const Mainnet = ({ handleOpenWallet, handleCreateWallet, showWallet }) => {
               <hr />
             </div>
           ))
+        ) : (
+          <p>Data Not Found</p>
         )}
       </div>
     </div>

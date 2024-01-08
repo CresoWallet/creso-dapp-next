@@ -132,7 +132,7 @@ const WalletContextProvider = ({ children }) => {
 
         let wallets = [...walletsEOA, ...smartWallet];
 
-        // console.log("wallets : ", wallets);
+        console.log("wallets : ", wallets);
 
         setSecureWalletBalance(sWalletBalance);
         setEoaWalletBalance(eWalletBalance);

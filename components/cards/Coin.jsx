@@ -84,12 +84,12 @@ import axios from "axios";
 
 const CoinCard = ({ handleCoinWallet }) => {
   const { originalData } = useContext(WalletContext);
-  //const [getTokensPrice, setGetTokensPrice] = useState({})
-  //console.log("🚀 ~ getTokensPrice:", getTokensPrice)
-  // console.log("🚀 ~ CoinCard ~ originalData:", originalData)
+  const [getTokensPrice, setGetTokensPrice] = useState({})
+  console.log("🚀 ~ getTokensPrice:", getTokensPrice)
+  console.log("🚀 ~ CoinCard ~ originalData:", originalData)
 
   // const sortedData = originalData.slice().sort((a, b) => b.value - a.value);
-  const top10Data = originalData.slice(0, 10);
+  const top10Data = originalData.slice(0, 11);
 
   // const pricedata = top10Data.map(e => e.address)
 
@@ -137,7 +137,9 @@ const CoinCard = ({ handleCoinWallet }) => {
             />
             <div className="flex flex-col">
               <p className="text-center xl:text-sm text-xs md:text-xs">
-                {item.symbol}
+                {item.symbol.toUpperCase()}
+                {/* {item.symbol.toUpperCase()} */}
+
               </p>
               {/* {Object.entries(coinDataprice).map(([address, data]) => (
                 <div key={address}>

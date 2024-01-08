@@ -21,6 +21,7 @@ import { tokenList } from "@/utils/data/coinlist";
 import { getTokenBalance } from "@/services/ethers/wallet";
 
 const SendETH = ({ handleBackButton, walletArr, networks, handleClose }) => {
+  console.log("🚀 ~ SendETH ~ walletArr:", walletArr)
   const popupRef = useRef();
   const {
     register,

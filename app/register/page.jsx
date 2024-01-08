@@ -35,7 +35,7 @@ const RegisterPage = () => {
     setLoading(true);
     const username = generateUsername(data.firstName, data.lastName);
     const signUpData = {
-      email: data.email,
+      email: data.email.toLowerCase(),
       username: username,
       password: data.password,
     };

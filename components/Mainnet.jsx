@@ -41,7 +41,7 @@ const Mainnet = ({ handleOpenWallet, handleCreateWallet, showWallet }) => {
   const arr = ["1", "2", "3"];
   useEffect(() => {
     if (!showWallet) {
-      setActiveButton("AA");
+      setActiveButton("");
     }
   }, [activeButton]);
 
@@ -94,6 +94,7 @@ const Mainnet = ({ handleOpenWallet, handleCreateWallet, showWallet }) => {
   };
 
   const getTokens = async () => {
+
     try {
       const response = await axios(config);
       const balances = response.data.result;
@@ -178,10 +179,11 @@ const Mainnet = ({ handleOpenWallet, handleCreateWallet, showWallet }) => {
       //  "https://gateway.ipfs.io/ipns/tokens.uniswap.org"
       //);
       const response = await axios.get(
+        // "https://gateway.ipfs.io/ipns/tokens.uniswap.org"
         "https://api.coingecko.com/api/v3/coins/markets?vs_currency=USD&order=market_cap_desc&per_page=250&page=1&sparkline=false&locale=en"
       );
       const data = response?.data;
-      console.log("🚀 ~ fetchAllToken ~ response:", response?.data);
+      // console.log("🚀 ~ fetchAllToken ~ response:", response?.data?.tokens);
       setOriginalData(data);
       setFilteredData(data);
 
@@ -220,7 +222,6 @@ const Mainnet = ({ handleOpenWallet, handleCreateWallet, showWallet }) => {
   };
 
   useEffect(() => {
-    setIsLoading(true);
     fetchAllToken();
     getBalancefatch();
     const fetchData = async () => {
@@ -229,6 +230,7 @@ const Mainnet = ({ handleOpenWallet, handleCreateWallet, showWallet }) => {
       console.log("tokenData", tokenData);
     };
     const delayedFetch = () => {
+
       setTimeout(() => {
         fetchData();
       }, 5000);
@@ -258,11 +260,10 @@ const Mainnet = ({ handleOpenWallet, handleCreateWallet, showWallet }) => {
         <div className="flex xl:flex-row flex-col items-center xl:gap-4 md:gap-4 gap-2">
           {/* Keyless Secure Wallet */}
           <div
-            className={`${
-              activeButton === "AA"
-                ? "bg-black"
-                : "bg-white hover:bg-gray-200 duration-500 "
-            } rounded-full px-4 py-4 w-full border-2 border-black cursor-pointer group relative`}
+            className={`${activeButton === "AA"
+              ? "bg-black"
+              : "bg-white hover:bg-gray-200 duration-500 "
+              } rounded-full px-4 py-4 w-full border-2 border-black cursor-pointer group relative`}
           >
             <div className="flex flex-row justify-between items-center gap-3 group">
               <Image
@@ -272,9 +273,8 @@ const Mainnet = ({ handleOpenWallet, handleCreateWallet, showWallet }) => {
               />
               <div className="flex flex-col space-y-1">
                 <p
-                  className={`${
-                    activeButton === "AA" ? "text-white" : "text-black"
-                  }  font-semibold text-sm md:text-lg xl:text-sm`}
+                  className={`${activeButton === "AA" ? "text-white" : "text-black"
+                    }  font-semibold text-sm md:text-lg xl:text-sm`}
                 >
                   Keyless Secure Wallet
                 </p>
@@ -284,9 +284,8 @@ const Mainnet = ({ handleOpenWallet, handleCreateWallet, showWallet }) => {
                   </p>
                   <Image
                     src={activeButton === "AA" ? Copy : Copy2}
-                    className={`${
-                      activeButton === "AA" ? "text-white" : "text-black"
-                    }`}
+                    className={`${activeButton === "AA" ? "text-white" : "text-black"
+                      }`}
                     alt="copy"
                     onClick={() => {
                       copyToClipBoard(secureWalletAddress);
@@ -318,11 +317,10 @@ const Mainnet = ({ handleOpenWallet, handleCreateWallet, showWallet }) => {
 
           {/* EOA Wallet */}
           <div
-            className={`${
-              activeButton === "EOA"
-                ? "bg-black"
-                : "bg-white  hover:bg-gray-200 duration-500 "
-            } rounded-full px-4 py-4 w-full border-2 border-black cursor-pointer group relative`}
+            className={`${activeButton === "EOA"
+              ? "bg-black"
+              : "bg-white  hover:bg-gray-200 duration-500 "
+              } rounded-full px-4 py-4 w-full border-2 border-black cursor-pointer group relative`}
           >
             <div className="flex flex-row justify-between items-center gap-3">
               <Image
@@ -332,9 +330,8 @@ const Mainnet = ({ handleOpenWallet, handleCreateWallet, showWallet }) => {
               />
               <div className="flex flex-col space -y-1">
                 <p
-                  className={`${
-                    activeButton === "EOA" ? "text-white" : "text-black"
-                  }  font-semibold text-sm md:text-lg xl:text-sm`}
+                  className={`${activeButton === "EOA" ? "text-white" : "text-black"
+                    }  font-semibold text-sm md:text-lg xl:text-sm`}
                 >
                   EOA Wallet
                 </p>

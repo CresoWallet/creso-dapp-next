@@ -154,6 +154,13 @@ button:disabled {
   -webkit-text-fill-color: transparent;
   -webkit-animation: hue 15s infinite linear;
 }
+img {
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -o-user-select: none;
+  user-select: none;
+}
 @-webkit-keyframes hue {
   from {
     -webkit-filter: hue-rotate(0deg);

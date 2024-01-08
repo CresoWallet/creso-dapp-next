@@ -20,6 +20,7 @@ import { formatEther } from "viem";
 import HistoryCardSkelton from "./skeleton/HistoryCardSkelton";
 
 const Mainnet = ({ handleOpenWallet, handleCreateWallet, showWallet }) => {
+  // const [newWalletName, setNewWalletName] = useState("");
   const {
     secureWalletAddress,
     eoaWalletAddress,
@@ -37,6 +38,9 @@ const Mainnet = ({ handleOpenWallet, handleCreateWallet, showWallet }) => {
   const { enqueueSnackbar } = useSnackbar();
   const [tokenPrices, setTokenPrices] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
+  // const handleWalletNameChange = (e) => {
+  //   setNewWalletName(e.target.value);
+  // };
   //console.log("tokenPrices-->", tokenPrices);
   const arr = ["1", "2", "3"];
   useEffect(() => {
@@ -44,6 +48,15 @@ const Mainnet = ({ handleOpenWallet, handleCreateWallet, showWallet }) => {
       setActiveButton("AA");
     }
   }, [activeButton]);
+
+  // const handleSaveWalletName = () => {
+  //   // Perform any necessary validation on the new wallet name
+  //   // Update the wallet name in your state or API
+  //   // For example, you can use the setActiveButton function to update the active wallet name
+  //   setActiveButton(newWalletName);
+  //   // Clear the input field
+  //   setNewWalletName("");
+  // };
 
   // Token real value
   useEffect(() => {
@@ -261,6 +274,21 @@ const Mainnet = ({ handleOpenWallet, handleCreateWallet, showWallet }) => {
             } rounded-full px-4 py-4 w-full border-2 border-black cursor-pointer group relative`}
           >
             <div className="flex flex-row justify-between items-center gap-3 group">
+              {/*  <div>
+                <input
+                  type="text"
+                  placeholder="New Wallet Name"
+                  className="outline-none border-b-2 border-black text-sm w-20"
+                  value={newWalletName}
+                  onChange={handleWalletNameChange}
+                />
+                <button
+                  className="text-[#FF4085] hover:font-bold duration-500"
+                  onClick={handleSaveWalletName}
+                >
+                  Save
+                </button>
+              </div> */}
               <Image
                 src={Wallet}
                 alt="wallet"

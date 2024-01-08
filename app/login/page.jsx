@@ -21,6 +21,7 @@ import { FaGoogle } from "react-icons/fa";
 import { FaApple } from "react-icons/fa";
 import Creso3 from "../../assets/Dashboard/creso3.png";
 import cresow from "../../assets/Dashboard/creso_logo_white.svg";
+import Capcha from "@/components/Capcha";
 
 const LoginPage = () => {
   const router = useRouter();
@@ -122,6 +123,7 @@ const LoginPage = () => {
             type={"password"}
             validation={{ ...register("password", { required: true }) }}
           />
+          <Capcha />
           <div className="flex flex-col space-y-2 pt-5">
             <CustomButton
               isLoading={loading}
@@ -130,6 +132,7 @@ const LoginPage = () => {
               hoverColor={"zinc-800"}
               type={"submit"}
             />
+
             {/* <CustomButton
               isDisabled={true}
               bgColor="white"

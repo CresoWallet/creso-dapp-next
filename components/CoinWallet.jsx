@@ -75,7 +75,7 @@ const CoinWallet = ({ handleClose, wallets, coinData, coinDataprice }) => {
             //    ? USDT
             //    : ETH
             //}
-            src={coinData.logoURI}
+            src={coinData.image}
             width={40}
             height={40}
             className="rounded-full"
@@ -92,12 +92,12 @@ const CoinWallet = ({ handleClose, wallets, coinData, coinDataprice }) => {
                 : ""}*/}
             </p>
             <div className="flex flex-row xl:gap-2 gap-2 md:gap-2 items-center">
-              <p className="font-bold md:text-xs text-base">{`3,187.99 ${coinData.symbol}`}</p>
-              {Object.entries(coinDataprice).map(([address, data]) => (
-                <div key={address}>
-                  <p className="text-xs text-[#A09FAA]">$ {data.usd}</p>
-                </div>
-              ))}
+
+              <p className="font-semibold md:text-xs text-base">{`0.00 ${coinData.symbol.toUpperCase()}`}</p>
+              <div className="">
+                <p className="text-xs text-[#A09FAA]">$ {coinData?.current_price}</p>
+              </div>
+
             </div>
           </div>
         </div>

@@ -86,10 +86,10 @@ const CoinCard = ({ handleCoinWallet }) => {
   const { originalData } = useContext(WalletContext);
   const [getTokensPrice, setGetTokensPrice] = useState({})
   console.log("🚀 ~ getTokensPrice:", getTokensPrice)
-  // console.log("🚀 ~ CoinCard ~ originalData:", originalData)
+  console.log("🚀 ~ CoinCard ~ originalData:", originalData)
 
   // const sortedData = originalData.slice().sort((a, b) => b.value - a.value);
-  const top10Data = originalData.slice(0, 10);
+  const top10Data = originalData.slice(0, 11);
 
   // const pricedata = top10Data.map(e => e.address)
 
@@ -122,12 +122,14 @@ const CoinCard = ({ handleCoinWallet }) => {
           >
             <img
               alt={item.symbol}
-              src={item?.logoURI}
+              src={item?.image}
               className="xl:h-12 xl:w-12 w-8 h-8 rounded-full"
             />
             <div className="flex flex-col">
               <p className="text-center xl:text-sm text-xs md:text-xs">
-                {item.symbol}
+                {item.symbol.toUpperCase()}
+                {/* {item.symbol.toUpperCase()} */}
+
               </p>
               {/* {Object.entries(coinDataprice).map(([address, data]) => (
                 <div key={address}>
@@ -135,7 +137,7 @@ const CoinCard = ({ handleCoinWallet }) => {
                 </div>
               ))} */}
               <p className="text-[#A09FAA] xl:text-sm text-xs md:text-xs">
-                {/* {Tokenprice} */}
+                $ {item?.current_price}
               </p>
             </div>
           </div>

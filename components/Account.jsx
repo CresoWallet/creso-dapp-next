@@ -9,20 +9,22 @@ import { BiWifi2 } from "react-icons/bi";
 import { GiAerialSignal } from "react-icons/gi";
 import { LuSettings2 } from "react-icons/lu";
 import { MdKeyboardArrowRight } from "react-icons/md";
+import { usePathname } from "next/navigation";
 
 const links = [
-  { id: "account", label: "Account", icon: FiUser },
-  { id: "recovery", label: "Recovery Key", icon: GoKey },
-  { id: "security", label: "Security", icon: RiComputerLine },
-  { id: "session", label: "V1 Sessions", icon: BiWifi2 },
-  { id: "session2", label: "V2 Sessions", icon: BiWifi2 },
-  { id: "network", label: "Network Settings ", icon: GiAerialSignal },
-  { id: "advance", label: "Advanced", icon: LuSettings2 },
+  { id: "/account", label: "Account", icon: FiUser },
+  { id: "/recovery", label: "Recovery Key", icon: GoKey },
+  { id: "/security", label: "Security", icon: RiComputerLine },
+  { id: "/session", label: "V1 Sessions", icon: BiWifi2 },
+  { id: "/session2", label: "V2 Sessions", icon: BiWifi2 },
+  { id: "/network", label: "Network Settings ", icon: GiAerialSignal },
+  { id: "/advance", label: "Advanced", icon: LuSettings2 },
 ];
 
 const Account = ({ setShowModal }) => {
   const [hover, setHover] = useState(null);
   const [clicked, setClicked] = useState(true);
+  const path = usePathname();
 
   const handleMouseEnter = (link) => {
     setHover(link);
@@ -38,14 +40,14 @@ const Account = ({ setShowModal }) => {
   };
   const getLinkStyle = (link) => {
     const isHovered = hover === link;
-    const isClicked = clicked === link;
+    const isClicked = path === link;
 
     return {
-      background: isHovered
+      background: isHovered || isClicked
         ? "linear-gradient(-270deg, rgba(33, 0, 236, 0.1056) 5.3%, rgba(33, 0, 236, 0) 98.01%)"
         : "transparent",
       // Add other styles based on your requirements
-      fontWeight: isHovered || isClicked ? "bold" : "normal",
+      // fontWeight: isHovered || isClicked ? "bold" : "normal",
     };
   };
   return (
@@ -63,15 +65,14 @@ const Account = ({ setShowModal }) => {
         <div className="flex flex-col xl:space-y-4  space-y-4 xl:pt-6 md:pt-3  pt-2 ">
           {links.map(({ id, label, icon: Icon }) => (
             <Link
-              href={`/${id}`}
+              href={`${id}`}
               key={id}
               className="hover:bg-violet-100 py-5 border-b-2"
               style={getLinkStyle(id)}
             >
               <div
-                className={`flex flex-row justify-between items-center cursor-pointer mx-4  ${
-                  hover === id ? "text-purple-800  font-bold" : ""
-                } ${clicked === id ? "text-purple-800 font-bold" : ""}`}
+                className={`flex flex-row justify-between items-center cursor-pointer mx-4  ${(hover === id || path === id) ? "text-purple-800  font-bold" : "font-normal"
+                  }`}
                 onMouseEnter={() => handleMouseEnter(id)}
                 onMouseLeave={handleMouseLeave}
                 onClick={() => handleClick(id)}

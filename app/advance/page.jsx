@@ -113,7 +113,7 @@ const AdvancePage = () => {
                 <p className="font-semibold">RPC Fallback</p>
                 <div className="flex flex-row items-center gap-1">
                   <p className="text-xs text-[#A09FAA]">
-                    Automatically Switch PRC nodes when the current RPC is
+                    Automatically Switch RPC nodes when the current RPC is
                     unavailable
                   </p>
                 </div>

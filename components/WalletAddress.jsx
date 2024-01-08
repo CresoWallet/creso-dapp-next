@@ -11,13 +11,16 @@ import { WalletContext } from "@/providers/WalletProvider";
 // import Breaker from "../assets/Dashboard/Line.png";
 
 const WalletAddress = ({ handleBackButton, wallet }) => {
-  const {
-    secureWalletAddress,
-    eoaWalletAddress,
-    activeButton,
-  } = useContext(WalletContext);
-  const walletID = activeButton === "AA" ? minifyEthereumAddress(secureWalletAddress) : minifyEthereumAddress(eoaWalletAddress)
-  const walletIDCopy = activeButton === "AA" ? copyToClipBoard(secureWalletAddress) : copyToClipBoard(eoaWalletAddress)
+  const { secureWalletAddress, eoaWalletAddress, activeButton } =
+    useContext(WalletContext);
+  const walletID =
+    activeButton === "AA"
+      ? minifyEthereumAddress(secureWalletAddress)
+      : minifyEthereumAddress(eoaWalletAddress);
+  const walletIDCopy =
+    activeButton === "AA"
+      ? copyToClipBoard(secureWalletAddress)
+      : copyToClipBoard(eoaWalletAddress);
   return (
     <div className="bg-white flex flex-col xl:pl-8 md:pl-4 mx-0 px-2 xl:px-0 md:px-2 pt-16 w-full xl:pr-10 pr-2 space-y-4 min-h-screen h-full z-20">
       <div className="flex flex-row items-center justify-between">
@@ -92,8 +95,8 @@ const WalletAddress = ({ handleBackButton, wallet }) => {
           </div>
         </div>
         <div className="bg-black rounded-b-3xl absolute -bottom-20 text-white text-center text-xs pt-10 pb-4 xl:px-5 px-5 md:px-2">
-          Please do not desposit any assets that are not from Ethereum or EVM
-          compatibli chain, otherwise the assets will be lost
+          Please do not deposit any assets that are not from Ethereum or EVM
+          compatible chain, otherwise the assets will be lost.
         </div>
       </div>
     </div>

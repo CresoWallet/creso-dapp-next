@@ -116,7 +116,6 @@ const SideNav = () => {
             active={activeIcon === "support"}
             onClick={() => handleIconClick("support")}
           />
-   
         </div>
       </div>
       {/* Add social media icons */}

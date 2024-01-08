@@ -17,6 +17,7 @@ import { useMediaQuery } from "react-responsive";
 import { usePathname } from "next/navigation";
 //import TokenComponent from "@/components/Tokens/TokensComponent";
 import MobileMenubar from "@/components/navbar/MobileMenubar";
+import { VscFeedback } from "react-icons/vsc";
 
 export const WalletContext = createContext();
 
@@ -76,7 +77,10 @@ const WalletContextProvider = ({ children }) => {
     /* For remove SideNav fetch path */
   }
   const pathName = usePathname();
-  const isLoginOrRegister = pathName === "/" || pathName.includes("/register");
+  const isLoginOrRegister =
+    pathName === "/" ||
+    pathName.includes("/register") ||
+    pathName.includes("/login");
   // console.log(pathName);
 
   useEffect(() => {
@@ -231,13 +235,18 @@ const WalletContextProvider = ({ children }) => {
               {/* Conditionally render SideNav based on the path name */}
               {!isLoginOrRegister && <SideNav />}
             </div>
+            {/* <div className="fixed bottom-3 right-3 bg-blue-500 h-96 w-96 z-[99999999999999999999999999] rounded-full ">
+              <VscFeedback />;
+            </div> */}
             {/* )} */}
           </div>
 
           {/* Children's content */}
+
           {!isMobile && <div className="childrens">{children}</div>}
         </div>
       )}
+
       {(isMobile || isLoginOrRegister) && <div className="">{children}</div>}
 
       {/* ------------Mobile Menubar---------- */}

@@ -188,7 +188,7 @@ const LoginPage = () => {
               <div
                 className=" gap-2  items-center  hover:border-black hover:text-bold  text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2   transition duration-500 ease-in-out bg-black disabled:opacity-40
               xl:py-4 py-2 text-white px-12 flex justify-center rounded-full w-full
-              enabled:hover:bg-zinc-800 enabled:hover:font-semibold cursor-pointer
+              enabled:hover:bg-zinc-800 enabled:hover:font-semibold 
               border border-solid border-undefined tracking-wider transform
               hover:-translate-y-1"
               >
@@ -200,7 +200,7 @@ const LoginPage = () => {
 
           <div className="flex justify-center pt-5">
             <p className="text-sm text-[#A09FAA]">
-              Do you have an account?{" "}
+              Don&rsquo;t have an account?{" "}
               <Link href="/register">
                 <span className="text-[#FF4085] cursor-pointer hover:font-bold">
                   Register Now

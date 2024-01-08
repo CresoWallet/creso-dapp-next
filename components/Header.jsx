@@ -19,14 +19,8 @@ import Telegram from "../assets/Dashboard/telegram.png";
 import Etherscan from "../assets/Dashboard/etherscan.png";
 import Github from "../assets/Dashboard/github.png";
 import Discord from "../assets/Dashboard/discord.png";
-<<<<<<< HEAD
-// import profile from "./UserDetails";
-=======
-
-
 
 // import UserDetails from "./UserDetails";
->>>>>>> 17d078b23230031437d13a0787f3bd197d3aedc1
 // import { AUTH_TOKEN } from "@/constants";
 import User from "../assets/Dashboard/profileIMG.png";
 
@@ -117,7 +111,7 @@ const Header = () => {
       <div className="cursor-pointer mx-6" onClick={handleButton}>
         <div className="absolute top-2 md:-top-7 lg:top-3 sm:right-6 place-items-end bg-red-500 text-white rounded-full w-10 h-10 flex items-center justify-center md:my-10  lg:mr-8 lg:my-14 md:mr-3 mr-10 ">
           <p className=" font-semibold text-xs ">
-            {user ? getInitials(user.username) : ""} 
+            {user ? getInitials(user.username) : ""}
           </p>
         </div>
       </div>
@@ -166,8 +160,6 @@ const Header = () => {
               </div>
               <MdKeyboardArrowRight />
             </div>
-
-           
 
             <hr />
             <div

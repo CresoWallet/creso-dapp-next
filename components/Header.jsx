@@ -25,6 +25,7 @@ import User from "../assets/Dashboard/profileIMG.png";
 
 const Header = () => {
   const router = useRouter();
+
   const { user, isAuthenticated, status } = useUser();
   const [openPopup, setOpenPopup] = useState(false);
   const [openWallet, setOpenWallet] = useState(false);

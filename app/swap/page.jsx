@@ -38,6 +38,7 @@ const SwapPage = () => {
   const [showSwapForm, setShowSwapForm] = useState(false);
   const { navbarTrigger, setNavbarTrigger, isMobile } =
     useContext(WalletContext);
+
   const handleShowSwap = () => {
     setShowSwapForm(!showSwapForm);
   };
@@ -45,20 +46,20 @@ const SwapPage = () => {
   const handleClose = () => {
     setShowSwapForm(false);
   };
-  useEffect(() => {
-    if (navbarTrigger) {
-      document.body.classList.add("no-scroll");
-    } else {
-      document.body.classList.remove("no-scroll");
-    }
-  }, [navbarTrigger]);
+  // useEffect(() => {
+  //   if (navbarTrigger) {
+  //     document.body.classList.add("no-scroll");
+  //   } else {
+  //     document.body.classList.remove("no-scroll");
+  //   }
+  // }, [navbarTrigger]);
 
   return (
     <>
       <div className="lg:grid lg:grid-cols-10 divide-x">
         {/* ------------ Leftside Main ---------- */}
         {/* <div className="grid responsivemb-cols h-full"> */}
-        <div className="lg:col-span-6 pt-16 px-6">
+        <div className="lg:col-span-6 pt-16  px-10 relative">
           {/* <div className="flex md:hidden">
               {showSwapForm && <SwapFrom handleClose={handleClose} />}
             </div> */}
@@ -78,7 +79,9 @@ const SwapPage = () => {
           </div>
           <div className="flex flex-col py-7 px-2">
             <div className="flex flex-col space-y-1">
-              <p className="px-4 text-xs xl:text-sm md:text-sm">From</p>
+              <p className="px-4 font-semibold  text-xs xl:text-sm md:text-sm">
+                From
+              </p>
               <div className="rounded-full xl:pl-4 pl-2 xl:pr-8 pr-2 xl:py-2 py-1 flex flex-row justify-between border border-solid">
                 <div className="flex flex-row gap-2 items-center">
                   <Image alt="" src={BNB} />
@@ -96,15 +99,17 @@ const SwapPage = () => {
                 </div>
               </div>
             </div>
-            <div className="flex justify-center xl:-mt-6 xl:-mb-12 -mt-2 -mb-7">
+            <div className="flex justify-center xl:-mt-6 xl:-mb-12 -mt-2 -mb-7 z-10">
               <Image
                 alt=""
                 src={SwapButton}
-                className="w-12 h-12 xl:w-24 xl:h-24"
+                className="w-14 h-14 xl:w-24 xl:h-24"
               />
             </div>
             <div className="flex flex-col">
-              <p className="px-6 text-xs xl:text-sm md:text-sm">To</p>
+              <p className="px-6 pt-2 font-semibold  text-xs xl:text-sm md:text-sm">
+                To
+              </p>
               <div className="rounded-full xl:pl-4 pl-2 xl:pr-8 pr-2 xl:py-2 py-1 flex flex-row justify-between border border-solid">
                 <div className="flex flex-row gap-2 items-center">
                   <Image alt="" src={Etherum} />
@@ -122,10 +127,14 @@ const SwapPage = () => {
                 </div>
               </div>
             </div>
-            <div className="flex flex-col space-y-1 mt-2">
+            <div className="flex flex-col space-y-1 mt-6">
               <div className="flex flex-row justify-between items-center">
-                <p className="px-4 text-xs xl:text-sm md:text-sm">You Pay</p>
-                <p className="text-xs text-[#6F6E7A]">Balance: 7,432 USD</p>
+                <p className="px-4 pt-2 font-semibold  text-xs xl:text-sm md:text-sm">
+                  You Pay
+                </p>
+                <p className="text-xs px-4 text-[#6F6E7A]">
+                  Balance: 7,432 USD
+                </p>
               </div>
               <div className="rounded-full xl:pl-4 pl-2 xl:pr-8 pr-2 xl:py-2 py-1 flex flex-row justify-between border border-solid">
                 <div className="flex flex-row gap-2 items-center">
@@ -139,11 +148,11 @@ const SwapPage = () => {
               </div>
             </div>
             <div className="flex flex-col space-y-1 mt-2 mb-8">
-              <div className="flex flex-row justify-between items-center">
-                <p className="px-4 mt-2 text-xs xl:text-sm md:text-sm">
+              <div className="flex flex-row justify-between items-center pt-3">
+                <p className="px-4  pt-2 font-semibold text-xs xl:text-sm md:text-sm">
                   You Get
                 </p>
-                <p className="text-[#FF4085] text-xs xl:text-sm md:text-sm">
+                <p className="text-[#FF4085] px-4 text-xs xl:text-sm md:text-sm">
                   Show all
                 </p>
               </div>
@@ -214,9 +223,9 @@ const SwapPage = () => {
 
         <hr className="lg:hidden mt-10 lg:mt-0" />
 
-
         {/* ------------ Rightside Main ---------- */}
         <div className="lg:col-span-4 pt-14 px-10">
+          {showSwapForm && <SwapFrom handleClose={handleClose} />}
           <Header />
           <RightMain />
         </div>

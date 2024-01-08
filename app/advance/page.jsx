@@ -11,20 +11,23 @@ import { useMediaQuery } from "react-responsive";
 import Ham from "../../assets/Dashboard/ham.png";
 import Modal from "@/components/modal/Modal";
 import { useUser } from "@/providers/UserProvider";
+import AccountHeader from "@/components/AccountHeader";
 
 const AdvancePage = () => {
   const [navbarTrigger, setNavbarTrigger] = useState(false);
   const { user, isAuthenticated, status } = useUser();
   const [showModal, setShowModal] = useState(false);
+  const [balanceAutoHide, setBalanceAutoHide] = useState(true);
+  const [rpcFallback, setRpcFallback] = useState(true);
 
   const isMobile = useMediaQuery({ query: `(max-width: 760px)` });
-  useEffect(() => {
-    if (navbarTrigger) {
-      document.body.classList.add("no-scroll");
-    } else {
-      document.body.classList.remove("no-scroll");
-    }
-  }, [navbarTrigger]);
+  // useEffect(() => {
+  //   if (navbarTrigger) {
+  //     document.body.classList.add("no-scroll");
+  //   } else {
+  //     document.body.classList.remove("no-scroll");
+  //   }
+  // }, [navbarTrigger]);
 
   return (
     <div id="modal-root">
@@ -36,7 +39,14 @@ const AdvancePage = () => {
       )}
       {showModal && <Modal onClose={() => setShowModal(false)} user={user} />}
       <div className="grid lg:grid-cols-10 md:grid-cols-2 grid-cols-1 pb-32 lg:pb-0">
-        <div className="col-span-4 pb-32 lg:pb-0">
+        <AccountHeader
+          isMobile={isMobile}
+          navbarTrigger={navbarTrigger}
+          setShowModal={setShowModal}
+          user={user}
+        />
+
+        {/* <div className="col-span-4 pb-32 lg:pb-0">
           <div className={`grid ${isMobile ? "grid-cols-1" : "grid-cols-3"}`}>
             <div className="flex xl:hidden md:hidden justify-center gap-4">
               <div className="flex flex-row items-center gap-2">
@@ -62,11 +72,11 @@ const AdvancePage = () => {
               <Account user={user} setShowModal={setShowModal} />
             </div>
           </div>
-        </div>
+        </div> */}
         <div className="col-span-6 xl:mx-8 md:mx-4 mx-2 xl:mt-10 mt-4">
           <div className="flex flex-row justify-between items-center">
             <p className="text-xl font-semibold">Advanced</p>
-            <div className="xl:flex xl:flex-row md:flex md:flex-row hidden items-center xl:gap-0 md:gap-0 gap-4">
+            <div className="xl:flex xl:flex-row md:flex md:flex-row hidden items-center xl:gap-6 md:gap-4 gap-4">
               <div className="flex flex-row items-center gap-2">
                 <Image alt="" src={Language} className="w-6 h-6" />
                 <div className="flex flex-row gap-1">
@@ -89,11 +99,12 @@ const AdvancePage = () => {
               <label className="relative inline-flex items-center cursor-pointer">
                 <input
                   type="checkbox"
-                  value=""
+                  value={balanceAutoHide}
                   className="sr-only peer"
-                  checked
+                  checked={balanceAutoHide}
+                  onChange={() => setBalanceAutoHide(!balanceAutoHide)}
                 />
-                <div className="w-11 h-6 bg-gray-200 rounded-full peer peer-focus:ring-4  dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-black after:content-[''] after:absolute after:top-0.5 after:start-[2px] after:bg-black after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-[#D0F500]"></div>
+                <div className="w-11 h-6 bg-gray-200 rounded-full peer peer-focus:ring-4 dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-black after:content-[''] after:absolute after:top-0.5 after:start-[2px] after:bg-black after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-[#D0F500]"></div>
               </label>
             </div>
             <hr className="text-[#A09FAA]" />
@@ -102,7 +113,7 @@ const AdvancePage = () => {
                 <p className="font-semibold">RPC Fallback</p>
                 <div className="flex flex-row items-center gap-1">
                   <p className="text-xs text-[#A09FAA]">
-                    Automatically Switch PRC nodes when the current RPC is
+                    Automatically Switch RPC nodes when the current RPC is
                     unavailable
                   </p>
                 </div>
@@ -110,9 +121,10 @@ const AdvancePage = () => {
               <label className="relative inline-flex items-center cursor-pointer">
                 <input
                   type="checkbox"
-                  value=""
+                  value={rpcFallback}
                   className="sr-only peer"
-                  checked
+                  checked={rpcFallback}
+                  onChange={() => setRpcFallback(!rpcFallback)}
                 />
                 <div className="w-11 h-6 bg-gray-200 rounded-full peer peer-focus:ring-4  dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-black after:content-[''] after:absolute after:top-0.5 after:start-[2px] after:bg-black after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-[#D0F500]"></div>
               </label>

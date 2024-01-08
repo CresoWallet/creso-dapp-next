@@ -38,7 +38,7 @@ const Mainnet = ({ handleOpenWallet, handleCreateWallet, showWallet }) => {
   const [tokenPrices, setTokenPrices] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   //console.log("tokenPrices-->", tokenPrices);
-  const arr = ["1", "2", "3", "4"];
+  const arr = ["1", "2", "3"];
   useEffect(() => {
     if (!showWallet) {
       setActiveButton("AA");
@@ -97,7 +97,7 @@ const Mainnet = ({ handleOpenWallet, handleCreateWallet, showWallet }) => {
     try {
       const response = await axios(config);
       const balances = response.data.result;
-
+      console.log("balances-->", balances);
       const contractAddresses = balances.tokenBalances
         .filter((token) => token.tokenBalance)
         .map((token) => token.contractAddress);
@@ -128,6 +128,7 @@ const Mainnet = ({ handleOpenWallet, handleCreateWallet, showWallet }) => {
       // Fetch token prices using CoinGecko API
       const pricePromises = metadataResponses.map(async (metadataResponse) => {
         const data = metadataResponse.data.result.name.toLowerCase();
+        console.log("data-->", data);
         const tokenprice = await axios.get(
           `https://api.coingecko.com/api/v3/simple/price?ids=${data}&vs_currencies=usd`
         );
@@ -173,11 +174,14 @@ const Mainnet = ({ handleOpenWallet, handleCreateWallet, showWallet }) => {
       //const response = await axios.get(
       //  "https://tokens.coingecko.com/uniswap/all.json"
       //);
+      //const response = await axios.get(
+      //  "https://gateway.ipfs.io/ipns/tokens.uniswap.org"
+      //);
       const response = await axios.get(
-        "https://gateway.ipfs.io/ipns/tokens.uniswap.org"
+        "https://api.coingecko.com/api/v3/coins/markets?vs_currency=USD&order=market_cap_desc&per_page=250&page=1&sparkline=false&locale=en"
       );
-      const data = response?.data?.tokens;
-      console.log("🚀 ~ fetchAllToken ~ response:", response?.data?.tokens);
+      const data = response?.data;
+      console.log("🚀 ~ fetchAllToken ~ response:", response?.data);
       setOriginalData(data);
       setFilteredData(data);
 
@@ -236,13 +240,15 @@ const Mainnet = ({ handleOpenWallet, handleCreateWallet, showWallet }) => {
     <div className="flex flex-col xl:space-y-8 md:space-y-8 space-y-2">
       <div>
         <div className="flex items-center justify-between">
-          <p className="font-bold text-xl lg:my-0 my-4">Ethereum Mainnet </p>
-          <div className="flex  gap-2 items-center cursor-pointer group">
+          <p className="font-bold text-xl lg:my-0 my-4">
+            Beta Version (Testnet){" "}
+          </p>
+          <div
+            className="flex  gap-2 items-center cursor-pointer group"
+            onClick={handleCreateWallet}
+          >
             <Image src={PinkPlus} alt="" />
-            <p
-              onClick={handleCreateWallet}
-              className="text-[#FF4085] group-hover:font-bold duration-500"
-            >
+            <p className="text-[#FF4085] group-hover:font-bold duration-500">
               Create
             </p>
           </div>

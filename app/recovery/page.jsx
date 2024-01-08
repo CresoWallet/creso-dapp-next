@@ -18,6 +18,7 @@ import WalletStatus from "./walletStatus";
 import { MdKeyboardArrowDown } from "react-icons/md";
 import Language from "../../assets/security/language.png";
 import Currency from "../../assets/security/dollor2.png";
+import AccountHeader from "@/components/AccountHeader";
 
 const RecoveryPage = () => {
   const [navbarTrigger, setNavbarTrigger] = useState(false);
@@ -25,13 +26,13 @@ const RecoveryPage = () => {
   const [showModal, setShowModal] = useState(false);
 
   const isMobile = useMediaQuery({ query: `(max-width: 760px)` });
-  useEffect(() => {
-    if (navbarTrigger) {
-      document.body.classList.add("no-scroll");
-    } else {
-      document.body.classList.remove("no-scroll");
-    }
-  }, [navbarTrigger]);
+  // useEffect(() => {
+  //   if (navbarTrigger) {
+  //     document.body.classList.add("no-scroll");
+  //   } else {
+  //     document.body.classList.remove("no-scroll");
+  //   }
+  // }, [navbarTrigger]);
 
   const fetchRecoveryStatus = async (data) => {
     // console.log("data : ", data);
@@ -93,7 +94,13 @@ const RecoveryPage = () => {
       )}
       {showModal && <Modal onClose={() => setShowModal(false)} user={user} />}
       <div className="grid lg:grid-cols-10 md:grid-cols-2 grid-cols-1 pb-32 lg:pb-0">
-        <div className="col-span-4">
+        <AccountHeader
+          isMobile={isMobile}
+          navbarTrigger={navbarTrigger}
+          setShowModal={setShowModal}
+          user={user}
+        />
+        {/* <div className="col-span-4">
           <div
             className={`grid h-full ${
               isMobile ? "grid-cols-1" : "grid-cols-3"
@@ -124,12 +131,12 @@ const RecoveryPage = () => {
               <Account user={user} setShowModal={setShowModal} />
             </div>
           </div>
-        </div>
+        </div> */}
 
         <div className="col-span-6 xl:mr-8 md:mr-6 mx-4 xl:mt-10 mt-4">
           <div className="flex flex-row justify-between items-center ">
             <p className="text-xl font-semibold">Recovery</p>
-            <div className="xl:flex xl:flex-row md:flex md:flex-row hidden items-center xl:gap-0 md:gap-0 gap-4">
+            <div className="xl:flex xl:flex-row md:flex md:flex-row hidden items-center xl:gap-6 md:gap-4 gap-4">
               <div className="flex flex-row items-center gap-2">
                 <Image alt="" src={Language} className="w-6 h-6" />
                 <div className="flex flex-row gap-1">

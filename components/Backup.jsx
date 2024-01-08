@@ -14,8 +14,7 @@ const Backup = (props) => {
             Account Not Backed Up
           </p>
           <p className="xl:text-sm md:text-xs text-xs">
-            Soory, you are unable to proceed until you complete the backup.
-            Backup now to secure your account.
+            We recommend you to backup your account to make it secure.
           </p>
         </div>
         <div className="flex justify-center">

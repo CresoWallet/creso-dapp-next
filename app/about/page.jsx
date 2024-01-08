@@ -49,7 +49,7 @@ const AboutPage = () => {
     <>
       <div className="lg:grid lg:grid-cols-10 divide-x">
         {/* ------------ Leftside Main ---------- */}
-        <div className="lg:col-span-6 pt-16 px-6">
+        <div className="lg:col-span-6 pt-16 px-12">
           <div className="">
             <LeftHeader
               title={"About us"}
@@ -71,7 +71,9 @@ const AboutPage = () => {
               <div className="flex justify-start items-start gap-2">
                 <Image src={Info} alt="" />
                 <p className="text-gray-600 text-sm">
-                  This version is Beta version of Creso Wallet Ecosystem. Stay updated in community to get updates in all upcoming versions.
+                  This is the Beta Version of Creso Wallet Ecosystem. To keep up
+                  to date with all the upcoming updates of the Beta please join
+                  our community.
                 </p>
               </div>
             </div>
@@ -97,7 +99,7 @@ const AboutPage = () => {
                 aria-labelledby="accordion-collapse-heading-1"
               >
                 <p className="mb-2 text-black">
-                 User Agreement will be lunched soon. Stay connected.
+                  User Agreement will be launched soon. Stay connected.
                 </p>
               </div>
 
@@ -121,7 +123,8 @@ const AboutPage = () => {
                 aria-labelledby="accordion-collapse-heading-1"
               >
                 <p className="mb-2 text-black ">
-                  Your tokens are secure. Detailed privacy policy will be launched by end of January, 2024.
+                  Your tokens are secure. Detailed privacy policy will be
+                  launched by end of January, 2024.
                 </p>
               </div>
               <div className="hover:translate-y-1">

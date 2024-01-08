@@ -74,9 +74,14 @@ button:disabled {
 
 .sidebar {
   width: 15%;
+  position: fixed;
+  height: 100vh;
+  /* z-index: 1000; */
+  overflow-y: auto;
 }
 .childrens {
   width: 85%;
+  margin-left: 15%;
 }
 /* .responsivemb-cols {
   grid-template-columns: repeat(4, minmax(0, 1fr));
@@ -90,6 +95,9 @@ button:disabled {
   padding: 0 48px 0 64px;
 }
 
+.carousel-status {
+  display: none !important;
+}
 /* @media only screen and (max-width: 2560px) and (min-width: 1441px) {
   .navActiveMenu {
     padding: 0 150px 0 70px;
@@ -161,6 +169,7 @@ button:disabled {
   }
   .childrens {
     width: 85%;
+    margin-left: 25%;
   }
   .navActiveMenu {
     padding: 0 100px 0 64px;

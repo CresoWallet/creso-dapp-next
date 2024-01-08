@@ -46,7 +46,7 @@ const SecureWallet = ({ handleClose, wallets, walletType }) => {
 
   return (
     <div
-      className={`bg-white shadow-xl lg:w-auto h-[123vh] lg:h-[100vh] lg:block`}
+      className={`bg-white shadow-xl min-w-max lg:w-auto h-[123vh] lg:h-[100vh] lg:block`}
     >
       <div className="grid place-items-center rounded-full bg-black h-8 w-8 absolute cursor-pointer md:-ml-4 ml-2 lg:mt-0 z-[99]">
         <IoIosClose className="text-white h-7 w-7" onClick={handleClose} />
@@ -113,13 +113,13 @@ const SecureWallet = ({ handleClose, wallets, walletType }) => {
             <p className="text-2xl font-bold">Balance</p>
             <div className="flex flex-row items-center gap-2">
               <CustomButton2
-                name="Top Gainers"
+                name="Tokens"
                 bgColor="[#D0F500]"
                 borderColor="black"
                 textColor="black"
               />
               <CustomButton2
-                name="Top Losers"
+                name="NFTs"
                 bgColor="white"
                 borderColor="[#E5E5F0]"
                 textColor="black"
@@ -127,7 +127,7 @@ const SecureWallet = ({ handleClose, wallets, walletType }) => {
             </div>
           </div>
 
-          <div className="flex flex-col gap-4">
+          {/* <div className="flex flex-col gap-4">
             <div className="cursor-pointer">
               <div className="flex items-center justify-between">
                 <div className="flex justify-center items-center gap-2">
@@ -167,7 +167,7 @@ const SecureWallet = ({ handleClose, wallets, walletType }) => {
                 </div>
               </div>
             </div>
-          </div>
+          </div> */}
         </div>
       )}
     </div>

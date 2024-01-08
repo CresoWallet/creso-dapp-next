@@ -20,6 +20,7 @@ import CreateWallet from "@/components/CreateWallet";
 // import SendETH from "@/components/SendETH";
 // import { network } from "@/utils/data/coinlist";
 import axios from "axios";
+import { IoIosNotificationsOutline } from "react-icons/io";
 
 const MainLayout = () => {
   const router = useRouter();
@@ -57,6 +58,13 @@ const MainLayout = () => {
     fetchWallet();
   }, []);
 
+  const gettokenprice = async (data) => {
+    const Tokenprice = await axios.get(
+      `https://api.coingecko.com/api/v3/simple/token_price/ethereum?contract_addresses=${data.address}&vs_currencies=usd`
+    );
+    console.log("Tokenprice😁--->", Tokenprice.data);
+    setCoinDataprice(Tokenprice.data);
+  };
   const handleCreateWallet = () => {
     setShowCreateWallet(!showCreateWallet);
     // close other models
@@ -75,14 +83,6 @@ const MainLayout = () => {
     // close other models
     setShowCreateWallet(false);
     setShowWallet(false);
-  };
-
-  const gettokenprice = async (data) => {
-    const Tokenprice = await axios.get(
-      `https://api.coingecko.com/api/v3/simple/token_price/ethereum?contract_addresses=${data.address}&vs_currencies=usd`
-    );
-    console.log("Tokenprice--->", Tokenprice.data);
-    setCoinDataprice(Tokenprice.data);
   };
   const handleShowModel = () => {
     if (user?.registrationMethod !== "email" && !user?.isEmailVerified) {
@@ -133,7 +133,7 @@ const MainLayout = () => {
     <>
       {/* ------------ Popup Main ---------- */}
       {isMobile && (
-        <div className="lg:hidden block min-w-max">
+        <div className="lg:hidden block">
           {showWallet && (
             <SecureWallet
               handleClose={handleCloseShowWallet}
@@ -162,16 +162,18 @@ const MainLayout = () => {
         {/* ------------ Leftside Main ---------- */}
         {
           <div
-            className={`${isMobile && responsivCompo
-              ? "hidden"
-              : "lg:col-span-6 pt-16 px-10"
-              }`}
+            className={`${
+              isMobile && responsivCompo
+                ? "hidden"
+                : "lg:col-span-6 pt-16 px-10"
+            }`}
           >
             <div className="">
               <LeftHeader
                 title={"Dashboard"}
                 descriptionColor={""}
                 icon1={<CiSearch />}
+                icon2={<IoIosNotificationsOutline />}
                 mobileImg={Ham}
                 navbarTrigger={navbarTrigger}
                 setNavbarTrigger={setNavbarTrigger}
@@ -195,8 +197,9 @@ const MainLayout = () => {
 
         {/* ------------ Rightside Main ---------- */}
         <div
-          className={`${responsivCompo ? "px-0  border-l-2 " : " px-10  pt-14"
-            } lg:col-span-4`}
+          className={`${
+            responsivCompo ? "px-0  border-l-2 " : " px-10  pt-14"
+          } lg:col-span-4`}
         >
           <div className="hidden lg:block">
             <div className="hidden lg:flex">

@@ -12,22 +12,22 @@ import CapCard from "@/components/CapCard";
 import CustomButton2 from "@/components/CustomButton2";
 import User from "@/components/User";
 import CardWithTitle from "@/components/discover/CardWithTitle";
-import Degods from "../../assets/discover/degods.png";
-import AzukiRed from "../../assets/discover/azuki-red.png";
-import Potatoz from "../../assets/discover/potatoz.png";
-import Hvmtl from "../../assets/discover/hvmtl.png";
-import AzukiGray from "../../assets/discover/azuki-gray.png";
+import Degods from "../../assets/discover/degods.svg";
+import AzukiRed from "../../assets/discover/azuki-red.svg";
+import Potatoz from "../../assets/discover/potatoz.svg";
+import Hvmtl from "../../assets/discover/hvmtl.svg";
+import AzukiGray from "../../assets/discover/azuki-gray.svg";
 import CryptoNewsBGImage from "../../assets/discover/crypo-news-img.png";
 import DiscoverAppsBGImage from "../../assets/discover/discover-apps.png";
-import GameButtonImage from "../../assets/discover/Joystick.png";
-import MarketPlaceImage from "../../assets/discover/Shop.png";
-import Defi from "../../assets/discover/doller.png";
+import GameButtonImage from "../../assets/discover/Joystick.svg";
+import MarketPlaceImage from "../../assets/discover/Shop.svg";
+import Defi from "../../assets/discover/doller.svg";
 import Sure from "../../assets/Dashboard/gainers/sure.png";
 import CFX from "../../assets/gainers/cfx.png";
 import MINA from "../../assets/AboutUs/gainers/mina.png";
 import PEPE from "../../assets/discover/pepe.png";
-import Card1 from "../../assets/discover/poster-card/card-1.png";
-import Card2 from "../../assets/discover/poster-card/card2.png";
+import Card1 from "../../assets/discover/poster-card/card-1.svg";
+import Card2 from "../../assets/discover/poster-card/card-2.svg";
 import Image from "next/image";
 import { useMediaQuery } from "react-responsive";
 import Ham from "../../assets/Dashboard/ham.png";
@@ -35,6 +35,10 @@ import RightMain from "../MainLayout/RightMain";
 import LeftHeader from "@/components/LeftHeader";
 import { CiSearch } from "react-icons/ci";
 import { WalletContext } from "@/providers/WalletProvider";
+import NFT from "../../assets/discover/NFT.jpg";
+import NFT2 from "../../assets/discover/NFT2.png";
+import NFT3 from "../../assets/discover/NFT3.png";
+import NFT1 from "../../assets/discover/NFT1.png";
 
 const DiscoverPage = () => {
   const [isFavourite, setIsFavourite] = useState(false);
@@ -57,12 +61,7 @@ const DiscoverPage = () => {
     }
   }, [navbarTrigger]);
 
-  let slides = [
-    "https://i.ibb.co/bmbrTJ1/wallpaperflare-com-wallpaper-3.jpg",
-    "https://i.ibb.co/FVLhDR7/wallpaperflare-com-wallpaper-2.jpg",
-    "https://i.ibb.co/xmB7ty3/wallpaperflare-com-wallpaper-1.jpg",
-    "https://i.ibb.co/jkM7SL7/wallpaperflare-com-wallpaper.jpg",
-  ];
+  let slides = [NFT, NFT1, NFT2, NFT3];
 
   let coins = [
     {
@@ -127,12 +126,12 @@ const DiscoverPage = () => {
 
   return (
     <>
-      <div className="lg:grid lg:grid-cols-10 px-2 lg:divide-x">
+      <div className="lg:grid lg:grid-cols-10 divide-x">
         {/* ------------ Leftside Main ---------- */}
         {/* sidebar and discover content */}
         {/* <div className="col-span-6 "> */}
         {/* <div className="grid responsivemb-cols h-full"> */}
-        <div className="col-span-6 space-y-6 xl:mx-4 px-5 pt-[72px]">
+        <div className="lg:col-span-6 pt-16  px-10 relative">
           {/* <div className="block md:hidden">
               <Header />
             </div> */}
@@ -150,7 +149,7 @@ const DiscoverPage = () => {
           </div>
           <div className="col-span-6 space-y-6 px-2 ">
             {/* carousel component */}
-            <div className="w-full py-4">
+            <div className="w-full pt-10">
               <Carousel slides={slides} />
             </div>
             {/* top nft section */}
@@ -308,7 +307,7 @@ const DiscoverPage = () => {
         <hr className="lg:hidden mt-10 lg:mt-0" />
 
         {/* ------------ Rightside Main ---------- */}
-        <div className="pt-14 col-span-4 px-10">
+        <div className="lg:col-span-4 pt-14 px-10">
           <Header />
           <RightMain />
         </div>

@@ -62,7 +62,7 @@ const Wallet = ({ setOpenWallet }) => {
                   handleButtonClick(0);
                 }}
               >
-                <p>AA: </p>
+                <p>AA:</p>
                 <button>
                   {`${
                     secureWalletAddress
@@ -110,7 +110,7 @@ const Wallet = ({ setOpenWallet }) => {
                         width={40}
                       />
                     </div>
-                    <div className="mb-5 flex flex-col items-start justify-start">
+                    <div className="mb-5 flex flex-col   items-start justify-start">
                       <p className="text-base font-semibold">{`${token.name}`}</p>
                       <p className="text-sm text-[#535353]">{`${token.balance}`}</p>
                     </div>

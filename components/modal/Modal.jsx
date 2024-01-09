@@ -19,7 +19,7 @@ import { useUser } from "@/providers/UserProvider";
 const Modal = ({ onClose, title, user }) => {
   const [step, setStep] = useState(1);
   const [loading, setLoading] = useState(false);
-  const [resendLoading, setResendLoading] = useState(false);
+
   const [otp, setOtp] = useState();
   const [secretKey, setSecretKey] = useState();
   const [encryptedKey, setEncryptedKey] = useState("");

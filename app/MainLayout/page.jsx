@@ -20,6 +20,7 @@ import CreateWallet from "@/components/CreateWallet";
 // import SendETH from "@/components/SendETH";
 // import { network } from "@/utils/data/coinlist";
 import axios from "axios";
+import NotificationPopup from "../../components/Notification";
 import { IoIosNotificationsOutline } from "react-icons/io";
 
 const MainLayout = () => {
@@ -28,6 +29,7 @@ const MainLayout = () => {
   const [showCoinWallet, setShowCoinWallet] = useState(false);
   const [showWallet, setShowWallet] = useState(false);
   const [showModal, setShowModal] = useState(false);
+  const [showNotificationPopup, setShowNotificationPopup] = useState(false);
   const [usd, setUsd] = useState(0);
   // const [wallets, setWallets] = useState([]);
   const [walletType, setWalletType] = useState("");
@@ -46,6 +48,8 @@ const MainLayout = () => {
     setNavbarTrigger,
     isMobile,
     send,
+    activeButton,
+    setActiveButton,
   } = useContext(WalletContext);
 
   useEffect(() => {
@@ -62,7 +66,7 @@ const MainLayout = () => {
     const Tokenprice = await axios.get(
       `https://api.coingecko.com/api/v3/simple/token_price/ethereum?contract_addresses=${data.address}&vs_currencies=usd`
     );
-    console.log("Tokenprice😁--->", Tokenprice.data);
+    // console.log("Tokenprice😁--->", Tokenprice.data);
     setCoinDataprice(Tokenprice.data);
   };
   const handleCreateWallet = () => {
@@ -115,8 +119,16 @@ const MainLayout = () => {
 
   const handleCloseShowWallet = () => {
     setShowWallet(false);
+    setActiveButton("")
   };
 
+  const handleShowNotificationPopup = () => {
+    setShowNotificationPopup(true);
+  };
+
+  const handleCloseNotificationPopup = () => {
+    setShowNotificationPopup(false);
+  };
   // useEffect(() => {
   //   if (navbarTrigger) {
   //     document.body.classList.add("no-scroll");
@@ -173,12 +185,21 @@ const MainLayout = () => {
                 title={"Dashboard"}
                 descriptionColor={""}
                 icon1={<CiSearch />}
-                icon2={<IoIosNotificationsOutline />}
+                icon2={
+                  <IoIosNotificationsOutline
+                    onClick={handleShowNotificationPopup}
+                    className="cursor-pointer "
+                  />
+                }
                 mobileImg={Ham}
                 navbarTrigger={navbarTrigger}
                 setNavbarTrigger={setNavbarTrigger}
                 isMobile={isMobile}
               />
+              {/* NotificationPopup component */}
+              {showNotificationPopup && (
+                <NotificationPopup handleClose={handleCloseNotificationPopup} />
+              )}
 
               <LeftSide
                 showWallet={showWallet}

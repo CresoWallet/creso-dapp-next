@@ -176,7 +176,7 @@ const UserDetails = () => {
         <p className="text-sm text-[#A09FAA]">{user?.email}</p>
         <p className="text-xs text-[#A09FAA] mr-xside">
           Last Backup test:{" "}
-          <span className="text-sm text-black">28 OCT 2023 </span>{" "}
+          <span className="text-sm text-black">28 OCT 2023</span>{" "}
         </p>
       </div>
     </div>

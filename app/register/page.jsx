@@ -13,6 +13,7 @@ import { signUpAPI } from "@/clientApi/auth";
 import { CustomTextField } from "@/components/fields/CustomTextField";
 import { enqueueSnackbar } from "notistack";
 import cresow from "../../assets/Dashboard/creso_logo_white.svg";
+import Capcha from "@/components/Capcha";
 
 const RegisterPage = () => {
   const router = useRouter();
@@ -141,6 +142,7 @@ const RegisterPage = () => {
               error={errors.confirmPassword && errors.confirmPassword.message}
             />
           </div>
+          {/* <Capcha /> */}
 
           <div className="flex flex-col space-y-2">
             {/* Sign-up button */}

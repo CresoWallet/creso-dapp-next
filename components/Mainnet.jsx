@@ -299,7 +299,7 @@ const Mainnet = ({ handleOpenWallet, handleCreateWallet, showWallet }) => {
                   className={`${activeButton === "AA" ? "text-white" : "text-black"
                     }  font-semibold text-sm md:text-lg xl:text-sm`}
                 >
-                  Keyless Secure Wallet
+                  Keyless Secure Wallet 
                 </p>
                 <div className="flex flex-row items-center gap-4 z-[1]">
                   <p className="text-[#A09FAA] xl:text-xs text-xs md:text-sm">

@@ -92,12 +92,12 @@ const CoinWallet = ({ handleClose, wallets, coinData, coinDataprice }) => {
                 : ""}*/}
             </p>
             <div className="flex flex-row xl:gap-2 gap-2 md:gap-2 items-center">
-
               <p className="font-semibold md:text-xs text-base">{`0.00 ${coinData.symbol.toUpperCase()}`}</p>
               <div className="">
-                <p className="text-xs text-[#A09FAA]">$ {coinData?.current_price}</p>
+                <p className="text-xs text-[#A09FAA]">
+                  $ {coinData?.current_price}
+                </p>
               </div>
-
             </div>
           </div>
         </div>

@@ -48,6 +48,8 @@ const MainLayout = () => {
     setNavbarTrigger,
     isMobile,
     send,
+    activeButton,
+    setActiveButton,
   } = useContext(WalletContext);
 
   useEffect(() => {
@@ -117,6 +119,7 @@ const MainLayout = () => {
 
   const handleCloseShowWallet = () => {
     setShowWallet(false);
+    setActiveButton("")
   };
 
   const handleShowNotificationPopup = () => {

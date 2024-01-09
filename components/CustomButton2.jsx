@@ -9,10 +9,11 @@ const CustomButton2 = ({
   handleClick,
   isDisabled,
   isLoading,
+  hoverBorderColor
 }) => {
   return (
     <div
-      className={`bg-${bgColor} rounded-full py-4 border border-solid border-${borderColor} flex justify-center w-full hover:bg-opacity-70 duration-500 cursor-pointer group`}
+      className={`hover:${bgColor} rounded-full py-4 border border-solid border-${borderColor} hover:${hoverBorderColor} flex justify-center w-full hover:bg-opacity-70 duration-500 cursor-pointer group`}
     >
       {isLoading ? (
         <>

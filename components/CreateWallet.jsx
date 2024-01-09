@@ -8,6 +8,7 @@ import CustomButton3 from "./CustomButton3";
 import { BiChevronRight } from "react-icons/bi";
 import { IoIosClose } from "react-icons/io";
 import LegacyWallet from "./LegacyWallet";
+
 // import SecureWallet from "./SecureWallet";
 
 // const CreateWallet = ({ handleClose }) => {

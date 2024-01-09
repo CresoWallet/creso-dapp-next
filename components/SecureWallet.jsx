@@ -84,7 +84,7 @@ const SecureWallet = ({ handleClose, wallets, walletType }) => {
         <div className="flex flex-col mx-8 mt-10 gap-8">
           <div className="flex items-center justify-between">
             <p className="text-xl font-bold ml-4 xl:ml-0 md:ml-0">
-              {walletType === "AA" ? "Keyless Secure Wallet" : "EOA Wallet"}
+              {walletType === "AA" ? "Keyless Secure Wallet " : "EOA Wallet"}
             </p>
             <Image src={Menu} alt="" className="cursor-pointer" />
           </div>
@@ -114,15 +114,17 @@ const SecureWallet = ({ handleClose, wallets, walletType }) => {
             <div className="flex flex-row items-center gap-2">
               <CustomButton2
                 name="Tokens"
-                bgColor="[#D0F500]"
-                borderColor="black"
+                bgColor="bg-[#D0F500]"
+                hoverBorderColor="border-black"
                 textColor="black"
+                borderColor="border-[#E5E5F0]"
               />
               <CustomButton2
                 name="NFTs"
-                bgColor="white"
-                borderColor="[#E5E5F0]"
-                textColor="black"
+                bgColor="bg-[#D0F500]"
+                hoverBorderColor="border-black"
+                borderColor="border-[#E5E5F0]"
+                blor="black"
               />
             </div>
           </div>

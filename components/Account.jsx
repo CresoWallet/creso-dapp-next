@@ -42,9 +42,10 @@ const Account = ({ setShowModal }) => {
     const isClicked = path === "/" + link;
 
     return {
-      background: isHovered || isClicked
-        ? "linear-gradient(-270deg, rgba(33, 0, 236, 0.1056) 5.3%, rgba(33, 0, 236, 0) 98.01%)"
-        : "transparent",
+      background:
+        isHovered || isClicked
+          ? "linear-gradient(-270deg, rgba(33, 0, 236, 0.1056) 5.3%, rgba(33, 0, 236, 0) 98.01%)"
+          : "transparent",
       // Add other styles based on your requirements
       // fontWeight: isHovered || isClicked ? "bold" : "normal",
     };

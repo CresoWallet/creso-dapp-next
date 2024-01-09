@@ -43,9 +43,10 @@ const Account = ({ setShowModal }) => {
     const isClicked = path === link;
 
     return {
-      background: isHovered || isClicked
-        ? "linear-gradient(-270deg, rgba(33, 0, 236, 0.1056) 5.3%, rgba(33, 0, 236, 0) 98.01%)"
-        : "transparent",
+      background:
+        isHovered || isClicked
+          ? "linear-gradient(-270deg, rgba(33, 0, 236, 0.1056) 5.3%, rgba(33, 0, 236, 0) 98.01%)"
+          : "transparent",
       // Add other styles based on your requirements
       // fontWeight: isHovered || isClicked ? "bold" : "normal",
     };
@@ -53,7 +54,7 @@ const Account = ({ setShowModal }) => {
   return (
     <>
       <div className="flex flex-col space-y-3">
-        <UserDetails /> 
+        <UserDetails />
 
         <CustomButton3
           title="Backup"
@@ -71,8 +72,11 @@ const Account = ({ setShowModal }) => {
               style={getLinkStyle(id)}
             >
               <div
-                className={`flex flex-row justify-between items-center cursor-pointer mx-4  ${(hover === id || path === id) ? "text-purple-800  font-bold" : "font-normal"
-                  }`}
+                className={`flex flex-row justify-between items-center cursor-pointer mx-4  ${
+                  hover === id || path === id
+                    ? "text-purple-800  font-bold"
+                    : "font-normal"
+                }`}
                 onMouseEnter={() => handleMouseEnter(id)}
                 onMouseLeave={handleMouseLeave}
                 onClick={() => handleClick(id)}

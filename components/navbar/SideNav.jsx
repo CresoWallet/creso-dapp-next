@@ -22,6 +22,7 @@ import Discord from "../../assets/Dashboard/discord.png";
 import creso from "../../assets/Dashboard/creso_logo_white.svg";
 import Setting from "../../assets/Dashboard/setting.png";
 import Setting1 from "../../assets/Dashboard/setting1.png";
+import Link from "next/link";
 import support1 from "../../assets/Dashboard/Support.svg";
 // import cresob from "../../assets/Dashboard/creso logo black.svg";
 
@@ -37,9 +38,15 @@ const SideNav = () => {
   return (
     <div className="bg-[#2100EC] rounded-3xl  min-h-full pb-10">
       <div className="flex flex-col pt-12 lg:h-full items-center lg:items-start  ">
-        <div className="flex flex-row items-center gap-1 px-8 relative Mainlogo text-white">
+        <Link href="/dashboard" className="flex flex-row items-center gap-1 px-8 relative Mainlogo text-white">
           <Image alt="creso-logo" src={creso} className="h-10 my-8 mb-14" />
-        </div>
+
+          {/* 
+        <p className=" text-4xl hidden lg:block items-center">creso</p>
+        <p className="text-sm mt-4 text-[#D0F500]">Beta</p>
+
+         */}
+        </Link>
         <div className={`flex flex-col ${isMobile ? "mr-5" : "mr-10"}`}>
           <NavItem
             pathName={pathName}

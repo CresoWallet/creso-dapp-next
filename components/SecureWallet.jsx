@@ -20,7 +20,7 @@ import { WalletContext } from "@/providers/WalletProvider";
 const SecureWallet = ({ handleClose, wallets, walletType }) => {
   // const [send, setSend] = useState(false);
   const [walletAddress, setWalletAddress] = useState(false);
-
+  const [activeButton, setActiveButton] = useState("tokens");
   const {
     send,
     setSend,
@@ -42,6 +42,11 @@ const SecureWallet = ({ handleClose, wallets, walletType }) => {
     setMainContentVisible(true);
     setWalletAddress(false);
     setSend(false);
+  };
+
+  const handleButtonClick = (button) => {
+    console.log("Clicked button:", button);
+    setActiveButton(button);
   };
 
   return (
@@ -125,6 +130,16 @@ const SecureWallet = ({ handleClose, wallets, walletType }) => {
                 borderColor="[#E5E5F0]"
                 textColor="black"
               />
+              {/* <CustomButton2
+                name="Tokens"
+                active={activeButton === "tokens"}
+                onClick={() => handleButtonClick("tokens")}
+              />
+              <CustomButton2
+                name="NFTs"
+                active={activeButton === "nfts"}
+                onClick={() => handleButtonClick("nfts")}
+              /> */}
             </div>
           </div>
 

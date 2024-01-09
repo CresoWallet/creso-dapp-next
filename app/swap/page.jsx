@@ -56,7 +56,13 @@ const SwapPage = () => {
 
   return (
     <>
-      <div className="lg:grid lg:grid-cols-10 divide-x">
+      {/* ------------ Popup Main ---------- */}
+      {isMobile && (
+        <div className="lg:hidden block">
+          {showSwapForm && <SwapFrom handleClose={handleClose} />}
+        </div>
+      )}
+      <div className={`${isMobile && showSwapForm ? "hidden" : "lg:grid-cols-10"} lg:grid  lg:divide-x`}>
         {/* ------------ Leftside Main ---------- */}
         {/* <div className="grid responsivemb-cols h-full"> */}
         <div className="lg:col-span-6 pt-16  px-10 relative">
@@ -224,10 +230,14 @@ const SwapPage = () => {
         <hr className="lg:hidden mt-10 lg:mt-0" />
 
         {/* ------------ Rightside Main ---------- */}
-        <div className="lg:col-span-4 pt-14 px-10">
-          {showSwapForm && <SwapFrom handleClose={handleClose} />}
-          <Header />
-          <RightMain />
+        <div className={`lg:col-span-4 ${!showSwapForm ? "pt-14 px-10" : ""}`}>
+          {showSwapForm || !isMobile ? <SwapFrom handleClose={handleClose} /> :
+            <>
+              <Header />
+              <RightMain />
+            </>
+          }
+
         </div>
       </div>
     </>

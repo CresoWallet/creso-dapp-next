@@ -13,7 +13,7 @@ const CustomButton2 = ({
 }) => {
   return (
     <div
-      className={`hover:${bgColor} rounded-full py-4 border border-solid border-${borderColor} hover:${hoverBorderColor} flex justify-center w-full hover:bg-opacity-70 duration-500 cursor-pointer group`}
+      className={`hover:bg-[#D0F500] rounded-full py-4 border border-solid border-${borderColor} hover:${hoverBorderColor} flex justify-center w-full hover:bg-opacity-70 duration-500 cursor-pointer group`}
     >
       {isLoading ? (
         <>

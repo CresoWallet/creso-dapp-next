@@ -66,17 +66,17 @@ const Mainnet = ({ handleOpenWallet, handleCreateWallet, showWallet }) => {
         );
         const ethPrice = ethResponse.data.market_data.current_price.usd;
 
-        //const tokenResponse = await axios.get(
-        //  `https://api.coingecko.com/api/v3/simple/token_price/ethereum?contract_addresses=0x5cb3ce6d081fb00d5f6677d196f2d70010ea3f4a%2C0x74232704659ef37c08995e386a2e26cc27a8d7b1%2C0x2b1d36f5b61addaf7da7ebbd11b35fd8cfb0de31%2C0x07e0edf8ce600fb51d44f51e3348d77d67f298ae%2C0x94025780a1ab58868d9b2dbbb775f44b32e8e6e5%2C0x465a5a630482f3abd6d3b84b39b29b07214d19e5%2C0x024b6e7dc26f4d5579bdd936f8d7bc31f2339999%2C0x6982508145454ce325ddbe47a25d4ec3d2311933%2C0xf6650117017ffd48b725b4ec5a00b414097108a7%2C0x569d0e52c3dbe95983bcc2434cb9f69d905be919&vs_currencies=usd`
-        //);
-        ////console.log("tokenResponse", tokenResponse?.data);
-        //const tokenArray = Object.keys(tokenResponse.data).map((address) => ({
-        //  [address]: {
-        //    usd: tokenResponse.data[address].usd * ethPrice,
-        //  },
-        //}));
+        const tokenResponse = await axios.get(
+          `https://api.coingecko.com/api/v3/simple/token_price/ethereum?contract_addresses=0x5cb3ce6d081fb00d5f6677d196f2d70010ea3f4a%2C0x74232704659ef37c08995e386a2e26cc27a8d7b1%2C0x2b1d36f5b61addaf7da7ebbd11b35fd8cfb0de31%2C0x07e0edf8ce600fb51d44f51e3348d77d67f298ae%2C0x94025780a1ab58868d9b2dbbb775f44b32e8e6e5%2C0x465a5a630482f3abd6d3b84b39b29b07214d19e5%2C0x024b6e7dc26f4d5579bdd936f8d7bc31f2339999%2C0x6982508145454ce325ddbe47a25d4ec3d2311933%2C0xf6650117017ffd48b725b4ec5a00b414097108a7%2C0x569d0e52c3dbe95983bcc2434cb9f69d905be919&vs_currencies=usd`
+        );
+        //console.log("tokenResponse", tokenResponse?.data);
+        const tokenArray = Object.keys(tokenResponse.data).map((address) => ({
+          [address]: {
+            usd: tokenResponse.data[address].usd * ethPrice,
+          },
+        }));
 
-        //setTokenPrices(tokenArray);
+        setTokenPrices(tokenArray);
       } catch (error) {
         console.error("Error fetching token prices:", error);
       }
@@ -299,7 +299,7 @@ const Mainnet = ({ handleOpenWallet, handleCreateWallet, showWallet }) => {
                   className={`${activeButton === "AA" ? "text-white" : "text-black"
                     }  font-semibold text-sm md:text-lg xl:text-sm`}
                 >
-                  Keyless Secure Wallet 
+                  Keyless Secure Wallet
                 </p>
                 <div className="flex flex-row items-center gap-4 z-[1]">
                   <p className="text-[#A09FAA] xl:text-xs text-xs md:text-sm">

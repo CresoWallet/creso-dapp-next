@@ -123,7 +123,7 @@ const LoginPage = () => {
             type={"password"}
             validation={{ ...register("password", { required: true }) }}
           />
-          <Capcha onSubmit={onSubmit} />
+          {/* <Capcha onSubmit={onSubmit} /> */}
           <div className="flex flex-col space-y-2 pt-5">
             <CustomButton
               isLoading={loading}

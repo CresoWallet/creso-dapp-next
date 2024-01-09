@@ -91,19 +91,19 @@ const CoinCard = ({ handleCoinWallet }) => {
   // const sortedData = originalData.slice().sort((a, b) => b.value - a.value);
   const top10Data = originalData.slice(0, 11);
 
-  // const pricedata = top10Data.map(e => e.address)
+  const pricedata = top10Data.map(e => e.address)
 
-  // const gettokenprice = async () => {
-  //   const Tokenprice = await axios.get(
-  //     `https://api.coingecko.com/api/v3/simple/token_price/ethereum?contract_addresses=${pricedata}&vs_currencies=usd`
-  //   );
-  //   // console.log("🚀 ~ gettokenprice ~ Tokenprice:", Tokenprice?.data)
-  //   setGetTokensPrice(Tokenprice?.data)
-  // };
+  const gettokenprice = async () => {
+    const Tokenprice = await axios.get(
+      `https://api.coingecko.com/api/v3/simple/token_price/ethereum?contract_addresses=${pricedata}&vs_currencies=usd`
+    );
+    // console.log("🚀 ~ gettokenprice ~ Tokenprice:", Tokenprice?.data)
+    setGetTokensPrice(Tokenprice?.data)
+  };
 
-  // useEffect(() => {
-  //   gettokenprice()
-  // }, [])
+  useEffect(() => {
+    gettokenprice()
+  }, [])
   // Object.entries(getTokensPrice).map((e) => {
   //   console.log("🚀 ~ e 😂😂😁😁😂😁:", e)
   //   return e

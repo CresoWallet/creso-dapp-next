@@ -1,22 +1,47 @@
-import React from "react";
+// "use client";
+import React, { useState } from "react";
 import ReCAPTCHA from "react-google-recaptcha";
 
-function onChange(value) {
-  console.log("Capcha value", value);
-}
+const Capcha = ({ onSubmit }) => {
+  const [captcha, setCaptcha] = useState(false);
 
-const Capcha = () => {
+  const handleCaptchaChange = (value) => {
+    console.log("Captcha value", value);
+    setCaptcha(true);
+  };
+
+  const handleReloadCaptcha = () => {
+    setCaptcha(false);
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    if (captcha) {
+      await onSubmit(); // Call the onSubmit function if the captcha is filled
+    } else {
+      // Display captcha error message
+      console.error("Please fill in the captcha.");
+    }
+  };
+
   return (
-    <div>
+    <form className="flex flex-col items-center" onSubmit={handleSubmit}>
       <ReCAPTCHA
         sitekey="6LcbhEkpAAAAANGyk91OacDhIwb-CUaB40mDTtKR"
-        onChange={onChange}
+        onChange={handleCaptchaChange}
+        className="mx-auto"
       />
-    </div>
+      <button type="submit" style={{ display: "none" }}></button>
+    </form>
   );
 };
+
 export default Capcha;
 
+//server side secret key
+//6LcbhEkpAAAAAENNQpvLEeMBsVHfmJynwjCDoP3I
+//client site key="6LcbhEkpAAAAANGyk91OacDhIwb-CUaB40mDTtKR " and server site key="6LcbhEkpAAAAAENNQpvLEeMBsVHfmJynwjCDoP3I "
 // import {
 //   Alert,
 //   Button,

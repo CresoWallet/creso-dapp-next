@@ -142,7 +142,7 @@ const RegisterPage = () => {
               error={errors.confirmPassword && errors.confirmPassword.message}
             />
           </div>
-          {/* <Capcha /> */}
+          <Capcha onSubmit={onSubmit} />
 
           <div className="flex flex-col space-y-2">
             {/* Sign-up button */}

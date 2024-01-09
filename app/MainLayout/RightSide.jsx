@@ -55,7 +55,7 @@ const RightSide = (props) => {
           ) : (
             <div className="flex flex-row items-center gap-2 mt-8">
               <CustomButton2
-                name="Top Gainers. "
+                name="Top Gainers."
                 bgColor="bg-[#D0F500]"
                 hoverBorderColor="border-black"
                 textColor="black"

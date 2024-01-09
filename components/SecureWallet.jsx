@@ -114,17 +114,16 @@ const SecureWallet = ({ handleClose, wallets, walletType }) => {
             <div className="flex flex-row items-center gap-2">
               <CustomButton2
                 name="Tokens"
-                bgColor="bg-[#D0F500]"
+              bgColor="bg-[#D0F500]"
                 hoverBorderColor="border-black"
                 textColor="black"
                 borderColor="border-[#E5E5F0]"
               />
               <CustomButton2
                 name="NFTs"
-                bgColor="bg-[#D0F500]"
-                hoverBorderColor="border-black"
-                borderColor="border-[#E5E5F0]"
-                blor="black"
+                bgColor="white"
+                borderColor="[#E5E5F0]"
+                textColor="black"
               />
             </div>
           </div>

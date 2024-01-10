@@ -62,7 +62,7 @@ const RightSide = (props) => {
           ) : (
             <div className="flex flex-row items-center gap-2 mt-8">
               <CustomButton2
-                name="TopGainers"
+                name="Top Gainers"
                 active={activeButton === "TopGainers"}
                 bgColor="#D0F500"
                 textColor="black"
@@ -70,7 +70,7 @@ const RightSide = (props) => {
                 isDisabled={false}
               />
               <CustomButton2
-                name="TopLosers"
+                name="Top Losers"
                 active={activeButton === "TopLosers"}
                 bgColor="#D0F500"
                 textColor="black"

@@ -142,7 +142,7 @@ const LegacyWallet = ({ handleBackButton, type, handleClose }) => {
       </div>
       <div className="flex flex-row items-center gap-2">
         <Image alt="" src={Ethereum} className="w-10 h-10" />
-        <p className="font-semibold">Ethereum Mainnet</p>
+        <p className="font-semibold">Goreli Testnet</p>
       </div>
       <div className="flex flex-row gap-2 text-[#A09FAA]">
         <FiInfo size={35} />

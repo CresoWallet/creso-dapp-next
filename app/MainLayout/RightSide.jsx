@@ -61,20 +61,6 @@ const RightSide = (props) => {
             </div>
           ) : (
             <div className="flex flex-row items-center gap-2 mt-8">
-              {/* <CustomButton2
-                name="Top Gainers "
-                bgColor="bg-[#D0F500]"
-                hoverBorderColor="border-black"
-                textColor="black"
-                borderColor="border-[#E5E5F0]"
-              />
-              <CustomButton2
-                name="Top Losers"
-                bgColor="bg-[#D0F500]"
-                hoverBorderColor="border-black"
-                borderColor="border-[#E5E5F0]"
-                blor="black"
-              /> */}
               <CustomButton2
                 name="TopGainers"
                 active={activeButton === "TopGainers"}

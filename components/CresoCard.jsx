@@ -2,7 +2,7 @@ import React, { useContext, useState } from "react";
 import Image from "next/image";
 import Coin from "../assets/Dashboard/Coin.png";
 import Custom from "../assets/AboutUs/custom.png";
-import Creso from "../assets/Dashboard/creso2.png";
+import Creso from "../assets/Dashboard/creso2.svg";
 import card_creso from "../assets/AboutUs/card_custom.png";
 import TotalAsserts from "../assets/Dashboard/totalAsserts.png";
 import View from "../assets/Dashboard/eye.png";

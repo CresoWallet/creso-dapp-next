@@ -12,15 +12,13 @@ import Disconnect from "../assets/network/disconnect.png";
 import { useUser } from "@/providers/UserProvider";
 import { logOut } from "@/clientApi/auth";
 import { useRouter } from "next/navigation";
-import Creso2 from "../assets/Dashboard/creso2.png";
+import Creso2 from "../assets/Dashboard/creso2.svg";
 import Wallet from "./Wallet";
 import Twitter from "../assets/Dashboard/twitter.png";
 import Telegram from "../assets/Dashboard/telegram.png";
 import Etherscan from "../assets/Dashboard/etherscan.png";
 import Github from "../assets/Dashboard/github.png";
 import Discord from "../assets/Dashboard/discord.png";
-
-
 
 // import UserDetails from "./UserDetails";
 // import { AUTH_TOKEN } from "@/constants";
@@ -113,7 +111,7 @@ const Header = () => {
       <div className="cursor-pointer mx-6" onClick={handleButton}>
         <div className="absolute top-2 md:-top-7 lg:top-3 sm:right-6 place-items-end bg-red-500 text-white rounded-full w-10 h-10 flex items-center justify-center md:my-10  lg:mr-8 lg:my-14 md:mr-3 mr-10 ">
           <p className=" font-semibold text-xs ">
-            {user ? getInitials(user.username) : ""} 
+            {user ? getInitials(user.username) : ""}
           </p>
         </div>
       </div>
@@ -162,8 +160,6 @@ const Header = () => {
               </div>
               <MdKeyboardArrowRight />
             </div>
-
-           
 
             <hr />
             <div

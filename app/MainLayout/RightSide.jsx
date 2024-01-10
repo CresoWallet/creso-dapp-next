@@ -30,6 +30,13 @@ const RightSide = (props) => {
 
   const [hover, setHover] = useState(false);
 
+  const [activeButton, setActiveButton] = useState("TopGainers");
+
+  const handleButtonClick = (buttonName) => {
+    setActiveButton(buttonName);
+    // Handle other button-specific logic here
+  };
+
   const path = usePathname();
   const matchPath = path !== "/discover";
   const isSwapPage = path === "/swap";
@@ -54,7 +61,7 @@ const RightSide = (props) => {
             </div>
           ) : (
             <div className="flex flex-row items-center gap-2 mt-8">
-              <CustomButton2
+              {/* <CustomButton2
                 name="Top Gainers "
                 bgColor="bg-[#D0F500]"
                 hoverBorderColor="border-black"
@@ -67,6 +74,24 @@ const RightSide = (props) => {
                 hoverBorderColor="border-black"
                 borderColor="border-[#E5E5F0]"
                 blor="black"
+              /> */}
+              <CustomButton2
+                name="TopGainers"
+                defaultActive={activeButton === "TopGainers"}
+                active={activeButton === "TopGainers"}
+                bgColor="#D0F500"
+                textColor="black"
+                handleClick={() => handleButtonClick("TopGainers")}
+                isDisabled={false}
+              />
+              <CustomButton2
+                name="TopLosers"
+                defaultActive={activeButton === "TopLosers"}
+                active={activeButton === "TopLosers"}
+                bgColor="#D0F500"
+                textColor="black"
+                handleClick={() => handleButtonClick("TopLosers")}
+                isDisabled={false}
               />
             </div>
           )}

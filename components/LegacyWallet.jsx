@@ -1,4 +1,4 @@
-"use clinet";
+"use client";
 
 import React, { useContext, useState } from "react";
 import Image from "next/image";
@@ -34,51 +34,93 @@ const LegacyWallet = ({ handleBackButton, type, handleClose }) => {
   const handleCreateEOAWallet = async () => {
     setLoading(true);
 
-    if (type === "EOA") {
-      try {
+    // Check if the inputText (name field) is empty
+    if (inputText.trim() === "") {
+      setError(true); // Set error state to true to indicate an issue
+      setLoading(false);
+      enqueueSnackbar(`Please fill in the name field.`, {
+        variant: "error",
+      });
+      return; // Exit the function early if the name field is empty
+    }
+
+    //   if (type === "EOA") {
+    //     try {
+    //       const payload = {
+    //         walletName: inputText,
+    //       };
+    //       const res = await createEOAWalletAPI(payload);
+    //       if (res) {
+    //         await fetchWallet();
+    //         enqueueSnackbar(`Successful wallet creation`, {
+    //           variant: "success",
+    //         });
+    //         setLoading(false);
+    //         handleClose();
+    //       }
+
+    //       console.log(res);
+    //     } catch (error) {
+    //       console.log(error);
+    //       enqueueSnackbar(`Something went wrong`, {
+    //         variant: "error",
+    //       });
+    //     }
+    //   } else if ((type = "AAA")) {
+    //     try {
+    //       const payload = {
+    //         walletName: inputText,
+    //         network: "goerli",
+    //       };
+    //       const res = await createSmartWalletAPI(payload);
+    //       if (res) {
+    //         await fetchWallet();
+    //         enqueueSnackbar(`Successful wallet creation`, {
+    //           variant: "success",
+    //         });
+    //         setLoading(false);
+    //         handleClose();
+    //       }
+
+    //       console.log(res);
+    //     } catch (error) {
+    //       console.log(error);
+    //       enqueueSnackbar(`Something went wrong`, {
+    //         variant: "error",
+    //       });
+    //     }
+    //   }
+    // };
+    try {
+      let res;
+
+      if (type === "EOA") {
         const payload = {
           walletName: inputText,
         };
-        const res = await createEOAWalletAPI(payload);
-        if (res) {
-          await fetchWallet();
-          enqueueSnackbar(`Successful wallet creation`, {
-            variant: "success",
-          });
-          setLoading(false);
-          handleClose();
-        }
-
-        console.log(res);
-      } catch (error) {
-        console.log(error);
-        enqueueSnackbar(`Something went wrong`, {
-          variant: "error",
-        });
-      }
-    } else if ((type = "AAA")) {
-      try {
+        res = await createEOAWalletAPI(payload);
+      } else if (type === "AAA") {
         const payload = {
           walletName: inputText,
-          network: "goerli",
+          network: "",
         };
-        const res = await createSmartWalletAPI(payload);
-        if (res) {
-          await fetchWallet();
-          enqueueSnackbar(`Successful wallet creation`, {
-            variant: "success",
-          });
-          setLoading(false);
-          handleClose();
-        }
-
-        console.log(res);
-      } catch (error) {
-        console.log(error);
-        enqueueSnackbar(`Something went wrong`, {
-          variant: "error",
-        });
+        res = await createSmartWalletAPI(payload);
       }
+
+      if (res) {
+        await fetchWallet();
+        enqueueSnackbar(`Successful wallet creation`, {
+          variant: "success",
+        });
+        handleClose();
+      }
+    } catch (error) {
+      console.log(error);
+      enqueueSnackbar(`Something went wrong`, {
+        variant: "error",
+      });
+    } finally {
+      setLoading(false); // Close loading button in both success and error scenarios
     }
   };
 

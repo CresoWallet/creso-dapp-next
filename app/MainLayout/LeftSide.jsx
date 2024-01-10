@@ -39,7 +39,7 @@ const LeftSide = (props) => {
   }
 
   return (
-    <div id="modal-root">
+    <div id="modal-root grid col-span-6">
       {/* {navbarTrigger && (
                 <div
                     className="navbackdrop"
@@ -47,7 +47,7 @@ const LeftSide = (props) => {
                 ></div>
             )} */}
 
-      <div className="divide-x">
+      <div className="lg:divide-x">
         {/* left side */}
         <div className="grid h-full responsivemb-cols">
           <div className="col-span-6 xl:space-y-6 md:space-y-6 space-y-2 md:py-8">
@@ -55,7 +55,7 @@ const LeftSide = (props) => {
             {!user?.isEmailVerified && (
               <Backup onClick={() => handleShowModel()} />
             )}
-            <div className="flex gap-5 !col-span-6 ">
+            <div className="gap-5 overflow-x-auto max-w-4xl">
               {/* <AddCoinButton /> */}
               <CoinCard handleCoinWallet={handleCoinWallet} coinDataprice={coinDataprice} />
             </div>

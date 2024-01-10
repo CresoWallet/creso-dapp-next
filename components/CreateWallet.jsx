@@ -86,7 +86,7 @@ const CreateWallet = ({ handleClose }) => {
                   src={Wallet}
                   className="xl:w-12 xl:h-12 md:w-8 md:h-8"
                 />
-                <div className="flex flex-col xl:space-y-2 md:space-y-1">
+                <div className="flex flex-col xl:space-y-2 md:space-y-1 cursor-pointer ">
                   <div className="flex flex-row items-center justify-between">
                     <div className="flex flex-col">
                       <p className="font-semibold md:text-xs">Legacy Wallet</p>
@@ -119,7 +119,7 @@ const CreateWallet = ({ handleClose }) => {
                   src={WalletPurple}
                   className="xl:w-12 xl:h-12 md:w-8 md:h-8"
                 />
-                <div className="flex flex-col xl:space-y-2 md:space-y-1">
+                <div className="flex flex-col xl:space-y-2 md:space-y-1  cursor-pointer">
                   <div className="flex flex-row items-center justify-between">
                     <div className="flex flex-col">
                       <p className="font-semibold md:text-xs">Smart Wallet</p>

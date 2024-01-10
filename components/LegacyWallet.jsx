@@ -4,7 +4,7 @@ import React, { useContext, useState } from "react";
 import Image from "next/image";
 import CustomButton3 from "./CustomButton3";
 import Ethereum from "../assets/Dashboard/etherum.png";
-import CustomButton2 from "./CustomButton2";
+import CustomButton1 from "./CustomButton1";
 import CreateWallet from "./CreateWallet";
 import { createEOAWalletAPI, createSmartWalletAPI } from "@/clientApi/wallet";
 import { enqueueSnackbar } from "notistack";
@@ -13,7 +13,6 @@ import { FiInfo } from "react-icons/fi";
 import Sucess from "../assets/Dashboard/Sucess.svg";
 
 const LegacyWallet = ({ handleBackButton, type, handleClose }) => {
- 
   const [wallet, setWallet] = useState(false);
   const [inputText, setInputText] = useState("");
   const [error, setError] = useState(false);
@@ -150,7 +149,7 @@ const LegacyWallet = ({ handleBackButton, type, handleClose }) => {
         </p>
       </div>
       <div className="flex flex-row gap-2">
-        <CustomButton2
+        <CustomButton1
           name="Cancel"
           borderColor="black"
           bgColor="white"
@@ -158,14 +157,14 @@ const LegacyWallet = ({ handleBackButton, type, handleClose }) => {
           isDisabled={false}
         />
         {error ? (
-          <CustomButton2
+          <CustomButton1
             name="Confirm"
             bgColor="black"
             textColor="white"
             isDisabled={true}
           />
         ) : (
-          <CustomButton2
+          <CustomButton1
             isLoading={loading}
             name="Confirm"
             bgColor="black"
@@ -180,13 +179,3 @@ const LegacyWallet = ({ handleBackButton, type, handleClose }) => {
 };
 
 export default LegacyWallet;
-
-
-
-
-
-
-
-
-
-

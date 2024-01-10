@@ -55,7 +55,7 @@ const RightSide = (props) => {
           ) : (
             <div className="flex flex-row items-center gap-2 mt-8">
               <CustomButton2
-                name="Top Gainers. "
+                name="Top Gainers "
                 bgColor="bg-[#D0F500]"
                 hoverBorderColor="border-black"
                 textColor="black"
@@ -119,8 +119,9 @@ const RightSide = (props) => {
           onMouseLeave={() => setHover(false)}
           href="https://forms.gle/GBEKLjSH7hxQiuPv8"
           target="_blank"
-          className={`${hover ? "bg-white border border-[#2100EC] " : "bg-[#2100EC]"
-            } fixed bottom-12  cursor-pointer right-12  shadow-2xl z-50 h-20 w-20 grid place-items-center rounded-full `}
+          className={`${
+            hover ? "bg-white border border-[#2100EC] " : "bg-[#2100EC]"
+          } fixed bottom-12  cursor-pointer right-12  shadow-2xl z-50 h-20 w-20 grid place-items-center rounded-full `}
         >
           <div className="absolute grid place-items-center">
             <VscFeedback style={hover ? hoverStyle : style} size={30} />

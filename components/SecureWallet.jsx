@@ -128,8 +128,8 @@ const SecureWallet = ({ handleClose, wallets, walletType }) => {
                 name="NFTs"
                 bgColor="bg-[#D0F500]"
                 hoverBorderColor="border-black"
+                textColor="black"
                 borderColor="border-[#E5E5F0]"
-                blor="black"
               />
               {/* <CustomButton2
                 name="Tokens"

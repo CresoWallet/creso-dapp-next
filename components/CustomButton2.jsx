@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { AiOutlineLoading3Quarters } from "react-icons/ai";
 
 const CustomButton2 = ({
@@ -9,11 +9,20 @@ const CustomButton2 = ({
   handleClick,
   isDisabled,
   isLoading,
-  hoverBorderColor
+  hoverBorderColor,
 }) => {
+  const [isClicked, setIsClicked] = useState(false);
+
+  const handleClickWithEffect = () => {
+    setIsClicked(true);
+    handleClick();
+  };
+
   return (
     <div
-      className={`hover:bg-[#D0F500] rounded-full py-4 border border-solid border-${borderColor} hover:${hoverBorderColor} flex justify-center w-full hover:bg-opacity-70 duration-500 cursor-pointer group`}
+      className={`${
+        isClicked ? `bg-[#D0F500]` : `hover:bg-[#D0F500]`
+      } rounded-full py-4 border border-solid border-${borderColor} hover:${hoverBorderColor} flex justify-center w-full hover:bg-opacity-70 duration-500 cursor-pointer group`}
     >
       {isLoading ? (
         <>
@@ -23,7 +32,7 @@ const CustomButton2 = ({
       ) : (
         <button
           className={`text-${textColor} font-semibold group-hover:font-bold duration-500`}
-          onClick={handleClick}
+          onClick={handleClickWithEffect}
           disabled={isDisabled}
         >
           {name}

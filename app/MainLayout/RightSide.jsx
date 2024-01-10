@@ -77,7 +77,6 @@ const RightSide = (props) => {
               /> */}
               <CustomButton2
                 name="TopGainers"
-                defaultActive={activeButton === "TopGainers"}
                 active={activeButton === "TopGainers"}
                 bgColor="#D0F500"
                 textColor="black"
@@ -86,7 +85,6 @@ const RightSide = (props) => {
               />
               <CustomButton2
                 name="TopLosers"
-                defaultActive={activeButton === "TopLosers"}
                 active={activeButton === "TopLosers"}
                 bgColor="#D0F500"
                 textColor="black"

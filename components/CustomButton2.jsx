@@ -12,20 +12,18 @@ const CustomButton2 = ({
   isLoading,
   hoverBorderColor,
 }) => {
-  const [isClicked, setIsClicked] = useState(false);
-
   const handleClickWithEffect = () => {
-    setIsClicked(true);
     handleClick();
   };
 
   return (
     <div
       className={`${
-        active || isClicked ? `bg-[#D0F500]` : `hover:bg-[#D0F500]`
-      } rounded-full py-4 border border-solid border-${
-        active || isClicked ? "black" : borderColor
-      } flex justify-center w-full hover:bg-opacity-70 duration-500 cursor-pointer group`}
+        active
+          ? `bg-[#D0F500] border-black`
+          : `hover:bg-[#D0F500] border-${borderColor}`
+      } rounded-full py-4 border border-solid flex justify-center w-full hover:bg-opacity-70 duration-500 cursor-pointer group`}
+      onClick={handleClickWithEffect}
     >
       {isLoading ? (
         <>
@@ -35,7 +33,6 @@ const CustomButton2 = ({
       ) : (
         <button
           className={`text-${textColor} font-semibold group-hover:font-bold duration-500`}
-          onClick={handleClickWithEffect}
           disabled={isDisabled}
         >
           {name}

@@ -120,7 +120,7 @@ const CoinCard = ({ handleCoinWallet }) => {
   const top10Token = originalData.slice(0, 7);
   const top5Token = originalData.slice(0, 5);
 
-  const topsToken = isMobile ? top5Token : top10Token
+  const topsToken = isMobile ? top5Token : top10Token;
   // const [currentPage, setCurrentPage] = useState(1);
 
   // const tokensPerPage = 10;
@@ -169,7 +169,6 @@ const CoinCard = ({ handleCoinWallet }) => {
                 <p className="text-center xl:text-sm text-xs md:text-xs">
                   {item.symbol.toUpperCase()}
                   {/* {item.symbol.toUpperCase()} */}
-
                 </p>
                 {/* {Object.entries(coinDataprice).map(([address, data]) => (
                 <div key={address}>
@@ -197,8 +196,11 @@ const CoinCard = ({ handleCoinWallet }) => {
       </div>
 
       {openPopup && (
-        <div className="fixed top-0 right-0 w-full h-full flex items-center justify-center bg-gray-800 bg-opacity-75 z-50" ref={popupRef}
-          onClick={handleBackgroundClick}>
+        <div
+          className="fixed top-0 right-0 w-full h-full flex items-center justify-center bg-gray-800 bg-opacity-75 z-50"
+          ref={popupRef}
+          onClick={handleBackgroundClick}
+        >
           <div className="bg-white rounded-3xl px-16 py-8 max-h-[50vh]  overflow-y-auto">
             <div className="grid place-items-center md:grid-cols-2 lg:grid-cols-3 gap-10 space-y-4 items-center ">
               {originalData.map((item, index) => (

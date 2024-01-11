@@ -72,16 +72,11 @@ const SwapFrom = ({ handleClose }) => {
             description="Ethereum"
             image={Eth}
             amount="$0.159046"
-
           />
           <hr className="my-4" />
           <User name="WETH" description="WETH" image={EWeth} />
           <hr className="my-4" />
-          <User
-            name="USDC"
-            description="USD Coin"
-            image={Pepe}
-          />
+          <User name="USDC" description="USD Coin" image={Pepe} />
         </div>
       </div>
     </div>

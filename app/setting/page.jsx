@@ -17,9 +17,6 @@ const SupportPage = () => {
         {/* ------------ Leftside Main ---------- */}
         {/* <div className="grid responsivemb-cols h-full"> */}
         <div className="lg:col-span-6 pt-16 px-12">
-          {/* <div className="flex md:hidden">
-              {showSwapForm && <SwapFrom handleClose={handleClose} />}
-            </div> */}
           {/* <div className="block xl:hidden md:hidden">
               <Header />
             </div> */}

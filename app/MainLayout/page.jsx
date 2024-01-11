@@ -190,7 +190,7 @@ const MainLayout = () => {
                 icon2={
                   <IoIosNotificationsOutline
                     onClick={handleShowNotificationPopup}
-                    className="cursor-pointer "
+                    className="cursor-pointer  hover:border-l"
                   />
                 }
                 mobileImg={Ham}

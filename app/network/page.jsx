@@ -72,7 +72,7 @@ const NetworkPage = () => {
           <Image alt="" src={network.icon} />
           <p>{network.name}</p>
           {network.test && (
-            <div className="border border-solid px-4 py-1 text-[10px] border-black rounded-full bg-[#D0F500]">
+            <div className="border border-solid px-4 py-1 text-[10px] border-black rounded-3xl  bg-[#D0F500]">
               <p>TEST</p>
             </div>
           )}

@@ -126,7 +126,7 @@ const Modal = ({ onClose, title, user }) => {
           setStep((step % 7) + 1);
         }
         setLoading(false);
-      } catch (error) {}
+      } catch (error) { }
     }
   };
 
@@ -279,11 +279,10 @@ const Modal = ({ onClose, title, user }) => {
                 <p>Not received?</p>
                 &nbsp;
                 <p
-                  className={`${
-                    isResendDisable
-                      ? "text-slate-400"
-                      : "text-[#FF4085] cursor-pointer"
-                  }`}
+                  className={`${isResendDisable
+                    ? "text-slate-400"
+                    : "text-[#FF4085] cursor-pointer"
+                    }`}
                   onClick={() => {
                     !isResendDisable && !resendLoading && handleSendOTPMail();
                   }}
@@ -291,8 +290,8 @@ const Modal = ({ onClose, title, user }) => {
                   {resendLoading
                     ? "Resending..."
                     : isResendDisable
-                    ? `Resend OTP in ${remainingSeconds}s`
-                    : "Resend OTP"}
+                      ? `Resend OTP in ${remainingSeconds}s`
+                      : "Resend OTP"}
                 </p>
               </div>
             </div>
@@ -394,10 +393,10 @@ const Modal = ({ onClose, title, user }) => {
                   {step === 1
                     ? "Send verification email"
                     : step === 2
-                    ? "Verify"
-                    : step === 3
-                    ? "Download"
-                    : "Close"}
+                      ? "Verify"
+                      : step === 3
+                        ? "Download"
+                        : "Close"}
                 </>
               )}
             </button>

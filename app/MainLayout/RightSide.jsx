@@ -41,7 +41,6 @@ const RightSide = (props) => {
   const matchPath = path !== "/discover";
   const isSwapPage = path === "/swap";
   const isAboutPage = path === "/about";
-
   const style = { color: "white" };
   const hoverStyle = { color: "black" };
 

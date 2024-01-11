@@ -4,7 +4,6 @@ import "./modal.css";
 import Image from "next/image";
 import { AiOutlineLoading3Quarters } from "react-icons/ai";
 import { enqueueSnackbar } from "notistack";
-
 import Delete from "../../assets/Dashboard/delete.png";
 import Set1 from "../../assets/backup/set1.png";
 import Set2 from "../../assets/backup/set2.png";
@@ -15,16 +14,20 @@ import { sendOTPMail, verifyOTP } from "@/clientApi/auth";
 import FileSaver from "file-saver";
 import { backupWallet } from "@/clientApi/wallet";
 import { useUser } from "@/providers/UserProvider";
+import abc from "../../assets/Dashboard/abc.svg";
+import email from "../../assets/Dashboard/Email, @, Mail, Mail icon.svg";
+import face from "../../assets/Dashboard/Face id.svg";
+import key from "../../assets/Dashboard/Key.svg";
+import Wallet from "../../assets/Dashboard/Wallet.2.svg";
+import line from "../../assets/Dashboard/Line 789.svg";
 
 const Modal = ({ onClose, title, user }) => {
   const [step, setStep] = useState(1);
   const [loading, setLoading] = useState(false);
-
   const [otp, setOtp] = useState();
   const [secretKey, setSecretKey] = useState();
   const [encryptedKey, setEncryptedKey] = useState("");
   const { handleAuthentication } = useUser();
-
   const [isResendDisable, setIsResendDisable] = useState(false);
   const [remainingSeconds, setRemainingSeconds] = useState(0);
 
@@ -161,6 +164,12 @@ const Modal = ({ onClose, title, user }) => {
     }, 60000);
   };
 
+  const [selectedDiv, setSelectedDiv] = useState(null);
+
+  const handleDivClick = (index) => {
+    setSelectedDiv(index);
+  };
+
   const getContent = () => {
     switch (step) {
       case 1:
@@ -168,16 +177,62 @@ const Modal = ({ onClose, title, user }) => {
           <div className="flex flex-col gap-5">
             {/* Content for step 1 */}
             <div className="flex items-center justify-center w-full flex-col ">
-              <Image
-                src={Set1}
-                alt=""
-                className="cursor-pointer hidden sm:block"
-              />
-              {/* <Image
-                src={Set1M}
-                alt=""
-                className="cursor-pointer block sm:hidden"
-              /> */}
+              <div className="grid grid-cols-7 place-items-center">
+                <div className="flex flex-col items-center space-y-2">
+                  <div className="w-20 h-20 rounded-full flex items-center justify-center border border-black hover:bg-[#D0F500]">
+                    <Image
+                      src={email}
+                      alt="Your Image"
+                      className="w-10 h-10 rounded-full object-cover"
+                    />
+                  </div>
+                </div>
+
+                <div>
+                  <Image src={line} />
+                </div>
+                <div className="flex flex-col items-center space-y-2">
+                  <div className="w-20 h-20 rounded-full flex items-center justify-center border border-black hover:bg-[#D0F500]">
+                    <Image
+                      src={face}
+                      alt="Your Image"
+                      className="w-10 h-10 rounded-full object-cover"
+                    />
+                  </div>
+                </div>
+                <div>
+                  <Image src={line} />
+                </div>
+                <div className="flex flex-col items-center space-y-2">
+                  <div className="w-20 h-20 rounded-full flex items-center justify-center border border-black hover:bg-[#D0F500]">
+                    <Image
+                      src={key}
+                      alt="Your Image"
+                      className="w-10 h-10 rounded-full object-cover"
+                    />
+                  </div>
+                </div>
+
+                <div>
+                  <Image src={line} />
+                </div>
+                <div className="flex flex-col items-center space-y-2">
+                  <div className="w-20 h-20 rounded-full flex items-center justify-center border border-black hover:bg-[#D0F500]">
+                    <Image
+                      src={Wallet}
+                      alt="Your Image"
+                      className="w-10 h-10 rounded-full object-cover"
+                    />
+                  </div>
+                </div>
+              </div>
+              <div className="grid place-content-center grid-cols-4 gap-24">
+                <div className="ml-4">Email</div>
+                <div>FaceMap</div>
+                <div>Recovery Key</div>
+                <div>Backup</div>
+              </div>
+
               <hr className="w-full mt-3" />
             </div>
 
@@ -258,11 +313,7 @@ const Modal = ({ onClose, title, user }) => {
                 alt=""
                 className="cursor-pointer hidden sm:block"
               />
-              {/* <Image
-                src={Set4M}
-                alt=""
-                className="cursor-pointer block sm:hidden"
-              /> */}
+
               <hr className="w-full mt-3" />
             </div>
 
@@ -314,24 +365,6 @@ const Modal = ({ onClose, title, user }) => {
             </div>
           </div>
         );
-      // case 5:
-      //   return (
-      //     <div className="flex flex-col gap-5">
-      //       {/* Content for step 5 */}
-      //       <div className="flex items-center justify-center w-full flex-col">
-      //         {/* ... existing content ... */}
-      //         <input
-      //           type="date"
-      //           placeholder="Select Date"
-      //           className="placeholder:text-[#A09FAA] text-xs xl:px-4 xl:py-4 md:px-4 md:py-4 py-3 px-3 rounded-full border border-solid"
-      //           onChange={(e) => {
-      //             // Handle date change
-      //             // You can store the selected date in the component state
-      //           }}
-      //         />
-      //       </div>
-      //     </div>
-      //   );
 
       default:
         return null;
@@ -373,6 +406,7 @@ const Modal = ({ onClose, title, user }) => {
               )}
             </button>
           </div>
+          
         </div>
       </div>
     </div>

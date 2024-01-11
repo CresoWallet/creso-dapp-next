@@ -9,7 +9,7 @@ import Discover1 from "../../assets/Dashboard/Discover1.png";
 import Swap from "../../assets/Dashboard/Swap.png";
 import Swap1 from "../../assets/Dashboard/Swap1.png";
 import Profile from "../../assets/Profile.png";
-import Profile1 from "../../assets/Profile.png";
+import Profile1 from "../../assets/profile1.svg";
 import Link from "next/link";
 import { WalletContext } from "@/providers/WalletProvider";
 import { useRouter } from "next/router";
@@ -53,8 +53,9 @@ const MobileMenubar = () => {
         <div
           onMouseEnter={() => handleMouseEnter("/dashboard")}
           onMouseLeave={() => handleMouseLeave()}
-          className={`${pathname === "/dashboard" ? "bg-white" : ""
-            } rounded-full p-1`}
+          className={`${
+            pathname === "/dashboard" ? "bg-white" : ""
+          } rounded-full p-1`}
         >
           <Image
             alt=""
@@ -68,8 +69,9 @@ const MobileMenubar = () => {
         <div
           onMouseEnter={() => handleMouseEnter("/discover")}
           onMouseLeave={() => handleMouseLeave()}
-          className={`${pathname === "/discover" ? "bg-white" : ""
-            } rounded-full p-1`}
+          className={`${
+            pathname === "/discover" ? "bg-white" : ""
+          } rounded-full p-1`}
         >
           <Image
             alt=""
@@ -83,8 +85,9 @@ const MobileMenubar = () => {
         <div
           onMouseEnter={() => handleMouseEnter("/swap")}
           onMouseLeave={() => handleMouseLeave()}
-          className={`${pathname === "/swap" ? "bg-white" : ""
-            } rounded-full p-1`}
+          className={`${
+            pathname === "/swap" ? "bg-white" : ""
+          } rounded-full p-1`}
         >
           <Image
             alt=""
@@ -98,8 +101,9 @@ const MobileMenubar = () => {
         <div
           onMouseEnter={() => handleMouseEnter("/account")}
           onMouseLeave={() => handleMouseLeave()}
-          className={`${pathname === "/account" ? "bg-white" : ""
-            } rounded-full p-1`}
+          className={`${
+            pathname === "/account" ? "bg-white" : ""
+          } rounded-full p-1`}
         >
           <Image
             alt=""

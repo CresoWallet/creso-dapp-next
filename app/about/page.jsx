@@ -99,7 +99,7 @@ const AboutPage = () => {
                 aria-labelledby="accordion-collapse-heading-1"
               >
                 <p className="mb-2 text-black">
-                  User Agreement will be launched soon. Stay connected.
+                  User Agreement will be Launched soon. Stay connected.
                 </p>
               </div>
 

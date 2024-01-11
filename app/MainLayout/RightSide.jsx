@@ -30,11 +30,17 @@ const RightSide = (props) => {
 
   const [hover, setHover] = useState(false);
 
+  const [activeButton, setActiveButton] = useState("TopGainers");
+
+  const handleButtonClick = (buttonName) => {
+    setActiveButton(buttonName);
+    // Handle other button-specific logic here
+  };
+
   const path = usePathname();
   const matchPath = path !== "/discover";
   const isSwapPage = path === "/swap";
   const isAboutPage = path === "/about";
-
   const style = { color: "white" };
   const hoverStyle = { color: "black" };
 
@@ -55,18 +61,20 @@ const RightSide = (props) => {
           ) : (
             <div className="flex flex-row items-center gap-2 mt-8">
               <CustomButton2
-                name="Top Gainers."
-                bgColor="bg-[#D0F500]"
-                hoverBorderColor="border-black"
+                name="Top Gainers"
+                active={activeButton === "TopGainers"}
+                bgColor="#D0F500"
                 textColor="black"
-                borderColor="border-[#E5E5F0]"
+                handleClick={() => handleButtonClick("TopGainers")}
+                isDisabled={false}
               />
               <CustomButton2
                 name="Top Losers"
-                bgColor="bg-[#D0F500]"
-                hoverBorderColor="border-black"
-                borderColor="border-[#E5E5F0]"
-                blor="black"
+                active={activeButton === "TopLosers"}
+                bgColor="#D0F500"
+                textColor="black"
+                handleClick={() => handleButtonClick("TopLosers")}
+                isDisabled={false}
               />
             </div>
           )}
@@ -119,8 +127,9 @@ const RightSide = (props) => {
           onMouseLeave={() => setHover(false)}
           href="https://forms.gle/GBEKLjSH7hxQiuPv8"
           target="_blank"
-          className={`${hover ? "bg-white border border-[#2100EC] " : "bg-[#2100EC]"
-            } fixed bottom-12  cursor-pointer right-12  shadow-2xl z-50 h-20 w-20 grid place-items-center rounded-full `}
+          className={`${
+            hover ? "bg-white border border-[#2100EC]":"bg-[#2100EC]"
+          } fixed bottom-12  cursor-pointer right-12  shadow-2xl z-50 h-20 w-20 grid place-items-center rounded-full `}
         >
           <div className="absolute grid place-items-center">
             <VscFeedback style={hover ? hoverStyle : style} size={30} />

@@ -119,7 +119,7 @@ const MainLayout = () => {
 
   const handleCloseShowWallet = () => {
     setShowWallet(false);
-    setActiveButton("")
+    setActiveButton("");
   };
 
   const handleShowNotificationPopup = () => {
@@ -158,6 +158,7 @@ const MainLayout = () => {
           <div className="">
             {showCreateWallet && <CreateWallet handleClose={handleClose} />}
           </div>
+          {/* <div className="overflow-x-scroll"> */}
           <div className="">
             {showCoinWallet && (
               <CoinWallet

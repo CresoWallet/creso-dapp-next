@@ -20,7 +20,13 @@ import { WalletContext } from "@/providers/WalletProvider";
 const SecureWallet = ({ handleClose, wallets, walletType }) => {
   // const [send, setSend] = useState(false);
   const [walletAddress, setWalletAddress] = useState(false);
-  const [activeButton, setActiveButton] = useState("tokens");
+  const [activeButton, setActiveButton] = useState("Tokens");
+
+  const handleButtonClick = (buttonName) => {
+    setActiveButton(buttonName);
+    // Handle other button-specific logic here
+  };
+
   const {
     send,
     setSend,
@@ -42,11 +48,6 @@ const SecureWallet = ({ handleClose, wallets, walletType }) => {
     setMainContentVisible(true);
     setWalletAddress(false);
     setSend(false);
-  };
-
-  const handleButtonClick = (button) => {
-    console.log("Clicked button:", button);
-    setActiveButton(button);
   };
 
   return (
@@ -119,27 +120,20 @@ const SecureWallet = ({ handleClose, wallets, walletType }) => {
             <div className="flex flex-row items-center gap-2">
               <CustomButton2
                 name="Tokens"
-              bgColor="bg-[#D0F500]"
-                hoverBorderColor="border-black"
+                active={activeButton === "TopGainers"}
+                bgColor="#D0F500"
                 textColor="black"
-                borderColor="border-[#E5E5F0]"
+                handleClick={() => handleButtonClick("TopGainers")}
+                isDisabled={false}
               />
               <CustomButton2
                 name="NFTs"
-                bgColor="white"
-                borderColor="[#E5E5F0]"
+                active={activeButton === "TopLosers"}
+                bgColor="#D0F500"
                 textColor="black"
+                handleClick={() => handleButtonClick("TopLosers")}
+                isDisabled={false}
               />
-              {/* <CustomButton2
-                name="Tokens"
-                active={activeButton === "tokens"}
-                onClick={() => handleButtonClick("tokens")}
-              />
-              <CustomButton2
-                name="NFTs"
-                active={activeButton === "nfts"}
-                onClick={() => handleButtonClick("nfts")}
-              /> */}
             </div>
           </div>
 

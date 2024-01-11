@@ -56,7 +56,13 @@ const SwapPage = () => {
 
   return (
     <>
-      <div className="lg:grid lg:grid-cols-10 divide-x">
+      {/* ------------ Popup Main ---------- */}
+      {isMobile && (
+        <div className="lg:hidden block">
+          {showSwapForm && <SwapFrom handleClose={handleClose} />}
+        </div>
+      )}
+      <div className={`${isMobile && showSwapForm ? "hidden" : "lg:grid-cols-10"} lg:grid  lg:divide-x`}>
         {/* ------------ Leftside Main ---------- */}
         {/* <div className="grid responsivemb-cols h-full"> */}
         <div className="lg:col-span-6 pt-16  px-10 relative">
@@ -85,7 +91,7 @@ const SwapPage = () => {
               <div className="rounded-full xl:pl-4 pl-2 xl:pr-8 pr-2 xl:py-2 py-1 flex flex-row justify-between border border-solid">
                 <div className="flex flex-row gap-2 items-center">
                   <Image alt="" src={BNB} />
-                  <div className="flex flex-col">
+                  <div className="flex flex-col  cursor-pointer">
                     <div className="flex flex-row gap-1 items-center ">
                       <p className="font-semibold xl:text-lg text-sm">BNB</p>
                       <MdOutlineKeyboardArrowDown size={20} />
@@ -93,7 +99,7 @@ const SwapPage = () => {
                     <p className="text-xs text-[#6F6E7A]">Binance Coin</p>
                   </div>
                 </div>
-                <div className="flex flex-row gap-2 items-center">
+                <div className="flex flex-row gap-2 items-center cursor-pointer">
                   <p className="font-semibold text-sm">0x53A...e4af</p>
                   <MdOutlineKeyboardArrowDown size={20} />
                 </div>
@@ -114,14 +120,14 @@ const SwapPage = () => {
                 <div className="flex flex-row gap-2 items-center">
                   <Image alt="" src={Etherum} />
                   <div className="flex flex-col">
-                    <div className="flex flex-row gap-1 items-center">
+                    <div className="flex flex-row gap-1 items-center  cursor-pointer">
                       <p className="font-semibold xl:text-lg text-sm">ETH</p>
                       <MdOutlineKeyboardArrowDown size={20} />
                     </div>
                     <p className="text-xs text-[#6F6E7A]">Ethereum</p>
                   </div>
                 </div>
-                <div className="flex flex-row gap-2 items-center">
+                <div className="flex flex-row gap-2 items-center cursor-pointer">
                   <p className="font-semibold text-sm">0x53A...e4af</p>
                   <MdOutlineKeyboardArrowDown size={20} />
                 </div>
@@ -152,7 +158,7 @@ const SwapPage = () => {
                 <p className="px-4  pt-2 font-semibold text-xs xl:text-sm md:text-sm">
                   You Get
                 </p>
-                <p className="text-[#FF4085] px-4 text-xs xl:text-sm md:text-sm">
+                <p className="text-[#FF4085] px-4 text-xs xl:text-sm md:text-sm cursor-pointer">
                   Show all
                 </p>
               </div>
@@ -176,7 +182,7 @@ const SwapPage = () => {
                       buttonColor="[#EEEEF1]"
                     />
                     <div className="flex rounded-full bg-[#EEEEF1] h-10 w-10 items-center justify-center">
-                      <MdOutlineKeyboardArrowUp className="text-black h-5 w-5" />
+                      <MdOutlineKeyboardArrowUp className="text-black h-5 w-5   cursor-pointer" />
                     </div>
                   </div>
                 </div>
@@ -224,10 +230,14 @@ const SwapPage = () => {
         <hr className="lg:hidden mt-10 lg:mt-0" />
 
         {/* ------------ Rightside Main ---------- */}
-        <div className="lg:col-span-4 pt-14 px-10">
-          {showSwapForm && <SwapFrom handleClose={handleClose} />}
-          <Header />
-          <RightMain />
+        <div className={`lg:col-span-4 ${!showSwapForm ? "pt-14 px-10" : ""}`}>
+          {showSwapForm || !isMobile ? <SwapFrom handleClose={handleClose} /> :
+            <>
+              <Header />
+              <RightMain />
+            </>
+          }
+
         </div>
       </div>
     </>

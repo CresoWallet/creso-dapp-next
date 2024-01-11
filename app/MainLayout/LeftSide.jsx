@@ -39,7 +39,7 @@ const LeftSide = (props) => {
   }
 
   return (
-    <div id="modal-root grid col-span-6">
+    <div id="modal-root">
       {/* {navbarTrigger && (
                 <div
                     className="navbackdrop"
@@ -55,7 +55,7 @@ const LeftSide = (props) => {
             {!user?.isEmailVerified && (
               <Backup onClick={() => handleShowModel()} />
             )}
-            <div className="gap-5 overflow-x-auto max-w-4xl">
+            <div className="gap-5 overflow-x-scroll lg:max-w-sm xl:max-w-2xl ">
               {/* <AddCoinButton /> */}
               <CoinCard handleCoinWallet={handleCoinWallet} coinDataprice={coinDataprice} />
             </div>

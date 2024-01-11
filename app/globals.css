@@ -79,6 +79,7 @@ button:disabled {
   /* z-index: 1000; */
   overflow-y: auto;
 }
+
 .childrens {
   width: 85%;
   margin-left: 15%;
@@ -88,7 +89,7 @@ button:disabled {
 } */
 .mobileMenu {
   padding: 22px !important;
-  margin: 20px 16px;
+  margin: 2px 16px;
 }
 
 .navActiveMenu {
@@ -98,6 +99,7 @@ button:disabled {
 .carousel-status {
   display: none !important;
 }
+
 /* @media only screen and (max-width: 2560px) and (min-width: 1441px) {
   .navActiveMenu {
     padding: 0 150px 0 70px;

@@ -1,11 +1,12 @@
 // "use client";
-import React, { useState } from "react";
+import { WalletContext } from "@/providers/WalletProvider";
+import React, { useContext, useState } from "react";
 import ReCAPTCHA from "react-google-recaptcha";
 
 const Capcha = ({ onSubmit }) => {
   const [captcha, setCaptcha] = useState(false);
-  const [validCaptcha, setValidCaptcha] = useState(false);
-
+  const { setValidCaptcha, validCaptcha } =
+    useContext(WalletContext);
   const handleCaptchaChange = (value) => {
     console.log("Captcha value:-------------->", value);
     setCaptcha(true);

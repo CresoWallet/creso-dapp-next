@@ -83,7 +83,7 @@ const LoginPage = () => {
   return (
     <div className="grid xl:grid-cols-2 md:grid-cols-2 grid-cols-1 h-screen px-2 py-2 gap-2 xl:gap-0 md:gap-0">
       <div className="col-span-1 flex flex-col justify-center items-center bg-[#2100EC] md:py-8 rounded-2xl">
-        <div className="flex flex-row items-center justify-center my-16 gap-1 relative Mainlogo text-white mt-4">
+        <div className="flex flex-row items-center justify-center my-16 gap-1 relative Mainlogo text-white mt-4 ">
           <Image alt="creso-logo" src={cresow} className="h-16" />
           {/* <p className="lg:text-5xl text-4xl lg:block items-center">creso</p>
           <p className="text-sm lg:mt-6 mt-4 text-[#D0F500]">Beta</p> */}
@@ -122,11 +122,8 @@ const LoginPage = () => {
             placeholder={"password"}
             type={"password"}
             validation={{ ...register("password", { required: true }) }}
-
-
           />
-          <Capcha />
-
+          {/* <Capcha onSubmit={onSubmit} /> */}
           <div className="flex flex-col space-y-2 pt-5">
             <CustomButton
               isLoading={loading}

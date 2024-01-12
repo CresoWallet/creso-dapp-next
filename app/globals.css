@@ -156,6 +156,12 @@ button:disabled {
   -webkit-text-fill-color: transparent;
   -webkit-animation: hue 15s infinite linear;
 }
+.upcoming {
+  background-image: -webkit-linear-gradient(125deg, #b087f6, #f281c1, #e2e865);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -webkit-animation: hue 15s infinite linear;
+}
 img {
   -webkit-user-select: none;
   -khtml-user-select: none;

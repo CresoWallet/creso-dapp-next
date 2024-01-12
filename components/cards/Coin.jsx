@@ -89,7 +89,7 @@ const CoinCard = ({ handleCoinWallet }) => {
   const [openPopup, setOpenPopup] = useState(false);
   const [showAllTokens, setShowAllTokens] = useState(false);
   const isLaptop = useMediaQuery({ query: `(max-width: 1024px)` });
-  console.log("🚀 ~ CoinCard ~ originalData:", originalData)
+  console.log("🚀 ~ CoinCard ~ originalData:", originalData);
 
   // console.log("🚀 ~ getTokensPrice:", getTokensPrice)
   // const [currentPage, setCurrentPage] = useState(1);
@@ -116,9 +116,8 @@ const CoinCard = ({ handleCoinWallet }) => {
   //   gettokenprice()
   // }, [currentPage])
 
-
   const top10Token = originalData.slice(0, 7);
-  const top5Token = originalData.slice(0, 5);
+  const top5Token = originalData.slice(0, 3);
 
   const topsToken = isMobile ? top5Token : top10Token;
   // const [currentPage, setCurrentPage] = useState(1);
@@ -183,16 +182,18 @@ const CoinCard = ({ handleCoinWallet }) => {
           );
         })}
 
-        {originalData?.length !== 0 ? <div
-          className="text-[#FF4085] cursor-pointer hover:font-semibold"
-          onClick={handleSeeMore}
-        >
-          See More
-        </div> : <div
-          className="text-[#FF4085] font-semibold w-full text-center"
-        >
-          Wait few minutes...
-        </div>}
+        {originalData?.length !== 0 ? (
+          <div
+            className="text-[#FF4085] cursor-pointer hover:font-semibold"
+            onClick={handleSeeMore}
+          >
+            See More
+          </div>
+        ) : (
+          <div className="text-[#FF4085] font-semibold w-full text-center">
+            Wait few minutes...
+          </div>
+        )}
       </div>
 
       {openPopup && (

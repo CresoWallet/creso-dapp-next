@@ -12,12 +12,11 @@ const CoinCard = ({ handleCoinWallet }) => {
   const [openPopup, setOpenPopup] = useState(false);
   const [showAllTokens, setShowAllTokens] = useState(false);
   const isLaptop = useMediaQuery({ query: `(max-width: 1024px)` });
-  console.log("🚀 ~ CoinCard ~ originalData:", originalData)
-
+  console.log("🚀 ~ CoinCard ~ originalData:", originalData);
 
 
   const top10Token = originalData.slice(0, 7);
-  const top5Token = originalData.slice(0, 5);
+  const top5Token = originalData.slice(0, 3);
 
   const topsToken = isMobile ? top5Token : top10Token;
   // const [currentPage, setCurrentPage] = useState(1);

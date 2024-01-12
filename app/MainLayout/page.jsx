@@ -177,10 +177,11 @@ const MainLayout = () => {
         {/* ------------ Leftside Main ---------- */}
         {
           <div
-            className={`${isMobile && responsivCompo
-              ? "hidden"
-              : "lg:col-span-6 pt-16 px-10"
-              }`}
+            className={`${
+              isMobile && responsivCompo
+                ? "hidden"
+                : "lg:col-span-6 pt-16 px-10"
+            }`}
           >
             <div className="">
               <LeftHeader
@@ -220,8 +221,9 @@ const MainLayout = () => {
 
         {/* ------------ Rightside Main ---------- */}
         <div
-          className={`${responsivCompo ? "px-0  border-l-2 " : " px-10  pt-14"
-            } lg:col-span-4`}
+          className={`${
+            responsivCompo ? "px-0  border-l-2 " : " px-10  pt-14"
+          } lg:col-span-4`}
         >
           <div className="hidden lg:block">
             <div className="hidden lg:flex">

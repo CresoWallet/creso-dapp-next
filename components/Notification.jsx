@@ -50,8 +50,8 @@ const NotificationPopup = ({ handleClose }) => {
         </div>
         <hr />
         {notifications.map((notification) => (
-          <div key={notification.id} className="mb-2 mt-2">
-            <p className="font-semibold">{notification.message}</p>
+          <div key={notification.id} className="mb-2 mt-4">
+            <p className="font-medium">{notification.message}</p>
             <p className="text-sm text-gray-500">{notification.time}</p>
           </div>
         ))}

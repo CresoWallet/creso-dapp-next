@@ -4,10 +4,12 @@ import ReCAPTCHA from "react-google-recaptcha";
 
 const Capcha = ({ onSubmit }) => {
   const [captcha, setCaptcha] = useState(false);
+  const [validCaptcha, setValidCaptcha] = useState(false);
 
   const handleCaptchaChange = (value) => {
-    console.log("Captcha value", value);
+    console.log("Captcha value:-------------->", value);
     setCaptcha(true);
+    setValidCaptcha(value)
   };
 
   const handleReloadCaptcha = () => {
@@ -28,8 +30,8 @@ const Capcha = ({ onSubmit }) => {
   return (
     <form className="flex flex-col items-center" onSubmit={handleSubmit}>
       <ReCAPTCHA
-        sitekey="6LcbhEkpAAAAANGyk91OacDhIwb-CUaB40mDTtKR"
-        onChange={handleCaptchaChange}
+        sitekey="6LcxWE4pAAAAADTuZPl7FRbwvRiUQ8cndvvTZsNW"
+        onChange={() => handleCaptchaChange}
         className="mx-auto"
       />
       <button type="submit" style={{ display: "none" }}></button>

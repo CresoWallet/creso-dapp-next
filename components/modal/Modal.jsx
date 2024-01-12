@@ -627,11 +627,7 @@ const Modal = ({ onClose, title, user }) => {
                 alt=""
                 className="cursor-pointer hidden sm:block"
               />
-              {/* <Image
-                src={Set1M}
-                alt=""
-                className="cursor-pointer block sm:hidden"
-              /> */}
+
               <hr className="w-full mt-3" />
             </div>
 
@@ -685,7 +681,7 @@ const Modal = ({ onClose, title, user }) => {
               <hr className="w-full mt-3" />
             </div>
 
-            <div className="flex items-center justify-center w-full flex-col">
+            <div className="flex items-center justify-center w-full  flex-col">
               <p className="text-lg font-bold ml-3 mb-3">Backup Recovery</p>
               <input
                 type="text"
@@ -696,6 +692,7 @@ const Modal = ({ onClose, title, user }) => {
                 }}
               />
             </div>
+
           </div>
         );
       case 4:

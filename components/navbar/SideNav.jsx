@@ -85,7 +85,7 @@ const SideNav = () => {
             href="/about"
             icon={Info}
             hoverIcon={Info1}
-            label="About us "
+            label="About us  "
             active={activeIcon === "about"}
             onClick={() => handleIconClick("about")}
           />

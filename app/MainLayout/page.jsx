@@ -22,6 +22,7 @@ import CreateWallet from "@/components/CreateWallet";
 import axios from "axios";
 import NotificationPopup from "../../components/Notification";
 import { IoIosNotificationsOutline } from "react-icons/io";
+import SearchField from "../../components/SearchFiled";
 
 const MainLayout = () => {
   const router = useRouter();
@@ -187,7 +188,12 @@ const MainLayout = () => {
               <LeftHeader
                 title={"Dashboard"}
                 descriptionColor={""}
-                icon1={<CiSearch />}
+                // icon1={<CiSearch />}
+                icon1={
+                  <SearchField
+                    onSearch={(searchTerm) => console.log(searchTerm)}
+                  />
+                }
                 icon2={
                   <IoIosNotificationsOutline
                     onClick={handleShowNotificationPopup}

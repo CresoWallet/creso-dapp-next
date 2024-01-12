@@ -12,9 +12,9 @@ const SearchField = ({ onSearch }) => {
   };
 
   const handleInputChange = (event) => {
-    const searchTerm = event.target.value;
+    // const searchTerm = event.target.value;
     // You can perform any search-related logic here
-    onSearch(searchTerm);
+    // onSearch(event.target.value);
   };
 
   const handleCloseSearch = (event) => {
@@ -33,21 +33,6 @@ const SearchField = ({ onSearch }) => {
   return (
     <div className="flex items-center relative">
       {isSearchOpen ? (
-        <div className="relative font-bold">
-          <CiSearch
-            className="cursor-pointer hover:border-black"
-            onClick={handleSearchIconClick}
-          />
-        </div>
-      ) : (
-        <div className="relative">
-          <CiSearch
-            className="cursor-pointer hover:border-black"
-            onClick={handleSearchIconClick}
-          />
-        </div>
-      )}
-      {isSearchOpen && (
         <div className="relative" ref={inputRef}>
           <input
             type="text"
@@ -57,6 +42,13 @@ const SearchField = ({ onSearch }) => {
           />
           <CiSearch
             className="absolute right-3 top-2 text-gray-500 cursor-pointer hover:font-bold"
+            onClick={handleSearchIconClick}
+          />
+        </div>
+      ) : (
+        <div className="relative">
+          <CiSearch
+            className="cursor-pointer hover:border-black"
             onClick={handleSearchIconClick}
           />
         </div>

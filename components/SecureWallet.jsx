@@ -19,7 +19,7 @@ import { WalletContext } from "@/providers/WalletProvider";
 
 const SecureWallet = ({ handleClose, wallets, walletType }) => {
   // const [send, setSend] = useState(false);
-  const [walletAddress, setWalletAddress] = useState(false);
+  // const [walletAddress, setWalletAddress] = useState(false);
   const [activeButton, setActiveButton] = useState("Tokens");
 
   const handleButtonClick = (buttonName) => {
@@ -33,16 +33,20 @@ const SecureWallet = ({ handleClose, wallets, walletType }) => {
     totalBalance,
     mainContentVisible,
     setMainContentVisible,
+    walletAddress,
+    setWalletAddress,
   } = useContext(WalletContext);
   // const [mainContentVisible, setMainContentVisible] = useState(true);
   const handleWalletClick = () => {
     setWalletAddress(true);
     setMainContentVisible(false);
+    // setShowWallet(false);
   };
 
   const handleClick = () => {
     setSend(true);
     setMainContentVisible(false);
+    // setShowWallet(false);
   };
   const handleBackButtonClick = () => {
     setMainContentVisible(true);

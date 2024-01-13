@@ -53,6 +53,8 @@ const MainLayout = () => {
     setActiveButton,
     setMainContentVisible,
     mainContentVisible,
+    walletAddress,
+    setWalletAddress,
   } = useContext(WalletContext);
 
   useEffect(() => {
@@ -156,6 +158,7 @@ const MainLayout = () => {
               walletType={walletType}
               secureWalletBalance={secureWalletBalance}
               eoaWalletBalance={eoaWalletBalance}
+              setShowWallet={setShowWallet}
             />
           )}
           <div className="">
@@ -254,6 +257,7 @@ const MainLayout = () => {
                   walletType={walletType}
                   secureWalletBalance={secureWalletBalance}
                   eoaWalletBalance={eoaWalletBalance}
+                  setShowWallet={setShowWallet}
                 />
               )}
             </div>

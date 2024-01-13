@@ -32,6 +32,7 @@ const Mainnet = ({ handleOpenWallet, handleCreateWallet, showWallet }) => {
     setOriginalData,
     setSend,
     setMainContentVisible,
+    setWalletAddress,
   } = useContext(WalletContext);
 
   const { enqueueSnackbar } = useSnackbar();
@@ -334,6 +335,7 @@ const Mainnet = ({ handleOpenWallet, handleCreateWallet, showWallet }) => {
                   handleOpenWallet({ walletName: "AA" });
                   setMainContentVisible(true);
                   setSend(false);
+                  setWalletAddress(false);
                 }}
               ></div>
             </div>
@@ -391,6 +393,7 @@ const Mainnet = ({ handleOpenWallet, handleCreateWallet, showWallet }) => {
                   handleOpenWallet({ walletName: "EOA" });
                   setMainContentVisible(true);
                   setSend(false);
+                  setWalletAddress(false);
                 }}
               ></div>
             </div>

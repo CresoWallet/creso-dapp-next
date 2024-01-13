@@ -44,6 +44,7 @@ const WalletContextProvider = ({ children }) => {
   const [filteredData, setFilteredData] = useState([]);
   const [mainContentVisible, setMainContentVisible] = useState(false);
   const [send, setSend] = useState(false);
+  const [walletAddress, setWalletAddress] = useState(false);
 
   // useEffect(() => {
   //   (async () => {
@@ -217,6 +218,8 @@ const WalletContextProvider = ({ children }) => {
         setSend,
         setMainContentVisible,
         mainContentVisible,
+        setWalletAddress,
+        walletAddress,
       }}
     >
       {/* {navbarTrigger && (

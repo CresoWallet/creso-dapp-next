@@ -118,7 +118,7 @@ const CoinCard = ({ handleCoinWallet }) => {
               placeholder="Search by Name..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="my-5 px-4 md:px-12 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:border-blue-300 w-full"
+              className="my-5 px-4 md:px-5 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:border-blue-300 w-full"
             />
 
             <div className="grid grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 lg:gap-10 space-y-4 items-center max-h-[50vh] overflow-y-auto">

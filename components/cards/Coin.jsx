@@ -1,5 +1,3 @@
-
-
 /* eslint-disable @next/next/no-img-element */
 import React, { useContext, useEffect, useRef, useState } from "react";
 import { WalletContext } from "@/providers/WalletProvider";
@@ -14,9 +12,8 @@ const CoinCard = ({ handleCoinWallet }) => {
   const isLaptop = useMediaQuery({ query: `(max-width: 1024px)` });
   console.log("🚀 ~ CoinCard ~ originalData:", originalData);
 
-
   const top10Token = originalData.slice(0, 7);
-  const top5Token = originalData.slice(0, 3);
+  const top5Token = originalData.slice(0, 5);
 
   const topsToken = isMobile ? top5Token : top10Token;
   // const [currentPage, setCurrentPage] = useState(1);
@@ -82,16 +79,18 @@ const CoinCard = ({ handleCoinWallet }) => {
           );
         })}
 
-        {originalData?.length !== 0 ? <div
-          className="text-[#FF4085] cursor-pointer hover:font-semibold"
-          onClick={handleSeeMore}
-        >
-          See More 
-        </div> : <div
-          className="text-[#FF4085] font-semibold w-full text-center"
-        >
-          Wait few minutes...
-        </div>}
+        {originalData?.length !== 0 ? (
+          <div
+            className="text-[#FF4085] cursor-pointer hover:font-semibold"
+            onClick={handleSeeMore}
+          >
+            See More
+          </div>
+        ) : (
+          <div className="text-[#FF4085] font-semibold w-full text-center">
+            Wait few minutes...
+          </div>
+        )}
       </div>
 
       {openPopup && (

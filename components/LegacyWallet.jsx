@@ -163,7 +163,7 @@ const LegacyWallet = ({ handleBackButton, type, handleClose }) => {
               required={true}
               type="text"
               placeholder="E.g. My Wallet"
-              className="placeholder:text-sm placeholder:text-black placeholder:font-bold  px-5 focus:outline-none"
+              className="placeholder:text-xs placeholder:text-black placeholder:font-bold  px-5 focus:outline-none"
               value={inputText}
               onChange={handleChange}
             />

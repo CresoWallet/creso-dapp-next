@@ -14,8 +14,13 @@ import Pepe from "../assets/gainers/pepe.png";
 const SwapFrom = ({ handleClose }) => {
   return (
     <div className="bg-white shadow-xl min-w-max lg:w-auto h-[123vh] lg:h-[100vh] lg:block ">
-      <div className="flex rounded-full bg-black h-8 w-8 items-center justify-center xl:-ml-4 md:-ml-4 mt-10 absolute">
-        <IoIosClose className="text-white h-4 w-4" onClick={handleClose} />
+      {/* <div className="flex rounded-full bg-black h-8 w-8 items-center justify-center xl:-ml-4 md:-ml-4 mt-10 absolute">
+        <IoIosClose className="text-white h-4 w-4" onClick={handleClose} /> */}
+      <div className="grid place-items-center rounded-full bg-black h-8 w-8 absolute cursor-pointer md:-ml-4 ml-2 lg:mt-0 z-[99]">
+        <IoIosClose
+          className="text-white h-7 w-7 cursor-pointer"
+          onClick={handleClose}
+        />
       </div>
       <div className="flex flex-col mt-10 md:mx-2 mx-2 space-y-8">
         <p className="text-black font-bold text-xl px-10 ">Swap From</p>
@@ -51,6 +56,7 @@ const SwapFrom = ({ handleClose }) => {
         </div>
         <div className="rounded-full border border-solid flex px-4 py-1 flex-row items-center justify-between ">
           <input
+            required={true}
             type="text"
             placeholder="Search by token name or address"
             className="placeholder:text-xs placeholder:text-[#6F6E7A] focus:outline-none"

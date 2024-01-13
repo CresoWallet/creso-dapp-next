@@ -114,9 +114,8 @@ const SwapPage = () => {
         </div>
       )}
       <div
-        className={`${
-          isMobile && showSwapForm ? "hidden" : "lg:grid-cols-10"
-        } lg:grid lg:divide-x`}
+        className={`${isMobile && showSwapForm ? "hidden" : "lg:grid-cols-10"
+          } lg:grid lg:divide-x`}
       >
         <div className="lg:col-span-6 pt-16  px-10 relative">
           <div className="">
@@ -188,7 +187,7 @@ const SwapPage = () => {
                   onClick={handleBackgroundClick}
                 >
                   <div className="bg-white rounded-3xl p-5 relative ">
-                    <div className="absolute top-1 right-4 bg-black rounded-full h-6 w-6  flex items-center justify-center cursor-pointer z-[99]">
+                    <div className="absolute top-2 right-2 bg-black rounded-full h-6 w-6  flex items-center justify-center cursor-pointer z-[99]">
                       <IoIosClose
                         className="text-white h-7 w-7 cursor-pointer"
                         onClick={handleClosePopup}
@@ -200,7 +199,7 @@ const SwapPage = () => {
                       placeholder="Search by Name..."
                       value={searchQuery}
                       onChange={(e) => setSearchQuery(e.target.value)}
-                      className="my-4 px-4 md:px-12 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:border-blue-300 w-full"
+                      className="my-5 px-4 md:px-12 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:border-blue-300 w-full"
                     />
 
                     <div className="grid grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 lg:gap-10 space-y-4 items-center max-h-[50vh] overflow-y-auto">
@@ -240,7 +239,7 @@ const SwapPage = () => {
                 onClick={handleBackgroundClick1}
               >
                 <div className="bg-white rounded-3xl p-6 relative ">
-                  <div className="absolute top-1 right-4 bg-black rounded-full h-6 w-6  flex items-center justify-center cursor-pointer z-[99]">
+                  <div className="absolute top-2 right-2 bg-black rounded-full h-6 w-6  flex items-center justify-center cursor-pointer z-[99]">
                     <IoIosClose
                       className="text-white h-7 w-7 cursor-pointer"
                       onClick={handleClosePopup1}
@@ -252,7 +251,7 @@ const SwapPage = () => {
                     placeholder="Search by Name..."
                     value={searchQuery}
                     onChange={(e) => setSearchQuery(e.target.value)}
-                    className="my-4 px-4 md:px-12 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:border-blue-300 w-full"
+                    className="my-5 px-4 md:px-12 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:border-blue-300 w-full"
                   />
 
                   <div className="grid grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 lg:gap-10 space-y-4 items-center max-h-[50vh] overflow-y-auto">
@@ -449,8 +448,8 @@ const SwapPage = () => {
           )}
         </div>
 
-        
-      </div>  
+
+      </div>
 
     </>
   );

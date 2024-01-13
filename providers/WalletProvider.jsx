@@ -44,7 +44,7 @@ const WalletContextProvider = ({ children }) => {
   const [filteredData, setFilteredData] = useState([]);
   const [mainContentVisible, setMainContentVisible] = useState(false);
   const [send, setSend] = useState(false);
-  const [validCaptcha, setValidCaptcha] = useState(false);
+  const [validCaptcha, setValidCaptcha] = useState(null);
 
   // useEffect(() => {
   //   (async () => {

@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
@@ -22,6 +22,8 @@ import { FaApple } from "react-icons/fa";
 import Creso3 from "../../assets/Dashboard/creso3.png";
 import cresow from "../../assets/Dashboard/creso_logo_white.svg";
 import Capcha from "@/components/Capcha";
+import { AiOutlineLoading3Quarters } from "react-icons/ai";
+import { WalletContext } from "@/providers/WalletProvider";
 
 const LoginPage = () => {
   const router = useRouter();
@@ -36,7 +38,8 @@ const LoginPage = () => {
       router.push(`/dashboard`);
     }
   }, [user]);
-
+  const { validCaptcha } =
+    useContext(WalletContext);
   // useEffect(() => {
   //   if (isAuthenticated) {
   //     router.push(`/dashboard`);
@@ -83,7 +86,7 @@ const LoginPage = () => {
   return (
     <div className="grid xl:grid-cols-2 md:grid-cols-2 grid-cols-1 h-screen px-2 py-2 gap-2 xl:gap-0 md:gap-0">
       <div className="col-span-1 flex flex-col justify-center items-center bg-[#2100EC] md:py-8 rounded-2xl">
-        <div className="flex flex-row items-center justify-center my-16 gap-1 relative Mainlogo text-white mt-4">
+        <div className="flex flex-row items-center justify-center my-16 gap-1 relative Mainlogo text-white mt-4 ">
           <Image alt="creso-logo" src={cresow} className="h-16" />
           {/* <p className="lg:text-5xl text-4xl lg:block items-center">creso</p>
           <p className="text-sm lg:mt-6 mt-4 text-[#D0F500]">Beta</p> */}
@@ -122,19 +125,36 @@ const LoginPage = () => {
             placeholder={"password"}
             type={"password"}
             validation={{ ...register("password", { required: true }) }}
-
-
           />
-          <Capcha />
-
+          <Capcha onSubmit={onSubmit} />
           <div className="flex flex-col space-y-2 pt-5">
-            <CustomButton
+            {/* <CustomButton
               isLoading={loading}
               name="Login"
               bgColor="black"
               hoverColor={"zinc-800"}
               type={"submit"}
-            />
+            /> */}
+            <button
+              disabled={!validCaptcha}
+              type={"submit"}
+              className={`transition duration-500 ease-in-out bg-black disabled:opacity-40 xl:py-4 py-2 text-white px-12 flex justify-center rounded-full w-full enabled:hover:bg-zinc-800 enabled:hover:font-semibold cursor-pointer border border-solid border-black tracking-wider transform hover:-translate-y-1`}
+            >
+              <div className="flex flex-row gap-2 items-center">
+                {loading ? (
+                  <>
+                    {" "}
+                    <AiOutlineLoading3Quarters className="w-5 h-5 animate-spin text-sky-500" />
+                  </>
+                ) : (
+                  <>
+                    {" "}
+                    {/* {img && <Image alt="" src={img} />} */}
+                    <p className={`text-sm xl:text-base text-white`}>Login</p>
+                  </>
+                )}
+              </div>
+            </button>
 
             {/* <CustomButton
               isDisabled={true}

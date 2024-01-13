@@ -32,6 +32,7 @@ import Ham from "../../assets/Dashboard/ham.png";
 import LeftHeader from "@/components/LeftHeader";
 import { WalletContext } from "@/providers/WalletProvider";
 import RightMain from "../MainLayout/RightMain";
+import { IoIosClose } from "react-icons/io";
 
 const SwapPage = () => {
   const [showSwapForm, setShowSwapForm] = useState(false);
@@ -82,6 +83,9 @@ const SwapPage = () => {
   const handleClosePopup = () => {
     setOpenPopup(false);
   };
+  const handleClosePopup1 = () => {
+    setOpenPopup1(false);
+  };
 
   const handleTokenClick = (token) => {
     // Update the selectedToken state when a token is clicked
@@ -96,6 +100,11 @@ const SwapPage = () => {
     setOpenPopup1(false);
   };
 
+  const [searchQuery, setSearchQuery] = useState("");
+  const filteredData = originalData.filter((item) =>
+    item.symbol.toUpperCase().includes(searchQuery.toUpperCase())
+  );
+
   return (
     <>
       {/* ------------ Popup Main ---------- */}
@@ -107,7 +116,7 @@ const SwapPage = () => {
       <div
         className={`${
           isMobile && showSwapForm ? "hidden" : "lg:grid-cols-10"
-        } lg:grid  lg:divide-x`}
+        } lg:grid lg:divide-x`}
       >
         <div className="lg:col-span-6 pt-16  px-10 relative">
           <div className="">
@@ -130,8 +139,6 @@ const SwapPage = () => {
                 className="rounded-full xl:pl-4 pl-2 xl:pr-8 pr-2 xl:py-2 py-1 flex flex-row justify-between border border-solid cursor-pointer"
                 onClick={handleSeeMore}
               >
-            
-
                 {selectedToken ? (
                   <div className="flex flex-row gap-2 items-center ">
                     <Image
@@ -140,6 +147,7 @@ const SwapPage = () => {
                       width={40} // replace with your desired width
                       height={40}
                     />
+
                     <div className="flex flex-col">
                       <div className="flex flex-row gap-1 items-center ">
                         <p className="font-semibold xl:text-lg text-sm">
@@ -173,45 +181,56 @@ const SwapPage = () => {
             </div>
 
             {openPopup && (
-              <div
-                className="fixed top-0 right-0 w-full h-full flex items-center justify-center bg-gray-800 bg-opacity-75 z-50"
-                ref={popupRef}
-                onClick={handleBackgroundClick}
-              >
-                <div className="bg-white rounded-3xl p-5   ">
-                  <div className="grid place-items-center md:grid-cols-2 lg:grid-cols-3 gap-10 space-y-4 items-center overflow-y-auto max-h-[50vh]">
-                    {originalData.map((item, index) => (
-                      <div
-                        className="md:flex flex-col space-y-1 items-center cursor-pointer hover:-translate-y-1 duration-500"
-                        key={index}
-                        onClick={() => handleTokenClick(item)}
-                      >
-                        <div className="grid place-items-center">
-                          <img
-                            alt={item.symbol}
-                            src={item?.image}
-                            className="xl:h-12 xl:w-12 w-8 h-8 rounded-full"
-                          />
+              <>
+                <div
+                  className="fixed top-0 right-0 w-full h-full flex items-center justify-center bg-gray-800 bg-opacity-75 z-50"
+                  ref={popupRef}
+                  onClick={handleBackgroundClick}
+                >
+                  <div className="bg-white rounded-3xl p-5 relative ">
+                    <div className="absolute top-1 right-4 bg-black rounded-full h-6 w-6  flex items-center justify-center cursor-pointer z-[99]">
+                      <IoIosClose
+                        className="text-white h-7 w-7 cursor-pointer"
+                        onClick={handleClosePopup}
+                      />
+                    </div>
+
+                    <input
+                      type="text"
+                      placeholder="Search by Name..."
+                      value={searchQuery}
+                      onChange={(e) => setSearchQuery(e.target.value)}
+                      className="my-4 px-4 md:px-12 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:border-blue-300 w-full"
+                    />
+
+                    <div className="grid grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 lg:gap-10 space-y-4 items-center max-h-[50vh] overflow-y-auto">
+                      {filteredData.map((item, index) => (
+                        <div
+                          className="flex md:flex-col gap-2 md:gap-0 space-y-1 items-center cursor-pointer hover:-translate-y-1 duration-500"
+                          key={index}
+                          onClick={() => handleTokenClick(item)}
+                        >
+                          <div className="grid place-items-center">
+                            <img
+                              alt={item.symbol}
+                              src={item?.image}
+                              className="xl:h-12 xl:w-12 w-8 h-8 rounded-full"
+                            />
+                          </div>
+                          <div className="flex flex-col">
+                            <p className="md:text-center xl:text-sm text-xs md:text-xs">
+                              {item.symbol.toUpperCase()}
+                            </p>
+                            <p className="text-[#A09FAA] flex gap-1 xl:text-sm text-xs md:text-xs">
+                              <span>$</span> {item?.current_price.toFixed(2)}
+                            </p>
+                          </div>
                         </div>
-                        <div className="flex flex-col">
-                          <p className="text-center xl:text-sm text-xs md:text-xs">
-                            {item.symbol.toUpperCase()}
-                          </p>
-                          <p className="text-[#A09FAA] flex gap-1 xl:text-sm text-xs md:text-xs">
-                            <span>$</span> {item?.current_price.toFixed(2)}
-                          </p>
-                        </div>
-                      </div>
-                    ))}
+                      ))}
+                    </div>
                   </div>
-                  {/* <button
-                    className="text-[#FF4085] cursor-pointer mt-4 top-1 right-1"
-                    onClick={handleClosePopup}
-                  >
-                    X
-                  </button> */}
                 </div>
-              </div>
+              </>
             )}
 
             {openPopup1 && (
@@ -220,11 +239,26 @@ const SwapPage = () => {
                 ref={popupRef1}
                 onClick={handleBackgroundClick1}
               >
-                <div className="bg-white rounded-3xl p-5 ">
-                  <div className="grid place-items-center md:grid-cols-2 lg:grid-cols-3 gap-10 space-y-4 items-center max-h-[50vh]  overflow-y-auto">
-                    {originalData.map((item, index) => (
+                <div className="bg-white rounded-3xl p-6 relative ">
+                  <div className="absolute top-1 right-4 bg-black rounded-full h-6 w-6  flex items-center justify-center cursor-pointer z-[99]">
+                    <IoIosClose
+                      className="text-white h-7 w-7 cursor-pointer"
+                      onClick={handleClosePopup1}
+                    />
+                  </div>
+
+                  <input
+                    type="text"
+                    placeholder="Search by Name..."
+                    value={searchQuery}
+                    onChange={(e) => setSearchQuery(e.target.value)}
+                    className="my-4 px-4 md:px-12 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:border-blue-300 w-full"
+                  />
+
+                  <div className="grid grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 lg:gap-10 space-y-4 items-center max-h-[50vh] overflow-y-auto">
+                    {filteredData.map((item, index) => (
                       <div
-                        className="md:flex flex-col space-y-1 items-center cursor-pointer hover:-translate-y-1 duration-500"
+                        className="flex md:flex-col gap-2 md:gap-0 space-y-1 items-center cursor-pointer hover:-translate-y-1 duration-500"
                         key={index}
                         onClick={() => handleTokenClick1(item)}
                       >
@@ -236,7 +270,7 @@ const SwapPage = () => {
                           />
                         </div>
                         <div className="flex flex-col">
-                          <p className="text-center xl:text-sm text-xs md:text-xs">
+                          <p className="md:text-center xl:text-sm text-xs md:text-xs">
                             {item.symbol.toUpperCase()}
                           </p>
                           <p className="text-[#A09FAA] flex gap-1 xl:text-sm text-xs md:text-xs">
@@ -246,12 +280,6 @@ const SwapPage = () => {
                       </div>
                     ))}
                   </div>
-                  <button
-                    className="text-[#FF4085] cursor-pointer mt-4 top-1 right-1"
-                    onClick={handleClosePopup}
-                  >
-                    X
-                  </button>
                 </div>
               </div>
             )}
@@ -409,6 +437,7 @@ const SwapPage = () => {
         <hr className="lg:hidden mt-10 lg:mt-0" />
 
         {/* ------------ Rightside Main ---------- */}
+
         <div className={`lg:col-span-4 ${!showSwapForm ? "pt-14 px-10" : ""}`}>
           {showSwapForm ? (
             <SwapFrom handleClose={handleClose} />
@@ -419,7 +448,10 @@ const SwapPage = () => {
             </>
           )}
         </div>
-      </div>
+
+        
+      </div>  
+
     </>
   );
 };

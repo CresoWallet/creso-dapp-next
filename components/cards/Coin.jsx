@@ -1,10 +1,9 @@
-
-
 /* eslint-disable @next/next/no-img-element */
 import React, { useContext, useEffect, useRef, useState } from "react";
 import { WalletContext } from "@/providers/WalletProvider";
 import axios from "axios";
 import { useMediaQuery } from "react-responsive";
+import { IoIosClose } from "react-icons/io";
 
 const CoinCard = ({ handleCoinWallet }) => {
   const { originalData, isMobile } = useContext(WalletContext);
@@ -14,19 +13,18 @@ const CoinCard = ({ handleCoinWallet }) => {
   const isLaptop = useMediaQuery({ query: `(max-width: 1024px)` });
   console.log("🚀 ~ CoinCard ~ originalData:", originalData);
 
-
   const top10Token = originalData.slice(0, 7);
   const top5Token = originalData.slice(0, 3);
 
   const topsToken = isMobile ? top5Token : top10Token;
-  // const [currentPage, setCurrentPage] = useState(1);
 
+  // const [currentPage, setCurrentPage] = useState(1);
   // const tokensPerPage = 10;
   // const startIndex = 0;
   // const endIndex = showAllTokens ? originalData.length : startIndex + tokensPerPage;
   // const currentData = originalData.slice(startIndex, endIndex);
+
   const handleSeeMore = () => {
-    // setShowAllTokens(true);
     setOpenPopup(true);
   };
 
@@ -43,6 +41,11 @@ const CoinCard = ({ handleCoinWallet }) => {
     setOpenPopup(false);
   };
   const popupRef = useRef();
+
+  const [searchQuery, setSearchQuery] = useState("");
+  const filteredData = originalData.filter((item) =>
+    item.symbol.toUpperCase().includes(searchQuery.toUpperCase())
+  );
 
   return (
     <>
@@ -82,16 +85,18 @@ const CoinCard = ({ handleCoinWallet }) => {
           );
         })}
 
-        {originalData?.length !== 0 ? <div
-          className="text-[#FF4085] cursor-pointer hover:font-semibold"
-          onClick={handleSeeMore}
-        >
-          See More 
-        </div> : <div
-          className="text-[#FF4085] font-semibold w-full text-center"
-        >
-          Wait few minutes...
-        </div>}
+        {originalData?.length !== 0 ? (
+          <div
+            className="text-[#FF4085] cursor-pointer hover:font-semibold"
+            onClick={handleSeeMore}
+          >
+            See More
+          </div>
+        ) : (
+          <div className="text-[#FF4085] font-semibold w-full text-center">
+            Wait few minutes...
+          </div>
+        )}
       </div>
 
       {openPopup && (
@@ -100,11 +105,26 @@ const CoinCard = ({ handleCoinWallet }) => {
           ref={popupRef}
           onClick={handleBackgroundClick}
         >
-          <div className="bg-white rounded-3xl px-16 py-8 max-h-[50vh]  overflow-y-auto">
-            <div className="grid place-items-center md:grid-cols-2 lg:grid-cols-3 gap-10 space-y-4 items-center ">
-              {originalData.map((item, index) => (
+          <div className="bg-white rounded-3xl p-5 relative ">
+            <div className="absolute top-1 right-4 bg-black rounded-full h-6 w-6  flex items-center justify-center cursor-pointer z-[99]">
+              <IoIosClose
+                className="text-white h-7 w-7 cursor-pointer"
+                onClick={handleClosePopup}
+              />
+            </div>
+
+            <input
+              type="text"
+              placeholder="Search by Name..."
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              className="my-4 px-4 md:px-12 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:border-blue-300 w-full"
+            />
+
+            <div className="grid grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 lg:gap-10 space-y-4 items-center max-h-[50vh] overflow-y-auto">
+              {filteredData.map((item, index) => (
                 <div
-                  className="md:flex flex-col space-y-1 items-center cursor-pointer hover:-translate-y-1 duration-500"
+                  className="flex md:flex-col gap-2 md:gap-0 space-y-1 items-center cursor-pointer hover:-translate-y-1 duration-500"
                   onClick={() => {
                     handleCoinWallet(item);
                     setOpenPopup(false);
@@ -119,7 +139,7 @@ const CoinCard = ({ handleCoinWallet }) => {
                     />
                   </div>
                   <div className="flex flex-col">
-                    <p className="text-center xl:text-sm text-xs md:text-xs">
+                    <p className="md:text-center xl:text-sm text-xs md:text-xs">
                       {item.symbol.toUpperCase()}
                     </p>
                     <p className="text-[#A09FAA] flex gap-1 xl:text-sm text-xs md:text-xs">
@@ -129,12 +149,7 @@ const CoinCard = ({ handleCoinWallet }) => {
                 </div>
               ))}
             </div>
-            <button
-              className="text-[#FF4085] cursor-pointer mt-4 top-1 right-1"
-              onClick={handleClosePopup}
-            >
-              X
-            </button>
+           
           </div>
         </div>
       )}

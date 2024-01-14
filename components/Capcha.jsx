@@ -1,11 +1,12 @@
 // "use client";
-import React, { useState } from "react";
+import { WalletContext } from "@/providers/WalletProvider";
+import React, { useContext, useState } from "react";
 import ReCAPTCHA from "react-google-recaptcha";
 
 const Capcha = ({ onSubmit }) => {
   const [captcha, setCaptcha] = useState(false);
-  const [validCaptcha, setValidCaptcha] = useState(false);
-
+  const { setValidCaptcha } =
+    useContext(WalletContext);
   const handleCaptchaChange = (value) => {
     console.log("Captcha value:-------------->", value);
     setCaptcha(true);
@@ -28,10 +29,10 @@ const Capcha = ({ onSubmit }) => {
   };
 
   return (
-    <form className="flex flex-col items-center" onSubmit={handleSubmit}>
+    <form className="flex flex-col items-center">
       <ReCAPTCHA
         sitekey="6LcxWE4pAAAAADTuZPl7FRbwvRiUQ8cndvvTZsNW"
-        onChange={() => handleCaptchaChange}
+        onChange={(value) => setValidCaptcha(value)}
         className="mx-auto"
       />
       <button type="submit" style={{ display: "none" }}></button>

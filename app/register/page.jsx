@@ -49,7 +49,6 @@ const RegisterPage = () => {
           variant: "success",
         });
       }
-
       setLoading(false);
     } catch (error) {
       enqueueSnackbar(`${error?.response?.data?.message}`, {
@@ -67,7 +66,7 @@ const RegisterPage = () => {
 
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-2 h-screen px-2 py-2 gap-2 xl:gap-0 md:gap-0">
-      <div className="col-span-1 flex flex-col justify-center xl:items-center md:items-center  bg-[#2100EC] xl:py-8 md:py-8 rounded-2xl">
+      <div className="col-span-1 flex flex-col justify-center xl:items-center md:items-center bg-[#2100EC] xl:py-8 md:py-8 rounded-2xl">
         {/* Logo and background images */}
         <div className="flex flex-row items-center justify-center my-16 gap-1 relative Mainlogo text-white mt-4 ">
           <Image alt="creso-logo" src={cresow} className="h-16" />
@@ -142,7 +141,14 @@ const RegisterPage = () => {
               error={errors.confirmPassword && errors.confirmPassword.message}
             />
           </div>
-          {/* <Capcha onSubmit={onSubmit} /> */}
+
+
+
+          <Capcha onSubmit={onSubmit} />
+
+
+
+
 
           <div className="flex flex-col space-y-2">
             {/* Sign-up button */}

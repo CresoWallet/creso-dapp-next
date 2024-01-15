@@ -18,6 +18,7 @@ import History from "./dashboard/History";
 import { alchemy } from "@/utils/alchemy";
 import { formatEther } from "viem";
 import HistoryCardSkelton from "./skeleton/HistoryCardSkelton";
+import { NEXT_PUBLIC_ALCHEMY_API_KEY_ETH } from "@/constants";
 const Mainnet = ({ handleOpenWallet, handleCreateWallet, showWallet }) => {
   // const [newWalletName, setNewWalletName] = useState("");
   const {
@@ -86,7 +87,7 @@ const Mainnet = ({ handleOpenWallet, handleCreateWallet, showWallet }) => {
     fetchTokenPrices();
   }, []);
 
-  const baseURL = process.env.NEXT_PUBLIC_ALCHEMY_API_KEY_ETH;
+  const baseURL = NEXT_PUBLIC_ALCHEMY_API_KEY_ETH;
   const data = {
     jsonrpc: "2.0",
     method: "alchemy_getTokenBalances",

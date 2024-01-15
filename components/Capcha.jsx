@@ -12,20 +12,20 @@ const Capcha = ({ onSubmit }) => {
   //     setValidCaptcha(value)
   //   };
 
-  const handleReloadCaptcha = () => {
-    setCaptcha(false);
-  };
+  // const handleReloadCaptcha = () => {
+  //   setCaptcha(false);
+  // };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+  // const handleSubmit = async (e) => {
+  //   e.preventDefault();
 
-    if (captcha) {
-      await onSubmit(); // Call the onSubmit function if the captcha is filled
-    } else {
-      // Display captcha error message
-      console.error("Please fill in the captcha.");
-    }
-  };
+  //   if (captcha) {
+  //     await onSubmit(); // Call the onSubmit function if the captcha is filled
+  //   } else {
+  //     // Display captcha error message
+  //     console.error("Please fill in the captcha.");
+  //   }
+  // };
 
   return (
     <form className="flex flex-col items-center">

@@ -127,14 +127,14 @@ const LoginPage = () => {
           />
           <Capcha onSubmit={onSubmit} />
           <div className="flex flex-col space-y-2 pt-5">
-            <CustomButton
+            {/* <CustomButton
               isLoading={loading}
               name="Login"
               bgColor="black"
               hoverColor={"zinc-800"}
               type={"submit"}
-            />
-            {/* <button
+            /> */}
+            <button
               disabled={!validCaptcha}
               type="submit"
               className={`transition duration-500 ease-in-out bg-black disabled:opacity-40 xl:py-4 py-2 text-white px-12 flex justify-center rounded-full w-full enabled:hover:bg-zinc-800 enabled:hover:font-semibold cursor-pointer border border-solid border-black tracking-wider transform hover:-translate-y-1`}
@@ -149,7 +149,7 @@ const LoginPage = () => {
                   <p className={`text-sm xl:text-base text-white`}>Login</p>
                 )}
               </div>
-            </button> */}
+            </button>
 
             {/* <CustomButton
               isDisabled={true}

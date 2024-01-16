@@ -148,7 +148,7 @@ const SwapPage = () => {
                 onClick={handleSeeMore}
               >
                 {selectedToken ? (
-                  <div className="flex flex-row gap-2 items-center ">
+                  <div className="flex flex-row gap-2 items-center">
                     <Image
                       alt=""
                       src={selectedToken.image}
@@ -176,13 +176,12 @@ const SwapPage = () => {
                         <p className="font-semibold xl:text-lg text-sm">BCB</p>
                         <MdOutlineKeyboardArrowDown size={20} />
                       </div>
-                      <p className="text-xs text-[#6F6E7A] cursor-pointer">
+                      <p className="text-xs cursor-pointer text-[#6F6E7A]">
                         Binance Coin
                       </p>
                     </div>
                   </div>
                 )}
-
                 <div className="flex flex-row gap-2 items-center">
                   <p className="font-semibold text-sm">0x53A...e4af</p>
                   <MdOutlineKeyboardArrowDown size={20} />
@@ -301,7 +300,6 @@ const SwapPage = () => {
                 alt=""
                 src={SwapButton}
                 className="w-14 h-14 xl:w-24 xl:h-24 xl:-mt-6 xl:-mb-12 -mt-2 -mb-7 z-10 "
-                // onClick={handleSwap}
               />
             </div>
 

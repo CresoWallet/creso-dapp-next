@@ -22,6 +22,9 @@ import CreateWallet from "@/components/CreateWallet";
 import axios from "axios";
 import NotificationPopup from "../../components/Notification";
 import { IoIosNotificationsOutline } from "react-icons/io";
+import SearchField from "../../components/SearchFiled";
+
+import { VscFeedback } from "react-icons/vsc";
 
 const MainLayout = () => {
   const router = useRouter();
@@ -30,6 +33,8 @@ const MainLayout = () => {
   const [showWallet, setShowWallet] = useState(false);
   const [showModal, setShowModal] = useState(false);
   const [showNotificationPopup, setShowNotificationPopup] = useState(false);
+  const [showNotification, setShowNotification] = useState(false);
+  const [hover, setHover] = useState(false);
   const [usd, setUsd] = useState(0);
   // const [wallets, setWallets] = useState([]);
   const [walletType, setWalletType] = useState("");
@@ -52,6 +57,8 @@ const MainLayout = () => {
     setActiveButton,
     setMainContentVisible,
     mainContentVisible,
+    walletAddress,
+    setWalletAddress,
   } = useContext(WalletContext);
 
   useEffect(() => {
@@ -131,6 +138,16 @@ const MainLayout = () => {
   const handleCloseNotificationPopup = () => {
     setShowNotificationPopup(false);
   };
+
+  const handleShowHoverNotification = () => {
+    setHover(true);
+    setShowNotification(true);
+  };
+
+  const handleHideHoverNotification = () => {
+    setHover(false);
+    setShowNotification(false);
+  };
   // useEffect(() => {
   //   if (navbarTrigger) {
   //     document.body.classList.add("no-scroll");
@@ -155,6 +172,7 @@ const MainLayout = () => {
               walletType={walletType}
               secureWalletBalance={secureWalletBalance}
               eoaWalletBalance={eoaWalletBalance}
+              setShowWallet={setShowWallet}
             />
           )}
           <div className="">
@@ -187,12 +205,28 @@ const MainLayout = () => {
               <LeftHeader
                 title={"Dashboard"}
                 descriptionColor={""}
-                icon1={<CiSearch />}
+                // icon1={<CiSearch />}
+                icon1={<SearchField />}
                 icon2={
-                  <IoIosNotificationsOutline
-                    onClick={handleShowNotificationPopup}
-                    className="cursor-pointer  hover:border-l"
-                  />
+                  // <IoIosNotificationsOutline
+                  //     onClick={handleShowNotificationPopup}
+                  //     className="cursor-pointer  hover:border-l"
+                  //   />
+                  // }
+                  <div
+                    className=""
+                    onMouseEnter={handleShowHoverNotification}
+                    onMouseLeave={handleHideHoverNotification}
+                  >
+                    <IoIosNotificationsOutline
+                      onClick={handleShowNotificationPopup}
+                      style={{
+                        color: hover ? "grey" : "black",
+                        cursor: "pointer",
+                      }}
+                      size={30}
+                    />
+                  </div>
                 }
                 mobileImg={Ham}
                 navbarTrigger={navbarTrigger}
@@ -248,6 +282,7 @@ const MainLayout = () => {
                   walletType={walletType}
                   secureWalletBalance={secureWalletBalance}
                   eoaWalletBalance={eoaWalletBalance}
+                  setShowWallet={setShowWallet}
                 />
               )}
             </div>

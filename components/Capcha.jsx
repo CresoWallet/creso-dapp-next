@@ -1,32 +1,31 @@
 // "use client";
-import { WalletContext } from "@/providers/WalletProvider";
 import React, { useContext, useState } from "react";
+import { WalletContext } from "@/providers/WalletProvider";
 import ReCAPTCHA from "react-google-recaptcha";
 
 const Capcha = ({ onSubmit }) => {
   const [captcha, setCaptcha] = useState(false);
-  const { setValidCaptcha } =
-    useContext(WalletContext);
-  const handleCaptchaChange = (value) => {
-    console.log("Captcha value:-------------->", value);
-    setCaptcha(true);
-    setValidCaptcha(value)
-  };
+  const { setValidCaptcha } = useContext(WalletContext);
+  //   const handleCaptchaChange = (value) => {
+  //     console.log("Captcha value:-------------->", value);
+  //     setCaptcha(true);
+  //     setValidCaptcha(value)
+  //   };
 
-  const handleReloadCaptcha = () => {
-    setCaptcha(false);
-  };
+  // const handleReloadCaptcha = () => {
+  //   setCaptcha(false);
+  // };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+  // const handleSubmit = async (e) => {
+  //   e.preventDefault();
 
-    if (captcha) {
-      await onSubmit(); // Call the onSubmit function if the captcha is filled
-    } else {
-      // Display captcha error message
-      console.error("Please fill in the captcha.");
-    }
-  };
+  //   if (captcha) {
+  //     await onSubmit(); // Call the onSubmit function if the captcha is filled
+  //   } else {
+  //     // Display captcha error message
+  //     console.error("Please fill in the captcha.");
+  //   }
+  // };
 
   return (
     <form className="flex flex-col items-center">

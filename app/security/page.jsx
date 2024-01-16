@@ -7,7 +7,6 @@ import { MdKeyboardArrowDown } from "react-icons/md";
 import SecurityImage from "../../assets/security/securityImage.png";
 import Account from "@/components/Account";
 import Lock from "../../assets/security/Lock.png";
-
 import { useMediaQuery } from "react-responsive";
 import Ham from "../../assets/Dashboard/ham.png";
 import Modal from "@/components/modal/Modal";

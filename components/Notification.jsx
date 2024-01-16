@@ -1,7 +1,8 @@
 // NotificationPopup.jsx
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 
 const NotificationPopup = ({ handleClose }) => {
+  const [hover, setHover] = useState(false);
   const notifications = [
     { id: 1, message: "New transaction received", time: "2 minutes ago" },
     { id: 2, message: "Account balance updated", time: "5 minutes ago" },
@@ -35,15 +36,23 @@ const NotificationPopup = ({ handleClose }) => {
 
   return (
     <div
-      className="fixed inset-0 flex items-start justify-center z-50 p-4 sm:p-16 popup-overlay"
+      className={`fixed inset-0 flex items-start justify-center z-50 p-4 sm:p-16 ${
+        hover ? "bg-opacity-80" : "bg-opacity-50"
+      } cursor-pointer popup-overlay`}
       onClick={handleOverlayClick}
+      onMouseEnter={() => setHover(true)}
+      onMouseLeave={() => setHover(false)}
     >
       <div
         ref={popupRef}
         onClick={handleBackgroundClick}
         className="absolute inset-0 bg-black opacity-50 cursor-pointer"
       ></div>
-      <div className="bg-white p-4 sm:p-6 rounded-lg my-12 items-center w-80 z-10 relative">
+      <div
+        className={`bg-white p-4 sm:p-6 rounded-lg my-12 items-center w-80 z-10 relative ${
+          hover ? "bg-gray-100" : ""
+        }`}
+      >
         <div className="flex items-center">
           <p className="font-bold text-center text-2xl">Notification </p>
           <span className="ml-2 text-lg upcomming">Upcoming</span>

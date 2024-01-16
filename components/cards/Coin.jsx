@@ -94,7 +94,7 @@ const CoinCard = ({ handleCoinWallet }) => {
           </div>
         ) : (
           <div className="text-[#FF4085] font-semibold w-full text-center">
-            Wait few minutes...
+            Loading...
           </div>
         )}
       </div>

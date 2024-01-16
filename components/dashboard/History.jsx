@@ -2,40 +2,16 @@
 import React, { Suspense, useContext, useEffect, useState } from "react";
 import HistoryCard from "../cards/HistoryCard";
 import { WalletContext } from "@/providers/WalletProvider";
-import { getHistory, getUSDValue } from "@/clientApi/wallet";
+import { getUSDValue } from "@/clientApi/wallet";
 import HistoryCardSkelton from "../skeleton/HistoryCardSkelton";
 
 function History({ isLoading, setIsLoading }) {
-  const { eoaWalletAddress, secureWalletAddress } = useContext(WalletContext);
+  const { eoaWalletAddress, secureWalletAddress, history } =
+    useContext(WalletContext);
 
   const arr = ["1", "2", "3", "4"];
 
   const [usd, setUsd] = useState(0);
-  const [history, setHistory] = useState([]);
-
-  const fetchHistory = async () => {
-    setIsLoading(true);
-    try {
-      const res = await getHistory({
-        network: "goerli",
-      });
-
-      console.log("fetchHistory-->", res);
-      if (res) {
-        setHistory(res?.data);
-      }
-    } catch (error) {
-      console.log("error : ", error);
-    } finally {
-      setIsLoading(false);
-    }
-  };
-
-  useEffect(() => {
-    if (eoaWalletAddress && secureWalletAddress) {
-      fetchHistory();
-    }
-  }, [eoaWalletAddress, secureWalletAddress]);
 
   useEffect(() => {
     fetchUsdValue();

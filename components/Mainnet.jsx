@@ -18,6 +18,7 @@ import History from "./dashboard/History";
 import { alchemy } from "@/utils/alchemy";
 import { formatEther } from "viem";
 import HistoryCardSkelton from "./skeleton/HistoryCardSkelton";
+import HistoryCard from "./cards/HistoryCard";
 
 const Mainnet = ({ handleOpenWallet, handleCreateWallet, showWallet }) => {
   const {
@@ -32,6 +33,7 @@ const Mainnet = ({ handleOpenWallet, handleCreateWallet, showWallet }) => {
     setOriginalData,
     setSend,
     setMainContentVisible,
+    history,
   } = useContext(WalletContext);
 
   const { enqueueSnackbar } = useSnackbar();
@@ -371,23 +373,23 @@ const Mainnet = ({ handleOpenWallet, handleCreateWallet, showWallet }) => {
         </div>
       </div>
       <div className="overflow-auto custom-scrollbar h-64">
-        {isLoading ? (
+        {!history ? (
           <>
             {arr.map((e, index) => {
               return <HistoryCardSkelton key={index} />;
             })}
           </>
         ) : (
-          allToken?.map((e, ind) => (
+          history?.map((item, ind) => (
             <div key={ind} className="">
-              <TransactionItem
-                icon={e?.logo ? e?.logo : ETH}
-                label={e?.name}
-                amount={e?.price}
-                value={parseFloat(e?.balance).toFixed(3)}
-                valueName={e?.symbol}
-                send="Send"
-                receive="Receive"
+              <HistoryCard
+                key={`history_${ind}`}
+                secureWalletAddress={secureWalletAddress}
+                eoaWalletAddress={eoaWalletAddress}
+                to={item?.to}
+                hash={item?.hash}
+                value={item.value}
+                usd={0}
               />
               <hr />
             </div>

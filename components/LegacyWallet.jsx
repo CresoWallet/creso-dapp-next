@@ -168,17 +168,6 @@ const LegacyWallet = ({ handleBackButton, type, handleClose, networks }) => {
         <p className="font-semibold">Goreli Testnet</p>
       </div> */}
 
-      <div className="flex flex-row items-center justify-between">
-        <p className="text-black font-bold text-xl">Send ETH</p>
-
-        <CustomButton3
-          title="Back"
-          buttonColor="[#FFC8DC]"
-          titleColor="[#FF4085]"
-          onClick={handleBackButton}
-        />
-      </div>
-
       <div className="flex flex-col space-y-1">
         <p className="text-sm mx-4">Network </p>
 

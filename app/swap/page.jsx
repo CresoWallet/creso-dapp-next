@@ -161,7 +161,7 @@ const SwapPage = () => {
                     </div>
                   </div>
                 ) : (
-                  <div className="flex flex-row gap-2 items-center"  >
+                  <div className="flex flex-row gap-2 items-center">
                     <Image alt="" src={BNB} />
                     <div className="flex flex-col">
                       <div className="flex flex-row gap-1 items-center ">
@@ -285,11 +285,11 @@ const SwapPage = () => {
               </div>
             )}
 
-            <div className="flex justify-center xl:-mt-6 xl:-mb-12 -mt-2 -mb-7 z-10">
+            <div className="grid place-items-center">
               <Image
                 alt=""
                 src={SwapButton}
-                className="w-14 h-14 xl:w-24 xl:h-24"
+                className="w-14 h-14 xl:w-24 xl:h-24 xl:-mt-6 xl:-mb-12 -mt-2 -mb-7 z-10 "
               />
             </div>
 

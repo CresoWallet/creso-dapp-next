@@ -250,7 +250,7 @@ const LegacyWallet = ({
             </div>
           </div>
 
-          {!openNetowrkList && (
+          {openNetowrkList && (
             <>
               <div className="bg-white shadow-xl absolute px-4 py-6 top-[55px] w-full left-0 flex flex-col  gap-4 min-w-[350px] max-h-[${maxHeight}px] overflow-y-auto rounded-[20px] z-[1]">
                 {networks.map((item, key) => (

@@ -114,8 +114,9 @@ const SwapPage = () => {
         </div>
       )}
       <div
-        className={`${isMobile && showSwapForm ? "hidden" : "lg:grid-cols-10"
-          } lg:grid lg:divide-x`}
+        className={`${
+          isMobile && showSwapForm ? "hidden" : "lg:grid-cols-10"
+        } lg:grid lg:divide-x`}
       >
         <div className="lg:col-span-6 pt-16  px-10 relative">
           <div className="">
@@ -132,7 +133,7 @@ const SwapPage = () => {
           <div className="flex flex-col py-7 px-2">
             <div className="flex flex-col space-y-1">
               <p className="px-4 font-semibold  text-xs xl:text-sm md:text-sm">
-                From 
+                From
               </p>
               <div
                 className="rounded-full xl:pl-4 pl-2 xl:pr-8 pr-2 xl:py-2 py-1 flex flex-row justify-between border border-solid cursor-pointer"
@@ -140,7 +141,6 @@ const SwapPage = () => {
               >
                 {selectedToken ? (
                   <div className="flex flex-row gap-2 items-center">
-
                     <Image
                       alt=""
                       src={selectedToken.image}
@@ -154,25 +154,26 @@ const SwapPage = () => {
                           {selectedToken.symbol.toUpperCase()}
                         </p>
                         <MdOutlineKeyboardArrowDown size={20} />
-                      </div>       
+                      </div>
                       <p className="text-xs text-[#6F6E7A]">
                         {selectedToken.name}
                       </p>
                     </div>
                   </div>
                 ) : (
-                  <div className="flex flex-row gap-2 items-center">
+                  <div className="flex flex-row gap-2 items-center"  >
                     <Image alt="" src={BNB} />
                     <div className="flex flex-col">
                       <div className="flex flex-row gap-1 items-center ">
                         <p className="font-semibold xl:text-lg text-sm">BCB</p>
                         <MdOutlineKeyboardArrowDown size={20} />
                       </div>
-                      <p className="text-xs cursor-pointer text-[#6F6E7A]">Binance Coin</p>
+                      <p className="text-xs cursor-pointer text-[#6F6E7A]">
+                        Binance Coin
+                      </p>
                     </div>
                   </div>
                 )}
-
                 <div className="flex flex-row gap-2 items-center">
                   <p className="font-semibold text-sm">0x53A...e4af</p>
                   <MdOutlineKeyboardArrowDown size={20} />
@@ -448,10 +449,7 @@ const SwapPage = () => {
             </>
           )}
         </div>
-
-
       </div>
-
     </>
   );
 };

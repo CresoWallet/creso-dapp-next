@@ -78,14 +78,16 @@ const CreateWallet = ({ handleClose }) => {
           type={type}
         />
       )} */}
+
       {!wallet && (
         <div className="flex flex-col xl:mx-8 md:mx-4 mt-10 space-y-8">
           <p className="text-black font-bold text-xl ml-12 xl:ml-0 md:ml-2">
             Create Wallet
           </p>
+
           <div className="flex flex-row items-center gap-2">
             <Image alt="" src={Ethereum} className="w-10 h-10" />
-            <p className="font-semibold">Goerli Testnet</p>
+            <p className="font-semibold">Goerli Testnet </p>
             {/* <NetworkSelection /> */}
           </div>
           <div className="flex flex-col space-y-2">
@@ -110,6 +112,9 @@ const CreateWallet = ({ handleClose }) => {
                       buttonColor="[#EEEEF1]"
                       titleColor="black"
                     />
+
+                    <div></div>
+
                     <div className="flex rounded-full bg-black xl:h-8 xl:w-8 h-6 w-6 items-center justify-center cursor-pointer">
                       <BiChevronRight
                         className="text-white h-4 w-4 hover:translate-x-1 duration-500"

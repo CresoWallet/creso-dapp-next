@@ -1,5 +1,6 @@
+/* eslint-disable @next/next/no-img-element */
 "use client";
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import Modal from "@/components/modal/Modal";
 import CustomButton2 from "@/components/CustomButton2";
 import User from "@/components/User";
@@ -9,7 +10,8 @@ import CFX from "../../assets/gainers/cfx.png";
 import MINA from "../../assets/AboutUs/gainers/mina.png";
 import { usePathname } from "next/navigation";
 import { VscFeedback } from "react-icons/vsc";
-import GainersLosersList from "@/components/TopGainer_Losers/GainersLosersList";
+import { getTopGainersLosers } from "@/components/TopGainer_Losers/GainersLosersList";
+import Image from "next/image";
 
 const RightSide = (props) => {
   const {
@@ -32,7 +34,8 @@ const RightSide = (props) => {
   const [hover, setHover] = useState(false);
 
   const [activeButton, setActiveButton] = useState("TopGainers");
-
+  const [data, setData] = useState({ topGainers: [], topLosers: [] });
+  console.log("🚀 ~ RightSide ~ data:", data);
   const handleButtonClick = (buttonName) => {
     setActiveButton(buttonName);
     // Handle other button-specific logic here
@@ -45,6 +48,14 @@ const RightSide = (props) => {
   const style = { color: "white" };
   const hoverStyle = { color: "black" };
 
+  useEffect(() => {
+    const fetchData = async () => {
+      const result = await getTopGainersLosers();
+      setData(result);
+    };
+
+    fetchData();
+  }, []);
   return (
     <>
       <div className="grid relative  -mx-4 pb-32 lg:pb-0">
@@ -121,7 +132,94 @@ const RightSide = (props) => {
             </div>
           </div>
 
-          <GainersLosersList />
+          <getTopGainersLosers />
+        </div>
+
+        <div className="flex flex-col gap-4 mt-6">
+          <div className="flex flex-col gap-1"></div>
+          <h3 className="font-semibold">Top Gainers</h3>
+          {data.topGainers?.length !== 0 ? (
+            data.topGainers.map((coin) => (
+              <div
+                className="flex flex-row justify-between items-center"
+                key={coin.id}
+              >
+                <div className="flex flex-row gap-2 items-center">
+                  <div>
+                    <Image src={coin?.image} alt={coin.name} />
+                  </div>
+                  <div className="flex flex-col">
+                    <p className="uppercase text-sm font-semibold">
+                      {coin?.name}
+                    </p>
+                  </div>
+                </div>
+                <div className="flex flex-col">
+                  <p className="text-xs font-semibold">{coin?.current_price}</p>
+                  <div className="flex flex-row items-center">
+                    {renderIcon()}
+                    <p className={`text-[#14B195] text-xs justify-end`}>
+                      {coin?.price_change_percentage_24h}
+                    </p>
+                  </div>
+                </div>
+                <hr />
+              </div>
+            ))
+          ) : (
+            <div className="text-[#FF4085] ">Loading...</div>
+          )}
+          {/* <ul>
+            {data.topGainers &&
+              data.topGainers.map((coin) => (
+                <li key={coin.id} style={{ color: 'green' }}>
+                  <img src={coin.image} alt={coin.name} style={{ width: '20px', height: '20px' }} />
+                  {coin.name}: ${coin.current_price} ({coin.price_change_percentage_24h}%)
+                </li>
+              ))}
+          </ul> */}
+
+          <h3 className="font-semibold">Top Losers</h3>
+          {/* <ul>
+            {data.topLosers &&
+              data.topLosers.map((coin) => (
+                <li key={coin.id} style={{ color: 'red' }}>
+                  <img src={coin.image} alt={coin.name} style={{ width: '20px', height: '20px' }} />
+                  {coin.name}: ${coin.current_price} ({coin.price_change_percentage_24h}%)
+                </li>
+              ))}
+          </ul> */}
+          {data.topLosers?.length !== 0 ? (
+            data.topLosers.map((coin) => (
+              <div
+                className="flex flex-row justify-between items-center"
+                key={coin.id}
+              >
+                <div className="flex flex-row gap-2 items-center">
+                  <div>
+                    <Image src={coin?.image} alt={coin.name} />
+                  </div>
+                  <div className="flex flex-col">
+                    <p className="uppercase text-sm font-semibold">
+                      {coin?.name}
+                    </p>
+                  </div>
+                </div>
+                <div className="flex flex-col">
+                  <p className="text-xs font-semibold">{coin?.current_price}</p>
+                  <div className="flex flex-row items-center">
+                    {renderIcon()}
+                    <p className={`text-[#FF4085] text-xs justify-end`}>
+                      {coin?.price_change_percentage_24h}
+                    </p>
+                  </div>
+                </div>
+                <hr />
+              </div>
+            ))
+          ) : (
+            <div className="text-[#FF4085] ">Loading...</div>
+          )}
         </div>
       </div>
       <div className="relative">

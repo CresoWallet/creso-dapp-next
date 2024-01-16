@@ -8,6 +8,8 @@ import CustomButton3 from "./CustomButton3";
 import { BiChevronRight } from "react-icons/bi";
 import { IoIosClose } from "react-icons/io";
 import LegacyWallet from "./LegacyWallet";
+import { network } from "@/utils/data/coinlist";
+
 // import NetworkSelection from "./SelectNetwork";
 
 // import SecureWallet from "./SecureWallet";
@@ -65,6 +67,7 @@ const CreateWallet = ({ handleClose }) => {
           handleClose={handleClose}
           handleBackButton={() => setWallet(false)}
           type={type}
+          networks={network}
         />
       )}
 

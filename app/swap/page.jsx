@@ -132,14 +132,15 @@ const SwapPage = () => {
           <div className="flex flex-col py-7 px-2">
             <div className="flex flex-col space-y-1">
               <p className="px-4 font-semibold  text-xs xl:text-sm md:text-sm">
-                From
+                From 
               </p>
               <div
                 className="rounded-full xl:pl-4 pl-2 xl:pr-8 pr-2 xl:py-2 py-1 flex flex-row justify-between border border-solid cursor-pointer"
                 onClick={handleSeeMore}
               >
                 {selectedToken ? (
-                  <div className="flex flex-row gap-2 items-center ">
+                  <div className="flex flex-row gap-2 items-center">
+
                     <Image
                       alt=""
                       src={selectedToken.image}
@@ -153,7 +154,7 @@ const SwapPage = () => {
                           {selectedToken.symbol.toUpperCase()}
                         </p>
                         <MdOutlineKeyboardArrowDown size={20} />
-                      </div>
+                      </div>       
                       <p className="text-xs text-[#6F6E7A]">
                         {selectedToken.name}
                       </p>
@@ -167,7 +168,7 @@ const SwapPage = () => {
                         <p className="font-semibold xl:text-lg text-sm">BCB</p>
                         <MdOutlineKeyboardArrowDown size={20} />
                       </div>
-                      <p className="text-xs text-[#6F6E7A]">Binance Coin</p>
+                      <p className="text-xs cursor-pointer text-[#6F6E7A]">Binance Coin</p>
                     </div>
                   </div>
                 )}

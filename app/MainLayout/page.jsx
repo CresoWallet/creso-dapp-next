@@ -206,11 +206,7 @@ const MainLayout = () => {
                 title={"Dashboard"}
                 descriptionColor={""}
                 // icon1={<CiSearch />}
-                icon1={
-                  <SearchField
-                    onSearch={(searchTerm) => console.log(searchTerm)}
-                  />
-                }
+                icon1={<SearchField />}
                 icon2={
                   // <IoIosNotificationsOutline
                   //     onClick={handleShowNotificationPopup}

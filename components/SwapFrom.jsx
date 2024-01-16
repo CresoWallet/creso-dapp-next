@@ -1,15 +1,18 @@
 import React from "react";
 import { IoIosClose } from "react-icons/io";
-import Image from "next/image";
-import ETH from "../assets/Dashboard/ethSelect.png";
-import BnB from "../assets/Dashboard/bnb.png";
-import USDT from "../assets/Dashboard/usdt.png";
+// import Image from "next/image";
+// import ETH from "../assets/Dashboard/ethSelect.png";
+// import BnB from "../assets/Dashboard/bnb.png";
+// import USDT from "../assets/Dashboard/usdt.png";
 import { CiSearch } from "react-icons/ci";
 import User from "./User";
 import Sure from "../assets/Dashboard/gainers/sure.png";
 import Eth from "../assets/gainers/Eth.png";
 import EWeth from "../assets/gainers/mina.png";
 import Pepe from "../assets/gainers/pepe.png";
+import { WalletContext } from "@/providers/WalletProvider";
+import { useMediaQuery } from "react-responsive";
+import CoinCard from "./cards/Coin";
 
 const SwapFrom = ({ handleClose }) => {
   return (
@@ -25,7 +28,8 @@ const SwapFrom = ({ handleClose }) => {
       <div className="flex flex-col mt-10 md:mx-2 mx-2 space-y-8">
         <p className="text-black font-bold text-xl px-10 ">Swap From</p>
         <div className="flex flex-row items-center justify-between px-10">
-          <div className="flex flex-col space-y-1 items-center">
+          <CoinCard />
+          {/* <div className="flex flex-col space-y-1 items-center">
             <Image alt="" src={ETH} className="h-14 w-14" />
             <div className="flex flex-col">
               <p className="text-center text-sm">ETH</p>
@@ -52,7 +56,7 @@ const SwapFrom = ({ handleClose }) => {
               <p className="text-center text-sm">BNB</p>
               <p className="text-[#A09FAA] text-sm">$16.32</p>
             </div>
-          </div>
+          </div> */}
         </div>
         <div className="rounded-full border border-solid flex px-4 py-1 flex-row items-center justify-between ">
           <input

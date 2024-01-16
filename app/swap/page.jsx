@@ -100,6 +100,14 @@ const SwapPage = () => {
     setOpenPopup1(false);
   };
 
+  // const handleSwap = () => {
+  //   if (selectedToken && selectedToken1) {
+  //     // Swap the selectedToken and selectedToken1
+  //     setSelectedToken(selectedToken1);
+  //     setSelectedToken1(selectedToken);
+  //   }
+  // };
+
   const [searchQuery, setSearchQuery] = useState("");
   const filteredData = originalData.filter((item) =>
     item.symbol.toUpperCase().includes(searchQuery.toUpperCase())
@@ -293,6 +301,7 @@ const SwapPage = () => {
                 alt=""
                 src={SwapButton}
                 className="w-14 h-14 xl:w-24 xl:h-24"
+                // onClick={handleSwap}
               />
             </div>
 

@@ -188,7 +188,9 @@ const SendETH = ({
       </div>
 
       <div className="flex flex-col space-y-1">
-        <p className="text-sm mx-4">Network</p>
+        <p className="text-sm mx-4">Network </p>
+
+        
         <div className="flex flex-row justify-between items-center gap-2 border border-solid rounded-full px-4 py-2 relative">
           <div
             className="flex flex-row items-center gap-2 w-full justify-between cursor-pointer"
@@ -295,13 +297,7 @@ const SendETH = ({
             </>
           )}
         </div>
-        {/* <div className="flex flex-row justify-between items-center gap-2 border border-solid rounded-full px-4 py-2 min-h-[66px] text-[13px] text-[#a09faa]">
-          <input
-            className="text-sm placeholder:text-[#A09FAA] placeholder:text-xs focus:outline-none"
-            placeholder="Enter wallet address or ENS,NNS"
-          ></input>
-          0x7Cb6cAfa1fB1eAf283C1857897296866b3b6829B
-        </div> */}
+   
       </div>
 
       <div className="flex justify-between pt-2">

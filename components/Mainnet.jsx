@@ -46,7 +46,7 @@ const Mainnet = ({ handleOpenWallet, handleCreateWallet, showWallet }) => {
   //   setNewWalletName(e.target.value);
   // };
   //console.log("tokenPrices-->", tokenPrices);
-  const arr = ["1", "2", "3"];
+  // const arr = ["1", "2", "3"];
   useEffect(() => {
     if (!showWallet) {
       setActiveButton("");
@@ -407,9 +407,12 @@ const Mainnet = ({ handleOpenWallet, handleCreateWallet, showWallet }) => {
       <div className="overflow-auto custom-scrollbar h-64">
         {!history ? (
           <>
-            {arr.map((e, index) => {
+            {/* {arr.map((e, index) => {
               return <HistoryCardSkelton key={index} />;
-            })}
+            })} */}
+            <div className="text-gray-500 grid place-items-center pt-32 lg:pt-20 xl:pt-32">
+              No transaction to show
+            </div>
           </>
         ) : (
           history?.map((item, ind) => (

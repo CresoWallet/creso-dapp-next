@@ -20,7 +20,7 @@ const LeftSide = (props) => {
     handleCoinWallet,
     handleShowModel,
     handleShowWallet,
-    coinDataprice
+    coinDataprice,
     // user,
     // status,
   } = props;
@@ -55,9 +55,12 @@ const LeftSide = (props) => {
             {!user?.isEmailVerified && (
               <Backup onClick={() => handleShowModel()} />
             )}
-            <div className="gap-5 overflow-x-scroll lg:max-w-sm xl:max-w-2xl ">
+            <div className="col-span-6 overflow-x-auto">
               {/* <AddCoinButton /> */}
-              <CoinCard handleCoinWallet={handleCoinWallet} coinDataprice={coinDataprice} />
+              <CoinCard
+                handleCoinWallet={handleCoinWallet}
+                coinDataprice={coinDataprice}
+              />
             </div>
             <Mainnet
               handleOpenWallet={handleShowWallet}

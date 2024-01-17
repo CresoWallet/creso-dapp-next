@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import Image from "next/image";
 import QRCode from "react-qr-code";
 
@@ -8,6 +8,8 @@ import QR from "../assets/Dashboard/qr.png";
 import { copyToClipBoard, minifyEthereumAddress } from "@/utils";
 import { enqueueSnackbar } from "notistack";
 import { WalletContext } from "@/providers/WalletProvider";
+import { VscFeedback } from "react-icons/vsc";
+<VscFeedback />;
 // import Breaker from "../assets/Dashboard/Line.png";
 
 const WalletAddress = ({ handleBackButton, wallet }) => {
@@ -21,6 +23,10 @@ const WalletAddress = ({ handleBackButton, wallet }) => {
     activeButton === "AA"
       ? copyToClipBoard(secureWalletAddress)
       : copyToClipBoard(eoaWalletAddress);
+
+  const [hover, setHover] = useState(false);
+  const style = { color: "white" };
+  const hoverStyle = { color: "black" };
   return (
     <div className="bg-white flex flex-col xl:pl-8 md:pl-4 mx-0 px-2 xl:px-0 md:px-2 pt-16 w-full xl:pr-10 pr-2 space-y-4 min-h-screen h-full z-20">
       {/* <div className="bg-white flex flex-col xl:pl-8 md:pl-4 mx-0 px-2 xl:px-0 md:px-2 pt-16 w-full xl:pr-10 pr-2 space-y-4  h-[105vh] z-20"> */}
@@ -99,6 +105,27 @@ const WalletAddress = ({ handleBackButton, wallet }) => {
           Please do not deposit any assets that are not from Ethereum or EVM
           compatible chain, otherwise the assets will be lost.
         </div>
+      </div>
+      <div className="relative">
+        <a
+          onMouseEnter={() => setHover(true)}
+          onMouseLeave={() => setHover(false)}
+          href="https://forms.gle/GBEKLjSH7hxQiuPv8"
+          target="_blank"
+          className={`${
+            hover ? "bg-white border border-[#2100EC] " : "bg-[#2100EC]"
+          } fixed bottom-24 lg:bottom-12 right-12 cursor-pointer shadow-2xl z-50 h-20 w-20 grid place-items-center rounded-full `}
+        >
+          <div className="absolute grid place-items-center">
+            <VscFeedback style={hover ? hoverStyle : style} size={30} />
+          </div>
+          {hover && (
+            <p className="absolute p-2 rounded-lg font-semibold  -top-12 bg-black text-white ">
+              {" "}
+              Feedback
+            </p>
+          )}
+        </a>
       </div>
     </div>
   );

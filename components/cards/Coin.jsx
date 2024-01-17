@@ -11,12 +11,15 @@ const CoinCard = ({ handleCoinWallet }) => {
   const [openPopup, setOpenPopup] = useState(false);
   const [showAllTokens, setShowAllTokens] = useState(false);
   const isLaptop = useMediaQuery({ query: `(max-width: 1024px)` });
+  const isXL = useMediaQuery({ query: `(max-width: 1440px)` });
   console.log("🚀 ~ CoinCard ~ originalData:", originalData);
 
-  const top10Token = originalData.slice(0, 7);
+  const top10Token = originalData.slice(0, 10);
+  const top7Token = originalData.slice(0, 7);
   const top5Token = originalData.slice(0, 5);
 
-  const topsToken = isMobile ? top5Token : top10Token;
+  const topsToken =
+    isLaptop || isMobile ? top5Token : isXL ? top7Token : top10Token;
 
   // const [currentPage, setCurrentPage] = useState(1);
   // const tokensPerPage = 10;
@@ -29,7 +32,7 @@ const CoinCard = ({ handleCoinWallet }) => {
   };
 
   // Object.entries(getTokensPrice).map((e) => {
-  //   console.log("🚀 ~ e 😂😂😁😁😂😁:", e)
+  //   console.log("🚀 ~ e :", e)
   //   return e
   // })
   const handleBackgroundClick = (e) => {

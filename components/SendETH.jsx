@@ -19,6 +19,8 @@ import { enqueueSnackbar } from "notistack";
 import { WalletContext } from "@/providers/WalletProvider";
 import { tokenList } from "@/utils/data/coinlist";
 import { getTokenBalance } from "@/services/ethers/wallet";
+import { VscFeedback } from "react-icons/vsc";
+<VscFeedback />;
 
 const SendETH = ({
   handleOpenWallet,
@@ -171,6 +173,9 @@ const SendETH = ({
     fetchTokenBalance();
   }, [selectedWallet, selectedCoin, initialToken]);
 
+  const [hover, setHover] = useState(false);
+  const style = { color: "white" };
+  const hoverStyle = { color: "black" };
   return (
     <form
       onSubmit={handleSubmit(onSubmit)}
@@ -190,7 +195,6 @@ const SendETH = ({
       <div className="flex flex-col space-y-1">
         <p className="text-sm mx-4">Network </p>
 
-        
         <div className="flex flex-row justify-between items-center gap-2 border border-solid rounded-full px-4 py-2 relative">
           <div
             className="flex flex-row items-center gap-2 w-full justify-between cursor-pointer"
@@ -297,7 +301,6 @@ const SendETH = ({
             </>
           )}
         </div>
-   
       </div>
 
       <div className="flex justify-between pt-2">
@@ -600,6 +603,27 @@ const SendETH = ({
           bgColor="black"
           type={"submit"}
         />
+      </div>
+      <div className="relative">
+        <a
+          onMouseEnter={() => setHover(true)}
+          onMouseLeave={() => setHover(false)}
+          href="https://forms.gle/GBEKLjSH7hxQiuPv8"
+          target="_blank"
+          className={`${
+            hover ? "bg-white border border-[#2100EC] " : "bg-[#2100EC]"
+          } fixed bottom-24 lg:bottom-12 right-12 cursor-pointer shadow-2xl z-50 h-20 w-20 grid place-items-center rounded-full `}
+        >
+          <div className="absolute grid place-items-center">
+            <VscFeedback style={hover ? hoverStyle : style} size={30} />
+          </div>
+          {hover && (
+            <p className="absolute p-2 rounded-lg font-semibold  -top-12 bg-black text-white ">
+              {" "}
+              Feedback
+            </p>
+          )}
+        </a>
       </div>
     </form>
   );

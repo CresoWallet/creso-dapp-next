@@ -1,4 +1,6 @@
-import React, { useState } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
+import { WalletContext } from "@/providers/WalletProvider";
+import { useMediaQuery } from "react-responsive";
 import { IoIosClose } from "react-icons/io";
 // import Image from "next/image";
 // import ETH from "../assets/Dashboard/ethSelect.png";
@@ -10,9 +12,7 @@ import Sure from "../assets/Dashboard/gainers/sure.png";
 import Eth from "../assets/gainers/Eth.png";
 import EWeth from "../assets/gainers/mina.png";
 import Pepe from "../assets/gainers/pepe.png";
-import { WalletContext } from "@/providers/WalletProvider";
-import { useMediaQuery } from "react-responsive";
-import CoinCard from "./cards/Coin";
+// import CoinCard from "./cards/Coin";
 import { VscFeedback } from "react-icons/vsc";
 <VscFeedback />;
 
@@ -20,6 +20,35 @@ const SwapFrom = ({ handleClose }) => {
   const [hover, setHover] = useState(false);
   const style = { color: "white" };
   const hoverStyle = { color: "black" };
+  const { originalData, isMobile } = useContext(WalletContext);
+  const [openPopup, setOpenPopup] = useState(false);
+  const isLaptop = useMediaQuery({ query: `(max-width: 1024px)` });
+  const isXL = useMediaQuery({ query: `(max-width: 1440px)` });
+
+  const top6Token = originalData.slice(0, 6);
+  const top5Token = originalData.slice(0, 5);
+  const top3Token = originalData.slice(0, 3);
+
+  const topsToken =
+    isLaptop || isMobile ? top3Token : isXL ? top5Token : top6Token;
+  const handleSeeMore = () => {
+    setOpenPopup(true);
+  };
+  const handleBackgroundClick = (e) => {
+    if (popupRef.current === e.target) {
+      setOpenPopup(false);
+    }
+  };
+  const handleClosePopup = () => {
+    setOpenPopup(false);
+  };
+  const popupRef = useRef();
+
+  const [searchQuery, setSearchQuery] = useState("");
+  const filteredData = originalData.filter((item) =>
+    item.symbol.toUpperCase().includes(searchQuery.toUpperCase())
+  );
+
   return (
     <div className="bg-white shadow-xl min-w-max lg:w-auto h-[123vh] lg:h-[100vh] lg:block ">
       {/* <div className="flex rounded-full bg-black h-8 w-8 items-center justify-center xl:-ml-4 md:-ml-4 mt-10 absolute">
@@ -33,7 +62,105 @@ const SwapFrom = ({ handleClose }) => {
       <div className="flex flex-col mt-10 md:mx-2 mx-2 space-y-8">
         <p className="text-black font-bold text-xl px-10 ">Swap From</p>
         <div className="flex flex-row items-center justify-between px-10">
-          <CoinCard />
+          {/* coins added */}
+          <div className="flex justify-between gap-5 xl:gap-4 sm:gap-3 md:gap-4 py-3">
+            {topsToken.map((item, index) => {
+              return (
+                <div
+                  className="md:flex flex-col space-y-1 items-center cursor-pointer hover:-translate-y-1 duration-500"
+                  onClick={(e) => {
+                    handleCoinWallet(item);
+                  }}
+                  key={index}
+                >
+                  <div className="grid place-items-center w-full md:w-auto">
+                    <img
+                      alt={item.symbol}
+                      src={item?.image}
+                      className="xl:h-12 xl:w-12 w-8 h-8 rounded-full"
+                    />
+                  </div>
+                  <div className="flex flex-col">
+                    <p className="text-center xl:text-sm text-xs md:text-xs">
+                      {item.symbol.toUpperCase()}
+                    </p>
+
+                    <p className="text-[#A09FAA] flex gap-1 xl:text-sm text-xs md:text-xs">
+                      <span>$</span> {item?.current_price.toFixed(2)}
+                    </p>
+                  </div>
+                </div>
+              );
+            })}
+
+            {originalData?.length !== 0 ? (
+              <div
+                className="text-[#FF4085] cursor-pointer hover:font-semibold"
+                onClick={handleSeeMore}
+              >
+                See More
+              </div>
+            ) : (
+              <div className="text-[#FF4085] font-semibold w-full text-center">
+                Loading...
+              </div>
+            )}
+          </div>
+
+          {openPopup && (
+            <div
+              className="fixed top-0 right-0 w-full h-full flex items-center justify-center bg-gray-800 bg-opacity-75 z-50"
+              ref={popupRef}
+              onClick={handleBackgroundClick}
+            >
+              <div className="bg-white rounded-3xl p-5 relative ">
+                <div className="absolute top-2 right-2 bg-black rounded-full h-6 w-6  flex items-center justify-center cursor-pointer z-[99]">
+                  <IoIosClose
+                    className="text-white h-7 w-7 cursor-pointer"
+                    onClick={handleClosePopup}
+                  />
+                </div>
+
+                <input
+                  type="text"
+                  placeholder="Search by Name..."
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  className="my-5 px-4 md:px-5 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:border-blue-300 w-full"
+                />
+
+                <div className="grid grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 lg:gap-10 space-y-4 items-center max-h-[50vh] overflow-y-auto">
+                  {filteredData.map((item, index) => (
+                    <div
+                      className="flex md:flex-col gap-2 md:gap-0 space-y-1 items-center cursor-pointer hover:-translate-y-1 duration-500"
+                      onClick={() => {
+                        handleCoinWallet(item);
+                        setOpenPopup(false);
+                      }}
+                      key={index}
+                    >
+                      <div className="grid place-items-center">
+                        <img
+                          alt={item.symbol}
+                          src={item?.image}
+                          className="xl:h-12 xl:w-12 w-8 h-8 rounded-full"
+                        />
+                      </div>
+                      <div className="flex flex-col">
+                        <p className="md:text-center xl:text-sm text-xs md:text-xs">
+                          {item.symbol.toUpperCase()}
+                        </p>
+                        <p className="text-[#A09FAA] flex gap-1 xl:text-sm text-xs md:text-xs">
+                          <span>$</span> {item?.current_price.toFixed(2)}
+                        </p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          )}
+          {/* <CoinCard /> */}
           {/* <div className="flex flex-col space-y-1 items-center">
             <Image alt="" src={ETH} className="h-14 w-14" />
             <div className="flex flex-col">

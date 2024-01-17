@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import React, { useContext, useEffect, useRef, useState } from "react";
 import { WalletContext } from "@/providers/WalletProvider";
 import { useMediaQuery } from "react-responsive";

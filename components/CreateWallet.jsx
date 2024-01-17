@@ -77,13 +77,7 @@ const CreateWallet = ({ handleClose }) => {
         />
       )}
 
-      {/* {legacyWallet && (
-          <LegacyWallet
-          handleClose={handleClose}
-          handleBackButton={handleBackButtonClick}
-          type={type}
-        />
-      )} */}
+   
 
       {!wallet && (
         <div className="flex flex-col xl:mx-8 md:mx-4 mt-10 space-y-8">
@@ -118,8 +112,6 @@ const CreateWallet = ({ handleClose }) => {
                       buttonColor="[#EEEEF1]"
                       titleColor="black"
                     />
-
-                    <div></div>
 
                     <div className="flex rounded-full bg-black xl:h-8 xl:w-8 h-6 w-6 items-center justify-center cursor-pointer">
                       <BiChevronRight

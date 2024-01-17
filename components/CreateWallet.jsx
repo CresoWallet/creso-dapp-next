@@ -168,7 +168,7 @@ const CreateWallet = ({ handleClose }) => {
             </div>
           </div>
         </div>
-      )}
+      )}  
     </div>
   );
 };

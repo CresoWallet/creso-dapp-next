@@ -144,11 +144,10 @@ const SwapPage = () => {
                 From
               </p>
               <div
-                className="rounded-full xl:pl-4 pl-2 xl:pr-8 pr-2 xl:py-2 py-1 flex flex-row justify-between border border-solid cursor-pointer"
-                onClick={handleSeeMore}
+                className="rounded-full xl:pl-4 pl-2 xl:pr-8 pr-2 xl:py-2 py-1 flex flex-row justify-between border border-solid cursor-pointer " 
               >
                 {selectedToken ? (
-                  <div className="flex flex-row gap-2 items-center">
+                  <div className="flex flex-row gap-2 items-center ">
                     <Image
                       alt=""
                       src={selectedToken.image}
@@ -169,7 +168,9 @@ const SwapPage = () => {
                     </div>
                   </div>
                 ) : (
-                  <div className="flex flex-row gap-2 items-center">
+                  <div className="flex flex-row gap-2 items-center"  
+                onClick={handleSeeMore}
+                      >
                     <Image alt="" src={BNB} />
                     <div className="flex flex-col">
                       <div className="flex flex-row gap-1 items-center ">
@@ -310,7 +311,6 @@ const SwapPage = () => {
 
               <div
                 className="rounded-full xl:pl-4 pl-2 xl:pr-8 pr-2 xl:py-2 py-1 flex flex-row justify-between border border-solid"
-                onClick={handleSeeMore1}
               >
                 {selectedToken1 ? (
                   <div className="flex flex-row gap-2 items-center ">
@@ -333,7 +333,9 @@ const SwapPage = () => {
                     </div>
                   </div>
                 ) : (
-                  <div className="flex flex-row gap-2 items-center">
+                  <div className="flex flex-row gap-2 items-center"
+                onClick={handleSeeMore1}
+                  >
                     <Image alt="" src={Etherum} />
                     <div className="flex flex-col">
                       <div className="flex flex-row gap-1 items-center">

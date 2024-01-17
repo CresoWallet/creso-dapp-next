@@ -42,6 +42,7 @@ const Mainnet = ({ handleOpenWallet, handleCreateWallet, showWallet }) => {
   const { enqueueSnackbar } = useSnackbar();
   const [tokenPrices, setTokenPrices] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
+
   // const handleWalletNameChange = (e) => {
   //   setNewWalletName(e.target.value);
   // };
@@ -52,6 +53,10 @@ const Mainnet = ({ handleOpenWallet, handleCreateWallet, showWallet }) => {
       setActiveButton("");
     }
   }, [activeButton]);
+
+
+
+
 
   // const handleSaveWalletName = () => {
   //   // Perform any necessary validation on the new wallet name
@@ -248,6 +253,9 @@ const Mainnet = ({ handleOpenWallet, handleCreateWallet, showWallet }) => {
     };
     delayedFetch();
   }, [activeButton]);
+
+
+  // Add this line near the top of your component
 
   return (
     <div className="flex flex-col xl:space-y-8 md:space-y-8 space-y-2">

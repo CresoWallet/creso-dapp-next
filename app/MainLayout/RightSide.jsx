@@ -93,7 +93,7 @@ const RightSide = (props) => {
               />
             </div>
           )}
-          {/* <div className="flex flex-col gap-4 mt-6">
+          <div className="flex flex-col gap-4 mt-6">
             <div className="flex flex-col gap-1">
               <User
                 name="SURE"
@@ -133,16 +133,16 @@ const RightSide = (props) => {
               />
               <hr />
             </div>
-          </div> */}
+          </div>
 
-          <getTopGainersLosers />
+
         </div>
+        {/* <getTopGainersLosers />
         {activeButton === "TopGainers" && (
           <div className="flex flex-col gap-4 mt-6">
             {data.topGainers?.length !== 0 ? (
               data.topGainers.map((coin) => (
-                // Render top gainers UI here
-                <div key={coin.id}>{/* Your UI for top gainers */}</div>
+                <div key={coin.id}></div>
               ))
             ) : (
               <div className="text-[#FF4085]">Loading...</div>
@@ -154,14 +154,13 @@ const RightSide = (props) => {
           <div className="flex flex-col gap-4 mt-6">
             {data.topLosers?.length !== 0 ? (
               data.topLosers.map((coin) => (
-                // Render top losers UI here
-                <div key={coin.id}>{/* Your UI for top losers */}</div>
+                <div key={coin.id}></div>
               ))
             ) : (
               <div className="text-[#FF4085]">Loading...</div>
             )}
           </div>
-        )}
+        )} */}
       </div>
 
       {/* <div className="flex flex-col gap-4 mt-6">
@@ -240,9 +239,8 @@ const RightSide = (props) => {
           onMouseLeave={() => setHover(false)}
           href="https://forms.gle/GBEKLjSH7hxQiuPv8"
           target="_blank"
-          className={`${
-            hover ? "bg-white border border-[#2100EC] " : "bg-[#2100EC]"
-          } fixed bottom-24 lg:bottom-12 right-12 cursor-pointer shadow-2xl z-50 h-20 w-20 grid place-items-center rounded-full `}
+          className={`${hover ? "bg-white border border-[#2100EC] " : "bg-[#2100EC]"
+            } fixed bottom-24 lg:bottom-12 right-12 cursor-pointer shadow-2xl z-50 h-20 w-20 grid place-items-center rounded-full `}
         >
           <div className="absolute grid place-items-center">
             <VscFeedback style={hover ? hoverStyle : style} size={30} />

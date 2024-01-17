@@ -38,7 +38,10 @@ const SideNav = () => {
   return (
     <div className="bg-[#2100EC] rounded-3xl  min-h-full pb-10">
       <div className="flex flex-col pt-12 lg:h-full items-center lg:items-start">
-        <Link href="/dashboard" className="flex flex-row items-center gap-1 px-8 relative Mainlogo text-white">
+        <Link
+          href="/dashboard"
+          className="flex flex-row items-center gap-1 px-8 relative Mainlogo text-white"
+        >
           <Image alt="creso-logo" src={creso} className="h-10 my-8 mb-14" />
 
           {/* 
@@ -104,7 +107,7 @@ const SideNav = () => {
             href="/setting"
             icon={Setting}
             hoverIcon={Setting1}
-            label="Setting"
+            label="Settings"
             active={activeIcon === "setting"}
             onClick={() => handleIconClick("setting")}
           />
@@ -162,6 +165,3 @@ const SideNav = () => {
 };
 
 export default SideNav;
-
-
-

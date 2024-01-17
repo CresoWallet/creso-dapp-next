@@ -42,7 +42,7 @@ const LeftHeader = (props) => {
         )}
       </div>
       {/* Right Icon List */}
-      <div className="flex flex-row items-center justify-between text-3xl gap-4">
+      <div className="flex flex-row items-center  justify-between text-3xl gap-4 ">
         {icon1 && <div className="icon-set-1">{icon1}</div>}
         {icon2 && <div className="icon-set-2">{icon2}</div>}
         {iconImg1 && <Image alt="" src={Settings} />}

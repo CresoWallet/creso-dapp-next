@@ -111,12 +111,12 @@ const AccountPage = () => {
             <div className="flex flex-col space-y-2">
               <p className="text-sm mx-4 ">Email / Phone</p>
               {user && (
-                <div className="flex flex-row items-center rounded-full border border-solid border-[#E5E5F0] justify-between xl:py-4 xl:px-4 py-2 px-2">
+                <div className="flex flex-row items-center rounded-full border border-solid border-[#E5E5F0] justify-between xl:py-4 xl:px-4 py-2 px-2 w-full">
                   <p className="text-sm mx-4 text-gray-400">{user?.email}</p>
                   <button
                     onClick={() => setShowModal(true)}
                     disabled={user?.isEmailVerified}
-                    className="bg-[#D0F500] hover:font-bold cursor-pointer xl:py-2 xl:px-2 md:py-2 px-1 py-1 md:px-2 border border-solid rounded-full border-black text-xs items-center justify-center sm:-ml-"
+                    className="bg-[#D0F500] hover:font-bold cursor-pointer xl:py-2 xl:px-2 md:py-2 px-1 py-1 md:px-2 border border-solid rounded-full border-black text-xs items-center justify-center "
                   >
                     {user?.isEmailVerified ? "Verified" : "Verify"}
                   </button>

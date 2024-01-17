@@ -13,15 +13,10 @@ import { FiInfo } from "react-icons/fi";
 import Sucess from "../assets/Dashboard/Sucess.svg";
 import BNB from "../assets/Dashboard/bnb2.png";
 import Polygon from "../assets/Dashboard/polygon.png";
+import { VscFeedback } from "react-icons/vsc";
+<VscFeedback />;
 
-
-
-const LegacyWallet = ({ 
-  handleBackButton, 
-  type, 
-  handleClose,
-  networks 
-}) => {
+const LegacyWallet = ({ handleBackButton, type, handleClose, networks }) => {
   const [wallet, setWallet] = useState(false);
   const [inputText, setInputText] = useState("");
   const [error, setError] = useState(false);
@@ -30,10 +25,6 @@ const LegacyWallet = ({
   const [networkFirstValue] = networks.values();
   const [openWalletList, setOpenWalletList] = useState(false);
   const [openNetowrkList, setOpenNetworkList] = useState(false);
-
-
-  
-  
 
   const [selectedNetwork, setSelectedNetwork] = useState();
 
@@ -47,7 +38,6 @@ const LegacyWallet = ({
 
   const popupRef = useRef();
 
-
   const handleChange = (e) => {
     const newText = e.target.value;
 
@@ -59,8 +49,6 @@ const LegacyWallet = ({
       setError(true); // Set error state if exceeding the limit
     }
   };
-
-  
 
   const handleCreateEOAWallet = async () => {
     setLoading(true);
@@ -156,10 +144,12 @@ const LegacyWallet = ({
   };
 
   const handleSelectNetwork = (item) => {
-    
     setSelectedNetwork(item);
     setOpenNetworkList(false);
   };
+  const [hover, setHover] = useState(false);
+  const style = { color: "white" };
+  const hoverStyle = { color: "black" };
 
   return (
     <div className="absolute bg-white flex flex-col xl:mx-8 md:mx-4 mx-0 mt-10 xl:px-0 px-2 md:px-2 space-y-8 h-full">
@@ -183,21 +173,9 @@ const LegacyWallet = ({
         <p className="font-semibold">Goreli Testnet</p>
       </div> */}
 
-      <div className="flex flex-row items-center justify-between">
-        <p className="text-black font-bold text-xl">Send ETH</p>
-
-        <CustomButton3
-          title="Back"
-          buttonColor="[#FFC8DC]"
-          titleColor="[#FF4085]"
-          onClick={handleBackButton}
-        />
-      </div>
-
       <div className="flex flex-col space-y-1">
         <p className="text-sm mx-4">Network </p>
 
-        
         <div className="flex flex-row justify-between items-center gap-2 border border-solid rounded-full px-4 py-2 relative">
           <div
             className="flex flex-row items-center gap-2 w-full justify-between cursor-pointer"
@@ -304,29 +282,7 @@ const LegacyWallet = ({
             </>
           )}
         </div>
-   
       </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
       <div className="flex flex-row gap-2 text-[#A09FAA]">
         <FiInfo size={35} />
@@ -347,7 +303,7 @@ const LegacyWallet = ({
               required={true}
               type="text"
               placeholder="E.g. My Wallet"
-              className="placeholder:text-sm placeholder:text-black placeholder:font-bold px-5 focus:outline-none"
+              className="placeholder:text-xs placeholder:text-black placeholder:font-bold  px-5 focus:outline-none w-full"
               value={inputText}
               onChange={handleChange}
               maxLength={40} // Adjust the max length to 40 characters
@@ -402,6 +358,27 @@ const LegacyWallet = ({
             isDisabled={false}
           />
         )}
+      </div>
+      <div className="relative">
+        <a
+          onMouseEnter={() => setHover(true)}
+          onMouseLeave={() => setHover(false)}
+          href="https://forms.gle/GBEKLjSH7hxQiuPv8"
+          target="_blank"
+          className={`${
+            hover ? "bg-white border border-[#2100EC] " : "bg-[#2100EC]"
+          } fixed bottom-24 lg:bottom-12 right-12 cursor-pointer shadow-2xl z-50 h-20 w-20 grid place-items-center rounded-full `}
+        >
+          <div className="absolute grid place-items-center">
+            <VscFeedback style={hover ? hoverStyle : style} size={30} />
+          </div>
+          {hover && (
+            <p className="absolute p-2 rounded-lg font-semibold  -top-12 bg-black text-white ">
+              {" "}
+              Feedback
+            </p>
+          )}
+        </a>
       </div>
     </div>
   );

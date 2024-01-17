@@ -24,8 +24,6 @@ import NotificationPopup from "../../components/Notification";
 import { IoIosNotificationsOutline } from "react-icons/io";
 import SearchField from "../../components/SearchFiled";
 
-import { VscFeedback } from "react-icons/vsc";
-
 const MainLayout = () => {
   const router = useRouter();
   const [showCreateWallet, setShowCreateWallet] = useState(false);

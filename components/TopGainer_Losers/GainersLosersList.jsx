@@ -15,9 +15,20 @@ export const getTopGainersLosers = async () => {
       }
     );
 
+    // // Process the response data as needed
+    // const topGainers = response.data.slice(0, 5);
+    // const topLosers = response.data.slice(-5);
+
     // Process the response data as needed
-    const topGainers = response.data.slice(0, 5);
-    const topLosers = response.data.slice(-5);
+    let topGainers, topLosers;
+
+    if (isGainersOnly) {
+      topGainers = response.data.slice(0, 5);
+      topLosers = [];
+    } else {
+      topGainers = response.data.slice(0, 5);
+      topLosers = response.data.slice(-5);
+    }
 
     return { topGainers, topLosers };
   } catch (error) {

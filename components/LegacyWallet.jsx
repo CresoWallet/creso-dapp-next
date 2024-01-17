@@ -13,6 +13,8 @@ import { FiInfo } from "react-icons/fi";
 import Sucess from "../assets/Dashboard/Sucess.svg";
 import BNB from "../assets/Dashboard/bnb2.png";
 import Polygon from "../assets/Dashboard/polygon.png";
+import { VscFeedback } from "react-icons/vsc";
+<VscFeedback />;
 
 const LegacyWallet = ({ handleBackButton, type, handleClose, networks }) => {
   const [wallet, setWallet] = useState(false);
@@ -145,6 +147,9 @@ const LegacyWallet = ({ handleBackButton, type, handleClose, networks }) => {
     setSelectedNetwork(item);
     setOpenNetworkList(false);
   };
+  const [hover, setHover] = useState(false);
+  const style = { color: "white" };
+  const hoverStyle = { color: "black" };
 
   return (
     <div className="absolute bg-white flex flex-col xl:mx-8 md:mx-4 mx-0 mt-10 xl:px-0 px-2 md:px-2 space-y-8 h-full">
@@ -353,6 +358,27 @@ const LegacyWallet = ({ handleBackButton, type, handleClose, networks }) => {
             isDisabled={false}
           />
         )}
+      </div>
+      <div className="relative">
+        <a
+          onMouseEnter={() => setHover(true)}
+          onMouseLeave={() => setHover(false)}
+          href="https://forms.gle/GBEKLjSH7hxQiuPv8"
+          target="_blank"
+          className={`${
+            hover ? "bg-white border border-[#2100EC] " : "bg-[#2100EC]"
+          } fixed bottom-24 lg:bottom-12 right-12 cursor-pointer shadow-2xl z-50 h-20 w-20 grid place-items-center rounded-full `}
+        >
+          <div className="absolute grid place-items-center">
+            <VscFeedback style={hover ? hoverStyle : style} size={30} />
+          </div>
+          {hover && (
+            <p className="absolute p-2 rounded-lg font-semibold  -top-12 bg-black text-white ">
+              {" "}
+              Feedback
+            </p>
+          )}
+        </a>
       </div>
     </div>
   );

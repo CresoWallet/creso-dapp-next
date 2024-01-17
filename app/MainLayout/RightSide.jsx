@@ -50,12 +50,13 @@ const RightSide = (props) => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const result = await getTopGainersLosers();
+      // Pass true to fetch only gainers on the about and swap pages
+      const result = await getTopGainersLosers(isAboutPage || isSwapPage, true);
       setData(result);
     };
 
     fetchData();
-  }, []);
+  }, [isAboutPage, isSwapPage]);
   return (
     <>
       <div className="grid relative  -mx-4 pb-32 lg:pb-0">

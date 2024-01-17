@@ -16,6 +16,8 @@ import SendETH from "./SendETH";
 import WalletAddress from "./WalletAddress";
 import { network } from "@/utils/data/coinlist";
 import { WalletContext } from "@/providers/WalletProvider";
+import { VscFeedback } from "react-icons/vsc";
+<VscFeedback />;
 
 const SecureWallet = ({ handleClose, wallets, walletType }) => {
   // const [send, setSend] = useState(false);
@@ -54,6 +56,9 @@ const SecureWallet = ({ handleClose, wallets, walletType }) => {
     setSend(false);
   };
 
+  const [hover, setHover] = useState(false);
+  const style = { color: "white" };
+  const hoverStyle = { color: "black" };
   return (
     <div
       className={`bg-white shadow-xl min-w-max lg:w-auto h-[123vh] lg:h-[100vh] lg:block relative `}
@@ -185,6 +190,27 @@ const SecureWallet = ({ handleClose, wallets, walletType }) => {
               </div>
             </div>
           </div> */}
+          <div className="relative">
+            <a
+              onMouseEnter={() => setHover(true)}
+              onMouseLeave={() => setHover(false)}
+              href="https://forms.gle/GBEKLjSH7hxQiuPv8"
+              target="_blank"
+              className={`${
+                hover ? "bg-white border border-[#2100EC] " : "bg-[#2100EC]"
+              } fixed bottom-24 lg:bottom-12 right-12 cursor-pointer shadow-2xl z-50 h-20 w-20 grid place-items-center rounded-full `}
+            >
+              <div className="absolute grid place-items-center">
+                <VscFeedback style={hover ? hoverStyle : style} size={30} />
+              </div>
+              {hover && (
+                <p className="absolute p-2 rounded-lg font-semibold  -top-12 bg-black text-white ">
+                  {" "}
+                  Feedback
+                </p>
+              )}
+            </a>
+          </div>
         </div>
       )}
     </div>

@@ -136,8 +136,12 @@ const RightSide = (props) => {
           <getTopGainersLosers />
         </div>
 
-        <div className="flex flex-col gap-4 mt-6">
-          <div className="flex flex-col gap-1"></div>
+
+        {/* <div className="flex flex-col gap-4 mt-6">
+          <div className="flex flex-col gap-1">
+
+
+          </div>
           <h3 className="font-semibold">Top Gainers</h3>
           {data.topGainers?.length !== 0 ? (
             data.topGainers.map((coin) => (
@@ -165,32 +169,11 @@ const RightSide = (props) => {
                   </div>
                 </div>
                 <hr />
-              </div>
-            ))
-          ) : (
-            <div className="text-[#FF4085] ">Loading...</div>
-          )}
-          {/* <ul>
-            {data.topGainers &&
-              data.topGainers.map((coin) => (
-                <li key={coin.id} style={{ color: 'green' }}>
-                  <img src={coin.image} alt={coin.name} style={{ width: '20px', height: '20px' }} />
-                  {coin.name}: ${coin.current_price} ({coin.price_change_percentage_24h}%)
-                </li>
-              ))}
-          </ul> */}
+              </div>)) : <div className="text-[#FF4085] ">Loading...</div>}
 
           <h3 className="font-semibold">Top Losers</h3>
-          {/* <ul>
-            {data.topLosers &&
-              data.topLosers.map((coin) => (
-                <li key={coin.id} style={{ color: 'red' }}>
-                  <img src={coin.image} alt={coin.name} style={{ width: '20px', height: '20px' }} />
-                  {coin.name}: ${coin.current_price} ({coin.price_change_percentage_24h}%)
-                </li>
-              ))}
-          </ul> */}
-          {data.topLosers?.length !== 0 ? (
+          
+          {data.topLosers?.length !== 0 ?
             data.topLosers.map((coin) => (
               <div
                 className="flex flex-row justify-between items-center"
@@ -216,12 +199,8 @@ const RightSide = (props) => {
                   </div>
                 </div>
                 <hr />
-              </div>
-            ))
-          ) : (
-            <div className="text-[#FF4085] ">Loading...</div>
-          )}
-        </div>
+              </div>)) : <div className="text-[#FF4085] ">Loading...</div>}
+        </div> */}
       </div>
       <div className="relative">
         <a
@@ -229,9 +208,8 @@ const RightSide = (props) => {
           onMouseLeave={() => setHover(false)}
           href="https://forms.gle/GBEKLjSH7hxQiuPv8"
           target="_blank"
-          className={`${
-            hover ? "bg-white border border-[#2100EC] " : "bg-[#2100EC]"
-          } fixed bottom-24 lg:bottom-12 right-12 cursor-pointer shadow-2xl z-50 h-20 w-20 grid place-items-center rounded-full `}
+          className={`${hover ? "bg-white border border-[#2100EC] " : "bg-[#2100EC]"
+            } fixed bottom-24 lg:bottom-12 right-12 cursor-pointer shadow-2xl z-50 h-20 w-20 grid place-items-center rounded-full `}
         >
           <div className="absolute grid place-items-center">
             <VscFeedback style={hover ? hoverStyle : style} size={30} />

@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import Image from "next/image";
 import BgImage from "../../assets/auth/bgImage.png";
 import CustomButton from "@/components/CustomButton";
@@ -14,6 +14,8 @@ import { CustomTextField } from "@/components/fields/CustomTextField";
 import { enqueueSnackbar } from "notistack";
 import cresow from "../../assets/Dashboard/creso_logo_white.svg";
 import Capcha from "@/components/Capcha";
+import { WalletContext } from "@/providers/WalletProvider";
+import { AiOutlineLoading3Quarters } from "react-icons/ai";
 
 const RegisterPage = () => {
   const router = useRouter();
@@ -24,7 +26,7 @@ const RegisterPage = () => {
     formState: { errors, isLoading },
   } = useForm();
   const [loading, setLoading] = useState(false);
-
+  const { validCaptcha } = useContext(WalletContext);
   const password = watch("password");
   const confirmPassword = watch("confirmPassword");
 
@@ -142,13 +144,7 @@ const RegisterPage = () => {
             />
           </div>
 
-
-
           <Capcha onSubmit={onSubmit} />
-
-
-
-
 
           <div className="flex flex-col space-y-2">
             {/* Sign-up button */}
@@ -159,6 +155,24 @@ const RegisterPage = () => {
               bgColor="black"
               type={"submit"}
             />
+
+            {/* <button
+              disabled={!validCaptcha}
+              type="submit"
+              className={`transition duration-500 ease-in-out bg-black disabled:opacity-40 xl:py-4 py-2 text-white px-12 flex justify-center rounded-full w-full enabled:hover:bg-zinc-800 enabled:hover:font-semibold cursor-pointer border border-solid border-black tracking-wider transform hover:-translate-y-1`}
+            >
+              <div className="flex flex-row gap-2 items-center">
+                {loading ? (
+                  <>
+                    {" "}
+                    <AiOutlineLoading3Quarters className="w-5 h-5 animate-spin text-sky-500" />
+                  </>
+                ) : (
+                  <p className={`text-sm xl:text-base text-white`}>Sign up</p>
+                )}
+              </div>
+            </button> */}
+
             {/* Social buttons (Apple, X) */}
             {/* Uncomment and customize as needed */}
             {/* <CustomButton

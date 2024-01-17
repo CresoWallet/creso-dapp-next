@@ -11,8 +11,14 @@ const CustomButton1 = ({
   isLoading,
 }) => {
   return (
+    // <div
+    //   className={`bg-${bgColor} rounded-full py-4 border border-solid border-${borderColor} flex justify-center w-full hover:bg-opacity-70 duration-700 cursor-pointer group`}
+    // >
     <div
-      className={`bg-${bgColor} rounded-full py-4 border border-solid border-${borderColor} flex justify-center w-full hover:bg-opacity-70 duration-700 cursor-pointer group`}
+      className={`bg-${bgColor} rounded-full py-4 border border-solid border-${borderColor} flex justify-center w-full ${
+        isDisabled ? "cursor-not-allowed" : "cursor-pointer"
+      } group`}
+      onClick={!isDisabled ? handleClick : null}
     >
       {isLoading ? (
         <>
@@ -22,7 +28,7 @@ const CustomButton1 = ({
       ) : (
         <button
           className={`text-${textColor} font-semibold group-hover:font-bold duration-500`}
-          onClick={handleClick}
+          // onClick={handleClick}
           disabled={isDisabled}
         >
           {name}

@@ -14,7 +14,7 @@ const CoinCard = ({ handleCoinWallet }) => {
   console.log("🚀 ~ CoinCard ~ originalData:", originalData);
 
   const top10Token = originalData.slice(0, 7);
-  const top5Token = originalData.slice(0, 3);
+  const top5Token = originalData.slice(0, 5);
 
   const topsToken = isMobile ? top5Token : top10Token;
 
@@ -94,7 +94,7 @@ const CoinCard = ({ handleCoinWallet }) => {
           </div>
         ) : (
           <div className="text-[#FF4085] font-semibold w-full text-center">
-            Wait few minutes...
+            Loading...
           </div>
         )}
       </div>
@@ -149,7 +149,6 @@ const CoinCard = ({ handleCoinWallet }) => {
                 </div>
               ))}
             </div>
-
           </div>
         </div>
       )}

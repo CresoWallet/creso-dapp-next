@@ -9,6 +9,8 @@ import { BiChevronRight } from "react-icons/bi";
 import { IoIosClose } from "react-icons/io";
 import LegacyWallet from "./LegacyWallet";
 import { network } from "@/utils/data/coinlist";
+import { VscFeedback } from "react-icons/vsc";
+<VscFeedback />;
 
 // import NetworkSelection from "./SelectNetwork";
 
@@ -35,6 +37,10 @@ import { network } from "@/utils/data/coinlist";
 //   setSmartWallet(false);
 // };
 const CreateWallet = ({ handleClose }) => {
+  const [hover, setHover] = useState(false);
+  const style = { color: "white" };
+  const hoverStyle = { color: "black" };
+
   const [wallet, setWallet] = useState(false);
   const [type, setType] = useState("");
 
@@ -54,10 +60,10 @@ const CreateWallet = ({ handleClose }) => {
   };
 
   return (
-    <div className=" bg-white lg:border-l-2 md:shadow-xl w-full h-[100vh] z-10">
-      <div className="flex rounded-full bg-black h-9 w-9 items-center justify-center xl:-ml-4 md:-ml-4 ml-2 mt-11 absolute z-[99]">
+    <div className=" bg-white shadow-xl w-full h-[105vh] z-10">
+      <div className="grid place-items-center rounded-full bg-black h-8 w-8 absolute cursor-pointer md:-ml-4 ml-2 lg:mt-0 z-[99]">
         <IoIosClose
-          className="text-white h-6 w-6 cursor-pointer"
+          className="text-white h-7 w-7 cursor-pointer"
           onClick={handleClose}
         />
       </div>
@@ -166,6 +172,27 @@ const CreateWallet = ({ handleClose }) => {
                 </div>
               </div>
             </div>
+          </div>
+          <div className="relative">
+            <a
+              onMouseEnter={() => setHover(true)}
+              onMouseLeave={() => setHover(false)}
+              href="https://forms.gle/GBEKLjSH7hxQiuPv8"
+              target="_blank"
+              className={`${
+                hover ? "bg-white border border-[#2100EC] " : "bg-[#2100EC]"
+              } fixed bottom-24 lg:bottom-12 right-12 cursor-pointer shadow-2xl z-50 h-20 w-20 grid place-items-center rounded-full `}
+            >
+              <div className="absolute grid place-items-center">
+                <VscFeedback style={hover ? hoverStyle : style} size={30} />
+              </div>
+              {hover && (
+                <p className="absolute p-2 rounded-lg font-semibold  -top-12 bg-black text-white ">
+                  {" "}
+                  Feedback
+                </p>
+              )}
+            </a>
           </div>
         </div>
       )}  

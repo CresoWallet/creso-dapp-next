@@ -174,7 +174,7 @@ const SendETH = ({
   return (
     <form
       onSubmit={handleSubmit(onSubmit)}
-      className="bg-white xl:pl-8 md:pl-4 mx-0 px-2 xl:px-0 md:px-2 pt-10 w-full xl:pr-10 pr-2 space-y-4 min-h-screen h-full z-20"
+      className="bg-white xl:pl-8 md:pl-4 mx-0 px-2 xl:px-0 md:px-2 pt-10 w-full xl:pr-10 pr-2 space-y-4  h-[105vh] z-20"
     >
       <div className="flex flex-row items-center justify-between">
         <p className="text-black font-bold text-xl">Send ETH</p>
@@ -540,9 +540,12 @@ const SendETH = ({
             {...register("to", {
               required: "Required",
             })}
+            required={true}
+            type="text"
             className="text-sm placeholder:text-[#A09FAA] placeholder:text-xs focus:outline-none w-3/4"
             placeholder="Enter wallet address or ENS,NNS"
           ></input>
+
           <CustomButton3
             title="Paste"
             buttonColor="[#2100EC]"

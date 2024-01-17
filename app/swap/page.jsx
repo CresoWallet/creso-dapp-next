@@ -100,6 +100,14 @@ const SwapPage = () => {
     setOpenPopup1(false);
   };
 
+  // const handleSwap = () => {
+  //   if (selectedToken && selectedToken1) {
+  //     // Swap the selectedToken and selectedToken1
+  //     setSelectedToken(selectedToken1);
+  //     setSelectedToken1(selectedToken);
+  //   }
+  // };
+
   const [searchQuery, setSearchQuery] = useState("");
   const filteredData = originalData.filter((item) =>
     item.symbol.toUpperCase().includes(searchQuery.toUpperCase())
@@ -131,7 +139,7 @@ const SwapPage = () => {
             />
           </div>
           <div className="flex flex-col py-7 px-2">
-            <div className="flex flex-col space-y-1">
+            <div className="flex flex-col space-y-1 cursor-pointer">
               <p className="px-4 font-semibold  text-xs xl:text-sm md:text-sm">
                 From
               </p>
@@ -212,7 +220,8 @@ const SwapPage = () => {
                           onClick={() => handleTokenClick(item)}
                         >
                           <div className="grid place-items-center">
-                            <img
+                            {/* <img */}
+                            <image
                               alt={item.symbol}
                               src={item?.image}
                               className="xl:h-12 xl:w-12 w-8 h-8 rounded-full"
@@ -264,7 +273,8 @@ const SwapPage = () => {
                         onClick={() => handleTokenClick1(item)}
                       >
                         <div className="grid place-items-center">
-                          <img
+                          {/* <img */}
+                          <image
                             alt={item.symbol}
                             src={item?.image}
                             className="xl:h-12 xl:w-12 w-8 h-8 rounded-full"
@@ -330,7 +340,9 @@ const SwapPage = () => {
                         <p className="font-semibold xl:text-lg text-sm">ETH</p>
                         <MdOutlineKeyboardArrowDown size={20} />
                       </div>
-                      <p className="text-xs text-[#6F6E7A]">Ethereum</p>
+                      <p className="text-xs text-[#6F6E7A] cursor-pointer">
+                        Ethereum
+                      </p>
                     </div>
                   </div>
                 )}

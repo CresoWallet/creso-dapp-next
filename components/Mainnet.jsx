@@ -18,6 +18,9 @@ import History from "./dashboard/History";
 import { alchemy } from "@/utils/alchemy";
 import { formatEther } from "viem";
 import HistoryCardSkelton from "./skeleton/HistoryCardSkelton";
+import { NEXT_PUBLIC_ALCHEMY_API_KEY_ETH } from "@/constants";
+import HistoryCard from "./cards/HistoryCard";
+
 const Mainnet = ({ handleOpenWallet, handleCreateWallet, showWallet }) => {
   // const [newWalletName, setNewWalletName] = useState("");
   const {
@@ -32,6 +35,8 @@ const Mainnet = ({ handleOpenWallet, handleCreateWallet, showWallet }) => {
     setOriginalData,
     setSend,
     setMainContentVisible,
+    setWalletAddress,
+    history,
   } = useContext(WalletContext);
 
   const { enqueueSnackbar } = useSnackbar();
@@ -85,7 +90,7 @@ const Mainnet = ({ handleOpenWallet, handleCreateWallet, showWallet }) => {
     fetchTokenPrices();
   }, []);
 
-  const baseURL = process.env.NEXT_PUBLIC_ALCHEMY_API_KEY_ETH;
+  const baseURL = NEXT_PUBLIC_ALCHEMY_API_KEY_ETH;
   const data = {
     jsonrpc: "2.0",
     method: "alchemy_getTokenBalances",
@@ -106,7 +111,6 @@ const Mainnet = ({ handleOpenWallet, handleCreateWallet, showWallet }) => {
   };
 
   const getTokens = async () => {
-
     try {
       const response = await axios(config);
       const balances = response.data.result;
@@ -238,7 +242,6 @@ const Mainnet = ({ handleOpenWallet, handleCreateWallet, showWallet }) => {
       // console.log("tokenData", tokenData);
     };
     const delayedFetch = () => {
-
       setTimeout(() => {
         fetchData();
       }, 5000);
@@ -268,10 +271,11 @@ const Mainnet = ({ handleOpenWallet, handleCreateWallet, showWallet }) => {
         <div className="flex xl:flex-row flex-col items-center xl:gap-4 md:gap-4 gap-2">
           {/* Keyless Secure Wallet */}
           <div
-            className={`${activeButton === "AA"
-              ? "bg-black"
-              : "bg-white hover:bg-gray-200 duration-500 "
-              } rounded-full px-4 py-4 w-full border-2 border-black cursor-pointer group relative`}
+            className={`${
+              activeButton === "AA"
+                ? "bg-black"
+                : "bg-white hover:bg-gray-200 duration-500 "
+            } rounded-full px-4 py-4 w-full border-2 border-black cursor-pointer group relative`}
           >
             <div className="flex flex-row justify-between items-center gap-3 group">
               {/*  <div>
@@ -296,8 +300,9 @@ const Mainnet = ({ handleOpenWallet, handleCreateWallet, showWallet }) => {
               />
               <div className="flex flex-col space-y-1">
                 <p
-                  className={`${activeButton === "AA" ? "text-white" : "text-black"
-                    }  font-semibold text-sm md:text-lg xl:text-sm`}
+                  className={`${
+                    activeButton === "AA" ? "text-white" : "text-black"
+                  }  font-semibold text-sm md:text-lg xl:text-sm`}
                 >
                   Keyless Secure Wallet
                 </p>
@@ -307,8 +312,9 @@ const Mainnet = ({ handleOpenWallet, handleCreateWallet, showWallet }) => {
                   </p>
                   <Image
                     src={activeButton === "AA" ? Copy : Copy2}
-                    className={`${activeButton === "AA" ? "text-white" : "text-black"
-                      }`}
+                    className={`${
+                      activeButton === "AA" ? "text-white" : "text-black"
+                    }`}
                     alt="copy"
                     onClick={() => {
                       copyToClipBoard(secureWalletAddress);
@@ -333,6 +339,7 @@ const Mainnet = ({ handleOpenWallet, handleCreateWallet, showWallet }) => {
                   handleOpenWallet({ walletName: "AA" });
                   setMainContentVisible(true);
                   setSend(false);
+                  setWalletAddress(false);
                 }}
               ></div>
             </div>
@@ -340,10 +347,11 @@ const Mainnet = ({ handleOpenWallet, handleCreateWallet, showWallet }) => {
 
           {/* EOA Wallet */}
           <div
-            className={`${activeButton === "EOA"
-              ? "bg-black"
-              : "bg-white  hover:bg-gray-200 duration-500 "
-              } rounded-full px-4 py-4 w-full border-2 border-black cursor-pointer group relative`}
+            className={`${
+              activeButton === "EOA"
+                ? "bg-black"
+                : "bg-white  hover:bg-gray-200 duration-500 "
+            } rounded-full px-4 py-4 w-full border-2 border-black cursor-pointer group relative`}
           >
             <div className="flex flex-row justify-between items-center gap-3">
               <Image
@@ -353,8 +361,9 @@ const Mainnet = ({ handleOpenWallet, handleCreateWallet, showWallet }) => {
               />
               <div className="flex flex-col space -y-1">
                 <p
-                  className={`${activeButton === "EOA" ? "text-white" : "text-black"
-                    }  font-semibold text-sm md:text-lg xl:text-sm`}
+                  className={`${
+                    activeButton === "EOA" ? "text-white" : "text-black"
+                  }  font-semibold text-sm md:text-lg xl:text-sm`}
                 >
                   EOA Wallet
                 </p>
@@ -388,6 +397,7 @@ const Mainnet = ({ handleOpenWallet, handleCreateWallet, showWallet }) => {
                   handleOpenWallet({ walletName: "EOA" });
                   setMainContentVisible(true);
                   setSend(false);
+                  setWalletAddress(false);
                 }}
               ></div>
             </div>
@@ -395,23 +405,23 @@ const Mainnet = ({ handleOpenWallet, handleCreateWallet, showWallet }) => {
         </div>
       </div>
       <div className="overflow-auto custom-scrollbar h-64">
-        {isLoading ? (
+        {!history ? (
           <>
             {arr.map((e, index) => {
               return <HistoryCardSkelton key={index} />;
             })}
           </>
         ) : (
-          allToken?.map((e, ind) => (
+          history?.map((item, ind) => (
             <div key={ind} className="">
-              <TransactionItem
-                icon={e?.logo ? e?.logo : ETH}
-                label={e?.name}
-                amount={e?.price}
-                value={parseFloat(e?.balance).toFixed(3)}
-                valueName={e?.symbol}
-                send="Send"
-                receive="Receive"
+              <HistoryCard
+                key={`history_${ind}`}
+                secureWalletAddress={secureWalletAddress}
+                eoaWalletAddress={eoaWalletAddress}
+                to={item?.to}
+                hash={item?.hash}
+                value={item.value}
+                usd={0}
               />
               <hr />
             </div>

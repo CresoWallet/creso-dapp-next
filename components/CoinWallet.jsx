@@ -40,9 +40,14 @@ const CoinWallet = ({ handleClose, wallets, coinData, coinDataprice }) => {
     <div
       className={`min-w-max bg-white md:border-l-2 md:shadow-xl w-full h-screen z-10 `}
     >
-      <div className="flex rounded-full bg-black h-8 w-8 items-center justify-center md:-ml-4 ml-2 mt-10 absolute z-[99]">
+      {/* <div className="flex rounded-full bg-black h-8 w-8 items-center justify-center md:-ml-4 ml-2 mt-10 absolute z-[99]">
         <IoIosClose
           className="text-white h-4 w-4 cursor-pointer"
+          onClick={handleClose}
+        /> */}
+      <div className="grid place-items-center rounded-full bg-black h-8 w-8 absolute cursor-pointer md:-ml-4 ml-2 lg:mt-0 z-[99]">
+        <IoIosClose
+          className="text-white h-7 w-7 cursor-pointer"
           onClick={handleClose}
         />
       </div>

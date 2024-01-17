@@ -1,26 +1,40 @@
-import React from "react";
+import React, { useState } from "react";
 import { IoIosClose } from "react-icons/io";
-import Image from "next/image";
-import ETH from "../assets/Dashboard/ethSelect.png";
-import BnB from "../assets/Dashboard/bnb.png";
-import USDT from "../assets/Dashboard/usdt.png";
+// import Image from "next/image";
+// import ETH from "../assets/Dashboard/ethSelect.png";
+// import BnB from "../assets/Dashboard/bnb.png";
+// import USDT from "../assets/Dashboard/usdt.png";
 import { CiSearch } from "react-icons/ci";
 import User from "./User";
 import Sure from "../assets/Dashboard/gainers/sure.png";
 import Eth from "../assets/gainers/Eth.png";
 import EWeth from "../assets/gainers/mina.png";
 import Pepe from "../assets/gainers/pepe.png";
+import { WalletContext } from "@/providers/WalletProvider";
+import { useMediaQuery } from "react-responsive";
+import CoinCard from "./cards/Coin";
+import { VscFeedback } from "react-icons/vsc";
+<VscFeedback />;
 
 const SwapFrom = ({ handleClose }) => {
+  const [hover, setHover] = useState(false);
+  const style = { color: "white" };
+  const hoverStyle = { color: "black" };
   return (
     <div className="bg-white shadow-xl min-w-max lg:w-auto h-[123vh] lg:h-[100vh] lg:block ">
-      <div className="flex rounded-full bg-black h-8 w-8 items-center justify-center xl:-ml-4 md:-ml-4 mt-10 absolute">
-        <IoIosClose className="text-white h-4 w-4" onClick={handleClose} />
+      {/* <div className="flex rounded-full bg-black h-8 w-8 items-center justify-center xl:-ml-4 md:-ml-4 mt-10 absolute">
+        <IoIosClose className="text-white h-4 w-4" onClick={handleClose} /> */}
+      <div className="grid place-items-center rounded-full bg-black h-8 w-8 absolute cursor-pointer md:-ml-4 ml-2 lg:mt-0 z-[99]">
+        <IoIosClose
+          className="text-white h-7 w-7 cursor-pointer"
+          onClick={handleClose}
+        />
       </div>
       <div className="flex flex-col mt-10 md:mx-2 mx-2 space-y-8">
         <p className="text-black font-bold text-xl px-10 ">Swap From</p>
         <div className="flex flex-row items-center justify-between px-10">
-          <div className="flex flex-col space-y-1 items-center">
+          <CoinCard />
+          {/* <div className="flex flex-col space-y-1 items-center">
             <Image alt="" src={ETH} className="h-14 w-14" />
             <div className="flex flex-col">
               <p className="text-center text-sm">ETH</p>
@@ -47,10 +61,11 @@ const SwapFrom = ({ handleClose }) => {
               <p className="text-center text-sm">BNB</p>
               <p className="text-[#A09FAA] text-sm">$16.32</p>
             </div>
-          </div>
+          </div> */}
         </div>
         <div className="rounded-full border border-solid flex px-4 py-1 flex-row items-center justify-between ">
           <input
+            required={true}
             type="text"
             placeholder="Search by token name or address"
             className="placeholder:text-xs placeholder:text-[#6F6E7A] focus:outline-none"
@@ -77,6 +92,27 @@ const SwapFrom = ({ handleClose }) => {
           <User name="WETH" description="WETH" image={EWeth} />
           <hr className="my-4" />
           <User name="USDC" description="USD Coin" image={Pepe} />
+        </div>
+        <div className="relative">
+          <a
+            onMouseEnter={() => setHover(true)}
+            onMouseLeave={() => setHover(false)}
+            href="https://forms.gle/GBEKLjSH7hxQiuPv8"
+            target="_blank"
+            className={`${
+              hover ? "bg-white border border-[#2100EC] " : "bg-[#2100EC]"
+            } fixed bottom-24 lg:bottom-12 right-12 cursor-pointer shadow-2xl z-50 h-20 w-20 grid place-items-center rounded-full `}
+          >
+            <div className="absolute grid place-items-center">
+              <VscFeedback style={hover ? hoverStyle : style} size={30} />
+            </div>
+            {hover && (
+              <p className="absolute p-2 rounded-lg font-semibold  -top-12 bg-black text-white ">
+                {" "}
+                Feedback
+              </p>
+            )}
+          </a>
         </div>
       </div>
     </div>

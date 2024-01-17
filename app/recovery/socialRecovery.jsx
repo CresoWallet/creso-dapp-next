@@ -188,7 +188,7 @@ function SocialRecovery() {
                 setGuardian(e.target.value);
               }}
               placeholder="0x0000000000000000000000000000000000000000"
-              className="placeholder:text-[#A09FAA] text-sm xl:px-4 xl:py-4 md:px-4 md:py-4 py-3 px-3 rounded-full border border-solid"
+              className="placeholder:text-[#A09FAA] text-sm xl:px-4 xl:py-4 md:px-4 md:py-4 py-3 px-3 rounded-full border border-solid w-full"
             />
           </div>
         </div>

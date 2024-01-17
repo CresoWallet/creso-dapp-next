@@ -221,7 +221,7 @@ const SwapPage = () => {
                         >
                           <div className="grid place-items-center">
                             {/* <img */}
-                            <image
+                            <img
                               alt={item.symbol}
                               src={item?.image}
                               className="xl:h-12 xl:w-12 w-8 h-8 rounded-full"
@@ -274,7 +274,7 @@ const SwapPage = () => {
                       >
                         <div className="grid place-items-center">
                           {/* <img */}
-                          <image
+                          <img
                             alt={item.symbol}
                             src={item?.image}
                             className="xl:h-12 xl:w-12 w-8 h-8 rounded-full"

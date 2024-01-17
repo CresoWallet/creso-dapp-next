@@ -134,7 +134,7 @@ const RightSide = (props) => {
         </div>
 
 
-        <div className="flex flex-col gap-4 mt-6">
+        {/* <div className="flex flex-col gap-4 mt-6">
           <div className="flex flex-col gap-1">
 
 
@@ -161,26 +161,9 @@ const RightSide = (props) => {
                 </div>
                 <hr />
               </div>)) : <div className="text-[#FF4085] ">Loading...</div>}
-          {/* <ul>
-            {data.topGainers &&
-              data.topGainers.map((coin) => (
-                <li key={coin.id} style={{ color: 'green' }}>
-                  <img src={coin.image} alt={coin.name} style={{ width: '20px', height: '20px' }} />
-                  {coin.name}: ${coin.current_price} ({coin.price_change_percentage_24h}%)
-                </li>
-              ))}
-          </ul> */}
 
           <h3 className="font-semibold">Top Losers</h3>
-          {/* <ul>
-            {data.topLosers &&
-              data.topLosers.map((coin) => (
-                <li key={coin.id} style={{ color: 'red' }}>
-                  <img src={coin.image} alt={coin.name} style={{ width: '20px', height: '20px' }} />
-                  {coin.name}: ${coin.current_price} ({coin.price_change_percentage_24h}%)
-                </li>
-              ))}
-          </ul> */}
+          
           {data.topLosers?.length !== 0 ?
             data.topLosers.map((coin) => (
               <div className="flex flex-row justify-between items-center" key={coin.id}>
@@ -202,7 +185,7 @@ const RightSide = (props) => {
                 </div>
                 <hr />
               </div>)) : <div className="text-[#FF4085] ">Loading...</div>}
-        </div>
+        </div> */}
       </div>
       <div className="relative">
         <a

@@ -1,4 +1,4 @@
-"use client";
+"use client";`  `
 import React, { useState } from "react";
 import Image from "next/image";
 import Ethereum from "../assets/Dashboard/etherum.png";
@@ -17,9 +17,9 @@ import { VscFeedback } from "react-icons/vsc";
 // import SecureWallet from "./SecureWallet";
 
 // const CreateWallet = ({ handleClose }) => {
-//   const [legacyWallet, setLegacyWallet] = useState(false);
-//   //const [smartWallet, setSmartWallet] = useState(false);
-//   const [type, setType] = useState("");
+// const [legacyWallet, setLegacyWallet] = useState(false);
+// //const [smartWallet, setSmartWallet] = useState(false);
+// const [type, setType] = useState("");
 
 // const handleClick = () => {
 //   setType("EOA");
@@ -36,6 +36,7 @@ import { VscFeedback } from "react-icons/vsc";
 //   setLegacyWallet(false);
 //   setSmartWallet(false);
 // };
+
 const CreateWallet = ({ handleClose }) => {
   const [hover, setHover] = useState(false);
   const style = { color: "white" };
@@ -77,14 +78,6 @@ const CreateWallet = ({ handleClose }) => {
         />
       )}
 
-      {/* {legacyWallet && (
-          <LegacyWallet
-          handleClose={handleClose}
-          handleBackButton={handleBackButtonClick}
-          type={type}
-        />
-      )} */}
-
       {!wallet && (
         <div className="flex flex-col xl:mx-8 md:mx-4 mt-10 space-y-8">
           <p className="text-black font-bold text-xl ml-12 xl:ml-0 md:ml-2">
@@ -118,8 +111,6 @@ const CreateWallet = ({ handleClose }) => {
                       buttonColor="[#EEEEF1]"
                       titleColor="black"
                     />
-
-                    <div></div>
 
                     <div className="flex rounded-full bg-black xl:h-8 xl:w-8 h-6 w-6 items-center justify-center cursor-pointer">
                       <BiChevronRight

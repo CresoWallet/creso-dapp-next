@@ -10,6 +10,8 @@ import { GiAerialSignal } from "react-icons/gi";
 import { LuSettings2 } from "react-icons/lu";
 import { MdKeyboardArrowRight } from "react-icons/md";
 import { usePathname } from "next/navigation";
+import { VscFeedback } from "react-icons/vsc";
+<VscFeedback />;
 
 const links = [
   { id: "account", label: "Account", icon: FiUser },
@@ -50,6 +52,9 @@ const Account = ({ setShowModal }) => {
       // fontWeight: isHovered || isClicked ? "bold" : "normal",
     };
   };
+  const [hovere, setHovere] = useState(false);
+  const style = { color: "white" };
+  const hoverStyle = { color: "black" };
   return (
     <>
       <div className="flex flex-col space-y-3">
@@ -109,6 +114,27 @@ const Account = ({ setShowModal }) => {
               )}
             </div>
           ))}
+        </div>
+        <div className="relative">
+          <a
+            onMouseEnter={() => setHovere(true)}
+            onMouseLeave={() => setHovere(false)}
+            href="https://forms.gle/GBEKLjSH7hxQiuPv8"
+            target="_blank"
+            className={`${
+              hovere ? "bg-white border border-[#2100EC] " : "bg-[#2100EC]"
+            } fixed bottom-24 lg:bottom-12 right-12 cursor-pointer shadow-2xl z-50 h-20 w-20 grid place-items-center rounded-full `}
+          >
+            <div className="absolute grid place-items-center">
+              <VscFeedback style={hovere ? hoverStyle : style} size={30} />
+            </div>
+            {hovere && (
+              <p className="absolute p-2 rounded-lg font-semibold  -top-12 bg-black text-white ">
+                {" "}
+                Feedback
+              </p>
+            )}
+          </a>
         </div>
       </div>
     </>

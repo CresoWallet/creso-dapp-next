@@ -4,7 +4,7 @@ import { WalletContext } from "@/providers/WalletProvider";
 import ReCAPTCHA from "react-google-recaptcha";
 
 const Capcha = ({ onSubmit }) => {
-  const [captcha, setCaptcha] = useState(false);
+  // const [captcha, setCaptcha] = useState(false);
   const { setValidCaptcha } = useContext(WalletContext);
   //   const handleCaptchaChange = (value) => {
   //     console.log("Captcha value:-------------->", value);

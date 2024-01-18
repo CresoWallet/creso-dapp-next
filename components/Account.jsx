@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import Link from "next/link";
 import UserDetails from "./UserDetails";
 import CustomButton3 from "./CustomButton3";
@@ -11,6 +11,8 @@ import { LuSettings2 } from "react-icons/lu";
 import { MdKeyboardArrowRight } from "react-icons/md";
 import { usePathname } from "next/navigation";
 import { VscFeedback } from "react-icons/vsc";
+import { WalletContext } from "@/providers/WalletProvider";
+
 <VscFeedback />;
 
 const links = [
@@ -38,6 +40,8 @@ const Account = ({ setShowModal }) => {
   const handleClick = (link) => {
     setClicked(link);
     setHover(link);
+    link && setShowAccount(true);
+
   };
   const getLinkStyle = (link) => {
     const isHovered = hover === link;
@@ -55,9 +59,10 @@ const Account = ({ setShowModal }) => {
   const [hovere, setHovere] = useState(false);
   const style = { color: "white" };
   const hoverStyle = { color: "black" };
+  const { showAccount, setShowAccount } = useContext(WalletContext);
   return (
     <>
-      <div className="flex flex-col space-y-3">
+      <div className={`${showAccount ? "hidden lg:block" : "" } flex flex-col space-y-3`}>
         <UserDetails />
 
         <CustomButton3
@@ -83,7 +88,9 @@ const Account = ({ setShowModal }) => {
                   } `}
                   onMouseEnter={() => handleMouseEnter(id)}
                   onMouseLeave={handleMouseLeave}
-                  onClick={() => handleClick(id)}
+                  onClick={() => {
+                    handleClick(id);
+                  }}
                 >
                   <div className="flex flex-row gap-2 items-center ">
                     <Icon />

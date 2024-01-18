@@ -171,12 +171,12 @@ const UserDetails = () => {
       {openWallet && <Wallet setOpenWallet={setOpenWallet} />}
 
       {/* <Image alt="" src={User} /> */}
-      <div className="flex flex-col space-y-1">
+      <div className="flex flex-col space-y-2">
         <p className="font-bold text-xl">{user?.username}</p>
         <p className="text-sm text-[#A09FAA]">{user?.email}</p>
         <p className="text-xs text-[#A09FAA] mr-xside">
           Last Backup test:{" "}
-          <span className="text-sm text-black">28 OCT 2023</span>{" "}
+          <span className="text-sm text-black">28 OCT 2023 </span>{" "}
         </p>
       </div>
     </div>

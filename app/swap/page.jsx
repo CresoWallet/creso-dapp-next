@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 "use client";
 import React, { useContext, useEffect, useState, useRef } from "react";
 import Image from "next/image";
@@ -122,9 +123,8 @@ const SwapPage = () => {
         </div>
       )}
       <div
-        className={`${
-          isMobile && showSwapForm ? "hidden" : "lg:grid-cols-10"
-        } lg:grid lg:divide-x`}
+        className={`${isMobile && showSwapForm ? "hidden" : "lg:grid-cols-10"
+          } lg:grid lg:divide-x`}
       >
         <div className="lg:col-span-6 pt-16  px-10 relative">
           <div className="">
@@ -144,7 +144,7 @@ const SwapPage = () => {
                 From
               </p>
               <div
-                className="rounded-full xl:pl-4 pl-2 xl:pr-8 pr-2 xl:py-2 py-1 flex flex-row justify-between border border-solid cursor-pointer " 
+                className="rounded-full xl:pl-4 pl-2 xl:pr-8 pr-2 xl:py-2 py-1 flex flex-row justify-between border border-solid cursor-pointer "
               >
                 {selectedToken ? (
                   <div className="flex flex-row gap-2 items-center ">
@@ -168,9 +168,9 @@ const SwapPage = () => {
                     </div>
                   </div>
                 ) : (
-                  <div className="flex flex-row gap-2 items-center"  
-                onClick={handleSeeMore}
-                      >
+                  <div className="flex flex-row gap-2 items-center"
+                    onClick={handleSeeMore}
+                  >
                     <Image alt="" src={BNB} />
                     <div className="flex flex-col">
                       <div className="flex flex-row gap-1 items-center ">
@@ -222,8 +222,7 @@ const SwapPage = () => {
                         >
                           <div className="grid place-items-center">
                             {/* <img */}
-                            <image
-                              alt={item.symbol}
+                            <img alt={item.symbol}
                               src={item?.image}
                               className="xl:h-12 xl:w-12 w-8 h-8 rounded-full"
                             />
@@ -274,8 +273,8 @@ const SwapPage = () => {
                         onClick={() => handleTokenClick1(item)}
                       >
                         <div className="grid place-items-center">
-                          {/* <img */}
-                          <image
+                          {/* <image */}
+                          <img
                             alt={item.symbol}
                             src={item?.image}
                             className="xl:h-12 xl:w-12 w-8 h-8 rounded-full"
@@ -334,7 +333,7 @@ const SwapPage = () => {
                   </div>
                 ) : (
                   <div className="flex flex-row gap-2 items-center"
-                onClick={handleSeeMore1}
+                    onClick={handleSeeMore1}
                   >
                     <Image alt="" src={Etherum} />
                     <div className="flex flex-col">

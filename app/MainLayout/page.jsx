@@ -26,7 +26,7 @@ import SearchField from "../../components/SearchFiled";
 
 const MainLayout = () => {
   const router = useRouter();
-  const [showCreateWallet, setShowCreateWallet] = useState(false);
+  // const [showCreateWallet, setShowCreateWallet] = useState(false);
   const [showCoinWallet, setShowCoinWallet] = useState(false);
   const [showWallet, setShowWallet] = useState(false);
   const [showModal, setShowModal] = useState(false);
@@ -42,7 +42,7 @@ const MainLayout = () => {
   const { user, isAuthenticated, status } = useUser();
   const {
     secureWalletBalance,
-    eoaWalletBalance,
+    eoaWalletBalance, 
     wallets,
     secureWalletAddress,
     eoaWalletAddress,
@@ -57,6 +57,8 @@ const MainLayout = () => {
     mainContentVisible,
     walletAddress,
     setWalletAddress,
+    showCreateWallet,
+    setShowCreateWallet
   } = useContext(WalletContext);
 
   useEffect(() => {
@@ -78,6 +80,8 @@ const MainLayout = () => {
   };
   const handleCreateWallet = () => {
     setShowCreateWallet(!showCreateWallet);
+    setActiveButton("");
+
     // close other models
     setShowCoinWallet(false);
     setShowWallet(false);
@@ -193,11 +197,10 @@ const MainLayout = () => {
         {/* ------------ Leftside Main ---------- */}
         {
           <div
-            className={`${
-              isMobile && responsivCompo
-                ? "hidden"
-                : "lg:col-span-6 pt-16 px-10"
-            }`}
+            className={`${isMobile && responsivCompo
+              ? "hidden"
+              : "lg:col-span-6 pt-16 px-10"
+              }`}
           >
             <div className="">
               <LeftHeader
@@ -253,9 +256,8 @@ const MainLayout = () => {
 
         {/* ------------ Rightside Main ---------- */}
         <div
-          className={`${
-            responsivCompo ? "px-0  border-l-2 " : " px-10  pt-14"
-          } lg:col-span-4`}
+          className={`${responsivCompo ? "px-0  border-l-2 " : " px-10  pt-14"
+            } lg:col-span-4`}
         >
           <div className="hidden lg:block">
             <div className="hidden lg:flex">

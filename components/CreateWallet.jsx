@@ -58,7 +58,7 @@ const CreateWallet = ({ handleClose }) => {
   };
 
   return (
-    <div className=" bg-white shadow-xl w-full h-[105vh] z-10">
+    <div className=" ">
       <div className="grid place-items-center rounded-full bg-black h-8 w-8 absolute cursor-pointer md:-ml-4 ml-2 lg:mt-0 z-[99]">
         <IoIosClose
           className="text-white h-7 w-7 cursor-pointer"
@@ -167,9 +167,8 @@ const CreateWallet = ({ handleClose }) => {
               onMouseLeave={() => setHover(false)}
               href="https://forms.gle/GBEKLjSH7hxQiuPv8"
               target="_blank"
-              className={`${
-                hover ? "bg-white border border-[#2100EC] " : "bg-[#2100EC]"
-              } fixed bottom-24 lg:bottom-12 right-12 cursor-pointer shadow-2xl z-50 h-20 w-20 grid place-items-center rounded-full `}
+              className={`${hover ? "bg-white border border-[#2100EC] " : "bg-[#2100EC]"
+                } fixed bottom-24 lg:bottom-12 right-12 cursor-pointer shadow-2xl z-50 h-20 w-20 grid place-items-center rounded-full `}
             >
               <div className="absolute grid place-items-center">
                 <VscFeedback style={hover ? hoverStyle : style} size={30} />

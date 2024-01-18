@@ -50,13 +50,15 @@ const RightSide = (props) => {
 
   useEffect(() => {
     const fetchData = async () => {
-      // Pass true to fetch only gainers on the about and swap pages
-      const result = await getTopGainersLosers(isAboutPage || isSwapPage, true);
+      const result = await getTopGainersLosers(
+        isAboutPage || isSwapPage,
+        activeButton === "TopGainers"
+      );
       setData(result);
     };
 
     fetchData();
-  }, [isAboutPage, isSwapPage]);
+  }, [isAboutPage, isSwapPage, activeButton]);
   return (
     <>
       <div className="grid relative  -mx-4 pb-32 lg:pb-0">
@@ -133,75 +135,104 @@ const RightSide = (props) => {
             </div>
           </div>
 
-          <getTopGainersLosers />
+
         </div>
-
-
-        {/* <div className="flex flex-col gap-4 mt-6">
-          <div className="flex flex-col gap-1">
-
-
+        {/* <getTopGainersLosers />
+        {activeButton === "TopGainers" && (
+          <div className="flex flex-col gap-4 mt-6">
+            {data.topGainers?.length !== 0 ? (
+              data.topGainers.map((coin) => (
+                <div key={coin.id}></div>
+              ))
+            ) : (
+              <div className="text-[#FF4085]">Loading...</div>
+            )}
           </div>
-          <h3 className="font-semibold">Top Gainers</h3>
-          {data.topGainers?.length !== 0 ? (
-            data.topGainers.map((coin) => (
-              <div
-                className="flex flex-row justify-between items-center"
-                key={coin.id}
-              >
-                <div className="flex flex-row gap-2 items-center">
-                  <div>
-                    <Image src={coin?.image} alt={coin.name} />
-                  </div>
-                  <div className="flex flex-col">
-                    <p className="uppercase text-sm font-semibold">
-                      {coin?.name}
-                    </p>
-                  </div>
-                </div>
-                <div className="flex flex-col">
-                  <p className="text-xs font-semibold">{coin?.current_price}</p>
-                  <div className="flex flex-row items-center">
-                    {renderIcon()}
-                    <p className={`text-[#14B195] text-xs justify-end`}>
-                      {coin?.price_change_percentage_24h}
-                    </p>
-                  </div>
-                </div>
-                <hr />
-              </div>)) : <div className="text-[#FF4085] ">Loading...</div>}
+        )}
 
-          <h3 className="font-semibold">Top Losers</h3>
-          
-          {data.topLosers?.length !== 0 ?
-            data.topLosers.map((coin) => (
-              <div
-                className="flex flex-row justify-between items-center"
-                key={coin.id}
-              >
-                <div className="flex flex-row gap-2 items-center">
-                  <div>
-                    <Image src={coin?.image} alt={coin.name} />
-                  </div>
-                  <div className="flex flex-col">
-                    <p className="uppercase text-sm font-semibold">
-                      {coin?.name}
-                    </p>
-                  </div>
+        {activeButton === "TopLosers" && (
+          <div className="flex flex-col gap-4 mt-6">
+            {data.topLosers?.length !== 0 ? (
+              data.topLosers.map((coin) => (
+                <div key={coin.id}></div>
+              ))
+            ) : (
+              <div className="text-[#FF4085]">Loading...</div>
+            )}
+          </div>
+        )} */}
+      </div>
+
+      {/* <div className="flex flex-col gap-4 mt-6">
+        <div className="flex flex-col gap-1"></div>
+        <h3 className="font-semibold">Top Gainers</h3>
+        {data.topGainers?.length !== 0 ? (
+          data.topGainers.map((coin) => (
+            <div
+              className="flex flex-row justify-between items-center"
+              key={coin.id}
+            >
+              <div className="flex flex-row gap-2 items-center">
+                <div>
+                  <Image src={coin?.image} alt={coin.name} />
                 </div>
                 <div className="flex flex-col">
-                  <p className="text-xs font-semibold">{coin?.current_price}</p>
-                  <div className="flex flex-row items-center">
-                    {renderIcon()}
-                    <p className={`text-[#FF4085] text-xs justify-end`}>
-                      {coin?.price_change_percentage_24h}
-                    </p>
-                  </div>
+                  <p className="uppercase text-sm font-semibold">
+                    {coin?.name}
+                  </p>
                 </div>
-                <hr />
-              </div>)) : <div className="text-[#FF4085] ">Loading...</div>}
-        </div> */}
-      </div>
+              </div>
+              <div className="flex flex-col">
+                <p className="text-xs font-semibold">{coin?.current_price}</p>
+                <div className="flex flex-row items-center">
+                  {renderIcon()}
+                  <p className={`text-[#14B195] text-xs justify-end`}>
+                    {coin?.price_change_percentage_24h}
+                  </p>
+                </div>
+              </div>
+              <hr />
+            </div>
+          ))
+        ) : (
+          <div className="text-[#FF4085] ">Loading...</div>
+        )}
+
+        <h3 className="font-semibold">Top Losers</h3>
+
+        {data.topLosers?.length !== 0 ? (
+          data.topLosers.map((coin) => (
+            <div
+              className="flex flex-row justify-between items-center"
+              key={coin.id}
+            >
+              <div className="flex flex-row gap-2 items-center">
+                <div>
+                  <Image src={coin?.image} alt={coin.name} />
+                </div>
+                <div className="flex flex-col">
+                  <p className="uppercase text-sm font-semibold">
+                    {coin?.name}
+                  </p>
+                </div>
+              </div>
+              <div className="flex flex-col">
+                <p className="text-xs font-semibold">{coin?.current_price}</p>
+                <div className="flex flex-row items-center">
+                  {renderIcon()}
+                  <p className={`text-[#FF4085] text-xs justify-end`}>
+                    {coin?.price_change_percentage_24h}
+                  </p>
+                </div>
+              </div>
+              <hr />
+            </div>
+          ))
+        ) : (
+          <div className="text-[#FF4085] ">Loading...</div>
+        )}
+      </div> */}
+
       <div className="relative">
         <a
           onMouseEnter={() => setHover(true)}

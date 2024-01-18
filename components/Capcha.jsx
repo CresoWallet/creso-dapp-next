@@ -4,7 +4,7 @@ import { WalletContext } from "@/providers/WalletProvider";
 import ReCAPTCHA from "react-google-recaptcha";
 
 const Capcha = ({ onSubmit }) => {
-  const [captcha, setCaptcha] = useState(false);
+  // const [captcha, setCaptcha] = useState(false);
   const { setValidCaptcha } = useContext(WalletContext);
   //   const handleCaptchaChange = (value) => {
   //     console.log("Captcha value:-------------->", value);
@@ -28,7 +28,7 @@ const Capcha = ({ onSubmit }) => {
   // };
 
   return (
-    <form className="flex flex-col items-center">
+    <form className="flex flex-col items-center py-5">
       <ReCAPTCHA
         sitekey="6LcxWE4pAAAAADTuZPl7FRbwvRiUQ8cndvvTZsNW"
         onChange={(value) => setValidCaptcha(value)}

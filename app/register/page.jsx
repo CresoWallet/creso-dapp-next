@@ -144,9 +144,9 @@ const RegisterPage = () => {
             />
           </div>
 
-          <Capcha onSubmit={onSubmit} />
+          {/* <Capcha onSubmit={onSubmit} /> */}
 
-          <div className="flex flex-col space-y-2">
+          <div className="flex flex-col space-y-2 !mt-10">
             {/* Sign-up button */}
             <CustomButton
               isLoading={loading}

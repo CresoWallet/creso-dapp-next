@@ -18,6 +18,7 @@ import Modal from "@/components/modal/Modal";
 import { useUser } from "@/providers/UserProvider";
 import AccountHeader from "@/components/AccountHeader";
 import { VscFeedback } from "react-icons/vsc";
+
 <VscFeedback />;
 
 const NetworkPage2 = () => {
@@ -29,6 +30,7 @@ const NetworkPage2 = () => {
   const [hover, setHover] = useState(false);
   const style = { color: "white" };
   const hoverStyle = { color: "black" };
+
   return (
     <div id="modal-root">
       {navbarTrigger && (

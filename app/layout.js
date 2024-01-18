@@ -12,9 +12,9 @@ import WalletContextProvider from "@/providers/WalletProvider";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
-  title: "Creso",
+  title: "Creso Wallet",
   description: "Creso app",
-  manifest:'./manifest.webmanifest '
+  manifest: "./manifest.webmanifest ",
 };
 
 export default function RootLayout({ children }) {

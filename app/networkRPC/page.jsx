@@ -16,7 +16,6 @@ import { useUser } from "@/providers/UserProvider";
 import AccountHeader from "@/components/AccountHeader";
 import { VscFeedback } from "react-icons/vsc";
 <VscFeedback />;
-
 const NetworkRPCPage = () => {
   const [navbarTrigger, setNavbarTrigger] = useState(false);
   const { user, isAuthenticated, status } = useUser();

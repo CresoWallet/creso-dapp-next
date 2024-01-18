@@ -101,13 +101,15 @@ const SwapPage = () => {
     setOpenPopup1(false);
   };
 
-  // const handleSwap = () => {
-  //   if (selectedToken && selectedToken1) {
-  //     // Swap the selectedToken and selectedToken1
-  //     setSelectedToken(selectedToken1);
-  //     setSelectedToken1(selectedToken);
-  //   }
-  // };
+  const handleSwap = () => {
+    if (selectedToken && selectedToken1) {
+      console.log(
+        `Swapping ${selectedToken.symbol} to ${selectedToken1.symbol}`
+      );
+      setSelectedToken(selectedToken1);
+      setSelectedToken1(selectedToken);
+    }
+  };
 
   const [searchQuery, setSearchQuery] = useState("");
   const filteredData = originalData.filter((item) =>
@@ -439,7 +441,7 @@ const SwapPage = () => {
               <CustomButton
                 name="Swap"
                 img={Swap2}
-                onClick={handleShowSwap}
+                onClick={handleSwap}
                 bgColor="black"
                 nameColor="white"
               />

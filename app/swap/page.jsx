@@ -144,12 +144,9 @@ const SwapPage = () => {
               <p className="px-4 font-semibold  text-xs xl:text-sm md:text-sm">
                 From
               </p>
-              <div
-                className="rounded-full xl:pl-4 pl-2 xl:pr-8 pr-2 xl:py-2 py-1 flex flex-row justify-between border border-solid cursor-pointer"
-                onClick={handleSeeMore}
-              >
+              <div className="rounded-full xl:pl-4 pl-2 xl:pr-8 pr-2 xl:py-2 py-1 flex flex-row justify-between border border-solid cursor-pointer ">
                 {selectedToken ? (
-                  <div className="flex flex-row gap-2 items-center">
+                  <div className="flex flex-row gap-2 items-center ">
                     <Image
                       alt=""
                       src={selectedToken.image}
@@ -170,7 +167,10 @@ const SwapPage = () => {
                     </div>
                   </div>
                 ) : (
-                  <div className="flex flex-row gap-2 items-center">
+                  <div
+                    className="flex flex-row gap-2 items-center"
+                    onClick={handleSeeMore}
+                  >
                     <Image alt="" src={BNB} />
                     <div className="flex flex-col">
                       <div className="flex flex-row gap-1 items-center ">
@@ -274,7 +274,7 @@ const SwapPage = () => {
                         onClick={() => handleTokenClick1(item)}
                       >
                         <div className="grid place-items-center">
-                          {/* <img */}
+                          {/* <image */}
                           <img
                             alt={item.symbol}
                             src={item?.image}
@@ -309,10 +309,7 @@ const SwapPage = () => {
                 To
               </p>
 
-              <div
-                className="rounded-full xl:pl-4 pl-2 xl:pr-8 pr-2 xl:py-2 py-1 flex flex-row justify-between border border-solid"
-                onClick={handleSeeMore1}
-              >
+              <div className="rounded-full xl:pl-4 pl-2 xl:pr-8 pr-2 xl:py-2 py-1 flex flex-row justify-between border border-solid">
                 {selectedToken1 ? (
                   <div className="flex flex-row gap-2 items-center ">
                     <Image
@@ -334,7 +331,10 @@ const SwapPage = () => {
                     </div>
                   </div>
                 ) : (
-                  <div className="flex flex-row gap-2 items-center">
+                  <div
+                    className="flex flex-row gap-2 items-center"
+                    onClick={handleSeeMore1}
+                  >
                     <Image alt="" src={Etherum} />
                     <div className="flex flex-col">
                       <div className="flex flex-row gap-1 items-center">

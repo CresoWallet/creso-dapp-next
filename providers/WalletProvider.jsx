@@ -46,6 +46,8 @@ const WalletContextProvider = ({ children }) => {
   const [send, setSend] = useState(false);
   const [walletAddress, setWalletAddress] = useState(false);
   const [validCaptcha, setValidCaptcha] = useState(null);
+  const [showCreateWallet, setShowCreateWallet] = useState(false);
+
 
   // useEffect(() => {
   //   (async () => {
@@ -223,6 +225,8 @@ const WalletContextProvider = ({ children }) => {
         walletAddress,
         validCaptcha,
         setValidCaptcha,
+        showCreateWallet,
+        setShowCreateWallet
       }}
     >
       {/* {navbarTrigger && (

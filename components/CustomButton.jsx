@@ -16,7 +16,7 @@ const CustomButton = ({
   isLoading,
   isDisabled,
 }) => {
-  const { validCaptcha } = useContext(WalletContext);
+  // const { validCaptcha } = useContext(WalletContext);
   return (
     <button
       disabled={isLoading || isDisabled}

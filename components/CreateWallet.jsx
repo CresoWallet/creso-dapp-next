@@ -1,4 +1,4 @@
-"use client";
+"use client";`  `
 import React, { useState } from "react";
 import Image from "next/image";
 import Ethereum from "../assets/Dashboard/etherum.png";
@@ -17,9 +17,9 @@ import { VscFeedback } from "react-icons/vsc";
 // import SecureWallet from "./SecureWallet";
 
 // const CreateWallet = ({ handleClose }) => {
-//   const [legacyWallet, setLegacyWallet] = useState(false);
-//   //const [smartWallet, setSmartWallet] = useState(false);
-//   const [type, setType] = useState("");
+// const [legacyWallet, setLegacyWallet] = useState(false);
+// //const [smartWallet, setSmartWallet] = useState(false);
+// const [type, setType] = useState("");
 
 // const handleClick = () => {
 //   setType("EOA");
@@ -36,6 +36,7 @@ import { VscFeedback } from "react-icons/vsc";
 //   setLegacyWallet(false);
 //   setSmartWallet(false);
 // };
+
 const CreateWallet = ({ handleClose }) => {
   const [hover, setHover] = useState(false);
   const style = { color: "white" };
@@ -60,7 +61,7 @@ const CreateWallet = ({ handleClose }) => {
   };
 
   return (
-    <div className=" bg-white shadow-xl w-full h-[105vh] z-10">
+    <div className=" ">
       <div className="grid place-items-center rounded-full bg-black h-8 w-8 absolute cursor-pointer md:-ml-4 ml-2 lg:mt-0 z-[99]">
         <IoIosClose
           className="text-white h-7 w-7 cursor-pointer"
@@ -76,14 +77,6 @@ const CreateWallet = ({ handleClose }) => {
           networks={network}
         />
       )}
-
-      {/* {legacyWallet && (
-          <LegacyWallet
-          handleClose={handleClose}
-          handleBackButton={handleBackButtonClick}
-          type={type}
-        />
-      )} */}
 
       {!wallet && (
         <div className="flex flex-col xl:mx-8 md:mx-4 mt-10 space-y-8">
@@ -118,8 +111,6 @@ const CreateWallet = ({ handleClose }) => {
                       buttonColor="[#EEEEF1]"
                       titleColor="black"
                     />
-
-                    <div></div>
 
                     <div className="flex rounded-full bg-black xl:h-8 xl:w-8 h-6 w-6 items-center justify-center cursor-pointer">
                       <BiChevronRight
@@ -179,9 +170,8 @@ const CreateWallet = ({ handleClose }) => {
               onMouseLeave={() => setHover(false)}
               href="https://forms.gle/GBEKLjSH7hxQiuPv8"
               target="_blank"
-              className={`${
-                hover ? "bg-white border border-[#2100EC] " : "bg-[#2100EC]"
-              } fixed bottom-24 lg:bottom-12 right-12 cursor-pointer shadow-2xl z-50 h-20 w-20 grid place-items-center rounded-full `}
+              className={`${hover ? "bg-white border border-[#2100EC] " : "bg-[#2100EC]"
+                } fixed bottom-24 lg:bottom-12 right-12 cursor-pointer shadow-2xl z-50 h-20 w-20 grid place-items-center rounded-full `}
             >
               <div className="absolute grid place-items-center">
                 <VscFeedback style={hover ? hoverStyle : style} size={30} />
@@ -195,7 +185,7 @@ const CreateWallet = ({ handleClose }) => {
             </a>
           </div>
         </div>
-      )}  
+      )}
     </div>
   );
 };

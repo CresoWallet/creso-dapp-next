@@ -10,6 +10,7 @@ const CoinCard = ({ handleCoinWallet }) => {
   // const [getTokensPrice, setGetTokensPrice] = useState({})
   const [openPopup, setOpenPopup] = useState(false);
   const [showAllTokens, setShowAllTokens] = useState(false);
+  // const [selectedNetwork, setSelectedNetwork] = useState(null);
   const isLaptop = useMediaQuery({ query: `(max-width: 1024px)` });
   const isXL = useMediaQuery({ query: `(max-width: 1440px)` });
   console.log("🚀 ~ CoinCard ~ originalData:", originalData);
@@ -49,6 +50,11 @@ const CoinCard = ({ handleCoinWallet }) => {
   const filteredData = originalData.filter((item) =>
     item.symbol.toUpperCase().includes(searchQuery.toUpperCase())
   );
+  // const handleNetworkSelect = (item) => {
+  //   handleCoinWallet(item);
+  //   setSelectedNetwork(item);
+  //   setOpenPopup(false);
+  // };
 
   return (
     <>
@@ -63,6 +69,13 @@ const CoinCard = ({ handleCoinWallet }) => {
               }}
               key={index}
             >
+              {/* <div
+              className={`md:flex flex-col space-y-1 items-center cursor-pointer hover:-translate-y-1 duration-500 ${
+                selectedNetwork === item ? "border-black" : ""
+              }`}
+              onClick={() => handleNetworkSelect(item)}
+              key={index}
+            > */}
               <div className="grid place-items-center w-full md:w-auto">
                 <img
                   alt={item.symbol}

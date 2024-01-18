@@ -13,14 +13,11 @@ import { VscFeedback } from "react-icons/vsc";
 <VscFeedback />;
 
 // import NetworkSelection from "./SelectNetwork";
-
 // import SecureWallet from "./SecureWallet";
-
 // const CreateWallet = ({ handleClose }) => {
 // const [legacyWallet, setLegacyWallet] = useState(false);
 // //const [smartWallet, setSmartWallet] = useState(false);
 // const [type, setType] = useState("");
-
 // const handleClick = () => {
 //   setType("EOA");
 //   setLegacyWallet(true);

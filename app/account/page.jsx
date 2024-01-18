@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import Account from "@/components/Account";
@@ -21,12 +21,15 @@ import { logOut } from "@/clientApi/auth";
 import { enqueueSnackbar } from "notistack";
 import AccountHeader from "@/components/AccountHeader";
 import { BsArrowLeft } from "react-icons/bs";
+import { WalletContext } from "@/providers/WalletProvider";
 
 const AccountPage = () => {
   const router = useRouter();
   const [navbarTrigger, setNavbarTrigger] = useState(false);
   const { user, isAuthenticated, status } = useUser();
   const [showModal, setShowModal] = useState(false);
+  
+  const { showAccount, setShowAccount } = useContext(WalletContext);
 
   const isMobile = useMediaQuery({ query: `(max-width: 760px)` });
   useEffect(() => {
@@ -72,8 +75,8 @@ const AccountPage = () => {
           onClick={() => setNavbarTrigger(!navbarTrigger)}
         ></div>
       )}
-      {showModal && <Modal onClose={() => setShowModal(false)} user={user} />}
-      <div className="grid lg:grid-cols-10 md:grid-cols-2 grid-cols-1 pb-32 lg:pb-0">
+      {showModal && <Modal onClose={() => setShowModal(false)} user={user}/>}
+      <div className="grid lg:grid-cols-10 md:grid-cols-2 grid-cols-1 pb-32 lg:pb-0+">
         <AccountHeader
           isMobile={isMobile}
           navbarTrigger={navbarTrigger}
@@ -81,11 +84,24 @@ const AccountPage = () => {
           user={user}
         />
 
-        <div className="col-span-6 xl:mx-8 md:mx-4 mx-2 xl:mt-10 mt-4 ">
+        <div className={`col-span-6 xl:mx-8 md:mx-4 mx-2 xl:mt-10 mt-4 hidden lg:block ${showAccount ? "!block" : ""} `}>
           {/* <Link href="dashboard"> */}
           <div className="flex flex-row justify-between items-center">
             {/* <div className="flex flex-row items-center gap-1">
                 {!isMobile && <BsArrowLeft />} */}
+
+            <div className={`${
+                  showAccount ? "lg:hidden block" : "lg:block hidden"
+                } flex flex-col space-y-3`}>
+              <button
+                class=" w-20 px-4 py-2 bg-neutral-700 hover:bg-neutral-800 text-white font-semibold rounded-md focus:outline-none focus:ring focus:border-blue-300"
+                onClick={() => setShowAccount(false)}
+              >
+                Back
+              </button>
+              
+            </div>
+
             <p className="text-xl font-semibold">Account</p>
             {/* </div> */}
             <div className="xl:flex xl:flex-row md:flex md:flex-row hidden items-center xl:gap-6 md:gap-4 gap-4">
@@ -206,7 +222,6 @@ const AccountPage = () => {
                 </button>
               </div>
             </div>
-            
           </div>
         </div>
       </div>

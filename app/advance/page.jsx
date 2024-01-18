@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import Image from "next/image";
 import Account from "@/components/Account";
 import Currency from "../../assets/security/dollor2.png";
@@ -12,6 +12,7 @@ import Ham from "../../assets/Dashboard/ham.png";
 import Modal from "@/components/modal/Modal";
 import { useUser } from "@/providers/UserProvider";
 import AccountHeader from "@/components/AccountHeader";
+import { WalletContext } from "@/providers/WalletProvider";
 
 const AdvancePage = () => {
   const [navbarTrigger, setNavbarTrigger] = useState(false);
@@ -19,6 +20,7 @@ const AdvancePage = () => {
   const [showModal, setShowModal] = useState(false);
   const [balanceAutoHide, setBalanceAutoHide] = useState(true);
   const [rpcFallback, setRpcFallback] = useState(true);
+  const { showAccount, setShowAccount } = useContext(WalletContext);
 
   const isMobile = useMediaQuery({ query: `(max-width: 760px)` });
   // useEffect(() => {
@@ -73,7 +75,23 @@ const AdvancePage = () => {
             </div>
           </div>
         </div> */}
-        <div className="col-span-6 xl:mx-8 md:mx-4 mx-2 xl:mt-10 mt-4">
+        <div
+          className={`col-span-6 xl:mx-8 md:mx-4 mx-2 xl:mt-10 mt-4 hidden lg:block ${
+            showAccount ? "!block" : ""
+          }`}
+        >
+          <div
+            className={`${
+              showAccount ? "lg:hidden block" : "lg:block hidden"
+            } flex flex-col space-y-3`}
+          >
+            <button
+              class=" w-20 px-4 py-2 bg-neutral-700 hover:bg-neutral-800 text-white font-semibold rounded-md focus:outline-none focus:ring focus:border-blue-300"
+              onClick={() => setShowAccount(false)}
+            >
+              Back
+            </button>
+          </div>
           <div className="flex flex-row justify-between items-center">
             <p className="text-xl font-semibold">Advanced</p>
             <div className="xl:flex xl:flex-row md:flex md:flex-row hidden items-center xl:gap-6 md:gap-4 gap-4">

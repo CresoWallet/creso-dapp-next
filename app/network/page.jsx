@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { MdKeyboardArrowDown, MdKeyboardArrowRight } from "react-icons/md";
@@ -17,11 +17,15 @@ import { useMediaQuery } from "react-responsive";
 import Modal from "@/components/modal/Modal";
 import { useUser } from "@/providers/UserProvider";
 import AccountHeader from "@/components/AccountHeader";
+import { WalletContext } from "@/providers/WalletProvider";
 
 const NetworkPage = () => {
   const [navbarTrigger, setNavbarTrigger] = useState(false);
   const { user } = useUser();
   const [showModal, setShowModal] = useState(false);
+
+  const { showAccount, setShowAccount } = useContext(WalletContext);
+
 
   const isMobile = useMediaQuery({ query: `(max-width: 760px)` });
 
@@ -101,8 +105,22 @@ const NetworkPage = () => {
           setShowModal={setShowModal}
           user={user}
         />
+    <div className={`col-span-6 xl:mx-8 md:mx-4 mx-2 xl:mt-10 mt-4 hidden lg:block ${showAccount ? "!block" : ""}`}>
+        <div
+          className={`${
+            showAccount ? "lg:hidden block" : "lg:block hidden"
+          } flex flex-col space-y-3`}
+        >
+          <button
+            class="w-20 px-4 py-2 bg-neutral-700 hover:bg-neutral-800 text-white font-semibold rounded-md focus:outline-none focus:ring focus:border-blue-300"
+            onClick={() => setShowAccount(false)}
+          >
+            Back
+          </button>
+        </div>
 
-        <div className="col-span-6 xl:mx-8 md:mx-4 mx-2 xl:mt-10 mt-4">
+
+
           <div className="flex flex-row justify-between items-center">
             <p className="text-xl font-semibold">Network Settings</p>
             <div className="xl:flex xl:flex-row md:flex md:flex-row hidden items-center  xl:gap-6 md:gap-4 gap-4">

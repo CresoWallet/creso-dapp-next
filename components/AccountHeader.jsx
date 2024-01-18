@@ -7,7 +7,7 @@ import Currency from "../assets/security/dollor2.png";
 
 const AccountHeader = ({ isMobile, navbarTrigger, setShowModal, user }) => {
   return (
-    <div className="col-span-4 pb-32 lg:pb-0 ">
+    <div className="col-span-4  lg:pb-0 ">
       <div className={`grid ${isMobile ? "grid-cols-1" : "grid-cols-3"}`}>
         <div className="flex xl:hidden md:hidden justify-center gap-4">
           <div className="flex flex-row items-center gap-2">

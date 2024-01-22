@@ -70,7 +70,7 @@ function SocialRecovery() {
   return (
     <div className="mt-10">
       <div className="flex flex-row justify-between items-center xl:mt-8 md:mt-10 mt-8">
-        <p className="text-sm font-semibold">Social Recovery</p>
+        <p className="text-sm font-semibold">Social Recovery</p>Recovery
       </div>
 
       <div className="flex flex-col space-y-1 mt-10">

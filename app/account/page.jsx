@@ -77,7 +77,7 @@ const AccountPage = () => {
         ></div>
       )}
       {showModal && <Modal onClose={() => setShowModal(false)} user={user} />}
-      <div className="grid lg:grid-cols-10 md:grid-cols-2 grid-cols-1 pb-32 lg:pb-0+">
+      <div className="grid lg:grid-cols-10 md:grid-cols-2 grid-cols-1 pb-32 md:pb-0">
         <AccountHeader
           isMobile={isMobile}
           navbarTrigger={navbarTrigger}
@@ -86,7 +86,7 @@ const AccountPage = () => {
         />
 
         <div
-          className={`col-span-6 xl:mx-8 md:mx-4 mx-2 xl:mt-10 mt-4 hidden lg:block ${
+          className={`col-span-6 xl:mx-8 md:mx-4 mx-2 xl:mt-10  hidden lg:block ${
             showAccount ? "!block" : ""
           } `}
         >

@@ -10,8 +10,9 @@ const AccountHeader = ({ isMobile, navbarTrigger, setShowModal, user }) => {
   const { showAccount, setShowAccount } = useContext(WalletContext);
 
 
-  return (
-    <div className="col-span-4  lg:pb-0  ">
+  return (<>
+
+    <div className="col-span-4  lg:pb-0 md:hidden lg:block ">
       <div className={`grid ${isMobile ? "grid-cols-1" : "grid-cols-3"}`}>
         <div className="flex md:hidden justify-center gap-4">
           <div className="flex flex-row items-center gap-2">
@@ -38,6 +39,12 @@ const AccountHeader = ({ isMobile, navbarTrigger, setShowModal, user }) => {
         </div>
       </div>
     </div>
+    <div className="col-span-4 mx-4 hidden md:block lg:hidden">
+
+    <Account user={user} setShowModal={setShowModal} />
+    </div>
+
+  </>
   );
 };
 

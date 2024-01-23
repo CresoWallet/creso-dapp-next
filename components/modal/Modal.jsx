@@ -599,11 +599,7 @@ const Modal = ({ onClose, title, user }) => {
                 alt=""
                 className="cursor-pointer hidden sm:block "
               />
-              {/* <Image
-                src={Set1M}
-                alt=""
-                className="cursor-pointer block sm:hidden"
-              /> */}
+          
               <hr className="w-full mt-3" />
             </div>
 
@@ -627,7 +623,6 @@ const Modal = ({ onClose, title, user }) => {
                 alt=""
                 className="cursor-pointer hidden sm:block"
               />
-
               <hr className="w-full mt-3" />
             </div>
 

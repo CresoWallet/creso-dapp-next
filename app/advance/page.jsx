@@ -16,14 +16,11 @@ import { IoArrowBackCircle } from "react-icons/io5";
 
 const AdvancePage = () => {
   const [navbarTrigger, setNavbarTrigger] = useState(false);
-  const { user, isAuthenticated, status} = useUser();
+  const { user, isAuthenticated, status } = useUser();
   const [showModal, setShowModal] = useState(false);
   const [balanceAutoHide, setBalanceAutoHide] = useState(true);
   const [rpcFallback, setRpcFallback] = useState(true);
-  const {showAccount, setShowAccount } = useContext(WalletContext);
-
-  
-
+  const { showAccount, setShowAccount } = useContext(WalletContext);
   const isMobile = useMediaQuery({ query: `(max-width: 760px)` });
 
   return (
@@ -54,7 +51,6 @@ const AdvancePage = () => {
             } flex flex-col space-y-3`}
           ></div>
           <div className="flex flex-row justify-between items-center">
-            {/* <p className="text-xl font-semibold">Advanced</p> */}
             <div className="flex flex-row items-center">
               <IoArrowBackCircle
                 className="h-8 w-8 lg:hidden"

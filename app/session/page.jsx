@@ -85,7 +85,7 @@ const SessionPage = () => {
      
         </div>
 
-          <div className="flex flex-row justify-between items-center  mt-8 ">
+          <div className="flex flex-row justify-between items-center  ">
             {/* <p className="xl:text-xl md:text-xl text-lg  font-semibold">
               V1 Sessions cccc
             </p> */}
@@ -99,14 +99,14 @@ const SessionPage = () => {
             </div>
             <div className="xl:flex xl:flex-row md:flex md:flex-row hidden items-center  xl:gap-6 md:gap-4 gap-4">
               <div className="flex flex-row items-center gap-2">
-                <Image alt="" src={Language} className="w-6 h-6" />
+                <Image alt="" src={Language} className="w-6 h-6"/>
                 <div className="flex flex-row gap-1">
                   <p className="text-sm text-black">ENG</p>
                   <MdKeyboardArrowDown />
                 </div>
               </div>
               <div className="flex flex-row items-center gap-2">
-                <Image alt="" src={Currency} className="w-6 h-6" />
+                <Image alt="" src={Currency} className="w-6 h-6"/>
                 <div className="flex flex-row gap-1">
                   <p className="text-sm text-black">USD</p>
                   <MdKeyboardArrowDown />

@@ -95,7 +95,6 @@ const AccountPage = () => {
             {/* <div className="flex flex-row items-center gap-1">
                 {!isMobile && <BsArrowLeft />} */}
 
-            
             <div className="flex flex-row justify-between items-center">
               <div className="flex flex-row items-center">
                 <IoArrowBackCircle
@@ -124,7 +123,7 @@ const AccountPage = () => {
               </div>
             </div>
           </div>
-          {/* </Link> */} 
+          {/* </Link> */}
 
           <div className="flex flex-col xl:mt-16 md:mt-10 mt-8 xl:space-y-4 space-y-2">
             <div className="flex flex-col space-y-2">
@@ -150,7 +149,7 @@ const AccountPage = () => {
                 <p className="text-xs text-[#A09FAA]">
                   Either email or phone can be used to access your wallet. It is
                   recommended to add both in case either of them is lost. 
-                </p>
+                </p>                                                                                                                                           
               </div> */}
 
               <div className="flex flex-row items-center mx-4">

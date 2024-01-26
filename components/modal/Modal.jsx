@@ -491,7 +491,14 @@ const Modal = ({ onClose, title, user }) => {
           enqueueSnackbar(`Successful email transmission`, {
             variant: "success",
           });
-          setStep((step % 7) + 1);
+          // Check if step is 2 (waiting for OTP verification)
+          if (step === 2) {
+            // If step is 2, directly update step to 3 after sending OTP
+            setStep(2);
+          } else {
+            // If step is not 2, update step to the next value in the sequence
+            setStep((step % 7) + 1);
+          }
           setLoading(false);
         } else {
           enqueueSnackbar(`Sending email failed`, {
@@ -507,7 +514,46 @@ const Modal = ({ onClose, title, user }) => {
       }
     }
   };
-
+  // const handleSendOTPMail = async () => {
+  //   if (!user.email) {
+  //     enqueueSnackbar(`Email is not provided`, {
+  //       variant: "error",
+  //     });
+  //   } else {
+  //     if (step === 1) {
+  //       setLoading(true);
+  //     } else {
+  //       setResendLoading(true);
+  //     }
+  //     try {
+  //       const res = await sendOTPMail({
+  //         email: user.email,
+  //       });
+  //       if (res?.status === 200) {
+  //         enqueueSnackbar(`Successful email transmission`, {
+  //           variant: "success",
+  //         });
+  //         if (step === 1) {
+  //           setStep((step % 7) + 1);
+  //         }
+  //         setLoading(false);
+  //         setResendLoading(false);
+  //         enableResend();
+  //       } else {
+  //         enqueueSnackbar(`Sending email failed`, {
+  //           variant: "error",
+  //         });
+  //       }
+  //     } catch (err) {
+  //       enqueueSnackbar(`Something went wrong`, {
+  //         variant: "error",
+  //       });
+  //     } finally {
+  //       setLoading(false);
+  //       setResendLoading(false);
+  //     }
+  //   }
+  // };
   const handleVerifyOTP = async () => {
     if (!user.email) {
       enqueueSnackbar(`Please enter OTP`, {
@@ -572,7 +618,7 @@ const Modal = ({ onClose, title, user }) => {
   };
   const handleNextClick = async () => {
     if (step === 1) {
-      handleSendOTPMail();
+      await handleSendOTPMail();
     } else if (step === 2) {
       handleVerifyOTP();
     } else if (step === 3) {
@@ -599,7 +645,7 @@ const Modal = ({ onClose, title, user }) => {
                 alt=""
                 className="cursor-pointer hidden sm:block "
               />
-          
+
               <hr className="w-full mt-3" />
             </div>
 
@@ -751,7 +797,7 @@ const Modal = ({ onClose, title, user }) => {
           <div className="px-3  absolute bottom-5 right-0 ">
             <button
               className="bg-gray-900 hover:bg-black text-white py-2 px-5 rounded-full text-sm"
-              onClick={handleNextClick}
+              onClick={() => handleNextClick()}
             >
               {loading ? (
                 <AiOutlineLoading3Quarters className="w-5 h-5 animate-spin text-sky-500" />

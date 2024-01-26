@@ -151,7 +151,7 @@ const RightSide = (props) => {
             </div>
           </div>
         </div>
-        <div>
+        {/* <div>
           <h3 className="font-semibold">Top Gainers</h3>
 
           {data.topGainers?.map((coin) => (
@@ -168,7 +168,7 @@ const RightSide = (props) => {
               <p>{coin.name}</p>
             </div>
           ))}
-        </div>
+        </div> */}
         {/* <getTopGainersLosers />
         {activeButton === "TopGainers" && (
           <div className="flex flex-col gap-4 mt-6">

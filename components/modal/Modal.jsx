@@ -642,7 +642,7 @@ const Modal = ({ onClose, title, user }) => {
               <input
                 type="number"
                 placeholder="Enter OTP"
-                className="placeholder:text-[#A09FAA] text-xs xl:px-4 xl:py-4 md:px-4 md:py-4 py-3 px-3 rounded-full border border-solid"
+                className="placeholder:text-[#A09FAA] text-xs xl:px-4 xl:py-4 md:px-4 md:py-4 py-3 px-3 rounded-full border border-solid removeArrow"
                 onChange={(e) => {
                   setOtp(e.target.value);
                 }}
@@ -692,7 +692,6 @@ const Modal = ({ onClose, title, user }) => {
                 }}
               />
             </div>
-
           </div>
         );
       case 4:
@@ -714,11 +713,11 @@ const Modal = ({ onClose, title, user }) => {
             </div>
 
             <div className="flex items-center justify-center w-full flex-col">
-              <p className="text-lg font-bold ml-3 mb-3">
+              <p className="text-lg font-bold ml-3 mb-1">
                 Back Up Personal Key Share
               </p>
 
-              <div className="border border-solid rounded-3xl border-[#E5E5F0] xl:py-4 md:py-2 xl:px-6 md:px-1 px-4 py-2 w-4/5">
+              <div className="border border-solid rounded-3xl border-[#E5E5F0] xl:py-4 md:py-2 xl:px-6 md:px-1 px-4 py-2 w-4/5 h-44 overflow-y-auto">
                 <p className="text-gray-600 sm:text-sm text-xs text-left mx-3 break-words">
                   {encryptedKey}
                 </p>

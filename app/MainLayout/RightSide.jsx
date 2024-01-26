@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/alt-text */
 /* eslint-disable @next/next/no-img-element */
 "use client";
 import React, { useContext, useEffect, useState } from "react";
@@ -10,7 +11,12 @@ import CFX from "../../assets/gainers/cfx.png";
 import MINA from "../../assets/AboutUs/gainers/mina.png";
 import { usePathname } from "next/navigation";
 import { VscFeedback } from "react-icons/vsc";
-import { getTopGainersLosers } from "@/components/TopGainer_Losers/GainersLosersList";
+import {
+  getTopGainersLosers,
+  fetchTopGainers,
+  fetchTopLosers,
+} from "@/components/TopGainer_Losers/GainersLosersList";
+
 import Image from "next/image";
 
 const RightSide = (props) => {
@@ -49,16 +55,26 @@ const RightSide = (props) => {
   const hoverStyle = { color: "black" };
 
   useEffect(() => {
+    //   const fetchData = async () => {
+    //     const result = await getTopGainersLosers(
+    //       isAboutPage || isSwapPage,
+    //       activeButton === "TopGainers"
+    //     );
+    //     setData(result);
+    //   };
+
+    //   fetchData();
+    // }, [isAboutPage, isSwapPage, activeButton]);
+
     const fetchData = async () => {
-      const result = await getTopGainersLosers(
-        isAboutPage || isSwapPage,
-        activeButton === "TopGainers"
-      );
-      setData(result);
+      const topGainersData = await fetchTopGainers();
+      const topLosersData = await fetchTopLosers();
+      setData({ topGainers: topGainersData, topLosers: topLosersData });
     };
 
     fetchData();
-  }, [isAboutPage, isSwapPage, activeButton]);
+  }, []);
+
   return (
     <>
       <div className="grid relative  -mx-4 pb-32 lg:pb-0">
@@ -134,8 +150,24 @@ const RightSide = (props) => {
               <hr />
             </div>
           </div>
+        </div>
+        <div>
+          <h3 className="font-semibold">Top Gainers</h3>
 
+          {data.topGainers?.map((coin) => (
+            <div key={coin.id}>
+              <p>{coin.name}</p>
+              <img src={coin.image} className="h-5 w-7" />
+              <p>{coin}</p>
+            </div>
+          ))}
 
+          <h3 className="font-semibold">Top Losers</h3>
+          {data.topLosers?.map((coin) => (
+            <div key={coin.id}>
+              <p>{coin.name}</p>
+            </div>
+          ))}
         </div>
         {/* <getTopGainersLosers />
         {activeButton === "TopGainers" && (
@@ -239,8 +271,9 @@ const RightSide = (props) => {
           onMouseLeave={() => setHover(false)}
           href="https://forms.gle/GBEKLjSH7hxQiuPv8"
           target="_blank"
-          className={`${hover ? "bg-white border border-[#2100EC] " : "bg-[#2100EC]"
-            } fixed bottom-24 lg:bottom-12 right-12 cursor-pointer shadow-2xl z-50 h-20 w-20 grid place-items-center rounded-full `}
+          className={`${
+            hover ? "bg-white border border-[#2100EC] " : "bg-[#2100EC]"
+          } fixed bottom-24 lg:bottom-12 right-12 cursor-pointer shadow-2xl z-50 h-20 w-20 grid place-items-center rounded-full `}
         >
           <div className="absolute grid place-items-center">
             <VscFeedback style={hover ? hoverStyle : style} size={30} />

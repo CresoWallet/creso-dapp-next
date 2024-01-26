@@ -228,7 +228,7 @@ const WalletContextProvider = ({ children }) => {
         showCreateWallet,
         setShowCreateWallet,
         showAccount,
-        setShowAccount
+        setShowAccount,
       }}
     >
       {/* {navbarTrigger && (

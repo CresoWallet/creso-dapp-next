@@ -241,3 +241,13 @@ img {
   background-size: cover;
   background-position: center;
 }*/
+.removeArrow::-webkit-outer-spin-button,
+.removeArrow::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+.removeArrow[type="number"] {
+  -moz-appearance: textfield;
+}

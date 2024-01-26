@@ -38,8 +38,11 @@ function BackUp() {
       } catch (error) {}
     }
   };
+
+  console.log("abxcx===============================================x");
   return (
     <>
+
       <div
         className={`col-span-6 xl:mx-8 md:mx-4 mx-2 xl:mt-10 mt-4 ${
           showAccount ? "block lg:hidden" : "hidden lg:block"

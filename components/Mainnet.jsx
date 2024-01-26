@@ -37,7 +37,7 @@ const Mainnet = ({ handleOpenWallet, handleCreateWallet, showWallet }) => {
     setMainContentVisible,
     setWalletAddress,
     history,
-    showCreateWallet
+    showCreateWallet,
   } = useContext(WalletContext);
 
   const { enqueueSnackbar } = useSnackbar();
@@ -54,10 +54,6 @@ const Mainnet = ({ handleOpenWallet, handleCreateWallet, showWallet }) => {
       setActiveButton("");
     }
   }, [activeButton]);
-
-
-
-
 
   // const handleSaveWalletName = () => {
   //   // Perform any necessary validation on the new wallet name
@@ -255,7 +251,6 @@ const Mainnet = ({ handleOpenWallet, handleCreateWallet, showWallet }) => {
     delayedFetch();
   }, [activeButton]);
 
-
   // Add this line near the top of your component
 
   return (
@@ -266,7 +261,9 @@ const Mainnet = ({ handleOpenWallet, handleCreateWallet, showWallet }) => {
             Beta Version (Testnet){" "}
           </p>
           <div
-            className={`${showCreateWallet === true && "font-bold"} flex  gap-2 items-center cursor-pointer group`}
+            className={`${
+              showCreateWallet === true && "font-bold"
+            } flex  gap-2 items-center cursor-pointer group`}
             onClick={handleCreateWallet}
           >
             <Image src={PinkPlus} alt="" />
@@ -280,27 +277,13 @@ const Mainnet = ({ handleOpenWallet, handleCreateWallet, showWallet }) => {
         <div className="flex xl:flex-row flex-col items-center xl:gap-4 md:gap-4 gap-2">
           {/* Keyless Secure Wallet */}
           <div
-            className={`${activeButton === "AA"
-              ? "bg-black"
-              : "bg-white hover:bg-gray-200 duration-500 "
-              } rounded-full px-4 py-4 w-full border-2 border-black cursor-pointer group relative`}
+            className={`${
+              activeButton === "AA"
+                ? "bg-black"
+                : "bg-white hover:bg-gray-200 duration-500 "
+            } rounded-full px-4 py-4 w-full border-2 border-black cursor-pointer group relative`}
           >
             <div className="flex flex-row justify-between items-center gap-3 group">
-              {/*  <div>
-                <input
-                  type="text"
-                  placeholder="New Wallet Name"
-                  className="outline-none border-b-2 border-black text-sm w-20"
-                  value={newWalletName}
-                  onChange={handleWalletNameChange}
-                />
-                <button
-                  className="text-[#FF4085] hover:font-bold duration-500"
-                  onClick={handleSaveWalletName}
-                >
-                  Save
-                </button>
-              </div> */}
               <Image
                 src={Wallet}
                 alt="wallet"
@@ -308,8 +291,9 @@ const Mainnet = ({ handleOpenWallet, handleCreateWallet, showWallet }) => {
               />
               <div className="flex flex-col space-y-1">
                 <p
-                  className={`${activeButton === "AA" ? "text-white" : "text-black"
-                    }  font-semibold text-sm md:text-lg xl:text-sm`}
+                  className={`${
+                    activeButton === "AA" ? "text-white" : "text-black"
+                  }  font-semibold text-sm md:text-lg xl:text-sm`}
                 >
                   Keyless Secure Wallet
                 </p>
@@ -319,8 +303,9 @@ const Mainnet = ({ handleOpenWallet, handleCreateWallet, showWallet }) => {
                   </p>
                   <Image
                     src={activeButton === "AA" ? Copy : Copy2}
-                    className={`${activeButton === "AA" ? "text-white" : "text-black"
-                      }`}
+                    className={`${
+                      activeButton === "AA" ? "text-white" : "text-black"
+                    }`}
                     alt="copy"
                     onClick={() => {
                       copyToClipBoard(secureWalletAddress);
@@ -353,10 +338,11 @@ const Mainnet = ({ handleOpenWallet, handleCreateWallet, showWallet }) => {
 
           {/* EOA Wallet */}
           <div
-            className={`${activeButton === "EOA"
-              ? "bg-black"
-              : "bg-white  hover:bg-gray-200 duration-500 "
-              } rounded-full px-4 py-4 w-full border-2 border-black cursor-pointer group relative`}
+            className={`${
+              activeButton === "EOA"
+                ? "bg-black"
+                : "bg-white  hover:bg-gray-200 duration-500 "
+            } rounded-full px-4 py-4 w-full border-2 border-black cursor-pointer group relative`}
           >
             <div className="flex flex-row justify-between items-center gap-3">
               <Image
@@ -366,8 +352,9 @@ const Mainnet = ({ handleOpenWallet, handleCreateWallet, showWallet }) => {
               />
               <div className="flex flex-col space -y-1">
                 <p
-                  className={`${activeButton === "EOA" ? "text-white" : "text-black"
-                    }  font-semibold text-sm md:text-lg xl:text-sm`}
+                  className={`${
+                    activeButton === "EOA" ? "text-white" : "text-black"
+                  }  font-semibold text-sm md:text-lg xl:text-sm`}
                 >
                   EOA Wallet
                 </p>

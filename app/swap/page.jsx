@@ -47,6 +47,7 @@ const SwapPage = () => {
 
   const { navbarTrigger, setNavbarTrigger, isMobile, originalData } =
     useContext(WalletContext);
+
   const handleShowSwap = () => {
     setShowSwapForm(!showSwapForm);
   };
@@ -113,7 +114,12 @@ const SwapPage = () => {
   const filteredData = originalData.filter((item) =>
     item.symbol.toUpperCase().includes(searchQuery.toUpperCase())
   );
-
+  console.log("🚀 ~ SwapPage ~ filteredData:", filteredData)
+  const swapingFromTO = () => {
+    // const tempToken = selectedToken;
+    setSelectedToken(selectedToken1);
+    setSelectedToken1(selectedToken);
+  };
   return (
     <>
       {/* ------------ Popup Main ---------- */}
@@ -205,39 +211,44 @@ const SwapPage = () => {
                       />
                     </div>
 
-                    <input
+                    {filteredData?.length > 0 && <input
                       type="text"
                       placeholder="Search by Name..."
                       value={searchQuery}
                       onChange={(e) => setSearchQuery(e.target.value)}
                       className="my-5 px-4 md:px-5 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:border-blue-300 w-full"
-                    />
+                    />}
 
-                    <div className="grid grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 lg:gap-10 space-y-4 items-center max-h-[50vh] overflow-y-auto">
-                      {filteredData.map((item, index) => (
-                        <div
-                          className="flex md:flex-col gap-2 md:gap-0 space-y-1 items-center cursor-pointer hover:-translate-y-1 duration-500"
-                          key={index}
-                          onClick={() => handleTokenClick(item)}
-                        >
-                          <div className="grid place-items-center">
-                            {/* <img */}
-                            <img alt={item.symbol}
-                              src={item?.image}
-                              className="xl:h-12 xl:w-12 w-8 h-8 rounded-full"
-                            />
-                          </div>
-                          <div className="flex flex-col">
-                            <p className="md:text-center xl:text-sm text-xs md:text-xs">
-                              {item.symbol.toUpperCase()}
-                            </p>
-                            <p className="text-[#A09FAA] flex gap-1 xl:text-sm text-xs md:text-xs">
-                              <span>$</span> {item?.current_price.toFixed(2)}
-                            </p>
-                          </div>
+                    {
+                      filteredData?.length > 0
+                        ? <div className="grid grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 lg:gap-10 space-y-4 items-center max-h-[50vh] overflow-y-auto">
+                          {filteredData.map((item, index) => (
+                            <div
+                              className="flex md:flex-col gap-2 md:gap-0 space-y-1 items-center cursor-pointer hover:-translate-y-1 duration-500"
+                              key={index}
+                              onClick={() => handleTokenClick(item)}
+                            >
+                              <div className="grid place-items-center">
+                                {/* <img */}
+                                <img alt={item.symbol}
+                                  src={item?.image}
+                                  className="xl:h-12 xl:w-12 w-8 h-8 rounded-full"
+                                />
+                              </div>
+                              <div className="flex flex-col">
+                                <p className="md:text-center xl:text-sm text-xs md:text-xs">
+                                  {item.symbol.toUpperCase()}
+                                </p>
+                                <p className="text-[#A09FAA] flex gap-1 xl:text-sm text-xs md:text-xs">
+                                  <span>$</span> {item?.current_price.toFixed(2)}
+                                </p>
+                              </div>
+                            </div>
+                          ))}
                         </div>
-                      ))}
-                    </div>
+                        : <div className="grid  gap-6 py-10 items-center">
+                          {`You've exceeded the Rate Limit`} </div>
+                    }
                   </div>
                 </div>
               </>
@@ -295,7 +306,7 @@ const SwapPage = () => {
               </div>
             )}
 
-            <div className="grid place-items-center">
+            <div className="grid place-items-center cursor-pointer" onClick={swapingFromTO}>
               <Image
                 alt=""
                 src={SwapButton}
@@ -354,6 +365,9 @@ const SwapPage = () => {
                 </div>
               </div>
             </div>
+
+
+
             <div className="flex flex-col space-y-1 mt-6">
               <div className="flex flex-row justify-between items-center">
                 <p className="px-4 pt-2 font-semibold  text-xs xl:text-sm md:text-sm">

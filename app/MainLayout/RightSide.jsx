@@ -137,7 +137,7 @@ const RightSide = (props) => {
 
 
         </div>
-        {/* <getTopGainersLosers />
+        <getTopGainersLosers />
         {activeButton === "TopGainers" && (
           <div className="flex flex-col gap-4 mt-6">
             {data.topGainers?.length !== 0 ? (
@@ -160,7 +160,7 @@ const RightSide = (props) => {
               <div className="text-[#FF4085]">Loading...</div>
             )}
           </div>
-        )} */}
+        )}
       </div>
 
       {/* <div className="flex flex-col gap-4 mt-6">

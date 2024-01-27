@@ -24,9 +24,7 @@ const NetworkPage = () => {
   const [navbarTrigger, setNavbarTrigger] = useState(false);
   const { user } = useUser();
   const [showModal, setShowModal] = useState(false);
-
   const { showAccount, setShowAccount } = useContext(WalletContext);
-
   const isMobile = useMediaQuery({ query: `(max-width: 760px)` });
 
   const networks = [
@@ -57,7 +55,6 @@ const NetworkPage = () => {
       route: "/networkPage",
       info: "Polygon Mainnet",
       shortname: "Polygon",
-
       test: true,
     },
     {
@@ -75,6 +72,7 @@ const NetworkPage = () => {
       shortname: "Optimism",
     },
   ];
+
   const renderNetworkLink = (network) => (
     <Link
       href={`${network.route}?network=${encodeURIComponent(
@@ -124,7 +122,7 @@ const NetworkPage = () => {
         >
           <div
             className={`${
-              showAccount ? "lg:hidden block" : "lg:block hidden"
+              showAccount ? "lg:hidden block":"lg:block hidden"
             } flex flex-col space-y-3`}
           ></div>
 

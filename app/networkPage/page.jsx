@@ -56,11 +56,9 @@ const NetworkPage2 = (params) => {
         <div className="col-span-6 xl:mx-8 md:mx-4 mx-2 xl:mt-10 mt-4">
           <div className="flex flex-row justify-between items-center">
             <div className="flex flex-row items-center gap-2">
-              {/* <Link href="network" className="bg-black rounded-full p-1.5">
-                <BsArrowLeft style={{ color: "white" }} />
-              </Link> */}
+             
               <Link href="network">
-                <IoArrowBackCircle className="h-8 w-8"/>
+                <IoArrowBackCircle className="h-8 w-8" />
               </Link>
               <div className="flex flex-row items-center gap-1">
                 <Image alt="" src={parseNetworkData.icon} />
@@ -70,12 +68,11 @@ const NetworkPage2 = (params) => {
                     <p>TEST</p>
                   </div>
                 )}
-
-                <span className=" text-base upcomming">Upcoming</span>
+                <span className="text-base upcomming">Upcoming</span>
               </div>
             </div>
 
-            <div className="xl:flex xl:flex-row md:flex md:flex-row hidden items-center xl:gap-6 md:gap-4 gap-4">
+            <div className="xl:flex xl:flex-row md:flex md:flex-row       hidden items-center xl:gap-6 md:gap-4 gap-4">
               <div className="flex flex-row items-center gap-2">
                 <Image alt="" src={Language} className="w-6 h-6" />
                 <div className="flex flex-row gap-1">

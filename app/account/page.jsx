@@ -29,9 +29,7 @@ const AccountPage = () => {
   const [navbarTrigger, setNavbarTrigger] = useState(false);
   const { user, isAuthenticated, status } = useUser();
   const [showModal, setShowModal] = useState(false);
-
   const { showAccount, setShowAccount } = useContext(WalletContext);
-
   const isMobile = useMediaQuery({ query: `(max-width: 760px)` });
   useEffect(() => {
     if (navbarTrigger) {
@@ -86,7 +84,7 @@ const AccountPage = () => {
         />
 
         <div
-          className={`col-span-6 xl:mx-8 md:mx-4 mx-2 xl:mt-10  hidden lg:block ${
+          className={`col-span-6 xl:mx-8 md:mx-4 mx-2 xl:mt-10 mt-4 hidden lg:block ${
             showAccount ? "!block" : ""
           } `}
         >
@@ -94,14 +92,13 @@ const AccountPage = () => {
           <div className="flex flex-row justify-between items-center ">
             {/* <div className="flex flex-row items-center gap-1">
                 {!isMobile && <BsArrowLeft />} */}
-
             <div className="flex flex-row justify-between items-center">
               <div className="flex flex-row items-center">
                 <IoArrowBackCircle
                   className="h-8 w-8 lg:hidden"
                   onClick={() => setShowAccount(false)}
                 />
-                <p className="text-xl font-semibold ml-2">Account</p>
+                <p className="text-xl font-semibold ml-2">Account </p>
               </div>
             </div>
 
@@ -149,7 +146,7 @@ const AccountPage = () => {
                 <p className="text-xs text-[#A09FAA]">
                   Either email or phone can be used to access your wallet. It is
                   recommended to add both in case either of them is lost. 
-                </p>                                                                                                                                           
+                </p>                                                                                                                                      
               </div> */}
 
               <div className="flex flex-row items-center mx-4">
@@ -224,6 +221,7 @@ const AccountPage = () => {
                 </button>
               </div>
             </div>
+            
           </div>
         </div>
       </div>

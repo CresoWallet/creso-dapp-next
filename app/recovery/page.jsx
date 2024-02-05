@@ -218,14 +218,7 @@ const RecoveryPage = () => {
   const [showModal, setShowModal] = useState(false);
   const { showAccount, setShowAccount } = useContext(WalletContext);
 
-  const isMobile = useMediaQuery({ query: ` (max-width: 760px)` });
-  // useEffect(() => {
-  //   if (navbarTrigger) {
-  //     document.body.classList.add("no-scroll");
-  //   } else {
-  //     document.body.classList.remove("no-scroll");
-  //   }
-  // }, [navbarTrigger]);
+  const isMobile = useMediaQuery({ query: `(max-width: 760px)` });
 
   const fetchRecoveryStatus = async (data) => {
     // console.log("data : ", data);
@@ -293,44 +286,16 @@ const RecoveryPage = () => {
           setShowModal={setShowModal}
           user={user}
         />
-        {/* <div className="col-span-4">
-          <div
-            className={`grid h-full ${
-              isMobile ? "grid-cols-1" : "grid-cols-3"
-            }`}
-          >
-            <div className="flex xl:hidden md:hidden justify-center gap-4">
-              <div className="flex flex-row items-center gap-2">
-                <Image alt="" src={Language} className="w-6 h-6" />
-                <div className="flex flex-row gap-1">
-                  <p className="text-sm text-black hover:font-bold">ENG</p>
-                  <MdKeyboardArrowDown />
-                </div>
-              </div>
-              <div className="flex flex-row items-center gap-2">
-                <Image alt="" src={Currency} className="w-6 h-6" />
-                <div className="flex flex-row gap-1">
-                  <p className="text-sm text-black hover:font-bold">USD</p>
-                  <MdKeyboardArrowDown />
-                </div>
-              </div>
-            </div>
-
-            <div
-              className={`col-span-4 ${
-                isMobile ? "mt-2" : "mt-16"
-              } xl:mx-8 md:mx-4 mx-2`}
-            >
-              <Account user={user} setShowModal={setShowModal} />
-            </div>
-          </div>
-        </div> */}
 
         <div
           // className={`col-span-6 xl:mx-8 md:mx-4 mx-2 xl:mt-10 mt-4 ${
           //   showAccount ? "block lg:hidden" : "hidden lg:block"
           // }`}
-          className="col-span-6 xl:mx-8 md:mx-4 mx-2 xl:mt-10 mt-4 "
+          // className="col-span-6 xl:mx-8 md:mx-4 mx-2 xl:mt-10 mt-4 "
+
+          className={`col-span-6 xl:mx-8 md:mx-4 mx-2 xl:mt-10 mt-4  hidden lg:block ${
+            showAccount ? "!block" : ""
+          } `}
         >
           <div
             className={`${
@@ -344,7 +309,7 @@ const RecoveryPage = () => {
                 className="h-8 w-8 lg:hidden"
                 onClick={() => setShowAccount(false)}
               />
-              <p className="text-xl font-semibold ml-2">Recovery</p>
+              <p className="text-xl font-semibold ml-2">Recovery </p>
             </div>
             {/* <p className="text-xl font-semibold">Recovery </p> */}
             <div className="xl:flex xl:flex-row md:flex md:flex-row hidden items-center xl:gap-6 md:gap-4 gap-4">

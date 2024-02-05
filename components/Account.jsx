@@ -41,7 +41,6 @@ const Account = ({ setShowModal }) => {
     setClicked(link);
     setHover(link);
     link && setShowAccount(true);
-
   };
   const getLinkStyle = (link) => {
     const isHovered = hover === link;
@@ -62,7 +61,11 @@ const Account = ({ setShowModal }) => {
   const { showAccount, setShowAccount } = useContext(WalletContext);
   return (
     <>
-      <div className={`${showAccount ? "hidden lg:block" : "" } flex flex-col space-y-3`}>
+      <div
+        className={`${
+          showAccount ? "hidden lg:block" : ""
+        } flex flex-col space-y-3`}
+      >
         <UserDetails />
 
         <CustomButton3

@@ -228,8 +228,9 @@ const SwapFrom = ({ handleClose }) => {
             onMouseLeave={() => setHover(false)}
             href="https://forms.gle/GBEKLjSH7hxQiuPv8"
             target="_blank"
-            className={`${hover ? "bg-white border border-[#2100EC] " : "bg-[#2100EC]"
-              } fixed bottom-24 lg:bottom-12 right-12 cursor-pointer shadow-2xl z-50 h-20 w-20 grid place-items-center rounded-full `}
+            className={`${
+              hover ? "bg-white border border-[#2100EC] " : "bg-[#2100EC]"
+            } fixed bottom-24 lg:bottom-12 right-12 cursor-pointer shadow-2xl z-50 h-20 w-20 grid place-items-center rounded-full `}
           >
             <div className="absolute grid place-items-center">
               <VscFeedback style={hover ? hoverStyle : style} size={30} />

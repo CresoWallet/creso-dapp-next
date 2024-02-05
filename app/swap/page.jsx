@@ -109,13 +109,18 @@ const SwapPage = () => {
       setSelectedToken(selectedToken1);
       setSelectedToken1(selectedToken);
     }
+    setShowSwapForm(!showSwapForm);
   };
 
   const [searchQuery, setSearchQuery] = useState("");
   const filteredData = originalData.filter((item) =>
     item.symbol.toUpperCase().includes(searchQuery.toUpperCase())
   );
-
+  const swapingFromTO = () => {
+    // const tempToken = selectedToken;
+    setSelectedToken(selectedToken1);
+    setSelectedToken1(selectedToken);
+  };
   return (
     <>
       {/* ------------ Popup Main ---------- */}
@@ -298,7 +303,10 @@ const SwapPage = () => {
               </div>
             )}
 
-            <div className="grid place-items-center">
+            <div
+              className="grid place-items-center cursor-pointer"
+              onClick={swapingFromTO}
+            >
               <Image
                 alt=""
                 src={SwapButton}

@@ -116,6 +116,7 @@ const SwapPage = () => {
   const filteredData = originalData.filter((item) =>
     item.symbol.toUpperCase().includes(searchQuery.toUpperCase())
   );
+  console.log("filteredData", filteredData);
   const swapingFromTO = () => {
     // const tempToken = selectedToken;
     setSelectedToken(selectedToken1);

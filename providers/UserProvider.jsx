@@ -46,21 +46,21 @@ export const UserProvider = ({ children }) => {
       if (res) {
         setUser(res.data.user);
         setStatus("authenticated");
+        setToken(res.data.token);
       }
     } catch (error) {
       setStatus("failed");
     }
   };
   useEffect(() => {
-    // const token = localStorage.getItem(AUTH_TOKEN);
-    // setToken(token);
-    //if (token) {
-
-    ///api/authenticate if user
-    handleAuthentication();
-    //} else {
-    //setStatus("failed");
-    // }
+    const token = localStorage.getItem(AUTH_TOKEN);
+    setToken(token);
+    if (token) {
+      ///api/authenticate if user
+      handleAuthentication();
+    } else {
+      setStatus("failed");
+    }
   }, []);
 
   // useEffect(() => {
